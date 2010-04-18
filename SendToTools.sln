@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 9.00
 # Visual C# Express 2005
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShortcutRenamer", "SendToTools\ShortcutRenamer.csproj", "{AF635702-0D11-4CEF-AA87-8F4F9588523E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChangeFileName", "ChangeFileName\ChangeFileName.csproj", "{4CDB360C-E7E6-4D39-B473-91EE2E717698}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,6 +15,10 @@ Global
 		{AF635702-0D11-4CEF-AA87-8F4F9588523E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AF635702-0D11-4CEF-AA87-8F4F9588523E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AF635702-0D11-4CEF-AA87-8F4F9588523E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4CDB360C-E7E6-4D39-B473-91EE2E717698}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4CDB360C-E7E6-4D39-B473-91EE2E717698}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4CDB360C-E7E6-4D39-B473-91EE2E717698}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4CDB360C-E7E6-4D39-B473-91EE2E717698}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
