@@ -33,41 +33,44 @@ namespace ChangeFileName
                 return;
             }
 
-            try
+            System.IO.FileInfo fi = new System.IO.FileInfo(theFileName);
+
+            string oldname = fi.Name;
+            string oldext = fi.Extension;
+            string newName = fi.Name;
+            if (!string.IsNullOrEmpty(oldext))
             {
-                System.IO.FileInfo fi = new System.IO.FileInfo(theFileName);
-                
-                string oldname = fi.Name;
-                string oldext = fi.Extension;
-                string newName = fi.Name;
-                if ( !string.IsNullOrEmpty(oldext) )
-                {
-                    newName = newName.Replace(oldext, "");
-                }
-
-                if (!Ambiesoft.GetTextDialog.DoModalDialog(null,
-                    "ファイル名を変更",
-                    "ファイル名",
-                    ref newName))
-                {
-                    return;
-                }
-
-                if (oldname == (newName + oldext))
-                {
-                    return;
-                }
-
-                string dir = fi.Directory.FullName;
-                fi.MoveTo(dir + @"\" + newName + oldext);
+                newName = newName.Replace(oldext, "");
             }
-            catch (Exception e)
+            do
             {
-                MessageBox.Show(e.Message,
-                    Application.ProductName,
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Asterisk);
-            }
+                try
+                {
+
+                    if (!Ambiesoft.GetTextDialog.DoModalDialog(null,
+                        "ファイル名を変更",
+                        "ファイル名",
+                        ref newName))
+                    {
+                        return;
+                    }
+
+                    if (oldname == (newName + oldext))
+                    {
+                        return;
+                    }
+
+                    string dir = fi.Directory.FullName;
+                    fi.MoveTo(dir + @"\" + newName + oldext);
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show(e.Message,
+                        Application.ProductName,
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Asterisk);
+                }
+            } while (true);
         }
     }
 }
