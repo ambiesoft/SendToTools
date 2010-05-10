@@ -62,6 +62,7 @@ namespace ChangeFileName
 
                     string dir = fi.Directory.FullName;
                     fi.MoveTo(dir + @"\" + newName + oldext);
+                    break;
                 }
                 catch (Exception e)
                 {
