@@ -6,6 +6,7 @@ namespace ChangeFileName
 {
     static class Program
     {
+        static readonly string damemoji = "\\/:,;*?\"<>|";
         /// <summary>
         /// アプリケーションのメイン エントリ ポイントです。
         /// </summary>
@@ -58,6 +59,31 @@ namespace ChangeFileName
                     if (oldname == (newName + oldext))
                     {
                         return;
+                    }
+
+                    if ( string.IsNullOrEmpty(oldext ) )
+                    {
+                        newName = newName.TrimEnd(' ');
+                    }
+
+                    if (string.IsNullOrEmpty(newName))
+                    {
+                        MessageBox.Show("ファイル名を入力してください",
+                            Application.ProductName,
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Asterisk);
+
+                        continue;
+                    }
+
+                    if ( -1 != newName.IndexOfAny(damemoji.ToCharArray()))
+                    {
+                        MessageBox.Show("以下の文字はファイル名には使えません\r\n" + damemoji,
+                            Application.ProductName,
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Asterisk);
+
+                        continue;
                     }
 
                     string dir = fi.Directory.FullName;
