@@ -22,15 +22,15 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\..\..\..\..\..\LinkOut\SendToTools\</OutputPath>
+    <OutputPath>bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="SimpleCommandLineParser, Version=1.0.3782.19207, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="SimpleCommandLineParser, Version=1.0.4132.35156, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\LinkOut\SendToTools\SimpleCommandLineParser.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\LinkOut\DNAssembly\SimpleCommandLineParser.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
