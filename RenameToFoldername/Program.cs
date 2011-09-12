@@ -22,33 +22,37 @@ namespace RenameToFoldername
             }
 
             // string origfilename = @"C:\Documents and Settings\gator\デスクトップ\KKFOL\No.Starch.-.Autotools.2010.RETAiL.eBOOk-rebOOk\ddd.pdf";
-            string origfilename = args[0];
 
-            if (!System.IO.File.Exists(origfilename))
+            foreach (string s in args)
             {
-                MessageBox.Show("ファイル " + origfilename + " は存在しません",
-                    Application.ProductName,
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Asterisk);
-                return;
-            }
+                string origfilename = s;
 
-            try
-            {
-                System.IO.FileInfo fi = new System.IO.FileInfo(origfilename);
-                System.IO.DirectoryInfo di = fi.Directory;
+                if (!System.IO.File.Exists(origfilename))
+                {
+                    MessageBox.Show("ファイル " + origfilename + " は存在しません",
+                        Application.ProductName,
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Asterisk);
+                    continue;
+                }
 
-                string toExt = fi.Extension;
-                string toName = di.Name;
+                try
+                {
+                    System.IO.FileInfo fi = new System.IO.FileInfo(origfilename);
+                    System.IO.DirectoryInfo di = fi.Directory;
 
-                fi.MoveTo(System.IO.Path.Combine(di.FullName, toName + toExt));
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show(e.Message,
-                    Application.ProductName,
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Asterisk);
+                    string toExt = fi.Extension;
+                    string toName = di.Name;
+
+                    fi.MoveTo(System.IO.Path.Combine(di.FullName, toName + toExt));
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show(e.Message,
+                        Application.ProductName,
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Asterisk);
+                }
             }
         }
     }
