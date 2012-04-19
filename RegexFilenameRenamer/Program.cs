@@ -38,7 +38,7 @@ namespace Ambiesoft.RegexFilenameRenamer
             try
             {
                 Regex regf = new Regex(f);
-                string orgFullorRelativeFileName = parser.get_Mainargs(0);
+                string orgFullorRelativeFileName = parser.getMainargs(0);
 
                 bool isAlsoExt = null != parser["ie"];
 
