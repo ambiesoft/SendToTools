@@ -50,7 +50,7 @@ namespace ChangeFileName
 
                     if (!Ambiesoft.GetTextDialog.DoModalDialog(null,
                         "ファイル名を変更",
-                        "ファイル名",
+                        "ファイル名(&N):",
                         ref newName))
                     {
                         return;

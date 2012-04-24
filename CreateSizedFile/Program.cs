@@ -71,7 +71,27 @@ namespace CreateSizedFile
                     }
                 }
                 System.IO.FileStream fs = System.IO.File.Create(f.Filename, 1, System.IO.FileOptions.RandomAccess);
-                fs.SetLength(fsize);
+                if (f.chkRandom.Checked)
+                {
+                    System.Random r = new Random();
+                    for (long i = 0; i < fsize; ++i)
+                    {
+                        byte[] b = new byte[1];
+                        r.NextBytes(b);
+                        fs.WriteByte(b[0]);
+                    }
+                }
+                else if (f.chkZero.Checked)
+                {
+                    for (long i = 0; i < fsize; ++i)
+                    {
+                        fs.WriteByte(0);
+                    }
+                }
+                else
+                {
+                    fs.SetLength(fsize);
+                }
                 fs.Close();
             }
             catch (Exception e)

@@ -42,5 +42,21 @@ namespace CreateSizedFile
         {
             txtDir.Text = dir_;
         }
+
+        private void chkRandom_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkRandom.Checked && chkZero.Checked)
+            {
+                chkZero.Checked = false;
+            }
+        }
+
+        private void chkZero_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkRandom.Checked && chkZero.Checked)
+            {
+                chkRandom.Checked = false;
+            }
+        }
     }
 }
