@@ -34,6 +34,8 @@
             this.textName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnLaunch = new System.Windows.Forms.Button();
+            this.btnPaste = new System.Windows.Forms.Button();
+            this.btnTrim = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnCancel
@@ -86,6 +88,28 @@
             this.btnLaunch.UseVisualStyleBackColor = true;
             this.btnLaunch.Click += new System.EventHandler(this.btnLaunch_Click);
             // 
+            // btnPaste
+            // 
+            this.btnPaste.AccessibleDescription = null;
+            this.btnPaste.AccessibleName = null;
+            resources.ApplyResources(this.btnPaste, "btnPaste");
+            this.btnPaste.BackgroundImage = null;
+            this.btnPaste.Font = null;
+            this.btnPaste.Name = "btnPaste";
+            this.btnPaste.UseVisualStyleBackColor = true;
+            this.btnPaste.Click += new System.EventHandler(this.btnPaste_Click);
+            // 
+            // btnTrim
+            // 
+            this.btnTrim.AccessibleDescription = null;
+            this.btnTrim.AccessibleName = null;
+            resources.ApplyResources(this.btnTrim, "btnTrim");
+            this.btnTrim.BackgroundImage = null;
+            this.btnTrim.Font = null;
+            this.btnTrim.Name = "btnTrim";
+            this.btnTrim.UseVisualStyleBackColor = true;
+            this.btnTrim.Click += new System.EventHandler(this.btnTrim_Click);
+            // 
             // FormMain
             // 
             this.AcceptButton = this.btnOK;
@@ -95,6 +119,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = null;
             this.CancelButton = this.btnCancel;
+            this.Controls.Add(this.btnTrim);
+            this.Controls.Add(this.btnPaste);
             this.Controls.Add(this.btnLaunch);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textName);
@@ -117,5 +143,7 @@
         private System.Windows.Forms.Label label1;
         internal System.Windows.Forms.TextBox textName;
         private System.Windows.Forms.Button btnLaunch;
+        private System.Windows.Forms.Button btnPaste;
+        private System.Windows.Forms.Button btnTrim;
     }
 }

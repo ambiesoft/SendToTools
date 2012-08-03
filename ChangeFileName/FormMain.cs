@@ -40,5 +40,19 @@ namespace ChangeFileName
         {
             SafeProcessStart(this.textName.Tag.ToString(), true);
         }
+
+        private void btnTrim_Click(object sender, EventArgs e)
+        {
+            textName.Text = textName.Text.Trim();
+        }
+
+        private void btnPaste_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                textName.Text = Clipboard.GetText();
+            }
+            catch (Exception) { }
+        }
     }
 }
