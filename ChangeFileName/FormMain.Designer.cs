@@ -36,89 +36,69 @@
             this.btnLaunch = new System.Windows.Forms.Button();
             this.btnPaste = new System.Windows.Forms.Button();
             this.btnTrim = new System.Windows.Forms.Button();
+            this.btnTrash = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnCancel
             // 
-            this.btnCancel.AccessibleDescription = null;
-            this.btnCancel.AccessibleName = null;
-            resources.ApplyResources(this.btnCancel, "btnCancel");
-            this.btnCancel.BackgroundImage = null;
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Font = null;
+            resources.ApplyResources(this.btnCancel, "btnCancel");
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             // 
             // btnOK
             // 
-            this.btnOK.AccessibleDescription = null;
-            this.btnOK.AccessibleName = null;
-            resources.ApplyResources(this.btnOK, "btnOK");
-            this.btnOK.BackgroundImage = null;
             this.btnOK.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnOK.Font = null;
+            resources.ApplyResources(this.btnOK, "btnOK");
             this.btnOK.Name = "btnOK";
             this.btnOK.UseVisualStyleBackColor = true;
             // 
             // textName
             // 
-            this.textName.AccessibleDescription = null;
-            this.textName.AccessibleName = null;
             resources.ApplyResources(this.textName, "textName");
-            this.textName.BackgroundImage = null;
-            this.textName.Font = null;
             this.textName.Name = "textName";
+            this.textName.TextChanged += new System.EventHandler(this.textName_TextChanged);
             // 
             // label1
             // 
-            this.label1.AccessibleDescription = null;
-            this.label1.AccessibleName = null;
             resources.ApplyResources(this.label1, "label1");
-            this.label1.Font = null;
             this.label1.Name = "label1";
             // 
             // btnLaunch
             // 
-            this.btnLaunch.AccessibleDescription = null;
-            this.btnLaunch.AccessibleName = null;
             resources.ApplyResources(this.btnLaunch, "btnLaunch");
-            this.btnLaunch.BackgroundImage = null;
-            this.btnLaunch.Font = null;
             this.btnLaunch.Name = "btnLaunch";
             this.btnLaunch.UseVisualStyleBackColor = true;
             this.btnLaunch.Click += new System.EventHandler(this.btnLaunch_Click);
             // 
             // btnPaste
             // 
-            this.btnPaste.AccessibleDescription = null;
-            this.btnPaste.AccessibleName = null;
             resources.ApplyResources(this.btnPaste, "btnPaste");
-            this.btnPaste.BackgroundImage = null;
-            this.btnPaste.Font = null;
             this.btnPaste.Name = "btnPaste";
             this.btnPaste.UseVisualStyleBackColor = true;
             this.btnPaste.Click += new System.EventHandler(this.btnPaste_Click);
             // 
             // btnTrim
             // 
-            this.btnTrim.AccessibleDescription = null;
-            this.btnTrim.AccessibleName = null;
             resources.ApplyResources(this.btnTrim, "btnTrim");
-            this.btnTrim.BackgroundImage = null;
-            this.btnTrim.Font = null;
             this.btnTrim.Name = "btnTrim";
             this.btnTrim.UseVisualStyleBackColor = true;
             this.btnTrim.Click += new System.EventHandler(this.btnTrim_Click);
             // 
+            // btnTrash
+            // 
+            resources.ApplyResources(this.btnTrash, "btnTrash");
+            this.btnTrash.Name = "btnTrash";
+            this.btnTrash.UseVisualStyleBackColor = true;
+            this.btnTrash.Click += new System.EventHandler(this.btnTrash_Click);
+            // 
             // FormMain
             // 
             this.AcceptButton = this.btnOK;
-            this.AccessibleDescription = null;
-            this.AccessibleName = null;
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = null;
             this.CancelButton = this.btnCancel;
+            this.Controls.Add(this.btnTrash);
             this.Controls.Add(this.btnTrim);
             this.Controls.Add(this.btnPaste);
             this.Controls.Add(this.btnLaunch);
@@ -126,9 +106,7 @@
             this.Controls.Add(this.textName);
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.btnCancel);
-            this.Font = null;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Icon = null;
             this.MaximizeBox = false;
             this.Name = "FormMain";
             this.ResumeLayout(false);
@@ -145,5 +123,6 @@
         private System.Windows.Forms.Button btnLaunch;
         private System.Windows.Forms.Button btnPaste;
         private System.Windows.Forms.Button btnTrim;
+        private System.Windows.Forms.Button btnTrash;
     }
 }
