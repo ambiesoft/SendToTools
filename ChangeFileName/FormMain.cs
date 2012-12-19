@@ -85,5 +85,10 @@ namespace ChangeFileName
             Close();
 
         }
+
+        private void FormMain_Load(object sender, EventArgs e)
+        {
+            Ambiesoft.AmbLib.moveWindowSpecific(this, Ambiesoft.MOVEWINDOWTYPE.MOVEWINDOW_BOTTOMRIGHT);
+        }
     }
 }
