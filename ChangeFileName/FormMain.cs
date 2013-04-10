@@ -86,6 +86,16 @@ namespace ChangeFileName
 
         }
 
+        private void btnToLower_Click(object sender, EventArgs e)
+        {
+            textName.Text = textName.Text.ToLower();
+        }
+
+        private void btnToUpper_Click(object sender, EventArgs e)
+        {
+            textName.Text = textName.Text.ToUpper();
+        }
+
         //private void FormMain_Load(object sender, EventArgs e)
         //{
         //    Ambiesoft.AmbLib.moveWindowSpecific(this, Ambiesoft.MOVEWINDOWTYPE.MOVEWINDOW_BOTTOMRIGHT);

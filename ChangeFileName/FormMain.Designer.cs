@@ -37,6 +37,8 @@
             this.btnPaste = new System.Windows.Forms.Button();
             this.btnTrim = new System.Windows.Forms.Button();
             this.btnTrash = new System.Windows.Forms.Button();
+            this.btnToLower = new System.Windows.Forms.Button();
+            this.btnToUpper = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnCancel
@@ -92,6 +94,20 @@
             this.btnTrash.UseVisualStyleBackColor = true;
             this.btnTrash.Click += new System.EventHandler(this.btnTrash_Click);
             // 
+            // btnToLower
+            // 
+            resources.ApplyResources(this.btnToLower, "btnToLower");
+            this.btnToLower.Name = "btnToLower";
+            this.btnToLower.UseVisualStyleBackColor = true;
+            this.btnToLower.Click += new System.EventHandler(this.btnToLower_Click);
+            // 
+            // btnToUpper
+            // 
+            resources.ApplyResources(this.btnToUpper, "btnToUpper");
+            this.btnToUpper.Name = "btnToUpper";
+            this.btnToUpper.UseVisualStyleBackColor = true;
+            this.btnToUpper.Click += new System.EventHandler(this.btnToUpper_Click);
+            // 
             // FormMain
             // 
             this.AcceptButton = this.btnOK;
@@ -99,6 +115,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
             this.Controls.Add(this.btnTrash);
+            this.Controls.Add(this.btnToUpper);
+            this.Controls.Add(this.btnToLower);
             this.Controls.Add(this.btnTrim);
             this.Controls.Add(this.btnPaste);
             this.Controls.Add(this.btnLaunch);
@@ -125,5 +143,7 @@
         private System.Windows.Forms.Button btnPaste;
         private System.Windows.Forms.Button btnTrim;
         private System.Windows.Forms.Button btnTrash;
+        private System.Windows.Forms.Button btnToLower;
+        private System.Windows.Forms.Button btnToUpper;
     }
 }
