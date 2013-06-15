@@ -96,6 +96,22 @@ namespace ChangeFileName
             textName.Text = textName.Text.ToUpper();
         }
 
+        private void btnFN_Click(object sender, EventArgs e)
+        {
+            String fn = textName.Text;
+            fn = fn.Replace("<", "");
+            fn = fn.Replace(">", "");
+            fn = fn.Replace(":", "");
+            fn = fn.Replace("\"", "");
+            fn = fn.Replace("/", "");
+            fn = fn.Replace("\\", "");
+            fn = fn.Replace("|", "");
+            fn = fn.Replace("?", "");
+            fn = fn.Replace("*", "");
+
+            textName.Text = fn;
+        }
+
         //private void FormMain_Load(object sender, EventArgs e)
         //{
         //    Ambiesoft.AmbLib.moveWindowSpecific(this, Ambiesoft.MOVEWINDOWTYPE.MOVEWINDOW_BOTTOMRIGHT);

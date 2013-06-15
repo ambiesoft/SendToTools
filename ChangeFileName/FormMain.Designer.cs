@@ -39,6 +39,7 @@
             this.btnTrash = new System.Windows.Forms.Button();
             this.btnToLower = new System.Windows.Forms.Button();
             this.btnToUpper = new System.Windows.Forms.Button();
+            this.btnFN = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnCancel
@@ -108,12 +109,20 @@
             this.btnToUpper.UseVisualStyleBackColor = true;
             this.btnToUpper.Click += new System.EventHandler(this.btnToUpper_Click);
             // 
+            // btnFN
+            // 
+            resources.ApplyResources(this.btnFN, "btnFN");
+            this.btnFN.Name = "btnFN";
+            this.btnFN.UseVisualStyleBackColor = true;
+            this.btnFN.Click += new System.EventHandler(this.btnFN_Click);
+            // 
             // FormMain
             // 
             this.AcceptButton = this.btnOK;
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
+            this.Controls.Add(this.btnFN);
             this.Controls.Add(this.btnTrash);
             this.Controls.Add(this.btnToUpper);
             this.Controls.Add(this.btnToLower);
@@ -145,5 +154,6 @@
         private System.Windows.Forms.Button btnTrash;
         private System.Windows.Forms.Button btnToLower;
         private System.Windows.Forms.Button btnToUpper;
+        private System.Windows.Forms.Button btnFN;
     }
 }
