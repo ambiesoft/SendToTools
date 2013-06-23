@@ -15,6 +15,14 @@ namespace ChangeFileName
         public FormMain()
         {
             InitializeComponent();
+
+            StartPosition = FormStartPosition.Manual;
+            string inifile = Application.ExecutablePath + ".wini";
+
+            int x, y;
+            Ambiesoft.Profile.Profile.GetInt("settings", "X", 0, out x, inifile);
+            Ambiesoft.Profile.Profile.GetInt("settings", "Y", 0, out y, inifile);
+            this.Location = new Point(x, y);
         }
 
         private bool SafeProcessStart(string s, bool showerrorbox)
@@ -110,6 +118,13 @@ namespace ChangeFileName
             fn = fn.Replace("*", "");
 
             textName.Text = fn;
+        }
+
+        private void FormMain_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            String inifile = Application.ExecutablePath + ".wini";
+            Ambiesoft.Profile.Profile.WriteInt("settings", "X", Location.X, inifile);
+            Ambiesoft.Profile.Profile.WriteInt("settings", "Y", Location.Y, inifile);
         }
 
         //private void FormMain_Load(object sender, EventArgs e)

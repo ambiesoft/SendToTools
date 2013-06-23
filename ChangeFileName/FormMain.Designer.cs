@@ -137,6 +137,7 @@
             this.MaximizeBox = false;
             this.Name = "FormMain";
             this.TopMost = true;
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormMain_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();
 
