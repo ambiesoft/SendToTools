@@ -116,6 +116,7 @@ namespace ChangeFileName
             fn = fn.Replace("|", "");
             fn = fn.Replace("?", "");
             fn = fn.Replace("*", "");
+            fn = fn.Replace(",", "");
 
             textName.Text = fn;
         }
