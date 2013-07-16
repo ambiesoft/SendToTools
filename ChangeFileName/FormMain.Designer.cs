@@ -122,6 +122,7 @@
             resources.ApplyResources(this.chkAutoRun, "chkAutoRun");
             this.chkAutoRun.Name = "chkAutoRun";
             this.chkAutoRun.UseVisualStyleBackColor = true;
+            this.chkAutoRun.CheckedChanged += new System.EventHandler(this.chkAutoRun_CheckedChanged);
             // 
             // FormMain
             // 
