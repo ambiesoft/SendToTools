@@ -40,6 +40,7 @@
             this.btnToLower = new System.Windows.Forms.Button();
             this.btnToUpper = new System.Windows.Forms.Button();
             this.btnFN = new System.Windows.Forms.Button();
+            this.chkAutoRun = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // btnCancel
@@ -116,12 +117,19 @@
             this.btnFN.UseVisualStyleBackColor = true;
             this.btnFN.Click += new System.EventHandler(this.btnFN_Click);
             // 
+            // chkAutoRun
+            // 
+            resources.ApplyResources(this.chkAutoRun, "chkAutoRun");
+            this.chkAutoRun.Name = "chkAutoRun";
+            this.chkAutoRun.UseVisualStyleBackColor = true;
+            // 
             // FormMain
             // 
             this.AcceptButton = this.btnOK;
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
+            this.Controls.Add(this.chkAutoRun);
             this.Controls.Add(this.btnFN);
             this.Controls.Add(this.btnTrash);
             this.Controls.Add(this.btnToUpper);
@@ -137,6 +145,7 @@
             this.MaximizeBox = false;
             this.Name = "FormMain";
             this.TopMost = true;
+            this.Load += new System.EventHandler(this.FormMain_Load);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormMain_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -156,5 +165,6 @@
         private System.Windows.Forms.Button btnToLower;
         private System.Windows.Forms.Button btnToUpper;
         private System.Windows.Forms.Button btnFN;
+        private System.Windows.Forms.CheckBox chkAutoRun;
     }
 }

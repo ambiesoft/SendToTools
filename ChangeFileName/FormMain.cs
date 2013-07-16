@@ -23,6 +23,12 @@ namespace ChangeFileName
             Ambiesoft.Profile.Profile.GetInt("settings", "X", 0, out x, inifile);
             Ambiesoft.Profile.Profile.GetInt("settings", "Y", 0, out y, inifile);
             this.Location = new Point(x, y);
+
+            int val;
+            if (Ambiesoft.Profile.Profile.GetInt("settings", "AutoRun", 0, out val, inifile))
+            {
+                chkAutoRun.Checked = val != 0;
+            }
         }
 
         private bool SafeProcessStart(string s, bool showerrorbox)
@@ -126,6 +132,15 @@ namespace ChangeFileName
             String inifile = Application.ExecutablePath + ".wini";
             Ambiesoft.Profile.Profile.WriteInt("settings", "X", Location.X, inifile);
             Ambiesoft.Profile.Profile.WriteInt("settings", "Y", Location.Y, inifile);
+            Ambiesoft.Profile.Profile.WriteInt("settings", "AutoRun", chkAutoRun.Checked ? 1 : 0,inifile);
+        }
+
+        private void FormMain_Load(object sender, EventArgs e)
+        {
+            if (chkAutoRun.Checked)
+            {
+                SafeProcessStart(this.textName.Tag.ToString(), true);
+            }
         }
 
         //private void FormMain_Load(object sender, EventArgs e)
