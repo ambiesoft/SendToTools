@@ -6,6 +6,27 @@ namespace ChangeFileName
 {
     static class Program
     {
+        static internal bool SafeProcessStart(string s, bool showerrorbox)
+        {
+            try
+            {
+                System.Diagnostics.Process.Start(s);
+                return true;
+            }
+            catch (System.Exception e)
+            {
+                if (showerrorbox)
+                {
+                    MessageBox.Show(e.Message,
+                        Application.ProductName,
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                }
+            }
+
+            return false;
+        }
+
         static readonly string damemoji = "\\/:,;*?\"<>|";
         /// <summary>
         /// アプリケーションのメイン エントリ ポイントです。
@@ -21,7 +42,24 @@ namespace ChangeFileName
                     MessageBoxIcon.Asterisk);
                 return;
             }
-
+            if (args.Length > 1)
+            {
+                for (int i = 0; i < args.Length; ++i)
+                {
+                    try
+                    {
+                        System.Diagnostics.Process.Start(Application.ExecutablePath, "\""+args[i]+"\"");
+                    }
+                    catch (System.Exception e)
+                    {
+                        MessageBox.Show(e.Message,
+                                Application.ProductName,
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Error);
+                    }
+                }
+                return;
+            }
             //string theFileName = @"C:\Documents and Settings\tt\My Documents\Productivity Distribution, Firm Heterogeneity, and Agglomeration.pdf";
             string theFileName = args[0];
 

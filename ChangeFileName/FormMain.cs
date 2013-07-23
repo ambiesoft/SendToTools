@@ -31,30 +31,10 @@ namespace ChangeFileName
             }
         }
 
-        private bool SafeProcessStart(string s, bool showerrorbox)
-        {
-            try
-            {
-                System.Diagnostics.Process.Start(s);
-                return true;
-            }
-            catch (System.Exception e)
-            {
-                if (showerrorbox)
-                {
-                    MessageBox.Show(e.Message,
-                        Application.ProductName,
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Error);
-                }
-            }
-
-            return false;
-        }
 
         private void btnLaunch_Click(object sender, EventArgs e)
         {
-            SafeProcessStart(this.textName.Tag.ToString(), true);
+            Program.SafeProcessStart(this.textName.Tag.ToString(), true);
         }
 
         private void btnTrim_Click(object sender, EventArgs e)
@@ -139,7 +119,7 @@ namespace ChangeFileName
         {
             if (chkAutoRun.Checked)
             {
-                SafeProcessStart(this.textName.Tag.ToString(), true);
+                Program.SafeProcessStart(this.textName.Tag.ToString(), true);
             }
         }
 
