@@ -41,6 +41,7 @@
             this.btnToUpper = new System.Windows.Forms.Button();
             this.btnFN = new System.Windows.Forms.Button();
             this.chkAutoRun = new System.Windows.Forms.CheckBox();
+            this.btnCopyPath = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnCancel
@@ -124,12 +125,20 @@
             this.chkAutoRun.UseVisualStyleBackColor = true;
             this.chkAutoRun.CheckedChanged += new System.EventHandler(this.chkAutoRun_CheckedChanged);
             // 
+            // btnCopyPath
+            // 
+            resources.ApplyResources(this.btnCopyPath, "btnCopyPath");
+            this.btnCopyPath.Name = "btnCopyPath";
+            this.btnCopyPath.UseVisualStyleBackColor = true;
+            this.btnCopyPath.Click += new System.EventHandler(this.btnCopyPath_Click);
+            // 
             // FormMain
             // 
             this.AcceptButton = this.btnOK;
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
+            this.Controls.Add(this.btnCopyPath);
             this.Controls.Add(this.chkAutoRun);
             this.Controls.Add(this.btnFN);
             this.Controls.Add(this.btnTrash);
@@ -167,5 +176,6 @@
         private System.Windows.Forms.Button btnToUpper;
         private System.Windows.Forms.Button btnFN;
         private System.Windows.Forms.CheckBox chkAutoRun;
+        private System.Windows.Forms.Button btnCopyPath;
     }
 }

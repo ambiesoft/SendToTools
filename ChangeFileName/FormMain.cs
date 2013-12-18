@@ -129,6 +129,18 @@ namespace ChangeFileName
             Ambiesoft.Profile.Profile.WriteInt("settings", "AutoRun", chkAutoRun.Checked ? 1 : 0, inifile);
         }
 
+        private void btnCopyPath_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Clipboard.SetText(this.textName.Tag.ToString());
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
         //private void FormMain_Load(object sender, EventArgs e)
         //{
         //    Ambiesoft.AmbLib.moveWindowSpecific(this, Ambiesoft.MOVEWINDOWTYPE.MOVEWINDOW_BOTTOMRIGHT);
