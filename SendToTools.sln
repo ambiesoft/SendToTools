@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CreateSizedFile", "CreateSi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChangeFileTime", "ChangeFileTime\ChangeFileTime.csproj", "{CADA11BC-FF62-468D-876E-270F972CB1A1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RunasFile", "RunasFile\RunasFile.csproj", "{5C7C2C08-62BD-4206-95F7-0AA5981F77AB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -49,6 +51,10 @@ Global
 		{CADA11BC-FF62-468D-876E-270F972CB1A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CADA11BC-FF62-468D-876E-270F972CB1A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CADA11BC-FF62-468D-876E-270F972CB1A1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5C7C2C08-62BD-4206-95F7-0AA5981F77AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C7C2C08-62BD-4206-95F7-0AA5981F77AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C7C2C08-62BD-4206-95F7-0AA5981F77AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C7C2C08-62BD-4206-95F7-0AA5981F77AB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
