@@ -1,21 +1,21 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 9.00
 # Visual C# Express 2005
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShortcutRenamer", "ShortcutRenamer\ShortcutRenamer.csproj", "{AF635702-0D11-4CEF-AA87-8F4F9588523E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShortcutRenamer", "ShortcutRenamer\ShortcutRenamer2005.csproj", "{AF635702-0D11-4CEF-AA87-8F4F9588523E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChangeFileName", "ChangeFileName\ChangeFileName.csproj", "{4CDB360C-E7E6-4D39-B473-91EE2E717698}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChangeFileName", "ChangeFileName\ChangeFileName2005.csproj", "{4CDB360C-E7E6-4D39-B473-91EE2E717698}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RegexFilenameRenamer", "RegexFilenameRenamer\RegexFilenameRenamer.csproj", "{D6D9AB38-C008-4AEA-A50B-F10FC6E1CE23}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RegexFilenameRenamer", "RegexFilenameRenamer\RegexFilenameRenamer2005.csproj", "{D6D9AB38-C008-4AEA-A50B-F10FC6E1CE23}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RenameToFoldername", "RenameToFoldername\RenameToFoldername.csproj", "{5E066BE0-7F8E-4F00-91DA-CC0C37023E59}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RenameToFoldername", "RenameToFoldername\RenameToFoldername2005.csproj", "{5E066BE0-7F8E-4F00-91DA-CC0C37023E59}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PathToClipboard", "PathToClipboard\PathToClipboard.csproj", "{D70AA7C0-E2F3-4022-9EF2-44DA81841E3B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PathToClipboard", "PathToClipboard\PathToClipboard2005.csproj", "{D70AA7C0-E2F3-4022-9EF2-44DA81841E3B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CreateSizedFile", "CreateSizedFile\CreateSizedFile.csproj", "{C15756E6-CB9A-457E-85C1-686BC71BBF62}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CreateSizedFile", "CreateSizedFile\CreateSizedFile2005.csproj", "{C15756E6-CB9A-457E-85C1-686BC71BBF62}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChangeFileTime", "ChangeFileTime\ChangeFileTime.csproj", "{CADA11BC-FF62-468D-876E-270F972CB1A1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChangeFileTime", "ChangeFileTime\ChangeFileTime2005.csproj", "{CADA11BC-FF62-468D-876E-270F972CB1A1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RunasFile", "RunasFile\RunasFile.csproj", "{5C7C2C08-62BD-4206-95F7-0AA5981F77AB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RunasFile", "RunasFile\RunasFile2005.csproj", "{5C7C2C08-62BD-4206-95F7-0AA5981F77AB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
