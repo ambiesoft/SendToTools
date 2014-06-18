@@ -71,13 +71,22 @@ namespace ChangeFileName
                 return;
             }
 
-            FileSystem.DeleteFile(
-              this.textName.Tag.ToString(),
-              UIOption.OnlyErrorDialogs,
-              RecycleOption.SendToRecycleBin);
+            try
+            {
+                FileSystem.DeleteFile(
+                  this.textName.Tag.ToString(),
+                  UIOption.OnlyErrorDialogs,
+                  RecycleOption.SendToRecycleBin);
 
-            Close();
-
+                Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message,
+                    Application.ProductName,
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Exclamation);
+            }
         }
 
         private void btnToLower_Click(object sender, EventArgs e)
