@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChangeFileTime2008", "Chang
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RunasFile2008", "RunasFile\RunasFile2008.csproj", "{5C7C2C08-62BD-4206-95F7-0AA5981F77AB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "touch2008", "touch\touch2008.csproj", "{1251059E-80C6-41D0-91DD-E97C6A687685}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -55,6 +57,10 @@ Global
 		{5C7C2C08-62BD-4206-95F7-0AA5981F77AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5C7C2C08-62BD-4206-95F7-0AA5981F77AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5C7C2C08-62BD-4206-95F7-0AA5981F77AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1251059E-80C6-41D0-91DD-E97C6A687685}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1251059E-80C6-41D0-91DD-E97C6A687685}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1251059E-80C6-41D0-91DD-E97C6A687685}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1251059E-80C6-41D0-91DD-E97C6A687685}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
