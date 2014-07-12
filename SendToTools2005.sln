@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RunasFile2005", "RunasFile\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "touch2005", "touch\touch2005.csproj", "{1251059E-80C6-41D0-91DD-E97C6A687685}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "argCheck2005", "argCheck\argCheck2005.csproj", "{037D13A9-6533-412F-B473-CD76FBF3B570}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -61,6 +63,10 @@ Global
 		{1251059E-80C6-41D0-91DD-E97C6A687685}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1251059E-80C6-41D0-91DD-E97C6A687685}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1251059E-80C6-41D0-91DD-E97C6A687685}.Release|Any CPU.Build.0 = Release|Any CPU
+		{037D13A9-6533-412F-B473-CD76FBF3B570}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{037D13A9-6533-412F-B473-CD76FBF3B570}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{037D13A9-6533-412F-B473-CD76FBF3B570}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{037D13A9-6533-412F-B473-CD76FBF3B570}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
