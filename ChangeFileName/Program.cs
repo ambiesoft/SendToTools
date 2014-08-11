@@ -85,15 +85,6 @@ namespace ChangeFileName
             {
                 try
                 {
-
-                    //if (!Ambiesoft.GetTextDialog.DoModalDialog(null,
-                    //    "ファイル名を変更",
-                    //    "ファイル名(&N):",
-                    //    ref newName))
-                    //{
-                    //    return;
-                    //}
-
                     FormMain fm = new FormMain();
                     fm.textName.Text = newName;
                     fm.textName.Tag = theFileName;

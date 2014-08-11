@@ -150,9 +150,61 @@ namespace ChangeFileName
             }
         }
 
-        //private void FormMain_Load(object sender, EventArgs e)
-        //{
-        //    Ambiesoft.AmbLib.moveWindowSpecific(this, Ambiesoft.MOVEWINDOWTYPE.MOVEWINDOW_BOTTOMRIGHT);
-        //}
+
+        private void moveToAndClose(string path)
+        {
+            try
+            {
+                System.IO.FileInfo fiorig = new System.IO.FileInfo(this.textName.Tag.ToString());
+                string destfn = System.IO.Path.Combine(path, fiorig.Name);
+                fiorig.MoveTo(destfn);
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void itemNewFolder_Click(object sender, EventArgs e)
+        {
+            FolderBrowserDialog fbd = new FolderBrowserDialog();
+            if (DialogResult.OK != fbd.ShowDialog(this))
+                return;
+
+            moveToAndClose(fbd.SelectedPath);
+        }
+        private void itemCurR_Click(object sender, EventArgs e)
+        {
+            moveToAndClose(@"\\Thexp\Share\CurR");
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            menuMoveTo.Items.Clear();
+
+            ToolStripMenuItem itemCurR = new ToolStripMenuItem();
+            itemCurR.Click += new EventHandler(itemCurR_Click);
+            itemCurR.Text = "&CurR";
+            menuMoveTo.Items.Add(itemCurR);
+
+
+            menuMoveTo.Items.Add(new ToolStripSeparator());
+            
+            ToolStripMenuItem itemNewFolder = new ToolStripMenuItem();
+            itemNewFolder.Click += new EventHandler(itemNewFolder_Click);
+            itemNewFolder.Text = "&New Folder...";
+            menuMoveTo.Items.Add(itemNewFolder);
+
+            Point pt = btnMoveTo.Location;
+            pt.Y += btnMoveTo.Size.Height;
+            menuMoveTo.Show(this.PointToScreen(pt));
+        }
+
+        private void btnOK_Click(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnOK = new System.Windows.Forms.Button();
@@ -42,6 +43,10 @@
             this.btnFN = new System.Windows.Forms.Button();
             this.chkAutoRun = new System.Windows.Forms.CheckBox();
             this.btnCopyPath = new System.Windows.Forms.Button();
+            this.btnMoveTo = new System.Windows.Forms.Button();
+            this.menuMoveTo = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.aaaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuMoveTo.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnCancel
@@ -57,6 +62,7 @@
             resources.ApplyResources(this.btnOK, "btnOK");
             this.btnOK.Name = "btnOK";
             this.btnOK.UseVisualStyleBackColor = true;
+            this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
             // textName
             // 
@@ -132,12 +138,32 @@
             this.btnCopyPath.UseVisualStyleBackColor = true;
             this.btnCopyPath.Click += new System.EventHandler(this.btnCopyPath_Click);
             // 
+            // btnMoveTo
+            // 
+            resources.ApplyResources(this.btnMoveTo, "btnMoveTo");
+            this.btnMoveTo.Name = "btnMoveTo";
+            this.btnMoveTo.UseVisualStyleBackColor = true;
+            this.btnMoveTo.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // menuMoveTo
+            // 
+            this.menuMoveTo.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.aaaToolStripMenuItem});
+            this.menuMoveTo.Name = "menuMoveTo";
+            resources.ApplyResources(this.menuMoveTo, "menuMoveTo");
+            // 
+            // aaaToolStripMenuItem
+            // 
+            this.aaaToolStripMenuItem.Name = "aaaToolStripMenuItem";
+            resources.ApplyResources(this.aaaToolStripMenuItem, "aaaToolStripMenuItem");
+            // 
             // FormMain
             // 
             this.AcceptButton = this.btnOK;
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
+            this.Controls.Add(this.btnMoveTo);
             this.Controls.Add(this.btnCopyPath);
             this.Controls.Add(this.chkAutoRun);
             this.Controls.Add(this.btnFN);
@@ -146,17 +172,18 @@
             this.Controls.Add(this.btnToLower);
             this.Controls.Add(this.btnTrim);
             this.Controls.Add(this.btnPaste);
-            this.Controls.Add(this.btnLaunch);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.btnLaunch);
             this.Controls.Add(this.textName);
-            this.Controls.Add(this.btnOK);
             this.Controls.Add(this.btnCancel);
+            this.Controls.Add(this.btnOK);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.Name = "FormMain";
             this.TopMost = true;
             this.Load += new System.EventHandler(this.FormMain_Load);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormMain_FormClosed);
+            this.menuMoveTo.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -177,5 +204,8 @@
         private System.Windows.Forms.Button btnFN;
         private System.Windows.Forms.CheckBox chkAutoRun;
         private System.Windows.Forms.Button btnCopyPath;
+        private System.Windows.Forms.Button btnMoveTo;
+        private System.Windows.Forms.ContextMenuStrip menuMoveTo;
+        private System.Windows.Forms.ToolStripMenuItem aaaToolStripMenuItem;
     }
 }
