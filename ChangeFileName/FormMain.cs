@@ -22,7 +22,24 @@ namespace ChangeFileName
             int x, y;
             Ambiesoft.Profile.Profile.GetInt("settings", "X", 0, out x, inifile);
             Ambiesoft.Profile.Profile.GetInt("settings", "Y", 0, out y, inifile);
-            this.Location = new Point(x, y);
+
+			bool isin = false;
+            foreach (Screen s in Screen.AllScreens)
+            {
+                Point pos = new Point(x, y);
+                if (s.WorkingArea.Contains(pos))
+                {
+                    isin = true;
+                    break;
+                }
+            }
+
+            if (isin)
+            {
+                StartPosition = FormStartPosition.Manual;
+                this.Location = new Point(x, y);
+            }
+            
 
             int val;
             if (Ambiesoft.Profile.Profile.GetInt("settings", "AutoRun", 0, out val, inifile))
@@ -156,7 +173,8 @@ namespace ChangeFileName
             try
             {
                 System.IO.FileInfo fiorig = new System.IO.FileInfo(this.textName.Tag.ToString());
-                string destfn = System.IO.Path.Combine(path, fiorig.Name);
+                string destfilename = textName.Text + fiorig.Extension;
+                string destfn = System.IO.Path.Combine(path, destfilename);
                 fiorig.MoveTo(destfn);
                 this.Close();
             }
@@ -179,7 +197,7 @@ namespace ChangeFileName
             moveToAndClose(@"\\Thexp\Share\CurR");
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnMoveTo_Click(object sender, EventArgs e)
         {
             menuMoveTo.Items.Clear();
 
@@ -205,6 +223,8 @@ namespace ChangeFileName
         {
 
         }
+
+        
 
     }
 }

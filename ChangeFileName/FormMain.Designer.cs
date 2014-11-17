@@ -143,7 +143,7 @@
             resources.ApplyResources(this.btnMoveTo, "btnMoveTo");
             this.btnMoveTo.Name = "btnMoveTo";
             this.btnMoveTo.UseVisualStyleBackColor = true;
-            this.btnMoveTo.Click += new System.EventHandler(this.button1_Click);
+            this.btnMoveTo.Click += new System.EventHandler(this.btnMoveTo_Click);
             // 
             // menuMoveTo
             // 
@@ -163,13 +163,13 @@
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
-            this.Controls.Add(this.btnMoveTo);
             this.Controls.Add(this.btnCopyPath);
-            this.Controls.Add(this.chkAutoRun);
+            this.Controls.Add(this.btnMoveTo);
             this.Controls.Add(this.btnFN);
+            this.Controls.Add(this.chkAutoRun);
             this.Controls.Add(this.btnTrash);
-            this.Controls.Add(this.btnToUpper);
             this.Controls.Add(this.btnToLower);
+            this.Controls.Add(this.btnToUpper);
             this.Controls.Add(this.btnTrim);
             this.Controls.Add(this.btnPaste);
             this.Controls.Add(this.label1);

@@ -119,10 +119,10 @@
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="btnCancel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>339, 157</value>
+    <value>339, 145</value>
   </data>
   <data name="btnCancel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 25</value>
+    <value>75, 23</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="btnCancel.TabIndex" type="System.Int32, mscorlib">
@@ -144,10 +144,10 @@
     <value>13</value>
   </data>
   <data name="btnOK.Location" type="System.Drawing.Point, System.Drawing">
-    <value>177, 155</value>
+    <value>206, 145</value>
   </data>
   <data name="btnOK.Size" type="System.Drawing.Size, System.Drawing">
-    <value>156, 25</value>
+    <value>127, 23</value>
   </data>
   <data name="btnOK.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -168,10 +168,10 @@
     <value>14</value>
   </data>
   <data name="textName.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 26</value>
+    <value>12, 24</value>
   </data>
   <data name="textName.Size" type="System.Drawing.Size, System.Drawing">
-    <value>402, 20</value>
+    <value>402, 19</value>
   </data>
   <data name="textName.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -195,10 +195,10 @@
     <value>True</value>
   </data>
   <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 8</value>
+    <value>12, 7</value>
   </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>35, 13</value>
+    <value>34, 12</value>
   </data>
   <data name="label1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -219,10 +219,10 @@
     <value>10</value>
   </data>
   <data name="btnLaunch.Location" type="System.Drawing.Point, System.Drawing">
-    <value>258, 125</value>
+    <value>206, 115</value>
   </data>
   <data name="btnLaunch.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 25</value>
+    <value>127, 23</value>
   </data>
   <data name="btnLaunch.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -243,10 +243,10 @@
     <value>11</value>
   </data>
   <data name="btnPaste.Location" type="System.Drawing.Point, System.Drawing">
-    <value>339, 53</value>
+    <value>339, 49</value>
   </data>
   <data name="btnPaste.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 25</value>
+    <value>75, 23</value>
   </data>
   <data name="btnPaste.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -267,10 +267,10 @@
     <value>9</value>
   </data>
   <data name="btnTrim.Location" type="System.Drawing.Point, System.Drawing">
-    <value>258, 53</value>
+    <value>258, 49</value>
   </data>
   <data name="btnTrim.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 25</value>
+    <value>75, 23</value>
   </data>
   <data name="btnTrim.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -291,10 +291,10 @@
     <value>8</value>
   </data>
   <data name="btnTrash.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 157</value>
+    <value>12, 145</value>
   </data>
   <data name="btnTrash.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 25</value>
+    <value>75, 23</value>
   </data>
   <data name="btnTrash.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -319,10 +319,10 @@
     <value>NoControl</value>
   </data>
   <data name="btnToLower.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 53</value>
+    <value>12, 49</value>
   </data>
   <data name="btnToLower.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 25</value>
+    <value>75, 23</value>
   </data>
   <data name="btnToLower.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -340,16 +340,16 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnToLower.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>6</value>
   </data>
   <data name="btnToUpper.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="btnToUpper.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 85</value>
+    <value>96, 49</value>
   </data>
   <data name="btnToUpper.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 25</value>
+    <value>75, 23</value>
   </data>
   <data name="btnToUpper.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -367,13 +367,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnToUpper.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>7</value>
   </data>
   <data name="btnFN.Location" type="System.Drawing.Point, System.Drawing">
-    <value>177, 53</value>
+    <value>177, 49</value>
   </data>
   <data name="btnFN.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 25</value>
+    <value>75, 23</value>
   </data>
   <data name="btnFN.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -391,16 +391,16 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnFN.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>3</value>
   </data>
   <data name="chkAutoRun.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="chkAutoRun.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 133</value>
+    <value>14, 122</value>
   </data>
   <data name="chkAutoRun.Size" type="System.Drawing.Size, System.Drawing">
-    <value>68, 17</value>
+    <value>68, 16</value>
   </data>
   <data name="chkAutoRun.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
@@ -418,13 +418,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;chkAutoRun.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="btnCopyPath.Location" type="System.Drawing.Point, System.Drawing">
-    <value>339, 126</value>
+    <value>339, 116</value>
   </data>
   <data name="btnCopyPath.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 25</value>
+    <value>75, 23</value>
   </data>
   <data name="btnCopyPath.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
@@ -442,19 +442,19 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnCopyPath.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>1</value>
   </data>
   <data name="btnMoveTo.Location" type="System.Drawing.Point, System.Drawing">
-    <value>93, 157</value>
+    <value>93, 145</value>
   </data>
   <data name="btnMoveTo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 23</value>
+    <value>107, 23</value>
   </data>
   <data name="btnMoveTo.TabIndex" type="System.Int32, mscorlib">
     <value>11</value>
   </data>
   <data name="btnMoveTo.Text" xml:space="preserve">
-    <value>&amp;Move To</value>
+    <value>&amp;Move and Close</value>
   </data>
   <data name="&gt;&gt;btnMoveTo.Name" xml:space="preserve">
     <value>btnMoveTo</value>
@@ -466,19 +466,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnMoveTo.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <metadata name="menuMoveTo.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
-  <data name="aaaToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 22</value>
-  </data>
-  <data name="aaaToolStripMenuItem.Text" xml:space="preserve">
-    <value>aaa</value>
-  </data>
   <data name="menuMoveTo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>96, 26</value>
+    <value>93, 26</value>
   </data>
   <data name="&gt;&gt;menuMoveTo.Name" xml:space="preserve">
     <value>menuMoveTo</value>
@@ -486,14 +480,20 @@
   <data name="&gt;&gt;menuMoveTo.Type" xml:space="preserve">
     <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="aaaToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>92, 22</value>
+  </data>
+  <data name="aaaToolStripMenuItem.Text" xml:space="preserve">
+    <value>aaa</value>
+  </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>6, 13</value>
+    <value>6, 12</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>426, 195</value>
+    <value>426, 180</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
