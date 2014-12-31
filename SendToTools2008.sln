@@ -25,6 +25,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RunArgs2008", "RunArgs\RunA
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RunWithArgs2008", "RunWithArgs\RunWithArgs2008.csproj", "{16650F72-467C-42C4-B4E9-0CF2A2432A0F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNet4Runnable2008", "DotNet4Runnable\DotNet4Runnable2008.csproj", "{7EB31E6F-AC69-4E5E-8165-71DBD5D398E5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -79,6 +81,10 @@ Global
 		{16650F72-467C-42C4-B4E9-0CF2A2432A0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{16650F72-467C-42C4-B4E9-0CF2A2432A0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{16650F72-467C-42C4-B4E9-0CF2A2432A0F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7EB31E6F-AC69-4E5E-8165-71DBD5D398E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7EB31E6F-AC69-4E5E-8165-71DBD5D398E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7EB31E6F-AC69-4E5E-8165-71DBD5D398E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7EB31E6F-AC69-4E5E-8165-71DBD5D398E5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

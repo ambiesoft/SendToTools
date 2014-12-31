@@ -20,8 +20,8 @@ namespace RunArgs
             parser.addOption("name", ARGUMENT_TYPE.MUST, "name");
             parser.Parse();
 
-            string verb = parser.getString("v");
-            string arguments = parser.getString("a");
+            string verb = parser["v"].ToString();// getString("v");
+            string arguments = parser["a"].ToString();//.getString("a");
             string folder = parser.getMainargs(0);
 
             if (string.IsNullOrEmpty(verb))
@@ -46,7 +46,7 @@ namespace RunArgs
             }
 
 
-            string type = parser.getString("type");
+            string type = parser["type"].ToString();
             if (type != null)
             {
                 if (type != "f" || type != "d")
@@ -56,7 +56,7 @@ namespace RunArgs
                 }
             }
 
-            string name = parser.getString("name");
+            string name = parser["name"].ToString();
                
 
             return 0;
