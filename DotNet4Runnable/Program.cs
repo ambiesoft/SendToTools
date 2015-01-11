@@ -17,11 +17,16 @@ namespace DotNet4Runnable
             if (ficonfig.Exists)
             {
                 XmlDocument doc = new XmlDocument();
-                
+
                 doc.Load(ficonfig.FullName);
                 XmlNode root = doc.DocumentElement;
                 XmlNode myNode = root.SelectSingleNode("startup");
+                if(myNode==null)
+                {
+                    myNode = new XmlNode(""
 
+                    myNode = root.AppendChild()
+                }
                 XmlNode c1 = myNode.ChildNodes[0];
                 XmlNode c2 = myNode.ChildNodes[1];
 
@@ -34,10 +39,13 @@ namespace DotNet4Runnable
                         MessageBoxIcon.Information);
                     return;
                 }
+                doc.Save(ficonfig.FullName);
                 throw new Exception("Unknown content");
             }
-
-            File.WriteAllText(ficonfig.FullName, Properties.Resources.configstring);
+            else
+            {
+                File.WriteAllText(ficonfig.FullName, Properties.Resources.configstring);
+            }
         }
         /// <summary>
         /// アプリケーションのメイン エントリ ポイントです。
