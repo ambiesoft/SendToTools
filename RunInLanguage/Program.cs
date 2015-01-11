@@ -9,13 +9,14 @@ namespace RunInLanguage
     {
         static void dowork(string[] args)
         {
-            if (args.Length == 0)
+            if (args.Length < 2)
             {
                 MessageBox.Show(Properties.Resources.ArgNotExist);
                 return;
             }
 
             string prog = "";
+            string lang = "";
             string progarg = "";
             for (int i = 0; i < args.Length; ++i)
             {
@@ -29,9 +30,13 @@ namespace RunInLanguage
                     t = args[i];
                 }
 
-                if (i == 0)
+                if (i == 1)
                 {
                     prog = t;
+                }
+                else if (i == 0)
+                {
+                    lang = t;
                 }
                 else
                 {
@@ -64,8 +69,8 @@ namespace RunInLanguage
 
 
             System.Environment.SetEnvironmentVariable("__COMPAT_LAYER", "#APPLICATIONLOCALE");
-            System.Environment.SetEnvironmentVariable("AppLocaleID", "1252");
-            //System.Environment.SetEnvironmentVariable("AppLocaleID", "0411");
+            //System.Environment.SetEnvironmentVariable("AppLocaleID", "1252");
+            System.Environment.SetEnvironmentVariable("AppLocaleID", lang);
 
             Process.Start(prog, progarg);
         }
