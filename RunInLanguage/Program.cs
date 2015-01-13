@@ -68,6 +68,7 @@ namespace RunInLanguage
             //}
 
 
+            System.Environment.SetEnvironmentVariable("AL_CS", "1");
             System.Environment.SetEnvironmentVariable("__COMPAT_LAYER", "#ApplicationLocale");
             //System.Environment.SetEnvironmentVariable("AppLocaleID", "1252");
             System.Environment.SetEnvironmentVariable("AppLocaleID", lang);
