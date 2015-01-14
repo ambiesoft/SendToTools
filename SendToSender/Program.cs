@@ -1,20 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using System.IO;
 
 namespace SendToSender
 {
     static class Program
     {
-        static string dowork(string arg)
+        static string dowork(string name,string program,string arguments)
         {
-            System.IO.FileInfo fi = new System.IO.FileInfo(arg);
+            // System.IO.FileInfo fi = new System.IO.FileInfo(arg);
 
-            string shortcutPath = System.IO.Path.Combine(System.Environment.GetFolderPath(Environment.SpecialFolder.SendTo),
-                fi.Name.Substring(0, fi.Name.Length-fi.Extension.Length) + ".lnk");
-            //ショートカットのリンク先
+            string shortcutPath = Path.Combine(
+                System.Environment.GetFolderPath(Environment.SpecialFolder.SendTo),
+                name + ".lnk");
 
-            string targetPath = arg;
+            string targetPath = program;
 
             //WshShellを作成
             Type t = Type.GetTypeFromCLSID(new Guid("72C24DD5-D70A-438B-8A42-98424B88AFB8"));
@@ -58,17 +59,24 @@ namespace SendToSender
 
             if (args.Length < 1)
             {
-                MessageBox.Show("No Arguments",
+                MessageBox.Show(Properties.Resources.NO_ARGUMENT,
                     Application.ProductName,
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Warning);
                 return;
             }
-
+            
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            FormMain frm = new FormMain();
+            frm.txtProgram.Text = args[0];
+            if (DialogResult.OK != frm.ShowDialog())
+                return;
+            
             try
             {
-                string ret = dowork(args[0]);
-                MessageBox.Show("Created\r\n" + ret,
+                string ret = dowork(frm.txtName.Text, frm.txtProgram.Text, frm.txtArguments.Text);
+                MessageBox.Show(Properties.Resources.SHORTCUT_CREATED + "\r\n" + ret,
                     Application.ProductName,
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Information);
