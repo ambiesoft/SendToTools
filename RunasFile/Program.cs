@@ -38,6 +38,7 @@ namespace RunasFile
                 startInfo.UseShellExecute = true;
                 startInfo.Verb = "runas";
                 startInfo.Arguments = "/run \"" + theFileName + "\"";
+                startInfo.WorkingDirectory = System.IO.Directory.GetParent(theFileName).FullName; ;
                 
 
                 try
