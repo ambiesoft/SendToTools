@@ -59,5 +59,21 @@ namespace PathToClipboard.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Path is set on Clipboard に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string CLIPBOARDSET {
+            get {
+                return ResourceManager.GetString("CLIPBOARDSET", resourceCulture);
+            }
+        }
+        
+        internal static System.Drawing.Icon icon {
+            get {
+                object obj = ResourceManager.GetObject("icon", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
     }
 }

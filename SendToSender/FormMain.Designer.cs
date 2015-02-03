@@ -41,86 +41,54 @@ namespace SendToSender
             // 
             // label1
             // 
-            this.label1.AccessibleDescription = null;
-            this.label1.AccessibleName = null;
             resources.ApplyResources(this.label1, "label1");
-            this.label1.Font = null;
             this.label1.Name = "label1";
             // 
             // txtName
             // 
-            this.txtName.AccessibleDescription = null;
-            this.txtName.AccessibleName = null;
             resources.ApplyResources(this.txtName, "txtName");
-            this.txtName.BackgroundImage = null;
-            this.txtName.Font = null;
             this.txtName.Name = "txtName";
             // 
             // label2
             // 
-            this.label2.AccessibleDescription = null;
-            this.label2.AccessibleName = null;
             resources.ApplyResources(this.label2, "label2");
-            this.label2.Font = null;
             this.label2.Name = "label2";
             // 
             // txtProgram
             // 
-            this.txtProgram.AccessibleDescription = null;
-            this.txtProgram.AccessibleName = null;
             resources.ApplyResources(this.txtProgram, "txtProgram");
-            this.txtProgram.BackgroundImage = null;
-            this.txtProgram.Font = null;
             this.txtProgram.Name = "txtProgram";
             // 
             // label3
             // 
-            this.label3.AccessibleDescription = null;
-            this.label3.AccessibleName = null;
             resources.ApplyResources(this.label3, "label3");
-            this.label3.Font = null;
             this.label3.Name = "label3";
             // 
             // txtArguments
             // 
-            this.txtArguments.AccessibleDescription = null;
-            this.txtArguments.AccessibleName = null;
             resources.ApplyResources(this.txtArguments, "txtArguments");
-            this.txtArguments.BackgroundImage = null;
-            this.txtArguments.Font = null;
             this.txtArguments.Name = "txtArguments";
             // 
             // btnOK
             // 
-            this.btnOK.AccessibleDescription = null;
-            this.btnOK.AccessibleName = null;
-            resources.ApplyResources(this.btnOK, "btnOK");
-            this.btnOK.BackgroundImage = null;
             this.btnOK.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnOK.Font = null;
+            resources.ApplyResources(this.btnOK, "btnOK");
             this.btnOK.Name = "btnOK";
             this.btnOK.UseVisualStyleBackColor = true;
             this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
             // btnCancel
             // 
-            this.btnCancel.AccessibleDescription = null;
-            this.btnCancel.AccessibleName = null;
-            resources.ApplyResources(this.btnCancel, "btnCancel");
-            this.btnCancel.BackgroundImage = null;
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Font = null;
+            resources.ApplyResources(this.btnCancel, "btnCancel");
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             // 
             // FormMain
             // 
             this.AcceptButton = this.btnOK;
-            this.AccessibleDescription = null;
-            this.AccessibleName = null;
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = null;
             this.CancelButton = this.btnCancel;
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOK);
@@ -130,9 +98,7 @@ namespace SendToSender
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Font = null;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Icon = null;
             this.MaximizeBox = false;
             this.Name = "FormMain";
             this.Load += new System.EventHandler(this.FormMain_Load);
