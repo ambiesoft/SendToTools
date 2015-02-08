@@ -31,6 +31,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SendToManager", "SendToMana
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RunInLanguage", "RunInLanguage\RunInLanguage.csproj", "{15F70AF9-BA47-4AE8-8B2A-B3B5A43490D7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShowEnv2005", "ShowEnv2005\ShowEnv2005.csproj", "{98DCB373-7C4A-4FDD-9FCD-C6A2A7652138}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -97,6 +99,10 @@ Global
 		{15F70AF9-BA47-4AE8-8B2A-B3B5A43490D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{15F70AF9-BA47-4AE8-8B2A-B3B5A43490D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{15F70AF9-BA47-4AE8-8B2A-B3B5A43490D7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{98DCB373-7C4A-4FDD-9FCD-C6A2A7652138}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{98DCB373-7C4A-4FDD-9FCD-C6A2A7652138}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{98DCB373-7C4A-4FDD-9FCD-C6A2A7652138}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{98DCB373-7C4A-4FDD-9FCD-C6A2A7652138}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
