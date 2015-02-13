@@ -21,11 +21,14 @@ namespace DotNet4Runnable
                 doc.Load(ficonfig.FullName);
                 XmlNode root = doc.DocumentElement;
                 XmlNode myNode = root.SelectSingleNode("startup");
+                bool needwrite = false;
                 if(myNode==null)
                 {
-                    myNode = new XmlNode(""
-
-                    myNode = root.AppendChild()
+                    XmlElement elem = root.OwnerDocument.CreateElement("startup");
+                    elem.InnerXml = "<supportedRuntime version=\"v4.0\" /><supportedRuntime version=\"v2.0.50727\" />";
+                    root.AppendChild(elem);
+                    myNode = elem;
+                    needwrite = true;
                 }
                 XmlNode c1 = myNode.ChildNodes[0];
                 XmlNode c2 = myNode.ChildNodes[1];
@@ -33,6 +36,9 @@ namespace DotNet4Runnable
                 if ((c1.Name == "supportedRuntime" && c1.Attributes["version"].Value == "v4.0") &&
                     (c2.Name == "supportedRuntime" && c2.Attributes["version"].Value == "v2.0.50727"))
                 {
+                    if (needwrite)
+                        doc.Save(ficonfig.FullName);
+
                     MessageBox.Show("Already exists and written.",
                         Application.ProductName,
                         MessageBoxButtons.OK,
