@@ -24,10 +24,17 @@ namespace CopyFileContent
             try
             {
                 string[] lines = System.IO.File.ReadAllLines(args[0]);
-                // Clipboard.SetText(lines[0],TextDataFormat.);
+                foreach(string line in lines)
+                {
+                    if(!string.IsNullOrEmpty(line))
+                    {
+                        Clipboard.SetText(line);
+                        break;
+                    }
+                }
 
                 NotifyIcon ni = new NotifyIcon();
-                ni.BalloonTipTitle = "btttt";
+                ni.BalloonTipTitle = Application.ProductName;
                 ni.BalloonTipText = Properties.Resources.CLIPBOARDSET;
                 ni.Icon = Properties.Resources.icon;
 

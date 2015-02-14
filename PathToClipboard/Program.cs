@@ -27,6 +27,7 @@ namespace PathToClipboard
                 Clipboard.SetText(args[0]);
                	int waitspan = 5*1000;
                 NotifyIcon ni = new NotifyIcon();
+                ni.BalloonTipTitle = Application.ProductName;
                 ni.BalloonTipText = Properties.Resources.CLIPBOARDSET;
 
                 /*
