@@ -16,6 +16,7 @@ namespace ChangeFileName
         {
             InitializeComponent();
 
+
             StartPosition = FormStartPosition.Manual;
             string inifile = Application.ExecutablePath + ".wini";
 
@@ -219,9 +220,26 @@ namespace ChangeFileName
             menuMoveTo.Show(this.PointToScreen(pt));
         }
 
-        private void btnOK_Click(object sender, EventArgs e)
-        {
 
+        private void removeSpaceToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            String fn = textName.Text;
+            fn = fn.Replace(" ", "");
+            fn = fn.Replace("Å@", "");
+            textName.Text = fn;
+        }
+
+
+        private void btnCopy_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Clipboard.SetText(textName.Text);
+            }
+            catch (Exception ex) 
+            { 
+                MessageBox.Show(ex.Message);
+            }
         }
 
         
