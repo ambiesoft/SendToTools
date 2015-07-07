@@ -242,6 +242,14 @@ namespace ChangeFileName
             }
         }
 
+        private void removeSpaceSelectionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            String fn = textName.SelectedText;
+            fn = fn.Replace(" ", "");
+            fn = fn.Replace("Å@", "");
+            textName.SelectedText = fn;
+        }
+
         
 
     }

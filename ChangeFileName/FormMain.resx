@@ -143,8 +143,8 @@
   <data name="btnPaste.Location" type="System.Drawing.Point, System.Drawing">
     <value>339, 49</value>
   </data>
-  <data name="trimToolStripMenuItem.Text" xml:space="preserve">
-    <value>&amp;Trim</value>
+  <data name="removeSpaceSelectionToolStripMenuItem.Text" xml:space="preserve">
+    <value>Remove &amp;Space(Selection)</value>
   </data>
   <data name="&gt;&gt;btnCopyPath.Name" xml:space="preserve">
     <value>btnCopyPath</value>
@@ -161,9 +161,6 @@
   </data>
   <data name="&gt;&gt;chkAutoRun.Parent" xml:space="preserve">
     <value>$this</value>
-  </data>
-  <data name="&gt;&gt;btnCopy.Name" xml:space="preserve">
-    <value>btnCopy</value>
   </data>
   <data name="btnTrash.Text" xml:space="preserve">
     <value>T&amp;rash</value>
@@ -187,13 +184,13 @@
     <value>True</value>
   </data>
   <data name="tsmiUpper.Size" type="System.Drawing.Size, System.Drawing">
-    <value>175, 22</value>
+    <value>201, 22</value>
   </data>
   <data name="btnMoveTo.Size" type="System.Drawing.Size, System.Drawing">
     <value>107, 23</value>
   </data>
   <data name="cmModify.Size" type="System.Drawing.Size, System.Drawing">
-    <value>176, 114</value>
+    <value>202, 136</value>
   </data>
   <data name="chkAutoRun.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -202,6 +199,9 @@
     <value>&amp;Move and Close</value>
   </data>
   <data name="&gt;&gt;tsmiMakeFileNamable.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;removeSpaceSelectionToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="btnLaunch.Location" type="System.Drawing.Point, System.Drawing">
@@ -271,7 +271,7 @@
     <value>ChangeFilename</value>
   </data>
   <data name="tsmiMakeFileNamable.Size" type="System.Drawing.Size, System.Drawing">
-    <value>175, 22</value>
+    <value>201, 22</value>
   </data>
   <data name="btnPaste.Text" xml:space="preserve">
     <value>&amp;Paste</value>
@@ -336,8 +336,8 @@
   <data name="&gt;&gt;btnPaste.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;btnCancel.Parent" xml:space="preserve">
+    <value>$this</value>
   </data>
   <data name="&gt;&gt;removeSpaceToolStripMenuItem.Name" xml:space="preserve">
     <value>removeSpaceToolStripMenuItem</value>
@@ -371,6 +371,9 @@
   </data>
   <data name="&gt;&gt;textName.ZOrder" xml:space="preserve">
     <value>15</value>
+  </data>
+  <data name="&gt;&gt;removeSpaceSelectionToolStripMenuItem.Name" xml:space="preserve">
+    <value>removeSpaceSelectionToolStripMenuItem</value>
   </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>Manual</value>
@@ -2103,11 +2106,14 @@
   <data name="btnCopyPath.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
   </data>
+  <data name="removeSpaceSelectionToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>201, 22</value>
+  </data>
   <data name="&gt;&gt;menuMoveTo.Type" xml:space="preserve">
     <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="menuMoveTo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>93, 26</value>
+    <value>89, 26</value>
   </data>
   <data name="&gt;&gt;cmModify.Name" xml:space="preserve">
     <value>cmModify</value>
@@ -2163,14 +2169,17 @@
   <data name="&gt;&gt;btnTrim.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="trimToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;Trim</value>
+  </data>
   <data name="&gt;&gt;btnCopyPath.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;btnPaste.Name" xml:space="preserve">
     <value>btnPaste</value>
   </data>
-  <data name="&gt;&gt;btnCancel.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="&gt;&gt;btnCopy.Name" xml:space="preserve">
+    <value>btnCopy</value>
   </data>
   <data name="&gt;&gt;btnOK.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -2180,6 +2189,9 @@
   </data>
   <data name="&gt;&gt;textName.Name" xml:space="preserve">
     <value>textName</value>
+  </data>
+  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="aaaToolStripMenuItem.Text" xml:space="preserve">
     <value>aaa</value>
@@ -2229,6 +2241,9 @@
   <data name="&gt;&gt;tsmiLower.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="btnOK.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
   </data>
@@ -2242,13 +2257,13 @@
     <value>btnToLower</value>
   </data>
   <data name="trimToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>175, 22</value>
+    <value>201, 22</value>
   </data>
   <data name="btnToUpper.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
   </data>
   <data name="aaaToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>92, 22</value>
+    <value>88, 22</value>
   </data>
   <data name="&gt;&gt;btnCopy.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -2317,7 +2332,7 @@
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="removeSpaceToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>175, 22</value>
+    <value>201, 22</value>
   </data>
   <data name="&gt;&gt;btnToUpper.Parent" xml:space="preserve">
     <value>$this</value>
@@ -2362,7 +2377,7 @@
     <value>&amp;Lower</value>
   </data>
   <data name="tsmiLower.Size" type="System.Drawing.Size, System.Drawing">
-    <value>175, 22</value>
+    <value>201, 22</value>
   </data>
   <data name="btnModify.Text" xml:space="preserve">
     <value>&amp;Modify</value>

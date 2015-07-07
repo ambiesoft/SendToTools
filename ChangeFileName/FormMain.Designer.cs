@@ -52,6 +52,7 @@
             this.tsmiUpper = new System.Windows.Forms.ToolStripMenuItem();
             this.trimToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removeSpaceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.removeSpaceSelectionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnCopy = new System.Windows.Forms.Button();
             this.btnModify = new ChangeFileName.MenuButton();
             this.menuMoveTo.SuspendLayout();
@@ -240,7 +241,8 @@
             this.tsmiLower,
             this.tsmiUpper,
             this.trimToolStripMenuItem,
-            this.removeSpaceToolStripMenuItem});
+            this.removeSpaceToolStripMenuItem,
+            this.removeSpaceSelectionToolStripMenuItem});
             this.cmModify.Name = "ccmModify";
             // 
             // tsmiMakeFileNamable
@@ -292,6 +294,16 @@
             this.removeSpaceToolStripMenuItem.Name = "removeSpaceToolStripMenuItem";
             this.removeSpaceToolStripMenuItem.ShortcutKeyDisplayString = null;
             this.removeSpaceToolStripMenuItem.Click += new System.EventHandler(this.removeSpaceToolStripMenuItem_Click);
+            // 
+            // removeSpaceSelectionToolStripMenuItem
+            // 
+            this.removeSpaceSelectionToolStripMenuItem.AccessibleDescription = null;
+            this.removeSpaceSelectionToolStripMenuItem.AccessibleName = null;
+            resources.ApplyResources(this.removeSpaceSelectionToolStripMenuItem, "removeSpaceSelectionToolStripMenuItem");
+            this.removeSpaceSelectionToolStripMenuItem.BackgroundImage = null;
+            this.removeSpaceSelectionToolStripMenuItem.Name = "removeSpaceSelectionToolStripMenuItem";
+            this.removeSpaceSelectionToolStripMenuItem.ShortcutKeyDisplayString = null;
+            this.removeSpaceSelectionToolStripMenuItem.Click += new System.EventHandler(this.removeSpaceSelectionToolStripMenuItem_Click);
             // 
             // btnCopy
             // 
@@ -380,5 +392,6 @@
         private System.Windows.Forms.ToolStripMenuItem trimToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem removeSpaceToolStripMenuItem;
         private System.Windows.Forms.Button btnCopy;
+        private System.Windows.Forms.ToolStripMenuItem removeSpaceSelectionToolStripMenuItem;
     }
 }

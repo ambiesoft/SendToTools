@@ -142,6 +142,45 @@
   <data name="btnMoveTo.Text" xml:space="preserve">
     <value>移動して閉じる(&amp;M)</value>
   </data>
+  <data name="tsmiMakeFileNamable.Size" type="System.Drawing.Size, System.Drawing">
+    <value>183, 22</value>
+  </data>
+  <data name="tsmiMakeFileNamable.Text" xml:space="preserve">
+    <value>ファイル名化(&amp;M)</value>
+  </data>
+  <data name="tsmiLower.Size" type="System.Drawing.Size, System.Drawing">
+    <value>183, 22</value>
+  </data>
+  <data name="tsmiLower.Text" xml:space="preserve">
+    <value>小文字(&amp;L)</value>
+  </data>
+  <data name="tsmiUpper.Size" type="System.Drawing.Size, System.Drawing">
+    <value>183, 22</value>
+  </data>
+  <data name="tsmiUpper.Text" xml:space="preserve">
+    <value>大文字(&amp;U)</value>
+  </data>
+  <data name="trimToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>183, 22</value>
+  </data>
+  <data name="trimToolStripMenuItem.Text" xml:space="preserve">
+    <value>トリム(&amp;T)</value>
+  </data>
+  <data name="removeSpaceToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>183, 22</value>
+  </data>
+  <data name="removeSpaceToolStripMenuItem.Text" xml:space="preserve">
+    <value>スペース削除(&amp;R)</value>
+  </data>
+  <data name="removeSpaceSelectionToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>183, 22</value>
+  </data>
+  <data name="removeSpaceSelectionToolStripMenuItem.Text" xml:space="preserve">
+    <value>スペース削除（選択）(&amp;S)</value>
+  </data>
+  <data name="cmModify.Size" type="System.Drawing.Size, System.Drawing">
+    <value>184, 136</value>
+  </data>
   <data name="btnCopy.Text" xml:space="preserve">
     <value>コピー(&amp;C)</value>
   </data>
@@ -1854,5 +1893,9 @@
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
         AAAAAAAAAAAAAAAAAAA=
 </value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>Inherit</value>
   </data>
 </root>
