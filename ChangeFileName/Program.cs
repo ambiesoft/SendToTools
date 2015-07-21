@@ -29,14 +29,14 @@ namespace ChangeFileName
 
         static readonly string damemoji = "\\/:,;*?\"<>|";
         /// <summary>
-        /// アプリケーションのメイン エントリ ポイントです。
+        /// 
         /// </summary>
         [STAThread]
         static void Main(string[] args)
         {
             if (args.Length < 1)
             {
-                MessageBox.Show("引数がありません",
+                MessageBox.Show(Properties.Resources.NO_ARGUMENTS,
                     Application.ProductName,
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Asterisk);
@@ -60,12 +60,12 @@ namespace ChangeFileName
                 }
                 return;
             }
-            //string theFileName = @"C:\Documents and Settings\tt\My Documents\Productivity Distribution, Firm Heterogeneity, and Agglomeration.pdf";
+            
             string theFileName = args[0];
-
+            // theFileName = @"C:\Documents and Settings\tt\My Documents\Productivity Distribution, Firm Heterogeneity, and Agglomeration.pdf";
             if (!System.IO.File.Exists(theFileName))
             {
-                MessageBox.Show("ファイル " + theFileName + " は存在しません",
+                MessageBox.Show(string.Format(Properties.Resources.FILE_NOT_FOUND, theFileName),
                     Application.ProductName,
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Asterisk);
@@ -105,7 +105,7 @@ namespace ChangeFileName
 
                     if (string.IsNullOrEmpty(newName))
                     {
-                        MessageBox.Show("ファイル名を入力してください",
+                        MessageBox.Show(Properties.Resources.ENTER_FILENAME,
                             Application.ProductName,
                             MessageBoxButtons.OK,
                             MessageBoxIcon.Asterisk);
@@ -115,7 +115,7 @@ namespace ChangeFileName
 
                     if ( -1 != newName.IndexOfAny(damemoji.ToCharArray()))
                     {
-                        MessageBox.Show("以下の文字はファイル名には使えません\r\n" + damemoji,
+                        MessageBox.Show(Properties.Resources.FOLLOWING_UNABLE_FILENAME + Environment.NewLine + Environment.NewLine  + damemoji,
                             Application.ProductName,
                             MessageBoxButtons.OK,
                             MessageBoxIcon.Asterisk);

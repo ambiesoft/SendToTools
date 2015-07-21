@@ -59,5 +59,50 @@ namespace ChangeFileName.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Are you sure to trash &apos;{0}&apos; に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string ARE_YOU_SURE_TO_TRASH {
+            get {
+                return ResourceManager.GetString("ARE_YOU_SURE_TO_TRASH", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Please enter Filename に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string ENTER_FILENAME {
+            get {
+                return ResourceManager.GetString("ENTER_FILENAME", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   File not found : {0} に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string FILE_NOT_FOUND {
+            get {
+                return ResourceManager.GetString("FILE_NOT_FOUND", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   File name must not include following letters に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string FOLLOWING_UNABLE_FILENAME {
+            get {
+                return ResourceManager.GetString("FOLLOWING_UNABLE_FILENAME", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   No Arguments に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string NO_ARGUMENTS {
+            get {
+                return ResourceManager.GetString("NO_ARGUMENTS", resourceCulture);
+            }
+        }
     }
 }

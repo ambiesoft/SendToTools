@@ -80,7 +80,7 @@ namespace ChangeFileName
 
         private void btnTrash_Click(object sender, EventArgs e)
         {
-            if (DialogResult.Yes != MessageBox.Show("Are you sure to trash " + textName.Tag.ToString(),
+            if (DialogResult.Yes != MessageBox.Show(string.Format(Properties.Resources.ARE_YOU_SURE_TO_TRASH,textName.Tag.ToString()),
                 Application.ProductName,
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Question,
