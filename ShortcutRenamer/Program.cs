@@ -12,6 +12,8 @@ namespace ShortcutRenamer
         [STAThread]
         static void Main(string[] args)
         {
+            string ballonmessage = "Unknown Error";
+
             if (args.Length < 1)
             {
                 MessageBox.Show("引数がありません",
@@ -41,7 +43,15 @@ namespace ShortcutRenamer
 
                 string newname = oldname.Replace(".exe へのショートカット", "");
 
-                fi.MoveTo(dir + @"\" + newname);
+                if (newname == oldname)
+                {
+                    ballonmessage = "newname = oldname";
+                }
+                else
+                {
+                    fi.MoveTo(dir + @"\" + newname);
+                    ballonmessage = "Succeeded";
+                }
             }
             catch (Exception e)
             {
@@ -50,6 +60,17 @@ namespace ShortcutRenamer
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Asterisk);
             }
+
+            NotifyIcon ni = new NotifyIcon();
+            ni.BalloonTipTitle = Application.ProductName;
+            ni.BalloonTipText = ballonmessage;
+            ni.Icon = System.Drawing.Icon.ExtractAssociatedIcon(Application.ExecutablePath);
+
+            ni.Text = Application.ProductName;
+            ni.Visible = true;
+            ni.ShowBalloonTip(5000);
+            System.Threading.Thread.Sleep(5000);
+            ni.Dispose();
         }
     }
 }
