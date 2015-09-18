@@ -61,181 +61,113 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.AccessibleDescription = null;
-            this.btnCancel.AccessibleName = null;
             resources.ApplyResources(this.btnCancel, "btnCancel");
-            this.btnCancel.BackgroundImage = null;
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Font = null;
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             // 
             // btnOK
             // 
-            this.btnOK.AccessibleDescription = null;
-            this.btnOK.AccessibleName = null;
             resources.ApplyResources(this.btnOK, "btnOK");
-            this.btnOK.BackgroundImage = null;
             this.btnOK.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnOK.Font = null;
             this.btnOK.Name = "btnOK";
             this.btnOK.UseVisualStyleBackColor = true;
             // 
             // textName
             // 
-            this.textName.AccessibleDescription = null;
-            this.textName.AccessibleName = null;
             resources.ApplyResources(this.textName, "textName");
-            this.textName.BackgroundImage = null;
-            this.textName.Font = null;
             this.textName.Name = "textName";
             this.textName.TextChanged += new System.EventHandler(this.textName_TextChanged);
             // 
             // label1
             // 
-            this.label1.AccessibleDescription = null;
-            this.label1.AccessibleName = null;
             resources.ApplyResources(this.label1, "label1");
-            this.label1.Font = null;
             this.label1.Name = "label1";
             // 
             // btnLaunch
             // 
-            this.btnLaunch.AccessibleDescription = null;
-            this.btnLaunch.AccessibleName = null;
             resources.ApplyResources(this.btnLaunch, "btnLaunch");
-            this.btnLaunch.BackgroundImage = null;
-            this.btnLaunch.Font = null;
             this.btnLaunch.Name = "btnLaunch";
             this.btnLaunch.UseVisualStyleBackColor = true;
             this.btnLaunch.Click += new System.EventHandler(this.btnLaunch_Click);
             // 
             // btnPaste
             // 
-            this.btnPaste.AccessibleDescription = null;
-            this.btnPaste.AccessibleName = null;
             resources.ApplyResources(this.btnPaste, "btnPaste");
-            this.btnPaste.BackgroundImage = null;
-            this.btnPaste.Font = null;
             this.btnPaste.Name = "btnPaste";
             this.btnPaste.UseVisualStyleBackColor = true;
             this.btnPaste.Click += new System.EventHandler(this.btnPaste_Click);
             // 
             // btnTrim
             // 
-            this.btnTrim.AccessibleDescription = null;
-            this.btnTrim.AccessibleName = null;
             resources.ApplyResources(this.btnTrim, "btnTrim");
-            this.btnTrim.BackgroundImage = null;
-            this.btnTrim.Font = null;
             this.btnTrim.Name = "btnTrim";
             this.btnTrim.UseVisualStyleBackColor = true;
             this.btnTrim.Click += new System.EventHandler(this.btnTrim_Click);
             // 
             // btnTrash
             // 
-            this.btnTrash.AccessibleDescription = null;
-            this.btnTrash.AccessibleName = null;
             resources.ApplyResources(this.btnTrash, "btnTrash");
-            this.btnTrash.BackgroundImage = null;
-            this.btnTrash.Font = null;
             this.btnTrash.Name = "btnTrash";
             this.btnTrash.UseVisualStyleBackColor = true;
             this.btnTrash.Click += new System.EventHandler(this.btnTrash_Click);
             // 
             // btnToLower
             // 
-            this.btnToLower.AccessibleDescription = null;
-            this.btnToLower.AccessibleName = null;
             resources.ApplyResources(this.btnToLower, "btnToLower");
-            this.btnToLower.BackgroundImage = null;
-            this.btnToLower.Font = null;
             this.btnToLower.Name = "btnToLower";
             this.btnToLower.UseVisualStyleBackColor = true;
             this.btnToLower.Click += new System.EventHandler(this.btnToLower_Click);
             // 
             // btnToUpper
             // 
-            this.btnToUpper.AccessibleDescription = null;
-            this.btnToUpper.AccessibleName = null;
             resources.ApplyResources(this.btnToUpper, "btnToUpper");
-            this.btnToUpper.BackgroundImage = null;
-            this.btnToUpper.Font = null;
             this.btnToUpper.Name = "btnToUpper";
             this.btnToUpper.UseVisualStyleBackColor = true;
             this.btnToUpper.Click += new System.EventHandler(this.btnToUpper_Click);
             // 
             // btnFN
             // 
-            this.btnFN.AccessibleDescription = null;
-            this.btnFN.AccessibleName = null;
             resources.ApplyResources(this.btnFN, "btnFN");
-            this.btnFN.BackgroundImage = null;
-            this.btnFN.Font = null;
             this.btnFN.Name = "btnFN";
             this.btnFN.UseVisualStyleBackColor = true;
             this.btnFN.Click += new System.EventHandler(this.btnFN_Click);
             // 
             // chkAutoRun
             // 
-            this.chkAutoRun.AccessibleDescription = null;
-            this.chkAutoRun.AccessibleName = null;
             resources.ApplyResources(this.chkAutoRun, "chkAutoRun");
-            this.chkAutoRun.BackgroundImage = null;
-            this.chkAutoRun.Font = null;
             this.chkAutoRun.Name = "chkAutoRun";
             this.chkAutoRun.UseVisualStyleBackColor = true;
             this.chkAutoRun.CheckedChanged += new System.EventHandler(this.chkAutoRun_CheckedChanged);
             // 
             // btnCopyPath
             // 
-            this.btnCopyPath.AccessibleDescription = null;
-            this.btnCopyPath.AccessibleName = null;
             resources.ApplyResources(this.btnCopyPath, "btnCopyPath");
-            this.btnCopyPath.BackgroundImage = null;
-            this.btnCopyPath.Font = null;
             this.btnCopyPath.Name = "btnCopyPath";
             this.btnCopyPath.UseVisualStyleBackColor = true;
             this.btnCopyPath.Click += new System.EventHandler(this.btnCopyPath_Click);
             // 
             // btnMoveTo
             // 
-            this.btnMoveTo.AccessibleDescription = null;
-            this.btnMoveTo.AccessibleName = null;
             resources.ApplyResources(this.btnMoveTo, "btnMoveTo");
-            this.btnMoveTo.BackgroundImage = null;
-            this.btnMoveTo.Font = null;
             this.btnMoveTo.Name = "btnMoveTo";
             this.btnMoveTo.UseVisualStyleBackColor = true;
             this.btnMoveTo.Click += new System.EventHandler(this.btnMoveTo_Click);
             // 
             // menuMoveTo
             // 
-            this.menuMoveTo.AccessibleDescription = null;
-            this.menuMoveTo.AccessibleName = null;
-            resources.ApplyResources(this.menuMoveTo, "menuMoveTo");
-            this.menuMoveTo.BackgroundImage = null;
-            this.menuMoveTo.Font = null;
             this.menuMoveTo.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.aaaToolStripMenuItem});
             this.menuMoveTo.Name = "menuMoveTo";
+            resources.ApplyResources(this.menuMoveTo, "menuMoveTo");
             // 
             // aaaToolStripMenuItem
             // 
-            this.aaaToolStripMenuItem.AccessibleDescription = null;
-            this.aaaToolStripMenuItem.AccessibleName = null;
-            resources.ApplyResources(this.aaaToolStripMenuItem, "aaaToolStripMenuItem");
-            this.aaaToolStripMenuItem.BackgroundImage = null;
             this.aaaToolStripMenuItem.Name = "aaaToolStripMenuItem";
-            this.aaaToolStripMenuItem.ShortcutKeyDisplayString = null;
+            resources.ApplyResources(this.aaaToolStripMenuItem, "aaaToolStripMenuItem");
             // 
             // cmModify
             // 
-            this.cmModify.AccessibleDescription = null;
-            this.cmModify.AccessibleName = null;
-            resources.ApplyResources(this.cmModify, "cmModify");
-            this.cmModify.BackgroundImage = null;
-            this.cmModify.Font = null;
             this.cmModify.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmiMakeFileNamable,
             this.tsmiLower,
@@ -244,115 +176,80 @@
             this.removeSpaceToolStripMenuItem,
             this.removeSpaceSelectionToolStripMenuItem});
             this.cmModify.Name = "ccmModify";
+            resources.ApplyResources(this.cmModify, "cmModify");
             // 
             // tsmiMakeFileNamable
             // 
-            this.tsmiMakeFileNamable.AccessibleDescription = null;
-            this.tsmiMakeFileNamable.AccessibleName = null;
-            resources.ApplyResources(this.tsmiMakeFileNamable, "tsmiMakeFileNamable");
-            this.tsmiMakeFileNamable.BackgroundImage = null;
             this.tsmiMakeFileNamable.Name = "tsmiMakeFileNamable";
-            this.tsmiMakeFileNamable.ShortcutKeyDisplayString = null;
+            resources.ApplyResources(this.tsmiMakeFileNamable, "tsmiMakeFileNamable");
             this.tsmiMakeFileNamable.Click += new System.EventHandler(this.btnFN_Click);
             // 
             // tsmiLower
             // 
-            this.tsmiLower.AccessibleDescription = null;
-            this.tsmiLower.AccessibleName = null;
-            resources.ApplyResources(this.tsmiLower, "tsmiLower");
-            this.tsmiLower.BackgroundImage = null;
             this.tsmiLower.Name = "tsmiLower";
-            this.tsmiLower.ShortcutKeyDisplayString = null;
+            resources.ApplyResources(this.tsmiLower, "tsmiLower");
             this.tsmiLower.Click += new System.EventHandler(this.btnToLower_Click);
             // 
             // tsmiUpper
             // 
-            this.tsmiUpper.AccessibleDescription = null;
-            this.tsmiUpper.AccessibleName = null;
-            resources.ApplyResources(this.tsmiUpper, "tsmiUpper");
-            this.tsmiUpper.BackgroundImage = null;
             this.tsmiUpper.Name = "tsmiUpper";
-            this.tsmiUpper.ShortcutKeyDisplayString = null;
+            resources.ApplyResources(this.tsmiUpper, "tsmiUpper");
             this.tsmiUpper.Click += new System.EventHandler(this.btnToUpper_Click);
             // 
             // trimToolStripMenuItem
             // 
-            this.trimToolStripMenuItem.AccessibleDescription = null;
-            this.trimToolStripMenuItem.AccessibleName = null;
-            resources.ApplyResources(this.trimToolStripMenuItem, "trimToolStripMenuItem");
-            this.trimToolStripMenuItem.BackgroundImage = null;
             this.trimToolStripMenuItem.Name = "trimToolStripMenuItem";
-            this.trimToolStripMenuItem.ShortcutKeyDisplayString = null;
+            resources.ApplyResources(this.trimToolStripMenuItem, "trimToolStripMenuItem");
             this.trimToolStripMenuItem.Click += new System.EventHandler(this.btnTrim_Click);
             // 
             // removeSpaceToolStripMenuItem
             // 
-            this.removeSpaceToolStripMenuItem.AccessibleDescription = null;
-            this.removeSpaceToolStripMenuItem.AccessibleName = null;
-            resources.ApplyResources(this.removeSpaceToolStripMenuItem, "removeSpaceToolStripMenuItem");
-            this.removeSpaceToolStripMenuItem.BackgroundImage = null;
             this.removeSpaceToolStripMenuItem.Name = "removeSpaceToolStripMenuItem";
-            this.removeSpaceToolStripMenuItem.ShortcutKeyDisplayString = null;
+            resources.ApplyResources(this.removeSpaceToolStripMenuItem, "removeSpaceToolStripMenuItem");
             this.removeSpaceToolStripMenuItem.Click += new System.EventHandler(this.removeSpaceToolStripMenuItem_Click);
             // 
             // removeSpaceSelectionToolStripMenuItem
             // 
-            this.removeSpaceSelectionToolStripMenuItem.AccessibleDescription = null;
-            this.removeSpaceSelectionToolStripMenuItem.AccessibleName = null;
-            resources.ApplyResources(this.removeSpaceSelectionToolStripMenuItem, "removeSpaceSelectionToolStripMenuItem");
-            this.removeSpaceSelectionToolStripMenuItem.BackgroundImage = null;
             this.removeSpaceSelectionToolStripMenuItem.Name = "removeSpaceSelectionToolStripMenuItem";
-            this.removeSpaceSelectionToolStripMenuItem.ShortcutKeyDisplayString = null;
+            resources.ApplyResources(this.removeSpaceSelectionToolStripMenuItem, "removeSpaceSelectionToolStripMenuItem");
             this.removeSpaceSelectionToolStripMenuItem.Click += new System.EventHandler(this.removeSpaceSelectionToolStripMenuItem_Click);
             // 
             // btnCopy
             // 
-            this.btnCopy.AccessibleDescription = null;
-            this.btnCopy.AccessibleName = null;
             resources.ApplyResources(this.btnCopy, "btnCopy");
-            this.btnCopy.BackgroundImage = null;
-            this.btnCopy.Font = null;
             this.btnCopy.Name = "btnCopy";
             this.btnCopy.UseVisualStyleBackColor = true;
             this.btnCopy.Click += new System.EventHandler(this.btnCopy_Click);
             // 
             // btnModify
             // 
-            this.btnModify.AccessibleDescription = null;
-            this.btnModify.AccessibleName = null;
-            resources.ApplyResources(this.btnModify, "btnModify");
-            this.btnModify.BackgroundImage = null;
             this.btnModify.ContextMenuStrip = this.cmModify;
-            this.btnModify.Font = null;
+            resources.ApplyResources(this.btnModify, "btnModify");
             this.btnModify.Name = "btnModify";
             this.btnModify.UseVisualStyleBackColor = true;
             // 
             // FormMain
             // 
             this.AcceptButton = this.btnOK;
-            this.AccessibleDescription = null;
-            this.AccessibleName = null;
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = null;
             this.CancelButton = this.btnCancel;
-            this.Controls.Add(this.btnCopy);
-            this.Controls.Add(this.btnCopyPath);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.textName);
             this.Controls.Add(this.btnMoveTo);
             this.Controls.Add(this.chkAutoRun);
+            this.Controls.Add(this.btnCopy);
+            this.Controls.Add(this.btnCancel);
+            this.Controls.Add(this.btnLaunch);
+            this.Controls.Add(this.btnCopyPath);
             this.Controls.Add(this.btnTrash);
             this.Controls.Add(this.btnModify);
+            this.Controls.Add(this.btnOK);
+            this.Controls.Add(this.btnPaste);
             this.Controls.Add(this.btnFN);
             this.Controls.Add(this.btnToLower);
             this.Controls.Add(this.btnToUpper);
             this.Controls.Add(this.btnTrim);
-            this.Controls.Add(this.btnPaste);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.btnLaunch);
-            this.Controls.Add(this.textName);
-            this.Controls.Add(this.btnCancel);
-            this.Controls.Add(this.btnOK);
-            this.Font = null;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.Name = "FormMain";
