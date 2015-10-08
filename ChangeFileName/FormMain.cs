@@ -164,11 +164,19 @@ namespace ChangeFileName
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                showError(ex.Message);
             }
         }
 
 
+        void showError(string message)
+        {
+            MessageBox.Show(
+                message, 
+                Application.ProductName,
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Error);
+        }
         private void moveToAndClose(string path)
         {
             try
@@ -181,7 +189,7 @@ namespace ChangeFileName
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                showError(ex.Message);
             }
         }
 
@@ -237,8 +245,8 @@ namespace ChangeFileName
                 Clipboard.SetText(textName.Text);
             }
             catch (Exception ex) 
-            { 
-                MessageBox.Show(ex.Message);
+            {
+                showError(ex.Message);
             }
         }
 
