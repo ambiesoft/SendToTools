@@ -1,31 +1,39 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 10.00
-# Visual C# Express 2008
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShortcutRenamer2008", "ShortcutRenamer\ShortcutRenamer2008.csproj", "{AF635702-0D11-4CEF-AA87-8F4F9588523E}"
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual C# Express 2005
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShortcutRenamer", "ShortcutRenamer\ShortcutRenamer.csproj", "{AF635702-0D11-4CEF-AA87-8F4F9588523E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChangeFileName2008", "ChangeFileName\ChangeFileName2008.csproj", "{4CDB360C-E7E6-4D39-B473-91EE2E717698}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChangeFileName", "ChangeFileName\ChangeFileName.csproj", "{4CDB360C-E7E6-4D39-B473-91EE2E717698}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RegexFilenameRenamer2008", "RegexFilenameRenamer\RegexFilenameRenamer2008.csproj", "{D6D9AB38-C008-4AEA-A50B-F10FC6E1CE23}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RegexFilenameRenamer", "RegexFilenameRenamer\RegexFilenameRenamer.csproj", "{D6D9AB38-C008-4AEA-A50B-F10FC6E1CE23}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RenameToFoldername2008", "RenameToFoldername\RenameToFoldername2008.csproj", "{5E066BE0-7F8E-4F00-91DA-CC0C37023E59}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RenameToFoldername", "RenameToFoldername\RenameToFoldername.csproj", "{5E066BE0-7F8E-4F00-91DA-CC0C37023E59}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PathToClipboard2008", "PathToClipboard\PathToClipboard2008.csproj", "{D70AA7C0-E2F3-4022-9EF2-44DA81841E3B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PathToClipboard", "PathToClipboard\PathToClipboard.csproj", "{D70AA7C0-E2F3-4022-9EF2-44DA81841E3B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CreateSizedFile2008", "CreateSizedFile\CreateSizedFile2008.csproj", "{C15756E6-CB9A-457E-85C1-686BC71BBF62}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CreateSizedFile", "CreateSizedFile\CreateSizedFile.csproj", "{C15756E6-CB9A-457E-85C1-686BC71BBF62}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChangeFileTime2008", "ChangeFileTime\ChangeFileTime2008.csproj", "{CADA11BC-FF62-468D-876E-270F972CB1A1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChangeFileTime", "ChangeFileTime\ChangeFileTime.csproj", "{CADA11BC-FF62-468D-876E-270F972CB1A1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RunasFile2008", "RunasFile\RunasFile2008.csproj", "{5C7C2C08-62BD-4206-95F7-0AA5981F77AB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RunasFile", "RunasFile\RunasFile.csproj", "{5C7C2C08-62BD-4206-95F7-0AA5981F77AB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "touch2008", "touch\touch2008.csproj", "{1251059E-80C6-41D0-91DD-E97C6A687685}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "touch", "touch\touch.csproj", "{1251059E-80C6-41D0-91DD-E97C6A687685}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "argCheck2008", "argCheck\argCheck2008.csproj", "{037D13A9-6533-412F-B473-CD76FBF3B570}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "argCheck", "argCheck\argCheck.csproj", "{037D13A9-6533-412F-B473-CD76FBF3B570}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RunArgs2008", "RunArgs\RunArgs2008.csproj", "{16E99A75-52C2-452C-B91D-070A20B34B65}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RunArgs", "RunArgs\RunArgs.csproj", "{16E99A75-52C2-452C-B91D-070A20B34B65}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RunWithArgs2008", "RunWithArgs\RunWithArgs2008.csproj", "{16650F72-467C-42C4-B4E9-0CF2A2432A0F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RunWithArgs", "RunWithArgs\RunWithArgs.csproj", "{16650F72-467C-42C4-B4E9-0CF2A2432A0F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SendToSender2008", "SendToSender\SendToSender2008.csproj", "{DCE811FB-1C96-4C1A-A385-98264E2533F3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SendToSender", "SendToSender\SendToSender.csproj", "{DCE811FB-1C96-4C1A-A385-98264E2533F3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SendToManager", "SendToManager\SendToManager.csproj", "{33C5F142-259F-48A4-B2F8-1930A448C041}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RunInLanguage", "RunInLanguage\RunInLanguage.csproj", "{15F70AF9-BA47-4AE8-8B2A-B3B5A43490D7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShowEnv", "ShowEnv\ShowEnv.csproj", "{98DCB373-7C4A-4FDD-9FCD-C6A2A7652138}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CopyFileContent", "CopyFileContent\CopyFileContent.csproj", "{2F340085-9C62-49F6-9A14-A868755289B7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -85,6 +93,22 @@ Global
 		{DCE811FB-1C96-4C1A-A385-98264E2533F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DCE811FB-1C96-4C1A-A385-98264E2533F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DCE811FB-1C96-4C1A-A385-98264E2533F3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{33C5F142-259F-48A4-B2F8-1930A448C041}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{33C5F142-259F-48A4-B2F8-1930A448C041}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{33C5F142-259F-48A4-B2F8-1930A448C041}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{33C5F142-259F-48A4-B2F8-1930A448C041}.Release|Any CPU.Build.0 = Release|Any CPU
+		{15F70AF9-BA47-4AE8-8B2A-B3B5A43490D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15F70AF9-BA47-4AE8-8B2A-B3B5A43490D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15F70AF9-BA47-4AE8-8B2A-B3B5A43490D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15F70AF9-BA47-4AE8-8B2A-B3B5A43490D7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{98DCB373-7C4A-4FDD-9FCD-C6A2A7652138}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{98DCB373-7C4A-4FDD-9FCD-C6A2A7652138}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{98DCB373-7C4A-4FDD-9FCD-C6A2A7652138}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{98DCB373-7C4A-4FDD-9FCD-C6A2A7652138}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F340085-9C62-49F6-9A14-A868755289B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F340085-9C62-49F6-9A14-A868755289B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F340085-9C62-49F6-9A14-A868755289B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F340085-9C62-49F6-9A14-A868755289B7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
