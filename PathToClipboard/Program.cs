@@ -8,23 +8,29 @@ namespace PathToClipboard
     static class Program
     {
         /// <summary>
-        /// アプリケーションのメイン エントリ ポイントです。
+        /// 
         /// </summary>
         [STAThread]
         static void Main(string[] args)
         {
             if (args.Length < 1)
             {
-                MessageBox.Show("引数がありません",
+                MessageBox.Show(Properties.Resources.NO_ARGUMENTS,
                     Application.ProductName,
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Asterisk);
                 return;
             }
 
+            System.Text.StringBuilder sb = new System.Text.StringBuilder();
+            foreach (string line in args)
+            {
+                sb.AppendLine(line);
+            }
+
             try
             {
-                Clipboard.SetText(args[0]);
+                Clipboard.SetText(sb.ToString());
                	int waitspan = 5*1000;
                 NotifyIcon ni = new NotifyIcon();
                 ni.BalloonTipTitle = Application.ProductName;
