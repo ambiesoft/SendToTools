@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Windows.Forms;
 
-namespace CopyFirstFile
+namespace CopyFirstLine
 {
     static class Program
     {
