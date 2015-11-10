@@ -35,6 +35,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShowEnv", "ShowEnv\ShowEnv.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CopyFileContent", "CopyFileContent\CopyFileContent.csproj", "{2F340085-9C62-49F6-9A14-A868755289B7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CopyFirstLine", "CopyFirstLine\CopyFirstLine.csproj", "{365D827D-A062-4318-B9DA-C8EFB7C4C602}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -109,6 +111,10 @@ Global
 		{2F340085-9C62-49F6-9A14-A868755289B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2F340085-9C62-49F6-9A14-A868755289B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2F340085-9C62-49F6-9A14-A868755289B7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{365D827D-A062-4318-B9DA-C8EFB7C4C602}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{365D827D-A062-4318-B9DA-C8EFB7C4C602}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{365D827D-A062-4318-B9DA-C8EFB7C4C602}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{365D827D-A062-4318-B9DA-C8EFB7C4C602}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
