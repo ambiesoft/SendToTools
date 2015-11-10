@@ -1,6 +1,6 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 9.00
-# Visual C# Express 2005
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual C# Express 2008
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShortcutRenamer", "ShortcutRenamer\ShortcutRenamer.csproj", "{AF635702-0D11-4CEF-AA87-8F4F9588523E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChangeFileName", "ChangeFileName\ChangeFileName.csproj", "{4CDB360C-E7E6-4D39-B473-91EE2E717698}"
