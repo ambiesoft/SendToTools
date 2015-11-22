@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using Microsoft.VisualBasic.FileIO;
+using System.IO;
 
 
 namespace ChangeFileName
@@ -16,31 +17,30 @@ namespace ChangeFileName
         {
             InitializeComponent();
 
-
-            StartPosition = FormStartPosition.Manual;
             string inifile = Application.ExecutablePath + ".wini";
-
-            int x, y;
-            Ambiesoft.Profile.Profile.GetInt("settings", "X", 0, out x, inifile);
-            Ambiesoft.Profile.Profile.GetInt("settings", "Y", 0, out y, inifile);
-
-			bool isin = false;
-            foreach (Screen s in Screen.AllScreens)
+            if (File.Exists(inifile))
             {
-                Point pos = new Point(x, y);
-                if (s.WorkingArea.Contains(pos))
+                int x, y;
+                Ambiesoft.Profile.Profile.GetInt("settings", "X", 0, out x, inifile);
+                Ambiesoft.Profile.Profile.GetInt("settings", "Y", 0, out y, inifile);
+
+                bool isin = false;
+                foreach (Screen s in Screen.AllScreens)
                 {
-                    isin = true;
-                    break;
+                    Point pos = new Point(x, y);
+                    if (s.WorkingArea.Contains(pos))
+                    {
+                        isin = true;
+                        break;
+                    }
                 }
-            }
 
-            if (isin)
-            {
-                StartPosition = FormStartPosition.Manual;
-                this.Location = new Point(x, y);
-            }
-            
+                if (isin)
+                {
+                    StartPosition = FormStartPosition.Manual;
+                    this.Location = new Point(x, y);
+                }
+            }            
 
             int val;
             if (Ambiesoft.Profile.Profile.GetInt("settings", "AutoRun", 0, out val, inifile))
@@ -55,10 +55,7 @@ namespace ChangeFileName
             Program.SafeProcessStart(this.textName.Tag.ToString(), true);
         }
 
-        private void btnTrim_Click(object sender, EventArgs e)
-        {
-            textName.Text = textName.Text.Trim();
-        }
+     
 
         private void btnPaste_Click(object sender, EventArgs e)
         {
@@ -107,32 +104,9 @@ namespace ChangeFileName
             }
         }
 
-        private void btnToLower_Click(object sender, EventArgs e)
-        {
-            textName.Text = textName.Text.ToLower();
-        }
+    
 
-        private void btnToUpper_Click(object sender, EventArgs e)
-        {
-            textName.Text = textName.Text.ToUpper();
-        }
-
-        private void btnFN_Click(object sender, EventArgs e)
-        {
-            String fn = textName.Text;
-            fn = fn.Replace("<", "");
-            fn = fn.Replace(">", "");
-            fn = fn.Replace(":", "");
-            fn = fn.Replace("\"", "");
-            fn = fn.Replace("/", "");
-            fn = fn.Replace("\\", "");
-            fn = fn.Replace("|", "");
-            fn = fn.Replace("?", "");
-            fn = fn.Replace("*", "");
-            fn = fn.Replace(",", "");
-
-            textName.Text = fn;
-        }
+  
 
         private void FormMain_FormClosed(object sender, FormClosedEventArgs e)
         {
@@ -229,13 +203,7 @@ namespace ChangeFileName
         }
 
 
-        private void removeSpaceToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            String fn = textName.Text;
-            fn = fn.Replace(" ", "");
-            fn = fn.Replace("Å@", "");
-            textName.Text = fn;
-        }
+     
 
 
         private void btnCopy_Click(object sender, EventArgs e)
@@ -250,13 +218,22 @@ namespace ChangeFileName
             }
         }
 
-        private void removeSpaceSelectionToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            String fn = textName.SelectedText;
-            fn = fn.Replace(" ", "");
-            fn = fn.Replace("Å@", "");
-            textName.SelectedText = fn;
-        }
+       
+
+     
+
+     
+
+       
+
+      
+
+       
+
+
+       
+
+       
 
         
 
