@@ -21,8 +21,8 @@ namespace ChangeFileName
             if (File.Exists(inifile))
             {
                 int x, y;
-                Ambiesoft.Profile.Profile.GetInt("settings", "X", 0, out x, inifile);
-                Ambiesoft.Profile.Profile.GetInt("settings", "Y", 0, out y, inifile);
+                Ambiesoft.Profile.GetInt("settings", "X", 0, out x, inifile);
+                Ambiesoft.Profile.GetInt("settings", "Y", 0, out y, inifile);
 
                 bool isin = false;
                 foreach (Screen s in Screen.AllScreens)
@@ -43,7 +43,7 @@ namespace ChangeFileName
             }            
 
             int val;
-            if (Ambiesoft.Profile.Profile.GetInt("settings", "AutoRun", 0, out val, inifile))
+            if (Ambiesoft.Profile.GetInt("settings", "AutoRun", 0, out val, inifile))
             {
                 chkAutoRun.Checked = val != 0;
             }
@@ -111,8 +111,8 @@ namespace ChangeFileName
         private void FormMain_FormClosed(object sender, FormClosedEventArgs e)
         {
             String inifile = Application.ExecutablePath + ".wini";
-            Ambiesoft.Profile.Profile.WriteInt("settings", "X", Location.X, inifile);
-            Ambiesoft.Profile.Profile.WriteInt("settings", "Y", Location.Y, inifile);
+            Ambiesoft.Profile.WriteInt("settings", "X", Location.X, inifile);
+            Ambiesoft.Profile.WriteInt("settings", "Y", Location.Y, inifile);
             
         }
 
@@ -127,7 +127,7 @@ namespace ChangeFileName
         private void chkAutoRun_CheckedChanged(object sender, EventArgs e)
         {
             String inifile = Application.ExecutablePath + ".wini";
-            Ambiesoft.Profile.Profile.WriteInt("settings", "AutoRun", chkAutoRun.Checked ? 1 : 0, inifile);
+            Ambiesoft.Profile.WriteInt("settings", "AutoRun", chkAutoRun.Checked ? 1 : 0, inifile);
         }
 
         private void btnCopyPath_Click(object sender, EventArgs e)
