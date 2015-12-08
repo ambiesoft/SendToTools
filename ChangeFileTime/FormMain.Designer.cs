@@ -37,23 +37,28 @@
             // 
             // txtFileName
             // 
+            this.txtFileName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtFileName.Location = new System.Drawing.Point(12, 12);
             this.txtFileName.Name = "txtFileName";
-            this.txtFileName.Size = new System.Drawing.Size(268, 19);
+            this.txtFileName.Size = new System.Drawing.Size(399, 19);
             this.txtFileName.TabIndex = 0;
             // 
             // dtpLWTime
             // 
-            this.dtpLWTime.Location = new System.Drawing.Point(21, 69);
+            this.dtpLWTime.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dtpLWTime.Location = new System.Drawing.Point(21, 61);
             this.dtpLWTime.Name = "dtpLWTime";
-            this.dtpLWTime.Size = new System.Drawing.Size(119, 19);
+            this.dtpLWTime.Size = new System.Drawing.Size(309, 19);
             this.dtpLWTime.TabIndex = 1;
             // 
             // btnNowLWTime
             // 
-            this.btnNowLWTime.Location = new System.Drawing.Point(146, 69);
+            this.btnNowLWTime.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnNowLWTime.Location = new System.Drawing.Point(336, 61);
             this.btnNowLWTime.Name = "btnNowLWTime";
-            this.btnNowLWTime.Size = new System.Drawing.Size(75, 23);
+            this.btnNowLWTime.Size = new System.Drawing.Size(75, 19);
             this.btnNowLWTime.TabIndex = 2;
             this.btnNowLWTime.Text = "&Now";
             this.btnNowLWTime.UseVisualStyleBackColor = true;
@@ -61,8 +66,9 @@
             // 
             // btnOK
             // 
+            this.btnOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnOK.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnOK.Location = new System.Drawing.Point(202, 241);
+            this.btnOK.Location = new System.Drawing.Point(336, 358);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(75, 23);
             this.btnOK.TabIndex = 3;
@@ -74,7 +80,7 @@
             this.AcceptButton = this.btnOK;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(292, 273);
+            this.ClientSize = new System.Drawing.Size(423, 393);
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.btnNowLWTime);
             this.Controls.Add(this.dtpLWTime);

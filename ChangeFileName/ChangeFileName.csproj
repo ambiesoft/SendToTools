@@ -63,6 +63,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CenterWinDialog.cs" />
     <Compile Include="FormMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -70,6 +71,9 @@
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
     <Compile Include="FormMain_Modify.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormMain_MoveFile.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MenuButton.cs">

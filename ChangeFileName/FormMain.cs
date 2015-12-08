@@ -13,16 +13,20 @@ namespace ChangeFileName
 {
     public partial class FormMain : Form
     {
+        public static string IniFile
+        {
+            get { return Application.ExecutablePath + ".wini"; }
+        }
+
         public FormMain()
         {
             InitializeComponent();
 
-            string inifile = Application.ExecutablePath + ".wini";
-            if (File.Exists(inifile))
+            if (File.Exists(IniFile))
             {
                 int x, y;
-                Ambiesoft.Profile.GetInt("settings", "X", 0, out x, inifile);
-                Ambiesoft.Profile.GetInt("settings", "Y", 0, out y, inifile);
+                Ambiesoft.Profile.GetInt("settings", "X", 0, out x, IniFile);
+                Ambiesoft.Profile.GetInt("settings", "Y", 0, out y, IniFile);
 
                 bool isin = false;
                 foreach (Screen s in Screen.AllScreens)
@@ -43,7 +47,7 @@ namespace ChangeFileName
             }            
 
             int val;
-            if (Ambiesoft.Profile.GetInt("settings", "AutoRun", 0, out val, inifile))
+            if (Ambiesoft.Profile.GetInt("settings", "AutoRun", 0, out val, IniFile))
             {
                 chkAutoRun.Checked = val != 0;
             }
@@ -77,13 +81,16 @@ namespace ChangeFileName
 
         private void btnTrash_Click(object sender, EventArgs e)
         {
-            if (DialogResult.Yes != MessageBox.Show(string.Format(Properties.Resources.ARE_YOU_SURE_TO_TRASH,textName.Tag.ToString()),
+            using (new CenterWinDialog(this))
+            {
+                if (DialogResult.Yes != MessageBox.Show(string.Format(Properties.Resources.ARE_YOU_SURE_TO_TRASH, textName.Tag.ToString()),
                 Application.ProductName,
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Question,
                 MessageBoxDefaultButton.Button2))
-            {
-                return;
+                {
+                    return;
+                }
             }
 
             try
@@ -97,10 +104,13 @@ namespace ChangeFileName
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message,
+                using (new CenterWinDialog(this))
+                {
+                    MessageBox.Show(ex.Message,
                     Application.ProductName,
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Exclamation);
+                }
             }
         }
 
@@ -110,10 +120,8 @@ namespace ChangeFileName
 
         private void FormMain_FormClosed(object sender, FormClosedEventArgs e)
         {
-            String inifile = Application.ExecutablePath + ".wini";
-            Ambiesoft.Profile.WriteInt("settings", "X", Location.X, inifile);
-            Ambiesoft.Profile.WriteInt("settings", "Y", Location.Y, inifile);
-            
+            Ambiesoft.Profile.WriteInt("settings", "X", Location.X, IniFile);
+            Ambiesoft.Profile.WriteInt("settings", "Y", Location.Y, IniFile);
         }
 
         private void FormMain_Load(object sender, EventArgs e)
@@ -126,8 +134,7 @@ namespace ChangeFileName
 
         private void chkAutoRun_CheckedChanged(object sender, EventArgs e)
         {
-            String inifile = Application.ExecutablePath + ".wini";
-            Ambiesoft.Profile.WriteInt("settings", "AutoRun", chkAutoRun.Checked ? 1 : 0, inifile);
+            Ambiesoft.Profile.WriteInt("settings", "AutoRun", chkAutoRun.Checked ? 1 : 0, IniFile);
         }
 
         private void btnCopyPath_Click(object sender, EventArgs e)
@@ -145,65 +152,17 @@ namespace ChangeFileName
 
         void showError(string message)
         {
-            MessageBox.Show(
-                message, 
+            using (new CenterWinDialog(this))
+            {
+                MessageBox.Show(
+                message,
                 Application.ProductName,
                 MessageBoxButtons.OK,
                 MessageBoxIcon.Error);
-        }
-        private void moveToAndClose(string path)
-        {
-            try
-            {
-                System.IO.FileInfo fiorig = new System.IO.FileInfo(this.textName.Tag.ToString());
-                string destfilename = textName.Text + fiorig.Extension;
-                string destfn = System.IO.Path.Combine(path, destfilename);
-                fiorig.MoveTo(destfn);
-                this.Close();
-            }
-            catch (Exception ex)
-            {
-                showError(ex.Message);
             }
         }
+  
 
-        private void itemNewFolder_Click(object sender, EventArgs e)
-        {
-            FolderBrowserDialog fbd = new FolderBrowserDialog();
-            if (DialogResult.OK != fbd.ShowDialog(this))
-                return;
-
-            moveToAndClose(fbd.SelectedPath);
-        }
-        private void itemCurR_Click(object sender, EventArgs e)
-        {
-            moveToAndClose(@"\\Thexp\Share\CurR");
-        }
-
-        private void btnMoveTo_Click(object sender, EventArgs e)
-        {
-            menuMoveTo.Items.Clear();
-
-            ToolStripMenuItem itemCurR = new ToolStripMenuItem();
-            itemCurR.Click += new EventHandler(itemCurR_Click);
-            itemCurR.Text = "&CurR";
-            menuMoveTo.Items.Add(itemCurR);
-
-
-            menuMoveTo.Items.Add(new ToolStripSeparator());
-            
-            ToolStripMenuItem itemNewFolder = new ToolStripMenuItem();
-            itemNewFolder.Click += new EventHandler(itemNewFolder_Click);
-            itemNewFolder.Text = "&New Folder...";
-            menuMoveTo.Items.Add(itemNewFolder);
-
-            Point pt = btnMoveTo.Location;
-            pt.Y += btnMoveTo.Size.Height;
-            menuMoveTo.Show(this.PointToScreen(pt));
-        }
-
-
-     
 
 
         private void btnCopy_Click(object sender, EventArgs e)

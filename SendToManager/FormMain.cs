@@ -16,11 +16,11 @@ namespace SendToManager
             InitializeComponent();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void FormMain_Load(object sender, EventArgs e)
         {
             string dir = System.Environment.GetFolderPath(Environment.SpecialFolder.SendTo);
             System.IO.DirectoryInfo di = new System.IO.DirectoryInfo(dir);
-            System.IO.FileInfo[] fis = di.GetFiles();
+            System.IO.FileInfo[] fis = di.GetFiles("*.lnk", SearchOption.TopDirectoryOnly);
             Array.Sort(fis,
                 delegate(FileInfo f1, FileInfo f2)
                 {

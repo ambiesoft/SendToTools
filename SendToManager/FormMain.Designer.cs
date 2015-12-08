@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.lvMain = new System.Windows.Forms.ListView();
-            this.chName = new System.Windows.Forms.ColumnHeader();
+            this.chName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // lvMain
@@ -38,7 +38,7 @@
             this.chName});
             this.lvMain.Location = new System.Drawing.Point(12, 12);
             this.lvMain.Name = "lvMain";
-            this.lvMain.Size = new System.Drawing.Size(324, 259);
+            this.lvMain.Size = new System.Drawing.Size(334, 515);
             this.lvMain.TabIndex = 0;
             this.lvMain.UseCompatibleStateImageBehavior = false;
             this.lvMain.View = System.Windows.Forms.View.Details;
@@ -52,11 +52,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(487, 309);
+            this.ClientSize = new System.Drawing.Size(483, 539);
             this.Controls.Add(this.lvMain);
             this.Name = "FormMain";
             this.Text = "Form1";
-            this.Load += new System.EventHandler(this.Form1_Load);
+            this.Load += new System.EventHandler(this.FormMain_Load);
             this.ResumeLayout(false);
 
         }

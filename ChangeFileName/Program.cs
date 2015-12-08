@@ -72,7 +72,7 @@ namespace ChangeFileName
                 return;
             }
 
-            System.IO.FileInfo fi = new System.IO.FileInfo(theFileName);
+            System.IO.FileInfo fi = new System.IO.FileInfo(theFileName.Trim());
 
             string oldname = fi.Name;
             string oldext = fi.Extension;
