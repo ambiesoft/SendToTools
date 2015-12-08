@@ -25,6 +25,16 @@ namespace ChangeFileName
             }
         }
 
+        private static readonly int DEFAULT_MAX_DIR_COUNT = 8;
+        private int MaxDirCount
+        {
+            get
+            {
+                int ret;
+                Ambiesoft.Profile.GetInt("setting", "maxdircount", DEFAULT_MAX_DIR_COUNT, out ret, IniFile);
+                return ret;
+            }
+        }
         private void itemNewFolder_Click(object sender, EventArgs e)
         {
             FolderBrowserDialog fbd = new FolderBrowserDialog();
@@ -33,9 +43,16 @@ namespace ChangeFileName
                 if (DialogResult.OK != fbd.ShowDialog(this))
                     return;
             }
-            List<string> dirs = new List<string>(Dirs);
+            List<string> dirs = new List<string>(DiskDirs);
+
+            dirs.RemoveAll(n => n.Equals(fbd.SelectedPath, StringComparison.OrdinalIgnoreCase));
             dirs.Insert(0, fbd.SelectedPath);
-            Dirs = dirs.ToArray();
+
+            if (dirs.Count > MaxDirCount)
+            {
+                dirs = dirs.GetRange(0, MaxDirCount);
+            }
+            DiskDirs = dirs.ToArray();
 
             moveToAndClose(fbd.SelectedPath);
         }
@@ -56,7 +73,7 @@ namespace ChangeFileName
             moveToAndClose(dir);
         }
 
-        private string[] Dirs
+        private string[] DiskDirs
         {
             get
             {
@@ -77,7 +94,7 @@ namespace ChangeFileName
         {
             menuMoveTo.Items.Clear();
 
-            foreach (string dir in Dirs)
+            foreach (string dir in DiskDirs)
             {
                 ToolStripMenuItem item = new ToolStripMenuItem();
                 item.Click += new EventHandler(itemExistingFolder_Click);

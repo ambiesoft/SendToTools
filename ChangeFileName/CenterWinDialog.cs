@@ -20,7 +20,8 @@ namespace ChangeFileName
         private void findDialog()
         {
             // Enumerate windows to find the message box
-            if (mTries < 0) return;
+            if (mTries < 0)
+                return;
             EnumThreadWndProc callback = new EnumThreadWndProc(checkWindow);
             if (EnumThreadWindows(GetCurrentThreadId(), callback, IntPtr.Zero))
             {
@@ -32,16 +33,28 @@ namespace ChangeFileName
             // Checks if <hWnd> is a dialog
             StringBuilder sb = new StringBuilder(260);
             GetClassName(hWnd, sb, sb.Capacity);
-            if (sb.ToString() != "#32770") return true;
+            if (sb.ToString() != "#32770") 
+                return true;
             // Got it
             Rectangle frmRect = new Rectangle(mOwner.Location, mOwner.Size);
             RECT dlgRect;
             GetWindowRect(hWnd, out dlgRect);
-            MoveWindow(hWnd,
-                frmRect.Left + (frmRect.Width - dlgRect.Right + dlgRect.Left) / 2,
-                frmRect.Top + (frmRect.Height - dlgRect.Bottom + dlgRect.Top) / 2,
-                dlgRect.Right - dlgRect.Left,
-                dlgRect.Bottom - dlgRect.Top, true);
+
+            RECT result;
+            result.Left = frmRect.Left + (frmRect.Width - dlgRect.Right + dlgRect.Left) / 2;
+            result.Top = frmRect.Top + (frmRect.Height - dlgRect.Bottom + dlgRect.Top) / 2;
+            result.Right = dlgRect.Right - dlgRect.Left;
+            result.Bottom = dlgRect.Bottom - dlgRect.Top;
+
+            if (result.Left > 0 && result.Top > 0)
+            {
+                MoveWindow(hWnd,
+                    result.Left,
+                    result.Top,
+                    result.Right,
+                    result.Bottom,
+                    true);
+            }
             return false;
         }
         public void Dispose()
