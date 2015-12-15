@@ -56,6 +56,11 @@ namespace ChangeFileName
 
             moveToAndClose(fbd.SelectedPath);
         }
+        private void itemClearFolder_Click(object sender, EventArgs e)
+        {
+            DiskDirs = new string[0];
+        }
+        
         private void itemExistingFolder_Click(object sender, EventArgs e)
         {
             ToolStripMenuItem item = sender as ToolStripMenuItem;
@@ -93,7 +98,7 @@ namespace ChangeFileName
         private void btnMoveTo_Click(object sender, EventArgs e)
         {
             menuMoveTo.Items.Clear();
-
+            bool hasItems = false;
             foreach (string dir in DiskDirs)
             {
                 ToolStripMenuItem item = new ToolStripMenuItem();
@@ -101,14 +106,26 @@ namespace ChangeFileName
                 item.Text = dir; // System.IO.Path.GetDirectoryName(dir);
                 item.Tag = dir;
                 menuMoveTo.Items.Add(item);
+                hasItems = true;
             }
 
             menuMoveTo.Items.Add(new ToolStripSeparator());
 
+
             ToolStripMenuItem itemNewFolder = new ToolStripMenuItem();
             itemNewFolder.Click += new EventHandler(itemNewFolder_Click);
-            itemNewFolder.Text = "&New Folder...";
+            itemNewFolder.Text = Properties.Resources.NEW_FOLDER_DDD;
             menuMoveTo.Items.Add(itemNewFolder);
+
+            if (hasItems)
+            {
+                ToolStripMenuItem itemClearFolder = new ToolStripMenuItem();
+                itemClearFolder.Click += new EventHandler(itemClearFolder_Click);
+                itemClearFolder.Text = Properties.Resources.CLEAR;
+                menuMoveTo.Items.Add(itemClearFolder);
+            }
+
+
 
             Point pt = btnMoveTo.Location;
             pt.Y += btnMoveTo.Size.Height;
