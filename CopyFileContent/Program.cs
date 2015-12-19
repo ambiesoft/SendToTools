@@ -6,6 +6,11 @@ namespace CopyFileContent
 {
     static class Program
     {
+        enum ConvertType
+        {
+            Text,
+            Image,
+        }
         /// <summary>
         /// アプリケーションのメイン エントリ ポイントです。
         /// </summary>
@@ -21,12 +26,40 @@ namespace CopyFileContent
                 return;
             }
 
+            string file="";
+            ConvertType ct = ConvertType.Text;
+            if (args.Length == 1)
+            {
+                file = args[0];
+            }
+            else if (args.Length == 2)
+            {
+                if (args[0] == "-t")
+                    ct = ConvertType.Text;
+                else if (args[0] == "-i")
+                    ct = ConvertType.Image;
+                else
+                    throw new Exception(string.Format(Properties.Resources.UNKNOWN_OPTION, args[1]));
+
+                file = args[1];
+
+            }
+            else
+            {
+                throw new Exception(Properties.Resources.TOO_MANY_OPTIONS);
+            }
+
             try
             {
-                string all = System.IO.File.ReadAllText(args[0]);
-
-                Clipboard.SetText(all);
-
+                if (ct == ConvertType.Text)
+                {
+                    string all = System.IO.File.ReadAllText(file);
+                    Clipboard.SetText(all);
+                }
+                else
+                {
+                    throw new Exception("Unimplemented");
+                }
 
                 NotifyIcon ni = new NotifyIcon();
                 ni.BalloonTipTitle = Application.ProductName;
