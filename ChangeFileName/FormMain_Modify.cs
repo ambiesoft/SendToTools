@@ -112,5 +112,19 @@ namespace ChangeFileName
             ChangeSelectionCommon(RemoveSpace);
         }
 
+
+        private string Underbar2Hyphen(string s)
+        {
+            s = s.Replace("_", "-");
+            return s;
+        }
+        private void tsmiUnderbar2hyphen_Click(object sender, EventArgs e)
+        {
+            textName.Text = Underbar2Hyphen(textName.Text);
+        }
+        private void tsmiUnderbar2hyphenSel_Click(object sender, EventArgs e)
+        {
+            ChangeSelectionCommon(Underbar2Hyphen);
+        }
     }
 }

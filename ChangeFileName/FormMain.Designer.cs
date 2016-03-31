@@ -57,6 +57,8 @@
             this.tsmiRemoveSpaceSel = new System.Windows.Forms.ToolStripMenuItem();
             this.btnModifySelection = new ChangeFileName.MenuButton();
             this.btnModify = new ChangeFileName.MenuButton();
+            this.tsmiUnderbar2hyphen = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiUnderbar2hyphenSel = new System.Windows.Forms.ToolStripMenuItem();
             this.menuMoveTo.SuspendLayout();
             this.cmModify.SuspendLayout();
             this.cmModifySelection.SuspendLayout();
@@ -131,55 +133,56 @@
             // 
             // menuMoveTo
             // 
-            resources.ApplyResources(this.menuMoveTo, "menuMoveTo");
             this.menuMoveTo.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.aaaToolStripMenuItem});
             this.menuMoveTo.Name = "menuMoveTo";
+            resources.ApplyResources(this.menuMoveTo, "menuMoveTo");
             // 
             // aaaToolStripMenuItem
             // 
-            resources.ApplyResources(this.aaaToolStripMenuItem, "aaaToolStripMenuItem");
             this.aaaToolStripMenuItem.Name = "aaaToolStripMenuItem";
+            resources.ApplyResources(this.aaaToolStripMenuItem, "aaaToolStripMenuItem");
             // 
             // cmModify
             // 
-            resources.ApplyResources(this.cmModify, "cmModify");
             this.cmModify.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmiMakeFileNamable,
             this.tsmiLower,
             this.tsmiUpper,
             this.tsmiTrim,
-            this.tsmiRemoveSpace});
+            this.tsmiRemoveSpace,
+            this.tsmiUnderbar2hyphen});
             this.cmModify.Name = "ccmModify";
+            resources.ApplyResources(this.cmModify, "cmModify");
             // 
             // tsmiMakeFileNamable
             // 
-            resources.ApplyResources(this.tsmiMakeFileNamable, "tsmiMakeFileNamable");
             this.tsmiMakeFileNamable.Name = "tsmiMakeFileNamable";
+            resources.ApplyResources(this.tsmiMakeFileNamable, "tsmiMakeFileNamable");
             this.tsmiMakeFileNamable.Click += new System.EventHandler(this.ToFileNamable_Click);
             // 
             // tsmiLower
             // 
-            resources.ApplyResources(this.tsmiLower, "tsmiLower");
             this.tsmiLower.Name = "tsmiLower";
+            resources.ApplyResources(this.tsmiLower, "tsmiLower");
             this.tsmiLower.Click += new System.EventHandler(this.ToLower_Click);
             // 
             // tsmiUpper
             // 
-            resources.ApplyResources(this.tsmiUpper, "tsmiUpper");
             this.tsmiUpper.Name = "tsmiUpper";
+            resources.ApplyResources(this.tsmiUpper, "tsmiUpper");
             this.tsmiUpper.Click += new System.EventHandler(this.ToUpper_Click);
             // 
             // tsmiTrim
             // 
-            resources.ApplyResources(this.tsmiTrim, "tsmiTrim");
             this.tsmiTrim.Name = "tsmiTrim";
+            resources.ApplyResources(this.tsmiTrim, "tsmiTrim");
             this.tsmiTrim.Click += new System.EventHandler(this.Trim_Click);
             // 
             // tsmiRemoveSpace
             // 
-            resources.ApplyResources(this.tsmiRemoveSpace, "tsmiRemoveSpace");
             this.tsmiRemoveSpace.Name = "tsmiRemoveSpace";
+            resources.ApplyResources(this.tsmiRemoveSpace, "tsmiRemoveSpace");
             this.tsmiRemoveSpace.Click += new System.EventHandler(this.ToRemoveSpace_Click);
             // 
             // btnCopy
@@ -191,58 +194,71 @@
             // 
             // cmModifySelection
             // 
-            resources.ApplyResources(this.cmModifySelection, "cmModifySelection");
             this.cmModifySelection.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmiMakeFileNamableSel,
             this.tsmiLowerSel,
             this.tsmiUpperSel,
             this.tsmiTrimSel,
-            this.tsmiRemoveSpaceSel});
+            this.tsmiRemoveSpaceSel,
+            this.tsmiUnderbar2hyphenSel});
             this.cmModifySelection.Name = "ccmModify";
+            resources.ApplyResources(this.cmModifySelection, "cmModifySelection");
             // 
             // tsmiMakeFileNamableSel
             // 
-            resources.ApplyResources(this.tsmiMakeFileNamableSel, "tsmiMakeFileNamableSel");
             this.tsmiMakeFileNamableSel.Name = "tsmiMakeFileNamableSel";
+            resources.ApplyResources(this.tsmiMakeFileNamableSel, "tsmiMakeFileNamableSel");
             this.tsmiMakeFileNamableSel.Click += new System.EventHandler(this.ToMakeFileNamableSel_Click);
             // 
             // tsmiLowerSel
             // 
-            resources.ApplyResources(this.tsmiLowerSel, "tsmiLowerSel");
             this.tsmiLowerSel.Name = "tsmiLowerSel";
+            resources.ApplyResources(this.tsmiLowerSel, "tsmiLowerSel");
             this.tsmiLowerSel.Click += new System.EventHandler(this.ToLowerSel_Click);
             // 
             // tsmiUpperSel
             // 
-            resources.ApplyResources(this.tsmiUpperSel, "tsmiUpperSel");
             this.tsmiUpperSel.Name = "tsmiUpperSel";
+            resources.ApplyResources(this.tsmiUpperSel, "tsmiUpperSel");
             this.tsmiUpperSel.Click += new System.EventHandler(this.ToUpperSel_Click);
             // 
             // tsmiTrimSel
             // 
-            resources.ApplyResources(this.tsmiTrimSel, "tsmiTrimSel");
             this.tsmiTrimSel.Name = "tsmiTrimSel";
+            resources.ApplyResources(this.tsmiTrimSel, "tsmiTrimSel");
             this.tsmiTrimSel.Click += new System.EventHandler(this.TrimSel_Click);
             // 
             // tsmiRemoveSpaceSel
             // 
-            resources.ApplyResources(this.tsmiRemoveSpaceSel, "tsmiRemoveSpaceSel");
             this.tsmiRemoveSpaceSel.Name = "tsmiRemoveSpaceSel";
+            resources.ApplyResources(this.tsmiRemoveSpaceSel, "tsmiRemoveSpaceSel");
             this.tsmiRemoveSpaceSel.Click += new System.EventHandler(this.ToRemoveSpaceSel_Click);
             // 
             // btnModifySelection
             // 
-            resources.ApplyResources(this.btnModifySelection, "btnModifySelection");
             this.btnModifySelection.ContextMenuStrip = this.cmModifySelection;
+            resources.ApplyResources(this.btnModifySelection, "btnModifySelection");
             this.btnModifySelection.Name = "btnModifySelection";
             this.btnModifySelection.UseVisualStyleBackColor = true;
             // 
             // btnModify
             // 
-            resources.ApplyResources(this.btnModify, "btnModify");
             this.btnModify.ContextMenuStrip = this.cmModify;
+            resources.ApplyResources(this.btnModify, "btnModify");
             this.btnModify.Name = "btnModify";
             this.btnModify.UseVisualStyleBackColor = true;
+            // 
+            // tsmiUnderbar2hyphen
+            // 
+            this.tsmiUnderbar2hyphen.Name = "tsmiUnderbar2hyphen";
+            resources.ApplyResources(this.tsmiUnderbar2hyphen, "tsmiUnderbar2hyphen");
+            this.tsmiUnderbar2hyphen.Click += new System.EventHandler(this.tsmiUnderbar2hyphen_Click);
+            // 
+            // tsmiUnderbar2hyphenSel
+            // 
+            this.tsmiUnderbar2hyphenSel.Name = "tsmiUnderbar2hyphenSel";
+            resources.ApplyResources(this.tsmiUnderbar2hyphenSel, "tsmiUnderbar2hyphenSel");
+            this.tsmiUnderbar2hyphenSel.Click += new System.EventHandler(this.tsmiUnderbar2hyphenSel_Click);
             // 
             // FormMain
             // 
@@ -306,5 +322,7 @@
         private System.Windows.Forms.ToolStripMenuItem tsmiLowerSel;
         private System.Windows.Forms.ToolStripMenuItem tsmiUpperSel;
         private System.Windows.Forms.ToolStripMenuItem tsmiTrimSel;
+        private System.Windows.Forms.ToolStripMenuItem tsmiUnderbar2hyphen;
+        private System.Windows.Forms.ToolStripMenuItem tsmiUnderbar2hyphenSel;
     }
 }
