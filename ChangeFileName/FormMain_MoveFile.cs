@@ -38,7 +38,7 @@ namespace ChangeFileName
         private void itemNewFolder_Click(object sender, EventArgs e)
         {
             FolderBrowserDialog fbd = new FolderBrowserDialog();
-            using (new CenterWinDialog(this))
+            using (new Ambiesoft.CenterWinDialog(this))
             {
                 if (DialogResult.OK != fbd.ShowDialog(this))
                     return;

@@ -81,7 +81,7 @@ namespace ChangeFileName
 
         private void btnTrash_Click(object sender, EventArgs e)
         {
-            using (new CenterWinDialog(this))
+            using (new Ambiesoft.CenterWinDialog(this))
             {
                 if (DialogResult.Yes != MessageBox.Show(string.Format(Properties.Resources.ARE_YOU_SURE_TO_TRASH, textName.Tag.ToString()),
                 Application.ProductName,
@@ -104,7 +104,7 @@ namespace ChangeFileName
             }
             catch (Exception ex)
             {
-                using (new CenterWinDialog(this))
+                using (new Ambiesoft.CenterWinDialog(this))
                 {
                     MessageBox.Show(ex.Message,
                     Application.ProductName,
@@ -152,7 +152,7 @@ namespace ChangeFileName
 
         void showError(string message)
         {
-            using (new CenterWinDialog(this))
+            using (new Ambiesoft.CenterWinDialog(this))
             {
                 MessageBox.Show(
                 message,
