@@ -126,10 +126,10 @@
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="btnCancel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>524, 213</value>
+    <value>524, 197</value>
   </data>
   <data name="btnCancel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 25</value>
+    <value>75, 23</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="btnCancel.TabIndex" type="System.Int32, mscorlib">
@@ -157,10 +157,10 @@
     <value>NoControl</value>
   </data>
   <data name="btnOK.Location" type="System.Drawing.Point, System.Drawing">
-    <value>391, 213</value>
+    <value>391, 197</value>
   </data>
   <data name="btnOK.Size" type="System.Drawing.Size, System.Drawing">
-    <value>127, 25</value>
+    <value>127, 23</value>
   </data>
   <data name="btnOK.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -184,7 +184,7 @@
     <value>MS UI Gothic, 14.25pt</value>
   </data>
   <data name="textName.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 26</value>
+    <value>12, 24</value>
   </data>
   <data name="textName.Size" type="System.Drawing.Size, System.Drawing">
     <value>587, 26</value>
@@ -214,10 +214,10 @@
     <value>NoControl</value>
   </data>
   <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 8</value>
+    <value>12, 7</value>
   </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>35, 13</value>
+    <value>34, 12</value>
   </data>
   <data name="label1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -244,10 +244,10 @@
     <value>NoControl</value>
   </data>
   <data name="btnLaunch.Location" type="System.Drawing.Point, System.Drawing">
-    <value>391, 181</value>
+    <value>391, 167</value>
   </data>
   <data name="btnLaunch.Size" type="System.Drawing.Size, System.Drawing">
-    <value>127, 25</value>
+    <value>127, 23</value>
   </data>
   <data name="btnLaunch.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -274,10 +274,10 @@
     <value>NoControl</value>
   </data>
   <data name="btnPaste.Location" type="System.Drawing.Point, System.Drawing">
-    <value>524, 109</value>
+    <value>524, 101</value>
   </data>
   <data name="btnPaste.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 25</value>
+    <value>75, 23</value>
   </data>
   <data name="btnPaste.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -301,10 +301,10 @@
     <value>NoControl</value>
   </data>
   <data name="btnTrash.Location" type="System.Drawing.Point, System.Drawing">
-    <value>11, 213</value>
+    <value>11, 197</value>
   </data>
   <data name="btnTrash.Size" type="System.Drawing.Size, System.Drawing">
-    <value>124, 25</value>
+    <value>124, 23</value>
   </data>
   <data name="btnTrash.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -331,10 +331,10 @@
     <value>NoControl</value>
   </data>
   <data name="chkAutoRun.Location" type="System.Drawing.Point, System.Drawing">
-    <value>13, 189</value>
+    <value>13, 174</value>
   </data>
   <data name="chkAutoRun.Size" type="System.Drawing.Size, System.Drawing">
-    <value>68, 17</value>
+    <value>68, 16</value>
   </data>
   <data name="chkAutoRun.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
@@ -361,10 +361,10 @@
     <value>NoControl</value>
   </data>
   <data name="btnCopyPath.Location" type="System.Drawing.Point, System.Drawing">
-    <value>524, 182</value>
+    <value>524, 168</value>
   </data>
   <data name="btnCopyPath.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 25</value>
+    <value>75, 23</value>
   </data>
   <data name="btnCopyPath.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
@@ -388,10 +388,10 @@
     <value>NoControl</value>
   </data>
   <data name="btnMoveTo.Location" type="System.Drawing.Point, System.Drawing">
-    <value>141, 213</value>
+    <value>141, 197</value>
   </data>
   <data name="btnMoveTo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>124, 25</value>
+    <value>124, 23</value>
   </data>
   <data name="btnMoveTo.TabIndex" type="System.Int32, mscorlib">
     <value>11</value>
@@ -415,7 +415,7 @@
     <value>17, 17</value>
   </metadata>
   <data name="menuMoveTo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>93, 26</value>
+    <value>96, 26</value>
   </data>
   <data name="&gt;&gt;menuMoveTo.Name" xml:space="preserve">
     <value>menuMoveTo</value>
@@ -424,7 +424,7 @@
     <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="aaaToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>92, 22</value>
+    <value>95, 22</value>
   </data>
   <data name="aaaToolStripMenuItem.Text" xml:space="preserve">
     <value>aaa</value>
@@ -432,50 +432,50 @@
   <metadata name="cmModify.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>144, 17</value>
   </metadata>
-  <data name="tsmiMakeFileNamable.Size" type="System.Drawing.Size, System.Drawing">
-    <value>175, 22</value>
-  </data>
-  <data name="tsmiMakeFileNamable.Text" xml:space="preserve">
-    <value>&amp;Make File Namable</value>
-  </data>
-  <data name="tsmiLower.Size" type="System.Drawing.Size, System.Drawing">
-    <value>175, 22</value>
-  </data>
-  <data name="tsmiLower.Text" xml:space="preserve">
-    <value>&amp;Lower</value>
-  </data>
-  <data name="tsmiUpper.Size" type="System.Drawing.Size, System.Drawing">
-    <value>175, 22</value>
-  </data>
-  <data name="tsmiUpper.Text" xml:space="preserve">
-    <value>&amp;Upper</value>
-  </data>
-  <data name="tsmiTrim.Size" type="System.Drawing.Size, System.Drawing">
-    <value>175, 22</value>
-  </data>
-  <data name="tsmiTrim.Text" xml:space="preserve">
-    <value>&amp;Trim</value>
-  </data>
-  <data name="tsmiRemoveSpace.Size" type="System.Drawing.Size, System.Drawing">
-    <value>175, 22</value>
-  </data>
-  <data name="tsmiRemoveSpace.Text" xml:space="preserve">
-    <value>&amp;Remove Space</value>
-  </data>
-  <data name="tsmiUnderbar2hyphen.Size" type="System.Drawing.Size, System.Drawing">
-    <value>175, 22</value>
-  </data>
-  <data name="tsmiUnderbar2hyphen.Text" xml:space="preserve">
-    <value>_2-</value>
-  </data>
   <data name="cmModify.Size" type="System.Drawing.Size, System.Drawing">
-    <value>176, 136</value>
+    <value>186, 136</value>
   </data>
   <data name="&gt;&gt;cmModify.Name" xml:space="preserve">
     <value>cmModify</value>
   </data>
   <data name="&gt;&gt;cmModify.Type" xml:space="preserve">
     <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="tsmiMakeFileNamable.Size" type="System.Drawing.Size, System.Drawing">
+    <value>185, 22</value>
+  </data>
+  <data name="tsmiMakeFileNamable.Text" xml:space="preserve">
+    <value>&amp;Make File Namable</value>
+  </data>
+  <data name="tsmiLower.Size" type="System.Drawing.Size, System.Drawing">
+    <value>185, 22</value>
+  </data>
+  <data name="tsmiLower.Text" xml:space="preserve">
+    <value>&amp;Lower</value>
+  </data>
+  <data name="tsmiUpper.Size" type="System.Drawing.Size, System.Drawing">
+    <value>185, 22</value>
+  </data>
+  <data name="tsmiUpper.Text" xml:space="preserve">
+    <value>&amp;Upper</value>
+  </data>
+  <data name="tsmiTrim.Size" type="System.Drawing.Size, System.Drawing">
+    <value>185, 22</value>
+  </data>
+  <data name="tsmiTrim.Text" xml:space="preserve">
+    <value>&amp;Trim</value>
+  </data>
+  <data name="tsmiRemoveSpace.Size" type="System.Drawing.Size, System.Drawing">
+    <value>185, 22</value>
+  </data>
+  <data name="tsmiRemoveSpace.Text" xml:space="preserve">
+    <value>&amp;Remove Space</value>
+  </data>
+  <data name="tsmiUnderbar2hyphen.Size" type="System.Drawing.Size, System.Drawing">
+    <value>185, 22</value>
+  </data>
+  <data name="tsmiUnderbar2hyphen.Text" xml:space="preserve">
+    <value>_2-</value>
   </data>
   <data name="btnCopy.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
@@ -484,10 +484,10 @@
     <value>NoControl</value>
   </data>
   <data name="btnCopy.Location" type="System.Drawing.Point, System.Drawing">
-    <value>443, 109</value>
+    <value>443, 101</value>
   </data>
   <data name="btnCopy.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 25</value>
+    <value>75, 23</value>
   </data>
   <data name="btnCopy.TabIndex" type="System.Int32, mscorlib">
     <value>13</value>
@@ -510,44 +510,8 @@
   <metadata name="cmModifySelection.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>250, 17</value>
   </metadata>
-  <data name="tsmiMakeFileNamableSel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>234, 22</value>
-  </data>
-  <data name="tsmiMakeFileNamableSel.Text" xml:space="preserve">
-    <value>&amp;Make File Namable (Selection)</value>
-  </data>
-  <data name="tsmiLowerSel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>234, 22</value>
-  </data>
-  <data name="tsmiLowerSel.Text" xml:space="preserve">
-    <value>&amp;Lower (Selection)</value>
-  </data>
-  <data name="tsmiUpperSel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>234, 22</value>
-  </data>
-  <data name="tsmiUpperSel.Text" xml:space="preserve">
-    <value>&amp;Upper (Selection)</value>
-  </data>
-  <data name="tsmiTrimSel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>234, 22</value>
-  </data>
-  <data name="tsmiTrimSel.Text" xml:space="preserve">
-    <value>&amp;Trim (Selection)</value>
-  </data>
-  <data name="tsmiRemoveSpaceSel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>234, 22</value>
-  </data>
-  <data name="tsmiRemoveSpaceSel.Text" xml:space="preserve">
-    <value>Remove &amp;Space(Selection)</value>
-  </data>
-  <data name="tsmiUnderbar2hyphenSel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>234, 22</value>
-  </data>
-  <data name="tsmiUnderbar2hyphenSel.Text" xml:space="preserve">
-    <value>_2-</value>
-  </data>
   <data name="cmModifySelection.Size" type="System.Drawing.Size, System.Drawing">
-    <value>235, 158</value>
+    <value>253, 136</value>
   </data>
   <data name="&gt;&gt;cmModifySelection.Name" xml:space="preserve">
     <value>cmModifySelection</value>
@@ -555,14 +519,50 @@
   <data name="&gt;&gt;cmModifySelection.Type" xml:space="preserve">
     <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="tsmiMakeFileNamableSel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>252, 22</value>
+  </data>
+  <data name="tsmiMakeFileNamableSel.Text" xml:space="preserve">
+    <value>&amp;Make File Namable (Selection)</value>
+  </data>
+  <data name="tsmiLowerSel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>252, 22</value>
+  </data>
+  <data name="tsmiLowerSel.Text" xml:space="preserve">
+    <value>&amp;Lower (Selection)</value>
+  </data>
+  <data name="tsmiUpperSel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>252, 22</value>
+  </data>
+  <data name="tsmiUpperSel.Text" xml:space="preserve">
+    <value>&amp;Upper (Selection)</value>
+  </data>
+  <data name="tsmiTrimSel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>252, 22</value>
+  </data>
+  <data name="tsmiTrimSel.Text" xml:space="preserve">
+    <value>&amp;Trim (Selection)</value>
+  </data>
+  <data name="tsmiRemoveSpaceSel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>252, 22</value>
+  </data>
+  <data name="tsmiRemoveSpaceSel.Text" xml:space="preserve">
+    <value>Remove &amp;Space(Selection)</value>
+  </data>
+  <data name="tsmiUnderbar2hyphenSel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>252, 22</value>
+  </data>
+  <data name="tsmiUnderbar2hyphenSel.Text" xml:space="preserve">
+    <value>_2-</value>
+  </data>
   <data name="btnModifySelection.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="btnModifySelection.Location" type="System.Drawing.Point, System.Drawing">
-    <value>141, 109</value>
+    <value>141, 101</value>
   </data>
   <data name="btnModifySelection.Size" type="System.Drawing.Size, System.Drawing">
-    <value>124, 25</value>
+    <value>124, 23</value>
   </data>
   <data name="btnModifySelection.TabIndex" type="System.Int32, mscorlib">
     <value>14</value>
@@ -586,10 +586,10 @@
     <value>NoControl</value>
   </data>
   <data name="btnModify.Location" type="System.Drawing.Point, System.Drawing">
-    <value>11, 109</value>
+    <value>11, 101</value>
   </data>
   <data name="btnModify.Size" type="System.Drawing.Size, System.Drawing">
-    <value>124, 25</value>
+    <value>124, 23</value>
   </data>
   <data name="btnModify.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
@@ -613,10 +613,10 @@
     <value>True</value>
   </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>6, 13</value>
+    <value>6, 12</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>609, 251</value>
+    <value>609, 232</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -2364,6 +2364,12 @@
   <data name="&gt;&gt;tsmiRemoveSpace.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;tsmiUnderbar2hyphen.Name" xml:space="preserve">
+    <value>tsmiUnderbar2hyphen</value>
+  </data>
+  <data name="&gt;&gt;tsmiUnderbar2hyphen.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;tsmiMakeFileNamableSel.Name" xml:space="preserve">
     <value>tsmiMakeFileNamableSel</value>
   </data>
@@ -2392,12 +2398,6 @@
     <value>tsmiRemoveSpaceSel</value>
   </data>
   <data name="&gt;&gt;tsmiRemoveSpaceSel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tsmiUnderbar2hyphen.Name" xml:space="preserve">
-    <value>tsmiUnderbar2hyphen</value>
-  </data>
-  <data name="&gt;&gt;tsmiUnderbar2hyphen.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;tsmiUnderbar2hyphenSel.Name" xml:space="preserve">

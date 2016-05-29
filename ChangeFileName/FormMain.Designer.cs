@@ -48,6 +48,7 @@
             this.tsmiUpper = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiTrim = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiRemoveSpace = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiUnderbar2hyphen = new System.Windows.Forms.ToolStripMenuItem();
             this.btnCopy = new System.Windows.Forms.Button();
             this.cmModifySelection = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tsmiMakeFileNamableSel = new System.Windows.Forms.ToolStripMenuItem();
@@ -55,10 +56,9 @@
             this.tsmiUpperSel = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiTrimSel = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiRemoveSpaceSel = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiUnderbar2hyphenSel = new System.Windows.Forms.ToolStripMenuItem();
             this.btnModifySelection = new ChangeFileName.MenuButton();
             this.btnModify = new ChangeFileName.MenuButton();
-            this.tsmiUnderbar2hyphen = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiUnderbar2hyphenSel = new System.Windows.Forms.ToolStripMenuItem();
             this.menuMoveTo.SuspendLayout();
             this.cmModify.SuspendLayout();
             this.cmModifySelection.SuspendLayout();
@@ -74,9 +74,9 @@
             // btnOK
             // 
             resources.ApplyResources(this.btnOK, "btnOK");
-            this.btnOK.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnOK.Name = "btnOK";
             this.btnOK.UseVisualStyleBackColor = true;
+            this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
             // textName
             // 
@@ -185,6 +185,12 @@
             resources.ApplyResources(this.tsmiRemoveSpace, "tsmiRemoveSpace");
             this.tsmiRemoveSpace.Click += new System.EventHandler(this.ToRemoveSpace_Click);
             // 
+            // tsmiUnderbar2hyphen
+            // 
+            this.tsmiUnderbar2hyphen.Name = "tsmiUnderbar2hyphen";
+            resources.ApplyResources(this.tsmiUnderbar2hyphen, "tsmiUnderbar2hyphen");
+            this.tsmiUnderbar2hyphen.Click += new System.EventHandler(this.tsmiUnderbar2hyphen_Click);
+            // 
             // btnCopy
             // 
             resources.ApplyResources(this.btnCopy, "btnCopy");
@@ -234,6 +240,12 @@
             resources.ApplyResources(this.tsmiRemoveSpaceSel, "tsmiRemoveSpaceSel");
             this.tsmiRemoveSpaceSel.Click += new System.EventHandler(this.ToRemoveSpaceSel_Click);
             // 
+            // tsmiUnderbar2hyphenSel
+            // 
+            this.tsmiUnderbar2hyphenSel.Name = "tsmiUnderbar2hyphenSel";
+            resources.ApplyResources(this.tsmiUnderbar2hyphenSel, "tsmiUnderbar2hyphenSel");
+            this.tsmiUnderbar2hyphenSel.Click += new System.EventHandler(this.tsmiUnderbar2hyphenSel_Click);
+            // 
             // btnModifySelection
             // 
             this.btnModifySelection.ContextMenuStrip = this.cmModifySelection;
@@ -247,18 +259,6 @@
             resources.ApplyResources(this.btnModify, "btnModify");
             this.btnModify.Name = "btnModify";
             this.btnModify.UseVisualStyleBackColor = true;
-            // 
-            // tsmiUnderbar2hyphen
-            // 
-            this.tsmiUnderbar2hyphen.Name = "tsmiUnderbar2hyphen";
-            resources.ApplyResources(this.tsmiUnderbar2hyphen, "tsmiUnderbar2hyphen");
-            this.tsmiUnderbar2hyphen.Click += new System.EventHandler(this.tsmiUnderbar2hyphen_Click);
-            // 
-            // tsmiUnderbar2hyphenSel
-            // 
-            this.tsmiUnderbar2hyphenSel.Name = "tsmiUnderbar2hyphenSel";
-            resources.ApplyResources(this.tsmiUnderbar2hyphenSel, "tsmiUnderbar2hyphenSel");
-            this.tsmiUnderbar2hyphenSel.Click += new System.EventHandler(this.tsmiUnderbar2hyphenSel_Click);
             // 
             // FormMain
             // 

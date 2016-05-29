@@ -7,7 +7,7 @@ using System.Text;
 using System.Windows.Forms;
 using Microsoft.VisualBasic.FileIO;
 using System.IO;
-
+using Ambiesoft;
 
 namespace ChangeFileName
 {
@@ -177,26 +177,33 @@ namespace ChangeFileName
             }
         }
 
+        private void btnOK_Click(object sender, EventArgs e)
+        {
+            string newName = textName.Text;
+            if (string.IsNullOrEmpty(newName))
+            {
+                CenteredMessageBox.Show(this,
+                    Properties.Resources.ENTER_FILENAME,
+                    Application.ProductName,
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Asterisk);
 
+                return;
+            }
 
-       
+            if (-1 != newName.IndexOfAny(Program.damemoji.ToCharArray()))
+            {
+                CenteredMessageBox.Show(this,
+                    Properties.Resources.FOLLOWING_UNABLE_FILENAME + Environment.NewLine + Environment.NewLine + Program.damemoji,
+                    Application.ProductName,
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Asterisk);
 
-     
+                return;
+            }
 
-     
-
-       
-
-      
-
-       
-
-
-       
-
-       
-
-        
-
+            this.DialogResult = DialogResult.OK;
+            Close();
+        }
     }
 }

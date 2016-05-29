@@ -27,7 +27,7 @@ namespace ChangeFileName
             return false;
         }
 
-        static readonly string damemoji = "\\/:,;*?\"<>|";
+        static readonly internal string damemoji = "\\/:;*?\"<>|";
         /// <summary>
         /// 
         /// </summary>
