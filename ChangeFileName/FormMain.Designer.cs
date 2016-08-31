@@ -280,6 +280,7 @@
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.btnPaste);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.KeyPreview = true;
             this.MaximizeBox = false;
             this.Name = "FormMain";
             this.TopMost = true;

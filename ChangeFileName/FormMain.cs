@@ -53,6 +53,15 @@ namespace ChangeFileName
             }
         }
 
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            if (keyData == (Keys.Control | Keys.A))
+            {
+                textName.SelectAll();
+                return true;
+            }
+            return base.ProcessCmdKey(ref msg, keyData);
+        }
 
         private void btnLaunch_Click(object sender, EventArgs e)
         {

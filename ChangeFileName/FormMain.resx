@@ -414,8 +414,14 @@
   <metadata name="menuMoveTo.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <data name="aaaToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>92, 22</value>
+  </data>
+  <data name="aaaToolStripMenuItem.Text" xml:space="preserve">
+    <value>aaa</value>
+  </data>
   <data name="menuMoveTo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>96, 26</value>
+    <value>93, 26</value>
   </data>
   <data name="&gt;&gt;menuMoveTo.Name" xml:space="preserve">
     <value>menuMoveTo</value>
@@ -423,59 +429,53 @@
   <data name="&gt;&gt;menuMoveTo.Type" xml:space="preserve">
     <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="aaaToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>95, 22</value>
-  </data>
-  <data name="aaaToolStripMenuItem.Text" xml:space="preserve">
-    <value>aaa</value>
-  </data>
   <metadata name="cmModify.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>144, 17</value>
   </metadata>
+  <data name="tsmiMakeFileNamable.Size" type="System.Drawing.Size, System.Drawing">
+    <value>174, 22</value>
+  </data>
+  <data name="tsmiMakeFileNamable.Text" xml:space="preserve">
+    <value>&amp;Make File Namable</value>
+  </data>
+  <data name="tsmiLower.Size" type="System.Drawing.Size, System.Drawing">
+    <value>174, 22</value>
+  </data>
+  <data name="tsmiLower.Text" xml:space="preserve">
+    <value>&amp;Lower</value>
+  </data>
+  <data name="tsmiUpper.Size" type="System.Drawing.Size, System.Drawing">
+    <value>174, 22</value>
+  </data>
+  <data name="tsmiUpper.Text" xml:space="preserve">
+    <value>&amp;Upper</value>
+  </data>
+  <data name="tsmiTrim.Size" type="System.Drawing.Size, System.Drawing">
+    <value>174, 22</value>
+  </data>
+  <data name="tsmiTrim.Text" xml:space="preserve">
+    <value>&amp;Trim</value>
+  </data>
+  <data name="tsmiRemoveSpace.Size" type="System.Drawing.Size, System.Drawing">
+    <value>174, 22</value>
+  </data>
+  <data name="tsmiRemoveSpace.Text" xml:space="preserve">
+    <value>&amp;Remove Space</value>
+  </data>
+  <data name="tsmiUnderbar2hyphen.Size" type="System.Drawing.Size, System.Drawing">
+    <value>174, 22</value>
+  </data>
+  <data name="tsmiUnderbar2hyphen.Text" xml:space="preserve">
+    <value>_2-</value>
+  </data>
   <data name="cmModify.Size" type="System.Drawing.Size, System.Drawing">
-    <value>186, 136</value>
+    <value>175, 136</value>
   </data>
   <data name="&gt;&gt;cmModify.Name" xml:space="preserve">
     <value>cmModify</value>
   </data>
   <data name="&gt;&gt;cmModify.Type" xml:space="preserve">
     <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="tsmiMakeFileNamable.Size" type="System.Drawing.Size, System.Drawing">
-    <value>185, 22</value>
-  </data>
-  <data name="tsmiMakeFileNamable.Text" xml:space="preserve">
-    <value>&amp;Make File Namable</value>
-  </data>
-  <data name="tsmiLower.Size" type="System.Drawing.Size, System.Drawing">
-    <value>185, 22</value>
-  </data>
-  <data name="tsmiLower.Text" xml:space="preserve">
-    <value>&amp;Lower</value>
-  </data>
-  <data name="tsmiUpper.Size" type="System.Drawing.Size, System.Drawing">
-    <value>185, 22</value>
-  </data>
-  <data name="tsmiUpper.Text" xml:space="preserve">
-    <value>&amp;Upper</value>
-  </data>
-  <data name="tsmiTrim.Size" type="System.Drawing.Size, System.Drawing">
-    <value>185, 22</value>
-  </data>
-  <data name="tsmiTrim.Text" xml:space="preserve">
-    <value>&amp;Trim</value>
-  </data>
-  <data name="tsmiRemoveSpace.Size" type="System.Drawing.Size, System.Drawing">
-    <value>185, 22</value>
-  </data>
-  <data name="tsmiRemoveSpace.Text" xml:space="preserve">
-    <value>&amp;Remove Space</value>
-  </data>
-  <data name="tsmiUnderbar2hyphen.Size" type="System.Drawing.Size, System.Drawing">
-    <value>185, 22</value>
-  </data>
-  <data name="tsmiUnderbar2hyphen.Text" xml:space="preserve">
-    <value>_2-</value>
   </data>
   <data name="btnCopy.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
@@ -510,50 +510,50 @@
   <metadata name="cmModifySelection.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>250, 17</value>
   </metadata>
+  <data name="tsmiMakeFileNamableSel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>233, 22</value>
+  </data>
+  <data name="tsmiMakeFileNamableSel.Text" xml:space="preserve">
+    <value>&amp;Make File Namable (Selection)</value>
+  </data>
+  <data name="tsmiLowerSel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>233, 22</value>
+  </data>
+  <data name="tsmiLowerSel.Text" xml:space="preserve">
+    <value>&amp;Lower (Selection)</value>
+  </data>
+  <data name="tsmiUpperSel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>233, 22</value>
+  </data>
+  <data name="tsmiUpperSel.Text" xml:space="preserve">
+    <value>&amp;Upper (Selection)</value>
+  </data>
+  <data name="tsmiTrimSel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>233, 22</value>
+  </data>
+  <data name="tsmiTrimSel.Text" xml:space="preserve">
+    <value>&amp;Trim (Selection)</value>
+  </data>
+  <data name="tsmiRemoveSpaceSel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>233, 22</value>
+  </data>
+  <data name="tsmiRemoveSpaceSel.Text" xml:space="preserve">
+    <value>Remove &amp;Space(Selection)</value>
+  </data>
+  <data name="tsmiUnderbar2hyphenSel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>233, 22</value>
+  </data>
+  <data name="tsmiUnderbar2hyphenSel.Text" xml:space="preserve">
+    <value>_2-</value>
+  </data>
   <data name="cmModifySelection.Size" type="System.Drawing.Size, System.Drawing">
-    <value>253, 136</value>
+    <value>234, 136</value>
   </data>
   <data name="&gt;&gt;cmModifySelection.Name" xml:space="preserve">
     <value>cmModifySelection</value>
   </data>
   <data name="&gt;&gt;cmModifySelection.Type" xml:space="preserve">
     <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="tsmiMakeFileNamableSel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>252, 22</value>
-  </data>
-  <data name="tsmiMakeFileNamableSel.Text" xml:space="preserve">
-    <value>&amp;Make File Namable (Selection)</value>
-  </data>
-  <data name="tsmiLowerSel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>252, 22</value>
-  </data>
-  <data name="tsmiLowerSel.Text" xml:space="preserve">
-    <value>&amp;Lower (Selection)</value>
-  </data>
-  <data name="tsmiUpperSel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>252, 22</value>
-  </data>
-  <data name="tsmiUpperSel.Text" xml:space="preserve">
-    <value>&amp;Upper (Selection)</value>
-  </data>
-  <data name="tsmiTrimSel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>252, 22</value>
-  </data>
-  <data name="tsmiTrimSel.Text" xml:space="preserve">
-    <value>&amp;Trim (Selection)</value>
-  </data>
-  <data name="tsmiRemoveSpaceSel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>252, 22</value>
-  </data>
-  <data name="tsmiRemoveSpaceSel.Text" xml:space="preserve">
-    <value>Remove &amp;Space(Selection)</value>
-  </data>
-  <data name="tsmiUnderbar2hyphenSel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>252, 22</value>
-  </data>
-  <data name="tsmiUnderbar2hyphenSel.Text" xml:space="preserve">
-    <value>_2-</value>
   </data>
   <data name="btnModifySelection.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
