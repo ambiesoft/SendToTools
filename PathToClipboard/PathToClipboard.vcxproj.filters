@@ -39,6 +39,9 @@
     <ClInclude Include="..\..\MyUtility\stdwin32\stdwin32.h">
       <Filter>1 Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\MyUtility\CenterWindow.h">
+      <Filter>1 Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -57,6 +60,12 @@
       <Filter>2 Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\MyUtility\stdwin32\stdwin32.cpp">
+      <Filter>2 Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\MyUtility\StdStringReplace.cpp">
+      <Filter>2 Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\MyUtility\CenterWindow.cpp">
       <Filter>2 Source Files</Filter>
     </ClCompile>
   </ItemGroup>
