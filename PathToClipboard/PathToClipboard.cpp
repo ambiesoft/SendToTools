@@ -64,6 +64,8 @@ INT_PTR CALLBACK DialogProc(
 			sDT = (DialogData*)lParam;
 			SendDlgItemMessage(hwndDlg, IDC_RADIO_NORMAL, BM_SETCHECK, BST_CHECKED, 0);
 			CenterWindow(hwndDlg);
+
+			return TRUE;
 		}
 		break;
 
