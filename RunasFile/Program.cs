@@ -2,11 +2,24 @@
 using System.Collections.Generic;
 using System.Windows.Forms;
 using System.Diagnostics;
+using System.Security.Principal;
 
 namespace RunasFile
 {
     static class Program
     {
+        static bool IsAdmin()
+        {
+            if(Environment.OSVersion.Version.Major <= 5)
+            { // XP
+                return true;
+            }
+
+            WindowsIdentity identity = WindowsIdentity.GetCurrent();
+            WindowsPrincipal principal = new WindowsPrincipal(identity);
+            return principal.IsInRole(WindowsBuiltInRole.Administrator);
+        }
+
         /// <summary>
         /// アプリケーションのメイン エントリ ポイントです。
         /// </summary>
@@ -36,7 +49,7 @@ namespace RunasFile
                 ProcessStartInfo startInfo = new ProcessStartInfo();
                 startInfo.FileName = Application.ExecutablePath;
                 startInfo.UseShellExecute = true;
-                startInfo.Verb = "runas";
+                startInfo.Verb = IsAdmin() ? null : "runas";
                 startInfo.Arguments = "/run \"" + theFileName + "\"";
                 startInfo.WorkingDirectory = System.IO.Directory.GetParent(theFileName).FullName; ;
                 
