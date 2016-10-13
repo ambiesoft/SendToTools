@@ -49,6 +49,7 @@
             this.tsmiTrim = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiRemoveSpace = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiUnderbar2hyphen = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiCn2Jp = new System.Windows.Forms.ToolStripMenuItem();
             this.btnCopy = new System.Windows.Forms.Button();
             this.cmModifySelection = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tsmiMakeFileNamableSel = new System.Windows.Forms.ToolStripMenuItem();
@@ -59,6 +60,7 @@
             this.tsmiUnderbar2hyphenSel = new System.Windows.Forms.ToolStripMenuItem();
             this.btnModifySelection = new ChangeFileName.MenuButton();
             this.btnModify = new ChangeFileName.MenuButton();
+            this.tsmiCn2JpSel = new System.Windows.Forms.ToolStripMenuItem();
             this.menuMoveTo.SuspendLayout();
             this.cmModify.SuspendLayout();
             this.cmModifySelection.SuspendLayout();
@@ -151,7 +153,8 @@
             this.tsmiUpper,
             this.tsmiTrim,
             this.tsmiRemoveSpace,
-            this.tsmiUnderbar2hyphen});
+            this.tsmiUnderbar2hyphen,
+            this.tsmiCn2Jp});
             this.cmModify.Name = "ccmModify";
             resources.ApplyResources(this.cmModify, "cmModify");
             // 
@@ -191,6 +194,12 @@
             resources.ApplyResources(this.tsmiUnderbar2hyphen, "tsmiUnderbar2hyphen");
             this.tsmiUnderbar2hyphen.Click += new System.EventHandler(this.tsmiUnderbar2hyphen_Click);
             // 
+            // tsmiCn2Jp
+            // 
+            this.tsmiCn2Jp.Name = "tsmiCn2Jp";
+            resources.ApplyResources(this.tsmiCn2Jp, "tsmiCn2Jp");
+            this.tsmiCn2Jp.Click += new System.EventHandler(this.tsmiCn2Jp_Click);
+            // 
             // btnCopy
             // 
             resources.ApplyResources(this.btnCopy, "btnCopy");
@@ -206,7 +215,8 @@
             this.tsmiUpperSel,
             this.tsmiTrimSel,
             this.tsmiRemoveSpaceSel,
-            this.tsmiUnderbar2hyphenSel});
+            this.tsmiUnderbar2hyphenSel,
+            this.tsmiCn2JpSel});
             this.cmModifySelection.Name = "ccmModify";
             resources.ApplyResources(this.cmModifySelection, "cmModifySelection");
             // 
@@ -259,6 +269,12 @@
             resources.ApplyResources(this.btnModify, "btnModify");
             this.btnModify.Name = "btnModify";
             this.btnModify.UseVisualStyleBackColor = true;
+            // 
+            // tsmiCn2JpSel
+            // 
+            this.tsmiCn2JpSel.Name = "tsmiCn2JpSel";
+            resources.ApplyResources(this.tsmiCn2JpSel, "tsmiCn2JpSel");
+            this.tsmiCn2JpSel.Click += new System.EventHandler(this.tsmiCn2JpSel_Click);
             // 
             // FormMain
             // 
@@ -325,5 +341,7 @@
         private System.Windows.Forms.ToolStripMenuItem tsmiTrimSel;
         private System.Windows.Forms.ToolStripMenuItem tsmiUnderbar2hyphen;
         private System.Windows.Forms.ToolStripMenuItem tsmiUnderbar2hyphenSel;
+        private System.Windows.Forms.ToolStripMenuItem tsmiCn2Jp;
+        private System.Windows.Forms.ToolStripMenuItem tsmiCn2JpSel;
     }
 }

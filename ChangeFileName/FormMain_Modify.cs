@@ -6,20 +6,21 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using Microsoft.VisualBasic.FileIO;
+using System.IO;
 
 
 namespace ChangeFileName
 {
     public partial class FormMain : Form
     {
-       
+
 
         delegate string Converter(string s);
         void ChangeSelectionCommon(Converter converter)
         {
             if (textName.SelectionLength == 0)
                 return;
-            
+
             int start = textName.SelectionStart;
 
             string s = textName.SelectedText;
@@ -30,7 +31,7 @@ namespace ChangeFileName
             textName.Focus();
         }
 
-        
+
         string NameFileNamable(string fn)
         {
             fn = fn.Replace("<", "");
@@ -126,5 +127,67 @@ namespace ChangeFileName
         {
             ChangeSelectionCommon(Underbar2Hyphen);
         }
+
+
+        private string Cn2Jp(string s)
+        {
+            Dictionary<string, string> table = new Dictionary<string, string>();
+
+            try
+            {
+                string thefile = "\\\\Inpsrv\\Share\\pass\\text\\jpcn.txt";
+
+                using (StreamReader sr = new StreamReader(thefile, Encoding.UTF8))
+                {
+                    string line = null;
+                    while ((line = sr.ReadLine()) != null)
+                    {
+                        if (string.IsNullOrEmpty(line))
+                        {
+                            continue;
+                        }
+                        string[] ar = line.Split('\t');
+
+                        if (ar == null || ar.Length != 2)
+                        {
+                            continue;
+                        }
+
+                        table[ar[1]] = ar[0];
+                    }
+                }
+            }
+            catch (FileNotFoundException)
+            {
+                return s;
+            }
+            catch (Exception)
+            {
+                return s;
+            }
+
+            string ret = string.Empty;
+            foreach (char c in s)
+            {
+                if (table.ContainsKey(c.ToString()))
+                {
+                    ret += table[c.ToString()];
+                }
+                else
+                {
+                    ret += c;
+                }
+            }
+            return ret;
+        }
+        private void tsmiCn2Jp_Click(object sender, EventArgs e)
+        {
+            textName.Text = Cn2Jp(textName.Text);
+        }
+        private void tsmiCn2JpSel_Click(object sender, EventArgs e)
+        {
+            ChangeSelectionCommon(Cn2Jp);
+        }
+
     }
 }
