@@ -58,9 +58,10 @@
             this.tsmiTrimSel = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiRemoveSpaceSel = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiUnderbar2hyphenSel = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiCn2JpSel = new System.Windows.Forms.ToolStripMenuItem();
             this.btnModifySelection = new ChangeFileName.MenuButton();
             this.btnModify = new ChangeFileName.MenuButton();
-            this.tsmiCn2JpSel = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnExplorer = new System.Windows.Forms.Button();
             this.menuMoveTo.SuspendLayout();
             this.cmModify.SuspendLayout();
             this.cmModifySelection.SuspendLayout();
@@ -256,6 +257,12 @@
             resources.ApplyResources(this.tsmiUnderbar2hyphenSel, "tsmiUnderbar2hyphenSel");
             this.tsmiUnderbar2hyphenSel.Click += new System.EventHandler(this.tsmiUnderbar2hyphenSel_Click);
             // 
+            // tsmiCn2JpSel
+            // 
+            this.tsmiCn2JpSel.Name = "tsmiCn2JpSel";
+            resources.ApplyResources(this.tsmiCn2JpSel, "tsmiCn2JpSel");
+            this.tsmiCn2JpSel.Click += new System.EventHandler(this.tsmiCn2JpSel_Click);
+            // 
             // btnModifySelection
             // 
             this.btnModifySelection.ContextMenuStrip = this.cmModifySelection;
@@ -270,11 +277,12 @@
             this.btnModify.Name = "btnModify";
             this.btnModify.UseVisualStyleBackColor = true;
             // 
-            // tsmiCn2JpSel
+            // btnExplorer
             // 
-            this.tsmiCn2JpSel.Name = "tsmiCn2JpSel";
-            resources.ApplyResources(this.tsmiCn2JpSel, "tsmiCn2JpSel");
-            this.tsmiCn2JpSel.Click += new System.EventHandler(this.tsmiCn2JpSel_Click);
+            resources.ApplyResources(this.btnExplorer, "btnExplorer");
+            this.btnExplorer.Name = "btnExplorer";
+            this.btnExplorer.UseVisualStyleBackColor = true;
+            this.btnExplorer.Click += new System.EventHandler(this.btnExplorer_Click);
             // 
             // FormMain
             // 
@@ -282,6 +290,7 @@
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
+            this.Controls.Add(this.btnExplorer);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textName);
             this.Controls.Add(this.chkAutoRun);
@@ -343,5 +352,6 @@
         private System.Windows.Forms.ToolStripMenuItem tsmiUnderbar2hyphenSel;
         private System.Windows.Forms.ToolStripMenuItem tsmiCn2Jp;
         private System.Windows.Forms.ToolStripMenuItem tsmiCn2JpSel;
+        private System.Windows.Forms.Button btnExplorer;
     }
 }

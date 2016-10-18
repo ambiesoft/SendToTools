@@ -215,8 +215,11 @@ namespace ChangeFileName
             Close();
         }
 
-
-
-
+        private void btnExplorer_Click(object sender, EventArgs e)
+        {
+            string path = this.textName.Tag.ToString();
+            string arg = "/select,\"" + path + "\",/n";
+            System.Diagnostics.Process.Start("explorer.exe", arg);
+        }
     }
 }
