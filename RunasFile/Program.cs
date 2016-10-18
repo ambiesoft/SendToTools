@@ -10,14 +10,32 @@ namespace RunasFile
     {
         static bool IsAdmin()
         {
-            if(Environment.OSVersion.Version.Major <= 5)
-            { // XP
-                return true;
-            }
+            //if(Environment.OSVersion.Version.Major <= 5)
+            //{ // XP
+            //    return true;
+            //}
 
-            WindowsIdentity identity = WindowsIdentity.GetCurrent();
-            WindowsPrincipal principal = new WindowsPrincipal(identity);
-            return principal.IsInRole(WindowsBuiltInRole.Administrator);
+            //WindowsIdentity identity = WindowsIdentity.GetCurrent();
+            //WindowsPrincipal principal = new WindowsPrincipal(identity);
+            //return principal.IsInRole(WindowsBuiltInRole.Administrator);
+
+            bool isAdmin;
+            try
+            {
+                //get the currently logged in user
+                WindowsIdentity user = WindowsIdentity.GetCurrent();
+                WindowsPrincipal principal = new WindowsPrincipal(user);
+                isAdmin = principal.IsInRole(WindowsBuiltInRole.Administrator);
+            }
+            catch (UnauthorizedAccessException)
+            {
+                isAdmin = false;
+            }
+            catch (Exception)
+            {
+                isAdmin = false;
+            }
+            return isAdmin;
         }
 
         /// <summary>
