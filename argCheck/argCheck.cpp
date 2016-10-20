@@ -1,17 +1,15 @@
-
-
-
 #include "stdafx.h"
-#include <string>
+
 #include "argCheck.h"
 
 #define I18N(t) t
 
 using namespace std;
+using namespace stdwin32;
 
 #define MAX_LOADSTRING 100
 
-#define KAIGYO L"\n";
+#define KAIGYO L"\r\n";
 
 HINSTANCE hInst;
 WCHAR szTitle[MAX_LOADSTRING];
@@ -19,6 +17,51 @@ WCHAR szWindowClass[MAX_LOADSTRING];
 
 
 
+struct MyDialogData {
+	wstring title_;
+	wstring message_;
+};
+BOOL CALLBACK MyDlgProc(HWND hDlg, UINT uMsg, WPARAM wParam, LPARAM lParam)
+{
+	static MyDialogData* spData;
+	switch (uMsg)
+	{
+	case WM_INITDIALOG:
+	{
+		spData = (MyDialogData*)lParam;
+		SetWindowText(hDlg, spData->title_.c_str());
+		SetDlgItemText(hDlg, IDC_EDIT_MAIN, spData->message_.c_str());
+
+		CenterWindow(hDlg);
+		return TRUE;
+	}
+	break;
+
+	case WM_COMMAND:
+	{
+		switch (LOWORD(wParam))
+		{
+		case IDOK:
+		{
+			EndDialog(hDlg, IDOK);
+			return 0;
+		}
+		break;
+
+		case IDCANCEL:
+		{
+			EndDialog(hDlg, IDCANCEL);
+			return 0;
+		}
+		break;
+
+		}
+		break;
+	}
+	break;
+	}
+	return FALSE;
+}
 
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	_In_opt_ HINSTANCE hPrevInstance,
@@ -44,8 +87,16 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	message += L":";
 	message += KAIGYO;
 	message += std::to_wstring(lstrlen(GetCommandLine()));
-	message += KAIGYO; 
 	message += KAIGYO;
+	message += KAIGYO;
+
+	message += I18N(L"argc");
+	message += L":";
+	message += KAIGYO;
+	message += stdItoT(__argc);
+	message += KAIGYO;
+	message += KAIGYO;
+
 	for (int i = 0; i < __argc; ++i)
 	{
 		message += I18N(L"Argument");
@@ -57,12 +108,23 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 		message += KAIGYO;
 	}
 
-	MessageBox(NULL,
-		message.c_str(),
-		szTitle,
-		MB_ICONINFORMATION);
+	//MessageBox(NULL,
+	//	message.c_str(),
+	//	szTitle,
+	//	MB_ICONINFORMATION);
 
 
+	MyDialogData data;
+	data.title_ = szTitle;
+	data.message_ = message;
+	if (IDOK != DialogBoxParam(hInstance,
+		MAKEINTRESOURCE(IDD_DIALOG_MAIN),
+		NULL,
+		MyDlgProc,
+		(LPARAM)&data))
+	{
+		return 100;
+	}
 
 	return 0;
 }

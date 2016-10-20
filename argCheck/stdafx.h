@@ -17,5 +17,9 @@
 #include <memory.h>
 #include <tchar.h>
 
+#include <string>
+
+#include "../../MyUtility/stdwin32/stdwin32.h"
+#include "../../MyUtility/CenterWindow.h"
 
 // TODO: reference additional headers your program requires here
