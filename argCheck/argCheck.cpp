@@ -75,6 +75,15 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	LoadStringW(hInstance, IDC_ARGCHECK, szWindowClass, MAX_LOADSTRING);
 
 	wstring message;
+	message += I18N(L"Current Directory");
+	message += L":";
+	message += KAIGYO;
+	message += stdGetCurrentDirectory();
+	message += KAIGYO;
+	message += KAIGYO;
+
+
+
 	message += I18N(L"Command Line");
 	message += L":";
 	message += KAIGYO;
