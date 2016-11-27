@@ -108,13 +108,13 @@ namespace RunasFile
 
             if (bGetFirst)
             {
-                if(start <= 0)
+                if (start <= 0)
                 {
                     return result;
                 }
 
                 string prev = string.Empty;
-                if(dq != '\0')
+                if (dq != '\0')
                 {
                     prev += dq;
                     prev += result;
@@ -184,7 +184,9 @@ namespace RunasFile
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message);
+                    MessageBox.Show(ex.Message, Application.ProductName,
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
                 }
                 return;
             }
@@ -197,7 +199,7 @@ namespace RunasFile
                 startInfo.UseShellExecute = true;
                 startInfo.Verb = IsAdmin() ? null : "runas";
                 startInfo.Arguments = "/run " + theArguments;
-                startInfo.WorkingDirectory = System.IO.Directory.GetParent(undq(getAllArgs(theArguments,0,true))).FullName; ;
+                startInfo.WorkingDirectory = System.IO.Directory.GetParent(undq(getAllArgs(theArguments, 0, true))).FullName; ;
 
 
                 try
@@ -207,7 +209,9 @@ namespace RunasFile
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message);
+                    MessageBox.Show(ex.Message, Application.ProductName,
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
                 }
                 return;
             }
@@ -220,7 +224,7 @@ namespace RunasFile
             if (string.IsNullOrEmpty(s))
                 return s;
 
-            if(s[0]=='"' || s[0]=='\'')
+            if (s[0] == '"' || s[0] == '\'')
             {
                 s = s.Trim(s[0]);
             }
