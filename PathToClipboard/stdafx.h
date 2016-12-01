@@ -20,3 +20,6 @@
 #include <vector>
 
 // TODO: reference additional headers your program requires here
+enum {
+	WM_APP_INITIALUPDATE = (WM_APP + 1)
+};

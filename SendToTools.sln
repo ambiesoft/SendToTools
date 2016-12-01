@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShortcutRenamer", "ShortcutRenamer\ShortcutRenamer.csproj", "{AF635702-0D11-4CEF-AA87-8F4F9588523E}"
 EndProject
@@ -42,6 +42,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNet4Runnable", "DotNet4Runnable\DotNet4Runnable.csproj", "{7EB31E6F-AC69-4E5E-8165-71DBD5D398E5}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PathToClipboard", "PathToClipboard\PathToClipboard.vcxproj", "{3409B881-FBB7-4BF9-B99E-A0865DB495AC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RunasArg", "RunasArg\RunasArg.csproj", "{D268006B-5C40-4E61-A8FE-EA3EEEB73FFC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SendtoCommon", "SendtoCommon\SendtoCommon.csproj", "{236322BF-1353-4E16-8862-3A47934BE763}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -331,6 +335,38 @@ Global
 		{3409B881-FBB7-4BF9-B99E-A0865DB495AC}.Release|Win32.Build.0 = Release|Win32
 		{3409B881-FBB7-4BF9-B99E-A0865DB495AC}.Release|x64.ActiveCfg = Release|x64
 		{3409B881-FBB7-4BF9-B99E-A0865DB495AC}.Release|x64.Build.0 = Release|x64
+		{D268006B-5C40-4E61-A8FE-EA3EEEB73FFC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D268006B-5C40-4E61-A8FE-EA3EEEB73FFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D268006B-5C40-4E61-A8FE-EA3EEEB73FFC}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{D268006B-5C40-4E61-A8FE-EA3EEEB73FFC}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{D268006B-5C40-4E61-A8FE-EA3EEEB73FFC}.Debug|Win32.ActiveCfg = Debug|Any CPU
+		{D268006B-5C40-4E61-A8FE-EA3EEEB73FFC}.Debug|Win32.Build.0 = Debug|Any CPU
+		{D268006B-5C40-4E61-A8FE-EA3EEEB73FFC}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{D268006B-5C40-4E61-A8FE-EA3EEEB73FFC}.Debug|x64.Build.0 = Debug|Any CPU
+		{D268006B-5C40-4E61-A8FE-EA3EEEB73FFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D268006B-5C40-4E61-A8FE-EA3EEEB73FFC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D268006B-5C40-4E61-A8FE-EA3EEEB73FFC}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{D268006B-5C40-4E61-A8FE-EA3EEEB73FFC}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{D268006B-5C40-4E61-A8FE-EA3EEEB73FFC}.Release|Win32.ActiveCfg = Release|Any CPU
+		{D268006B-5C40-4E61-A8FE-EA3EEEB73FFC}.Release|Win32.Build.0 = Release|Any CPU
+		{D268006B-5C40-4E61-A8FE-EA3EEEB73FFC}.Release|x64.ActiveCfg = Release|Any CPU
+		{D268006B-5C40-4E61-A8FE-EA3EEEB73FFC}.Release|x64.Build.0 = Release|Any CPU
+		{236322BF-1353-4E16-8862-3A47934BE763}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{236322BF-1353-4E16-8862-3A47934BE763}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{236322BF-1353-4E16-8862-3A47934BE763}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{236322BF-1353-4E16-8862-3A47934BE763}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{236322BF-1353-4E16-8862-3A47934BE763}.Debug|Win32.ActiveCfg = Debug|Any CPU
+		{236322BF-1353-4E16-8862-3A47934BE763}.Debug|Win32.Build.0 = Debug|Any CPU
+		{236322BF-1353-4E16-8862-3A47934BE763}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{236322BF-1353-4E16-8862-3A47934BE763}.Debug|x64.Build.0 = Debug|Any CPU
+		{236322BF-1353-4E16-8862-3A47934BE763}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{236322BF-1353-4E16-8862-3A47934BE763}.Release|Any CPU.Build.0 = Release|Any CPU
+		{236322BF-1353-4E16-8862-3A47934BE763}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{236322BF-1353-4E16-8862-3A47934BE763}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{236322BF-1353-4E16-8862-3A47934BE763}.Release|Win32.ActiveCfg = Release|Any CPU
+		{236322BF-1353-4E16-8862-3A47934BE763}.Release|Win32.Build.0 = Release|Any CPU
+		{236322BF-1353-4E16-8862-3A47934BE763}.Release|x64.ActiveCfg = Release|Any CPU
+		{236322BF-1353-4E16-8862-3A47934BE763}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

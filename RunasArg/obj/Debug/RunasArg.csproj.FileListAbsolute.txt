@@ -1,0 +1,11 @@
+C:\cygwin\home\gDagger\dev\SendToTools\RunasArg\bin\Debug\RunasArg.exe.config
+C:\cygwin\home\gDagger\dev\SendToTools\RunasArg\bin\Debug\RunasArg.exe
+C:\cygwin\home\gDagger\dev\SendToTools\RunasArg\bin\Debug\RunasArg.pdb
+C:\cygwin\home\gDagger\dev\SendToTools\RunasArg\obj\Debug\RunasArg.csprojResolveAssemblyReference.cache
+C:\cygwin\home\gDagger\dev\SendToTools\RunasArg\obj\Debug\RunasArg.FormMain.resources
+C:\cygwin\home\gDagger\dev\SendToTools\RunasArg\obj\Debug\RunasArg.Properties.Resources.resources
+C:\cygwin\home\gDagger\dev\SendToTools\RunasArg\obj\Debug\RunasArg.csproj.GenerateResource.Cache
+C:\cygwin\home\gDagger\dev\SendToTools\RunasArg\obj\Debug\RunasArg.exe
+C:\cygwin\home\gDagger\dev\SendToTools\RunasArg\obj\Debug\RunasArg.pdb
+C:\cygwin\home\gDagger\dev\SendToTools\RunasArg\bin\Debug\SendtoCommon.dll
+C:\cygwin\home\gDagger\dev\SendToTools\RunasArg\bin\Debug\SendtoCommon.pdb

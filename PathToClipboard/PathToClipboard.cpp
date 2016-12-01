@@ -64,8 +64,14 @@ INT_PTR CALLBACK DialogProc(
 			sDT = (DialogData*)lParam;
 			SendDlgItemMessage(hwndDlg, IDC_RADIO_NORMAL, BM_SETCHECK, BST_CHECKED, 0);
 			CenterWindow(hwndDlg);
-
+			PostMessage(hwndDlg, WM_APP_INITIALUPDATE, 0, 0);
 			return TRUE;
+		}
+		break;
+
+		case WM_APP_INITIALUPDATE:
+		{
+			SetForegroundWindow(hwndDlg);
 		}
 		break;
 
