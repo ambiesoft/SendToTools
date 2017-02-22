@@ -62,9 +62,13 @@
             this.btnModifySelection = new ChangeFileName.MenuButton();
             this.btnModify = new ChangeFileName.MenuButton();
             this.btnExplorer = new System.Windows.Forms.Button();
+            this.btnPSpecial = new System.Windows.Forms.Button();
+            this.menuPSpecial = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.pasteWithAddingSpaceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuMoveTo.SuspendLayout();
             this.cmModify.SuspendLayout();
             this.cmModifySelection.SuspendLayout();
+            this.menuPSpecial.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnCancel
@@ -284,12 +288,33 @@
             this.btnExplorer.UseVisualStyleBackColor = true;
             this.btnExplorer.Click += new System.EventHandler(this.btnExplorer_Click);
             // 
+            // btnPSpecial
+            // 
+            resources.ApplyResources(this.btnPSpecial, "btnPSpecial");
+            this.btnPSpecial.Name = "btnPSpecial";
+            this.btnPSpecial.UseVisualStyleBackColor = true;
+            this.btnPSpecial.Click += new System.EventHandler(this.btnPSpecial_Click);
+            // 
+            // menuPSpecial
+            // 
+            this.menuPSpecial.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.pasteWithAddingSpaceToolStripMenuItem});
+            this.menuPSpecial.Name = "menuPSpecial";
+            resources.ApplyResources(this.menuPSpecial, "menuPSpecial");
+            // 
+            // pasteWithAddingSpaceToolStripMenuItem
+            // 
+            this.pasteWithAddingSpaceToolStripMenuItem.Name = "pasteWithAddingSpaceToolStripMenuItem";
+            resources.ApplyResources(this.pasteWithAddingSpaceToolStripMenuItem, "pasteWithAddingSpaceToolStripMenuItem");
+            this.pasteWithAddingSpaceToolStripMenuItem.Click += new System.EventHandler(this.pasteWithAddingSpaceToolStripMenuItem_Click);
+            // 
             // FormMain
             // 
             this.AcceptButton = this.btnOK;
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
+            this.Controls.Add(this.btnPSpecial);
             this.Controls.Add(this.btnExplorer);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textName);
@@ -314,6 +339,7 @@
             this.menuMoveTo.ResumeLayout(false);
             this.cmModify.ResumeLayout(false);
             this.cmModifySelection.ResumeLayout(false);
+            this.menuPSpecial.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -353,5 +379,8 @@
         private System.Windows.Forms.ToolStripMenuItem tsmiCn2Jp;
         private System.Windows.Forms.ToolStripMenuItem tsmiCn2JpSel;
         private System.Windows.Forms.Button btnExplorer;
+        private System.Windows.Forms.Button btnPSpecial;
+        private System.Windows.Forms.ContextMenuStrip menuPSpecial;
+        private System.Windows.Forms.ToolStripMenuItem pasteWithAddingSpaceToolStripMenuItem;
     }
 }

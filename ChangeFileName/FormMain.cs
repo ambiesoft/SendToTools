@@ -221,5 +221,21 @@ namespace ChangeFileName
             string arg = "/select,\"" + path + "\",/n";
             System.Diagnostics.Process.Start("explorer.exe", arg);
         }
+
+        private void pasteWithAddingSpaceToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                textName.Text = textName.Text + " " + Clipboard.GetText();
+            }
+            catch (Exception) { }
+        }
+
+        private void btnPSpecial_Click(object sender, EventArgs e)
+        {
+            Point pt = btnPSpecial.Location;
+            pt.Y += btnPSpecial.Size.Height;
+            menuPSpecial.Show(this.PointToScreen(pt));
+        }
     }
 }
