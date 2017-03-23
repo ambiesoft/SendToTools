@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26228.9
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShortcutRenamer", "ShortcutRenamer\ShortcutRenamer.csproj", "{AF635702-0D11-4CEF-AA87-8F4F9588523E}"
 EndProject
@@ -50,6 +50,8 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "FileStatus", "FileStatus\FileStatus.vcxproj", "{02E7F292-C899-4F76-AB95-13C490F38AED}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RunOnebyOne", "RunOnebyOne\RunOnebyOne.csproj", "{852E0EED-52E5-48B1-B0D0-D5169F550B3B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "virustotalcheck", "virustotalcheck\virustotalcheck.csproj", "{72668FD5-477B-4A61-B31A-F2D6DAE83F1B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -401,6 +403,22 @@ Global
 		{852E0EED-52E5-48B1-B0D0-D5169F550B3B}.Release|Win32.Build.0 = Release|Any CPU
 		{852E0EED-52E5-48B1-B0D0-D5169F550B3B}.Release|x64.ActiveCfg = Release|Any CPU
 		{852E0EED-52E5-48B1-B0D0-D5169F550B3B}.Release|x64.Build.0 = Release|Any CPU
+		{72668FD5-477B-4A61-B31A-F2D6DAE83F1B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{72668FD5-477B-4A61-B31A-F2D6DAE83F1B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{72668FD5-477B-4A61-B31A-F2D6DAE83F1B}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{72668FD5-477B-4A61-B31A-F2D6DAE83F1B}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{72668FD5-477B-4A61-B31A-F2D6DAE83F1B}.Debug|Win32.ActiveCfg = Debug|Any CPU
+		{72668FD5-477B-4A61-B31A-F2D6DAE83F1B}.Debug|Win32.Build.0 = Debug|Any CPU
+		{72668FD5-477B-4A61-B31A-F2D6DAE83F1B}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{72668FD5-477B-4A61-B31A-F2D6DAE83F1B}.Debug|x64.Build.0 = Debug|Any CPU
+		{72668FD5-477B-4A61-B31A-F2D6DAE83F1B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{72668FD5-477B-4A61-B31A-F2D6DAE83F1B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{72668FD5-477B-4A61-B31A-F2D6DAE83F1B}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{72668FD5-477B-4A61-B31A-F2D6DAE83F1B}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{72668FD5-477B-4A61-B31A-F2D6DAE83F1B}.Release|Win32.ActiveCfg = Release|Any CPU
+		{72668FD5-477B-4A61-B31A-F2D6DAE83F1B}.Release|Win32.Build.0 = Release|Any CPU
+		{72668FD5-477B-4A61-B31A-F2D6DAE83F1B}.Release|x64.ActiveCfg = Release|Any CPU
+		{72668FD5-477B-4A61-B31A-F2D6DAE83F1B}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
