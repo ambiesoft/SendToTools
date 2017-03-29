@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using System.Diagnostics;
 using System.Security.Principal;
-using SendtoCommon;
+
+using Ambiesoft;
 
 namespace RunasFile
 {
@@ -68,12 +69,12 @@ namespace RunasFile
                     return;
                 }
 
-                theArguments = CommonFunction.getAllArgs(2);
+                theArguments = AmbLib.getAllArgs(2);
 
 
                 ProcessStartInfo startInfo = new ProcessStartInfo();
-                startInfo.FileName = CommonFunction.getAllArgs(theArguments, 0, true);
-                startInfo.Arguments = CommonFunction.getAllArgs(theArguments, 1);
+                startInfo.FileName = AmbLib.getAllArgs(theArguments, 0, true);
+                startInfo.Arguments = AmbLib.getAllArgs(theArguments, 1);
                 startInfo.UseShellExecute = true;
                 startInfo.Verb = "open";
                 //startInfo.Arguments = "start \"\" \"" + theFileName + "\"";
@@ -94,14 +95,14 @@ namespace RunasFile
             }
             else  // not with /run
             {
-                theArguments = CommonFunction.getAllArgs(1);
+                theArguments = AmbLib.getAllArgs(1);
 
                 ProcessStartInfo startInfo = new ProcessStartInfo();
                 startInfo.FileName = Application.ExecutablePath;
                 startInfo.UseShellExecute = true;
                 startInfo.Verb = IsAdmin() ? null : "runas";
                 startInfo.Arguments = "/run " + theArguments;
-                startInfo.WorkingDirectory = System.IO.Directory.GetParent(CommonFunction.undq(CommonFunction.getAllArgs(theArguments, 0, true))).FullName; ;
+                startInfo.WorkingDirectory = System.IO.Directory.GetParent(AmbLib.unDoubleQuote(AmbLib.getAllArgs(theArguments, 0, true))).FullName; ;
 
 
                 try

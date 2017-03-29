@@ -33,7 +33,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Ambiesoft.amblib">
-      <HintPath>..\..\amblib\amblib\bin\Release\Ambiesoft.amblib.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Linkout\DNAssembly2008\Ambiesoft.amblib.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

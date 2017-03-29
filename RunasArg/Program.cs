@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using SendtoCommon;
+using Ambiesoft;
 using System.Diagnostics;
 
 namespace RunasArg
@@ -32,7 +32,7 @@ namespace RunasArg
             if (ofd.ShowDialog() != DialogResult.OK)
                 return;
 
-            theArguments = CommonFunction.getAllArgs(1);
+            theArguments = AmbLib.getAllArgs(1);
             if(string.IsNullOrEmpty(theArguments))
             {
                 MessageBox.Show(Properties.Resources.NO_ARGUMENTS,
@@ -49,7 +49,7 @@ namespace RunasArg
             startInfo.UseShellExecute = true;
             startInfo.Verb = "runas";
             startInfo.Arguments = theArguments;
-            startInfo.WorkingDirectory = System.IO.Directory.GetParent(CommonFunction.undq(CommonFunction.getAllArgs(theArguments, 0, true))).FullName;
+            startInfo.WorkingDirectory = System.IO.Directory.GetParent(AmbLib.unDoubleQuote(AmbLib.getAllArgs(theArguments, 0, true))).FullName;
 
 
             try
