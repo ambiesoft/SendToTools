@@ -148,7 +148,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnCancel.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>11</value>
   </data>
   <data name="btnOK.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
@@ -178,7 +178,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnOK.ZOrder" xml:space="preserve">
-    <value>17</value>
+    <value>18</value>
   </data>
   <data name="textName.Font" type="System.Drawing.Font, System.Drawing">
     <value>MS UI Gothic, 14.25pt</value>
@@ -205,7 +205,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;textName.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>8</value>
   </data>
   <data name="label1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -235,7 +235,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>7</value>
   </data>
   <data name="btnLaunch.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
@@ -265,7 +265,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnLaunch.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>12</value>
   </data>
   <data name="btnPaste.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
@@ -295,7 +295,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnPaste.ZOrder" xml:space="preserve">
-    <value>18</value>
+    <value>19</value>
   </data>
   <data name="btnTrash.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -322,7 +322,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnTrash.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>14</value>
   </data>
   <data name="chkAutoRun.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -352,7 +352,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;chkAutoRun.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>9</value>
   </data>
   <data name="btnCopyPath.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
@@ -382,7 +382,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnCopyPath.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>13</value>
   </data>
   <data name="btnMoveTo.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -409,7 +409,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnMoveTo.ZOrder" xml:space="preserve">
-    <value>14</value>
+    <value>15</value>
   </data>
   <metadata name="menuMoveTo.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
@@ -511,7 +511,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnCopy.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>10</value>
   </data>
   <metadata name="cmModifySelection.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>250, 17</value>
@@ -592,7 +592,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnModifySelection.ZOrder" xml:space="preserve">
-    <value>15</value>
+    <value>16</value>
   </data>
   <data name="btnModify.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -619,7 +619,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnModify.ZOrder" xml:space="preserve">
-    <value>16</value>
+    <value>17</value>
   </data>
   <data name="btnExplorer.Location" type="System.Drawing.Point, System.Drawing">
     <value>442, 142</value>
@@ -643,7 +643,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnExplorer.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="btnPSpecial.Location" type="System.Drawing.Point, System.Drawing">
     <value>524, 144</value>
@@ -667,7 +667,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnPSpecial.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>5</value>
   </data>
   <metadata name="menuPSpecial.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>413, 17</value>
@@ -686,6 +686,30 @@
   </data>
   <data name="&gt;&gt;menuPSpecial.Type" xml:space="preserve">
     <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="lblFileInfo.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblFileInfo.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 55</value>
+  </data>
+  <data name="lblFileInfo.Size" type="System.Drawing.Size, System.Drawing">
+    <value>0, 13</value>
+  </data>
+  <data name="lblFileInfo.TabIndex" type="System.Int32, mscorlib">
+    <value>15</value>
+  </data>
+  <data name="&gt;&gt;lblFileInfo.Name" xml:space="preserve">
+    <value>lblFileInfo</value>
+  </data>
+  <data name="&gt;&gt;lblFileInfo.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblFileInfo.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblFileInfo.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>

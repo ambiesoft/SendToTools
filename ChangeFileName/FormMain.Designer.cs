@@ -65,6 +65,7 @@
             this.btnPSpecial = new System.Windows.Forms.Button();
             this.menuPSpecial = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.pasteWithAddingSpaceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.lblFileInfo = new System.Windows.Forms.Label();
             this.menuMoveTo.SuspendLayout();
             this.cmModify.SuspendLayout();
             this.cmModifySelection.SuspendLayout();
@@ -308,12 +309,18 @@
             resources.ApplyResources(this.pasteWithAddingSpaceToolStripMenuItem, "pasteWithAddingSpaceToolStripMenuItem");
             this.pasteWithAddingSpaceToolStripMenuItem.Click += new System.EventHandler(this.pasteWithAddingSpaceToolStripMenuItem_Click);
             // 
+            // lblFileInfo
+            // 
+            resources.ApplyResources(this.lblFileInfo, "lblFileInfo");
+            this.lblFileInfo.Name = "lblFileInfo";
+            // 
             // FormMain
             // 
             this.AcceptButton = this.btnOK;
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
+            this.Controls.Add(this.lblFileInfo);
             this.Controls.Add(this.btnPSpecial);
             this.Controls.Add(this.btnExplorer);
             this.Controls.Add(this.label1);
@@ -382,5 +389,6 @@
         private System.Windows.Forms.Button btnPSpecial;
         private System.Windows.Forms.ContextMenuStrip menuPSpecial;
         private System.Windows.Forms.ToolStripMenuItem pasteWithAddingSpaceToolStripMenuItem;
+        private System.Windows.Forms.Label lblFileInfo;
     }
 }
