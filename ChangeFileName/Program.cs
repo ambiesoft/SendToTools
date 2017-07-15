@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Windows.Forms;
 
 namespace ChangeFileName
@@ -63,7 +64,7 @@ namespace ChangeFileName
             
             string theFileName = args[0];
             // theFileName = @"C:\Documents and Settings\tt\My Documents\Productivity Distribution, Firm Heterogeneity, and Agglomeration.pdf";
-            if (!System.IO.File.Exists(theFileName))
+            if (!File.Exists(theFileName) && !Directory.Exists(theFileName) )
             {
                 MessageBox.Show(string.Format(Properties.Resources.FILE_NOT_FOUND, theFileName),
                     Application.ProductName,

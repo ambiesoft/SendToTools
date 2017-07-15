@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
@@ -13,10 +14,32 @@ namespace ChangeFileName
         {
             try
             {
-                System.IO.FileInfo fiorig = new System.IO.FileInfo(this.textName.Tag.ToString());
-                string destfilename = textName.Text + fiorig.Extension;
-                string destfn = System.IO.Path.Combine(path, destfilename);
-                fiorig.MoveTo(destfn);
+                string srcfilename = this.textName.Tag.ToString();
+                if (File.Exists(srcfilename))
+                {
+                    System.IO.FileInfo fiorig = new System.IO.FileInfo(srcfilename);
+
+                    string destfilename = textName.Text + fiorig.Extension;
+                    string destfn = System.IO.Path.Combine(path, destfilename);
+                    fiorig.MoveTo(destfn);
+                }
+                else if(Directory.Exists(srcfilename))
+                {
+                    DirectoryInfo diorig = new DirectoryInfo(srcfilename);
+
+                    string destfilename = textName.Text + diorig.Extension;
+                    string destfn = System.IO.Path.Combine(path, destfilename);
+                    // diorig.MoveTo(destfn);
+
+                    // Directory.Move(this.textName.Tag.ToString(), destfn);
+
+                    if(File.Exists(destfn) || Directory.Exists(destfn))
+                    {
+                        showError("\"" + destfn + "\" " + "already exists.");
+                        return;
+                    }
+                    Microsoft.VisualBasic.FileIO.FileSystem.MoveDirectory(srcfilename, destfn);
+                }
                 this.Close();
             }
             catch (Exception ex)
@@ -37,16 +60,36 @@ namespace ChangeFileName
         }
         private void itemNewFolder_Click(object sender, EventArgs e)
         {
-            FolderBrowserDialog fbd = new FolderBrowserDialog();
-            using (new Ambiesoft.CenterWinDialog(this))
+
+
+            var dlg1 = new Ionic.Utils.FolderBrowserDialogEx();
+            dlg1.Description = "Select a folder to extract to:";
+            dlg1.ShowNewFolderButton = true;
+            dlg1.ShowEditBox = true;
+            //dlg1.NewStyle = false;
+            //dlg1.SelectedPath = txtExtractDirectory.Text;
+            dlg1.ShowFullPathInEditBox = true;
+            // dlg1.RootFolder = System.Environment.SpecialFolder.MyComputer;
+
+            // Show the FolderBrowserDialog.
+            DialogResult result = dlg1.ShowDialog();
+            if (result != DialogResult.OK)
             {
-                if (DialogResult.OK != fbd.ShowDialog(this))
-                    return;
+                // txtExtractDirectory.Text = dlg1.SelectedPath;
+                return;
             }
+
+
+            //FolderBrowserDialog fbd = new FolderBrowserDialog();
+            //using (new Ambiesoft.CenterWinDialog(this))
+            //{
+            //    if (DialogResult.OK != fbd.ShowDialog(this))
+            //        return;
+            //}
             List<string> dirs = new List<string>(DiskDirs);
 
-            dirs.RemoveAll(n => n.Equals(fbd.SelectedPath, StringComparison.OrdinalIgnoreCase));
-            dirs.Insert(0, fbd.SelectedPath);
+            dirs.RemoveAll(n => n.Equals(dlg1.SelectedPath, StringComparison.OrdinalIgnoreCase));
+            dirs.Insert(0, dlg1.SelectedPath);
 
             if (dirs.Count > MaxDirCount)
             {
@@ -54,7 +97,7 @@ namespace ChangeFileName
             }
             DiskDirs = dirs.ToArray();
 
-            moveToAndClose(fbd.SelectedPath);
+            moveToAndClose(dlg1.SelectedPath);
         }
         private void itemClearFolder_Click(object sender, EventArgs e)
         {
