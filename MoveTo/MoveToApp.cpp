@@ -41,14 +41,14 @@ BOOL CMoveToApp::InitInstance()
 	//UNREFERENCED_PARAMETER(lpCmdLine);
 	CWinApp::InitInstance();
 
-	COption opTarget(L"/T", 1);
+	COption opTarget(L"/T", L"/t", 1);
 	COption opFile(L"");
 	CCommandLineParser cmd;
 	cmd.AddOption(&opTarget);
 	cmd.AddOption(&opFile);
 	cmd.Parse();
 
-	wstring mainArg = opTarget.getFirstValue();
+	wstring destDir = opTarget.getFirstValue();
 	wstring sourcefile = opFile.getFirstValue();
 	if (sourcefile.empty())
 	{
@@ -71,7 +71,7 @@ BOOL CMoveToApp::InitInstance()
 		ErrorExit(I18N(L"Failed to load from db."));
 	}
 
-	if (!PathIsDirectory(mainArg.c_str()))
+	if (destDir.empty())
 	{
 		if (allsave.empty())
 		{
@@ -83,7 +83,7 @@ BOOL CMoveToApp::InitInstance()
 				wstring msg = stdwin32::string_format(I18N(L"\"%s\" is not a folder."), szFolder);
 				ErrorExit(msg.c_str());
 			}
-			mainArg = szFolder;
+			destDir = szFolder;
 		}
 		else
 		{
@@ -94,25 +94,25 @@ BOOL CMoveToApp::InitInstance()
 			if(IDOK != dlg.DoModal())
 				return FALSE;
 
-			mainArg = dlg.m_strDirResult;
+			destDir = dlg.m_strDirResult;
 		}
 	}
 
-	if (mainArg.empty() || !stdwin32::stdIsFullPath(mainArg.c_str()))
+	if (destDir.empty() || !stdwin32::stdIsFullPath(destDir.c_str()))
 	{
-		wstring msg = stdwin32::string_format(I18N(L"\"%s\" is empty or not full path."), mainArg.c_str());
+		wstring msg = stdwin32::string_format(I18N(L"\"%s\" is empty or not full path."), destDir.c_str());
 		ErrorExit(msg.c_str());
 	}
 
-	if (!PathIsDirectory(mainArg.c_str()))
+	if (!PathIsDirectory(destDir.c_str()))
 	{
-		if (PathFileExists(mainArg.c_str()))
+		if (PathFileExists(destDir.c_str()))
 		{
-			wstring msg = stdwin32::string_format(I18N(L"\"%s\" is a file."), mainArg.c_str());
+			wstring msg = stdwin32::string_format(I18N(L"\"%s\" is a file."), destDir.c_str());
 			ErrorExit(msg.c_str());
 		}
 
-		wstring msg = stdwin32::string_format(I18N(L"\"%s\" does not exist. Do you want to create a new folder?"), mainArg.c_str());
+		wstring msg = stdwin32::string_format(I18N(L"\"%s\" does not exist. Do you want to create a new folder?"), destDir.c_str());
 		if (IDYES != MessageBox(NULL,
 			msg.c_str(),
 			APPNAME,
@@ -121,32 +121,32 @@ BOOL CMoveToApp::InitInstance()
 			return FALSE;
 		}
 
-		CreateDirectory(mainArg.c_str(), NULL);
+		CreateDirectory(destDir.c_str(), NULL);
 	}
 
 	// final check
-	if (!PathIsDirectory(mainArg.c_str()))
+	if (!PathIsDirectory(destDir.c_str()))
 	{
-		wstring msg = stdwin32::string_format(I18N(L"\"%s\" is not a folder."), mainArg.c_str());
+		wstring msg = stdwin32::string_format(I18N(L"\"%s\" is not a folder."), destDir.c_str());
 		ErrorExit(msg.c_str());
 	}
 
 
-	mainArg = stdwin32::stdAddBackSlash(mainArg);
+	destDir = stdwin32::stdAddBackSlash(destDir);
 #ifdef _DEBUG
 	{
 		wstring msg = L"SOURCE: " + sourcefile +L"\r\n";
-		msg.append(L"DEST: " + mainArg);
+		msg.append(L"DEST: " + destDir);
 		MessageBox(NULL, msg.c_str(), L"DEBUG", MB_OK);
 	}
 #endif
-	if (!SHMoveFile(mainArg.c_str(), sourcefile.c_str()))
+	if (!SHMoveFile(destDir.c_str(), sourcefile.c_str()))
 		return FALSE;
 
 
-	vector< wstring >::iterator cIter = find(allsave.begin(), allsave.end(), mainArg);
+	vector< wstring >::iterator cIter = find(allsave.begin(), allsave.end(), destDir);
 	if (cIter == allsave.end())
-		allsave.push_back(mainArg);
+		allsave.push_back(destDir);
 	
 	if (!sqlWritePrivateProfileStringArray(SEC_OPTION, KEY_DIRS, allsave, dbFile.c_str()))
 	{
