@@ -1,23 +1,33 @@
-#pragma once
+Ôªø#pragma once
+#include "afxwin.h"
 
 
-// CChooseDirDialog É_ÉCÉAÉçÉO
+// CChooseDirDialog „ÉÄ„Ç§„Ç¢„É≠„Ç∞
 
 class CChooseDirDialog : public CDialogEx
 {
 	DECLARE_DYNAMIC(CChooseDirDialog)
 
 public:
-	CChooseDirDialog(CWnd* pParent = NULL);   // ïWèÄÉRÉìÉXÉgÉâÉNÉ^Å[
+	CChooseDirDialog(CWnd* pParent = NULL);   // Ê®ôÊ∫ñ„Ç≥„É≥„Çπ„Éà„É©„ÇØ„Çø„Éº
 	virtual ~CChooseDirDialog();
 
-// É_ÉCÉAÉçÉO ÉfÅ[É^
+// „ÉÄ„Ç§„Ç¢„É≠„Ç∞ „Éá„Éº„Çø
 #ifdef AFX_DESIGN_TIME
 	enum { IDD = IDD_DIALOG_CHOOSEDIR };
 #endif
 
 protected:
-	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV ÉTÉ|Å[Ég
+	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV „Çµ„Éù„Éº„Éà
 
 	DECLARE_MESSAGE_MAP()
+
+public:
+	CStringArray m_arDirs;
+	virtual BOOL OnInitDialog();
+	CListBox m_listDirs;
+	CString m_strDirResult;
+	afx_msg void OnSelchangeListDirs();
+	afx_msg void OnClickedButtonBrowse();
+	CString m_strSource;
 };
