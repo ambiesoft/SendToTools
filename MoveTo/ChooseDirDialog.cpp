@@ -37,6 +37,7 @@ void CChooseDirDialog::DoDataExchange(CDataExchange* pDX)
 BEGIN_MESSAGE_MAP(CChooseDirDialog, CDialogEx)
 	ON_LBN_SELCHANGE(IDC_LIST_DIRS, &CChooseDirDialog::OnSelchangeListDirs)
 	ON_BN_CLICKED(IDC_BUTTON_BROWSE, &CChooseDirDialog::OnClickedButtonBrowse)
+	ON_WM_DESTROY()
 END_MESSAGE_MAP()
 
 
@@ -76,8 +77,35 @@ void CChooseDirDialog::OnClickedButtonBrowse()
 	if (!browseFolder(*this, I18N(L"Move to"), szFolder))
 		return;
 
-	int sel = m_listDirs.AddString(szFolder);
+	int sel = m_listDirs.InsertString(0, szFolder);
 	m_listDirs.SetCurSel(sel);
 	m_strDirResult = szFolder;
 	UpdateData(FALSE);
+}
+
+
+void CChooseDirDialog::OnDestroy()
+{
+	m_arDirs.RemoveAll();
+	std::set<CString> dupcheck;
+	if (!m_strDirResult.IsEmpty())
+	{
+		m_arDirs.Add(m_strDirResult);
+		dupcheck.insert(m_strDirResult);
+	}
+
+	for (int i = 0; i < m_listDirs.GetCount(); ++i)
+	{
+		CString strT;
+		m_listDirs.GetText(i, strT);
+		if (!strT.IsEmpty() && dupcheck.find(strT) == dupcheck.end())
+		{
+			m_arDirs.Add(strT);
+			dupcheck.insert(strT);
+		}
+	}
+
+	CDialogEx::OnDestroy();
+
+
 }

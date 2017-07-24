@@ -9,6 +9,7 @@
 #include <string>
 #include <vector>
 #include <algorithm>
+#include <set>
 
 #include "../../MyUtility/stdwin32/stdwin32.h"
 #include "../../MyUtility/CommandLineParser.h"

@@ -8,6 +8,7 @@
 using std::wstring;
 using std::vector;
 using std::find;
+using std::set;
 
 using Ambiesoft::COption;
 using Ambiesoft::CCommandLineParser;
@@ -64,16 +65,18 @@ BOOL CMoveToApp::InitInstance()
 	wstring dbFile = stdwin32::stdCombinePath(
 		stdwin32::stdGetParentDirectory(stdwin32::stdGetModuleFileName()),
 		APPNAME L".db");
-	vector<wstring> allsave;
+	vector<wstring> allPrevSave;
 
-	if (!sqlGetPrivateProfileStringArray(SEC_OPTION, KEY_DIRS, allsave, dbFile.c_str()))
+	if (!sqlGetPrivateProfileStringArray(SEC_OPTION, KEY_DIRS, allPrevSave, dbFile.c_str()))
 	{
 		ErrorExit(I18N(L"Failed to load from db."));
 	}
 
+	vector<wstring> allSaving;
+
 	if (destDir.empty())
 	{
-		if (allsave.empty())
+		if (allPrevSave.empty())
 		{
 			TCHAR szFolder[MAX_PATH];
 			if (!browseFolder(NULL, I18N(L"Move to"), szFolder))
@@ -89,12 +92,24 @@ BOOL CMoveToApp::InitInstance()
 		{
 			CChooseDirDialog dlg;
 			dlg.m_strSource = sourcefile.c_str();
-			for each(wstring s in allsave)
-				dlg.m_arDirs.Add(s.c_str());
+			set<wstring> dupcheck;
+			for each(wstring s in allPrevSave)
+			{
+				if (dupcheck.find(s) == dupcheck.end())
+				{
+					dlg.m_arDirs.Add(s.c_str());
+					dupcheck.insert(s);
+				}
+			}
 			if(IDOK != dlg.DoModal())
 				return FALSE;
 
 			destDir = dlg.m_strDirResult;
+
+			for (int i = 0; i < dlg.m_arDirs.GetSize(); ++i)
+			{
+				allSaving.push_back(wstring(dlg.m_arDirs[i]));
+			}
 		}
 	}
 
@@ -144,11 +159,11 @@ BOOL CMoveToApp::InitInstance()
 		return FALSE;
 
 
-	vector< wstring >::iterator cIter = find(allsave.begin(), allsave.end(), destDir);
-	if (cIter == allsave.end())
-		allsave.push_back(destDir);
+	vector<wstring>::iterator cIter = find(allSaving.begin(), allSaving.end(), destDir);
+	if (cIter == allSaving.end())
+		allSaving.push_back(destDir);
 	
-	if (!sqlWritePrivateProfileStringArray(SEC_OPTION, KEY_DIRS, allsave, dbFile.c_str()))
+	if (!sqlWritePrivateProfileStringArray(SEC_OPTION, KEY_DIRS, allSaving, dbFile.c_str()))
 	{
 		ErrorExit(I18N(L"Failed to save to db."));
 	}

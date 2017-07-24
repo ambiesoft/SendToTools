@@ -30,4 +30,5 @@ public:
 	afx_msg void OnSelchangeListDirs();
 	afx_msg void OnClickedButtonBrowse();
 	CString m_strSource;
+	afx_msg void OnDestroy();
 };
