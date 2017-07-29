@@ -9,7 +9,7 @@ using std::wstring;
 using std::vector;
 using std::find;
 using std::set;
-
+#include "../../MyUtility/CommandLineParser.h"
 using Ambiesoft::COption;
 using Ambiesoft::CCommandLineParser;
 

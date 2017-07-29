@@ -12,7 +12,7 @@
 #include <set>
 
 #include "../../MyUtility/stdwin32/stdwin32.h"
-#include "../../MyUtility/CommandLineParser.h"
+
 #include "../../MyUtility/browseFolder.h"
 #include "../../MyUtility/SHMoveFile.h"
 #include "../../MyUtility/sqliteserialize.h"
