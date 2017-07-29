@@ -32,27 +32,13 @@ namespace ChangeFileName
         }
 
 
-        string NameFileNamable(string fn)
-        {
-            fn = fn.Replace("<", "");
-            fn = fn.Replace(">", "");
-            fn = fn.Replace(":", "");
-            fn = fn.Replace("\"", "");
-            fn = fn.Replace("/", "");
-            fn = fn.Replace("\\", "");
-            fn = fn.Replace("|", "");
-            fn = fn.Replace("?", "");
-            fn = fn.Replace("*", "");
-            fn = fn.Replace(",", "");
-            return fn;
-        }
         private void ToFileNamable_Click(object sender, EventArgs e)
         {
-            textName.Text = NameFileNamable(textName.Text);
+            textName.Text = Ambiesoft.AmbLib.GetFilaNamableName(textName.Text);
         }
         private void ToMakeFileNamableSel_Click(object sender, EventArgs e)
         {
-            ChangeSelectionCommon(NameFileNamable);
+            ChangeSelectionCommon(Ambiesoft.AmbLib.GetFilaNamableName);
         }
 
 

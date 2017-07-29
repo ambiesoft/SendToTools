@@ -52,6 +52,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Ambiesoft.amblib">
+      <HintPath>..\..\..\..\..\..\Linkout\DNAssembly\Ambiesoft.amblib.dll</HintPath>
+    </Reference>
     <Reference Include="Ambiesoft.Profile">
       <HintPath>..\..\..\..\..\..\Linkout\DNAssembly\Ambiesoft.Profile.dll</HintPath>
     </Reference>
