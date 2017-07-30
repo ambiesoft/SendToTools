@@ -31,4 +31,5 @@ public:
 	afx_msg void OnClickedButtonBrowse();
 	CString m_strSource;
 	afx_msg void OnDestroy();
+	CComboBox m_cmbPriority;
 };

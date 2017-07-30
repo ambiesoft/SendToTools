@@ -31,6 +31,7 @@ void CChooseDirDialog::DoDataExchange(CDataExchange* pDX)
 	DDX_Control(pDX, IDC_LIST_DIRS, m_listDirs);
 	DDX_Text(pDX, IDC_EDIT_DIR, m_strDirResult);
 	DDX_Text(pDX, IDC_EDIT_SOURCE, m_strSource);
+	DDX_Control(pDX, IDC_COMBO_PRIORITY, m_cmbPriority);
 }
 
 
@@ -53,6 +54,8 @@ BOOL CChooseDirDialog::OnInitDialog()
 	{
 		m_listDirs.AddString(m_arDirs[i]);
 	}
+
+	m_cmbPriority.AddString(L"Priority: High");
 	return TRUE;  // return TRUE unless you set the focus to a control
 				  // EXCEPTION: OCX Property Pages should return FALSE
 }

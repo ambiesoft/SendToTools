@@ -2,24 +2,7 @@
 
 #include "target.h"
 
-#include <afx.h>
-#include <Shlwapi.h>
-#include <tchar.h>
+#include <Windows.h>
 
-#include <string>
-#include <vector>
-#include <algorithm>
-#include <set>
-
-#include "../../MyUtility/stdwin32/stdwin32.h"
-
-#include "../../MyUtility/browseFolder.h"
-#include "../../MyUtility/SHMoveFile.h"
-#include "../../MyUtility/sqliteserialize.h"
-#include "../../MyUtility/tstring.h"
-
-#include <afxcontrolbars.h>
-
-
-#define APPNAME L"MoveTo"
-#define I18N(s) (s)
+#define DllImport   __declspec( dllimport )  
+#define DllExport   __declspec( dllexport ) 
