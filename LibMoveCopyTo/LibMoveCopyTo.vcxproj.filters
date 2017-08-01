@@ -48,6 +48,9 @@
     <ClCompile Include="..\..\MyUtility\IsFileExists.cpp">
       <Filter>2 Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\MyUtility\GetLastErrorString.cpp">
+      <Filter>2 Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="LibMoveCopyTo.h">
@@ -84,6 +87,9 @@
       <Filter>1 Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\MyUtility\IsFileExists.h">
+      <Filter>1 Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\MyUtility\GetLastErrorString.h">
       <Filter>1 Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -2,6 +2,9 @@
 //
 
 #include "stdafx.h"
+
+#include <Shellapi.h>
+
 #include "LibMoveCopyTo.h"
 
 
@@ -16,6 +19,7 @@ using std::vector;
 using std::find;
 using std::set;
 #include "../../MyUtility/CommandLineParser.h"
+#include "../../MyUtility/GetLastErrorString.h"
 using Ambiesoft::COption;
 using Ambiesoft::CCommandLineParser;
 
@@ -23,9 +27,34 @@ using Ambiesoft::CCommandLineParser;
 
 #include "ChooseDirDialog.h"
 
+#define		DE_SAMEFILE			0x71
+#define		DE_MANYSRC1DEST			0x72
+#define		DE_DIFFDIR			0x73
+#define		DE_ROOTDIR			0x74
+#define		DE_OPCANCELLED			0x75
+#define		DE_DESTSUBTREE			0x76
+#define		DE_ACCESSDENIEDSRC			0x78
+#define		DE_PATHTOODEEP			0x79
+#define		DE_MANYDEST			0x7A
+#define		DE_INVALIDFILES			0x7C
+#define		DE_DESTSAMETREE			0x7D
+#define		DE_FLDDESTISFILE			0x7E
+#define		DE_FILEDESTISFLD			0x80
+#define		DE_FILENAMETOOLONG			0x81
+#define		DE_DEST_IS_CDROM			0x82
+#define		DE_DEST_IS_DVD			0x83
+#define		DE_DEST_IS_CDRECORD			0x84
+#define		DE_FILE_TOO_LARGE			0x85
+#define		DE_SRC_IS_CDROM			0x86
+#define		DE_SRC_IS_DVD			0x87
+#define		DE_SRC_IS_CDRECORD			0x88
+#define		DE_ERROR_MAX			0xB7
+//#define		0x402			0x402
+#define		ERRORONDEST			0x10000
 
-#define SEC_OPTION		L"option"
-#define KEY_DIRS		L"Dirs"
+
+#define SEC_OPTION L"option"
+#define KEY_DIRS L"Dirs"
 
 void ShowError(LPCWSTR pMessage)
 {
@@ -41,27 +70,27 @@ void ShowError(LPCWSTR pMessage)
 
 //
 //TODO: この DLL が MFC DLL に対して動的にリンクされる場合、
-//		MFC 内で呼び出されるこの DLL からエクスポートされたどの関数も
-//		関数の最初に追加される AFX_MANAGE_STATE マクロを
-//		持たなければなりません。
+//MFC 内で呼び出されるこの DLL からエクスポートされたどの関数も
+//関数の最初に追加される AFX_MANAGE_STATE マクロを
+//持たなければなりません。
 //
-//		例:
+//例:
 //
-//		extern "C" BOOL PASCAL EXPORT ExportedFunction()
-//		{
-//			AFX_MANAGE_STATE(AfxGetStaticModuleState());
-//			// 通常関数の本体はこの位置にあります
-//		}
+//extern "C" BOOL PASCAL EXPORT ExportedFunction()
+//{
+//AFX_MANAGE_STATE(AfxGetStaticModuleState());
+//// 通常関数の本体はこの位置にあります
+//}
 //
-//		このマクロが各関数に含まれていること、MFC 内の
-//		どの呼び出しより優先することは非常に重要です。
-//		これは関数内の最初のステートメントでなければな 
-//		らないことを意味します、コンストラクターが MFC
-//		DLL 内への呼び出しを行う可能性があるので、オブ
-//		ジェクト変数の宣言よりも前でなければなりません。
+//このマクロが各関数に含まれていること、MFC 内の
+//どの呼び出しより優先することは非常に重要です。
+//これは関数内の最初のステートメントでなければな 
+//らないことを意味します、コンストラクターが MFC
+//DLL 内への呼び出しを行う可能性があるので、オブ
+//ジェクト変数の宣言よりも前でなければなりません。
 //
-//		詳細については MFC テクニカル ノート 33 および
-//		58 を参照してください。
+//詳細については MFC テクニカル ノート 33 および
+//58 を参照してください。
 //
 
 
@@ -77,7 +106,7 @@ int libmain()
 {
 	//UNREFERENCED_PARAMETER(hPrevInstance);
 	//UNREFERENCED_PARAMETER(lpCmdLine);
-	
+
 
 	COption opTarget(L"/T", L"/t", 1);
 	COption opFile(L"");
@@ -199,8 +228,42 @@ int libmain()
 		MessageBox(NULL, msg.c_str(), L"DEBUG", MB_OK);
 	}
 #endif
-	if (!SHMoveFile(destDir.c_str(), sourcefile.c_str()))
-		return 1;
+	int nRet = 0;
+	if (!SHMoveFile(destDir.c_str(), sourcefile.c_str(), &nRet))
+	{
+		wstring error;
+		switch (nRet)
+		{
+		case DE_SAMEFILE: /*0x71*/error = L"The source and destination files are the same file."; break;
+		case DE_MANYSRC1DEST:/*0x72*/error = L"Multiple file paths were specified in the source buffer, but only one destination file path."; break;
+		case DE_DIFFDIR:/*0x73*/error = L"Rename operation was specified but the destination path is a different directory.Use the move operation instead."; break;
+		case DE_ROOTDIR:/*0x74*/error = L"The source is a root directory, which cannot be moved or renamed."; break;
+		case DE_OPCANCELLED:/*0x75*/error = L"The operation was canceled by the user, or silently canceled if the appropriate flags were supplied to SHFileOperation."; break;
+		case DE_DESTSUBTREE:/*0x76*/error = L"The destination is a subtree of the source."; break;
+		case DE_ACCESSDENIEDSRC:/*0x78*/error = L"Security settings denied access to the source."; break;
+		case DE_PATHTOODEEP:/*0x79*/error = L"The source or destination path exceeded or would exceed MAX_PATH."; break;
+		case DE_MANYDEST:/*0x7A*/error = L"The operation involved multiple destination paths, which can fail in the case of a move operation."; break;
+		case DE_INVALIDFILES:/*0x7C*/error = L"The path in the source or destination or both was invalid."; break;
+		case DE_DESTSAMETREE:/*0x7D*/error = L"The source and destination have the same parent folder."; break;
+		case DE_FLDDESTISFILE:/*0x7E*/error = L"The destination path is an existing file."; break;
+		case DE_FILEDESTISFLD:/*0x80*/error = L"The destination path is an existing folder."; break;
+		case DE_FILENAMETOOLONG:/*0x81*/error = L"The name of the file exceeds MAX_PATH."; break;
+		case DE_DEST_IS_CDROM:/*0x82*/error = L"The destination is a read - only CD - ROM, possibly unformatted."; break;
+		case DE_DEST_IS_DVD:/*0x83*/error = L"The destination is a read - only DVD, possibly unformatted."; break;
+		case DE_DEST_IS_CDRECORD:/*0x84*/error = L"The destination is a writable CD - ROM, possibly unformatted."; break;
+		case DE_FILE_TOO_LARGE:/*0x85*/error = L"The file involved in the operation is too large for the destination media or file system."; break;
+		case DE_SRC_IS_CDROM:/*0x86*/error = L"The source is a read - only CD - ROM, possibly unformatted."; break;
+		case DE_SRC_IS_DVD:/*0x87*/error = L"The source is a read - only DVD, possibly unformatted."; break;
+		case DE_SRC_IS_CDRECORD:/*0x88*/error = L"The source is a writable CD - ROM, possibly unformatted."; break;
+		case DE_ERROR_MAX:/*0xB7*/error = L"MAX_PATH was exceeded during the operation."; break;
+		case 0x402:/*0x402*/error = L"An unknown error occurred.This is typically due to an invalid path in the source or destination.This error does not occur on Windows Vista and later."; break;
+		case ERRORONDEST:/*0x10000*/error = L"An unspecified error occurred on the destination."; break;
+		case DE_ROOTDIR | ERRORONDEST:/*0x10074*/error = L"Destination is a root directory and cannot be renamed."; break;
+		default:
+			error = GetLastErrorString(nRet);
+		}
+		ShowError(error.c_str());
+	}
 
 
 	vector<wstring>::iterator cIter = find(allSaving.begin(), allSaving.end(), destDir);
