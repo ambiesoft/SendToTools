@@ -23,7 +23,7 @@ using std::set;
 using Ambiesoft::COption;
 using Ambiesoft::CCommandLineParser;
 
-
+typedef vector<wstring> STRINGVECTOR;
 
 #include "ChooseDirDialog.h"
 
@@ -116,17 +116,25 @@ int libmain()
 	cmd.Parse();
 
 	wstring destDir = opTarget.getFirstValue();
-	wstring sourcefile = opFile.getFirstValue();
-	if (sourcefile.empty())
+	STRINGVECTOR sourcefiles;
+	for (unsigned int i = 0; i < opFile.getValueCount(); ++i)
+	{
+		sourcefiles.push_back(opFile.getValue(i));
+	}
+	if (sourcefiles.empty())
 	{
 		ShowError(I18N(L"Source file is empty."));
 		return 1;
 	}
-	if (!PathFileExists(sourcefile.c_str()))
+
+	for (STRINGVECTOR::iterator it = sourcefiles.begin(); it != sourcefiles.end(); ++it)
 	{
-		wstring msg = stdwin32::string_format(I18N(L"\"%s\" does not exist."), sourcefile.c_str());
-		ShowError(msg.c_str());
-		return 1;
+		if (!PathFileExists(it->c_str()))
+		{
+			wstring msg = stdwin32::string_format(I18N(L"\"%s\" does not exist."), it->c_str());
+			ShowError(msg.c_str());
+			return 1;
+		}
 	}
 
 
@@ -141,27 +149,32 @@ int libmain()
 		return 1;
 	}
 
-	vector<wstring> allSaving;
+	STRINGVECTOR allSaving;
 
 	if (destDir.empty())
 	{
-		if (allPrevSave.empty())
-		{
-			TCHAR szFolder[MAX_PATH];
-			if (!browseFolder(NULL, I18N(L"Move to"), szFolder))
-				return 0;
-			if (!PathIsDirectory(szFolder))
-			{
-				wstring msg = stdwin32::string_format(I18N(L"\"%s\" is not a folder."), szFolder);
-				ShowError(msg.c_str());
-				return 1;
-			}
-			destDir = szFolder;
-		}
-		else
+		//if (allPrevSave.empty())
+		//{
+		//	TCHAR szFolder[MAX_PATH];
+		//	if (!browseFolder(NULL, I18N(L"Move to"), szFolder))
+		//		return 0;
+		//	if (!PathIsDirectory(szFolder))
+		//	{
+		//		wstring msg = stdwin32::string_format(I18N(L"\"%s\" is not a folder."), szFolder);
+		//		ShowError(msg.c_str());
+		//		return 1;
+		//	}
+		//	destDir = szFolder;
+		//}
+		//else
 		{
 			CChooseDirDialog dlg;
-			dlg.m_strSource = sourcefile.c_str();
+			for (STRINGVECTOR::iterator it = sourcefiles.begin(); it != sourcefiles.end(); ++it)
+			{
+				dlg.m_strSource += it->c_str();
+				dlg.m_strSource += L"\r\n";
+			}
+			
 			set<wstring> dupcheck;
 			for each(wstring s in allPrevSave)
 			{
@@ -223,13 +236,19 @@ int libmain()
 	destDir = stdwin32::stdAddBackSlash(destDir);
 #ifdef _DEBUG
 	{
-		wstring msg = L"SOURCE: " + sourcefile + L"\r\n";
+		wstring msg = L"SOURCE: ";
+		for (STRINGVECTOR::iterator it = sourcefiles.begin(); it != sourcefiles.end(); ++it)
+		{
+			msg += *it;
+			msg += L"\r\n";
+		}
+
 		msg.append(L"DEST: " + destDir);
 		MessageBox(NULL, msg.c_str(), L"DEBUG", MB_OK);
 	}
 #endif
 	int nRet = 0;
-	if (!SHMoveFile(destDir.c_str(), sourcefile.c_str(), &nRet))
+	if (!SHMoveFile(destDir.c_str(), sourcefiles, &nRet))
 	{
 		wstring error;
 		switch (nRet)
