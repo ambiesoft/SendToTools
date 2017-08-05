@@ -2,7 +2,7 @@
 //
 
 #include "stdafx.h"
-#include <afxdialogex.h>
+
 
 #include "resource.h"
 #include "ChooseDirDialog.h"
@@ -32,6 +32,8 @@ void CChooseDirDialog::DoDataExchange(CDataExchange* pDX)
 	DDX_Text(pDX, IDC_EDIT_DIR, m_strDirResult);
 	DDX_Text(pDX, IDC_EDIT_SOURCE, m_strSource);
 	DDX_Control(pDX, IDC_COMBO_PRIORITY, m_cmbPriority);
+	DDX_Control(pDX, IDC_EDIT_DIR, m_editDirResult);
+	DDX_Control(pDX, IDOK, m_btnOK);
 }
 
 
@@ -39,6 +41,7 @@ BEGIN_MESSAGE_MAP(CChooseDirDialog, CDialogEx)
 	ON_LBN_SELCHANGE(IDC_LIST_DIRS, &CChooseDirDialog::OnSelchangeListDirs)
 	ON_BN_CLICKED(IDC_BUTTON_BROWSE, &CChooseDirDialog::OnClickedButtonBrowse)
 	ON_WM_DESTROY()
+	ON_EN_CHANGE(IDC_EDIT_DIR, &CChooseDirDialog::OnEnChangeEditDir)
 END_MESSAGE_MAP()
 
 
@@ -70,6 +73,8 @@ void CChooseDirDialog::OnSelchangeListDirs()
 
 	m_listDirs.GetText(cur, m_strDirResult);
 	UpdateData(FALSE);
+
+	OnEnChangeEditDir();
 }
 
 
@@ -84,6 +89,8 @@ void CChooseDirDialog::OnClickedButtonBrowse()
 	m_listDirs.SetCurSel(sel);
 	m_strDirResult = szFolder;
 	UpdateData(FALSE);
+
+	OnEnChangeEditDir();
 }
 
 
@@ -111,4 +118,11 @@ void CChooseDirDialog::OnDestroy()
 	CDialogEx::OnDestroy();
 
 
+}
+
+
+void CChooseDirDialog::OnEnChangeEditDir()
+{
+	UpdateData();
+	m_btnOK.EnableWindow(PathIsDirectory(m_strDirResult));
 }

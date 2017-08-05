@@ -51,6 +51,43 @@
 
 #include <afxcontrolbars.h>
 
+#include <windows.h>
+#include <comdef.h> 
+#include <tchar.h>
+#include <objbase.h>
+#include <shlobj.h>
+#include <ShObjIdl.h>
+
+#include <io.h>
+#include <Shellapi.h>
+
+#include <afxdialogex.h>
+
+#include <windows.h>
+#include <tchar.h>
+#include <assert.h>
+
+#include <vector>
+#include <string>
+
+#include <cassert>
+#include <string>
+#include <stlsoft/smartptr/scoped_handle.hpp>
+
+#include <windows.h>
+
+#include <algorithm> 
+#include <cassert>
+#include <cctype>
+#include <cstdarg>
+#include <cstdio>
+#include <functional> 
+#include <locale>
+#include <string>
+#include <vector>
+#include <memory.h>
+
+#include <shlwapi.h>
 
 #define APPNAME L"MoveTo"
 #define I18N(s) (s)

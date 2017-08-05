@@ -3,7 +3,7 @@
 
 #include "stdafx.h"
 
-#include <Shellapi.h>
+
 
 #include "LibMoveCopyTo.h"
 
@@ -20,6 +20,8 @@ using std::find;
 using std::set;
 #include "../../MyUtility/CommandLineParser.h"
 #include "../../MyUtility/GetLastErrorString.h"
+
+using Ambiesoft::ArgCount;
 using Ambiesoft::COption;
 using Ambiesoft::CCommandLineParser;
 
@@ -109,7 +111,7 @@ int libmain()
 
 
 	COption opTarget(L"/T", L"/t", 1);
-	COption opFile(L"");
+	COption opFile(L"", Ambiesoft::ArgCount_Infinite);
 	CCommandLineParser cmd;
 	cmd.AddOption(&opTarget);
 	cmd.AddOption(&opFile);
@@ -236,14 +238,15 @@ int libmain()
 	destDir = stdwin32::stdAddBackSlash(destDir);
 #ifdef _DEBUG
 	{
-		wstring msg = L"SOURCE: ";
+		wstring msg = L"SOURCE: \r\n";
 		for (STRINGVECTOR::iterator it = sourcefiles.begin(); it != sourcefiles.end(); ++it)
 		{
 			msg += *it;
 			msg += L"\r\n";
 		}
 
-		msg.append(L"DEST: " + destDir);
+		msg.append(L"\r\n");
+		msg.append(L"DEST: \r\n" + destDir);
 		MessageBox(NULL, msg.c_str(), L"DEBUG", MB_OK);
 	}
 #endif

@@ -32,4 +32,7 @@ public:
 	CString m_strSource;
 	afx_msg void OnDestroy();
 	CComboBox m_cmbPriority;
+	afx_msg void OnEnChangeEditDir();
+	CEdit m_editDirResult;
+	CButton m_btnOK;
 };
