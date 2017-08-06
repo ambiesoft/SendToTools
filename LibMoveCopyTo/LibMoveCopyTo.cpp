@@ -236,7 +236,14 @@ int libmain()
 
 
 	destDir = stdwin32::stdAddBackSlash(destDir);
+
 #ifdef _DEBUG
+	bool bShowDebugInfo = true;
+#else
+	bool bShowDebugInfo = (GetAsyncKeyState(VK_CONTROL) < 0) && (GetAsyncKeyState(VK_SHIFT) < 0);
+#endif
+
+	if(bShowDebugInfo)
 	{
 		wstring msg = L"SOURCE: \r\n";
 		for (STRINGVECTOR::iterator it = sourcefiles.begin(); it != sourcefiles.end(); ++it)
@@ -249,7 +256,7 @@ int libmain()
 		msg.append(L"DEST: \r\n" + destDir);
 		MessageBox(NULL, msg.c_str(), L"DEBUG", MB_OK);
 	}
-#endif
+
 	int nRet = 0;
 	if (!SHMoveFile(destDir.c_str(), sourcefiles, &nRet))
 	{
