@@ -33,13 +33,13 @@
             this.chName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.pgItem = new System.Windows.Forms.PropertyGrid();
             this.spMain = new System.Windows.Forms.SplitContainer();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.menuMain = new System.Windows.Forms.MenuStrip();
             this.addNewItemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.spMain)).BeginInit();
             this.spMain.Panel1.SuspendLayout();
             this.spMain.Panel2.SuspendLayout();
             this.spMain.SuspendLayout();
-            this.menuStrip1.SuspendLayout();
+            this.menuMain.SuspendLayout();
             this.SuspendLayout();
             // 
             // lvMain
@@ -95,15 +95,15 @@
             this.spMain.SplitterDistance = 263;
             this.spMain.TabIndex = 5;
             // 
-            // menuStrip1
+            // menuMain
             // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.addNewItemToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(789, 24);
-            this.menuStrip1.TabIndex = 6;
-            this.menuStrip1.Text = "menuStrip1";
+            this.menuMain.Location = new System.Drawing.Point(0, 0);
+            this.menuMain.Name = "menuMain";
+            this.menuMain.Size = new System.Drawing.Size(789, 24);
+            this.menuMain.TabIndex = 6;
+            this.menuMain.Text = "menuStrip1";
             // 
             // addNewItemToolStripMenuItem
             // 
@@ -118,7 +118,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(789, 481);
             this.Controls.Add(this.spMain);
-            this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.menuMain);
             this.Name = "FormMain";
             this.Text = "SendTo Manager";
             this.Load += new System.EventHandler(this.FormMain_Load);
@@ -126,8 +126,8 @@
             this.spMain.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.spMain)).EndInit();
             this.spMain.ResumeLayout(false);
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
+            this.menuMain.ResumeLayout(false);
+            this.menuMain.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -140,7 +140,7 @@
         private System.Windows.Forms.ColumnHeader chNo;
         private System.Windows.Forms.PropertyGrid pgItem;
         private System.Windows.Forms.SplitContainer spMain;
-        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.MenuStrip menuMain;
         private System.Windows.Forms.ToolStripMenuItem addNewItemToolStripMenuItem;
     }
 }
