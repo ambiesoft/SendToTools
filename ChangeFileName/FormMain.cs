@@ -46,11 +46,15 @@ namespace ChangeFileName
                 }
             }            
 
-            int val;
-            if (Ambiesoft.Profile.GetInt("settings", "AutoRun", 0, out val, IniFile))
+            int intval;
+            bool boolval;
+            if (Ambiesoft.Profile.GetInt("settings", "AutoRun", 0, out intval, IniFile))
             {
-                chkAutoRun.Checked = val != 0;
+                chkAutoRun.Checked = intval != 0;
             }
+
+            Ambiesoft.Profile.GetBool("settings", "TopMost", false, out boolval, IniFile);
+            this.TopMost = alwaysOnTopToolStripMenuItem.Checked = boolval;
         }
 
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
@@ -269,11 +273,17 @@ namespace ChangeFileName
             catch (Exception) { }
         }
 
-        private void btnPSpecial_Click(object sender, EventArgs e)
+        //private void btnPSpecial_Click(object sender, EventArgs e)
+        //{
+        //    Point pt = btnPSpecial.Location;
+        //    pt.Y += btnPSpecial.Size.Height;
+        //    menuPSpecial.Show(this.PointToScreen(pt));
+        //}
+
+        private void alwaysOnTopToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Point pt = btnPSpecial.Location;
-            pt.Y += btnPSpecial.Size.Height;
-            menuPSpecial.Show(this.PointToScreen(pt));
+            this.TopMost = alwaysOnTopToolStripMenuItem.Checked;
+            Ambiesoft.Profile.WriteBool("settings", "TopMost", alwaysOnTopToolStripMenuItem.Checked, IniFile);
         }
     }
 }

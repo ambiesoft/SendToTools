@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.lvMain = new System.Windows.Forms.ListView();
-            this.chName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.chNo = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.chName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.pgItem = new System.Windows.Forms.PropertyGrid();
             this.spMain = new System.Windows.Forms.SplitContainer();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -59,15 +59,15 @@
             this.lvMain.RetrieveVirtualItem += new System.Windows.Forms.RetrieveVirtualItemEventHandler(this.lvMain_RetrieveVirtualItem);
             this.lvMain.VirtualItemsSelectionRangeChanged += new System.Windows.Forms.ListViewVirtualItemsSelectionRangeChangedEventHandler(this.lvMain_VirtualItemsSelectionRangeChanged);
             // 
-            // chName
-            // 
-            this.chName.Text = "Name";
-            this.chName.Width = 300;
-            // 
             // chNo
             // 
             this.chNo.Text = "No.";
             this.chNo.Width = 24;
+            // 
+            // chName
+            // 
+            this.chName.Text = "Name";
+            this.chName.Width = 300;
             // 
             // pgItem
             // 
@@ -110,6 +110,7 @@
             this.addNewItemToolStripMenuItem.Name = "addNewItemToolStripMenuItem";
             this.addNewItemToolStripMenuItem.Size = new System.Drawing.Size(94, 20);
             this.addNewItemToolStripMenuItem.Text = "Add &New Item";
+            this.addNewItemToolStripMenuItem.Click += new System.EventHandler(this.addNewItemToolStripMenuItem_Click);
             // 
             // FormMain
             // 

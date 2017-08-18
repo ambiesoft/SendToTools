@@ -35,10 +35,8 @@
             this.textName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnLaunch = new System.Windows.Forms.Button();
-            this.btnPaste = new System.Windows.Forms.Button();
             this.btnTrash = new System.Windows.Forms.Button();
             this.chkAutoRun = new System.Windows.Forms.CheckBox();
-            this.btnCopyPath = new System.Windows.Forms.Button();
             this.btnMoveTo = new System.Windows.Forms.Button();
             this.menuMoveTo = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.aaaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -50,7 +48,6 @@
             this.tsmiRemoveSpace = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiUnderbar2hyphen = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiCn2Jp = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnCopy = new System.Windows.Forms.Button();
             this.cmModifySelection = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tsmiMakeFileNamableSel = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiLowerSel = new System.Windows.Forms.ToolStripMenuItem();
@@ -59,17 +56,26 @@
             this.tsmiRemoveSpaceSel = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiUnderbar2hyphenSel = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiCn2JpSel = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnModifySelection = new ChangeFileName.MenuButton();
-            this.btnModify = new ChangeFileName.MenuButton();
-            this.btnExplorer = new System.Windows.Forms.Button();
-            this.btnPSpecial = new System.Windows.Forms.Button();
             this.menuPSpecial = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.pasteWithAddingSpaceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lblFileInfo = new System.Windows.Forms.Label();
+            this.menuMain = new System.Windows.Forms.MenuStrip();
+            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openInExplorerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.copyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.copyPathToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pasteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pasteTotailToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.modifyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.modifySelectionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.windowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.alwaysOnTopToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuMoveTo.SuspendLayout();
             this.cmModify.SuspendLayout();
             this.cmModifySelection.SuspendLayout();
             this.menuPSpecial.SuspendLayout();
+            this.menuMain.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnCancel
@@ -104,13 +110,6 @@
             this.btnLaunch.UseVisualStyleBackColor = true;
             this.btnLaunch.Click += new System.EventHandler(this.btnLaunch_Click);
             // 
-            // btnPaste
-            // 
-            resources.ApplyResources(this.btnPaste, "btnPaste");
-            this.btnPaste.Name = "btnPaste";
-            this.btnPaste.UseVisualStyleBackColor = true;
-            this.btnPaste.Click += new System.EventHandler(this.btnPaste_Click);
-            // 
             // btnTrash
             // 
             resources.ApplyResources(this.btnTrash, "btnTrash");
@@ -124,13 +123,6 @@
             this.chkAutoRun.Name = "chkAutoRun";
             this.chkAutoRun.UseVisualStyleBackColor = true;
             this.chkAutoRun.CheckedChanged += new System.EventHandler(this.chkAutoRun_CheckedChanged);
-            // 
-            // btnCopyPath
-            // 
-            resources.ApplyResources(this.btnCopyPath, "btnCopyPath");
-            this.btnCopyPath.Name = "btnCopyPath";
-            this.btnCopyPath.UseVisualStyleBackColor = true;
-            this.btnCopyPath.Click += new System.EventHandler(this.btnCopyPath_Click);
             // 
             // btnMoveTo
             // 
@@ -162,6 +154,7 @@
             this.tsmiUnderbar2hyphen,
             this.tsmiCn2Jp});
             this.cmModify.Name = "ccmModify";
+            this.cmModify.OwnerItem = this.modifyToolStripMenuItem;
             resources.ApplyResources(this.cmModify, "cmModify");
             // 
             // tsmiMakeFileNamable
@@ -206,13 +199,6 @@
             resources.ApplyResources(this.tsmiCn2Jp, "tsmiCn2Jp");
             this.tsmiCn2Jp.Click += new System.EventHandler(this.tsmiCn2Jp_Click);
             // 
-            // btnCopy
-            // 
-            resources.ApplyResources(this.btnCopy, "btnCopy");
-            this.btnCopy.Name = "btnCopy";
-            this.btnCopy.UseVisualStyleBackColor = true;
-            this.btnCopy.Click += new System.EventHandler(this.btnCopy_Click);
-            // 
             // cmModifySelection
             // 
             this.cmModifySelection.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -224,6 +210,7 @@
             this.tsmiUnderbar2hyphenSel,
             this.tsmiCn2JpSel});
             this.cmModifySelection.Name = "ccmModify";
+            this.cmModifySelection.OwnerItem = this.modifySelectionToolStripMenuItem;
             resources.ApplyResources(this.cmModifySelection, "cmModifySelection");
             // 
             // tsmiMakeFileNamableSel
@@ -268,34 +255,6 @@
             resources.ApplyResources(this.tsmiCn2JpSel, "tsmiCn2JpSel");
             this.tsmiCn2JpSel.Click += new System.EventHandler(this.tsmiCn2JpSel_Click);
             // 
-            // btnModifySelection
-            // 
-            this.btnModifySelection.ContextMenuStrip = this.cmModifySelection;
-            resources.ApplyResources(this.btnModifySelection, "btnModifySelection");
-            this.btnModifySelection.Name = "btnModifySelection";
-            this.btnModifySelection.UseVisualStyleBackColor = true;
-            // 
-            // btnModify
-            // 
-            this.btnModify.ContextMenuStrip = this.cmModify;
-            resources.ApplyResources(this.btnModify, "btnModify");
-            this.btnModify.Name = "btnModify";
-            this.btnModify.UseVisualStyleBackColor = true;
-            // 
-            // btnExplorer
-            // 
-            resources.ApplyResources(this.btnExplorer, "btnExplorer");
-            this.btnExplorer.Name = "btnExplorer";
-            this.btnExplorer.UseVisualStyleBackColor = true;
-            this.btnExplorer.Click += new System.EventHandler(this.btnExplorer_Click);
-            // 
-            // btnPSpecial
-            // 
-            resources.ApplyResources(this.btnPSpecial, "btnPSpecial");
-            this.btnPSpecial.Name = "btnPSpecial";
-            this.btnPSpecial.UseVisualStyleBackColor = true;
-            this.btnPSpecial.Click += new System.EventHandler(this.btnPSpecial_Click);
-            // 
             // menuPSpecial
             // 
             this.menuPSpecial.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -314,39 +273,118 @@
             resources.ApplyResources(this.lblFileInfo, "lblFileInfo");
             this.lblFileInfo.Name = "lblFileInfo";
             // 
+            // menuMain
+            // 
+            this.menuMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fileToolStripMenuItem,
+            this.editToolStripMenuItem,
+            this.modifyToolStripMenuItem,
+            this.modifySelectionToolStripMenuItem,
+            this.windowToolStripMenuItem});
+            resources.ApplyResources(this.menuMain, "menuMain");
+            this.menuMain.Name = "menuMain";
+            // 
+            // fileToolStripMenuItem
+            // 
+            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.openInExplorerToolStripMenuItem});
+            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            resources.ApplyResources(this.fileToolStripMenuItem, "fileToolStripMenuItem");
+            // 
+            // openInExplorerToolStripMenuItem
+            // 
+            this.openInExplorerToolStripMenuItem.Name = "openInExplorerToolStripMenuItem";
+            resources.ApplyResources(this.openInExplorerToolStripMenuItem, "openInExplorerToolStripMenuItem");
+            this.openInExplorerToolStripMenuItem.Click += new System.EventHandler(this.btnExplorer_Click);
+            // 
+            // editToolStripMenuItem
+            // 
+            this.editToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.copyToolStripMenuItem,
+            this.copyPathToolStripMenuItem,
+            this.pasteToolStripMenuItem,
+            this.pasteTotailToolStripMenuItem});
+            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
+            resources.ApplyResources(this.editToolStripMenuItem, "editToolStripMenuItem");
+            // 
+            // copyToolStripMenuItem
+            // 
+            this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
+            resources.ApplyResources(this.copyToolStripMenuItem, "copyToolStripMenuItem");
+            this.copyToolStripMenuItem.Click += new System.EventHandler(this.btnCopy_Click);
+            // 
+            // copyPathToolStripMenuItem
+            // 
+            this.copyPathToolStripMenuItem.Name = "copyPathToolStripMenuItem";
+            resources.ApplyResources(this.copyPathToolStripMenuItem, "copyPathToolStripMenuItem");
+            this.copyPathToolStripMenuItem.Click += new System.EventHandler(this.btnCopyPath_Click);
+            // 
+            // pasteToolStripMenuItem
+            // 
+            this.pasteToolStripMenuItem.Name = "pasteToolStripMenuItem";
+            resources.ApplyResources(this.pasteToolStripMenuItem, "pasteToolStripMenuItem");
+            this.pasteToolStripMenuItem.Click += new System.EventHandler(this.btnPaste_Click);
+            // 
+            // pasteTotailToolStripMenuItem
+            // 
+            this.pasteTotailToolStripMenuItem.Name = "pasteTotailToolStripMenuItem";
+            resources.ApplyResources(this.pasteTotailToolStripMenuItem, "pasteTotailToolStripMenuItem");
+            // 
+            // modifyToolStripMenuItem
+            // 
+            this.modifyToolStripMenuItem.DropDown = this.cmModify;
+            this.modifyToolStripMenuItem.Name = "modifyToolStripMenuItem";
+            resources.ApplyResources(this.modifyToolStripMenuItem, "modifyToolStripMenuItem");
+            // 
+            // modifySelectionToolStripMenuItem
+            // 
+            this.modifySelectionToolStripMenuItem.DropDown = this.cmModifySelection;
+            this.modifySelectionToolStripMenuItem.Name = "modifySelectionToolStripMenuItem";
+            resources.ApplyResources(this.modifySelectionToolStripMenuItem, "modifySelectionToolStripMenuItem");
+            // 
+            // windowToolStripMenuItem
+            // 
+            this.windowToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.alwaysOnTopToolStripMenuItem});
+            this.windowToolStripMenuItem.Name = "windowToolStripMenuItem";
+            resources.ApplyResources(this.windowToolStripMenuItem, "windowToolStripMenuItem");
+            // 
+            // alwaysOnTopToolStripMenuItem
+            // 
+            this.alwaysOnTopToolStripMenuItem.CheckOnClick = true;
+            this.alwaysOnTopToolStripMenuItem.Name = "alwaysOnTopToolStripMenuItem";
+            resources.ApplyResources(this.alwaysOnTopToolStripMenuItem, "alwaysOnTopToolStripMenuItem");
+            this.alwaysOnTopToolStripMenuItem.Click += new System.EventHandler(this.alwaysOnTopToolStripMenuItem_Click);
+            // 
             // FormMain
             // 
             this.AcceptButton = this.btnOK;
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
+            this.Controls.Add(this.menuMain);
             this.Controls.Add(this.lblFileInfo);
-            this.Controls.Add(this.btnPSpecial);
-            this.Controls.Add(this.btnExplorer);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textName);
             this.Controls.Add(this.chkAutoRun);
-            this.Controls.Add(this.btnCopy);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnLaunch);
-            this.Controls.Add(this.btnCopyPath);
             this.Controls.Add(this.btnTrash);
             this.Controls.Add(this.btnMoveTo);
-            this.Controls.Add(this.btnModifySelection);
-            this.Controls.Add(this.btnModify);
             this.Controls.Add(this.btnOK);
-            this.Controls.Add(this.btnPaste);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.KeyPreview = true;
+            this.MainMenuStrip = this.menuMain;
             this.MaximizeBox = false;
             this.Name = "FormMain";
-            this.TopMost = true;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormMain_FormClosed);
             this.Load += new System.EventHandler(this.FormMain_Load);
             this.menuMoveTo.ResumeLayout(false);
             this.cmModify.ResumeLayout(false);
             this.cmModifySelection.ResumeLayout(false);
             this.menuPSpecial.ResumeLayout(false);
+            this.menuMain.ResumeLayout(false);
+            this.menuMain.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -359,22 +397,17 @@
         private System.Windows.Forms.Label label1;
         internal System.Windows.Forms.TextBox textName;
         private System.Windows.Forms.Button btnLaunch;
-        private System.Windows.Forms.Button btnPaste;
         private System.Windows.Forms.Button btnTrash;
         private System.Windows.Forms.CheckBox chkAutoRun;
-        private System.Windows.Forms.Button btnCopyPath;
         private System.Windows.Forms.Button btnMoveTo;
         private System.Windows.Forms.ContextMenuStrip menuMoveTo;
         private System.Windows.Forms.ToolStripMenuItem aaaToolStripMenuItem;
-        private MenuButton btnModify;
         private System.Windows.Forms.ContextMenuStrip cmModify;
         private System.Windows.Forms.ToolStripMenuItem tsmiMakeFileNamable;
         private System.Windows.Forms.ToolStripMenuItem tsmiLower;
         private System.Windows.Forms.ToolStripMenuItem tsmiUpper;
         private System.Windows.Forms.ToolStripMenuItem tsmiTrim;
         private System.Windows.Forms.ToolStripMenuItem tsmiRemoveSpace;
-        private System.Windows.Forms.Button btnCopy;
-        private MenuButton btnModifySelection;
         private System.Windows.Forms.ContextMenuStrip cmModifySelection;
         private System.Windows.Forms.ToolStripMenuItem tsmiRemoveSpaceSel;
         private System.Windows.Forms.ToolStripMenuItem tsmiMakeFileNamableSel;
@@ -385,10 +418,20 @@
         private System.Windows.Forms.ToolStripMenuItem tsmiUnderbar2hyphenSel;
         private System.Windows.Forms.ToolStripMenuItem tsmiCn2Jp;
         private System.Windows.Forms.ToolStripMenuItem tsmiCn2JpSel;
-        private System.Windows.Forms.Button btnExplorer;
-        private System.Windows.Forms.Button btnPSpecial;
         private System.Windows.Forms.ContextMenuStrip menuPSpecial;
         private System.Windows.Forms.ToolStripMenuItem pasteWithAddingSpaceToolStripMenuItem;
         private System.Windows.Forms.Label lblFileInfo;
+        private System.Windows.Forms.MenuStrip menuMain;
+        private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem openInExplorerToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem copyToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem copyPathToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem pasteToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem pasteTotailToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem modifyToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem modifySelectionToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem windowToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem alwaysOnTopToolStripMenuItem;
     }
 }
