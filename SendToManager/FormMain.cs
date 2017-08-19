@@ -7,6 +7,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.IO;
 using IWshRuntimeLibrary;
+using Ambiesoft;
 
 namespace SendToManager
 {
@@ -78,23 +79,16 @@ namespace SendToManager
 
 
 
-        private bool CreateShortcut(string shortcutfile, string targetpath)
+        private void CreateShortcut(string shortcutfile, string targetpath)
         {
-            try
-            {
-                object shDesktop = (object)"Desktop";
-                WshShell shell = new WshShell();
-                string shortcutAddress = shortcutfile;
-                IWshShortcut shortcut = (IWshShortcut)shell.CreateShortcut(shortcutAddress);
-                // shortcut.Description = "New shortcut for a Notepad";
-                // shortcut.Hotkey = "Ctrl+Shift+N";
-                shortcut.TargetPath = targetpath;
-                shortcut.Save();
-                return true;
-            }
-            catch(Exception)
-            { }
-            return false;
+            object shDesktop = (object)"Desktop";
+            WshShell shell = new WshShell();
+            string shortcutAddress = shortcutfile;
+            IWshShortcut shortcut = (IWshShortcut)shell.CreateShortcut(shortcutAddress);
+            // shortcut.Description = "New shortcut for a Notepad";
+            // shortcut.Hotkey = "Ctrl+Shift+N";
+            shortcut.TargetPath = targetpath;
+            shortcut.Save();
         }
 
         private void addNewItemToolStripMenuItem_Click(object sender, EventArgs e)
@@ -112,7 +106,8 @@ namespace SendToManager
                 string shortcutfilefullpath = Path.Combine(SendToFolder, shortcutfile);
                 if(System.IO.File.Exists(shortcutfilefullpath))
                 {
-                    if(DialogResult.Yes != MessageBox.Show(
+                    if(DialogResult.Yes != CenteredMessageBox.Show(
+                        this,
                         string.Format(Properties.Resources.SHORTCUT_ALREADY_EXISTS,shortcutfilefullpath),
                         Application.ProductName,
                         MessageBoxButtons.YesNo,
@@ -124,10 +119,19 @@ namespace SendToManager
                     }
                 }
 
-                if(!CreateShortcut(shortcutfilefullpath, ofd.FileName))
+                try
                 {
-                    MessageBox.Show(
-                        Properties.Resources.SHORTCUT_CREATION_FAILED,
+                    CreateShortcut(shortcutfilefullpath, ofd.FileName);
+                }
+                catch(Exception ex)
+                {
+                    var sb = new StringBuilder();
+                    sb.AppendLine(Properties.Resources.SHORTCUT_CREATION_FAILED);
+                    sb.AppendLine(ex.Message);
+
+                    CenteredMessageBox.Show(
+                        this,
+                        sb.ToString(),
                         Application.ProductName,
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Error);
