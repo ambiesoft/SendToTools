@@ -51,6 +51,9 @@
     <ClCompile Include="..\..\MyUtility\GetLastErrorString.cpp">
       <Filter>2 Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\MyUtility\pragmashowversions.cpp">
+      <Filter>2 Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="LibMoveCopyTo.h">
@@ -90,6 +93,9 @@
       <Filter>1 Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\MyUtility\GetLastErrorString.h">
+      <Filter>1 Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\MyUtility\pragmashowversions.h">
       <Filter>1 Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -198,6 +198,7 @@
     <ClCompile Include="..\..\MyUtility\browseFolder.cpp" />
     <ClCompile Include="..\..\MyUtility\GetLastErrorString.cpp" />
     <ClCompile Include="..\..\MyUtility\IsFileExists.cpp" />
+    <ClCompile Include="..\..\MyUtility\pragmashowversions.cpp" />
     <ClCompile Include="..\..\MyUtility\SHMoveFile.cpp" />
     <ClCompile Include="..\..\MyUtility\sqlite3.c">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
@@ -221,6 +222,7 @@
     <ClInclude Include="..\..\MyUtility\browseFolder.h" />
     <ClInclude Include="..\..\MyUtility\GetLastErrorString.h" />
     <ClInclude Include="..\..\MyUtility\IsFileExists.h" />
+    <ClInclude Include="..\..\MyUtility\pragmashowversions.h" />
     <ClInclude Include="..\..\MyUtility\SHMoveFile.h" />
     <ClInclude Include="..\..\MyUtility\sqlite3.h" />
     <ClInclude Include="..\..\MyUtility\sqliteserialize.h" />
