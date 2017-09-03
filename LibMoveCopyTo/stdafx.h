@@ -42,12 +42,12 @@
 #include <algorithm>
 #include <set>
 
-#include "../../MyUtility/stdwin32/stdwin32.h"
+#include "../../lsMisc/stdwin32/stdwin32.h"
 
-#include "../../MyUtility/browseFolder.h"
-#include "../../MyUtility/SHMoveFile.h"
-#include "../../MyUtility/sqliteserialize.h"
-#include "../../MyUtility/tstring.h"
+#include "../../lsMisc/browseFolder.h"
+#include "../../lsMisc/SHMoveFile.h"
+#include "../../lsMisc/sqliteserialize.h"
+#include "../../lsMisc/tstring.h"
 
 #include <afxcontrolbars.h>
 

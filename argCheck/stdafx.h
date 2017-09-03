@@ -19,7 +19,7 @@
 
 #include <string>
 
-#include "../../MyUtility/stdwin32/stdwin32.h"
-#include "../../MyUtility/CenterWindow.h"
+#include "../../lsMisc/stdwin32/stdwin32.h"
+#include "../../lsMisc/CenterWindow.h"
 
 // TODO: reference additional headers your program requires here

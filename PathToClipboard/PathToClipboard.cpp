@@ -4,11 +4,11 @@
 #include "stdafx.h"
 #include <ctime>
 #include "PathToClipboard.h"
-#include "../../MyUtility/SetClipboardText.h"
-#include "../../MyUtility/showballoon.h"
-#include "../../MyUtility/stdwin32/stdwin32.h"
-#include "../../MyUtility/StdStringReplace.h"
-#include "../../MyUtility/CenterWindow.h"
+#include "../../lsMisc/SetClipboardText.h"
+#include "../../lsMisc/showballoon.h"
+#include "../../lsMisc/stdwin32/stdwin32.h"
+#include "../../lsMisc/StdStringReplace.h"
+#include "../../lsMisc/CenterWindow.h"
 
 using namespace stdwin32;
 using namespace std;

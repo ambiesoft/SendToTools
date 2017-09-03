@@ -17,8 +17,8 @@ using std::wstring;
 using std::vector;
 using std::find;
 using std::set;
-#include "../../MyUtility/CommandLineParser.h"
-#include "../../MyUtility/GetLastErrorString.h"
+#include "../../lsMisc/CommandLineParser.h"
+#include "../../lsMisc/GetLastErrorString.h"
 
 using Ambiesoft::ArgCount;
 using Ambiesoft::COption;

@@ -58,8 +58,6 @@
             this.tsmiUnderbar2hyphenSel = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiCn2JpSel = new System.Windows.Forms.ToolStripMenuItem();
             this.modifySelectionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuPSpecial = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.pasteWithAddingSpaceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lblFileInfo = new System.Windows.Forms.Label();
             this.menuMain = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -67,16 +65,15 @@
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.copyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.copyPathToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.pasteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pasteTotailToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.windowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.alwaysOnTopToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.btnPaste = new System.Windows.Forms.Button();
             this.menuMoveTo.SuspendLayout();
             this.cmModify.SuspendLayout();
             this.cmModifySelection.SuspendLayout();
-            this.menuPSpecial.SuspendLayout();
             this.menuMain.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -269,19 +266,6 @@
             this.modifySelectionToolStripMenuItem.Name = "modifySelectionToolStripMenuItem";
             resources.ApplyResources(this.modifySelectionToolStripMenuItem, "modifySelectionToolStripMenuItem");
             // 
-            // menuPSpecial
-            // 
-            this.menuPSpecial.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.pasteWithAddingSpaceToolStripMenuItem});
-            this.menuPSpecial.Name = "menuPSpecial";
-            resources.ApplyResources(this.menuPSpecial, "menuPSpecial");
-            // 
-            // pasteWithAddingSpaceToolStripMenuItem
-            // 
-            this.pasteWithAddingSpaceToolStripMenuItem.Name = "pasteWithAddingSpaceToolStripMenuItem";
-            resources.ApplyResources(this.pasteWithAddingSpaceToolStripMenuItem, "pasteWithAddingSpaceToolStripMenuItem");
-            this.pasteWithAddingSpaceToolStripMenuItem.Click += new System.EventHandler(this.pasteWithAddingSpaceToolStripMenuItem_Click);
-            // 
             // lblFileInfo
             // 
             resources.ApplyResources(this.lblFileInfo, "lblFileInfo");
@@ -334,6 +318,11 @@
             resources.ApplyResources(this.copyPathToolStripMenuItem, "copyPathToolStripMenuItem");
             this.copyPathToolStripMenuItem.Click += new System.EventHandler(this.btnCopyPath_Click);
             // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            resources.ApplyResources(this.toolStripMenuItem1, "toolStripMenuItem1");
+            // 
             // pasteToolStripMenuItem
             // 
             this.pasteToolStripMenuItem.Name = "pasteToolStripMenuItem";
@@ -344,6 +333,7 @@
             // 
             this.pasteTotailToolStripMenuItem.Name = "pasteTotailToolStripMenuItem";
             resources.ApplyResources(this.pasteTotailToolStripMenuItem, "pasteTotailToolStripMenuItem");
+            this.pasteTotailToolStripMenuItem.Click += new System.EventHandler(this.pasteTotailToolStripMenuItem_Click);
             // 
             // windowToolStripMenuItem
             // 
@@ -358,11 +348,6 @@
             this.alwaysOnTopToolStripMenuItem.Name = "alwaysOnTopToolStripMenuItem";
             resources.ApplyResources(this.alwaysOnTopToolStripMenuItem, "alwaysOnTopToolStripMenuItem");
             this.alwaysOnTopToolStripMenuItem.Click += new System.EventHandler(this.alwaysOnTopToolStripMenuItem_Click);
-            // 
-            // toolStripMenuItem1
-            // 
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            resources.ApplyResources(this.toolStripMenuItem1, "toolStripMenuItem1");
             // 
             // btnPaste
             // 
@@ -398,7 +383,6 @@
             this.menuMoveTo.ResumeLayout(false);
             this.cmModify.ResumeLayout(false);
             this.cmModifySelection.ResumeLayout(false);
-            this.menuPSpecial.ResumeLayout(false);
             this.menuMain.ResumeLayout(false);
             this.menuMain.PerformLayout();
             this.ResumeLayout(false);
@@ -434,8 +418,6 @@
         private System.Windows.Forms.ToolStripMenuItem tsmiUnderbar2hyphenSel;
         private System.Windows.Forms.ToolStripMenuItem tsmiCn2Jp;
         private System.Windows.Forms.ToolStripMenuItem tsmiCn2JpSel;
-        private System.Windows.Forms.ContextMenuStrip menuPSpecial;
-        private System.Windows.Forms.ToolStripMenuItem pasteWithAddingSpaceToolStripMenuItem;
         private System.Windows.Forms.Label lblFileInfo;
         private System.Windows.Forms.MenuStrip menuMain;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;

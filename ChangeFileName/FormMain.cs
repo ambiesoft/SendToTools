@@ -264,26 +264,22 @@ namespace ChangeFileName
             System.Diagnostics.Process.Start("explorer.exe", arg);
         }
 
-        private void pasteWithAddingSpaceToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                textName.Text = textName.Text + " " + Clipboard.GetText();
-            }
-            catch (Exception) { }
-        }
-
-        //private void btnPSpecial_Click(object sender, EventArgs e)
-        //{
-        //    Point pt = btnPSpecial.Location;
-        //    pt.Y += btnPSpecial.Size.Height;
-        //    menuPSpecial.Show(this.PointToScreen(pt));
-        //}
 
         private void alwaysOnTopToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.TopMost = alwaysOnTopToolStripMenuItem.Checked;
             Ambiesoft.Profile.WriteBool("settings", "TopMost", alwaysOnTopToolStripMenuItem.Checked, IniFile);
+        }
+
+        private void pasteTotailToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string addingText = Clipboard.GetText();
+                if (!string.IsNullOrEmpty(addingText))
+                    textName.Text = textName.Text + " " + addingText;
+            }
+            catch (Exception) { }
         }
     }
 }

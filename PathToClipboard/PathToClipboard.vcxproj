@@ -146,23 +146,23 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\MyUtility\CenterWindow.h" />
-    <ClInclude Include="..\..\MyUtility\CreateSimpleWindow.h" />
-    <ClInclude Include="..\..\MyUtility\SetClipboardText.h" />
-    <ClInclude Include="..\..\MyUtility\showballoon.h" />
-    <ClInclude Include="..\..\MyUtility\stdwin32\stdwin32.h" />
+    <ClInclude Include="..\..\lsMisc\CenterWindow.h" />
+    <ClInclude Include="..\..\lsMisc\CreateSimpleWindow.h" />
+    <ClInclude Include="..\..\lsMisc\SetClipboardText.h" />
+    <ClInclude Include="..\..\lsMisc\showballoon.h" />
+    <ClInclude Include="..\..\lsMisc\stdwin32\stdwin32.h" />
     <ClInclude Include="PathToClipboard.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\MyUtility\CenterWindow.cpp" />
-    <ClCompile Include="..\..\MyUtility\CreateSimpleWindow.cpp" />
-    <ClCompile Include="..\..\MyUtility\SetClipboardText.cpp" />
-    <ClCompile Include="..\..\MyUtility\showballoon.cpp" />
-    <ClCompile Include="..\..\MyUtility\StdStringReplace.cpp" />
-    <ClCompile Include="..\..\MyUtility\stdwin32\stdwin32.cpp" />
+    <ClCompile Include="..\..\lsMisc\CenterWindow.cpp" />
+    <ClCompile Include="..\..\lsMisc\CreateSimpleWindow.cpp" />
+    <ClCompile Include="..\..\lsMisc\SetClipboardText.cpp" />
+    <ClCompile Include="..\..\lsMisc\showballoon.cpp" />
+    <ClCompile Include="..\..\lsMisc\StdStringReplace.cpp" />
+    <ClCompile Include="..\..\lsMisc\stdwin32\stdwin32.cpp" />
     <ClCompile Include="PathToClipboard.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

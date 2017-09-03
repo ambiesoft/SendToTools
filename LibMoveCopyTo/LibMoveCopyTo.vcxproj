@@ -96,7 +96,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>.;..\..\MyUtility\stlsoft\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.;..\..\lsMisc\stlsoft\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -125,7 +125,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>.;..\..\MyUtility\stlsoft\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.;..\..\lsMisc\stlsoft\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -148,7 +148,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>_WINDOWS;_DEBUG;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>.;..\..\MyUtility\stlsoft\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.;..\..\lsMisc\stlsoft\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -173,7 +173,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>_WINDOWS;NDEBUG;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>.;..\..\MyUtility\stlsoft\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.;..\..\lsMisc\stlsoft\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -195,20 +195,20 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\MyUtility\browseFolder.cpp" />
-    <ClCompile Include="..\..\MyUtility\GetLastErrorString.cpp" />
-    <ClCompile Include="..\..\MyUtility\IsFileExists.cpp" />
-    <ClCompile Include="..\..\MyUtility\pragmashowversions.cpp" />
-    <ClCompile Include="..\..\MyUtility\SHMoveFile.cpp" />
-    <ClCompile Include="..\..\MyUtility\sqlite3.c">
+    <ClCompile Include="..\..\lsMisc\browseFolder.cpp" />
+    <ClCompile Include="..\..\lsMisc\GetLastErrorString.cpp" />
+    <ClCompile Include="..\..\lsMisc\IsFileExists.cpp" />
+    <ClCompile Include="..\..\lsMisc\pragmashowversions.cpp" />
+    <ClCompile Include="..\..\lsMisc\SHMoveFile.cpp" />
+    <ClCompile Include="..\..\lsMisc\sqlite3.c">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="..\..\MyUtility\sqliteserialize.cpp" />
-    <ClCompile Include="..\..\MyUtility\stdwin32\stdwin32.cpp" />
-    <ClCompile Include="..\..\MyUtility\UTF16toUTF8.cpp" />
+    <ClCompile Include="..\..\lsMisc\sqliteserialize.cpp" />
+    <ClCompile Include="..\..\lsMisc\stdwin32\stdwin32.cpp" />
+    <ClCompile Include="..\..\lsMisc\UTF16toUTF8.cpp" />
     <ClCompile Include="ChooseDirDialog.cpp" />
     <ClCompile Include="LibMoveCopyTo.cpp" />
     <ClCompile Include="stdafx.cpp">
@@ -219,15 +219,15 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\MyUtility\browseFolder.h" />
-    <ClInclude Include="..\..\MyUtility\GetLastErrorString.h" />
-    <ClInclude Include="..\..\MyUtility\IsFileExists.h" />
-    <ClInclude Include="..\..\MyUtility\pragmashowversions.h" />
-    <ClInclude Include="..\..\MyUtility\SHMoveFile.h" />
-    <ClInclude Include="..\..\MyUtility\sqlite3.h" />
-    <ClInclude Include="..\..\MyUtility\sqliteserialize.h" />
-    <ClInclude Include="..\..\MyUtility\stdwin32\stdwin32.h" />
-    <ClInclude Include="..\..\MyUtility\UTF16toUTF8.h" />
+    <ClInclude Include="..\..\lsMisc\browseFolder.h" />
+    <ClInclude Include="..\..\lsMisc\GetLastErrorString.h" />
+    <ClInclude Include="..\..\lsMisc\IsFileExists.h" />
+    <ClInclude Include="..\..\lsMisc\pragmashowversions.h" />
+    <ClInclude Include="..\..\lsMisc\SHMoveFile.h" />
+    <ClInclude Include="..\..\lsMisc\sqlite3.h" />
+    <ClInclude Include="..\..\lsMisc\sqliteserialize.h" />
+    <ClInclude Include="..\..\lsMisc\stdwin32\stdwin32.h" />
+    <ClInclude Include="..\..\lsMisc\UTF16toUTF8.h" />
     <ClInclude Include="ChooseDirDialog.h" />
     <ClInclude Include="LibMoveCopyTo.h" />
     <ClInclude Include="resource.h" />
