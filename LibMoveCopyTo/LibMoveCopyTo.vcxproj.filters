@@ -24,34 +24,34 @@
     <ClCompile Include="stdafx.cpp">
       <Filter>2 Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\MyUtility\stdwin32\stdwin32.cpp">
-      <Filter>2 Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="ChooseDirDialog.cpp">
       <Filter>2 Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\MyUtility\sqlite3.c">
+    <ClCompile Include="..\..\lsMisc\browseFolder.cpp">
       <Filter>2 Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\MyUtility\sqliteserialize.cpp">
+    <ClCompile Include="..\..\lsMisc\GetLastErrorString.cpp">
       <Filter>2 Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\MyUtility\browseFolder.cpp">
+    <ClCompile Include="..\..\lsMisc\IsFileExists.cpp">
       <Filter>2 Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\MyUtility\SHMoveFile.cpp">
+    <ClCompile Include="..\..\lsMisc\pragmashowversions.cpp">
       <Filter>2 Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\MyUtility\UTF16toUTF8.cpp">
+    <ClCompile Include="..\..\lsMisc\SHMoveFile.cpp">
       <Filter>2 Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\MyUtility\IsFileExists.cpp">
+    <ClCompile Include="..\..\lsMisc\sqlite3.c">
       <Filter>2 Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\MyUtility\GetLastErrorString.cpp">
+    <ClCompile Include="..\..\lsMisc\sqliteserialize.cpp">
       <Filter>2 Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\MyUtility\pragmashowversions.cpp">
+    <ClCompile Include="..\..\lsMisc\stdwin32\stdwin32.cpp">
+      <Filter>2 Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lsMisc\UTF16toUTF8.cpp">
       <Filter>2 Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -65,37 +65,37 @@
     <ClInclude Include="targetver.h">
       <Filter>1 Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\MyUtility\stdwin32\stdwin32.h">
-      <Filter>1 Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="ChooseDirDialog.h">
       <Filter>1 Header Files</Filter>
     </ClInclude>
     <ClInclude Include="resource.h">
       <Filter>1 Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\MyUtility\sqlite3.h">
+    <ClInclude Include="..\..\lsMisc\browseFolder.h">
       <Filter>1 Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\MyUtility\sqliteserialize.h">
+    <ClInclude Include="..\..\lsMisc\GetLastErrorString.h">
       <Filter>1 Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\MyUtility\browseFolder.h">
+    <ClInclude Include="..\..\lsMisc\IsFileExists.h">
       <Filter>1 Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\MyUtility\SHMoveFile.h">
+    <ClInclude Include="..\..\lsMisc\pragmashowversions.h">
       <Filter>1 Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\MyUtility\UTF16toUTF8.h">
+    <ClInclude Include="..\..\lsMisc\SHMoveFile.h">
       <Filter>1 Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\MyUtility\IsFileExists.h">
+    <ClInclude Include="..\..\lsMisc\sqlite3.h">
       <Filter>1 Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\MyUtility\GetLastErrorString.h">
+    <ClInclude Include="..\..\lsMisc\sqliteserialize.h">
       <Filter>1 Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\MyUtility\pragmashowversions.h">
+    <ClInclude Include="..\..\lsMisc\stdwin32\stdwin32.h">
+      <Filter>1 Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lsMisc\UTF16toUTF8.h">
       <Filter>1 Header Files</Filter>
     </ClInclude>
   </ItemGroup>

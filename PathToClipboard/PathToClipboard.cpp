@@ -157,7 +157,8 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	}
 
 	DialogData dt;
-	if (GetAsyncKeyState(VK_CONTROL) < 0)
+	if ((GetAsyncKeyState(VK_SHIFT) < 0) ||
+		(GetAsyncKeyState(VK_CONTROL)< 0) )
 	{
 		if (IDOK != DialogBoxParam(hInst,
 			MAKEINTRESOURCE(IDD_PATHTOCLIPBOARD_DIALOG),

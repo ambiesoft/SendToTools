@@ -30,10 +30,10 @@
     <ClInclude Include="argCheck.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\MyUtility\stdwin32\stdwin32.h">
+    <ClInclude Include="..\..\lsMisc\CenterWindow.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\MyUtility\CenterWindow.h">
+    <ClInclude Include="..\..\lsMisc\stdwin32\stdwin32.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -44,10 +44,10 @@
     <ClCompile Include="argCheck.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\MyUtility\stdwin32\stdwin32.cpp">
+    <ClCompile Include="..\..\lsMisc\CenterWindow.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\MyUtility\CenterWindow.cpp">
+    <ClCompile Include="..\..\lsMisc\stdwin32\stdwin32.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

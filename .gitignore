@@ -3,3 +3,9 @@
 **/bin/
 **/obj/
 .vs/
+
+RunasFile/RunasFile.csproj.user
+SendToTools.sdf
+SendToTools.v12.suo
+ipch/
+

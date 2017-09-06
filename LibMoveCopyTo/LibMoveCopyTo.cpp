@@ -3,11 +3,11 @@
 
 #include "stdafx.h"
 
-
-
 #include "LibMoveCopyTo.h"
 
-
+#include "../../lsMisc/CommandLineParser.h"
+#include "../../lsMisc/GetLastErrorString.h"
+#include "ChooseDirDialog.h"
 
 
 #pragma comment(lib,"shlwapi.lib")
@@ -17,16 +17,16 @@ using std::wstring;
 using std::vector;
 using std::find;
 using std::set;
-#include "../../lsMisc/CommandLineParser.h"
-#include "../../lsMisc/GetLastErrorString.h"
 
 using Ambiesoft::ArgCount;
 using Ambiesoft::COption;
 using Ambiesoft::CCommandLineParser;
+using Ambiesoft::sqlGetPrivateProfileStringArray;
+using Ambiesoft::sqlWritePrivateProfileStringArray;
 
 typedef vector<wstring> STRINGVECTOR;
 
-#include "ChooseDirDialog.h"
+
 
 #define		DE_SAMEFILE			0x71
 #define		DE_MANYSRC1DEST			0x72

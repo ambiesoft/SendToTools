@@ -27,19 +27,19 @@
     <ClInclude Include="PathToClipboard.h">
       <Filter>1 Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\MyUtility\SetClipboardText.h">
+    <ClInclude Include="..\..\lsMisc\CenterWindow.h">
       <Filter>1 Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\MyUtility\showballoon.h">
+    <ClInclude Include="..\..\lsMisc\CreateSimpleWindow.h">
       <Filter>1 Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\MyUtility\CreateSimpleWindow.h">
+    <ClInclude Include="..\..\lsMisc\SetClipboardText.h">
       <Filter>1 Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\MyUtility\stdwin32\stdwin32.h">
+    <ClInclude Include="..\..\lsMisc\showballoon.h">
       <Filter>1 Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\MyUtility\CenterWindow.h">
+    <ClInclude Include="..\..\lsMisc\stdwin32\stdwin32.h">
       <Filter>1 Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -50,22 +50,22 @@
     <ClCompile Include="PathToClipboard.cpp">
       <Filter>2 Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\MyUtility\SetClipboardText.cpp">
+    <ClCompile Include="..\..\lsMisc\CenterWindow.cpp">
       <Filter>2 Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\MyUtility\showballoon.cpp">
+    <ClCompile Include="..\..\lsMisc\CreateSimpleWindow.cpp">
       <Filter>2 Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\MyUtility\CreateSimpleWindow.cpp">
+    <ClCompile Include="..\..\lsMisc\SetClipboardText.cpp">
       <Filter>2 Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\MyUtility\stdwin32\stdwin32.cpp">
+    <ClCompile Include="..\..\lsMisc\showballoon.cpp">
       <Filter>2 Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\MyUtility\StdStringReplace.cpp">
+    <ClCompile Include="..\..\lsMisc\StdStringReplace.cpp">
       <Filter>2 Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\MyUtility\CenterWindow.cpp">
+    <ClCompile Include="..\..\lsMisc\stdwin32\stdwin32.cpp">
       <Filter>2 Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26430.16
+# Visual Studio 2013
+VisualStudioVersion = 12.0.40629.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShortcutRenamer", "ShortcutRenamer\ShortcutRenamer.csproj", "{AF635702-0D11-4CEF-AA87-8F4F9588523E}"
 EndProject
@@ -57,6 +57,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MoveTo", "MoveTo\MoveTo.vcx
 	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LibMoveCopyTo", "LibMoveCopyTo\LibMoveCopyTo.vcxproj", "{D7A0D165-7D00-4929-A51B-58D098349CAE}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RunFileAs", "RunFileAs\RunFileAs.vcxproj", "{A4A63BA8-6718-4E4F-A0C9-65204CC0C880}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -436,6 +438,18 @@ Global
 		{D7A0D165-7D00-4929-A51B-58D098349CAE}.Release|Win32.Build.0 = Release|Win32
 		{D7A0D165-7D00-4929-A51B-58D098349CAE}.Release|x64.ActiveCfg = Release|x64
 		{D7A0D165-7D00-4929-A51B-58D098349CAE}.Release|x64.Build.0 = Release|x64
+		{A4A63BA8-6718-4E4F-A0C9-65204CC0C880}.Debug|Any CPU.ActiveCfg = Debug|Win32
+		{A4A63BA8-6718-4E4F-A0C9-65204CC0C880}.Debug|Mixed Platforms.ActiveCfg = Debug|Win32
+		{A4A63BA8-6718-4E4F-A0C9-65204CC0C880}.Debug|Mixed Platforms.Build.0 = Debug|Win32
+		{A4A63BA8-6718-4E4F-A0C9-65204CC0C880}.Debug|Win32.ActiveCfg = Debug|Win32
+		{A4A63BA8-6718-4E4F-A0C9-65204CC0C880}.Debug|Win32.Build.0 = Debug|Win32
+		{A4A63BA8-6718-4E4F-A0C9-65204CC0C880}.Debug|x64.ActiveCfg = Debug|Win32
+		{A4A63BA8-6718-4E4F-A0C9-65204CC0C880}.Release|Any CPU.ActiveCfg = Release|Win32
+		{A4A63BA8-6718-4E4F-A0C9-65204CC0C880}.Release|Mixed Platforms.ActiveCfg = Release|Win32
+		{A4A63BA8-6718-4E4F-A0C9-65204CC0C880}.Release|Mixed Platforms.Build.0 = Release|Win32
+		{A4A63BA8-6718-4E4F-A0C9-65204CC0C880}.Release|Win32.ActiveCfg = Release|Win32
+		{A4A63BA8-6718-4E4F-A0C9-65204CC0C880}.Release|Win32.Build.0 = Release|Win32
+		{A4A63BA8-6718-4E4F-A0C9-65204CC0C880}.Release|x64.ActiveCfg = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
