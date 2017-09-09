@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SendToManager.Properties {
+namespace SendToManagerLauncher.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace SendToManager.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("SendToManager.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("SendToManagerLauncher.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -57,42 +57,6 @@ namespace SendToManager.Properties {
             }
             set {
                 resourceCulture = value;
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Failed to write to ini file, You can not run this application from this directory..
-        /// </summary>
-        internal static string ALERT_DIRECTORY_UNAVAILABLE {
-            get {
-                return ResourceManager.GetString("ALERT_DIRECTORY_UNAVAILABLE", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Inventory does not exist. Do you want to create default inventory?.
-        /// </summary>
-        internal static string DO_YOU_WANT_TO_CREATE_DEFAULT_INVENTORY {
-            get {
-                return ResourceManager.GetString("DO_YOU_WANT_TO_CREATE_DEFAULT_INVENTORY", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to &quot;{0}&quot; already exists. Do you want to override?.
-        /// </summary>
-        internal static string SHORTCUT_ALREADY_EXISTS {
-            get {
-                return ResourceManager.GetString("SHORTCUT_ALREADY_EXISTS", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Failed to create shortcut..
-        /// </summary>
-        internal static string SHORTCUT_CREATION_FAILED {
-            get {
-                return ResourceManager.GetString("SHORTCUT_CREATION_FAILED", resourceCulture);
             }
         }
     }

@@ -117,6 +117,12 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ALERT_DIRECTORY_UNAVAILABLE" xml:space="preserve">
+    <value>Failed to write to ini file, You can not run this application from this directory.</value>
+  </data>
+  <data name="DO_YOU_WANT_TO_CREATE_DEFAULT_INVENTORY" xml:space="preserve">
+    <value>Inventory does not exist. Do you want to create default inventory?</value>
+  </data>
   <data name="SHORTCUT_ALREADY_EXISTS" xml:space="preserve">
     <value>"{0}" already exists. Do you want to override?</value>
   </data>

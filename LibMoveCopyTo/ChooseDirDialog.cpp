@@ -7,7 +7,7 @@
 #include "resource.h"
 #include "ChooseDirDialog.h"
 
-
+using namespace Ambiesoft;
 
 // CChooseDirDialog ダイアログ
 

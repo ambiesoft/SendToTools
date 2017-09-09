@@ -23,6 +23,7 @@ using Ambiesoft::COption;
 using Ambiesoft::CCommandLineParser;
 using Ambiesoft::sqlGetPrivateProfileStringArray;
 using Ambiesoft::sqlWritePrivateProfileStringArray;
+using Ambiesoft::SHMoveFile;
 
 typedef vector<wstring> STRINGVECTOR;
 
