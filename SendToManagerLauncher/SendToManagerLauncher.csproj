@@ -100,10 +100,16 @@
   <PropertyGroup>
     <PostBuildEvent>copy "$(ProjectDir)Dist\History.txt" "$(OutDir)"
 copy "$(ProjectDir)Dist\Readme.txt" "$(OutDir)"
-copy "$(ProjectDir)Dist\License.txt" "$(OutDir)"</PostBuildEvent>
+copy "$(ProjectDir)Dist\License.txt" "$(OutDir)"
+
+del "$(OutDir)FolderConfig.ini.sample"
+
+copy "$(ProjectDir)Dist\FolderConfig.ini" "$(OutDir)"</PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
-    <PreBuildEvent>xcopy /D /S /E /V /I /F /H /R /Y C:\Linkout\FolderConfig\* "$(OutDir)"</PreBuildEvent>
+    <PreBuildEvent>xcopy /D /S /E /V /I /F /H /R /Y C:\Linkout\FolderConfig\* "$(OutDir)"
+
+</PreBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

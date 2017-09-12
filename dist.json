@@ -6,7 +6,7 @@
     "targets": [
             {
                 "outdir" : "C:/Linkout/SendTo Tools/",
-                "platform":"Win32"
+                "platform":"x86"
             }
     ],
     "archivedir": "C:/Linkout/",

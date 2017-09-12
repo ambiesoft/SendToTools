@@ -22,5 +22,12 @@ namespace SendToManager
                 return Path.GetFileName(fullName_);
             }
         }
+        public string ParentDir
+        {
+            get
+            {
+                return Path.GetDirectoryName(fullName_);
+            }
+        }
     }
 }

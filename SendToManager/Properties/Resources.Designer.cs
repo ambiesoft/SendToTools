@@ -79,6 +79,15 @@ namespace SendToManager.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Failed to move files..
+        /// </summary>
+        internal static string FAILED_TO_MOVE_FILES {
+            get {
+                return ResourceManager.GetString("FAILED_TO_MOVE_FILES", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to &quot;{0}&quot; already exists. Do you want to override?.
         /// </summary>
         internal static string SHORTCUT_ALREADY_EXISTS {

@@ -62,6 +62,13 @@ namespace SendToManager
         {
             return string.Format("{0:D2} {1}", num, name);
         }
+        string UnsetNumber(string name)
+        {
+            if (!IsNumbered(name))
+                return name;
+
+            return name.Substring(3);
+        }
         private void UpdateList()
         {
             UpdateList(false);
@@ -100,23 +107,35 @@ namespace SendToManager
                 int newNumber = 0;
                 List<string> moveFroms = new List<string>();
                 List<string> moveTos = new List<string>();
+                string dir = null;
                 foreach (ListViewItem item in lvMain.Items)
                 {
                     LVInfo info = (LVInfo)item.Tag;
-                    if (!IsNumbered(info.FileName))
+                    Debug.Assert(dir == null || dir == info.ParentDir);
+                    dir = info.ParentDir;
+                    string oldName = info.FileName;
+                    string newName = info.FileName;
+                    if (IsNumbered(newName))
                     {
-                        string newName = SetNumber(++newNumber, info.FileName);
-                        moveFroms.Add(info.FileName);
-                        moveTos.Add(newName);
+                        newName = UnsetNumber(newName);
+                    }
+
+                    newName = SetNumber(++newNumber, newName);
+                    if (oldName != newName)
+                    {
+                        moveFroms.Add(Path.Combine(dir, oldName));
+                        moveTos.Add(Path.Combine(dir, newName));
                     }
                 }
                 Debug.Assert(moveFroms.Count == moveTos.Count);
-                string[] aFrom = moveFroms.ToArray();
-                string[] aTo = moveTos.ToArray();
-                if (!CppUtils.MoveFiles(aFrom, aTo))
+                if (moveFroms.Count != 0)
                 {
-                    Alert("aaa");
-                    return;
+                    int ret = CppUtils.MoveFiles(moveFroms.ToArray(), moveTos.ToArray());
+                    if(ret != 0 && ret != 128)
+                    {
+                        AmbLib.Alert(Properties.Resources.FAILED_TO_MOVE_FILES);
+                        return;
+                    }
                 }
             }
 
@@ -161,7 +180,10 @@ namespace SendToManager
                 if (!Directory.Exists(InventoryDir))
                 {
                     if (!Program.YesOrNo(Properties.Resources.DO_YOU_WANT_TO_CREATE_DEFAULT_INVENTORY))
+                    {
+                        Environment.Exit(0);
                         return;
+                    }
 
                     Directory.CreateDirectory(InventoryDir);
                     string mainDir = Path.Combine(InventoryDir, "Main");
@@ -217,8 +239,8 @@ namespace SendToManager
         private void FormMain_Load(object sender, EventArgs e)
         {
             constructInventory();
-            UpdateList();
 
+            UpdateList();
             UpdateTitle();
         }
 
@@ -315,11 +337,21 @@ namespace SendToManager
                 return;
 
             int index = lvMain.SelectedIndices[0];
-            if (index <= 0)
-                return;
-
+            int nextI = -1;
+            if (bDown)
+            {
+                if (index + 1 >= lvMain.Items.Count)
+                    return;
+                nextI = index + 1;
+            }
+            else
+            {
+                if (index <= 0)
+                    return;
+                nextI = index - 1;
+            }
             lvMain.Items.Remove(item);
-            lvMain.Items.Insert(index - 1, item);
+            lvMain.Items.Insert(nextI, item);
         }
         private void tsbUp_Click(object sender, EventArgs e)
         {
