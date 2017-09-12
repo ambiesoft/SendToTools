@@ -70,7 +70,7 @@ namespace SendToManager
         {
             get
             {
-                return Path.Combine(AppDir, INVENTORY_COMPONENT_NAME);
+                return Path.Combine(Program.ConfigDir , INVENTORY_COMPONENT_NAME);
             }
         }
         string CurrentInventoryFolder

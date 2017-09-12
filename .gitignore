@@ -4,7 +4,7 @@
 **/obj/
 .vs/
 
-RunasFile/RunasFile.csproj.user
+*.user
 SendToTools.sdf
 SendToTools.v12.suo
 ipch/

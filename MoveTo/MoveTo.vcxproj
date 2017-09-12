@@ -104,8 +104,12 @@
       <AdditionalDependencies>$(SolutionDir)$(Configuration)\LibMoveCopyTo.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PreLinkEvent>
-      <Command>copy "$(SolutionDir)$(Configuration)\LibMoveCopyTo.dll" "$(OutDir)"</Command>
+      <Command>
+      </Command>
     </PreLinkEvent>
+    <PostBuildEvent>
+      <Command>copy "$(SolutionDir)$(Configuration)\LibMoveCopyTo.dll" "$(OutDir)"</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -120,13 +124,17 @@
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
-      <AdditionalDependencies>$(SolutionDir)$(Configuration)\LibMoveCopyToD.lib</AdditionalDependencies>
       <IgnoreSpecificDefaultLibraries>
       </IgnoreSpecificDefaultLibraries>
+      <AdditionalDependencies>$(SolutionDir)$(Configuration)\LibMoveCopyToD.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PreLinkEvent>
-      <Command>copy "$(SolutionDir)$(Configuration)\LibMoveCopyTo.dll" "$(OutDir)"</Command>
+      <Command>
+      </Command>
     </PreLinkEvent>
+    <PostBuildEvent>
+      <Command>copy "$(SolutionDir)$(Configuration)\LibMoveCopyToD.dll" "$(OutDir)"</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -180,6 +188,11 @@
   <ItemGroup>
     <ProjectReference Include="..\LibMoveCopyTo\LibMoveCopyTo.vcxproj">
       <Project>{d7a0d165-7d00-4929-a51b-58d098349cae}</Project>
+      <Private>false</Private>
+      <ReferenceOutputAssembly>true</ReferenceOutputAssembly>
+      <CopyLocalSatelliteAssemblies>false</CopyLocalSatelliteAssemblies>
+      <LinkLibraryDependencies>true</LinkLibraryDependencies>
+      <UseLibraryDependencyInputs>false</UseLibraryDependencyInputs>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

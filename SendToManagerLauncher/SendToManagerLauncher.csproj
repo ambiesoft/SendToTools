@@ -77,6 +77,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="Dist\FolderConfig.ini" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -100,6 +101,9 @@
     <PostBuildEvent>copy "$(ProjectDir)Dist\History.txt" "$(OutDir)"
 copy "$(ProjectDir)Dist\Readme.txt" "$(OutDir)"
 copy "$(ProjectDir)Dist\License.txt" "$(OutDir)"</PostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PreBuildEvent>xcopy /D /S /E /V /I /F /H /R /Y C:\Linkout\FolderConfig\* "$(OutDir)"</PreBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
