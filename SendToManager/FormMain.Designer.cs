@@ -64,9 +64,6 @@
             this.lvMain.TabIndex = 0;
             this.lvMain.UseCompatibleStateImageBehavior = false;
             this.lvMain.View = System.Windows.Forms.View.Details;
-            this.lvMain.VirtualMode = true;
-            this.lvMain.RetrieveVirtualItem += new System.Windows.Forms.RetrieveVirtualItemEventHandler(this.lvMain_RetrieveVirtualItem);
-            this.lvMain.VirtualItemsSelectionRangeChanged += new System.Windows.Forms.ListViewVirtualItemsSelectionRangeChangedEventHandler(this.lvMain_VirtualItemsSelectionRangeChanged);
             // 
             // chNo
             // 
@@ -120,7 +117,7 @@
             this.tsbUp.Image = ((System.Drawing.Image)(resources.GetObject("tsbUp.Image")));
             this.tsbUp.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbUp.Name = "tsbUp";
-            this.tsbUp.Size = new System.Drawing.Size(42, 22);
+            this.tsbUp.Size = new System.Drawing.Size(40, 22);
             this.tsbUp.Text = "Up";
             this.tsbUp.Click += new System.EventHandler(this.tsbUp_Click);
             // 
@@ -129,7 +126,7 @@
             this.tsbDown.Image = ((System.Drawing.Image)(resources.GetObject("tsbDown.Image")));
             this.tsbDown.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbDown.Name = "tsbDown";
-            this.tsbDown.Size = new System.Drawing.Size(58, 22);
+            this.tsbDown.Size = new System.Drawing.Size(54, 22);
             this.tsbDown.Text = "Down";
             this.tsbDown.Click += new System.EventHandler(this.tsbDown_Click);
             // 
@@ -149,14 +146,14 @@
             // addNewItemToolStripMenuItem
             // 
             this.addNewItemToolStripMenuItem.Name = "addNewItemToolStripMenuItem";
-            this.addNewItemToolStripMenuItem.Size = new System.Drawing.Size(95, 20);
+            this.addNewItemToolStripMenuItem.Size = new System.Drawing.Size(87, 20);
             this.addNewItemToolStripMenuItem.Text = "Add &New Item";
             this.addNewItemToolStripMenuItem.Click += new System.EventHandler(this.addNewItemToolStripMenuItem_Click);
             // 
             // assignNumberToolStripMenuItem
             // 
             this.assignNumberToolStripMenuItem.Name = "assignNumberToolStripMenuItem";
-            this.assignNumberToolStripMenuItem.Size = new System.Drawing.Size(101, 20);
+            this.assignNumberToolStripMenuItem.Size = new System.Drawing.Size(90, 20);
             this.assignNumberToolStripMenuItem.Text = "Assign Nu&mber";
             this.assignNumberToolStripMenuItem.Click += new System.EventHandler(this.assignNumberToolStripMenuItem_Click);
             // 
@@ -165,20 +162,20 @@
             this.inventoryToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.dummyToolStripMenuItem});
             this.inventoryToolStripMenuItem.Name = "inventoryToolStripMenuItem";
-            this.inventoryToolStripMenuItem.Size = new System.Drawing.Size(69, 20);
+            this.inventoryToolStripMenuItem.Size = new System.Drawing.Size(67, 20);
             this.inventoryToolStripMenuItem.Text = "&Inventory";
             this.inventoryToolStripMenuItem.DropDownOpening += new System.EventHandler(this.inventoryToolStripMenuItem_DropDownOpening);
             // 
             // dummyToolStripMenuItem
             // 
             this.dummyToolStripMenuItem.Name = "dummyToolStripMenuItem";
-            this.dummyToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
+            this.dummyToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.dummyToolStripMenuItem.Text = "<dummy>";
             // 
             // deployToolStripMenuItem
             // 
             this.deployToolStripMenuItem.Name = "deployToolStripMenuItem";
-            this.deployToolStripMenuItem.Size = new System.Drawing.Size(56, 20);
+            this.deployToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
             this.deployToolStripMenuItem.Text = "&Deploy";
             this.deployToolStripMenuItem.Click += new System.EventHandler(this.deployToolStripMenuItem_Click);
             // 

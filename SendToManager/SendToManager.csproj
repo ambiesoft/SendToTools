@@ -72,6 +72,10 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Ambiesoft.amblib, Version=1.0.0.2825, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Linkout\DNAssembly\Ambiesoft.amblib.dll</HintPath>
+    </Reference>
     <Reference Include="Ambiesoft.amblibcpp.x86">
       <HintPath>..\..\..\..\..\..\Linkout\DNAssembly.NET4.x86\Ambiesoft.amblibcpp.x86.dll</HintPath>
     </Reference>
@@ -98,6 +102,7 @@
     <Compile Include="FormMain.Designer.cs">
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="LVInfo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FormMain.resx">

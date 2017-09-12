@@ -7,6 +7,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.IO;
 using IWshRuntimeLibrary;
+using System.Diagnostics;
 using Ambiesoft;
 
 namespace SendToManager
@@ -24,7 +25,7 @@ namespace SendToManager
             InitializeComponent();
         }
 
-        SortedList<int, FileInfo> allitems = new SortedList<int, FileInfo>();
+        // SortedList<int, FileInfo> allitems = new SortedList<int, FileInfo>();
 
         string SendToFolder
         {
@@ -84,30 +85,42 @@ namespace SendToManager
         {
             if (setNumber)
             {
-                DirectoryInfo di = new System.IO.DirectoryInfo(CurrentInventoryFolder);
-                FileInfo[] fis = di.GetFiles("*.*", SearchOption.TopDirectoryOnly);
-                int currentMaxNumber = 0;
-                foreach (FileInfo fi in fis)
+                //DirectoryInfo di = new System.IO.DirectoryInfo(CurrentInventoryFolder);
+                //FileInfo[] fis = di.GetFiles("*.*", SearchOption.TopDirectoryOnly);
+                //int currentMaxNumber = 0;
+                //foreach (FileInfo fi in fis)
+                //{
+                //    if (IsNumbered(fi.Name))
+                //    {
+                //        int num = GetNumber(fi.Name);
+                //        currentMaxNumber = Math.Max(currentMaxNumber, num);
+                //    }
+                //}
+
+                int newNumber = 0;
+                List<string> moveFroms = new List<string>();
+                List<string> moveTos = new List<string>();
+                foreach (ListViewItem item in lvMain.Items)
                 {
-                    if (IsNumbered(fi.Name))
+                    LVInfo info = (LVInfo)item.Tag;
+                    if (!IsNumbered(info.FileName))
                     {
-                        int num = GetNumber(fi.Name);
-                        currentMaxNumber = Math.Max(currentMaxNumber, num);
+                        string newName = SetNumber(++newNumber, info.FileName);
+                        moveFroms.Add(info.FileName);
+                        moveTos.Add(newName);
                     }
                 }
-
-                int newNumber = currentMaxNumber + 1;
-                foreach (FileInfo fi in fis)
+                Debug.Assert(moveFroms.Count == moveTos.Count);
+                string[] aFrom = moveFroms.ToArray();
+                string[] aTo = moveTos.ToArray();
+                if (!CppUtils.MoveFiles(aFrom, aTo))
                 {
-                    if (!IsNumbered(fi.Name))
-                    {
-                        string newName = SetNumber(newNumber++, fi.Name);
-                        fi.MoveTo( Path.Combine(fi.DirectoryName, newName));
-                    }
+                    Alert("aaa");
+                    return;
                 }
             }
 
-            allitems.Clear();
+            lvMain.Items.Clear();
             {
                 DirectoryInfo di = new System.IO.DirectoryInfo(CurrentInventoryFolder);
                 System.IO.FileInfo[] fis = di.GetFiles("*.*", SearchOption.TopDirectoryOnly);
@@ -118,19 +131,19 @@ namespace SendToManager
                     }
                 );
 
-                int i = 0;
                 foreach (FileInfo fi in fis)
                 {
                     if (!fi.IsReadOnly &&
                         (fi.Attributes & FileAttributes.Hidden) == 0 &&
                         string.Compare(fi.Extension, ".lnk", true) == 0)
                     {
-                        allitems.Add(i++, fi);
+                        ListViewItem item = new ListViewItem();
+                        item.Text = fi.Name;
+                        item.Tag = new LVInfo(fi.FullName);
+                        lvMain.Items.Add(item);
                     }
                 }
             }
-            lvMain.VirtualListSize = 0;
-            lvMain.VirtualListSize = allitems.Count;
         }
         string AppDir
         {
@@ -209,23 +222,23 @@ namespace SendToManager
             UpdateTitle();
         }
 
-        private void lvMain_VirtualItemsSelectionRangeChanged(object sender, ListViewVirtualItemsSelectionRangeChangedEventArgs e)
-        {
+        //private void lvMain_VirtualItemsSelectionRangeChanged(object sender, ListViewVirtualItemsSelectionRangeChangedEventArgs e)
+        //{
 
-        }
+        //}
 
-        private void lvMain_RetrieveVirtualItem(object sender, RetrieveVirtualItemEventArgs e)
-        {
+        //private void lvMain_RetrieveVirtualItem(object sender, RetrieveVirtualItemEventArgs e)
+        //{
 
-            FileInfo fi = allitems[e.ItemIndex];
+        //    FileInfo fi = allitems[e.ItemIndex];
 
-            var item = new ListViewItem();
-            item.Text = string.Format("{0:D2}", e.ItemIndex + 1);
-            item.SubItems.Add(fi.Name);
+        //    var item = new ListViewItem();
+        //    item.Text = string.Format("{0:D2}", e.ItemIndex + 1);
+        //    item.SubItems.Add(fi.Name);
 
 
-            e.Item = item;
-        }
+        //    e.Item = item;
+        //}
 
 
 
@@ -292,20 +305,35 @@ namespace SendToManager
             }
         }
 
+        void UpDown(bool bDown)
+        {
+            if (lvMain.SelectedItems.Count <= 0)
+                return;
+
+            ListViewItem item = lvMain.SelectedItems[0];
+            if (item == null)
+                return;
+
+            int index = lvMain.SelectedIndices[0];
+            if (index <= 0)
+                return;
+
+            lvMain.Items.Remove(item);
+            lvMain.Items.Insert(index - 1, item);
+        }
         private void tsbUp_Click(object sender, EventArgs e)
         {
-
+            UpDown(false);
         }
 
         private void tsbDown_Click(object sender, EventArgs e)
         {
-
+            UpDown(true);
         }
 
         private void assignNumberToolStripMenuItem_Click(object sender, EventArgs e)
         {
             UpdateList(true);
-
         }
 
         private void inventoryToolStripMenuItem_DropDownOpening(object sender, EventArgs e)
