@@ -276,11 +276,12 @@ Global
 		{A4A63BA8-6718-4E4F-A0C9-65204CC0C880}.Release|Win32.ActiveCfg = Release|Win32
 		{A4A63BA8-6718-4E4F-A0C9-65204CC0C880}.Release|Win32.Build.0 = Release|Win32
 		{A4A63BA8-6718-4E4F-A0C9-65204CC0C880}.Release|x64.ActiveCfg = Release|Win32
-		{95EE3EEA-3F2C-4BDC-B3C0-EE3DB1CA800A}.Debug|Win32.ActiveCfg = Debug|Any CPU
-		{95EE3EEA-3F2C-4BDC-B3C0-EE3DB1CA800A}.Debug|Win32.Build.0 = Debug|Any CPU
+		{95EE3EEA-3F2C-4BDC-B3C0-EE3DB1CA800A}.Debug|Win32.ActiveCfg = Debug|x86
+		{95EE3EEA-3F2C-4BDC-B3C0-EE3DB1CA800A}.Debug|Win32.Build.0 = Debug|x86
 		{95EE3EEA-3F2C-4BDC-B3C0-EE3DB1CA800A}.Debug|x64.ActiveCfg = Debug|Any CPU
 		{95EE3EEA-3F2C-4BDC-B3C0-EE3DB1CA800A}.Debug|x64.Build.0 = Debug|Any CPU
-		{95EE3EEA-3F2C-4BDC-B3C0-EE3DB1CA800A}.Release|Win32.ActiveCfg = Release|Any CPU
+		{95EE3EEA-3F2C-4BDC-B3C0-EE3DB1CA800A}.Release|Win32.ActiveCfg = Release|x86
+		{95EE3EEA-3F2C-4BDC-B3C0-EE3DB1CA800A}.Release|Win32.Build.0 = Release|x86
 		{95EE3EEA-3F2C-4BDC-B3C0-EE3DB1CA800A}.Release|x64.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution

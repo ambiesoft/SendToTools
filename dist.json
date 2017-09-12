@@ -1,0 +1,26 @@
+{
+	"name": "SendToTools",
+	"solution": "SendToTools.sln",
+
+	"configuration": "Release",
+    "targets": [
+            {
+                "outdir" : "C:/Linkout/SendTo Tools/",
+                "platform":"Win32"
+            }
+    ],
+    "archivedir": "C:/Linkout/",
+    "remotedir": "http://ambiesoft.fam.cx/ffdav/uploads/SendToTools/",
+    
+    "TotalFileCount": 0,
+    
+    "ShouldNotBeFiles": [],
+    
+    "ShouldBeFiles": [
+    ],
+    
+    "ShouldBeOneOfThem": [],
+    
+    "obtainverfrom": "history.txt",
+    "obtainverregex": "\\d+\\.\\d+"
+}

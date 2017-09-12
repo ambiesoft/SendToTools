@@ -196,6 +196,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\lsMisc\browseFolder.cpp" />
+    <ClCompile Include="..\..\lsMisc\CommandLineParser.cpp" />
     <ClCompile Include="..\..\lsMisc\GetLastErrorString.cpp" />
     <ClCompile Include="..\..\lsMisc\IsFileExists.cpp" />
     <ClCompile Include="..\..\lsMisc\pragmashowversions.cpp" />
@@ -208,6 +209,7 @@
     </ClCompile>
     <ClCompile Include="..\..\lsMisc\sqliteserialize.cpp" />
     <ClCompile Include="..\..\lsMisc\stdwin32\stdwin32.cpp" />
+    <ClCompile Include="..\..\lsMisc\UrlEncode.cpp" />
     <ClCompile Include="..\..\lsMisc\UTF16toUTF8.cpp" />
     <ClCompile Include="ChooseDirDialog.cpp" />
     <ClCompile Include="LibMoveCopyTo.cpp" />
@@ -220,6 +222,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\lsMisc\browseFolder.h" />
+    <ClInclude Include="..\..\lsMisc\CommandLineParser.h" />
     <ClInclude Include="..\..\lsMisc\GetLastErrorString.h" />
     <ClInclude Include="..\..\lsMisc\IsFileExists.h" />
     <ClInclude Include="..\..\lsMisc\pragmashowversions.h" />
@@ -227,6 +230,7 @@
     <ClInclude Include="..\..\lsMisc\sqlite3.h" />
     <ClInclude Include="..\..\lsMisc\sqliteserialize.h" />
     <ClInclude Include="..\..\lsMisc\stdwin32\stdwin32.h" />
+    <ClInclude Include="..\..\lsMisc\UrlEncode.h" />
     <ClInclude Include="..\..\lsMisc\UTF16toUTF8.h" />
     <ClInclude Include="ChooseDirDialog.h" />
     <ClInclude Include="LibMoveCopyTo.h" />
