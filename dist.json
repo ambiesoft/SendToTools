@@ -10,14 +10,13 @@
             }
     ],
     "archivedir": "C:/Linkout/",
-    "remotedir": "http://ambiesoft.fam.cx/ffdav/uploads/SendToTools/",
+    "remotedir": "xxxhttp://ambiesoft.fam.cx/ffdav/uploads/SendToTools/",
     
-    "TotalFileCount": 0,
+    "TotalFileCount": 87,
     
     "ShouldNotBeFiles": [],
     
-    "ShouldBeFiles": [
-    ],
+    "ShouldBeFiles": [],
     
     "ShouldBeOneOfThem": [],
     
