@@ -18,15 +18,38 @@ namespace SendToManager
 
         public static readonly string SECTION_OPTION = "Option";
         public static readonly string KEY_CURRENT_INVENTORY = "CurrentInventory";
-        
-        
+
+
+
         public FormMain()
         {
             InitializeComponent();
         }
 
-        // SortedList<int, FileInfo> allitems = new SortedList<int, FileInfo>();
-
+        void Info(string message)
+        {
+            CenteredMessageBox.Show(this,
+            message,
+                ProductName,
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Information);
+        }
+        void Alert(string message)
+        {
+            CenteredMessageBox.Show(this,
+                message,
+                ProductName,
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Warning);
+        }
+        DialogResult YesOrNo(string message)
+        {
+            return CenteredMessageBox.Show(this,
+                message,
+                ProductName,
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question);
+        }
         string SendToFolder
         {
             get
@@ -73,12 +96,12 @@ namespace SendToManager
         {
             UpdateList(false);
         }
-       
+
         string InventoryDir
         {
             get
             {
-                return Path.Combine(Program.ConfigDir , INVENTORY_COMPONENT_NAME);
+                return Path.Combine(Program.ConfigDir, INVENTORY_COMPONENT_NAME);
             }
         }
         string CurrentInventoryFolder
@@ -131,9 +154,9 @@ namespace SendToManager
                 if (moveFroms.Count != 0)
                 {
                     int ret = CppUtils.MoveFiles(moveFroms.ToArray(), moveTos.ToArray());
-                    if(ret != 0 && ret != 128)
+                    if (ret != 0 && ret != 128)
                     {
-                        AmbLib.Alert(Properties.Resources.FAILED_TO_MOVE_FILES);
+                        Alert(Properties.Resources.FAILED_TO_MOVE_FILES);
                         return;
                     }
                 }
@@ -196,21 +219,32 @@ namespace SendToManager
                 {
                     ToolStripMenuItem tsmi = new ToolStripMenuItem();
                     tsmi.Text = inv.Name;
-
+                    tsmi.Click += invectory_Click;
+                    tsmi.Checked = CurrentInventory == inv.Name;
                     inventoryToolStripMenuItem.DropDownItems.Add(tsmi);
                 }
+
+
             }
             catch (Exception ex)
             {
                 Program.Alert(ex);
             }
         }
+
+        void invectory_Click(object sender, EventArgs e)
+        {
+            ToolStripMenuItem tsmi = (ToolStripMenuItem)sender;
+            CurrentInventory = tsmi.Text;
+        }
+
+
         HashIni loadedIni_;
         HashIni LoadedIni
         {
             get
             {
-                if(loadedIni_==null)
+                if (loadedIni_ == null)
                 {
                     loadedIni_ = Profile.ReadAll(Program.IniFile);
                 }
@@ -222,17 +256,27 @@ namespace SendToManager
         {
             get
             {
-                if(currentInventory_==null)
+                if (currentInventory_ == null)
                 {
                     Profile.GetString(SECTION_OPTION, KEY_CURRENT_INVENTORY, "Main", out currentInventory_, LoadedIni);
                 }
                 return currentInventory_;
             }
+            set
+            {
+                if (!Profile.WriteString(SECTION_OPTION, KEY_CURRENT_INVENTORY, value, Program.IniFile))
+                {
+                    Alert(Properties.Resources.FAILED_TO_SAVE_SETTING);
+                }
+                currentInventory_ = value;
+                UpdateList();
+                UpdateTitle();
+            }
         }
         void UpdateTitle()
         {
-            StringBuilder sb=new StringBuilder();
-            sb.Append(CurrentInventory).Append(" | ").Append(Application.ProductName);
+            StringBuilder sb = new StringBuilder();
+            sb.Append(CurrentInventory).Append(" | ").Append(ProductName);
 
             this.Text = sb.ToString();
         }
@@ -276,56 +320,6 @@ namespace SendToManager
             shortcut.Save();
         }
 
-        private void addNewItemToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            using (OpenFileDialog ofd = new OpenFileDialog())
-            {
-                // ofd.DefaultExt = "exe";
-                ofd.Filter = @"Executable (.exe)|*.exe|All Files (*.*)|*.*";
-                if (DialogResult.OK != ofd.ShowDialog())
-                    return;
-
-                FileInfo fi = new FileInfo(ofd.FileName);
-                string shortcutfile = Path.GetFileNameWithoutExtension(fi.Name) + ".lnk";
-
-                string shortcutfilefullpath = Path.Combine(CurrentInventoryFolder, shortcutfile);
-                if(System.IO.File.Exists(shortcutfilefullpath))
-                {
-                    if(DialogResult.Yes != CenteredMessageBox.Show(
-                        this,
-                        string.Format(Properties.Resources.SHORTCUT_ALREADY_EXISTS,shortcutfilefullpath),
-                        Application.ProductName,
-                        MessageBoxButtons.YesNo,
-                        MessageBoxIcon.Question,
-                        MessageBoxDefaultButton.Button2
-                        ))
-                    {
-                        return;
-                    }
-                }
-
-                try
-                {
-                    CreateShortcut(shortcutfilefullpath, ofd.FileName);
-                }
-                catch(Exception ex)
-                {
-                    var sb = new StringBuilder();
-                    sb.AppendLine(Properties.Resources.SHORTCUT_CREATION_FAILED);
-                    sb.AppendLine(ex.Message);
-
-                    CenteredMessageBox.Show(
-                        this,
-                        sb.ToString(),
-                        Application.ProductName,
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Error);
-                    return;
-                }
-
-                UpdateList();
-            }
-        }
 
         void UpDown(bool bDown)
         {
@@ -363,22 +357,152 @@ namespace SendToManager
             UpDown(true);
         }
 
-        private void assignNumberToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            UpdateList(true);
-        }
 
         private void inventoryToolStripMenuItem_DropDownOpening(object sender, EventArgs e)
         {
-
+            constructInventory();
         }
 
         private void deployToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            string src = Path.Combine(CurrentInventoryFolder, "*.lnk");
-            string dst = SendToFolder;
+            // first remove deployed shortcuts
+            do
+            {
+                List<string> toRemoves = new List<string>();
+                DirectoryInfo di = new DirectoryInfo(SendToFolder);
+                FileInfo[] filesOnSendto = di.GetFiles("*.lnk", SearchOption.TopDirectoryOnly);
+                foreach (FileInfo fi in filesOnSendto)
+                {
+                    string data;
+                    if (Helper.ReadAlternateStream(fi.FullName, out data))
+                    {
+                        if (data == "1")
+                        {
+                            toRemoves.Add(fi.FullName);
+                        }
+                    }
+                }
 
-            CppUtils.CopyFile(src, dst);
+                StringBuilder sb = new StringBuilder();
+                sb.AppendLine(Properties.Resources.DO_YOU_WANT_TO_REMOVE_FILES_BEFORE_DEPLOY);
+                sb.AppendLine();
+
+                foreach (string f in toRemoves)
+                    sb.AppendLine("\"" + f + "\"");
+
+                if (toRemoves.Count > 0)
+                {
+                    if (DialogResult.Yes != YesOrNo(sb.ToString()))
+                    {
+                        break;
+                    }
+
+                    if (0 != CppUtils.DeleteFiles(toRemoves.ToArray()))
+                    {
+                        Alert(Properties.Resources.FAILED_TO_REMOVE_FILES);
+                        return;
+                    }
+                }
+            } while (false);
+
+            try
+            {
+                DirectoryInfo di = new DirectoryInfo(CurrentInventoryFolder);
+                FileInfo[] srcFis = di.GetFiles("*.lnk", SearchOption.TopDirectoryOnly);
+
+
+                // do copy
+                string src = Path.Combine(CurrentInventoryFolder, "*.lnk");
+                string dst = SendToFolder;
+
+                int ret = CppUtils.CopyFile(src, dst);
+                if (ret != 0 && ret != 1)
+                {
+                    Alert(Properties.Resources.FAILED_TO_COPY_FILES);
+                    return;
+                }
+
+                // put alternate info
+                foreach (FileInfo fi in srcFis)
+                {
+                    string fulltarget = Path.Combine(SendToFolder, fi.Name);
+                    if (!Helper.WriteAlternateStream(fulltarget, "1"))
+                    {
+                        Alert(Properties.Resources.FAILED_TO_COPY_FILES);
+                        return;
+                    }
+                }
+
+                Info(string.Format(Properties.Resources.INVENTORY_DEPLOYED, CurrentInventory));
+            }
+            catch (Exception ex)
+            {
+                Alert(ex.Message);
+            }
+        }
+
+        private void tsbAssignNumber_Click(object sender, EventArgs e)
+        {
+            UpdateList(true);
+        }
+
+        private void tsbNewItem_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog ofd = new OpenFileDialog())
+            {
+                // ofd.DefaultExt = "exe";
+                ofd.Filter = @"Executable (.exe)|*.exe|All Files (*.*)|*.*";
+                if (DialogResult.OK != ofd.ShowDialog())
+                    return;
+
+                FileInfo fi = new FileInfo(ofd.FileName);
+                string shortcutfile = Path.GetFileNameWithoutExtension(fi.Name) + ".lnk";
+
+                string shortcutfilefullpath = Path.Combine(CurrentInventoryFolder, shortcutfile);
+                if (System.IO.File.Exists(shortcutfilefullpath))
+                {
+                    if (DialogResult.Yes != 
+                        YesOrNo(
+                        string.Format(
+                        Properties.Resources.SHORTCUT_ALREADY_EXISTS, shortcutfilefullpath))
+                        )
+                    {
+                        return;
+                    }
+                }
+
+                try
+                {
+                    CreateShortcut(shortcutfilefullpath, ofd.FileName);
+                }
+                catch (Exception ex)
+                {
+                    var sb = new StringBuilder();
+                    sb.AppendLine(Properties.Resources.SHORTCUT_CREATION_FAILED);
+                    sb.AppendLine(ex.Message);
+
+                    CenteredMessageBox.Show(
+                        this,
+                        sb.ToString(),
+                        ProductName,
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                    return;
+                }
+
+                UpdateList();
+            }
+
+        }
+
+        private void openCurrentInventoryToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Process.Start(CurrentInventoryFolder);
+        }
+
+        private void openSendToToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Process.Start(SendToFolder);
         }
     }
 }

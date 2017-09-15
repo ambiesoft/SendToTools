@@ -79,11 +79,56 @@ namespace SendToManager.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Do you want to remove these existing files before deploying your inventory?.
+        /// </summary>
+        internal static string DO_YOU_WANT_TO_REMOVE_FILES_BEFORE_DEPLOY {
+            get {
+                return ResourceManager.GetString("DO_YOU_WANT_TO_REMOVE_FILES_BEFORE_DEPLOY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failed to copy files..
+        /// </summary>
+        internal static string FAILED_TO_COPY_FILES {
+            get {
+                return ResourceManager.GetString("FAILED_TO_COPY_FILES", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Failed to move files..
         /// </summary>
         internal static string FAILED_TO_MOVE_FILES {
             get {
                 return ResourceManager.GetString("FAILED_TO_MOVE_FILES", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failed to remove files..
+        /// </summary>
+        internal static string FAILED_TO_REMOVE_FILES {
+            get {
+                return ResourceManager.GetString("FAILED_TO_REMOVE_FILES", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failed to save setting..
+        /// </summary>
+        internal static string FAILED_TO_SAVE_SETTING {
+            get {
+                return ResourceManager.GetString("FAILED_TO_SAVE_SETTING", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Inventory &quot;{0}&quot; has been successfully deployed..
+        /// </summary>
+        internal static string INVENTORY_DEPLOYED {
+            get {
+                return ResourceManager.GetString("INVENTORY_DEPLOYED", resourceCulture);
             }
         }
         
