@@ -63,6 +63,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SendToManagerLauncher", "Se
 		{33C5F142-259F-48A4-B2F8-1930A448C041} = {33C5F142-259F-48A4-B2F8-1930A448C041}
 	EndProjectSection
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Switch3264", "Switch3264\Switch3264.vcxproj", "{EDA42F1C-00CD-4C8F-AFB4-99F6CE0E7140}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -283,6 +285,12 @@ Global
 		{95EE3EEA-3F2C-4BDC-B3C0-EE3DB1CA800A}.Release|x64.ActiveCfg = Release|Any CPU
 		{95EE3EEA-3F2C-4BDC-B3C0-EE3DB1CA800A}.Release|x86.ActiveCfg = Release|x86
 		{95EE3EEA-3F2C-4BDC-B3C0-EE3DB1CA800A}.Release|x86.Build.0 = Release|x86
+		{EDA42F1C-00CD-4C8F-AFB4-99F6CE0E7140}.Debug|x64.ActiveCfg = Debug|Win32
+		{EDA42F1C-00CD-4C8F-AFB4-99F6CE0E7140}.Debug|x86.ActiveCfg = Debug|Win32
+		{EDA42F1C-00CD-4C8F-AFB4-99F6CE0E7140}.Debug|x86.Build.0 = Debug|Win32
+		{EDA42F1C-00CD-4C8F-AFB4-99F6CE0E7140}.Release|x64.ActiveCfg = Release|Win32
+		{EDA42F1C-00CD-4C8F-AFB4-99F6CE0E7140}.Release|x86.ActiveCfg = Release|Win32
+		{EDA42F1C-00CD-4C8F-AFB4-99F6CE0E7140}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

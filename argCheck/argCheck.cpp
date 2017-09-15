@@ -99,22 +99,49 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	message += KAIGYO;
 	message += KAIGYO;
 
-	message += I18N(L"argc");
-	message += L":";
-	message += KAIGYO;
-	message += stdItoT(__argc);
-	message += KAIGYO;
-	message += KAIGYO;
-
-	for (int i = 0; i < __argc; ++i)
 	{
-		message += I18N(L"Argument");
-		message += to_wstring(i);
+		message += I18N(L"CRT argc");
 		message += L":";
 		message += KAIGYO;
-		message += __wargv[i];
+		message += stdItoT(__argc);
 		message += KAIGYO;
 		message += KAIGYO;
+
+		for (int i = 0; i < __argc; ++i)
+		{
+			message += I18N(L"CRT Argument");
+			message += L" ";
+			message += to_wstring(i);
+			message += L":";
+			message += KAIGYO;
+			message += __wargv[i];
+			message += KAIGYO;
+			message += KAIGYO;
+		}
+	}
+
+	{
+		int nNumArgs = 0;
+		LPWSTR* pArgv = CommandLineToArgvW(GetCommandLine(), &nNumArgs);
+		message += I18N(L"Shell argc");
+		message += L":";
+		message += KAIGYO;
+		message += stdItoT(nNumArgs);
+		message += KAIGYO;
+		message += KAIGYO;
+
+		for (int i = 0; i < nNumArgs; ++i)
+		{
+			message += I18N(L"Shell Argument");
+			message += L" ";
+			message += to_wstring(i);
+			message += L":";
+			message += KAIGYO;
+			message += pArgv[i];
+			message += KAIGYO;
+			message += KAIGYO;
+		}
+		LocalFree(pArgv);
 	}
 
 	//MessageBox(NULL,
