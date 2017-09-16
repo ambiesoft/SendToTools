@@ -184,6 +184,7 @@ namespace SendToManager
                 return shortcutFile_;
             }
         }
+
         public string Path
         {
             get
@@ -192,6 +193,11 @@ namespace SendToManager
                 WIN32_FIND_DATAW data = new WIN32_FIND_DATAW();
                 ((IShellLinkW)link_).GetPath(sb, sb.Capacity, out data, 0);
                 return sb.ToString();
+            }
+            set
+            {
+                ((IShellLinkW)link_).SetPath(value);
+                ((IPersistFile)link_).Save(ShortcutFile, true);
             }
         }
         public string Arguments
@@ -262,7 +268,7 @@ namespace SendToManager
             }
         }
         
-        public DirectoryInfo WorkingDirectory
+        public string WorkingDirectory
         {
             get
             {
@@ -270,11 +276,12 @@ namespace SendToManager
                 ((IShellLinkW)link_).GetWorkingDirectory(sb, sb.Capacity);
                 if (sb.Length == 0)
                     return null;
-                return new DirectoryInfo(sb.ToString());
+                return sb.ToString();
             }
             set
             {
-                ((IShellLinkW)link_).SetWorkingDirectory(value.FullName);
+                ((IShellLinkW)link_).SetWorkingDirectory(value);
+                ((IPersistFile)link_).Save(ShortcutFile, true);
             }
         }
         public static string ResolveShortcut(string filename)

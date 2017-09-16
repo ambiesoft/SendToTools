@@ -29,5 +29,12 @@ namespace SendToManager
                 return Path.GetDirectoryName(fullName_);
             }
         }
+        public string FullName
+        {
+            get
+            {
+                return fullName_;
+            }
+        }
     }
 }

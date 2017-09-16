@@ -120,11 +120,26 @@
   <data name="ALERT_DIRECTORY_UNAVAILABLE" xml:space="preserve">
     <value>Failed to write to ini file, You can not run this application from this directory.</value>
   </data>
+  <data name="COLUMN_ARGUMENTS" xml:space="preserve">
+    <value>Arguments</value>
+  </data>
+  <data name="COLUMN_NAME" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="COLUMN_PATH" xml:space="preserve">
+    <value>Path</value>
+  </data>
+  <data name="COLUMN_WORKINGDIRECTORY" xml:space="preserve">
+    <value>Working Directory</value>
+  </data>
   <data name="DO_YOU_WANT_TO_CREATE_DEFAULT_INVENTORY" xml:space="preserve">
     <value>Inventory does not exist. Do you want to create default inventory?</value>
   </data>
+  <data name="DO_YOU_WANT_TO_REMOVE_FILES" xml:space="preserve">
+    <value>Do you want to remove these existing files from SendTo folder?</value>
+  </data>
   <data name="DO_YOU_WANT_TO_REMOVE_FILES_BEFORE_DEPLOY" xml:space="preserve">
-    <value>Do you want to remove these existing files before deploying your inventory?</value>
+    <value>Do you want to remove these existing files from SendTo folder before deploying your inventory?</value>
     <comment>_</comment>
   </data>
   <data name="FAILED_TO_COPY_FILES" xml:space="preserve">

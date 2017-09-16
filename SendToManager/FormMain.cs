@@ -9,21 +9,238 @@ using System.IO;
 using IWshRuntimeLibrary;
 using System.Diagnostics;
 using Ambiesoft;
+using System.Runtime.InteropServices;
 
 namespace SendToManager
 {
     public partial class FormMain : Form
     {
-        public static readonly string INVENTORY_COMPONENT_NAME = "inventory";
+        static readonly string INVENTORY_COMPONENT_NAME = "inventory";
 
-        public static readonly string SECTION_OPTION = "Option";
-        public static readonly string KEY_CURRENT_INVENTORY = "CurrentInventory";
+        static readonly string SECTION_OPTION = "Option";
+        static readonly string KEY_CURRENT_INVENTORY = "CurrentInventory";
+        static readonly string KEY_COLUMN = "Column";
+        static readonly string KEY_X = "X";
+        static readonly string KEY_Y = "Y";
+        static readonly string KEY_WIDTH = "Width";
+        static readonly string KEY_HEIGHT = "Height";
+
+        private ListViewEx.ListViewEx lvMain;
 
 
-
+        static readonly string COLUMN_NAME = "Name";
+        static readonly string COLUMN_PATH = "Path";
+        static readonly string COLUMN_ARGUMENTS = "Arguments";
+        static readonly string COLUMN_WORKINGDIRECTORY = "WorkingDirectory";
         public FormMain()
         {
             InitializeComponent();
+
+            HashIni ini = Profile.ReadAll(Program.IniFile);
+
+
+            int x = 0, y = 0;
+            int width = 0, height = 0;
+            if (Profile.GetInt(SECTION_OPTION, KEY_X, 0, out x, ini) &&
+                Profile.GetInt(SECTION_OPTION, KEY_Y, 0, out y, ini) &&
+                Profile.GetInt(SECTION_OPTION, KEY_WIDTH, 0, out width, ini) &&
+                Profile.GetInt(SECTION_OPTION, KEY_HEIGHT, 0, out height, ini))
+            {
+                Point pt = new Point(x, y);
+                Size size = new Size(width, height);
+
+                Rectangle r = new Rectangle(pt, size);
+                if (AmbLib.IsRectInScreen(r))
+                {
+                    this.Location = new Point(x, y);
+                    this.Size = new Size(width, height);
+                    this.StartPosition = FormStartPosition.Manual;
+                }
+            }
+
+
+            Debug.Assert(lvMain.Columns.Count == 0);
+
+            {
+                ColumnHeader chName = new ColumnHeader();
+                chName.Name = COLUMN_NAME;
+                chName.Text = Properties.Resources.COLUMN_NAME;
+                chName.Width = 50;
+                chName.Tag = new ColumnInfo(txtEditName);
+                lvMain.Columns.Add(chName);
+            }
+
+            {
+                ColumnHeader chPath = new ColumnHeader();
+                chPath.Name = COLUMN_PATH;
+                chPath.Text = Properties.Resources.COLUMN_PATH;
+                chPath.Width = 50;
+                chPath.Tag = new ColumnInfo(txtEditName);
+                lvMain.Columns.Add(chPath);
+            }
+
+            {
+                ColumnHeader chArguments = new ColumnHeader();
+                chArguments.Name = COLUMN_ARGUMENTS;
+                chArguments.Text = Properties.Resources.COLUMN_ARGUMENTS;
+                chArguments.Width = 50;
+                chArguments.Tag = new ColumnInfo(txtEditName);
+                lvMain.Columns.Add(chArguments);
+            }
+
+            {
+                ColumnHeader chWorkingDirectory = new ColumnHeader();
+                chWorkingDirectory.Name = COLUMN_WORKINGDIRECTORY;
+                chWorkingDirectory.Text = Properties.Resources.COLUMN_WORKINGDIRECTORY;
+                chWorkingDirectory.Width = 50;
+                chWorkingDirectory.Tag = new ColumnInfo(cmbEditDirectory);
+                lvMain.Columns.Add(chWorkingDirectory);
+            }
+
+            foreach (ColumnHeader ch in lvMain.Columns)
+            {
+                string key = KEY_COLUMN;
+                Debug.Assert(!string.IsNullOrEmpty(ch.Name));
+                key += ch.Name;
+                int colwidth = 0;
+                if (Profile.GetInt(SECTION_OPTION, key, 0, out colwidth, ini))
+                    ch.Width = colwidth;
+            }
+
+            // lvMain.SmallImageList = sysImageList_;
+
+            lvMain.SubItemClicked += lvMain_SubItemClicked;
+            lvMain.SubItemEndEditing += lvMain_SubItemEndEditing;
+
+            lvMain.DoubleClickActivation = true;
+
+            lvMain.Font = SystemFonts.IconTitleFont;
+            txtEditName.Font = SystemFonts.IconTitleFont;
+            cmbEditDirectory.Font = SystemFonts.IconTitleFont;
+        }
+
+        string GetColumnName(int index)
+        {
+            for (int i = 0; i < lvMain.Columns.Count; ++i)
+            {
+                if (index == i)
+                    return lvMain.Columns[i].Name;
+            }
+            Debug.Assert(false);
+            return null;
+        }
+
+        void UpdateItem(ListViewItem item)
+        {
+            LVInfo info = (LVInfo)item.Tag;
+            item.Text = Path.GetFileNameWithoutExtension(info.FileName);
+
+
+
+            NativeMethods.SHFILEINFO shfi = new NativeMethods.SHFILEINFO();
+            IntPtr himl = NativeMethods.SHGetFileInfo(info.FullName,
+                                            0,
+                                            ref shfi,
+                                            (uint)Marshal.SizeOf(shfi),
+                                            NativeMethods.SHGFI_DISPLAYNAME
+                                              | NativeMethods.SHGFI_SYSICONINDEX
+                                              | NativeMethods.SHGFI_SMALLICON);
+            Debug.Assert(himl == hSysImgList); // should be the same imagelist as the one we set
+            //listView1.Items.Add(shfi.szDisplayName, shfi.iIcon);
+            item.ImageIndex = shfi.iIcon;
+
+
+            LinkData lnk = new LinkData(info.FullName);
+
+            foreach (ColumnHeader ch in lvMain.Columns)
+            {
+                if (ch.Name == COLUMN_NAME)
+                    continue;
+
+                ListViewItem.ListViewSubItem sub = new ListViewItem.ListViewSubItem();
+
+                if (ch.Name == COLUMN_PATH)
+                {
+                    sub.Text = lnk.Path;
+                }
+                else if (ch.Name == COLUMN_ARGUMENTS)
+                {
+                    sub.Text = lnk.Arguments;
+                }
+                else if (ch.Name == COLUMN_WORKINGDIRECTORY)
+                {
+                    sub.Text = lnk.WorkingDirectory;
+                }
+                else
+                {
+                    Debug.Assert(false);
+                }
+                item.SubItems.Add(sub);
+            }
+
+        }
+        void lvMain_SubItemEndEditing(object sender, ListViewEx.SubItemEndEditingEventArgs e)
+        {
+            if (e.Cancel)
+                return;
+
+            LVInfo lvinfo = (LVInfo)e.Item.Tag;
+            LinkData lnk = new LinkData(lvinfo.FullName);
+
+            string column = GetColumnName(e.SubItem);
+            if (column == COLUMN_NAME)
+            {
+                try
+                {
+                    string from = lvinfo.FullName;
+                    string to = Path.Combine(lvinfo.ParentDir, e.DisplayText + ".lnk");
+                    System.IO.File.Move(from, to);
+                    e.Item.Tag = new LVInfo(to);
+                }
+                catch (Exception ex)
+                {
+                    Alert(ex.Message);
+                }
+            }
+            else if (column == COLUMN_PATH)
+            {
+                lnk.Path = e.DisplayText;
+            }
+            else if (column == COLUMN_ARGUMENTS)
+            {
+                lnk.Arguments = e.DisplayText;
+            }
+            else if (column == COLUMN_WORKINGDIRECTORY)
+            {
+                lnk.WorkingDirectory = e.DisplayText;
+            }
+            else
+            {
+                Debug.Assert(false);
+            }
+
+            UpdateItem(e.Item);
+        }
+
+        Control GetEdittingControl(ColumnHeader ch)
+        {
+            ColumnInfo ci = (ColumnInfo)ch.Tag;
+            return ci.EdittingControl;
+        }
+        void lvMain_SubItemClicked(object sender, ListViewEx.SubItemEventArgs e)
+        {
+            ColumnHeader ch = null;
+            for (int i = 0; i < lvMain.Columns.Count; ++i)
+            {
+                if (i == e.SubItem)
+                {
+                    ch = lvMain.Columns[i];
+                }
+            }
+            Debug.Assert(ch != null);
+
+
+            lvMain.StartEditing(GetEdittingControl(ch), e.Item, e.SubItem);
         }
 
         void Info(string message)
@@ -180,8 +397,9 @@ namespace SendToManager
                         string.Compare(fi.Extension, ".lnk", true) == 0)
                     {
                         ListViewItem item = new ListViewItem();
-                        item.Text = fi.Name;
                         item.Tag = new LVInfo(fi.FullName);
+
+                        UpdateItem(item);
                         lvMain.Items.Add(item);
                     }
                 }
@@ -280,8 +498,39 @@ namespace SendToManager
 
             this.Text = sb.ToString();
         }
+        IntPtr hSysImgList;
         private void FormMain_Load(object sender, EventArgs e)
         {
+            NativeMethods.SHFILEINFO shfi = new NativeMethods.SHFILEINFO();
+            hSysImgList = NativeMethods.SHGetFileInfo("",
+                                                             0,
+                                                             ref shfi,
+                                                             (uint)Marshal.SizeOf(shfi),
+                                                             NativeMethods.SHGFI_SYSICONINDEX
+                                                              | NativeMethods.SHGFI_SMALLICON);
+            Debug.Assert(hSysImgList != IntPtr.Zero);  // cross our fingers and hope to succeed!
+
+            // Set the ListView control to use that image list.
+            IntPtr hOldImgList = NativeMethods.SendMessage(lvMain.Handle,
+                                                           NativeMethods.LVM_SETIMAGELIST,
+                                                           NativeMethods.LVSIL_SMALL,
+                                                           hSysImgList);
+
+            // If the ListView control already had an image list, delete the old one.
+            if (hOldImgList != IntPtr.Zero)
+            {
+                NativeMethods.ImageList_Destroy(hOldImgList);
+            }
+
+
+            // Set up the ListView control's basic properties.
+            // Put it in "Details" mode, create a column so that "Details" mode will work,
+            // and set its theme so it will look like the one used by Explorer.
+            NativeMethods.SetWindowTheme(lvMain.Handle, "Explorer", null);
+
+            // Get the items from the file system, and add each of them to the ListView,
+            // complete with their corresponding name and icon indices.
+
             constructInventory();
 
             UpdateList();
@@ -382,15 +631,14 @@ namespace SendToManager
             if (lvMain.SelectedItems.Count <= 0)
                 return;
 
-            string path = lvMain.SelectedItems[0].Text;
-            path = Path.Combine(CurrentInventoryFolder, path);
-            LinkData linkData = new LinkData(path);
-            pgItem.SelectedObject = linkData;
+            //string path = lvMain.SelectedItems[0].Text;
+            //path = Path.Combine(CurrentInventoryFolder, path);
+            //LinkData linkData = new LinkData(path);
+            //pgItem.SelectedObject = linkData;
         }
 
-        private void tsbDeploy_Click(object sender, EventArgs e)
+        bool Displace(string message)
         {
-            // first remove deployed shortcuts
             do
             {
                 List<string> toRemoves = new List<string>();
@@ -409,7 +657,7 @@ namespace SendToManager
                 }
 
                 StringBuilder sb = new StringBuilder();
-                sb.AppendLine(Properties.Resources.DO_YOU_WANT_TO_REMOVE_FILES_BEFORE_DEPLOY);
+                sb.AppendLine(message);
                 sb.AppendLine();
 
                 foreach (string f in toRemoves)
@@ -425,10 +673,17 @@ namespace SendToManager
                     if (0 != CppUtils.DeleteFiles(toRemoves.ToArray()))
                     {
                         Alert(Properties.Resources.FAILED_TO_REMOVE_FILES);
-                        return;
+                        return false;
                     }
                 }
             } while (false);
+            return true;
+        }
+        private void tsbDeploy_Click(object sender, EventArgs e)
+        {
+            // first remove deployed shortcuts
+            if (!Displace(Properties.Resources.DO_YOU_WANT_TO_REMOVE_FILES_BEFORE_DEPLOY))
+                return;
 
             try
             {
@@ -524,6 +779,44 @@ namespace SendToManager
         private void closeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void tsbDisplace_Click(object sender, EventArgs e)
+        {
+            Displace(Properties.Resources.DO_YOU_WANT_TO_REMOVE_FILES);
+        }
+
+        private void FormMain_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            HashIni ini = Profile.ReadAll(Program.IniFile);
+
+            if (WindowState == FormWindowState.Normal)
+            {
+                Profile.WriteInt(SECTION_OPTION, KEY_X, Location.X, ini);
+                Profile.WriteInt(SECTION_OPTION, KEY_Y, Location.Y, ini);
+                Profile.WriteInt(SECTION_OPTION, KEY_WIDTH, this.Size.Width, ini);
+                Profile.WriteInt(SECTION_OPTION, KEY_HEIGHT, this.Size.Height, ini);
+            }
+
+            foreach (ColumnHeader ch in lvMain.Columns)
+            {
+                string key = KEY_COLUMN;
+                Debug.Assert(!string.IsNullOrEmpty(ch.Name));
+                key += ch.Name;
+                Profile.WriteInt(SECTION_OPTION, key, ch.Width, ini);
+            }
+
+            if (!Profile.WriteAll(ini, Program.IniFile))
+            {
+                Alert(Properties.Resources.FAILED_TO_SAVE_SETTING);
+            }
+        }
+
+        private void tsbRefresh_Click(object sender, EventArgs e)
+        {
+            lvMain.BeginUpdate();
+            UpdateList();
+            lvMain.EndUpdate();
         }
     }
 }

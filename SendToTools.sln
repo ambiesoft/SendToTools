@@ -65,6 +65,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SendToManagerLauncher", "Se
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Switch3264", "Switch3264\Switch3264.vcxproj", "{EDA42F1C-00CD-4C8F-AFB4-99F6CE0E7140}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ListViewEx", "ListViewEx\ListViewEx.csproj", "{35A5C415-0906-4AC7-B0F6-FE3CCA884AD9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -291,6 +293,11 @@ Global
 		{EDA42F1C-00CD-4C8F-AFB4-99F6CE0E7140}.Release|x64.ActiveCfg = Release|Win32
 		{EDA42F1C-00CD-4C8F-AFB4-99F6CE0E7140}.Release|x86.ActiveCfg = Release|Win32
 		{EDA42F1C-00CD-4C8F-AFB4-99F6CE0E7140}.Release|x86.Build.0 = Release|Win32
+		{35A5C415-0906-4AC7-B0F6-FE3CCA884AD9}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{35A5C415-0906-4AC7-B0F6-FE3CCA884AD9}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{35A5C415-0906-4AC7-B0F6-FE3CCA884AD9}.Debug|x86.Build.0 = Debug|Any CPU
+		{35A5C415-0906-4AC7-B0F6-FE3CCA884AD9}.Release|x64.ActiveCfg = Release|Any CPU
+		{35A5C415-0906-4AC7-B0F6-FE3CCA884AD9}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

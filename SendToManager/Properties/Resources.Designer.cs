@@ -70,6 +70,42 @@ namespace SendToManager.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Arguments.
+        /// </summary>
+        internal static string COLUMN_ARGUMENTS {
+            get {
+                return ResourceManager.GetString("COLUMN_ARGUMENTS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name.
+        /// </summary>
+        internal static string COLUMN_NAME {
+            get {
+                return ResourceManager.GetString("COLUMN_NAME", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Path.
+        /// </summary>
+        internal static string COLUMN_PATH {
+            get {
+                return ResourceManager.GetString("COLUMN_PATH", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Working Directory.
+        /// </summary>
+        internal static string COLUMN_WORKINGDIRECTORY {
+            get {
+                return ResourceManager.GetString("COLUMN_WORKINGDIRECTORY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Inventory does not exist. Do you want to create default inventory?.
         /// </summary>
         internal static string DO_YOU_WANT_TO_CREATE_DEFAULT_INVENTORY {
@@ -79,7 +115,16 @@ namespace SendToManager.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Do you want to remove these existing files before deploying your inventory?.
+        ///   Looks up a localized string similar to Do you want to remove these existing files from SendTo folder?.
+        /// </summary>
+        internal static string DO_YOU_WANT_TO_REMOVE_FILES {
+            get {
+                return ResourceManager.GetString("DO_YOU_WANT_TO_REMOVE_FILES", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Do you want to remove these existing files from SendTo folder before deploying your inventory?.
         /// </summary>
         internal static string DO_YOU_WANT_TO_REMOVE_FILES_BEFORE_DEPLOY {
             get {

@@ -5,7 +5,8 @@
 .vs/
 
 *.user
+*.suo
+
 SendToTools.sdf
-SendToTools.v12.suo
 ipch/
 
