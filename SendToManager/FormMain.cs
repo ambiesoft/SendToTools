@@ -365,6 +365,31 @@ namespace SendToManager
 
         private void deployToolStripMenuItem_Click(object sender, EventArgs e)
         {
+        }
+
+        private void openCurrentInventoryToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Process.Start(CurrentInventoryFolder);
+        }
+
+        private void openSendToToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Process.Start(SendToFolder);
+        }
+
+        private void lvMain_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (lvMain.SelectedItems.Count <= 0)
+                return;
+
+            string path = lvMain.SelectedItems[0].Text;
+            path = Path.Combine(CurrentInventoryFolder, path);
+            LinkData linkData = new LinkData(path);
+            pgItem.SelectedObject = linkData;
+        }
+
+        private void tsbDeploy_Click(object sender, EventArgs e)
+        {
             // first remove deployed shortcuts
             do
             {
@@ -461,7 +486,7 @@ namespace SendToManager
                 string shortcutfilefullpath = Path.Combine(CurrentInventoryFolder, shortcutfile);
                 if (System.IO.File.Exists(shortcutfilefullpath))
                 {
-                    if (DialogResult.Yes != 
+                    if (DialogResult.Yes !=
                         YesOrNo(
                         string.Format(
                         Properties.Resources.SHORTCUT_ALREADY_EXISTS, shortcutfilefullpath))
@@ -493,16 +518,12 @@ namespace SendToManager
                 UpdateList();
             }
 
+
         }
 
-        private void openCurrentInventoryToolStripMenuItem_Click(object sender, EventArgs e)
+        private void closeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Process.Start(CurrentInventoryFolder);
-        }
-
-        private void openSendToToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Process.Start(SendToFolder);
+            Close();
         }
     }
 }

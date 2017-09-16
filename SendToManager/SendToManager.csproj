@@ -75,6 +75,9 @@
     <Reference Include="Ambiesoft.amblibcpp.x86">
       <HintPath>..\..\..\..\..\..\Linkout\DNAssembly.NET4.x86\Ambiesoft.amblibcpp.x86.dll</HintPath>
     </Reference>
+    <Reference Include="Ambiesoft.FolderConfigHelper">
+      <HintPath>..\..\..\..\..\..\Linkout\FolderConfig\Ambiesoft.FolderConfigHelper.dll</HintPath>
+    </Reference>
     <Reference Include="Ambiesoft.Profile, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\Linkout\DNAssembly\Ambiesoft.Profile.dll</HintPath>
@@ -102,6 +105,7 @@
     <Compile Include="LVInfo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ShellLink.cs" />
     <EmbeddedResource Include="FormMain.resx">
       <SubType>Designer</SubType>
       <DependentUpon>FormMain.cs</DependentUpon>

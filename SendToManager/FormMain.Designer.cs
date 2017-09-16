@@ -42,10 +42,12 @@
             this.menuMain = new System.Windows.Forms.MenuStrip();
             this.inventoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dummyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.deployToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.folderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openCurrentInventoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openSendToToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsbDeploy = new System.Windows.Forms.ToolStripButton();
+            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.closeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.spMain)).BeginInit();
             this.spMain.Panel1.SuspendLayout();
             this.spMain.Panel2.SuspendLayout();
@@ -67,6 +69,7 @@
             this.lvMain.TabIndex = 0;
             this.lvMain.UseCompatibleStateImageBehavior = false;
             this.lvMain.View = System.Windows.Forms.View.Details;
+            this.lvMain.SelectedIndexChanged += new System.EventHandler(this.lvMain_SelectedIndexChanged);
             // 
             // chNo
             // 
@@ -111,7 +114,8 @@
             this.tsbUp,
             this.tsbDown,
             this.tsbNewItem,
-            this.tsbAssignNumber});
+            this.tsbAssignNumber,
+            this.tsbDeploy});
             this.tsList.Location = new System.Drawing.Point(0, 0);
             this.tsList.Name = "tsList";
             this.tsList.Size = new System.Drawing.Size(423, 25);
@@ -122,7 +126,7 @@
             this.tsbUp.Image = ((System.Drawing.Image)(resources.GetObject("tsbUp.Image")));
             this.tsbUp.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbUp.Name = "tsbUp";
-            this.tsbUp.Size = new System.Drawing.Size(42, 22);
+            this.tsbUp.Size = new System.Drawing.Size(40, 22);
             this.tsbUp.Text = "Up";
             this.tsbUp.Click += new System.EventHandler(this.tsbUp_Click);
             // 
@@ -131,7 +135,7 @@
             this.tsbDown.Image = ((System.Drawing.Image)(resources.GetObject("tsbDown.Image")));
             this.tsbDown.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbDown.Name = "tsbDown";
-            this.tsbDown.Size = new System.Drawing.Size(58, 22);
+            this.tsbDown.Size = new System.Drawing.Size(54, 22);
             this.tsbDown.Text = "Down";
             this.tsbDown.Click += new System.EventHandler(this.tsbDown_Click);
             // 
@@ -140,7 +144,7 @@
             this.tsbNewItem.Image = ((System.Drawing.Image)(resources.GetObject("tsbNewItem.Image")));
             this.tsbNewItem.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbNewItem.Name = "tsbNewItem";
-            this.tsbNewItem.Size = new System.Drawing.Size(78, 22);
+            this.tsbNewItem.Size = new System.Drawing.Size(73, 22);
             this.tsbNewItem.Text = "New Item";
             this.tsbNewItem.Click += new System.EventHandler(this.tsbNewItem_Click);
             // 
@@ -149,15 +153,15 @@
             this.tsbAssignNumber.Image = ((System.Drawing.Image)(resources.GetObject("tsbAssignNumber.Image")));
             this.tsbAssignNumber.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbAssignNumber.Name = "tsbAssignNumber";
-            this.tsbAssignNumber.Size = new System.Drawing.Size(109, 22);
+            this.tsbAssignNumber.Size = new System.Drawing.Size(98, 22);
             this.tsbAssignNumber.Text = "Assign Number";
             this.tsbAssignNumber.Click += new System.EventHandler(this.tsbAssignNumber_Click);
             // 
             // menuMain
             // 
             this.menuMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fileToolStripMenuItem,
             this.inventoryToolStripMenuItem,
-            this.deployToolStripMenuItem,
             this.folderToolStripMenuItem});
             this.menuMain.Location = new System.Drawing.Point(0, 0);
             this.menuMain.Name = "menuMain";
@@ -170,7 +174,7 @@
             this.inventoryToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.dummyToolStripMenuItem});
             this.inventoryToolStripMenuItem.Name = "inventoryToolStripMenuItem";
-            this.inventoryToolStripMenuItem.Size = new System.Drawing.Size(69, 20);
+            this.inventoryToolStripMenuItem.Size = new System.Drawing.Size(67, 20);
             this.inventoryToolStripMenuItem.Text = "&Inventory";
             this.inventoryToolStripMenuItem.DropDownOpening += new System.EventHandler(this.inventoryToolStripMenuItem_DropDownOpening);
             // 
@@ -180,35 +184,52 @@
             this.dummyToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.dummyToolStripMenuItem.Text = "<dummy>";
             // 
-            // deployToolStripMenuItem
-            // 
-            this.deployToolStripMenuItem.Name = "deployToolStripMenuItem";
-            this.deployToolStripMenuItem.Size = new System.Drawing.Size(56, 20);
-            this.deployToolStripMenuItem.Text = "&Deploy";
-            this.deployToolStripMenuItem.Click += new System.EventHandler(this.deployToolStripMenuItem_Click);
-            // 
             // folderToolStripMenuItem
             // 
             this.folderToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.openCurrentInventoryToolStripMenuItem,
             this.openSendToToolStripMenuItem});
             this.folderToolStripMenuItem.Name = "folderToolStripMenuItem";
-            this.folderToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
+            this.folderToolStripMenuItem.Size = new System.Drawing.Size(49, 20);
             this.folderToolStripMenuItem.Text = "&Folder";
             // 
             // openCurrentInventoryToolStripMenuItem
             // 
             this.openCurrentInventoryToolStripMenuItem.Name = "openCurrentInventoryToolStripMenuItem";
-            this.openCurrentInventoryToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
+            this.openCurrentInventoryToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
             this.openCurrentInventoryToolStripMenuItem.Text = "Open Current &Inventory";
             this.openCurrentInventoryToolStripMenuItem.Click += new System.EventHandler(this.openCurrentInventoryToolStripMenuItem_Click);
             // 
             // openSendToToolStripMenuItem
             // 
             this.openSendToToolStripMenuItem.Name = "openSendToToolStripMenuItem";
-            this.openSendToToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
+            this.openSendToToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
             this.openSendToToolStripMenuItem.Text = "Open &SendTo";
             this.openSendToToolStripMenuItem.Click += new System.EventHandler(this.openSendToToolStripMenuItem_Click);
+            // 
+            // tsbDeploy
+            // 
+            this.tsbDeploy.Image = ((System.Drawing.Image)(resources.GetObject("tsbDeploy.Image")));
+            this.tsbDeploy.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbDeploy.Name = "tsbDeploy";
+            this.tsbDeploy.Size = new System.Drawing.Size(60, 22);
+            this.tsbDeploy.Text = "Deploy";
+            this.tsbDeploy.Click += new System.EventHandler(this.tsbDeploy_Click);
+            // 
+            // fileToolStripMenuItem
+            // 
+            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.closeToolStripMenuItem});
+            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(35, 20);
+            this.fileToolStripMenuItem.Text = "&File";
+            // 
+            // closeToolStripMenuItem
+            // 
+            this.closeToolStripMenuItem.Name = "closeToolStripMenuItem";
+            this.closeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.closeToolStripMenuItem.Text = "&Close";
+            this.closeToolStripMenuItem.Click += new System.EventHandler(this.closeToolStripMenuItem_Click);
             // 
             // FormMain
             // 
@@ -247,12 +268,14 @@
         private System.Windows.Forms.ToolStripButton tsbDown;
         private System.Windows.Forms.ToolStripMenuItem inventoryToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem dummyToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem deployToolStripMenuItem;
         private System.Windows.Forms.ToolStripButton tsbAssignNumber;
         private System.Windows.Forms.ToolStripButton tsbNewItem;
         private System.Windows.Forms.ToolStripMenuItem folderToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem openCurrentInventoryToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem openSendToToolStripMenuItem;
+        private System.Windows.Forms.ToolStripButton tsbDeploy;
+        private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem closeToolStripMenuItem;
     }
 }
 
