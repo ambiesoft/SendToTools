@@ -24,6 +24,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SendToSender", "SendToSender\SendToSender.csproj", "{DCE811FB-1C96-4C1A-A385-98264E2533F3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SendToManager", "SendToManager\SendToManager.csproj", "{33C5F142-259F-48A4-B2F8-1930A448C041}"
+	ProjectSection(ProjectDependencies) = postProject
+		{35A5C415-0906-4AC7-B0F6-FE3CCA884AD9} = {35A5C415-0906-4AC7-B0F6-FE3CCA884AD9}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RunInLanguage", "RunInLanguage\RunInLanguage.csproj", "{15F70AF9-BA47-4AE8-8B2A-B3B5A43490D7}"
 EndProject
@@ -298,6 +301,7 @@ Global
 		{35A5C415-0906-4AC7-B0F6-FE3CCA884AD9}.Debug|x86.Build.0 = Debug|Any CPU
 		{35A5C415-0906-4AC7-B0F6-FE3CCA884AD9}.Release|x64.ActiveCfg = Release|Any CPU
 		{35A5C415-0906-4AC7-B0F6-FE3CCA884AD9}.Release|x86.ActiveCfg = Release|Any CPU
+		{35A5C415-0906-4AC7-B0F6-FE3CCA884AD9}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
