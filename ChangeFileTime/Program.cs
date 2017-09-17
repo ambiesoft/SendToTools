@@ -1,14 +1,13 @@
-﻿using System;
+﻿using Ambiesoft;
+using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace ChangeFileTime
 {
     static class Program
     {
-        /// <summary>
-        /// アプリケーションのメイン エントリ ポイントです。
-        /// </summary>
         [STAThread]
         static void Main(String[] args)
         {
@@ -17,7 +16,7 @@ namespace ChangeFileTime
             // Application.Run(new FormMain());
             if (args.Length < 1)
             {
-                MessageBox.Show("引数がありません",
+                MessageBox.Show(Properties.Resources.NO_ARGUMENTS,
                     Application.ProductName,
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Asterisk);
@@ -29,23 +28,27 @@ namespace ChangeFileTime
 
             if (!System.IO.File.Exists(theFileName))
             {
-                MessageBox.Show("ファイル " + theFileName + " は存在しません",
+                MessageBox.Show(string.Format(Properties.Resources.FILE_NOT_EXIST,theFileName),
                     Application.ProductName,
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Asterisk);
                 return;
             }
 
+
             System.IO.FileInfo fi = new System.IO.FileInfo(theFileName);
             DateTime oldCreationTime = fi.CreationTime;
             DateTime oldLATime = fi.LastAccessTime;
             DateTime oldLWTime = fi.LastWriteTime;
+
 
             do
             {
                 try
                 {
                     FormMain fm = new FormMain();
+                    AmbLib.SetFontAll(fm);
+
                     fm.Text = Application.ProductName;
                     fm.txtFileName.Text = theFileName;
                     fm.dtpLWTime.Tag = oldLWTime;

@@ -12,6 +12,7 @@
 
 using namespace stdwin32;
 using namespace std;
+using namespace Ambiesoft;
 
 #define I18N(s) (s)
 

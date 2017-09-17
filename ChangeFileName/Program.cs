@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Ambiesoft;
+using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 
@@ -27,6 +29,8 @@ namespace ChangeFileName
 
             return false;
         }
+
+      
 
         static readonly internal string damemoji = "\\/:;*?\"<>|";
         /// <summary>
@@ -87,6 +91,8 @@ namespace ChangeFileName
                 try
                 {
                     FormMain fm = new FormMain();
+                    AmbLib.SetFontAll(fm);
+
                     fm.textName.Text = newName;
                     fm.textName.Tag = theFileName;
                     if (DialogResult.OK != fm.ShowDialog())

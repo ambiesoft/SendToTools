@@ -6,6 +6,7 @@
 
 using namespace std;
 using namespace stdwin32;
+using namespace Ambiesoft;
 
 #define MAX_LOADSTRING 100
 

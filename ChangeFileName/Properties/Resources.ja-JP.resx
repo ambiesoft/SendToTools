@@ -138,4 +138,7 @@
   <data name="NO_ARGUMENTS" xml:space="preserve">
     <value>引数がありません</value>
   </data>
+  <data name="Size" xml:space="preserve">
+    <value>サイズ</value>
+  </data>
 </root>

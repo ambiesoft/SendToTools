@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             this.lblFilename = new System.Windows.Forms.Label();
             this.txtFilename = new System.Windows.Forms.TextBox();
             this.lblSize = new System.Windows.Forms.Label();
@@ -42,101 +43,68 @@
             // 
             // lblFilename
             // 
-            this.lblFilename.AutoSize = true;
-            this.lblFilename.Location = new System.Drawing.Point(12, 46);
+            resources.ApplyResources(this.lblFilename, "lblFilename");
             this.lblFilename.Name = "lblFilename";
-            this.lblFilename.Size = new System.Drawing.Size(53, 12);
-            this.lblFilename.TabIndex = 2;
-            this.lblFilename.Text = "&Filename:";
             // 
             // txtFilename
             // 
-            this.txtFilename.Location = new System.Drawing.Point(14, 61);
+            resources.ApplyResources(this.txtFilename, "txtFilename");
             this.txtFilename.Name = "txtFilename";
-            this.txtFilename.Size = new System.Drawing.Size(364, 19);
-            this.txtFilename.TabIndex = 3;
             // 
             // lblSize
             // 
-            this.lblSize.AutoSize = true;
-            this.lblSize.Location = new System.Drawing.Point(12, 83);
+            resources.ApplyResources(this.lblSize, "lblSize");
             this.lblSize.Name = "lblSize";
-            this.lblSize.Size = new System.Drawing.Size(58, 12);
-            this.lblSize.TabIndex = 4;
-            this.lblSize.Text = "&Size(byte):";
             // 
             // txtSize
             // 
-            this.txtSize.Location = new System.Drawing.Point(14, 98);
+            resources.ApplyResources(this.txtSize, "txtSize");
             this.txtSize.Name = "txtSize";
-            this.txtSize.Size = new System.Drawing.Size(364, 19);
-            this.txtSize.TabIndex = 5;
             // 
             // btnOK
             // 
-            this.btnOK.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnOK.Location = new System.Drawing.Point(222, 170);
+            resources.ApplyResources(this.btnOK, "btnOK");
             this.btnOK.Name = "btnOK";
-            this.btnOK.Size = new System.Drawing.Size(75, 23);
-            this.btnOK.TabIndex = 8;
-            this.btnOK.Text = "&OK";
             this.btnOK.UseVisualStyleBackColor = true;
+            this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
             // btnCancel
             // 
+            resources.ApplyResources(this.btnCancel, "btnCancel");
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(303, 170);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 23);
-            this.btnCancel.TabIndex = 9;
-            this.btnCancel.Text = "&Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             // 
             // lblDir
             // 
-            this.lblDir.AutoSize = true;
-            this.lblDir.Location = new System.Drawing.Point(12, 9);
+            resources.ApplyResources(this.lblDir, "lblDir");
             this.lblDir.Name = "lblDir";
-            this.lblDir.Size = new System.Drawing.Size(39, 12);
-            this.lblDir.TabIndex = 0;
-            this.lblDir.Text = "&Folder:";
             // 
             // txtDir
             // 
-            this.txtDir.Location = new System.Drawing.Point(14, 24);
+            resources.ApplyResources(this.txtDir, "txtDir");
             this.txtDir.Name = "txtDir";
-            this.txtDir.Size = new System.Drawing.Size(364, 19);
-            this.txtDir.TabIndex = 1;
             // 
             // chkRandom
             // 
-            this.chkRandom.AutoSize = true;
-            this.chkRandom.Location = new System.Drawing.Point(14, 123);
+            resources.ApplyResources(this.chkRandom, "chkRandom");
             this.chkRandom.Name = "chkRandom";
-            this.chkRandom.Size = new System.Drawing.Size(153, 16);
-            this.chkRandom.TabIndex = 6;
-            this.chkRandom.Text = "Fill with &Random Number";
             this.chkRandom.UseVisualStyleBackColor = true;
             this.chkRandom.CheckedChanged += new System.EventHandler(this.chkRandom_CheckedChanged);
             // 
             // chkZero
             // 
-            this.chkZero.AutoSize = true;
-            this.chkZero.Location = new System.Drawing.Point(14, 145);
+            resources.ApplyResources(this.chkZero, "chkZero");
             this.chkZero.Name = "chkZero";
-            this.chkZero.Size = new System.Drawing.Size(92, 16);
-            this.chkZero.TabIndex = 7;
-            this.chkZero.Text = "Fill with &Zero";
             this.chkZero.UseVisualStyleBackColor = true;
             this.chkZero.CheckedChanged += new System.EventHandler(this.chkZero_CheckedChanged);
             // 
             // FormMain
             // 
             this.AcceptButton = this.btnOK;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(391, 205);
             this.Controls.Add(this.chkZero);
             this.Controls.Add(this.chkRandom);
             this.Controls.Add(this.btnCancel);
@@ -147,10 +115,8 @@
             this.Controls.Add(this.lblSize);
             this.Controls.Add(this.lblDir);
             this.Controls.Add(this.lblFilename);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.Name = "FormMain";
-            this.Text = "Create Sized File";
             this.Load += new System.EventHandler(this.FormMain_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
