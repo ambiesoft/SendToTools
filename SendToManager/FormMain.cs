@@ -25,13 +25,19 @@ namespace SendToManager
         static readonly string KEY_WIDTH = "Width";
         static readonly string KEY_HEIGHT = "Height";
 
-        private ListViewEx.ListViewEx lvMain;
+        
 
 
         static readonly string COLUMN_NAME = "Name";
         static readonly string COLUMN_PATH = "Path";
         static readonly string COLUMN_ARGUMENTS = "Arguments";
         static readonly string COLUMN_WORKINGDIRECTORY = "WorkingDirectory";
+        static readonly string COLUMN_ICONPATH = "IconPath";
+        static readonly string COLUMN_ICONINDEX = "IconIndex";
+
+        private ListViewEx.ListViewEx lvMain;
+
+
         public FormMain()
         {
             InitializeComponent();
@@ -97,6 +103,24 @@ namespace SendToManager
                 lvMain.Columns.Add(chWorkingDirectory);
             }
 
+            {
+                ColumnHeader chIconPath = new ColumnHeader();
+                chIconPath.Name = COLUMN_ICONPATH;
+                chIconPath.Text = Properties.Resources.COLUMN_ICONPATH;
+                chIconPath.Width = 50;
+                chIconPath.Tag = new ColumnInfo(cmbEditDirectory);
+                lvMain.Columns.Add(chIconPath);
+            }
+
+            {
+                ColumnHeader chIconIndex = new ColumnHeader();
+                chIconIndex.Name = COLUMN_ICONINDEX;
+                chIconIndex.Text = Properties.Resources.COLUMN_ICONINDEX;
+                chIconIndex.Width = 50;
+                chIconIndex.Tag = new ColumnInfo(txtEditName);
+                lvMain.Columns.Add(chIconIndex);
+            }
+
             foreach (ColumnHeader ch in lvMain.Columns)
             {
                 string key = KEY_COLUMN;
@@ -150,7 +174,7 @@ namespace SendToManager
             item.ImageIndex = shfi.iIcon;
 
 
-            LinkData lnk = new LinkData(info.FullName);
+            LinkData lnk = new LinkData(info.FullName, this);
 
             foreach (ColumnHeader ch in lvMain.Columns)
             {
@@ -171,6 +195,14 @@ namespace SendToManager
                 {
                     sub.Text = lnk.WorkingDirectory;
                 }
+                else if(ch.Name==COLUMN_ICONPATH)
+                {
+                    sub.Text = lnk.IconPath;
+                }
+                else if(ch.Name==COLUMN_ICONINDEX)
+                {
+                    sub.Text = lnk.IconIndex.ToString();
+                }
                 else
                 {
                     Debug.Assert(false);
@@ -185,7 +217,7 @@ namespace SendToManager
                 return;
 
             LVInfo lvinfo = (LVInfo)e.Item.Tag;
-            LinkData lnk = new LinkData(lvinfo.FullName);
+            LinkData lnk = new LinkData(lvinfo.FullName, this);
 
             string column = GetColumnName(e.SubItem);
             if (column == COLUMN_NAME)
@@ -213,6 +245,14 @@ namespace SendToManager
             else if (column == COLUMN_WORKINGDIRECTORY)
             {
                 lnk.WorkingDirectory = e.DisplayText;
+            }
+            else if (column == COLUMN_ICONPATH)
+            {
+                lnk.IconPath = e.DisplayText;
+            }
+            else if(column==COLUMN_ICONINDEX)
+            {
+                lnk.IconIndex = int.Parse(e.DisplayText);
             }
             else
             {
@@ -566,6 +606,7 @@ namespace SendToManager
             // shortcut.Description = "New shortcut for a Notepad";
             // shortcut.Hotkey = "Ctrl+Shift+N";
             shortcut.TargetPath = targetpath;
+            shortcut.WorkingDirectory = Path.GetDirectoryName(targetpath);
             shortcut.Save();
         }
 

@@ -170,11 +170,12 @@ namespace SendToManager
 
         string shortcutFile_;
         ShellLink link_;
-        public LinkData(string filename)
+        public LinkData(string filename, System.Windows.Forms.Form f)
         {
             shortcutFile_ = filename;
             link_ = new ShellLink();
             ((IPersistFile)link_).Load(filename, STGM_READ);
+            ((IShellLinkW)link_).Resolve(f.Handle, 0);
         }
 
         public String ShortcutFile
@@ -185,6 +186,10 @@ namespace SendToManager
             }
         }
 
+        private void Save()
+        {
+            ((IPersistFile)link_).Save(null, true);
+        }
         public string Path
         {
             get
@@ -197,7 +202,7 @@ namespace SendToManager
             set
             {
                 ((IShellLinkW)link_).SetPath(value);
-                ((IPersistFile)link_).Save(ShortcutFile, true);
+                Save();
             }
         }
         public string Arguments
@@ -211,7 +216,7 @@ namespace SendToManager
             set
             {
                 ((IShellLinkW)link_).SetArguments(value);
-                ((IPersistFile)link_).Save(ShortcutFile, true);
+                Save();
             }
         }
         public string Description
@@ -225,7 +230,7 @@ namespace SendToManager
             set
             {
                 ((IShellLinkW)link_).SetDescription(value);
-                ((IPersistFile)link_).Save(ShortcutFile, true);
+                Save();
             }
         }
         public short HotKey
@@ -238,7 +243,7 @@ namespace SendToManager
 
             }
         }
-        public string IconLocationPath
+        public string IconPath
         {
             get
             {
@@ -246,6 +251,11 @@ namespace SendToManager
                 int icon;
                 ((IShellLinkW)link_).GetIconLocation(sb, sb.Capacity, out icon);
                 return sb.ToString();
+            }
+            set
+            {
+                ((IShellLinkW)link_).SetIconLocation(value, IconIndex);
+                Save();
             }
         }
         public int IconIndex
@@ -257,6 +267,12 @@ namespace SendToManager
                 ((IShellLinkW)link_).GetIconLocation(sb, sb.Capacity, out icon);
                 return icon;
             }
+            set
+            {
+                ((IShellLinkW)link_).SetIconLocation(IconPath, value);
+                Save();
+            }
+
         }
         public int ShowCmd
         {
@@ -274,14 +290,12 @@ namespace SendToManager
             {
                 StringBuilder sb = new StringBuilder(4096);
                 ((IShellLinkW)link_).GetWorkingDirectory(sb, sb.Capacity);
-                if (sb.Length == 0)
-                    return null;
                 return sb.ToString();
             }
             set
             {
                 ((IShellLinkW)link_).SetWorkingDirectory(value);
-                ((IPersistFile)link_).Save(ShortcutFile, true);
+                Save();
             }
         }
         public static string ResolveShortcut(string filename)

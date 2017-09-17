@@ -122,16 +122,13 @@
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>45, 12</value>
+    <value>45, 13</value>
   </data>
   <data name="label1.Text" xml:space="preserve">
     <value>名前(&amp;N)</value>
   </data>
   <data name="btnLaunch.Text" xml:space="preserve">
     <value>実行(&amp;L)</value>
-  </data>
-  <data name="btnPaste.Text" xml:space="preserve">
-    <value>貼り付け(&amp;P)</value>
   </data>
   <data name="btnTrash.Text" xml:space="preserve">
     <value>ゴミ箱(&amp;R)</value>
@@ -140,79 +137,142 @@
     <value>移動して閉じる(&amp;M)</value>
   </data>
   <data name="tsmiMakeFileNamable.Size" type="System.Drawing.Size, System.Drawing">
-    <value>158, 22</value>
+    <value>167, 22</value>
   </data>
   <data name="tsmiMakeFileNamable.Text" xml:space="preserve">
     <value>ファイル名化(&amp;M)</value>
   </data>
   <data name="tsmiLower.Size" type="System.Drawing.Size, System.Drawing">
-    <value>158, 22</value>
+    <value>167, 22</value>
   </data>
   <data name="tsmiLower.Text" xml:space="preserve">
     <value>小文字(&amp;L)</value>
   </data>
   <data name="tsmiUpper.Size" type="System.Drawing.Size, System.Drawing">
-    <value>158, 22</value>
+    <value>167, 22</value>
   </data>
   <data name="tsmiUpper.Text" xml:space="preserve">
     <value>大文字(&amp;U)</value>
   </data>
   <data name="tsmiTrim.Size" type="System.Drawing.Size, System.Drawing">
-    <value>158, 22</value>
+    <value>167, 22</value>
   </data>
   <data name="tsmiTrim.Text" xml:space="preserve">
     <value>トリム(&amp;T)</value>
   </data>
   <data name="tsmiRemoveSpace.Size" type="System.Drawing.Size, System.Drawing">
-    <value>158, 22</value>
+    <value>167, 22</value>
   </data>
   <data name="tsmiRemoveSpace.Text" xml:space="preserve">
     <value>スペースを削除(&amp;R)</value>
   </data>
-  <data name="cmModify.Size" type="System.Drawing.Size, System.Drawing">
-    <value>159, 114</value>
+  <data name="tsmiUnderbar2hyphen.Size" type="System.Drawing.Size, System.Drawing">
+    <value>167, 22</value>
   </data>
-  <data name="btnCopy.Text" xml:space="preserve">
-    <value>コピー(&amp;C)</value>
+  <data name="tsmiCn2Jp.Size" type="System.Drawing.Size, System.Drawing">
+    <value>167, 22</value>
+  </data>
+  <data name="cmModify.Size" type="System.Drawing.Size, System.Drawing">
+    <value>168, 158</value>
+  </data>
+  <data name="modifyToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>106, 20</value>
+  </data>
+  <data name="modifyToolStripMenuItem.Text" xml:space="preserve">
+    <value>すべてを修正(&amp;M)</value>
   </data>
   <data name="tsmiMakeFileNamableSel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>158, 22</value>
+    <value>167, 22</value>
   </data>
   <data name="tsmiMakeFileNamableSel.Text" xml:space="preserve">
     <value>ファイル名化(&amp;M)</value>
   </data>
   <data name="tsmiLowerSel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>158, 22</value>
+    <value>167, 22</value>
   </data>
   <data name="tsmiLowerSel.Text" xml:space="preserve">
     <value>小文字(&amp;L)</value>
   </data>
   <data name="tsmiUpperSel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>158, 22</value>
+    <value>167, 22</value>
   </data>
   <data name="tsmiUpperSel.Text" xml:space="preserve">
     <value>大文字(&amp;U)</value>
   </data>
   <data name="tsmiTrimSel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>158, 22</value>
+    <value>167, 22</value>
   </data>
   <data name="tsmiTrimSel.Text" xml:space="preserve">
     <value>トリム(&amp;T)</value>
   </data>
   <data name="tsmiRemoveSpaceSel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>158, 22</value>
+    <value>167, 22</value>
   </data>
   <data name="tsmiRemoveSpaceSel.Text" xml:space="preserve">
     <value>スペースを削除(&amp;R)</value>
   </data>
+  <data name="tsmiUnderbar2hyphenSel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>167, 22</value>
+  </data>
+  <data name="tsmiCn2JpSel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>167, 22</value>
+  </data>
   <data name="cmModifySelection.Size" type="System.Drawing.Size, System.Drawing">
-    <value>159, 114</value>
+    <value>168, 158</value>
   </data>
-  <data name="btnModifySelection.Text" xml:space="preserve">
-    <value>選択を修正(&amp;S)</value>
+  <data name="modifySelectionToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>121, 20</value>
   </data>
-  <data name="btnModify.Text" xml:space="preserve">
-    <value>修正(&amp;M)</value>
+  <data name="modifySelectionToolStripMenuItem.Text" xml:space="preserve">
+    <value>選択範囲を修正(&amp;S)</value>
+  </data>
+  <data name="openInExplorerToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>187, 22</value>
+  </data>
+  <data name="openInExplorerToolStripMenuItem.Text" xml:space="preserve">
+    <value>エクスプローラで開く(&amp;E)</value>
+  </data>
+  <data name="fileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>70, 20</value>
+  </data>
+  <data name="fileToolStripMenuItem.Text" xml:space="preserve">
+    <value>ファイル(&amp;F)</value>
+  </data>
+  <data name="copyToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>152, 22</value>
+  </data>
+  <data name="copyPathToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>152, 22</value>
+  </data>
+  <data name="toolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>149, 6</value>
+  </data>
+  <data name="pasteToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>152, 22</value>
+  </data>
+  <data name="pasteTotailToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>152, 22</value>
+  </data>
+  <data name="editToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>59, 20</value>
+  </data>
+  <data name="editToolStripMenuItem.Text" xml:space="preserve">
+    <value>編集(&amp;E)</value>
+  </data>
+  <data name="alwaysOnTopToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>165, 22</value>
+  </data>
+  <data name="alwaysOnTopToolStripMenuItem.Text" xml:space="preserve">
+    <value>最上位に表示(&amp;A)</value>
+  </data>
+  <data name="windowToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>86, 20</value>
+  </data>
+  <data name="windowToolStripMenuItem.Text" xml:space="preserve">
+    <value>ウインドウ(&amp;W)</value>
+  </data>
+  <data name="btnPaste.Text" xml:space="preserve">
+    <value>貼り付け(&amp;P)</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

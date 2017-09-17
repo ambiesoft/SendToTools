@@ -79,6 +79,24 @@ namespace SendToManager.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Icon Index.
+        /// </summary>
+        internal static string COLUMN_ICONINDEX {
+            get {
+                return ResourceManager.GetString("COLUMN_ICONINDEX", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Icon Path.
+        /// </summary>
+        internal static string COLUMN_ICONPATH {
+            get {
+                return ResourceManager.GetString("COLUMN_ICONPATH", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Name.
         /// </summary>
         internal static string COLUMN_NAME {

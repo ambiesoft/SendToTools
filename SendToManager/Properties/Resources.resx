@@ -123,6 +123,12 @@
   <data name="COLUMN_ARGUMENTS" xml:space="preserve">
     <value>Arguments</value>
   </data>
+  <data name="COLUMN_ICONINDEX" xml:space="preserve">
+    <value>Icon Index</value>
+  </data>
+  <data name="COLUMN_ICONPATH" xml:space="preserve">
+    <value>Icon Path</value>
+  </data>
   <data name="COLUMN_NAME" xml:space="preserve">
     <value>Name</value>
   </data>
