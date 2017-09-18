@@ -8,9 +8,6 @@ namespace virustotalcheck
 {
     static class Program
     {
-        /// <summary>
-        /// アプリケーションのメイン エントリ ポイントです。
-        /// </summary>
         [STAThread]
         static void Main()
         {
@@ -18,7 +15,6 @@ namespace virustotalcheck
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new FormMain());
-            
         }
     }
 }

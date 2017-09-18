@@ -129,6 +129,9 @@
   <data name="FILE_NOT_FOUND" xml:space="preserve">
     <value>File not found : {0}</value>
   </data>
+  <data name="FOLLOWING_DOESNOT_EXIST" xml:space="preserve">
+    <value>Following files do not exist.</value>
+  </data>
   <data name="FOLLOWING_UNABLE_FILENAME" xml:space="preserve">
     <value>File name must not include following letters</value>
   </data>

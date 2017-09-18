@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
+using System.Text;
 using System.Windows.Forms;
 
 namespace ChangeFileName
@@ -49,11 +50,17 @@ namespace ChangeFileName
             }
             if (args.Length > 1)
             {
+                StringBuilder sbNotFounds = new StringBuilder();
                 for (int i = 0; i < args.Length; ++i)
                 {
                     try
                     {
-                        System.Diagnostics.Process.Start(Application.ExecutablePath, "\""+args[i]+"\"");
+                        if(File.Exists(args[i]) || Directory.Exists(args[i]))
+                            System.Diagnostics.Process.Start(Application.ExecutablePath, "\""+args[i]+"\"");
+                        else
+                        {
+                            sbNotFounds.AppendLine(args[i]);
+                        }
                     }
                     catch (System.Exception e)
                     {
@@ -62,6 +69,14 @@ namespace ChangeFileName
                                 MessageBoxButtons.OK,
                                 MessageBoxIcon.Error);
                     }
+                }
+
+                if (sbNotFounds.Length != 0)
+                {
+                    MessageBox.Show(Properties.Resources.FOLLOWING_DOESNOT_EXIST + "\r\n\r\n" + sbNotFounds.ToString(),
+                            Application.ProductName,
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Asterisk);
                 }
                 return;
             }

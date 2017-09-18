@@ -97,6 +97,15 @@ namespace ChangeFileName.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Following files do not exist..
+        /// </summary>
+        internal static string FOLLOWING_DOESNOT_EXIST {
+            get {
+                return ResourceManager.GetString("FOLLOWING_DOESNOT_EXIST", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to File name must not include following letters.
         /// </summary>
         internal static string FOLLOWING_UNABLE_FILENAME {

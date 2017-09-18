@@ -100,6 +100,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ColumnInfo.cs" />
+    <Compile Include="EdittingInfo.cs" />
     <Compile Include="FormMain.cs">
       <SubType>Form</SubType>
     </Compile>

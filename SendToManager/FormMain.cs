@@ -81,7 +81,7 @@ namespace SendToManager
                 chPath.Name = COLUMN_PATH;
                 chPath.Text = Properties.Resources.COLUMN_PATH;
                 chPath.Width = 50;
-                chPath.Tag = new ColumnInfo(txtEditName);
+                chPath.Tag = new ColumnInfo(cmbEditFile);
                 lvMain.Columns.Add(chPath);
             }
 
@@ -181,7 +181,13 @@ namespace SendToManager
                 if (ch.Name == COLUMN_NAME)
                     continue;
 
-                ListViewItem.ListViewSubItem sub = new ListViewItem.ListViewSubItem();
+                ListViewItem.ListViewSubItem sub = item.SubItems[ch.Name];
+                if (sub == null)
+                {
+                    sub = new ListViewItem.ListViewSubItem();
+                    sub.Name = ch.Name;
+                    item.SubItems.Add(sub);
+                }
 
                 if (ch.Name == COLUMN_PATH)
                 {
@@ -207,14 +213,21 @@ namespace SendToManager
                 {
                     Debug.Assert(false);
                 }
-                item.SubItems.Add(sub);
             }
 
+            //if(lvMain.Items.Count!=0)
+            //    lvMain.RedrawItems(0, lvMain.Items.Count-1, false);
         }
+
+        EdittingInfo ei_ = new EdittingInfo();
         void lvMain_SubItemEndEditing(object sender, ListViewEx.SubItemEndEditingEventArgs e)
         {
             if (e.Cancel)
                 return;
+
+            string resultText = e.DisplayText;
+            if (ei_.HasResult)
+                e.DisplayText = resultText = ei_.Result;
 
             LVInfo lvinfo = (LVInfo)e.Item.Tag;
             LinkData lnk = new LinkData(lvinfo.FullName, this);
@@ -236,23 +249,23 @@ namespace SendToManager
             }
             else if (column == COLUMN_PATH)
             {
-                lnk.Path = e.DisplayText;
+                lnk.Path = resultText;
             }
             else if (column == COLUMN_ARGUMENTS)
             {
-                lnk.Arguments = e.DisplayText;
+                lnk.Arguments = resultText;
             }
             else if (column == COLUMN_WORKINGDIRECTORY)
             {
-                lnk.WorkingDirectory = e.DisplayText;
+                lnk.WorkingDirectory = resultText;
             }
             else if (column == COLUMN_ICONPATH)
             {
-                lnk.IconPath = e.DisplayText;
+                lnk.IconPath = resultText;
             }
             else if(column==COLUMN_ICONINDEX)
             {
-                lnk.IconIndex = int.Parse(e.DisplayText);
+                lnk.IconIndex = int.Parse(resultText);
             }
             else
             {
@@ -260,6 +273,7 @@ namespace SendToManager
             }
 
             UpdateItem(e.Item);
+            
         }
 
         Control GetEdittingControl(ColumnHeader ch)
@@ -279,8 +293,10 @@ namespace SendToManager
             }
             Debug.Assert(ch != null);
 
-
-            lvMain.StartEditing(GetEdittingControl(ch), e.Item, e.SubItem);
+            ei_.Clear();
+            ei_.Initial = e.Item.SubItems[e.SubItem].Text;
+            Control edittingControl = GetEdittingControl(ch);
+            lvMain.StartEditing(edittingControl, e.Item, e.SubItem);
         }
 
         void Info(string message)
@@ -858,6 +874,53 @@ namespace SendToManager
             lvMain.BeginUpdate();
             UpdateList();
             lvMain.EndUpdate();
+        }
+
+        private void lvMain_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode==Keys.F2)
+            {
+                if (lvMain.SelectedItems.Count != 0)
+                {
+                    lvMain.StartEditing(GetEdittingControl(lvMain.Columns["Name"]),
+                        lvMain.SelectedItems[0], 0);
+                }
+            }
+        }
+
+        private void cmbEditDirectory_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            using(FolderBrowserDialog fbd=new FolderBrowserDialog())
+            {
+                string defaultvalue = ei_.Initial;
+                fbd.SelectedPath = defaultvalue;
+                if (fbd.ShowDialog() != DialogResult.OK)
+                {
+                    cmbEditDirectory.Text = defaultvalue;
+                    lvMain.EndEditing(false);
+                    return;
+                }
+
+                ei_.Result = fbd.SelectedPath;
+                lvMain.EndEditing(true);
+            }
+        }
+
+        private void cmbEditFile_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            using(OpenFileDialog ofd = new OpenFileDialog())
+            {
+                ofd.InitialDirectory = Path.GetDirectoryName(ei_.Initial);
+                ofd.FileName = Path.GetFileName(ei_.Initial);
+                if(DialogResult.OK != ofd.ShowDialog())
+                {
+                    cmbEditFile.Text = ei_.Initial;
+                    lvMain.EndEditing(false);
+                    return;
+                }
+                ei_.Result = ofd.FileName;
+                lvMain.EndEditing(true);
+            }
         }
     }
 }
