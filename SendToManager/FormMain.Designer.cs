@@ -50,6 +50,8 @@
             this.openSendToToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panelRoot = new System.Windows.Forms.Panel();
             this.cmbEditFile = new System.Windows.Forms.ComboBox();
+            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tsList.SuspendLayout();
             this.menuMain.SuspendLayout();
             this.panelRoot.SuspendLayout();
@@ -85,9 +87,9 @@
             // 
             this.tsList.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.tsList.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsbNewItem,
             this.tsbUp,
             this.tsbDown,
-            this.tsbNewItem,
             this.tsbRefresh,
             this.tsbAssignNumber,
             this.tsbDeploy,
@@ -142,7 +144,8 @@
             this.menuMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
             this.inventoryToolStripMenuItem,
-            this.folderToolStripMenuItem});
+            this.folderToolStripMenuItem,
+            this.helpToolStripMenuItem});
             resources.ApplyResources(this.menuMain, "menuMain");
             this.menuMain.Name = "menuMain";
             // 
@@ -211,6 +214,19 @@
             this.cmbEditFile.Name = "cmbEditFile";
             this.cmbEditFile.SelectionChangeCommitted += new System.EventHandler(this.cmbEditFile_SelectionChangeCommitted);
             // 
+            // helpToolStripMenuItem
+            // 
+            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.aboutToolStripMenuItem});
+            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
+            resources.ApplyResources(this.helpToolStripMenuItem, "helpToolStripMenuItem");
+            // 
+            // aboutToolStripMenuItem
+            // 
+            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+            resources.ApplyResources(this.aboutToolStripMenuItem, "aboutToolStripMenuItem");
+            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
+            // 
             // FormMain
             // 
             resources.ApplyResources(this, "$this");
@@ -254,6 +270,8 @@
         private System.Windows.Forms.ToolStripButton tsbDisplace;
         private System.Windows.Forms.ToolStripButton tsbRefresh;
         private System.Windows.Forms.ComboBox cmbEditFile;
+        private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
     }
 }
 

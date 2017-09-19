@@ -922,5 +922,18 @@ namespace SendToManager
                 lvMain.EndEditing(true);
             }
         }
+
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append(ProductName);
+            sb.Append(" ");
+            sb.Append(ProductVersion);
+
+            MessageBox.Show(sb.ToString(),
+                ProductName,
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Information);
+        }
     }
 }
