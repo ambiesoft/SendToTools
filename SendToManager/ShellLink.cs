@@ -240,7 +240,11 @@ namespace SendToManager
                 short hk;
                 ((IShellLinkW)link_).GetHotkey(out hk);
                 return hk;
-
+            }
+            set
+            {
+                ((IShellLinkW)link_).SetHotkey(value);
+                Save();
             }
         }
         public string IconPath
