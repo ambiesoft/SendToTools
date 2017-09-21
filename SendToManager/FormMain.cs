@@ -10,6 +10,7 @@ using IWshRuntimeLibrary;
 using System.Diagnostics;
 using Ambiesoft;
 using System.Runtime.InteropServices;
+using System.Reflection;
 
 namespace SendToManager
 {
@@ -24,7 +25,9 @@ namespace SendToManager
         static readonly string KEY_Y = "Y";
         static readonly string KEY_WIDTH = "Width";
         static readonly string KEY_HEIGHT = "Height";
-
+        static readonly string KEY_LISTVIEWCOLOR1 = "ListViewColor1";
+        static readonly string KEY_LISTVIEWCOLOR2 = "ListViewColor2";
+        
         
 
 
@@ -34,6 +37,7 @@ namespace SendToManager
         static readonly string COLUMN_WORKINGDIRECTORY = "WorkingDirectory";
         static readonly string COLUMN_ICONPATH = "IconPath";
         static readonly string COLUMN_ICONINDEX = "IconIndex";
+        static readonly string COLUMN_RUNASADMIN = "RunAsAdmin";
 
         private ListViewEx.ListViewEx lvMain;
 
@@ -64,6 +68,11 @@ namespace SendToManager
                 }
             }
 
+            int intval = 0;
+            if (Profile.GetInt(SECTION_OPTION, KEY_LISTVIEWCOLOR1, Color.White.ToArgb(), out intval, ini))
+                option_.btnLVColor1.BackColor = Color.FromArgb(intval);
+            if (Profile.GetInt(SECTION_OPTION, KEY_LISTVIEWCOLOR2, Color.White.ToArgb(), out intval, ini))
+                option_.btnLVColor2.BackColor = Color.FromArgb(intval);
 
             Debug.Assert(lvMain.Columns.Count == 0);
 
@@ -119,6 +128,15 @@ namespace SendToManager
                 chIconIndex.Width = 50;
                 chIconIndex.Tag = new ColumnInfo(txtEditName);
                 lvMain.Columns.Add(chIconIndex);
+            }
+
+            {
+                ColumnHeader chRunAsAdmin = new ColumnHeader();
+                chRunAsAdmin.Name = COLUMN_RUNASADMIN;
+                chRunAsAdmin.Text = Properties.Resources.COLUMN_RUNASADMIN;
+                chRunAsAdmin.Width = 10;
+                chRunAsAdmin.Tag = new ColumnInfo(cmbEditBool);
+                lvMain.Columns.Add(chRunAsAdmin);
             }
 
             foreach (ColumnHeader ch in lvMain.Columns)
@@ -209,6 +227,10 @@ namespace SendToManager
                 {
                     sub.Text = lnk.IconIndex.ToString();
                 }
+                else if(ch.Name==COLUMN_RUNASADMIN)
+                {
+                    sub.Text = lnk.IsRunAsAdmin.ToString();
+                }
                 else
                 {
                     Debug.Assert(false);
@@ -225,55 +247,66 @@ namespace SendToManager
             if (e.Cancel)
                 return;
 
-            string resultText = e.DisplayText;
-            if (ei_.HasResult)
-                e.DisplayText = resultText = ei_.Result;
-
-            LVInfo lvinfo = (LVInfo)e.Item.Tag;
-            LinkData lnk = new LinkData(lvinfo.FullName, this);
-
-            string column = GetColumnName(e.SubItem);
-            if (column == COLUMN_NAME)
+            try
             {
-                try
+                string resultText = e.DisplayText;
+                if (ei_.HasResult)
+                    e.DisplayText = resultText = ei_.Result;
+
+                LVInfo lvinfo = (LVInfo)e.Item.Tag;
+                LinkData lnk = new LinkData(lvinfo.FullName, this);
+
+                string column = GetColumnName(e.SubItem);
+                if (column == COLUMN_NAME)
                 {
-                    string from = lvinfo.FullName;
-                    string to = Path.Combine(lvinfo.ParentDir, e.DisplayText + ".lnk");
-                    System.IO.File.Move(from, to);
-                    e.Item.Tag = new LVInfo(to);
+                    try
+                    {
+                        string from = lvinfo.FullName;
+                        string to = Path.Combine(lvinfo.ParentDir, e.DisplayText + ".lnk");
+                        System.IO.File.Move(from, to);
+                        e.Item.Tag = new LVInfo(to);
+                    }
+                    catch (Exception ex)
+                    {
+                        Alert(ex.Message);
+                    }
                 }
-                catch (Exception ex)
+                else if (column == COLUMN_PATH)
                 {
-                    Alert(ex.Message);
+                    lnk.Path = resultText;
+                }
+                else if (column == COLUMN_ARGUMENTS)
+                {
+                    lnk.Arguments = resultText;
+                }
+                else if (column == COLUMN_WORKINGDIRECTORY)
+                {
+                    lnk.WorkingDirectory = resultText;
+                }
+                else if (column == COLUMN_ICONPATH)
+                {
+                    lnk.IconPath = resultText;
+                }
+                else if (column == COLUMN_ICONINDEX)
+                {
+                    lnk.IconIndex = int.Parse(resultText);
+                }
+                else if (column == COLUMN_RUNASADMIN)
+                {
+                    lnk.IsRunAsAdmin = bool.Parse(resultText);
+                }
+                else
+                {
+                    Debug.Assert(false);
                 }
             }
-            else if (column == COLUMN_PATH)
+            catch (Exception ex)
             {
-                lnk.Path = resultText;
+                Alert(ex.Message);
             }
-            else if (column == COLUMN_ARGUMENTS)
-            {
-                lnk.Arguments = resultText;
-            }
-            else if (column == COLUMN_WORKINGDIRECTORY)
-            {
-                lnk.WorkingDirectory = resultText;
-            }
-            else if (column == COLUMN_ICONPATH)
-            {
-                lnk.IconPath = resultText;
-            }
-            else if(column==COLUMN_ICONINDEX)
-            {
-                lnk.IconIndex = int.Parse(resultText);
-            }
-            else
-            {
-                Debug.Assert(false);
-            }
-
+             
             UpdateItem(e.Item);
-            
+            e.DisplayText = e.Item.SubItems[e.SubItem].Text;
         }
 
         Control GetEdittingControl(ColumnHeader ch)
@@ -302,7 +335,7 @@ namespace SendToManager
         void Info(string message)
         {
             CenteredMessageBox.Show(this,
-            message,
+                message,
                 ProductName,
                 MessageBoxButtons.OK,
                 MessageBoxIcon.Information);
@@ -446,6 +479,7 @@ namespace SendToManager
                     }
                 );
 
+                bool colored = false;
                 foreach (FileInfo fi in fis)
                 {
                     if (!fi.IsReadOnly &&
@@ -456,6 +490,12 @@ namespace SendToManager
                         item.Tag = new LVInfo(fi.FullName);
 
                         UpdateItem(item);
+                        item.BackColor = colored ? 
+                            option_.btnLVColor1.BackColor :
+                            option_.btnLVColor2.BackColor;
+                        colored =!colored;
+
+                        
                         lvMain.Items.Add(item);
                     }
                 }
@@ -863,6 +903,9 @@ namespace SendToManager
                 Profile.WriteInt(SECTION_OPTION, key, ch.Width, ini);
             }
 
+            Profile.WriteInt(SECTION_OPTION, KEY_LISTVIEWCOLOR1, option_.btnLVColor1.BackColor.ToArgb(), ini);
+            Profile.WriteInt(SECTION_OPTION, KEY_LISTVIEWCOLOR2, option_.btnLVColor2.BackColor.ToArgb(), ini);
+
             if (!Profile.WriteAll(ini, Program.IniFile))
             {
                 Alert(Properties.Resources.FAILED_TO_SAVE_SETTING);
@@ -927,13 +970,24 @@ namespace SendToManager
         {
             StringBuilder sb = new StringBuilder();
             sb.Append(ProductName);
-            sb.Append(" ");
-            sb.Append(ProductVersion);
+            sb.Append(" version ");
+            sb.Append(Assembly.GetExecutingAssembly().GetName().Version.Major.ToString());
+            sb.Append(".");
+            sb.Append(Assembly.GetExecutingAssembly().GetName().Version.Minor.ToString());
 
             MessageBox.Show(sb.ToString(),
                 ProductName,
                 MessageBoxButtons.OK,
                 MessageBoxIcon.Information);
+        }
+
+        Option option_ = new Option();
+        private void optionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (DialogResult.OK != option_.ShowDialog())
+                return;
+
+            UpdateList();
         }
     }
 }

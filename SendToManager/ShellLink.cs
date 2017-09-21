@@ -302,6 +302,32 @@ namespace SendToManager
                 Save();
             }
         }
+        public bool IsRunAsAdmin
+        {
+            get
+            {
+                using (FileStream fs = new FileStream(shortcutFile_, FileMode.Open, FileAccess.Read))
+                {
+                    fs.Seek(0x15, SeekOrigin.Begin);
+                    byte b = (byte)fs.ReadByte();
+                    return (b & 0x20) != 0;
+                }
+            }
+            set
+            {
+                using (FileStream fs = new FileStream(shortcutFile_, FileMode.Open, FileAccess.ReadWrite))
+                {
+                    fs.Seek(0x15, SeekOrigin.Begin);
+                    int b = fs.ReadByte();
+                    if (value)
+                        b |= 0x20;
+                    else
+                        b &= ~0x20;
+                    fs.Seek(0x15, SeekOrigin.Begin);
+                    fs.WriteByte((byte)b);
+                }
+            }
+        }
         public static string ResolveShortcut(string filename)
         {
             ShellLink link = new ShellLink();

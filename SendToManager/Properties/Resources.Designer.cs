@@ -115,6 +115,15 @@ namespace SendToManager.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Run as Administrator.
+        /// </summary>
+        internal static string COLUMN_RUNASADMIN {
+            get {
+                return ResourceManager.GetString("COLUMN_RUNASADMIN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Working Directory.
         /// </summary>
         internal static string COLUMN_WORKINGDIRECTORY {
