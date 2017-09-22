@@ -139,15 +139,7 @@ namespace SendToManager
                 lvMain.Columns.Add(chRunAsAdmin);
             }
 
-            foreach (ColumnHeader ch in lvMain.Columns)
-            {
-                string key = KEY_COLUMN;
-                Debug.Assert(!string.IsNullOrEmpty(ch.Name));
-                key += ch.Name;
-                int colwidth = 0;
-                if (Profile.GetInt(SECTION_OPTION, key, 0, out colwidth, ini))
-                    ch.Width = colwidth;
-            }
+            AmbLib.LoadListViewColumnWidth(lvMain, SECTION_OPTION, KEY_COLUMN, ini);
 
             // lvMain.SmallImageList = sysImageList_;
 
@@ -895,13 +887,8 @@ namespace SendToManager
                 Profile.WriteInt(SECTION_OPTION, KEY_HEIGHT, this.Size.Height, ini);
             }
 
-            foreach (ColumnHeader ch in lvMain.Columns)
-            {
-                string key = KEY_COLUMN;
-                Debug.Assert(!string.IsNullOrEmpty(ch.Name));
-                key += ch.Name;
-                Profile.WriteInt(SECTION_OPTION, key, ch.Width, ini);
-            }
+            AmbLib.SaveListViewColumnWidth(lvMain, SECTION_OPTION, KEY_COLUMN, ini);
+            
 
             Profile.WriteInt(SECTION_OPTION, KEY_LISTVIEWCOLOR1, option_.btnLVColor1.BackColor.ToArgb(), ini);
             Profile.WriteInt(SECTION_OPTION, KEY_LISTVIEWCOLOR2, option_.btnLVColor2.BackColor.ToArgb(), ini);

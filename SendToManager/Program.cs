@@ -96,7 +96,7 @@ namespace SendToManager
             //Profile.WriteInt("Test", "WriteTest", val, IniFile);
             //int ret;
             //Profile.GetInt("Test", "WriteTest", 0, out ret, IniFile);
-            if(!FolderConfigHelper.IsFolderAccessable(ConfigDir))
+            if(!FolderConfigHelper.IsFolderAccessible(ConfigDir))
             //if(val != ret)
             {
                 Alert(Properties.Resources.ALERT_DIRECTORY_UNAVAILABLE);
