@@ -5,6 +5,7 @@
 #include "../../lsMisc/CommandLineParser.h"
 #include "../../lsMisc/Is64.h"
 #include "../../lsMisc/OpenCommon.h"
+#include "../../lsMisc/CommandLineString.h"
 
 using namespace std;
 using namespace Ambiesoft;
@@ -21,6 +22,8 @@ void ErrorExit(LPCWSTR message)
 
 	exit(1);
 }
+
+
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	_In_opt_ HINSTANCE hPrevInstance,
 	_In_ LPWSTR    lpCmdLine,
@@ -42,12 +45,26 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 		ErrorExit(I18N(L"-32 and -64 must be specified."));
 	}
 
+	wstring argToProg;
+	CCommandLineStringBase<wchar_t> cls;
+	int index = cls.getIndex(L"--");
+	if (index >= 0)
+	{
+		argToProg = cls.subString(index+1);
+	}
+	else
+	{
+		int argc = 0;
+		wchar_t** argv = NULL;
+		//argv = CommandLineToArgvW(GetCommandLine(), &argc);
+		argv = cls.getCommandLine(&argc);
+	}
 	wstring exe;
 	if (Is64BitWindows())
 		exe = exe64;
 	else
 		exe = exe32;
 
-	OpenCommon(NULL, exe.c_str());
+	OpenCommon(NULL, exe.c_str(), argToProg.c_str());
 	return 0;
 }

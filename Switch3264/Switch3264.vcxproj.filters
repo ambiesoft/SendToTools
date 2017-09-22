@@ -53,5 +53,8 @@
     <ClInclude Include="..\..\lsMisc\Is64.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\lsMisc\CommandLineString.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
