@@ -83,6 +83,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\lsMisc\CenterWindow.h" />
+    <ClInclude Include="..\..\lsMisc\CommandLineString.h" />
     <ClInclude Include="..\..\lsMisc\stdwin32\stdwin32.h" />
     <ClInclude Include="argCheck.h" />
     <ClInclude Include="Resource.h" />

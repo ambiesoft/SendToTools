@@ -14,15 +14,19 @@
     
     
     "archivedir": "C:/Linkout/",
-    "remotedir": "http://ambiesoft.fam.cx/ffdav/uploads/SendToTools/",
+    "remotedir":   "http://ambiesoft.fam.cx/ffdav/uploads/SendToTools/",
     "remotesha1" : "http://ambiesoft.fam.cx/ffdav/uploads/getSha1.php?file=SendToTools/{}",
     
     
     
     
     "TotalFileCount": 108,
-    "ShouldNotBeFiles": [],
-    "ShouldBeFiles": [],
+    "ShouldNotBeFiles": [
+		"folder.ini"
+    ],
+    "ShouldBeFiles": [
+    	"FolderConfig.ini"    
+    ],
     "ShouldBeOneOfThem": [],
     
     "obtainverfrom": "history.txt",

@@ -108,6 +108,9 @@
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
     <Compile Include="Helper.cs" />
+    <Compile Include="ListViewCustomReorder.ListViewEx.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="LVInfo.cs" />
     <Compile Include="Option.cs">
       <SubType>Form</SubType>
@@ -124,6 +127,9 @@
     <EmbeddedResource Include="FormMain.resx">
       <SubType>Designer</SubType>
       <DependentUpon>FormMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Option.ja-JP.resx">
+      <DependentUpon>Option.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Option.resx">
       <DependentUpon>Option.cs</DependentUpon>

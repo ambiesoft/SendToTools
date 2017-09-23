@@ -99,7 +99,8 @@ namespace SendToManager
             if(!FolderConfigHelper.IsFolderAccessible(ConfigDir))
             //if(val != ret)
             {
-                Alert(Properties.Resources.ALERT_DIRECTORY_UNAVAILABLE);
+                Alert(string.Format(
+                    Properties.Resources.ALERT_DIRECTORY_UNAVAILABLE, ConfigDir));
                 return false;
             }
             return true;

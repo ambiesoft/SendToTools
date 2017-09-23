@@ -141,4 +141,7 @@
   <data name="Size" xml:space="preserve">
     <value>サイズ</value>
   </data>
+  <data name="FOLLOWING_DOESNOT_EXIST" xml:space="preserve">
+    <value>以下のファイルは存在しません。</value>
+  </data>
 </root>

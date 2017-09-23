@@ -326,7 +326,7 @@ namespace SendToManager
 
         void Info(string message)
         {
-            CenteredMessageBox.Show(this,
+            MessageBox.Show(this,
                 message,
                 ProductName,
                 MessageBoxButtons.OK,
@@ -342,7 +342,7 @@ namespace SendToManager
         }
         DialogResult YesOrNo(string message)
         {
-            return CenteredMessageBox.Show(this,
+            return MessageBox.Show(this,
                 message,
                 ProductName,
                 MessageBoxButtons.YesNo,
@@ -962,7 +962,8 @@ namespace SendToManager
             sb.Append(".");
             sb.Append(Assembly.GetExecutingAssembly().GetName().Version.Minor.ToString());
 
-            MessageBox.Show(sb.ToString(),
+            CenteredMessageBox.Show(this,
+                sb.ToString(),
                 ProductName,
                 MessageBoxButtons.OK,
                 MessageBoxIcon.Information);
@@ -975,6 +976,120 @@ namespace SendToManager
                 return;
 
             UpdateList();
+        }
+
+        // The LVItem being dragged
+        private ListViewItem _itemDnD = null;
+        private bool _mouseDowning;
+        private int _mouseDownStartTick;
+        private void lvMain_MouseDown(object sender, MouseEventArgs e)
+        {
+            _mouseDowning = true;
+            _mouseDownStartTick = Environment.TickCount;
+            _itemDnD = lvMain.GetItemAt(e.X, e.Y);
+        }
+
+        private void lvMain_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (_mouseDowning && (Environment.TickCount - _mouseDownStartTick) > 100)
+            {
+
+            }
+            else
+            {
+                _itemDnD = null;
+            }
+            if (_itemDnD == null)
+                return;
+
+            // drag begines
+            lvMain.ListViewItemSorter = null;
+
+            // Show the user that a drag operation is happening
+            Cursor = Cursors.Hand;
+
+            // calculate the bottom of the last item in the LV so that you don't have to stop your drag at the last item
+            int lastItemBottom = Math.Min(e.Y, lvMain.Items[lvMain.Items.Count - 1].GetBounds(ItemBoundsPortion.Entire).Bottom - 1);
+
+            // use 0 instead of e.X so that you don't have to keep inside the columns while dragging
+            ListViewItem itemOver = lvMain.GetItemAt(0, lastItemBottom);
+
+            if (itemOver == null)
+                return;
+
+            Rectangle rc = itemOver.GetBounds(ItemBoundsPortion.Entire);
+            if (e.Y < rc.Top + (rc.Height / 2))
+            {
+                lvMain.LineBefore = itemOver.Index;
+                lvMain.LineAfter = -1;
+            }
+            else
+            {
+                lvMain.LineBefore = -1;
+                lvMain.LineAfter = itemOver.Index;
+            }
+
+            // invalidate the LV so that the insertion line is shown
+            lvMain.Invalidate();
+        }
+
+        private void lvMain_MouseUp(object sender, MouseEventArgs e)
+        {
+            _mouseDowning = false;
+            if (_itemDnD == null)
+                return;
+
+            try
+            {
+                // calculate the bottom of the last item in the LV so that you don't have to stop your drag at the last item
+                int lastItemBottom = Math.Min(e.Y, lvMain.Items[lvMain.Items.Count - 1].GetBounds(ItemBoundsPortion.Entire).Bottom - 1);
+
+                // use 0 instead of e.X so that you don't have to keep inside the columns while dragging
+                ListViewItem itemOver = lvMain.GetItemAt(0, lastItemBottom);
+
+                if (itemOver == null)
+                    return;
+
+                Rectangle rc = itemOver.GetBounds(ItemBoundsPortion.Entire);
+
+                // find out if we insert before or after the item the mouse is over
+                bool insertBefore;
+                if (e.Y < rc.Top + (rc.Height / 2))
+                {
+                    insertBefore = true;
+                }
+                else
+                {
+                    insertBefore = false;
+                }
+
+                if (_itemDnD != itemOver) // if we dropped the item on itself, nothing is to be done
+                {
+                    if (insertBefore)
+                    {
+                        lvMain.Items.Remove(_itemDnD);
+                        lvMain.Items.Insert(itemOver.Index, _itemDnD);
+                    }
+                    else
+                    {
+                        lvMain.Items.Remove(_itemDnD);
+                        lvMain.Items.Insert(itemOver.Index + 1, _itemDnD);
+                    }
+                }
+
+                // clear the insertion line
+                lvMain.LineAfter =
+                lvMain.LineBefore = -1;
+
+                lvMain.Invalidate();
+
+            }
+            finally
+            {
+                // finish drag&drop operation
+                _itemDnD = null;
+                Cursor = Cursors.Default;
+            }
         }
     }
 }

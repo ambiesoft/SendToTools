@@ -1,5 +1,7 @@
 #include "stdafx.h"
 
+#include "../../lsMisc/CommandLineString.h"
+
 #include "argCheck.h"
 
 #define I18N(t) t
@@ -100,6 +102,12 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	message += KAIGYO;
 	message += KAIGYO;
 
+
+	// CRT
+	message += L"CRT";
+	message += KAIGYO;
+	message += L"----------------------------------";
+	message += KAIGYO;
 	{
 		message += I18N(L"CRT argc");
 		message += L":";
@@ -121,6 +129,11 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 		}
 	}
 
+	// CommandLineToArgvW
+	message += L"CommandLineToArgvW";
+	message += KAIGYO;
+	message += L"----------------------------------";
+	message += KAIGYO;
 	{
 		int nNumArgs = 0;
 		LPWSTR* pArgv = CommandLineToArgvW(GetCommandLine(), &nNumArgs);
@@ -145,6 +158,34 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 		LocalFree(pArgv);
 	}
 
+	// CCommandLineString
+	message += L"CCommandLineString";
+	message += KAIGYO;
+	message += L"----------------------------------";
+	message += KAIGYO;
+	{
+		int nNumArgs = 0;
+		LPWSTR* pArgv = CCommandLineString::getCommandLine(GetCommandLine(), &nNumArgs);
+		message += I18N(L"CCommandLineString argc");
+		message += L":";
+		message += KAIGYO;
+		message += stdItoT(nNumArgs);
+		message += KAIGYO;
+		message += KAIGYO;
+
+		for (int i = 0; i < nNumArgs; ++i)
+		{
+			message += I18N(L"CCommandLineString Argument");
+			message += L" ";
+			message += to_wstring(i);
+			message += L":";
+			message += KAIGYO;
+			message += pArgv[i];
+			message += KAIGYO;
+			message += KAIGYO;
+		}
+		CCommandLineString::freeCommandLine(pArgv);
+	}
 	//MessageBox(NULL,
 	//	message.c_str(),
 	//	szTitle,

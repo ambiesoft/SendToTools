@@ -116,6 +116,9 @@ namespace ListViewEx
 
 		public ListViewEx()
 		{
+            // Reduce flicker
+            SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
+
 			// This	call is	required by	the	Windows.Forms Form Designer.
 			InitializeComponent();
 
@@ -124,6 +127,99 @@ namespace ListViewEx
 			base.AllowColumnReorder = true;
 		}
 
+        private int _LineBefore = -1;
+        /// <summary>
+        /// If set to a value >= 0, an insertion line is painted before the item with the given index.
+        /// </summary>
+        public int LineBefore
+        {
+            get { return _LineBefore; }
+            set { _LineBefore = value; }
+        }
+
+        private int _LineAfter = -1;
+        /// <summary>
+        /// If set to a value >= 0, an insertion line is painted after the item with the given index.
+        /// </summary>
+        public int LineAfter
+        {
+            get { return _LineAfter; }
+            set { _LineAfter = value; }
+        }
+
+
+        // from WinUser.h
+        private const int WM_PAINT = 0x000F;
+
+        protected override void WndProc(ref Message m)
+        {
+            if (m.Msg == WM_PAINT)
+            {
+                base.WndProc(ref m);
+
+                // We have to take this way (instead of overriding OnPaint()) because the ListView is just a wrapper
+                // around the common control ListView and unfortunately does not call the OnPaint overrides.
+
+
+                if (LineBefore >= 0 && LineBefore < Items.Count)
+                {
+                    Rectangle rc = Items[LineBefore].GetBounds(ItemBoundsPortion.Entire);
+                    DrawInsertionLine(rc.Left, rc.Right, rc.Top);
+                }
+                if (LineAfter >= 0 && LineBefore < Items.Count)
+                {
+                    Rectangle rc = Items[LineAfter].GetBounds(ItemBoundsPortion.Entire);
+                    DrawInsertionLine(rc.Left, rc.Right, rc.Bottom);
+                }
+                return;
+            }
+            switch (m.Msg)
+            {
+                // Look	for	WM_VSCROLL,WM_HSCROLL or WM_SIZE messages.
+                case WM_VSCROLL:
+                case WM_HSCROLL:
+                case WM_SIZE:
+                    EndEditing(false);
+                    break;
+                case WM_NOTIFY:
+                    // Look for WM_NOTIFY of events that might also change the
+                    // editor's position/size: Column reordering or resizing
+                    NMHDR h = (NMHDR)Marshal.PtrToStructure(m.LParam, typeof(NMHDR));
+                    if (h.code == HDN_BEGINDRAG ||
+                        h.code == HDN_ITEMCHANGINGA ||
+                        h.code == HDN_ITEMCHANGINGW)
+                        EndEditing(false);
+                    break;
+            }
+            base.WndProc(ref m);
+        }
+
+        /// <summary>
+        /// Draw a line with insertion marks at each end
+        /// </summary>
+        /// <param name="X1">Starting position (X) of the line</param>
+        /// <param name="X2">Ending position (X) of the line</param>
+        /// <param name="Y">Position (Y) of the line</param>
+        private void DrawInsertionLine(int X1, int X2, int Y)
+        {
+            using (Graphics g = this.CreateGraphics())
+            {
+                g.DrawLine(Pens.Red, X1, Y, X2 - 1, Y);
+
+                Point[] leftTriangle = new Point[3] {
+                            new Point(X1,      Y-4),
+                            new Point(X1 + 7,  Y),
+                            new Point(X1,      Y+4)
+                        };
+                Point[] rightTriangle = new Point[3] {
+                            new Point(X2,     Y-4),
+                            new Point(X2 - 8, Y),
+                            new Point(X2,     Y+4)
+                        };
+                g.FillPolygon(Brushes.Red, leftTriangle);
+                g.FillPolygon(Brushes.Red, rightTriangle);
+            }
+        }
 		///	<summary>
 		///	Clean up any resources being used.
 		///	</summary>
@@ -251,29 +347,7 @@ namespace ListViewEx
 		}
 
 
-		protected override void	WndProc(ref	Message	msg)
-		{
-			switch (msg.Msg)
-			{
-				// Look	for	WM_VSCROLL,WM_HSCROLL or WM_SIZE messages.
-				case WM_VSCROLL:
-				case WM_HSCROLL:
-				case WM_SIZE:
-					EndEditing(false);
-					break;
-				case WM_NOTIFY:
-					// Look for WM_NOTIFY of events that might also change the
-					// editor's position/size: Column reordering or resizing
-					NMHDR h = (NMHDR)Marshal.PtrToStructure(msg.LParam, typeof(NMHDR));
-					if (h.code == HDN_BEGINDRAG ||
-						h.code == HDN_ITEMCHANGINGA ||
-						h.code == HDN_ITEMCHANGINGW)
-						EndEditing(false);
-					break;
-			}
 
-			base.WndProc(ref msg);
-		}
 
 
 		#region Initialize editing depending of DoubleClickActivation property

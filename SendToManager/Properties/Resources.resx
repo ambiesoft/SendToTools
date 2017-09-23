@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="ALERT_DIRECTORY_UNAVAILABLE" xml:space="preserve">
-    <value>Failed to write to ini file, You can not run this application from this directory.</value>
+    <value>Failed to read or write to a file in the directory "{0}".</value>
   </data>
   <data name="COLUMN_ARGUMENTS" xml:space="preserve">
     <value>Arguments</value>

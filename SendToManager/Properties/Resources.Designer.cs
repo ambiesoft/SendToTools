@@ -61,7 +61,7 @@ namespace SendToManager.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Failed to write to ini file, You can not run this application from this directory..
+        ///   Looks up a localized string similar to Failed to read or write to a file in the directory &quot;{0}&quot;..
         /// </summary>
         internal static string ALERT_DIRECTORY_UNAVAILABLE {
             get {
