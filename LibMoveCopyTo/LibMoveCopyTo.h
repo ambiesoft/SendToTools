@@ -10,9 +10,6 @@
 #include "resource.h"		// メイン シンボル
 
 
-// CLibMoveCopyToApp
-// このクラスの実装に関しては LibMoveCopyTo.cpp を参照してください。
-//
 
 class CLibMoveCopyToApp : public CWinApp
 {

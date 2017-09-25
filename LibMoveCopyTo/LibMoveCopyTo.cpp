@@ -7,6 +7,7 @@
 #include "../../lsMisc/GetLastErrorString.h"
 #include "ChooseDirDialog.h"
 
+#include "../../lsMisc/DebugNew.h"
 
 #pragma comment(lib,"shlwapi.lib")
 
@@ -23,6 +24,8 @@ using Ambiesoft::sqlGetPrivateProfileStringArray;
 using Ambiesoft::sqlWritePrivateProfileStringArray;
 using Ambiesoft::SHMoveFile;
 using Ambiesoft::GetLastErrorStringW;
+
+using stdwin32::stdAddBackSlash;
 
 typedef vector<wstring> STRINGVECTOR;
 
@@ -73,28 +76,23 @@ void ShowError(LPCWSTR pMessage)
 
 	MessageBox(NULL,
 		message.c_str(),
-		APPNAME,
+		gAppName,
 		MB_ICONERROR);
 }
-
-#ifdef _DEBUG
-#define new DEBUG_NEW
-#endif
-
 
 
 
 
 
 extern "C" {
-	DllExport int libmain();
+	DllExport int libmain(LPCWSTR pAppName);
 }
 
-int libmain()
+int libmain(LPCWSTR pAppName)
 {
 	//UNREFERENCED_PARAMETER(hPrevInstance);
 	//UNREFERENCED_PARAMETER(lpCmdLine);
-
+	gAppName = pAppName;
 
 	COption opTarget(L"/T", L"/t", 1);
 	COption opFile(L"", Ambiesoft::ArgCount_Infinite);
@@ -128,7 +126,7 @@ int libmain()
 
 	wstring dbFile = stdwin32::stdCombinePath(
 		stdwin32::stdGetParentDirectory(stdwin32::stdGetModuleFileName()),
-		APPNAME L".db");
+		wstring(gAppName) + L".db");
 	vector<wstring> allPrevSave;
 
 	if (!sqlGetPrivateProfileStringArray(SEC_OPTION, KEY_DIRS, allPrevSave, dbFile.c_str()))
@@ -179,7 +177,10 @@ int libmain()
 
 			for (int i = 0; i < dlg.m_arDirs.GetSize(); ++i)
 			{
-				allSaving.push_back(wstring(dlg.m_arDirs[i]));
+				wstring t(dlg.m_arDirs[i]);
+				t=stdAddBackSlash(t);
+				
+				allSaving.push_back(t);
 			}
 		}
 	}
@@ -203,7 +204,7 @@ int libmain()
 		wstring msg = stdwin32::string_format(I18N(L"\"%s\" does not exist. Do you want to create a new folder?"), destDir.c_str());
 		if (IDYES != MessageBox(NULL,
 			msg.c_str(),
-			APPNAME,
+			gAppName,
 			MB_ICONQUESTION | MB_YESNO))
 		{
 			return 1;

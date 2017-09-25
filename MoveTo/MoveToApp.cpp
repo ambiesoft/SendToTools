@@ -2,7 +2,7 @@
 
 
 extern "C" {
-	DllImport int libmain();
+	DllImport int libmain(LPCWSTR pAppName);
 }
 
 //int libmain();
@@ -14,5 +14,5 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	UNREFERENCED_PARAMETER(hPrevInstance);
 	UNREFERENCED_PARAMETER(lpCmdLine);
 	// return AfxWinInit(hInstance, hPrevInstance, lpCmdLine, nCmdShow);
-	return libmain();
+	return libmain(L"MoveTo");
 }

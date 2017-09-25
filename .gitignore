@@ -6,6 +6,7 @@
 
 *.user
 *.suo
+*.aps
 
 SendToTools.sdf
 ipch/

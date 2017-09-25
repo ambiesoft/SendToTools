@@ -94,9 +94,11 @@
 
 #include <shlwapi.h>
 
-#define APPNAME L"MoveTo"
+
 #define I18N(s) (s)
 
 
 #define DllImport   __declspec( dllimport )  
 #define DllExport   __declspec( dllexport ) 
+
+extern LPCWSTR gAppName;
