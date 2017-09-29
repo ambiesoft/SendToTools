@@ -76,8 +76,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\Linkout\DNAssembly\Ambiesoft.AmbLib.dll</HintPath>
     </Reference>
-    <Reference Include="Ambiesoft.amblibcpp.x86">
-      <HintPath>..\..\..\..\..\..\Linkout\DNAssembly.NET4.x86\Ambiesoft.amblibcpp.x86.dll</HintPath>
+    <Reference Include="Ambiesoft.AmbLibcpp.x86, Version=1.0.6469.25944, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Linkout\DNAssembly.NET4.x86\Ambiesoft.AmbLibcpp.x86.dll</HintPath>
     </Reference>
     <Reference Include="Ambiesoft.FolderConfigHelper">
       <HintPath>..\..\..\..\..\..\Linkout\FolderConfig\Ambiesoft.FolderConfigHelper.dll</HintPath>

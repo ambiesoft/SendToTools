@@ -170,19 +170,21 @@ namespace SendToManager
             item.Text = Path.GetFileNameWithoutExtension(info.FileName);
 
 
-
-            NativeMethods.SHFILEINFO shfi = new NativeMethods.SHFILEINFO();
-            IntPtr himl = NativeMethods.SHGetFileInfo(info.FullName,
-                                            0,
-                                            ref shfi,
-                                            (uint)Marshal.SizeOf(shfi),
-                                            NativeMethods.SHGFI_DISPLAYNAME
-                                              | NativeMethods.SHGFI_SYSICONINDEX
-                                              | NativeMethods.SHGFI_SMALLICON);
-            Debug.Assert(himl == hSysImgList); // should be the same imagelist as the one we set
-            //listView1.Items.Add(shfi.szDisplayName, shfi.iIcon);
-            item.ImageIndex = shfi.iIcon;
-
+            {
+                NativeMethods.SHFILEINFO shfi = new NativeMethods.SHFILEINFO();
+                IntPtr himl = NativeMethods.SHGetFileInfo(info.FullName,
+                                                128, //FileAttribute.Normal,
+                                                ref shfi,
+                                                (uint)Marshal.SizeOf(shfi),
+                                                16 | //SHGFI_USEFILEATTRIBUTES 
+                                                NativeMethods.SHGFI_DISPLAYNAME         |
+                                                NativeMethods.SHGFI_SYSICONINDEX        |
+                                                NativeMethods.SHGFI_SMALLICON           |
+                                                0
+                                                );
+                Debug.Assert(himl == hSysImgList); // should be the same imagelist as the one we set
+                item.ImageIndex = shfi.iIcon;
+            }
 
             LinkData lnk = new LinkData(info.FullName, this);
 
@@ -211,15 +213,15 @@ namespace SendToManager
                 {
                     sub.Text = lnk.WorkingDirectory;
                 }
-                else if(ch.Name==COLUMN_ICONPATH)
+                else if (ch.Name == COLUMN_ICONPATH)
                 {
                     sub.Text = lnk.IconPath;
                 }
-                else if(ch.Name==COLUMN_ICONINDEX)
+                else if (ch.Name == COLUMN_ICONINDEX)
                 {
                     sub.Text = lnk.IconIndex.ToString();
                 }
-                else if(ch.Name==COLUMN_RUNASADMIN)
+                else if (ch.Name == COLUMN_RUNASADMIN)
                 {
                     sub.Text = lnk.IsRunAsAdmin.ToString();
                 }
@@ -645,7 +647,7 @@ namespace SendToManager
 
 
 
-        private void CreateShortcut(string shortcutfile, string targetpath)
+        private void CreateShortcutWSH(string shortcutfile, string targetpath)
         {
             object shDesktop = (object)"Desktop";
             WshShell shell = new WshShell();
@@ -842,7 +844,7 @@ namespace SendToManager
 
                 try
                 {
-                    CreateShortcut(shortcutfilefullpath, ofd.FileName);
+                    CreateShortcutWSH(shortcutfilefullpath, ofd.FileName);
                 }
                 catch (Exception ex)
                 {

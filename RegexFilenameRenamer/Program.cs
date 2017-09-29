@@ -10,17 +10,29 @@ namespace Ambiesoft.RegexFilenameRenamer
 {
     static class Program
     {
-        static void ShowHelp()
+        static string GetHelpMessage()
         {
             StringBuilder sb = new StringBuilder();
-            sb.AppendLine("/rf REGEXSEARCH /rt REPLACE [/ie] [/dr]");
+            sb.Append(Path.GetFileName(Application.ExecutablePath));
+            sb.Append(" ");
+            sb.AppendLine("/rf REGEXSEARCH /rt REPLACE [/ca] [/ic] [/ie] [/dr] [/blob] file1 [file2 [file3...]]");
             sb.AppendLine();
-            sb.AppendLine("/ie");
-            sb.AppendLine("  Also replace extention.");
-            sb.AppendLine("/dr");
-            sb.AppendLine("  Dryrun.");
+            sb.AppendLine("  /ie");
+            sb.AppendLine("    Also replace extention.");
+            sb.AppendLine("  /ic");
+            sb.AppendLine("    Ignore Case.");
+            sb.AppendLine("  /dr");
+            sb.AppendLine("    Dryrun.");
+            sb.AppendLine("  /ca");
+            sb.AppendLine("    Check input by showing argv.");
+            sb.AppendLine("  /blob");
+            sb.AppendLine("    Input files contain blob.");
 
-            AmbLib.Info(sb.ToString());
+            return sb.ToString();
+        }
+        static void ShowHelp()
+        {
+            AmbLib.Info(GetHelpMessage());
         }
 
         static string getProperName(FileInfo fi, bool isAlsoExt)
@@ -30,6 +42,16 @@ namespace Ambiesoft.RegexFilenameRenamer
                 ret += fi.Extension;
             return ret;
         }
+
+        static void ShowAlert(string message)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine(message);
+            sb.AppendLine();
+            sb.AppendLine(GetHelpMessage());
+            AmbLib.Alert(sb.ToString());
+        }
+
         [STAThread]
         static int Main(string[] args)
         {
@@ -37,18 +59,48 @@ namespace Ambiesoft.RegexFilenameRenamer
             parser.addOption("rf", ARGUMENT_TYPE.MUST);
             parser.addOption("rt", ARGUMENT_TYPE.MUST);
             parser.addOption("ie", ARGUMENT_TYPE.MUSTNOT);
+            parser.addOption("ic", ARGUMENT_TYPE.MUSTNOT);
             parser.addOption("dr", ARGUMENT_TYPE.MUSTNOT);
+            parser.addOption("ca", ARGUMENT_TYPE.MUSTNOT);
+            parser.addOption("blob", ARGUMENT_TYPE.MUSTNOT);
             parser.addOption("h", ARGUMENT_TYPE.MUSTNOT);
             parser.addOption("?", ARGUMENT_TYPE.MUSTNOT);
             parser.Parse();
-            if(parser["h"] != null || parser["?"]!=null)
+            if (parser["h"] != null || parser["?"] != null)
             {
                 ShowHelp();
                 return 0;
             }
+            if (parser["ca"] != null)
+            {
+                // check argument
+                StringBuilder sb = new StringBuilder();
+                if (parser["rf"] != null)
+                {
+                    sb.Append("rf:");
+                    sb.AppendLine(parser["rf"].ToString());
+                }
+
+                if (parser["rt"] != null)
+                {
+                    sb.Append("rt:");
+                    sb.AppendLine(parser["rt"].ToString());
+                }
+
+                if (parser["ie"] != null)
+                    sb.AppendLine("ie");
+                if (parser["dr"] != null)
+                    sb.AppendLine("dr");
+
+                MessageBox.Show(sb.ToString(),
+                    Application.ProductName + " " + "check arg",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+                return 0;
+            }
             if (parser["rf"] == null || parser["rt"] == null)
             {
-                AmbLib.Alert(Properties.Resources.MUST_SPECIFY_RF_RT);
+                ShowAlert(Properties.Resources.MUST_SPECIFY_RF_RT);
                 return 1;
             }
 
@@ -57,29 +109,32 @@ namespace Ambiesoft.RegexFilenameRenamer
 
             if (parser.MainargLength != 1)
             {
-                AmbLib.Alert(Properties.Resources.NO_FILE);
+                ShowAlert(Properties.Resources.NO_FILE);
                 return 1;
             }
 
             Regex regf = null;
             try
             {
-                regf = new Regex(f);
+                if (parser["ic"] != null)
+                    regf = new Regex(f, RegexOptions.IgnoreCase);
+                else
+                    regf = new Regex(f);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 AmbLib.Alert(ex.Message);
                 return 1;
             }
             bool isAlsoExt = null != parser["ie"];
             bool dryrun = parser["dr"] != null;
-            StringBuilder sbDry = new StringBuilder();
+            Dictionary <string, string> targets = new Dictionary<string,string>();
+
+            string[] mainArgs = ConstructMainArgs(parser);
             try
             {
-                for (int i=0 ; i < parser.MainargLength;++i)
+                foreach(string orgFullorRelativeFileName in mainArgs)// (int i = 0; i < parser.MainargLength; ++i)
                 {
-                    string orgFullorRelativeFileName = parser.getMainargs(i);
-
                     FileInfo fiorig = new FileInfo(orgFullorRelativeFileName);
                     string orgFileName = getProperName(fiorig, isAlsoExt);
                     string orgFolder = fiorig.DirectoryName;
@@ -88,31 +143,89 @@ namespace Ambiesoft.RegexFilenameRenamer
                     if (!isAlsoExt)
                         newFileName += fiorig.Extension;
 
-                    if (dryrun)
+                    //if (dryrun)
+                    //{
+                    //    sbDry.AppendLine(string.Format("\"{0}\" -> \"{1}\"",
+                    //        fiorig.FullName, orgFolder + @"\" + newFileName));
+                    //}
+                    //else
+                    //{
+                    //    fiorig.MoveTo(orgFolder + @"\" + newFileName);
+                    //}
+                    targets.Add(fiorig.FullName, orgFolder + @"\" + newFileName);
+                }
+
+                if (dryrun)
+                {
+                    StringBuilder sbDry = new StringBuilder();
+                    foreach( string org in targets.Keys)
                     {
-                        sbDry.AppendLine(string.Format("\"{0}\" -> \"{1}\"",
-                            fiorig.FullName, orgFolder + @"\" + newFileName));
+                        sbDry.AppendFormat("\"{0}\" -> \"{1}\"", org, targets[org]);
+                        sbDry.AppendLine();
                     }
-                    else
+                    sbDry.AppendLine();
+                    sbDry.AppendLine(Properties.Resources.DO_YOU_WANT_TO_PERFORM);
+
+                    if(DialogResult.Yes != MessageBox.Show(
+                        sbDry.ToString(),
+                        Application.ProductName + " " + "Dryrun",
+                        MessageBoxButtons.YesNo,
+                        MessageBoxIcon.Question,
+                        MessageBoxDefaultButton.Button2))
                     {
-                        fiorig.MoveTo(orgFolder + @"\" + newFileName);
+                        return 0;
                     }
                 }
 
-                if(dryrun)
+                foreach( string org in targets.Keys)
                 {
-                    AmbLib.Info(sbDry.ToString());
+                    if (Directory.Exists(org))
+                        Directory.Move(org, targets[org]);
+                    else
+                        File.Move(org,targets[org]);
                 }
                 return 0;
             }
             catch (Exception e)
             {
                 MessageBox.Show(
-                    e.Message,Application.ProductName,
+                    e.Message, Application.ProductName,
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
                 return -1;
             }
+        }
+
+        private static string[] ConstructMainArgs(SimpleCommandLineParser parser)
+        {
+            List<string> ret = new List<string>();
+            bool isBlobbing = parser["blob"] != null;
+            for (int i = 0; i < parser.MainargLength; ++i)
+            {
+                string file = parser.getMainargs(i);
+                if (isBlobbing)
+                {
+                    DirectoryInfo di = new DirectoryInfo(Path.GetDirectoryName(file));
+
+                    FileInfo[] allfi = di.GetFiles(Path.GetFileName(file));
+                    bool isAdded = false;
+                    foreach (FileInfo f in allfi)
+                    {
+                        isAdded = true;
+                        ret.Add(f.FullName);
+                    }
+                    if(!isAdded)
+                    {
+                        // not a blob and does not exist, or it wa directory
+                        ret.Add(file);
+                    }
+                }
+                else
+                {
+                    ret.Add(file);
+                }
+            }
+            return ret.ToArray();
         }
     }
 }
