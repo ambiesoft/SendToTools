@@ -151,6 +151,9 @@
     <value>Do you want to remove these existing files from SendTo folder before deploying your inventory?</value>
     <comment>_</comment>
   </data>
+  <data name="ENTER_INVECTORY_NAME" xml:space="preserve">
+    <value>Enter Name</value>
+  </data>
   <data name="FAILED_TO_COPY_FILES" xml:space="preserve">
     <value>Failed to copy files.</value>
   </data>
@@ -165,6 +168,9 @@
   </data>
   <data name="INVENTORY_DEPLOYED" xml:space="preserve">
     <value>Inventory "{0}" has been successfully deployed.</value>
+  </data>
+  <data name="INVENTORY_NAME" xml:space="preserve">
+    <value>Inventory Name</value>
   </data>
   <data name="SHORTCUT_ALREADY_EXISTS" xml:space="preserve">
     <value>"{0}" already exists. Do you want to override?</value>

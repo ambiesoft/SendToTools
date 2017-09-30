@@ -408,7 +408,12 @@ namespace SendToManager
         {
             get
             {
-                return Path.Combine(InventoryDir, CurrentInventory);
+                string ret = Path.Combine(InventoryDir, CurrentInventory);
+                if (!Directory.Exists(ret))
+                {
+                    Directory.CreateDirectory(ret);
+                }
+                return ret;
             }
         }
         private void UpdateList(bool setNumber)
@@ -505,7 +510,9 @@ namespace SendToManager
 
         void constructInventory()
         {
-            inventoryToolStripMenuItem.DropDownItems.Clear();
+            while(inventoryToolStripMenuItem.DropDownItems.Count > 2)
+                inventoryToolStripMenuItem.DropDownItems.RemoveAt(2);
+
             try
             {
                 if (!Directory.Exists(InventoryDir))
@@ -568,15 +575,20 @@ namespace SendToManager
                 {
                     Profile.GetString(SECTION_OPTION, KEY_CURRENT_INVENTORY, "Main", out currentInventory_, LoadedIni);
                 }
+                
                 return currentInventory_;
             }
             set
             {
+                if (string.Compare(value, currentInventory_, true) == 0)
+                    return;
+
                 if (!Profile.WriteString(SECTION_OPTION, KEY_CURRENT_INVENTORY, value, Program.IniFile))
                 {
                     Alert(Properties.Resources.FAILED_TO_SAVE_SETTING);
                 }
                 currentInventory_ = value;
+                constructInventory();
                 UpdateList();
                 UpdateTitle();
             }
@@ -1092,6 +1104,20 @@ namespace SendToManager
                 _itemDnD = null;
                 Cursor = Cursors.Default;
             }
+        }
+
+        private void addInventoryToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string target = null;
+            if(!GetTextDialog.DoModalDialog(this,
+                Properties.Resources.ENTER_INVECTORY_NAME,
+                Properties.Resources.INVENTORY_NAME,
+                ref target))
+            {
+                return;
+            }
+
+            CurrentInventory = target;
         }
     }
 }

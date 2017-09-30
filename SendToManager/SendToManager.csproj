@@ -91,6 +91,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\Linkout\DNAssembly\CenterWinDialog.dll</HintPath>
     </Reference>
+    <Reference Include="GetTextDialog">
+      <HintPath>..\..\..\..\..\..\Linkout\DNAssembly\GetTextDialog.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />

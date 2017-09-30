@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
-            this.lvMain = new ListViewEx.ListViewEx();
             this.txtEditName = new System.Windows.Forms.TextBox();
             this.cmbEditDirectory = new System.Windows.Forms.ComboBox();
             this.tsList = new System.Windows.Forms.ToolStrip();
@@ -44,7 +43,7 @@
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.closeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.inventoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.dummyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addInventoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.folderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openCurrentInventoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openSendToToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -55,27 +54,12 @@
             this.panelRoot = new System.Windows.Forms.Panel();
             this.cmbEditBool = new System.Windows.Forms.ComboBox();
             this.cmbEditFile = new System.Windows.Forms.ComboBox();
+            this.lvMain = new ListViewEx.ListViewEx();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.tsList.SuspendLayout();
             this.menuMain.SuspendLayout();
             this.panelRoot.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // lvMain
-            // 
-            this.lvMain.AllowColumnReorder = true;
-            resources.ApplyResources(this.lvMain, "lvMain");
-            this.lvMain.DoubleClickActivation = false;
-            this.lvMain.FullRowSelect = true;
-            this.lvMain.LineAfter = -1;
-            this.lvMain.LineBefore = -1;
-            this.lvMain.Name = "lvMain";
-            this.lvMain.UseCompatibleStateImageBehavior = false;
-            this.lvMain.View = System.Windows.Forms.View.Details;
-            this.lvMain.SelectedIndexChanged += new System.EventHandler(this.lvMain_SelectedIndexChanged);
-            this.lvMain.KeyDown += new System.Windows.Forms.KeyEventHandler(this.lvMain_KeyDown);
-            this.lvMain.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lvMain_MouseDown);
-            this.lvMain.MouseMove += new System.Windows.Forms.MouseEventHandler(this.lvMain_MouseMove);
-            this.lvMain.MouseUp += new System.Windows.Forms.MouseEventHandler(this.lvMain_MouseUp);
             // 
             // txtEditName
             // 
@@ -174,15 +158,17 @@
             // inventoryToolStripMenuItem
             // 
             this.inventoryToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.dummyToolStripMenuItem});
+            this.addInventoryToolStripMenuItem,
+            this.toolStripMenuItem1});
             this.inventoryToolStripMenuItem.Name = "inventoryToolStripMenuItem";
             resources.ApplyResources(this.inventoryToolStripMenuItem, "inventoryToolStripMenuItem");
             this.inventoryToolStripMenuItem.DropDownOpening += new System.EventHandler(this.inventoryToolStripMenuItem_DropDownOpening);
             // 
-            // dummyToolStripMenuItem
+            // addInventoryToolStripMenuItem
             // 
-            this.dummyToolStripMenuItem.Name = "dummyToolStripMenuItem";
-            resources.ApplyResources(this.dummyToolStripMenuItem, "dummyToolStripMenuItem");
+            this.addInventoryToolStripMenuItem.Name = "addInventoryToolStripMenuItem";
+            resources.ApplyResources(this.addInventoryToolStripMenuItem, "addInventoryToolStripMenuItem");
+            this.addInventoryToolStripMenuItem.Click += new System.EventHandler(this.addInventoryToolStripMenuItem_Click);
             // 
             // folderToolStripMenuItem
             // 
@@ -259,6 +245,28 @@
             this.cmbEditFile.Name = "cmbEditFile";
             this.cmbEditFile.SelectionChangeCommitted += new System.EventHandler(this.cmbEditFile_SelectionChangeCommitted);
             // 
+            // lvMain
+            // 
+            this.lvMain.AllowColumnReorder = true;
+            resources.ApplyResources(this.lvMain, "lvMain");
+            this.lvMain.DoubleClickActivation = false;
+            this.lvMain.FullRowSelect = true;
+            this.lvMain.LineAfter = -1;
+            this.lvMain.LineBefore = -1;
+            this.lvMain.Name = "lvMain";
+            this.lvMain.UseCompatibleStateImageBehavior = false;
+            this.lvMain.View = System.Windows.Forms.View.Details;
+            this.lvMain.SelectedIndexChanged += new System.EventHandler(this.lvMain_SelectedIndexChanged);
+            this.lvMain.KeyDown += new System.Windows.Forms.KeyEventHandler(this.lvMain_KeyDown);
+            this.lvMain.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lvMain_MouseDown);
+            this.lvMain.MouseMove += new System.Windows.Forms.MouseEventHandler(this.lvMain_MouseMove);
+            this.lvMain.MouseUp += new System.Windows.Forms.MouseEventHandler(this.lvMain_MouseUp);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            resources.ApplyResources(this.toolStripMenuItem1, "toolStripMenuItem1");
+            // 
             // FormMain
             // 
             resources.ApplyResources(this, "$this");
@@ -287,7 +295,6 @@
         private System.Windows.Forms.ToolStripButton tsbUp;
         private System.Windows.Forms.ToolStripButton tsbDown;
         private System.Windows.Forms.ToolStripMenuItem inventoryToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem dummyToolStripMenuItem;
         private System.Windows.Forms.ToolStripButton tsbAssignNumber;
         private System.Windows.Forms.ToolStripButton tsbNewItem;
         private System.Windows.Forms.ToolStripMenuItem folderToolStripMenuItem;
@@ -307,6 +314,8 @@
         private System.Windows.Forms.ComboBox cmbEditBool;
         private System.Windows.Forms.ToolStripMenuItem toolsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem optionToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem addInventoryToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
     }
 }
 
