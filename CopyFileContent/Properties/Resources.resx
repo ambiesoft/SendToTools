@@ -124,8 +124,8 @@
   <data name="icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\icon.ico;System.Drawing.Icon, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="NO_ARG" xml:space="preserve">
-    <value>No Arguments</value>
+  <data name="NO_FILE" xml:space="preserve">
+    <value>No File specified.</value>
   </data>
   <data name="TOO_MANY_OPTIONS" xml:space="preserve">
     <value>Too many options</value>

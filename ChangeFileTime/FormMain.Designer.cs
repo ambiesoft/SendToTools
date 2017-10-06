@@ -33,6 +33,9 @@
             this.dtpLWTime = new System.Windows.Forms.DateTimePicker();
             this.btnNowLWTime = new System.Windows.Forms.Button();
             this.btnOK = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btnModify = new System.Windows.Forms.Button();
+            this.btnCancel = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtFileName
@@ -48,6 +51,8 @@
             // 
             this.dtpLWTime.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.dtpLWTime.CustomFormat = "yyyy/MM/dd hh:mm:ss";
+            this.dtpLWTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpLWTime.Location = new System.Drawing.Point(12, 87);
             this.dtpLWTime.Name = "dtpLWTime";
             this.dtpLWTime.Size = new System.Drawing.Size(482, 19);
@@ -68,19 +73,53 @@
             // 
             this.btnOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnOK.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnOK.Location = new System.Drawing.Point(419, 239);
+            this.btnOK.Location = new System.Drawing.Point(274, 239);
             this.btnOK.Name = "btnOK";
-            this.btnOK.Size = new System.Drawing.Size(75, 23);
+            this.btnOK.Size = new System.Drawing.Size(107, 23);
             this.btnOK.TabIndex = 3;
             this.btnOK.Text = "OK";
             this.btnOK.UseVisualStyleBackColor = true;
+            this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(12, 69);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(100, 12);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "&Last Modified time";
+            // 
+            // btnModify
+            // 
+            this.btnModify.Location = new System.Drawing.Point(161, 239);
+            this.btnModify.Name = "btnModify";
+            this.btnModify.Size = new System.Drawing.Size(107, 23);
+            this.btnModify.TabIndex = 5;
+            this.btnModify.Text = "&Modify";
+            this.btnModify.UseVisualStyleBackColor = true;
+            this.btnModify.Click += new System.EventHandler(this.btnModify_Click);
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnCancel.Location = new System.Drawing.Point(387, 239);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(107, 23);
+            this.btnCancel.TabIndex = 6;
+            this.btnCancel.Text = "&Cancel";
+            this.btnCancel.UseVisualStyleBackColor = true;
             // 
             // FormMain
             // 
             this.AcceptButton = this.btnOK;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.btnCancel;
             this.ClientSize = new System.Drawing.Size(506, 274);
+            this.Controls.Add(this.btnCancel);
+            this.Controls.Add(this.btnModify);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.btnNowLWTime);
             this.Controls.Add(this.dtpLWTime);
@@ -101,6 +140,9 @@
         internal System.Windows.Forms.DateTimePicker dtpLWTime;
         private System.Windows.Forms.Button btnNowLWTime;
         private System.Windows.Forms.Button btnOK;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnModify;
+        private System.Windows.Forms.Button btnCancel;
 
     }
 }

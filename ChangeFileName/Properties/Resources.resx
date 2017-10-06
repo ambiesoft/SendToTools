@@ -135,6 +135,11 @@
   <data name="FOLLOWING_UNABLE_FILENAME" xml:space="preserve">
     <value>File name must not include following letters</value>
   </data>
+  <data name="HELP" xml:space="preserve">
+    <value>ChangeFileName.exe file
+
+Change Filename.</value>
+  </data>
   <data name="NEW_FOLDER_DDD" xml:space="preserve">
     <value>&amp;New Folder...</value>
   </data>

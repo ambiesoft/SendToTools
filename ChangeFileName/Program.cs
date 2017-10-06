@@ -31,7 +31,7 @@ namespace ChangeFileName
             return false;
         }
 
-      
+
 
         static readonly internal string damemoji = "\\/:;*?\"<>|";
         /// <summary>
@@ -42,7 +42,14 @@ namespace ChangeFileName
         {
             if (args.Length < 1)
             {
-                MessageBox.Show(Properties.Resources.NO_ARGUMENTS,
+                StringBuilder sb = new StringBuilder();
+                sb.Append(Properties.Resources.NO_ARGUMENTS);
+                sb.AppendLine();
+                sb.AppendLine();
+
+                sb.AppendLine(Properties.Resources.HELP);
+                MessageBox.Show(
+                    sb.ToString(),
                     Application.ProductName,
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Asterisk);
@@ -115,38 +122,9 @@ namespace ChangeFileName
 
                     newName = fm.textName.Text;
 
-                    if (oldname == (newName + oldext))
-                    {
-                        return;
-                    }
-
-                    if ( string.IsNullOrEmpty(oldext ) )
-                    {
-                        newName = newName.TrimEnd(' ');
-                    }
-
-                    if (string.IsNullOrEmpty(newName))
-                    {
-                        MessageBox.Show(Properties.Resources.ENTER_FILENAME,
-                            Application.ProductName,
-                            MessageBoxButtons.OK,
-                            MessageBoxIcon.Asterisk);
-
+                    if (!RenameIt(fi, newName, oldname, oldext))
                         continue;
-                    }
 
-                    if ( -1 != newName.IndexOfAny(damemoji.ToCharArray()))
-                    {
-                        MessageBox.Show(Properties.Resources.FOLLOWING_UNABLE_FILENAME + Environment.NewLine + Environment.NewLine  + damemoji,
-                            Application.ProductName,
-                            MessageBoxButtons.OK,
-                            MessageBoxIcon.Asterisk);
-
-                        continue;
-                    }
-
-                    string dir = fi.Directory.FullName;
-                    fi.MoveTo(dir + @"\" + newName + oldext);
                     break;
                 }
                 catch (Exception e)
@@ -158,5 +136,44 @@ namespace ChangeFileName
                 }
             } while (true);
         }
+
+        static bool RenameIt(FileInfo fi, string newName, string oldname, string oldext)
+        {
+            if (oldname == (newName + oldext))
+            {
+                return true;
+            }
+
+            if (string.IsNullOrEmpty(oldext))
+            {
+                newName = newName.TrimEnd(' ');
+            }
+
+            if (string.IsNullOrEmpty(newName))
+            {
+                MessageBox.Show(Properties.Resources.ENTER_FILENAME,
+                    Application.ProductName,
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Asterisk);
+
+                return false;
+            }
+
+            if (-1 != newName.IndexOfAny(damemoji.ToCharArray()))
+            {
+                MessageBox.Show(Properties.Resources.FOLLOWING_UNABLE_FILENAME + Environment.NewLine + Environment.NewLine + damemoji,
+                    Application.ProductName,
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Asterisk);
+
+                return false;
+            }
+
+            string dir = fi.Directory.FullName;
+            fi.MoveTo(dir + @"\" + newName + oldext);
+            return true;
+
+        }
+
     }
 }
