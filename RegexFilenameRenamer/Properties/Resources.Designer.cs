@@ -61,6 +61,15 @@ namespace Ambiesoft.RegexFilenameRenamer.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to confirm.
+        /// </summary>
+        internal static string CONFIRM {
+            get {
+                return ResourceManager.GetString("CONFIRM", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Do you want to perfom move operation?.
         /// </summary>
         internal static string DO_YOU_WANT_TO_PERFORM {

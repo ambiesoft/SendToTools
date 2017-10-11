@@ -1119,5 +1119,10 @@ namespace SendToManager
 
             CurrentInventory = target;
         }
+
+        private void FormMain_Deactivate(object sender, EventArgs e)
+        {
+            lvMain.EndEditing(false);
+        }
     }
 }

@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="CONFIRM" xml:space="preserve">
+    <value>confirm</value>
+  </data>
   <data name="DO_YOU_WANT_TO_PERFORM" xml:space="preserve">
     <value>Do you want to perfom move operation?</value>
   </data>

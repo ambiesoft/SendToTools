@@ -17,12 +17,17 @@ namespace Ambiesoft.RegexFilenameRenamer
             sb.Append(" ");
             sb.AppendLine("/rf REGEXSEARCH /rt REPLACE [/ca] [/ic] [/ie] [/dr] [/blob] file1 [file2 [file3...]]");
             sb.AppendLine();
+            sb.AppendLine("  /rf REGEXSEARCH");
+            sb.AppendLine("    Use () for grouping.");
+            sb.AppendLine("  /ft REPLACE");
+            sb.AppendLine("    Use \"\" for empty string.)");
+            sb.AppendLine("    Use $1 to refer to the group.)");
             sb.AppendLine("  /ie");
-            sb.AppendLine("    Also replace extention.");
+            sb.AppendLine("    Include extension for operation.");
             sb.AppendLine("  /ic");
             sb.AppendLine("    Ignore Case.");
-            sb.AppendLine("  /dr");
-            sb.AppendLine("    Dryrun.");
+            sb.AppendLine("  /cf");
+            sb.AppendLine("    Show confirm dialog before renaming.");
             sb.AppendLine("  /ca");
             sb.AppendLine("    Check input by showing argv.");
             sb.AppendLine("  /blob");
@@ -60,7 +65,7 @@ namespace Ambiesoft.RegexFilenameRenamer
             parser.addOption("rt", ARGUMENT_TYPE.MUST);
             parser.addOption("ie", ARGUMENT_TYPE.MUSTNOT);
             parser.addOption("ic", ARGUMENT_TYPE.MUSTNOT);
-            parser.addOption("dr", ARGUMENT_TYPE.MUSTNOT);
+            parser.addOption("cf", ARGUMENT_TYPE.MUSTNOT);
             parser.addOption("ca", ARGUMENT_TYPE.MUSTNOT);
             parser.addOption("blob", ARGUMENT_TYPE.MUSTNOT);
             parser.addOption("h", ARGUMENT_TYPE.MUSTNOT);
@@ -89,8 +94,18 @@ namespace Ambiesoft.RegexFilenameRenamer
 
                 if (parser["ie"] != null)
                     sb.AppendLine("ie");
-                if (parser["dr"] != null)
-                    sb.AppendLine("dr");
+                if (parser["ic"] != null)
+                    sb.AppendLine("ic");
+                if (parser["ca"] != null)
+                    sb.AppendLine("ca");
+                if (parser["cf"] != null)
+                    sb.AppendLine("cf");
+                if (parser["blob"] != null)
+                    sb.AppendLine("blob");
+                if (parser["h"] != null)
+                    sb.AppendLine("h");
+                if (parser["?"] != null)
+                    sb.AppendLine("?");
 
                 MessageBox.Show(sb.ToString(),
                     Application.ProductName + " " + "check arg",
@@ -107,7 +122,7 @@ namespace Ambiesoft.RegexFilenameRenamer
             string f = parser["rf"].ToString();
             string t = parser["rt"].ToString();
 
-            if (parser.MainargLength != 1)
+            if (parser.MainargLength == 0)
             {
                 ShowAlert(Properties.Resources.NO_FILE);
                 return 1;
@@ -127,7 +142,7 @@ namespace Ambiesoft.RegexFilenameRenamer
                 return 1;
             }
             bool isAlsoExt = null != parser["ie"];
-            bool dryrun = parser["dr"] != null;
+            bool dryrun = parser["cf"] != null;
             Dictionary <string, string> targets = new Dictionary<string,string>();
 
             string[] mainArgs = ConstructMainArgs(parser);
@@ -162,13 +177,14 @@ namespace Ambiesoft.RegexFilenameRenamer
                     {
                         sbDry.AppendFormat("\"{0}\" -> \"{1}\"", org, targets[org]);
                         sbDry.AppendLine();
+                        sbDry.AppendLine();
                     }
                     sbDry.AppendLine();
                     sbDry.AppendLine(Properties.Resources.DO_YOU_WANT_TO_PERFORM);
 
                     if(DialogResult.Yes != MessageBox.Show(
                         sbDry.ToString(),
-                        Application.ProductName + " " + "Dryrun",
+                        Application.ProductName + " " + Properties.Resources.CONFIRM,
                         MessageBoxButtons.YesNo,
                         MessageBoxIcon.Question,
                         MessageBoxDefaultButton.Button2))
