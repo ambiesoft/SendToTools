@@ -37,18 +37,18 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	UNREFERENCED_PARAMETER(hPrevInstance);
 	UNREFERENCED_PARAMETER(lpCmdLine);
 
-	CCommandLineParser parser(CaseFlags::Default, L"Execute 32bit app or 64 bit app determined by execution environment");
+	CCommandLineParser parser(CaseFlags_Default, L"Execute 32bit app or 64 bit app determined by execution environment");
 
 	wstring exe32, exe64;
 	bool bHelp = false;
-	parser.AddOption(L"-32", 1, &exe32, ArgEncodingFlags::Default, L"Specify 32bit executable");
-	parser.AddOption(L"-64", 1, &exe64, ArgEncodingFlags::Default, L"Specify 64bit executable");
+	parser.AddOption(L"-32", 1, &exe32, ArgEncodingFlags_Default, L"Specify 32bit executable");
+	parser.AddOption(L"-64", 1, &exe64, ArgEncodingFlags_Default, L"Specify 64bit executable");
 	
 	vector<wstring> helpoptions{ L"-h", L"-?", L"--help" };
 	parser.AddOption(helpoptions.begin(), helpoptions.end(),
 		0,
 		&bHelp,
-		ArgEncodingFlags::Default,
+		ArgEncodingFlags_Default,
 		L"Show help");
 	
 	parser.Parse();
