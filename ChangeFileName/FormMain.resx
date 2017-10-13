@@ -126,10 +126,10 @@
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="btnCancel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>427, 121</value>
+    <value>427, 131</value>
   </data>
   <data name="btnCancel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>127, 23</value>
+    <value>127, 25</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="btnCancel.TabIndex" type="System.Int32, mscorlib">
@@ -148,7 +148,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnCancel.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>9</value>
   </data>
   <data name="btnOK.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
@@ -157,10 +157,10 @@
     <value>NoControl</value>
   </data>
   <data name="btnOK.Location" type="System.Drawing.Point, System.Drawing">
-    <value>294, 121</value>
+    <value>294, 131</value>
   </data>
   <data name="btnOK.Size" type="System.Drawing.Size, System.Drawing">
-    <value>127, 23</value>
+    <value>127, 25</value>
   </data>
   <data name="btnOK.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -178,7 +178,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnOK.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>13</value>
   </data>
   <data name="textName.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
@@ -187,7 +187,7 @@
     <value>MS UI Gothic, 14.25pt</value>
   </data>
   <data name="textName.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 27</value>
+    <value>12, 29</value>
   </data>
   <data name="textName.Size" type="System.Drawing.Size, System.Drawing">
     <value>544, 26</value>
@@ -208,7 +208,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;textName.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>7</value>
   </data>
   <data name="btnLaunch.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
@@ -217,10 +217,10 @@
     <value>NoControl</value>
   </data>
   <data name="btnLaunch.Location" type="System.Drawing.Point, System.Drawing">
-    <value>294, 92</value>
+    <value>294, 100</value>
   </data>
   <data name="btnLaunch.Size" type="System.Drawing.Size, System.Drawing">
-    <value>127, 23</value>
+    <value>127, 25</value>
   </data>
   <data name="btnLaunch.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -238,7 +238,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnLaunch.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>10</value>
   </data>
   <data name="btnTrash.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left</value>
@@ -247,10 +247,10 @@
     <value>NoControl</value>
   </data>
   <data name="btnTrash.Location" type="System.Drawing.Point, System.Drawing">
-    <value>11, 121</value>
+    <value>11, 131</value>
   </data>
   <data name="btnTrash.Size" type="System.Drawing.Size, System.Drawing">
-    <value>124, 23</value>
+    <value>124, 25</value>
   </data>
   <data name="btnTrash.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -268,7 +268,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnTrash.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>11</value>
   </data>
   <data name="chkAutoRun.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left</value>
@@ -280,10 +280,10 @@
     <value>NoControl</value>
   </data>
   <data name="chkAutoRun.Location" type="System.Drawing.Point, System.Drawing">
-    <value>11, 99</value>
+    <value>11, 107</value>
   </data>
   <data name="chkAutoRun.Size" type="System.Drawing.Size, System.Drawing">
-    <value>68, 16</value>
+    <value>68, 17</value>
   </data>
   <data name="chkAutoRun.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -301,7 +301,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;chkAutoRun.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>8</value>
   </data>
   <data name="btnMoveTo.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left</value>
@@ -310,10 +310,10 @@
     <value>NoControl</value>
   </data>
   <data name="btnMoveTo.Location" type="System.Drawing.Point, System.Drawing">
-    <value>141, 121</value>
+    <value>141, 131</value>
   </data>
   <data name="btnMoveTo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>124, 23</value>
+    <value>124, 25</value>
   </data>
   <data name="btnMoveTo.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -331,7 +331,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnMoveTo.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>12</value>
   </data>
   <metadata name="menuMoveTo.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
@@ -349,55 +349,55 @@
     <value>144, 17</value>
   </metadata>
   <data name="tsmiMakeFileNamable.Size" type="System.Drawing.Size, System.Drawing">
-    <value>185, 22</value>
+    <value>175, 22</value>
   </data>
   <data name="tsmiMakeFileNamable.Text" xml:space="preserve">
     <value>&amp;Make File Namable</value>
   </data>
   <data name="tsmiLower.Size" type="System.Drawing.Size, System.Drawing">
-    <value>185, 22</value>
+    <value>175, 22</value>
   </data>
   <data name="tsmiLower.Text" xml:space="preserve">
     <value>&amp;Lower</value>
   </data>
   <data name="tsmiUpper.Size" type="System.Drawing.Size, System.Drawing">
-    <value>185, 22</value>
+    <value>175, 22</value>
   </data>
   <data name="tsmiUpper.Text" xml:space="preserve">
     <value>&amp;Upper</value>
   </data>
   <data name="tsmiTrim.Size" type="System.Drawing.Size, System.Drawing">
-    <value>185, 22</value>
+    <value>175, 22</value>
   </data>
   <data name="tsmiTrim.Text" xml:space="preserve">
     <value>&amp;Trim</value>
   </data>
   <data name="tsmiRemoveSpace.Size" type="System.Drawing.Size, System.Drawing">
-    <value>185, 22</value>
+    <value>175, 22</value>
   </data>
   <data name="tsmiRemoveSpace.Text" xml:space="preserve">
     <value>&amp;Remove Space</value>
   </data>
   <data name="tsmiUnderbar2hyphen.Size" type="System.Drawing.Size, System.Drawing">
-    <value>185, 22</value>
+    <value>175, 22</value>
   </data>
   <data name="tsmiUnderbar2hyphen.Text" xml:space="preserve">
     <value>_2-</value>
   </data>
   <data name="tsmiCn2Jp.Size" type="System.Drawing.Size, System.Drawing">
-    <value>185, 22</value>
+    <value>175, 22</value>
   </data>
   <data name="tsmiCn2Jp.Text" xml:space="preserve">
     <value>&amp;Cn2Jp</value>
   </data>
   <data name="modifyToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 20</value>
+    <value>74, 20</value>
   </data>
   <data name="modifyToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Modify All</value>
   </data>
   <data name="cmModify.Size" type="System.Drawing.Size, System.Drawing">
-    <value>186, 158</value>
+    <value>176, 180</value>
   </data>
   <data name="&gt;&gt;cmModify.Name" xml:space="preserve">
     <value>cmModify</value>
@@ -409,55 +409,49 @@
     <value>250, 17</value>
   </metadata>
   <data name="tsmiMakeFileNamableSel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>252, 22</value>
+    <value>234, 22</value>
   </data>
   <data name="tsmiMakeFileNamableSel.Text" xml:space="preserve">
     <value>&amp;Make File Namable (Selection)</value>
   </data>
   <data name="tsmiLowerSel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>252, 22</value>
+    <value>234, 22</value>
   </data>
   <data name="tsmiLowerSel.Text" xml:space="preserve">
     <value>&amp;Lower (Selection)</value>
   </data>
   <data name="tsmiUpperSel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>252, 22</value>
+    <value>234, 22</value>
   </data>
   <data name="tsmiUpperSel.Text" xml:space="preserve">
     <value>&amp;Upper (Selection)</value>
   </data>
   <data name="tsmiTrimSel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>252, 22</value>
+    <value>234, 22</value>
   </data>
   <data name="tsmiTrimSel.Text" xml:space="preserve">
     <value>&amp;Trim (Selection)</value>
   </data>
   <data name="tsmiRemoveSpaceSel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>252, 22</value>
+    <value>234, 22</value>
   </data>
   <data name="tsmiRemoveSpaceSel.Text" xml:space="preserve">
     <value>Remove &amp;Space(Selection)</value>
   </data>
   <data name="tsmiUnderbar2hyphenSel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>252, 22</value>
+    <value>234, 22</value>
   </data>
   <data name="tsmiUnderbar2hyphenSel.Text" xml:space="preserve">
     <value>_2-</value>
   </data>
   <data name="tsmiCn2JpSel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>252, 22</value>
+    <value>234, 22</value>
   </data>
   <data name="tsmiCn2JpSel.Text" xml:space="preserve">
     <value>&amp;Cn2Jp</value>
   </data>
-  <data name="modifySelectionToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>114, 20</value>
-  </data>
-  <data name="modifySelectionToolStripMenuItem.Text" xml:space="preserve">
-    <value>Modify &amp;Selection</value>
-  </data>
   <data name="cmModifySelection.Size" type="System.Drawing.Size, System.Drawing">
-    <value>253, 158</value>
+    <value>235, 158</value>
   </data>
   <data name="&gt;&gt;cmModifySelection.Name" xml:space="preserve">
     <value>cmModifySelection</value>
@@ -465,14 +459,23 @@
   <data name="&gt;&gt;cmModifySelection.Type" xml:space="preserve">
     <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="modifySelectionToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>108, 20</value>
+  </data>
+  <data name="modifySelectionToolStripMenuItem.Text" xml:space="preserve">
+    <value>Modify &amp;Selection</value>
+  </data>
   <data name="lblFileInfo.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="lblFileInfo.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="lblFileInfo.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 56</value>
+    <value>12, 61</value>
   </data>
   <data name="lblFileInfo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>97, 12</value>
+    <value>92, 13</value>
   </data>
   <data name="lblFileInfo.TabIndex" type="System.Int32, mscorlib">
     <value>15</value>
@@ -490,64 +493,88 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lblFileInfo.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <metadata name="menuMain.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>541, 17</value>
   </metadata>
   <data name="openInExplorerToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>170, 22</value>
+    <value>161, 22</value>
   </data>
   <data name="openInExplorerToolStripMenuItem.Text" xml:space="preserve">
     <value>Open in &amp;Explorer</value>
   </data>
   <data name="fileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>39, 20</value>
+    <value>37, 20</value>
   </data>
   <data name="fileToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;File</value>
   </data>
+  <data name="undoToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
+    <value>Ctrl+Z</value>
+  </data>
+  <data name="undoToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>152, 22</value>
+  </data>
+  <data name="undoToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;Undo</value>
+  </data>
+  <data name="redoToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
+    <value>Ctrl+Y</value>
+  </data>
+  <data name="redoToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>152, 22</value>
+  </data>
+  <data name="redoToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;Redo</value>
+  </data>
+  <data name="toolStripMenuItem2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>149, 6</value>
+  </data>
   <data name="copyToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>144, 22</value>
+    <value>152, 22</value>
   </data>
   <data name="copyToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Copy</value>
   </data>
   <data name="copyPathToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>144, 22</value>
+    <value>152, 22</value>
   </data>
   <data name="copyPathToolStripMenuItem.Text" xml:space="preserve">
     <value>Copy &amp;Path</value>
   </data>
   <data name="toolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>141, 6</value>
+    <value>149, 6</value>
   </data>
   <data name="pasteToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>144, 22</value>
+    <value>152, 22</value>
   </data>
   <data name="pasteToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Paste</value>
   </data>
   <data name="pasteTotailToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>144, 22</value>
+    <value>152, 22</value>
   </data>
   <data name="pasteTotailToolStripMenuItem.Text" xml:space="preserve">
     <value>Paste to &amp;tail</value>
   </data>
+  <data name="editToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
+    <value>Ctrl+U</value>
+  </data>
   <data name="editToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>41, 20</value>
+    <value>39, 20</value>
   </data>
   <data name="editToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Edit</value>
   </data>
   <data name="alwaysOnTopToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>156, 22</value>
+    <value>152, 22</value>
   </data>
   <data name="alwaysOnTopToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Always on top</value>
   </data>
   <data name="windowToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>65, 20</value>
+    <value>63, 20</value>
   </data>
   <data name="windowToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Window</value>
@@ -574,46 +601,88 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;menuMain.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
+  </data>
+  <metadata name="cmPaste.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>651, 17</value>
+  </metadata>
+  <data name="pasteTotailToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>135, 22</value>
+  </data>
+  <data name="pasteTotailToolStripMenuItem1.Text" xml:space="preserve">
+    <value>Paste to &amp;tail</value>
+  </data>
+  <data name="cmPaste.Size" type="System.Drawing.Size, System.Drawing">
+    <value>136, 26</value>
+  </data>
+  <data name="&gt;&gt;cmPaste.Name" xml:space="preserve">
+    <value>cmPaste</value>
+  </data>
+  <data name="&gt;&gt;cmPaste.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="btnPaste.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
+  </data>
+  <data name="btnPaste.ClickedImage" xml:space="preserve">
+    <value>SplitButtonClickedImage.gif</value>
+  </data>
+  <data name="btnPaste.DisabledImage" xml:space="preserve">
+    <value>SplitButtonDisabledImage.gif</value>
+  </data>
+  <data name="btnPaste.FocusedImage" xml:space="preserve">
+    <value>Focused</value>
+  </data>
+  <data name="btnPaste.HoverImage" xml:space="preserve">
+    <value>SplitButtonHoverImage.gif</value>
+  </data>
+  <data name="btnPaste.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleRight</value>
+  </data>
+  <data name="btnPaste.ImageKey" xml:space="preserve">
+    <value>SplitButtonImage.gif</value>
   </data>
   <data name="btnPaste.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="btnPaste.Location" type="System.Drawing.Point, System.Drawing">
-    <value>427, 92</value>
+    <value>427, 101</value>
+  </data>
+  <data name="btnPaste.NormalImage" xml:space="preserve">
+    <value>SplitButtonImage.gif</value>
   </data>
   <data name="btnPaste.Size" type="System.Drawing.Size, System.Drawing">
-    <value>127, 23</value>
+    <value>125, 26</value>
   </data>
   <data name="btnPaste.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
+    <value>0</value>
   </data>
   <data name="btnPaste.Text" xml:space="preserve">
     <value>&amp;Paste</value>
+  </data>
+  <data name="btnPaste.TextImageRelation" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
+    <value>TextBeforeImage</value>
   </data>
   <data name="&gt;&gt;btnPaste.Name" xml:space="preserve">
     <value>btnPaste</value>
   </data>
   <data name="&gt;&gt;btnPaste.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>SplitButtonDemo.SplitButton, ChangeFileName, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;btnPaste.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnPaste.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>6, 12</value>
+    <value>6, 13</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>566, 156</value>
+    <value>566, 169</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -2323,7 +2392,7 @@
 </value>
   </data>
   <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>562, 179</value>
+    <value>562, 191</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Change file name</value>
@@ -2442,6 +2511,24 @@
   <data name="&gt;&gt;editToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;undoToolStripMenuItem.Name" xml:space="preserve">
+    <value>undoToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;undoToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;redoToolStripMenuItem.Name" xml:space="preserve">
+    <value>redoToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;redoToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripMenuItem2.Name" xml:space="preserve">
+    <value>toolStripMenuItem2</value>
+  </data>
+  <data name="&gt;&gt;toolStripMenuItem2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;copyToolStripMenuItem.Name" xml:space="preserve">
     <value>copyToolStripMenuItem</value>
   </data>
@@ -2482,6 +2569,12 @@
     <value>alwaysOnTopToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;alwaysOnTopToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pasteTotailToolStripMenuItem1.Name" xml:space="preserve">
+    <value>pasteTotailToolStripMenuItem1</value>
+  </data>
+  <data name="&gt;&gt;pasteTotailToolStripMenuItem1.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">

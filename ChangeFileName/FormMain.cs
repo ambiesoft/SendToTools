@@ -83,13 +83,33 @@ namespace ChangeFileName
             catch (Exception) { }
         }
 
+        List<string> _undoBuffer = new List<string>();
+        bool _unreDoing;
+        int _currentUnreIndex = -1;
         private void textName_TextChanged(object sender, EventArgs e)
         {
-            if (textName.Lines.Length == 1)
+            if (_unreDoing)
                 return;
 
-            if (textName.Lines.Length > 0)
+            if (textName.Lines.Length > 1)
+            {
                 textName.Text = textName.Lines[0];
+            }
+            else
+            {
+                if (_currentUnreIndex >= 0)
+                {
+                    if (_currentUnreIndex < _undoBuffer.Count - 1)
+                    {
+                        _undoBuffer.RemoveRange(_currentUnreIndex + 1, _undoBuffer.Count - _currentUnreIndex - 1);
+                    }
+                }
+
+                _undoBuffer.Add(textName.Text);
+                ++_currentUnreIndex;
+                return;
+            }
+
         }
 
         private void btnTrash_Click(object sender, EventArgs e)
@@ -280,6 +300,55 @@ namespace ChangeFileName
                     textName.Text = textName.Text + " " + addingText;
             }
             catch (Exception) { }
+        }
+
+        private void undoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            _unreDoing = true;
+            try
+            {
+                if (_undoBuffer.Count == 0)
+                    return;
+
+                if (_currentUnreIndex < 0)
+                    _currentUnreIndex = _undoBuffer.Count - 1;
+
+                if(_currentUnreIndex>0)
+                { 
+                    _currentUnreIndex--;
+                    string s = _undoBuffer[_currentUnreIndex];
+                    // _undoBuffer.RemoveAt(_currentUnreIndex);
+
+                    textName.Text = s;
+                }
+            }
+            catch(Exception)
+            {
+
+            }
+            _unreDoing = false;
+        }
+
+        private void redoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            _unreDoing = true;
+            try
+            {
+                if (_undoBuffer.Count == 0)
+                    return;
+
+                if (_currentUnreIndex < _undoBuffer.Count - 1)
+                {
+                    _currentUnreIndex++;
+                    string s = _undoBuffer[_currentUnreIndex];
+                    textName.Text = s;
+                }
+            }
+            catch(Exception)
+            {
+
+            }
+            _unreDoing = false;
         }
     }
 }

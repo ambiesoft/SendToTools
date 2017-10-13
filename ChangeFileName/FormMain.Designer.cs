@@ -61,6 +61,9 @@
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openInExplorerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.undoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.redoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
             this.copyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.copyPathToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
@@ -68,10 +71,13 @@
             this.pasteTotailToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.windowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.alwaysOnTopToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnPaste = new System.Windows.Forms.Button();
+            this.cmPaste = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.pasteTotailToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnPaste = new SplitButtonDemo.SplitButton();
             this.cmModify.SuspendLayout();
             this.cmModifySelection.SuspendLayout();
             this.menuMain.SuspendLayout();
+            this.cmPaste.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnCancel
@@ -200,7 +206,6 @@
             this.tsmiUnderbar2hyphenSel,
             this.tsmiCn2JpSel});
             this.cmModifySelection.Name = "ccmModify";
-            this.cmModifySelection.OwnerItem = this.modifySelectionToolStripMenuItem;
             resources.ApplyResources(this.cmModifySelection, "cmModifySelection");
             // 
             // tsmiMakeFileNamableSel
@@ -283,6 +288,9 @@
             // editToolStripMenuItem
             // 
             this.editToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.undoToolStripMenuItem,
+            this.redoToolStripMenuItem,
+            this.toolStripMenuItem2,
             this.copyToolStripMenuItem,
             this.copyPathToolStripMenuItem,
             this.toolStripMenuItem1,
@@ -290,6 +298,23 @@
             this.pasteTotailToolStripMenuItem});
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
             resources.ApplyResources(this.editToolStripMenuItem, "editToolStripMenuItem");
+            // 
+            // undoToolStripMenuItem
+            // 
+            this.undoToolStripMenuItem.Name = "undoToolStripMenuItem";
+            resources.ApplyResources(this.undoToolStripMenuItem, "undoToolStripMenuItem");
+            this.undoToolStripMenuItem.Click += new System.EventHandler(this.undoToolStripMenuItem_Click);
+            // 
+            // redoToolStripMenuItem
+            // 
+            this.redoToolStripMenuItem.Name = "redoToolStripMenuItem";
+            resources.ApplyResources(this.redoToolStripMenuItem, "redoToolStripMenuItem");
+            this.redoToolStripMenuItem.Click += new System.EventHandler(this.redoToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            resources.ApplyResources(this.toolStripMenuItem2, "toolStripMenuItem2");
             // 
             // copyToolStripMenuItem
             // 
@@ -334,12 +359,26 @@
             resources.ApplyResources(this.alwaysOnTopToolStripMenuItem, "alwaysOnTopToolStripMenuItem");
             this.alwaysOnTopToolStripMenuItem.Click += new System.EventHandler(this.alwaysOnTopToolStripMenuItem_Click);
             // 
+            // cmPaste
+            // 
+            this.cmPaste.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.pasteTotailToolStripMenuItem1});
+            this.cmPaste.Name = "cmPaste";
+            resources.ApplyResources(this.cmPaste, "cmPaste");
+            // 
+            // pasteTotailToolStripMenuItem1
+            // 
+            this.pasteTotailToolStripMenuItem1.Name = "pasteTotailToolStripMenuItem1";
+            resources.ApplyResources(this.pasteTotailToolStripMenuItem1, "pasteTotailToolStripMenuItem1");
+            this.pasteTotailToolStripMenuItem1.Click += new System.EventHandler(this.pasteTotailToolStripMenuItem_Click);
+            // 
             // btnPaste
             // 
             resources.ApplyResources(this.btnPaste, "btnPaste");
+            this.btnPaste.ContextMenuStrip = this.cmPaste;
             this.btnPaste.Name = "btnPaste";
             this.btnPaste.UseVisualStyleBackColor = true;
-            this.btnPaste.Click += new System.EventHandler(this.btnPaste_Click);
+            this.btnPaste.ButtonClick += new System.EventHandler(this.btnPaste_Click);
             // 
             // FormMain
             // 
@@ -367,6 +406,7 @@
             this.cmModifySelection.ResumeLayout(false);
             this.menuMain.ResumeLayout(false);
             this.menuMain.PerformLayout();
+            this.cmPaste.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -412,6 +452,11 @@
         private System.Windows.Forms.ToolStripMenuItem windowToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem alwaysOnTopToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
-        private System.Windows.Forms.Button btnPaste;
+        private SplitButtonDemo.SplitButton btnPaste;
+        private System.Windows.Forms.ContextMenuStrip cmPaste;
+        private System.Windows.Forms.ToolStripMenuItem pasteTotailToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem undoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem redoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
     }
 }
