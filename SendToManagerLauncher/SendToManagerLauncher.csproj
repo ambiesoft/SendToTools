@@ -96,7 +96,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Dist\History.txt" />
-    <Content Include="Dist\License.txt" />
+    <Content Include="Dist\Copying.txt" />
     <Content Include="Dist\ReadMe.txt" />
     <Content Include="icon.ico" />
   </ItemGroup>
@@ -104,7 +104,7 @@
   <PropertyGroup>
     <PostBuildEvent>copy "$(ProjectDir)Dist\History.txt" "$(OutDir)"
 copy "$(ProjectDir)Dist\Readme.txt" "$(OutDir)"
-copy "$(ProjectDir)Dist\License.txt" "$(OutDir)"
+copy "$(ProjectDir)Dist\Copying.txt" "$(OutDir)"
 
 del "$(OutDir)FolderConfig.ini.sample"
 
