@@ -78,6 +78,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\Linkout\DNAssembly\Ambiesoft.AmbLib.dll</HintPath>
     </Reference>
+    <Reference Include="Ambiesoft.AmbLibcpp, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Linkout\DNAssembly.NET4\Ambiesoft.AmbLibcpp.dll</HintPath>
+    </Reference>
     <Reference Include="SimpleCommandLineParser, Version=1.0.4132.35156, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\LinkOut\DNAssembly\SimpleCommandLineParser.dll</HintPath>

@@ -73,13 +73,12 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Ambiesoft.AmbLib, Version=1.0.0.41025, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Ambiesoft.AmbLib, Version=1.0.0.22109, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\Linkout\DNAssembly\Ambiesoft.AmbLib.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Linkout\DNAssembly.NET4\Ambiesoft.AmbLib.dll</HintPath>
     </Reference>
-    <Reference Include="Ambiesoft.AmbLibcpp.x86, Version=1.0.6469.25944, Culture=neutral, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\Linkout\DNAssembly.NET4.x86\Ambiesoft.AmbLibcpp.x86.dll</HintPath>
+    <Reference Include="Ambiesoft.AmbLibcpp">
+      <HintPath>..\..\..\..\..\..\Linkout\DNAssembly.NET4\Ambiesoft.AmbLibcpp.dll</HintPath>
     </Reference>
     <Reference Include="Ambiesoft.FolderConfigHelper">
       <HintPath>..\..\..\..\..\..\Linkout\FolderConfig\Ambiesoft.FolderConfigHelper.dll</HintPath>
@@ -87,10 +86,6 @@
     <Reference Include="Ambiesoft.Profile, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\Linkout\DNAssembly\Ambiesoft.Profile.dll</HintPath>
-    </Reference>
-    <Reference Include="CenterWinDialog, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\Linkout\DNAssembly\CenterWinDialog.dll</HintPath>
     </Reference>
     <Reference Include="GetTextDialog">
       <HintPath>..\..\..\..\..\..\Linkout\DNAssembly\GetTextDialog.dll</HintPath>
