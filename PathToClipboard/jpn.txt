@@ -1,3 +1,13 @@
 "No Arguments"="引数がありません"
 "Failed to SetClipbard"="SetClipboardに失敗しました"
 "Path has been set onto the clipbard."="パスがクリップボードにセットされました。"
+
+"&Double Quote"="ダブルクオート(&D)"
+"&Line"="ライン(&L)"
+"&Normal"="ノーマル(&N)"
+"&Option"="オプション(&O)"
+"&Separator"="セパレータ(&S)"
+"&Slash"="スラッシュ(&S)"
+"&Two Backslash"="バックスラッシュ２つ(&T)"
+"Cancel"="キャンセル"
+"Copy"="コピー"

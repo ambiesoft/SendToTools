@@ -90,6 +90,7 @@ INT_PTR CALLBACK DialogProc(
 		case WM_INITDIALOG:
 		{
 			sDT = (DialogData*)lParam;
+			i18nChangeChildWindowText(hwndDlg);
 			SendDlgItemMessage(hwndDlg, IDC_RADIO_NORMAL, BM_SETCHECK, BST_CHECKED, 0);
 			CenterWindow(hwndDlg);
 			PostMessage(hwndDlg, WM_APP_INITIALUPDATE, 0, 0);
