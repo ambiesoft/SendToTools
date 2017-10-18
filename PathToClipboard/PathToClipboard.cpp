@@ -35,12 +35,13 @@
 #include "../../lsMisc/stdwin32/stdwin32.h"
 #include "../../lsMisc/StdStringReplace.h"
 #include "../../lsMisc/CenterWindow.h"
+#include "../../lsMisc/I18N.h"
 
 using namespace stdwin32;
 using namespace std;
 using namespace Ambiesoft;
 
-#define I18N(s) (s)
+// #define I18N(s) Ambiesoft::i
 
 #define KAIGYO L"\r\n"
 #define SPACE L" "
@@ -171,7 +172,8 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 {
     UNREFERENCED_PARAMETER(hPrevInstance);
     UNREFERENCED_PARAMETER(lpCmdLine);
-
+	
+	i18nInitLangmap(hInstance, NULL, stdGetFileNameWitoutExtension(stdGetModuleFileName()).c_str());
 	hInst = hInstance;
 
     // Initialize global strings
@@ -214,7 +216,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	showballoon(
 		NULL,
 		szTitle,
-		I18N(L"Path has been set on Clipbard."),
+		I18N(L"Path has been set onto the clipbard."),
 		hIcon,
 		5000,
 		(UINT)time(NULL)

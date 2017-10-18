@@ -13,6 +13,9 @@
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
+    <Filter Include="4 lang">
+      <UniqueIdentifier>{d978ff81-8358-427b-9498-f71803e448b6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -42,6 +45,9 @@
     <ClInclude Include="..\..\lsMisc\stdwin32\stdwin32.h">
       <Filter>1 Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\lsMisc\I18N.h">
+      <Filter>2 Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -68,6 +74,9 @@
     <ClCompile Include="..\..\lsMisc\stdwin32\stdwin32.cpp">
       <Filter>2 Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\lsMisc\I18N.cpp">
+      <Filter>2 Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="PathToClipboard.rc">
@@ -81,5 +90,10 @@
     <Image Include="icon1.ico">
       <Filter>3 Resource Files</Filter>
     </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="jpn.txt">
+      <Filter>4 lang</Filter>
+    </Text>
   </ItemGroup>
 </Project>

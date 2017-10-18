@@ -1,0 +1,3 @@
+"No Arguments"="引数がありません"
+"Failed to SetClipbard"="SetClipboardに失敗しました"
+"Path has been set onto the clipbard."="パスがクリップボードにセットされました。"
