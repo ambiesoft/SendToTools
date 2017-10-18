@@ -41,7 +41,7 @@ namespace ChangeFileName
     {
         public static string IniFile
         {
-            get { return Application.ExecutablePath + ".wini"; }
+            get { return AmbLib.GetIniPath(); }
         }
 
         public FormMain()

@@ -24,8 +24,11 @@
 //OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 //OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
+using NDesk.Options;
 using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Text;
 using System.Windows.Forms;
 
 namespace touch
@@ -76,50 +79,93 @@ namespace touch
         }
         static void doit(string[] args)
         {
-            if (args.Length < 1)
-            {
-                MessageBox.Show(Properties.Resources.STR_NO_ARGUMENTS,
-                    Application.ProductName,
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Exclamation);
-                return;
-            }
-            if (args.Length > 1)
-            {
-                for (int i = 0; i < args.Length; ++i)
-                {
-                    try
-                    {
-                        System.Diagnostics.Process.Start(Application.ExecutablePath, "\""+args[i]+"\"");
+            bool recursive;
+            int depth;
+            bool touchfolder;
+            var p = new OptionSet() {
+                    { 
+                        "r|recursive", 
+                        "Touch recursively",
+                        v => { recursive = v!=null;}
+                    },
+                    { 
+                        "d|depth=", 
+                        "Directory depth of recursive operation, 0 for specifying only arg itself, -1 for inifinite depth.",
+                        v => { depth=int.Parse(v);}
+                    },
+                    { 
+                        "f|folder", 
+                        "Touch folders as well as files",
+                        v => { touchfolder = v!=null;}
                     }
-                    catch (System.Exception e)
-                    {
-                        MessageBox.Show(e.Message,
-                                Application.ProductName,
-                                MessageBoxButtons.OK,
-                                MessageBoxIcon.Error);
-                    }
-                }
-                return;
-            }
-            //string theFileName = @"C:\Documents and Settings\tt\My Documents\Productivity Distribution, Firm Heterogeneity, and Agglomeration.pdf";
-            string theFileName = args[0];
+                };
 
-            if (!System.IO.File.Exists(theFileName))
+            List<string> extra = p.Parse(args);
+            if (extra.Count < 1)
             {
-                MessageBox.Show(String.Format(Properties.Resources.STR_FILE0NOTFOUNT, theFileName),
-                    Application.ProductName,
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Exclamation);
-                return;
+                StringBuilder sb = new StringBuilder();
+                sb.Append(Properties.Resources.STR_NO_ARGUMENTS);
+                sb.AppendLine();
+                sb.AppendLine();
+                StringWriter sw = new StringWriter(sb);
+                p.WriteOptionDescriptions(sw);
+
+                throw new Exception(sb.ToString());
             }
+            //if (args.Length > 1)
+            //{
+            //    for (int i = 0; i < args.Length; ++i)
+            //    {
+            //        try
+            //        {
+            //            System.Diagnostics.Process.Start(Application.ExecutablePath, "\""+args[i]+"\"");
+            //        }
+            //        catch (System.Exception e)
+            //        {
+            //            MessageBox.Show(e.Message,
+            //                    Application.ProductName,
+            //                    MessageBoxButtons.OK,
+            //                    MessageBoxIcon.Error);
+            //        }
+            //    }
+            //    return;
+            //}
+            //string theFileName = @"C:\Documents and Settings\tt\My Documents\Productivity Distribution, Firm Heterogeneity, and Agglomeration.pdf";
 
             DateTime now = DateTime.Now;
-            System.IO.FileInfo fi = new System.IO.FileInfo(theFileName);
-            fi.LastAccessTime = now;
-            fi.LastWriteTime = now;
-
+            foreach (string filename in extra)
+            {
+                dotouch(now, filename);
+            }
             showtip(5000, Application.ProductName, Properties.Resources.STR_TOUCHED,Properties.Resources.icon);
+        }
+
+        static List<string> untouchabled_ = new List<string>();
+        static void dotouch(DateTime now, string filename)
+        {
+            try
+            {
+                if (File.Exists(filename))
+                {
+                    FileInfo fi = new FileInfo(filename);
+                    fi.LastAccessTime = now;
+                    fi.LastWriteTime = now;
+                }
+                else if (Directory.Exists(filename))
+                {
+                    var di = new DirectoryInfo(filename);
+                    di.LastAccessTime = now;
+                    di.LastWriteTime = now;
+                }
+                else
+                {
+                    untouchabled_.Add(filename);
+                }
+            }
+            catch
+            {
+                untouchabled_.Add(filename);
+            }
         }
     }
 }

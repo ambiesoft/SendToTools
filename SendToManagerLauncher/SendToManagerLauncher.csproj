@@ -102,16 +102,18 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>copy "$(ProjectDir)Dist\History.txt" "$(OutDir)"
-copy "$(ProjectDir)Dist\Readme.txt" "$(OutDir)"
-copy "$(ProjectDir)Dist\Copying.txt" "$(OutDir)"
+    <PostBuildEvent>xcopy "$(ProjectDir)Dist\History.txt" "$(TargetDir)" /F /Y
+xcopy "$(ProjectDir)Dist\Readme.txt" "$(TargetDir)" /F /Y
+xcopy "$(ProjectDir)Dist\Copying.txt" "$(TargetDir)" /F /Y
 
 del "$(OutDir)FolderConfig.ini.sample"
 
-copy "$(ProjectDir)Dist\FolderConfig.ini" "$(OutDir)"</PostBuildEvent>
+xcopy "$(ProjectDir)Dist\FolderConfig.ini" "$(TargetDir)" /F /Y
+
+xcopy "$(SolutionDir)OpenCommnadPrompt\CommandPrompt.bat" "$(TargetDir)tools\" /F /Y</PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
-    <PreBuildEvent>xcopy /D /S /E /V /I /F /H /R /Y C:\Linkout\FolderConfig\* "$(OutDir)"
+    <PreBuildEvent>xcopy /D /S /E /V /I /F /H /R /Y C:\Linkout\FolderConfig\* "$(TargetDir)"
 
 </PreBuildEvent>
   </PropertyGroup>
