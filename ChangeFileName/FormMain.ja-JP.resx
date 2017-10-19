@@ -1987,4 +1987,25 @@
   <data name="pasteTotailToolStripMenuItem.Text" xml:space="preserve">
     <value>末尾に張り付け(&amp;T)</value>
   </data>
+  <data name="toolsToolStripMenuItem.Text" xml:space="preserve">
+    <value>ツール(&amp;T)</value>
+  </data>
+  <data name="aboutToolStripMenuItem.Text" xml:space="preserve">
+    <value>バージョン情報(&amp;A)</value>
+  </data>
+  <data name="goToWebPageToolStripMenuItem.Text" xml:space="preserve">
+    <value>ウェブページ(&amp;G)...</value>
+  </data>
+  <data name="helpToolStripMenuItem.Text" xml:space="preserve">
+    <value>ヘルプ(&amp;H)</value>
+  </data>
+  <data name="undoToolStripMenuItem.Text" xml:space="preserve">
+    <value>元に戻す(&amp;U)</value>
+  </data>
+  <data name="redoToolStripMenuItem.Text" xml:space="preserve">
+    <value>やり直す(&amp;R)</value>
+  </data>
+  <data name="pasteTotailToolStripMenuItem1.Text" xml:space="preserve">
+    <value>末尾に追加(&amp;T)</value>
+  </data>
 </root>

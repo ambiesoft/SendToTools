@@ -94,6 +94,7 @@ xcopy "$(ProjectDir)jpn.txt" "$(Targetdir)lang\$(TargetName).jpn.txt*" /F /Y</Co
   <ItemGroup>
     <ClInclude Include="..\..\lsMisc\CenterWindow.h" />
     <ClInclude Include="..\..\lsMisc\CreateSimpleWindow.h" />
+    <ClInclude Include="..\..\lsMisc\GetLastErrorString.h" />
     <ClInclude Include="..\..\lsMisc\I18N.h" />
     <ClInclude Include="..\..\lsMisc\SetClipboardText.h" />
     <ClInclude Include="..\..\lsMisc\showballoon.h" />
@@ -106,6 +107,7 @@ xcopy "$(ProjectDir)jpn.txt" "$(Targetdir)lang\$(TargetName).jpn.txt*" /F /Y</Co
   <ItemGroup>
     <ClCompile Include="..\..\lsMisc\CenterWindow.cpp" />
     <ClCompile Include="..\..\lsMisc\CreateSimpleWindow.cpp" />
+    <ClCompile Include="..\..\lsMisc\GetLastErrorString.cpp" />
     <ClCompile Include="..\..\lsMisc\I18N.cpp" />
     <ClCompile Include="..\..\lsMisc\SetClipboardText.cpp" />
     <ClCompile Include="..\..\lsMisc\showballoon.cpp" />

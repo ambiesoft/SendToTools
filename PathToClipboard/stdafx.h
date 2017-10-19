@@ -10,6 +10,7 @@
 #define WIN32_LEAN_AND_MEAN             // Exclude rarely-used stuff from Windows headers
 // Windows Header Files:
 #include <windows.h>
+#include <Shellapi.h>
 
 // C RunTime Header Files
 #include <stdlib.h>
@@ -30,6 +31,7 @@
 #include "../../lsMisc/StdStringReplace.h"
 #include "../../lsMisc/CenterWindow.h"
 #include "../../lsMisc/I18N.h"
+#include "../../lsMisc/GetLastErrorString.h"
 
 enum {
 	WM_APP_INITIALUPDATE = (WM_APP + 1)

@@ -73,12 +73,12 @@
             this.addModifyToolToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.windowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.alwaysOnTopToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.cmPaste = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.pasteTotailToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnPaste = new SplitButtonDemo.SplitButton();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.goToWebPageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmPaste = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.pasteTotailToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnPaste = new SplitButtonDemo.SplitButton();
             this.cmModify.SuspendLayout();
             this.cmModifySelection.SuspendLayout();
             this.menuMain.SuspendLayout();
@@ -380,6 +380,26 @@
             resources.ApplyResources(this.alwaysOnTopToolStripMenuItem, "alwaysOnTopToolStripMenuItem");
             this.alwaysOnTopToolStripMenuItem.Click += new System.EventHandler(this.alwaysOnTopToolStripMenuItem_Click);
             // 
+            // helpToolStripMenuItem
+            // 
+            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.aboutToolStripMenuItem,
+            this.goToWebPageToolStripMenuItem});
+            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
+            resources.ApplyResources(this.helpToolStripMenuItem, "helpToolStripMenuItem");
+            // 
+            // aboutToolStripMenuItem
+            // 
+            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+            resources.ApplyResources(this.aboutToolStripMenuItem, "aboutToolStripMenuItem");
+            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
+            // 
+            // goToWebPageToolStripMenuItem
+            // 
+            this.goToWebPageToolStripMenuItem.Name = "goToWebPageToolStripMenuItem";
+            resources.ApplyResources(this.goToWebPageToolStripMenuItem, "goToWebPageToolStripMenuItem");
+            this.goToWebPageToolStripMenuItem.Click += new System.EventHandler(this.goToWebPageToolStripMenuItem_Click);
+            // 
             // cmPaste
             // 
             this.cmPaste.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -400,26 +420,6 @@
             this.btnPaste.Name = "btnPaste";
             this.btnPaste.UseVisualStyleBackColor = true;
             this.btnPaste.ButtonClick += new System.EventHandler(this.btnPaste_Click);
-            // 
-            // helpToolStripMenuItem
-            // 
-            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.aboutToolStripMenuItem,
-            this.goToWebPageToolStripMenuItem});
-            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            resources.ApplyResources(this.helpToolStripMenuItem, "helpToolStripMenuItem");
-            // 
-            // aboutToolStripMenuItem
-            // 
-            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            resources.ApplyResources(this.aboutToolStripMenuItem, "aboutToolStripMenuItem");
-            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
-            // 
-            // goToWebPageToolStripMenuItem
-            // 
-            this.goToWebPageToolStripMenuItem.Name = "goToWebPageToolStripMenuItem";
-            resources.ApplyResources(this.goToWebPageToolStripMenuItem, "goToWebPageToolStripMenuItem");
-            this.goToWebPageToolStripMenuItem.Click += new System.EventHandler(this.goToWebPageToolStripMenuItem_Click);
             // 
             // FormMain
             // 

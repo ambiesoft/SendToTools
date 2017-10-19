@@ -1,5 +1,5 @@
 "No Arguments"="引数がありません"
-"Failed to SetClipbard"="SetClipboardに失敗しました"
+"Failed: SetClipboard"="失敗： SetClipboard"
 "Path has been set onto the clipbard."="パスがクリップボードにセットされました。"
 
 "&Double Quote"="ダブルクオート(&D)"
@@ -11,3 +11,7 @@
 "&Two Backslash"="バックスラッシュ２つ(&T)"
 "Cancel"="キャンセル"
 "Copy"="コピー"
+
+"&Full path"="フルパス(&F)"
+"&Name only"="ファイル名のみ(&N)"
+"&Path"="パス(&P)"

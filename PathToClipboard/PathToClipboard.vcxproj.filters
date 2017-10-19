@@ -48,6 +48,9 @@
     <ClInclude Include="..\..\lsMisc\I18N.h">
       <Filter>2 Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\lsMisc\GetLastErrorString.h">
+      <Filter>1 Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -75,6 +78,9 @@
       <Filter>2 Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\lsMisc\I18N.cpp">
+      <Filter>2 Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lsMisc\GetLastErrorString.cpp">
       <Filter>2 Source Files</Filter>
     </ClCompile>
   </ItemGroup>

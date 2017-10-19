@@ -219,7 +219,19 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
 	if (!SetClipboardText(NULL, str.c_str()))
 	{
-		showErrorAndExit(I18N(L"Failed to SetClipbard"));
+		DWORD dwLE = GetLastError();
+		wstring lastError;
+		if (dwLE != 0)
+		{
+			lastError = GetLastErrorString(GetLastError());
+		}
+		wstring message = I18N(L"Failed: SetClipboard");
+		if (!lastError.empty())
+		{
+			message += KAIGYO;
+			message += lastError;
+		}
+		showErrorAndExit(message.c_str());
 	}
 
 	HICON hIcon = LoadIcon(hInstance, MAKEINTRESOURCE(IDI_PATHTOCLIPBOARD));
@@ -229,7 +241,9 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 		I18N(L"Path has been set onto the clipbard."),
 		hIcon,
 		5000,
-		(UINT)time(NULL)
+		(UINT)time(NULL),
+		FALSE,
+		NIIF_INFO
 		);
 	DestroyIcon(hIcon);
 	return 0;
