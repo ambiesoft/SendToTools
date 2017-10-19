@@ -34,6 +34,8 @@ using System.Windows.Forms;
 using Microsoft.VisualBasic.FileIO;
 using System.IO;
 using Ambiesoft;
+using System.Reflection;
+using System.Diagnostics;
 
 namespace ChangeFileName
 {
@@ -375,6 +377,45 @@ namespace ChangeFileName
 
             }
             _unreDoing = false;
+        }
+
+        private void addModifyToolToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using(ModificationTool dlg = new ModificationTool())
+            {
+                dlg.ShowDialog();
+            }
+        }
+
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append(Application.ProductName);
+            sb.Append(" version ");
+            sb.Append(AmbLib.getAssemblyVersion(Assembly.GetExecutingAssembly()));
+            sb.AppendLine();
+            sb.Append("Copyright 2017 Ambiesoft");
+            CppUtils.CenteredMessageBox(this,
+                sb.ToString(),
+                Application.ProductName,
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Information);
+        }
+
+        private void goToWebPageToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Process.Start("https://github.com/erasoni/SendToTools");
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message,
+                    ProductName,
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Exclamation);
+            }
+            
         }
     }
 }
