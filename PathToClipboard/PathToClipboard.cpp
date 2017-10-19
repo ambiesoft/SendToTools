@@ -28,14 +28,9 @@
 //
 
 #include "stdafx.h"
-#include <ctime>
+
 #include "PathToClipboard.h"
-#include "../../lsMisc/SetClipboardText.h"
-#include "../../lsMisc/showballoon.h"
-#include "../../lsMisc/stdwin32/stdwin32.h"
-#include "../../lsMisc/StdStringReplace.h"
-#include "../../lsMisc/CenterWindow.h"
-#include "../../lsMisc/I18N.h"
+
 
 using namespace stdwin32;
 using namespace std;
@@ -56,6 +51,7 @@ enum ConvertType {
 
 struct DialogData {
 	ConvertType ct_;
+	bool relativePath_;
 	bool dq_;
 	bool kaigyo_;
 	DialogData() {
@@ -91,6 +87,7 @@ INT_PTR CALLBACK DialogProc(
 		{
 			sDT = (DialogData*)lParam;
 			i18nChangeChildWindowText(hwndDlg);
+			SendDlgItemMessage(hwndDlg, IDC_RADIO_ABSOLUTEPATH, BM_SETCHECK, BST_CHECKED, 0);
 			SendDlgItemMessage(hwndDlg, IDC_RADIO_NORMAL, BM_SETCHECK, BST_CHECKED, 0);
 			CenterWindow(hwndDlg);
 			PostMessage(hwndDlg, WM_APP_INITIALUPDATE, 0, 0);
@@ -100,6 +97,7 @@ INT_PTR CALLBACK DialogProc(
 
 		case WM_APP_INITIALUPDATE:
 		{
+			AllowSetForegroundWindow(GetCurrentProcessId());
 			SetForegroundWindow(hwndDlg);
 		}
 		break;
@@ -110,12 +108,21 @@ INT_PTR CALLBACK DialogProc(
 			{
 				case IDOK:
 				{
+					if (SendDlgItemMessage(hwndDlg, IDC_RADIO_ABSOLUTEPATH, BM_GETCHECK, 0, 0))
+						sDT->relativePath_ = false;
+					else if (SendDlgItemMessage(hwndDlg, IDC_RADIO_RELATIVEPATH, BM_GETCHECK, 0, 0))
+						sDT->relativePath_ = true;
+					else
+						assert(false);
+
 					if (SendDlgItemMessage(hwndDlg, IDC_RADIO_NORMAL, BM_GETCHECK, 0, 0))
 						sDT->ct_ = CT_NORMAL;
 					else if (SendDlgItemMessage(hwndDlg, IDC_RADIO_TWOBACKSLASH, BM_GETCHECK, 0, 0))
 						sDT->ct_ = CT_DOUBLESBACKLASH;
 					else if (SendDlgItemMessage(hwndDlg, IDC_RADIO_SLASH, BM_GETCHECK, 0, 0))
 						sDT->ct_ = CT_SLASH;
+					else
+						assert(false);
 
 					sDT->dq_ = !!SendDlgItemMessage(hwndDlg, IDC_CHECK_DQ, BM_GETCHECK, 0, 0);
 					sDT->kaigyo_ = !!SendDlgItemMessage(hwndDlg, IDC_CHECK_LINE, BM_GETCHECK, 0, 0);
@@ -142,7 +149,9 @@ INT_PTR CALLBACK DialogProc(
 tstring ConvertPath(const DialogData& dt, LPCTSTR pPath)
 {
 	tstring ret(pPath);
-
+	if (dt.relativePath_)
+		ret = stdwin32::stdGetFileName(ret);
+	
 	switch (dt.ct_)
 	{
 	case CT_NORMAL:

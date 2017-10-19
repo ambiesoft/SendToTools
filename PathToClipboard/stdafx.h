@@ -18,8 +18,19 @@
 #include <tchar.h>
 #include <string>
 #include <vector>
+#include <ctime>
+
+#include <assert.h>
+
 
 // TODO: reference additional headers your program requires here
+#include "../../lsMisc/SetClipboardText.h"
+#include "../../lsMisc/showballoon.h"
+#include "../../lsMisc/stdwin32/stdwin32.h"
+#include "../../lsMisc/StdStringReplace.h"
+#include "../../lsMisc/CenterWindow.h"
+#include "../../lsMisc/I18N.h"
+
 enum {
 	WM_APP_INITIALUPDATE = (WM_APP + 1)
 };
