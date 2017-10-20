@@ -47,10 +47,6 @@ namespace SendToManager
         static readonly string SECTION_OPTION = "Option";
         static readonly string KEY_CURRENT_INVENTORY = "CurrentInventory";
         static readonly string KEY_COLUMN = "Column";
-        static readonly string KEY_X = "X";
-        static readonly string KEY_Y = "Y";
-        static readonly string KEY_WIDTH = "Width";
-        static readonly string KEY_HEIGHT = "Height";
         static readonly string KEY_LISTVIEWCOLOR1 = "ListViewColor1";
         static readonly string KEY_LISTVIEWCOLOR2 = "ListViewColor2";
         
@@ -74,25 +70,7 @@ namespace SendToManager
 
             HashIni ini = Profile.ReadAll(Program.IniFile);
 
-
-            int x = 0, y = 0;
-            int width = 0, height = 0;
-            if (Profile.GetInt(SECTION_OPTION, KEY_X, 0, out x, ini) &&
-                Profile.GetInt(SECTION_OPTION, KEY_Y, 0, out y, ini) &&
-                Profile.GetInt(SECTION_OPTION, KEY_WIDTH, 0, out width, ini) &&
-                Profile.GetInt(SECTION_OPTION, KEY_HEIGHT, 0, out height, ini))
-            {
-                Point pt = new Point(x, y);
-                Size size = new Size(width, height);
-
-                Rectangle r = new Rectangle(pt, size);
-                if (AmbLib.IsRectInScreen(r))
-                {
-                    this.Location = new Point(x, y);
-                    this.Size = new Size(width, height);
-                    this.StartPosition = FormStartPosition.Manual;
-                }
-            }
+            AmbLib.LoadFormXYWH(this, SECTION_OPTION, ini);
 
             int intval = 0;
             if (Profile.GetInt(SECTION_OPTION, KEY_LISTVIEWCOLOR1, Color.White.ToArgb(), out intval, ini))
@@ -919,13 +897,7 @@ namespace SendToManager
         {
             HashIni ini = Profile.ReadAll(Program.IniFile);
 
-            if (WindowState == FormWindowState.Normal)
-            {
-                Profile.WriteInt(SECTION_OPTION, KEY_X, Location.X, ini);
-                Profile.WriteInt(SECTION_OPTION, KEY_Y, Location.Y, ini);
-                Profile.WriteInt(SECTION_OPTION, KEY_WIDTH, this.Size.Width, ini);
-                Profile.WriteInt(SECTION_OPTION, KEY_HEIGHT, this.Size.Height, ini);
-            }
+            AmbLib.SaveFormXYWH(this, SECTION_OPTION, ini);
 
             AmbLib.SaveListViewColumnWidth(lvMain, SECTION_OPTION, KEY_COLUMN, ini);
             
