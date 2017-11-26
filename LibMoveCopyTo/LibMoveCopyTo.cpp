@@ -248,8 +248,8 @@ int libmain(LPCWSTR pAppName)
 		MessageBox(NULL, msg.c_str(), L"DEBUG", MB_OK);
 	}
 
-	int nRet = 0;
-	if (!SHMoveFile(destDir.c_str(), sourcefiles, &nRet))
+	int nRet = SHMoveFile(destDir.c_str(), sourcefiles);
+	if (nRet != 0)
 	{
 		wstring error = GetSHFileOpErrorString(nRet);
 		ShowError(error.c_str());

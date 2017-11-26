@@ -229,6 +229,9 @@ namespace ChangeFileName
                 lblFileInfo.Text = sb.ToString();
             }
             catch (Exception) { }
+
+            textName.SelectAll();
+            textName.Focus();
         }
 
         private void chkAutoRun_CheckedChanged(object sender, EventArgs e)
