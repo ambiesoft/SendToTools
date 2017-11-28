@@ -32,6 +32,8 @@ using System.IO;
 using Ambiesoft;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
+using NDesk.Options;
+using System.Text;
 
 namespace SendToManager
 {
@@ -40,7 +42,15 @@ namespace SendToManager
         static readonly string ProductName = "SendToManager";
 
         private static string configDir_;
-        
+        private static string applyInventory_;
+
+        internal static string ApplyInventory
+        {
+            get
+            {
+                return applyInventory_;
+            }
+        }
         internal static void Error(string message)
         {
             MessageBox.Show(message,
@@ -148,11 +158,51 @@ namespace SendToManager
             SetForegroundWindow(wdwIntPtr);
         }
 
+        static void parseCommand(string[] args)
+        {
+            var p = new OptionSet() {
+                    { 
+                        "apply=", 
+                        "Apply inventory.",
+                        inv => {
+                            applyInventory_ = inv;
+                        }
+                    },
+                };
+
+
+            List<string> extra = p.Parse(args);
+            if (extra.Count != 0)
+            {
+                StringBuilder sb = new StringBuilder();
+                sb.Append(Properties.Resources.UNKNOWN_OPTION);
+                sb.AppendLine();
+                sb.AppendLine();
+                StringWriter sw = new StringWriter(sb);
+                p.WriteOptionDescriptions(sw);
+
+                throw new Exception(sb.ToString());
+            }
+        }
+
         // [STAThread]
         public static void DllMain()
         {
             if (!preRun())
                 return;
+
+            try
+            {
+                parseCommand(new List<string>(Environment.GetCommandLineArgs()).GetRange(1, Environment.GetCommandLineArgs().Length - 1).ToArray());
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message,
+                    Application.ProductName,
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                return;
+            }
 
             string livingfile = Path.Combine(ConfigDir, "running");
             FileStream fsRunning = null;

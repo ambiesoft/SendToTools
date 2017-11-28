@@ -223,6 +223,15 @@ namespace SendToManager.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Inventory &quot;{0}&quot; does not exist..
+        /// </summary>
+        internal static string INVENTORY_NOT_EXIST {
+            get {
+                return ResourceManager.GetString("INVENTORY_NOT_EXIST", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to &quot;{0}&quot; already exists. Do you want to override?.
         /// </summary>
         internal static string SHORTCUT_ALREADY_EXISTS {
@@ -237,6 +246,15 @@ namespace SendToManager.Properties {
         internal static string SHORTCUT_CREATION_FAILED {
             get {
                 return ResourceManager.GetString("SHORTCUT_CREATION_FAILED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unknow option.
+        /// </summary>
+        internal static string UNKNOWN_OPTION {
+            get {
+                return ResourceManager.GetString("UNKNOWN_OPTION", resourceCulture);
             }
         }
     }

@@ -172,10 +172,16 @@
   <data name="INVENTORY_NAME" xml:space="preserve">
     <value>Inventory Name</value>
   </data>
+  <data name="INVENTORY_NOT_EXIST" xml:space="preserve">
+    <value>Inventory "{0}" does not exist.</value>
+  </data>
   <data name="SHORTCUT_ALREADY_EXISTS" xml:space="preserve">
     <value>"{0}" already exists. Do you want to override?</value>
   </data>
   <data name="SHORTCUT_CREATION_FAILED" xml:space="preserve">
     <value>Failed to create shortcut.</value>
+  </data>
+  <data name="UNKNOWN_OPTION" xml:space="preserve">
+    <value>Unknow option</value>
   </data>
 </root>

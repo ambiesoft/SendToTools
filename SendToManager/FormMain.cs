@@ -330,31 +330,46 @@ namespace SendToManager
             lvMain.StartEditing(edittingControl, e.Item, e.SubItem);
         }
 
-        void Info(string message)
+        static void Info(Form win, string message)
         {
-            CppUtils.CenteredMessageBox(this,
+            CppUtils.CenteredMessageBox(win,
                 message,
-                ProductName,
+                win.ProductName,
                 MessageBoxButtons.OK,
                 MessageBoxIcon.Information);
         }
-        void Alert(string message)
+        void Info(string message)
         {
-            CppUtils.CenteredMessageBox(this,
+            Info(this,message);
+        }
+
+        static void Alert(Form win, string message)
+        {
+            CppUtils.CenteredMessageBox(win,
                 message,
-                ProductName,
+                win.ProductName,
                 MessageBoxButtons.OK,
                 MessageBoxIcon.Warning);
         }
-        DialogResult YesOrNo(string message)
+
+        void Alert(string message)
         {
-            return CppUtils.CenteredMessageBox(this,
+            Alert(this,message);
+        }
+
+        static DialogResult YesOrNo(Form win, string message)
+        {
+            return CppUtils.CenteredMessageBox(win,
                 message,
-                ProductName,
+                win.ProductName,
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Question);
         }
-        string SendToFolder
+        DialogResult YesOrNo(string message)
+        {
+            return YesOrNo(this, message);
+        }
+        static string SendToFolder
         {
             get
             {
@@ -401,12 +416,16 @@ namespace SendToManager
             UpdateList(false);
         }
 
-        string InventoryDir
+        static string InventoryDir
         {
             get
             {
                 return Path.Combine(Program.ConfigDir, INVENTORY_COMPONENT_NAME);
             }
+        }
+        static string GetInventoryFolder(string inv)
+        {
+            return Path.Combine(InventoryDir, inv);
         }
         string CurrentInventoryFolder
         {
@@ -638,7 +657,20 @@ namespace SendToManager
             // complete with their corresponding name and icon indices.
 
             constructInventory();
-
+            if(!string.IsNullOrEmpty(Program.ApplyInventory))
+            {
+                string folder = GetInventoryFolder(Program.ApplyInventory); 
+                if(!Directory.Exists(folder))
+                {
+                    Alert(string.Format(Properties.Resources.INVENTORY_NOT_EXIST, Program.ApplyInventory));
+                }
+                else
+                {
+                    Deploy(this, folder, Program.ApplyInventory);
+                }
+                Close();
+                return;
+            }
             UpdateList();
             UpdateTitle();
         }
@@ -744,7 +776,7 @@ namespace SendToManager
             //pgItem.SelectedObject = linkData;
         }
 
-        bool Displace(string message)
+        static bool Displace(Form form, string message)
         {
             do
             {
@@ -772,40 +804,45 @@ namespace SendToManager
 
                 if (toRemoves.Count > 0)
                 {
-                    if (DialogResult.Yes != YesOrNo(sb.ToString()))
+                    if (DialogResult.Yes != YesOrNo(form, sb.ToString()))
                     {
                         break;
                     }
 
                     if (0 != CppUtils.DeleteFiles(toRemoves.ToArray()))
                     {
-                        Alert(Properties.Resources.FAILED_TO_REMOVE_FILES);
+                        Alert(form, Properties.Resources.FAILED_TO_REMOVE_FILES);
                         return false;
                     }
                 }
             } while (false);
             return true;
         }
+
         private void tsbDeploy_Click(object sender, EventArgs e)
         {
+            Deploy(this,CurrentInventoryFolder,CurrentInventory);
+        }
+        internal static void Deploy(Form form, string currentInvFolder, string curinv)
+        {
             // first remove deployed shortcuts
-            if (!Displace(Properties.Resources.DO_YOU_WANT_TO_REMOVE_FILES_BEFORE_DEPLOY))
+            if (!Displace(form, Properties.Resources.DO_YOU_WANT_TO_REMOVE_FILES_BEFORE_DEPLOY))
                 return;
 
             try
             {
-                DirectoryInfo di = new DirectoryInfo(CurrentInventoryFolder);
+                DirectoryInfo di = new DirectoryInfo(currentInvFolder);
                 FileInfo[] srcFis = di.GetFiles("*.lnk", SearchOption.TopDirectoryOnly);
 
 
                 // do copy
-                string src = Path.Combine(CurrentInventoryFolder, "*.lnk");
+                string src = Path.Combine(currentInvFolder, "*.lnk");
                 string dst = SendToFolder;
 
                 int ret = CppUtils.CopyFile(src, dst);
                 if (ret != 0 && ret != 1)
                 {
-                    Alert(Properties.Resources.FAILED_TO_COPY_FILES);
+                    Alert(form,Properties.Resources.FAILED_TO_COPY_FILES);
                     return;
                 }
 
@@ -815,16 +852,16 @@ namespace SendToManager
                     string fulltarget = Path.Combine(SendToFolder, fi.Name);
                     if (!Helper.WriteAlternateStream(fulltarget, "1"))
                     {
-                        Alert(Properties.Resources.FAILED_TO_COPY_FILES);
+                        Alert(form,Properties.Resources.FAILED_TO_COPY_FILES);
                         return;
                     }
                 }
 
-                Info(string.Format(Properties.Resources.INVENTORY_DEPLOYED, CurrentInventory));
+                Info(form, string.Format(Properties.Resources.INVENTORY_DEPLOYED, curinv));
             }
             catch (Exception ex)
             {
-                Alert(ex.Message);
+                Alert(form,ex.Message);
             }
         }
 
@@ -890,7 +927,7 @@ namespace SendToManager
 
         private void tsbDisplace_Click(object sender, EventArgs e)
         {
-            Displace(Properties.Resources.DO_YOU_WANT_TO_REMOVE_FILES);
+            Displace(this,Properties.Resources.DO_YOU_WANT_TO_REMOVE_FILES);
         }
 
         private void FormMain_FormClosing(object sender, FormClosingEventArgs e)
