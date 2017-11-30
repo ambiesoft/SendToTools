@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             this.txtEditName = new System.Windows.Forms.TextBox();
             this.cmbEditDirectory = new System.Windows.Forms.ComboBox();
@@ -56,9 +57,14 @@
             this.cmbEditBool = new System.Windows.Forms.ComboBox();
             this.cmbEditFile = new System.Windows.Forms.ComboBox();
             this.lvMain = new ListViewEx.ListViewEx();
+            this.ctxList = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.duplicateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.refershToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tsList.SuspendLayout();
             this.menuMain.SuspendLayout();
             this.panelRoot.SuspendLayout();
+            this.ctxList.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtEditName
@@ -253,6 +259,7 @@
             // lvMain
             // 
             this.lvMain.AllowColumnReorder = true;
+            this.lvMain.ContextMenuStrip = this.ctxList;
             resources.ApplyResources(this.lvMain, "lvMain");
             this.lvMain.DoubleClickActivation = false;
             this.lvMain.FullRowSelect = true;
@@ -266,6 +273,33 @@
             this.lvMain.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lvMain_MouseDown);
             this.lvMain.MouseMove += new System.Windows.Forms.MouseEventHandler(this.lvMain_MouseMove);
             this.lvMain.MouseUp += new System.Windows.Forms.MouseEventHandler(this.lvMain_MouseUp);
+            // 
+            // ctxList
+            // 
+            this.ctxList.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.duplicateToolStripMenuItem,
+            this.deleteToolStripMenuItem,
+            this.refershToolStripMenuItem});
+            this.ctxList.Name = "ctxList";
+            resources.ApplyResources(this.ctxList, "ctxList");
+            // 
+            // duplicateToolStripMenuItem
+            // 
+            this.duplicateToolStripMenuItem.Name = "duplicateToolStripMenuItem";
+            resources.ApplyResources(this.duplicateToolStripMenuItem, "duplicateToolStripMenuItem");
+            this.duplicateToolStripMenuItem.Click += new System.EventHandler(this.duplicateToolStripMenuItem_Click);
+            // 
+            // deleteToolStripMenuItem
+            // 
+            this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
+            resources.ApplyResources(this.deleteToolStripMenuItem, "deleteToolStripMenuItem");
+            this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
+            // 
+            // refershToolStripMenuItem
+            // 
+            this.refershToolStripMenuItem.Name = "refershToolStripMenuItem";
+            resources.ApplyResources(this.refershToolStripMenuItem, "refershToolStripMenuItem");
+            this.refershToolStripMenuItem.Click += new System.EventHandler(this.refershToolStripMenuItem_Click);
             // 
             // FormMain
             // 
@@ -283,6 +317,7 @@
             this.menuMain.PerformLayout();
             this.panelRoot.ResumeLayout(false);
             this.panelRoot.PerformLayout();
+            this.ctxList.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -317,6 +352,10 @@
         private System.Windows.Forms.ToolStripMenuItem optionToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem addInventoryToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
+        private System.Windows.Forms.ContextMenuStrip ctxList;
+        private System.Windows.Forms.ToolStripMenuItem duplicateToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem refershToolStripMenuItem;
     }
 }
 

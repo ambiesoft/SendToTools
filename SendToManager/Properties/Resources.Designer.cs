@@ -232,6 +232,15 @@ namespace SendToManager.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to &quot;{0}&quot; does not exist. Refresh List and try again..
+        /// </summary>
+        internal static string SELECTED_FILE_DOESNOT_EXIST_REFRESH_FIRST {
+            get {
+                return ResourceManager.GetString("SELECTED_FILE_DOESNOT_EXIST_REFRESH_FIRST", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to &quot;{0}&quot; already exists. Do you want to override?.
         /// </summary>
         internal static string SHORTCUT_ALREADY_EXISTS {

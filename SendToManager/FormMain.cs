@@ -776,6 +776,18 @@ namespace SendToManager
             //pgItem.SelectedObject = linkData;
         }
 
+        static bool IsManagedFile(string filename)
+        {
+            string data;
+            if (Helper.ReadAlternateStream(filename, out data))
+            {
+                if (data == "1")
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
         static bool Displace(Form form, string message)
         {
             do
@@ -785,13 +797,9 @@ namespace SendToManager
                 FileInfo[] filesOnSendto = di.GetFiles("*.lnk", SearchOption.TopDirectoryOnly);
                 foreach (FileInfo fi in filesOnSendto)
                 {
-                    string data;
-                    if (Helper.ReadAlternateStream(fi.FullName, out data))
+                    if (IsManagedFile(fi.FullName))
                     {
-                        if (data == "1")
-                        {
-                            toRemoves.Add(fi.FullName);
-                        }
+                        toRemoves.Add(fi.FullName);
                     }
                 }
 
@@ -948,11 +956,15 @@ namespace SendToManager
             }
         }
 
-        private void tsbRefresh_Click(object sender, EventArgs e)
+        private void RefreshItems()
         {
             lvMain.BeginUpdate();
             UpdateList();
             lvMain.EndUpdate();
+        }
+        private void tsbRefresh_Click(object sender, EventArgs e)
+        {
+            RefreshItems(); 
         }
 
         private void lvMain_KeyDown(object sender, KeyEventArgs e)
@@ -1158,6 +1170,86 @@ namespace SendToManager
         private void FormMain_Deactivate(object sender, EventArgs e)
         {
             lvMain.EndEditing(false);
+        }
+
+        private void duplicateToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            List<string> dupSrc = new List<string>();
+            List<string> dupDst = new List<string>();
+            foreach (ListViewItem lvi in lvMain.SelectedItems)
+            {
+                string filename = GetLVInfo(lvi).FullName;
+                if(!System.IO.File.Exists(filename))
+                {
+                    Alert(string.Format(Properties.Resources.SELECTED_FILE_DOESNOT_EXIST_REFRESH_FIRST,
+                        filename));
+                    return;
+                }
+
+                string dir = Path.GetDirectoryName(filename);
+                string name = Path.GetFileNameWithoutExtension(filename);
+                string ext = Path.GetExtension(filename);
+
+                string dstFull;
+                for(int i=1 ;; ++i)
+                {
+                    string newname = name + "_" + i.ToString();
+                    string test = Path.Combine(dir, newname) + ext ;
+                    if (!System.IO.File.Exists(test))
+                    {
+                        dstFull = test;
+                        break;
+                    }
+                }
+                dupSrc.Add(filename);
+                dupDst.Add(dstFull);
+            }
+            if (dupSrc.Count == 0)
+                return;
+            if(dupSrc.Count!=dupDst.Count)
+            {
+                Alert("Unexpected Error");
+                return;
+            }
+            CppUtils.CopyFiles(dupSrc.ToArray(), dupDst.ToArray());
+            RefreshItems();
+        }
+
+        LVInfo GetLVInfo(ListViewItem lvi)
+        {
+            if (lvi == null)
+                return null;
+
+            return (LVInfo)lvi.Tag;
+        }
+        private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            List<ListViewItem> delItems = new List<ListViewItem>();
+            foreach(ListViewItem lvi in lvMain.SelectedItems)
+            {
+                delItems.Add(lvi);
+            }
+
+            List<string> delFiles=new List<string>();
+            foreach(ListViewItem lvi in delItems)
+            {
+                LVInfo lvInfo = GetLVInfo(lvi);
+                string filename = lvInfo.FullName;
+                if(System.IO.File.Exists(filename))
+                {
+                    delFiles.Add(filename);
+                }
+            }
+            if (delFiles.Count == 0)
+                return;
+            
+            CppUtils.DeleteFiles(delFiles.ToArray());
+            RefreshItems();
+        }
+
+        private void refershToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            RefreshItems();
         }
     }
 }
