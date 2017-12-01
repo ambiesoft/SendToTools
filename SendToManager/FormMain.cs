@@ -330,47 +330,52 @@ namespace SendToManager
             lvMain.StartEditing(edittingControl, e.Item, e.SubItem);
         }
 
-        static void Info(Form win, string message)
+        static void Info(Form win, string message,bool noParent)
         {
-            CppUtils.CenteredMessageBox(win,
+            CppUtils.CenteredMessageBox(noParent ? null : win,
                 message,
                 win.ProductName,
                 MessageBoxButtons.OK,
                 MessageBoxIcon.Information);
         }
+        static void Info(Form win, string message)
+        {
+            Info(win, message, false);
+        }
+
         void Info(string message)
         {
             Info(this,message);
         }
 
-        static void Alert(Form win, string message)
+        static void Alert(Form win, string message, bool noParent)
         {
-            CppUtils.CenteredMessageBox(win,
+            CppUtils.CenteredMessageBox(noParent ? null : win,
                 message,
                 win.ProductName,
                 MessageBoxButtons.OK,
                 MessageBoxIcon.Warning);
         }
-
+        static void Alert(Form win, string message)
+        {
+            Alert(win, message, false);
+        }
         void Alert(string message)
         {
             Alert(this,message);
         }
 
+        static DialogResult YesOrNo(Form win, string message, bool noParent)
+        {
+            return CppUtils.CenteredMessageBox(noParent ? null : win,
+                message,
+                win.ProductName,
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question);
+        }
         static DialogResult YesOrNo(Form win, string message)
         {
-            if(win==null)
-            error return CppUtils.CenteredMessageBox(
-                message,
-                win.ProductName,
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Question);
-        
-            return CppUtils.CenteredMessageBox(win,
-                message,
-                win.ProductName,
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Question);
+            return YesOrNo(win, message, false);
         }
         DialogResult YesOrNo(string message)
         {
@@ -669,7 +674,7 @@ namespace SendToManager
                 string folder = GetInventoryFolder(Program.ApplyInventory); 
                 if(!Directory.Exists(folder))
                 {
-                    Alert(string.Format(Properties.Resources.INVENTORY_NOT_EXIST, Program.ApplyInventory));
+                    Alert(this, string.Format(Properties.Resources.INVENTORY_NOT_EXIST, Program.ApplyInventory), true);
                 }
                 else
                 {
@@ -819,7 +824,7 @@ namespace SendToManager
 
                 if (toRemoves.Count > 0)
                 {
-                    if (DialogResult.Yes != YesOrNo(commandRunOnly ? null : form, sb.ToString()))
+                    if (DialogResult.Yes != YesOrNo( form, sb.ToString(), commandRunOnly ))
                     {
                         break;
                     }
@@ -876,7 +881,7 @@ namespace SendToManager
                     }
                 }
 
-                Info(form, string.Format(Properties.Resources.INVENTORY_DEPLOYED, curinv));
+                Info(form, string.Format(Properties.Resources.INVENTORY_DEPLOYED, curinv), commandRunOnly);
             }
             catch (Exception ex)
             {
