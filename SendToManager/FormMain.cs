@@ -359,6 +359,13 @@ namespace SendToManager
 
         static DialogResult YesOrNo(Form win, string message)
         {
+            if(win==null)
+            error return CppUtils.CenteredMessageBox(
+                message,
+                win.ProductName,
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question);
+        
             return CppUtils.CenteredMessageBox(win,
                 message,
                 win.ProductName,
@@ -666,7 +673,7 @@ namespace SendToManager
                 }
                 else
                 {
-                    Deploy(this, folder, Program.ApplyInventory);
+                    Deploy(this, folder, Program.ApplyInventory,true);
                 }
                 Close();
                 return;
@@ -788,7 +795,7 @@ namespace SendToManager
             }
             return false;
         }
-        static bool Displace(Form form, string message)
+        static bool Displace(Form form, string message, bool commandRunOnly)
         {
             do
             {
@@ -812,7 +819,7 @@ namespace SendToManager
 
                 if (toRemoves.Count > 0)
                 {
-                    if (DialogResult.Yes != YesOrNo(form, sb.ToString()))
+                    if (DialogResult.Yes != YesOrNo(commandRunOnly ? null : form, sb.ToString()))
                     {
                         break;
                     }
@@ -833,8 +840,12 @@ namespace SendToManager
         }
         internal static void Deploy(Form form, string currentInvFolder, string curinv)
         {
+            Deploy(form, currentInvFolder, curinv, false);
+        }
+        internal static void Deploy(Form form, string currentInvFolder, string curinv, bool commandRunOnly)
+        {
             // first remove deployed shortcuts
-            if (!Displace(form, Properties.Resources.DO_YOU_WANT_TO_REMOVE_FILES_BEFORE_DEPLOY))
+            if (!Displace(form, Properties.Resources.DO_YOU_WANT_TO_REMOVE_FILES_BEFORE_DEPLOY,commandRunOnly))
                 return;
 
             try
@@ -935,7 +946,7 @@ namespace SendToManager
 
         private void tsbDisplace_Click(object sender, EventArgs e)
         {
-            Displace(this,Properties.Resources.DO_YOU_WANT_TO_REMOVE_FILES);
+            Displace(this,Properties.Resources.DO_YOU_WANT_TO_REMOVE_FILES,false);
         }
 
         private void FormMain_FormClosing(object sender, FormClosingEventArgs e)
