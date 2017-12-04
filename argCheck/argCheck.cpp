@@ -1,4 +1,4 @@
-//BSD 2-Clause License
+﻿//BSD 2-Clause License
 //
 //Copyright (c) 2017, Ambiesoft
 //All rights reserved.
@@ -37,29 +37,77 @@ using namespace stdwin32;
 using namespace Ambiesoft;
 
 #define MAX_LOADSTRING 100
-
+#define APPNAME L"argCheck"
 #define KAIGYO L"\r\n";
 
 HINSTANCE hInst;
 WCHAR szTitle[MAX_LOADSTRING];
 WCHAR szWindowClass[MAX_LOADSTRING];
 
+wstring gIni;
 
-
-struct MyDialogData {
+struct MainDialogData {
 	wstring title_;
 	wstring message_;
+	bool again_;
+	bool bWW_;
 };
-BOOL CALLBACK MyDlgProc(HWND hDlg, UINT uMsg, WPARAM wParam, LPARAM lParam)
+
+
+//// http://rarara.cafe.coocan.jp/cgi-bin/lng/vc/vclng.cgi?print+200807/08070047.txt
+//BOOL GetRightTurn(HWND hEdit)
+//{
+//	LONG lStyle = GetWindowLong(hEdit, GWL_STYLE);
+//
+//	return (lStyle & ES_AUTOHSCROLL) ? FALSE : TRUE;
+//}
+//BOOL SetRightTurn(HWND hEdit, BOOL bRightTurn)
+//{
+//	BOOL bRight = GetRightTurn(hEdit);
+//	LONG lStyle = GetWindowLong(hEdit, GWL_STYLE);
+//
+//	if (bRightTurn){
+//		lStyle &= ~(WS_HSCROLL | ES_AUTOHSCROLL);
+//	}
+//	else{
+//		lStyle |= (WS_HSCROLL | ES_AUTOHSCROLL);
+//	}
+//	SetWindowLong(hEdit, GWL_STYLE, lStyle);
+//	SetWindowPos(hEdit, NULL, 0, 0, 0, 0,
+//		(SWP_NOMOVE | SWP_NOSIZE | SWP_NOZORDER | SWP_FRAMECHANGED));
+//	return bRight;
+//}
+
+void setWW(HWND hDlg, BOOL bOn)
 {
-	static MyDialogData* spData;
+	if (bOn)
+	{
+		// WW on
+		ShowWindow(GetDlgItem(hDlg, IDC_EDIT_MAINWW), SW_SHOW);
+		ShowWindow(GetDlgItem(hDlg, IDC_EDIT_MAIN), SW_HIDE);
+	}
+	else
+	{
+		ShowWindow(GetDlgItem(hDlg, IDC_EDIT_MAINWW), SW_HIDE);
+		ShowWindow(GetDlgItem(hDlg, IDC_EDIT_MAIN), SW_SHOW);
+	}
+}
+BOOL CALLBACK MainDlgProc(HWND hDlg, UINT uMsg, WPARAM wParam, LPARAM lParam)
+{
+	static MainDialogData* spData;
 	switch (uMsg)
 	{
 	case WM_INITDIALOG:
 	{
-		spData = (MyDialogData*)lParam;
+		spData = (MainDialogData*)lParam;
 		SetWindowText(hDlg, spData->title_.c_str());
+		
 		SetDlgItemText(hDlg, IDC_EDIT_MAIN, spData->message_.c_str());
+		SetDlgItemText(hDlg, IDC_EDIT_MAINWW, spData->message_.c_str());
+
+		int intval = GetPrivateProfileInt(L"Option", L"WordWrap", 0, gIni.c_str()) !=0;
+		setWW(hDlg,intval);
+		SendDlgItemMessage(hDlg, IDC_CHECK_WORDWRAP, BM_SETCHECK, intval, 0);
 
 		CenterWindow(hDlg);
 		return TRUE;
@@ -72,6 +120,11 @@ BOOL CALLBACK MyDlgProc(HWND hDlg, UINT uMsg, WPARAM wParam, LPARAM lParam)
 		{
 		case IDOK:
 		{
+			int ww = SendDlgItemMessage(hDlg, IDC_CHECK_WORDWRAP, BM_GETCHECK, 0, 0);
+			if (!WritePrivateProfileString(L"Option", L"WordWrap", ww ? L"1" : L"0", gIni.c_str()))
+			{
+				MessageBox(hDlg, L"Save failed", APPNAME, MB_ICONERROR);
+			}
 			EndDialog(hDlg, IDOK);
 			return 0;
 		}
@@ -84,8 +137,14 @@ BOOL CALLBACK MyDlgProc(HWND hDlg, UINT uMsg, WPARAM wParam, LPARAM lParam)
 		}
 		break;
 
+		case IDC_CHECK_WORDWRAP:
+		{
+			//SetRightTurn(GetDlgItem(hDlg, IDC_EDIT_MAIN),
+			//	0 != SendDlgItemMessage(hDlg, IDC_CHECK_WORDWRAP, BM_GETCHECK, 0, 0));
+			setWW(hDlg,0 != SendDlgItemMessage(hDlg, IDC_CHECK_WORDWRAP, BM_GETCHECK, 0, 0));
 		}
 		break;
+		}
 	}
 	break;
 	}
@@ -99,6 +158,9 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 {
 	UNREFERENCED_PARAMETER(hPrevInstance);
 	UNREFERENCED_PARAMETER(lpCmdLine);
+
+	gIni = stdCombinePath(stdGetParentDirectory(stdGetModuleFileName()), 
+		stdGetFileNameWitoutExtension(stdGetModuleFileName()) + L".ini");
 
 	LoadStringW(hInstance, IDS_APP_TITLE, szTitle, MAX_LOADSTRING);
 	LoadStringW(hInstance, IDC_ARGCHECK, szWindowClass, MAX_LOADSTRING);
@@ -217,18 +279,21 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	//	szTitle,
 	//	MB_ICONINFORMATION);
 
-
-	MyDialogData data;
-	data.title_ = szTitle;
-	data.message_ = message;
-	if (IDOK != DialogBoxParam(hInstance,
-		MAKEINTRESOURCE(IDD_DIALOG_MAIN),
-		NULL,
-		MyDlgProc,
-		(LPARAM)&data))
+	MainDialogData data;
+	do
 	{
-		return 100;
-	}
+		data.title_ = szTitle;
+		data.message_ = message;
+		data.again_ = false;
+		if (IDOK != DialogBoxParam(hInstance,
+			MAKEINTRESOURCE(IDD_DIALOG_MAIN),
+			NULL,
+			MainDlgProc,
+			(LPARAM)&data))
+		{
+			return 100;
+		}
+	} while (data.again_);
 
 	return 0;
 }
