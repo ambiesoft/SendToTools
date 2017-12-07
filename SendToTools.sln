@@ -32,8 +32,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CopyFileContent", "CopyFile
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CopyFirstLine", "CopyFirstLine\CopyFirstLine.csproj", "{365D827D-A062-4318-B9DA-C8EFB7C4C602}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "argCheck", "argCheck\argCheck.vcxproj", "{D982DFD8-9CE0-4215-A03E-DD8AC7D622D5}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNet4Runnable", "DotNet4Runnable\DotNet4Runnable.csproj", "{7EB31E6F-AC69-4E5E-8165-71DBD5D398E5}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PathToClipboard", "PathToClipboard\PathToClipboard.vcxproj", "{3409B881-FBB7-4BF9-B99E-A0865DB495AC}"
@@ -116,10 +114,6 @@ Global
 		{365D827D-A062-4318-B9DA-C8EFB7C4C602}.Debug|x86.Build.0 = Debug|x86
 		{365D827D-A062-4318-B9DA-C8EFB7C4C602}.Release|x86.ActiveCfg = Release|x86
 		{365D827D-A062-4318-B9DA-C8EFB7C4C602}.Release|x86.Build.0 = Release|x86
-		{D982DFD8-9CE0-4215-A03E-DD8AC7D622D5}.Debug|x86.ActiveCfg = Debug|Win32
-		{D982DFD8-9CE0-4215-A03E-DD8AC7D622D5}.Debug|x86.Build.0 = Debug|Win32
-		{D982DFD8-9CE0-4215-A03E-DD8AC7D622D5}.Release|x86.ActiveCfg = Release|Win32
-		{D982DFD8-9CE0-4215-A03E-DD8AC7D622D5}.Release|x86.Build.0 = Release|Win32
 		{7EB31E6F-AC69-4E5E-8165-71DBD5D398E5}.Debug|x86.ActiveCfg = Debug|x86
 		{7EB31E6F-AC69-4E5E-8165-71DBD5D398E5}.Debug|x86.Build.0 = Debug|x86
 		{7EB31E6F-AC69-4E5E-8165-71DBD5D398E5}.Release|x86.ActiveCfg = Release|x86
