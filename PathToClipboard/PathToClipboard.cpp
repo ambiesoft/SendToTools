@@ -29,6 +29,7 @@
 
 #include "stdafx.h"
 
+#include "../../lsMisc/CommandLineParser.h"
 #include "PathToClipboard.h"
 
 
@@ -54,8 +55,16 @@ struct DialogData {
 	bool relativePath_;
 	bool dq_;
 	bool kaigyo_;
+
+	bool code_;
+	wstring codeName_;
+
 	DialogData() {
-		ZeroMemory(this, sizeof(*this));
+		ct_ = CT_NORMAL;
+		relativePath_ = false;
+		dq_ = false;
+		kaigyo_ = 0;
+		code_ = false;
 	}
 };
 // Global Variables:
@@ -73,6 +82,17 @@ void showErrorAndExit(LPCTSTR pMessage)
 	exit(1);
 }
 
+#define MAX_CODENAME 128
+#define CODENAME_CPP			TEXT("C++")
+#define CODENAME_CPPWIDE		TEXT("C++ (Wide)")
+#define CODENAME_CSHARP			TEXT("C#")
+
+static LPCTSTR codeNames[] =
+{
+	CODENAME_CPP,
+	CODENAME_CPPWIDE,
+	CODENAME_CSHARP,
+};
 INT_PTR CALLBACK DialogProc(
 	_In_ HWND   hwndDlg,
 	_In_ UINT   uMsg,
@@ -81,14 +101,24 @@ INT_PTR CALLBACK DialogProc(
 )
 {
 	static DialogData* sDT = NULL;
+	static HWND shCmbCode;
 	switch (uMsg)
 	{
 		case WM_INITDIALOG:
 		{
 			sDT = (DialogData*)lParam;
+			shCmbCode = GetDlgItem(hwndDlg, IDC_COMBO_PROGRAMCODE);
+			assert(IsWindow(shCmbCode));
+
 			i18nChangeChildWindowText(hwndDlg);
+
 			SendDlgItemMessage(hwndDlg, IDC_RADIO_ABSOLUTEPATH, BM_SETCHECK, BST_CHECKED, 0);
 			SendDlgItemMessage(hwndDlg, IDC_RADIO_NORMAL, BM_SETCHECK, BST_CHECKED, 0);
+
+			EnableWindow(shCmbCode, FALSE);
+			for (int i = 0; i < _countof(codeNames);++i)
+				SendMessage(shCmbCode, CB_ADDSTRING, (WPARAM)0, (LPARAM)codeNames[i]);
+			SendMessage(shCmbCode, CB_SETCURSEL, 0, 0);
 			CenterWindow(hwndDlg);
 			PostMessage(hwndDlg, WM_APP_INITIALUPDATE, 0, 0);
 			return TRUE;
@@ -106,6 +136,12 @@ INT_PTR CALLBACK DialogProc(
 		{
 			switch (LOWORD(wParam))
 			{
+				case IDC_CHECK_PROGRAMCODE:
+				{
+					BOOL bCodeChecked=SendDlgItemMessage(hwndDlg, IDC_CHECK_PROGRAMCODE, BM_GETCHECK, 0, 0);
+					EnableWindow(shCmbCode, bCodeChecked);
+				}
+				break;
 				case IDOK:
 				{
 					if (SendDlgItemMessage(hwndDlg, IDC_RADIO_ABSOLUTEPATH, BM_GETCHECK, 0, 0))
@@ -127,7 +163,12 @@ INT_PTR CALLBACK DialogProc(
 					sDT->dq_ = !!SendDlgItemMessage(hwndDlg, IDC_CHECK_DQ, BM_GETCHECK, 0, 0);
 					sDT->kaigyo_ = !!SendDlgItemMessage(hwndDlg, IDC_CHECK_LINE, BM_GETCHECK, 0, 0);
 					
-					
+					sDT->code_ = !!SendDlgItemMessage(hwndDlg, IDC_CHECK_PROGRAMCODE, BM_GETCHECK, 0, 0);
+					int cursel = SendMessage(shCmbCode, CB_GETCURSEL, 0, 0);
+					TCHAR buff[MAX_CODENAME]; buff[0] = 0;
+					SendMessage(shCmbCode, CB_GETLBTEXT, cursel,(LPARAM)buff);
+					sDT->codeName_ = buff;
+
 					EndDialog(hwndDlg, IDOK);
 					return TRUE;
 				}
@@ -152,7 +193,22 @@ tstring ConvertPath(const DialogData& dt, LPCTSTR pPath)
 	if (dt.relativePath_)
 		ret = stdwin32::stdGetFileName(ret);
 	
-	switch (dt.ct_)
+	ConvertType ct = dt.ct_;
+	bool dq = dt.dq_;
+	if (dt.code_)
+	{
+		if (ct != CT_SLASH)
+		{
+			if (dt.codeName_ == CODENAME_CPP)
+				ct = CT_DOUBLESBACKLASH;
+			else if (dt.codeName_ == CODENAME_CPPWIDE)
+				ct = CT_DOUBLESBACKLASH;
+			else if (dt.codeName_ == CODENAME_CSHARP)
+				ct = CT_NORMAL;
+		}
+		dq = true;
+	}
+	switch (ct)
 	{
 	case CT_NORMAL:
 		break;
@@ -166,11 +222,18 @@ tstring ConvertPath(const DialogData& dt, LPCTSTR pPath)
 		break;
 	}
 
-	if (dt.dq_)
+	if (dq)
 	{
 		ret = _T("\"") + ret;
 		ret += _T("\"");
+
+		if (dt.codeName_ == CODENAME_CPPWIDE)
+			ret = L"L" + ret;
+		else if (dt.codeName_ == CODENAME_CSHARP)
+			ret = L"@" + ret;
 	}
+	if (dt.code_)
+		ret += L",";
 
 	return ret;
 }
@@ -189,15 +252,25 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     // Initialize global strings
     LoadStringW(hInstance, IDS_APP_TITLE, szTitle, MAX_LOADSTRING);
 
+	CCommandLineParser parser;
+	bool bDetail = false;
+	parser.AddOption(L"/d", 0, &bDetail);
+	COption opMain;
+	parser.AddOption(&opMain);
+	parser.Parse();
 
-	if (__argc < 2)
+	if (opMain.getValueCount()==0)
 	{
 		showErrorAndExit(I18N(L"No Arguments"));
 	}
 
 	DialogData dt;
-	if ((GetAsyncKeyState(VK_SHIFT) < 0) ||
-		(GetAsyncKeyState(VK_CONTROL)< 0) )
+	if (!bDetail)
+	{
+		bDetail = (GetAsyncKeyState(VK_SHIFT) < 0) ||
+			(GetAsyncKeyState(VK_CONTROL) < 0);
+	}
+	if ( bDetail)
 	{
 		if (IDOK != DialogBoxParam(hInst,
 			MAKEINTRESOURCE(IDD_PATHTOCLIPBOARD_DIALOG),
@@ -210,11 +283,38 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	}
 
 	wstring str;
-	for (int i = 1; i < __argc;++i)
+	if (dt.code_)
 	{
-		str += ConvertPath(dt, __wargv[i]);
+		if (dt.codeName_ == CODENAME_CPP)
+		{
+			str += L"char* filenames[] = {";
+		}
+		else if (dt.codeName_ == CODENAME_CPPWIDE)
+		{
+			str += L"wchar_t* filenames[] = {";
+		}
+		else if (dt.codeName_ == CODENAME_CSHARP)
+		{
+			str += L"string[] filenames = new string[]{";
+		}
+		else
+		{
+			assert(false);
+		}
+
+		str += dt.kaigyo_ ? KAIGYO : L"";
+	}
+	for (size_t i = 0; i<opMain.getValueCount();++i)
+	{
+		str += ConvertPath(dt, opMain.getValue(i).c_str());
 		str += dt.kaigyo_ ? KAIGYO : SPACE;
 	}
+	if (dt.code_)
+	{
+		str += L"};";
+		str += dt.kaigyo_ ? KAIGYO : L"";
+	}
+
 	str=trim(str, dt.kaigyo_ ? KAIGYO : SPACE);
 
 	if (!SetClipboardText(NULL, str.c_str()))
