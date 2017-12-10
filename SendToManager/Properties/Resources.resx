@@ -187,6 +187,51 @@
   <data name="SHORTCUT_CREATION_FAILED" xml:space="preserve">
     <value>Failed to create shortcut.</value>
   </data>
+  <data name="TOOL_EXPLANATION_CHANGEFILENAME" xml:space="preserve">
+    <value>Change File Name</value>
+  </data>
+  <data name="TOOL_EXPLANATION_CHANGEFILETIME" xml:space="preserve">
+    <value>Change File Time</value>
+  </data>
+  <data name="TOOL_EXPLANATION_COMMANDLINE" xml:space="preserve">
+    <value>Open CommandPrompt</value>
+  </data>
+  <data name="TOOL_EXPLANATION_COPYFILECONTENT" xml:space="preserve">
+    <value>Copy File Content</value>
+  </data>
+  <data name="TOOL_EXPLANATION_COPYFIRSTLINE" xml:space="preserve">
+    <value>Copy First Line of File</value>
+  </data>
+  <data name="TOOL_EXPLANATION_DOTNET4RUNNABLE" xml:space="preserve">
+    <value>Make .NET2 Application to Run with .NET4</value>
+  </data>
+  <data name="TOOL_EXPLANATION_MOVETO" xml:space="preserve">
+    <value>Move to</value>
+  </data>
+  <data name="TOOL_EXPLANATION_PATHTOCLIPBOARD" xml:space="preserve">
+    <value>Copy Path</value>
+  </data>
+  <data name="TOOL_EXPLANATION_REGEXFILENAMERENAMER" xml:space="preserve">
+    <value>Rename with Regex</value>
+  </data>
+  <data name="TOOL_EXPLANATION_RENAMETOFOLDERNAME" xml:space="preserve">
+    <value>Rename to Folder Name</value>
+  </data>
+  <data name="TOOL_EXPLANATION_RUNASFILE" xml:space="preserve">
+    <value>Run as Administrator</value>
+  </data>
+  <data name="TOOL_EXPLANATION_RUNONEBYONE" xml:space="preserve">
+    <value>Run one by one</value>
+  </data>
+  <data name="TOOL_EXPLANATION_RUNWITHARGS" xml:space="preserve">
+    <value>Run with Arguments</value>
+  </data>
+  <data name="TOOL_EXPLANATION_SENDTOSENDER" xml:space="preserve">
+    <value>Send to Sendto</value>
+  </data>
+  <data name="TOOL_EXPLANATION_TOUCH" xml:space="preserve">
+    <value>Touch</value>
+  </data>
   <data name="UNKNOWN_OPTION" xml:space="preserve">
     <value>Unknow option</value>
   </data>

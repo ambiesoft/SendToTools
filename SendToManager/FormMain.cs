@@ -49,8 +49,8 @@ namespace SendToManager
         static readonly string KEY_COLUMN = "Column";
         static readonly string KEY_LISTVIEWCOLOR1 = "ListViewColor1";
         static readonly string KEY_LISTVIEWCOLOR2 = "ListViewColor2";
-        
-        
+
+
 
 
         static readonly string COLUMN_NAME = "Name";
@@ -84,7 +84,7 @@ namespace SendToManager
                 ColumnHeader chName = new ColumnHeader();
                 chName.Name = COLUMN_NAME;
                 chName.Text = Properties.Resources.COLUMN_NAME;
-                chName.Width = 50;
+                chName.Width = 150;
                 chName.Tag = new ColumnInfo(txtEditName);
                 lvMain.Columns.Add(chName);
             }
@@ -93,7 +93,7 @@ namespace SendToManager
                 ColumnHeader chPath = new ColumnHeader();
                 chPath.Name = COLUMN_PATH;
                 chPath.Text = Properties.Resources.COLUMN_PATH;
-                chPath.Width = 50;
+                chPath.Width = 150;
                 chPath.Tag = new ColumnInfo(cmbEditFile);
                 lvMain.Columns.Add(chPath);
             }
@@ -111,7 +111,7 @@ namespace SendToManager
                 ColumnHeader chWorkingDirectory = new ColumnHeader();
                 chWorkingDirectory.Name = COLUMN_WORKINGDIRECTORY;
                 chWorkingDirectory.Text = Properties.Resources.COLUMN_WORKINGDIRECTORY;
-                chWorkingDirectory.Width = 50;
+                chWorkingDirectory.Width = 150;
                 chWorkingDirectory.Tag = new ColumnInfo(cmbEditDirectory);
                 lvMain.Columns.Add(chWorkingDirectory);
             }
@@ -138,7 +138,7 @@ namespace SendToManager
                 ColumnHeader chRunAsAdmin = new ColumnHeader();
                 chRunAsAdmin.Name = COLUMN_RUNASADMIN;
                 chRunAsAdmin.Text = Properties.Resources.COLUMN_RUNASADMIN;
-                chRunAsAdmin.Width = 10;
+                chRunAsAdmin.Width = 50;
                 chRunAsAdmin.Tag = new ColumnInfo(cmbEditBool);
                 lvMain.Columns.Add(chRunAsAdmin);
             }
@@ -181,9 +181,9 @@ namespace SendToManager
                                                 ref shfi,
                                                 (uint)Marshal.SizeOf(shfi),
                                                 16 | //SHGFI_USEFILEATTRIBUTES 
-                                                NativeMethods.SHGFI_DISPLAYNAME         |
-                                                NativeMethods.SHGFI_SYSICONINDEX        |
-                                                NativeMethods.SHGFI_SMALLICON           |
+                                                NativeMethods.SHGFI_DISPLAYNAME |
+                                                NativeMethods.SHGFI_SYSICONINDEX |
+                                                NativeMethods.SHGFI_SMALLICON |
                                                 0
                                                 );
                 Debug.Assert(himl == hSysImgList); // should be the same imagelist as the one we set
@@ -302,7 +302,7 @@ namespace SendToManager
             {
                 Alert(ex.Message);
             }
-             
+
             UpdateItem(e.Item);
             e.DisplayText = e.Item.SubItems[e.SubItem].Text;
         }
@@ -330,7 +330,7 @@ namespace SendToManager
             lvMain.StartEditing(edittingControl, e.Item, e.SubItem);
         }
 
-        static void Info(Form win, string message,bool noParent)
+        static void Info(Form win, string message, bool noParent)
         {
             CppUtils.CenteredMessageBox(noParent ? null : win,
                 message,
@@ -345,7 +345,7 @@ namespace SendToManager
 
         void Info(string message)
         {
-            Info(this,message);
+            Info(this, message);
         }
 
         static void Alert(Form win, string message, bool noParent)
@@ -362,7 +362,7 @@ namespace SendToManager
         }
         void Alert(string message)
         {
-            Alert(this,message);
+            Alert(this, message);
         }
 
         static DialogResult YesOrNo(Form win, string message, bool noParent)
@@ -538,12 +538,12 @@ namespace SendToManager
                         item.Tag = new LVInfo(fi.FullName);
 
                         UpdateItem(item);
-                        item.BackColor = colored ? 
+                        item.BackColor = colored ?
                             option_.btnLVColor1.BackColor :
                             option_.btnLVColor2.BackColor;
-                        colored =!colored;
+                        colored = !colored;
 
-                        
+
                         lvMain.Items.Add(item);
                     }
                 }
@@ -559,7 +559,7 @@ namespace SendToManager
 
         void constructInventory()
         {
-            while(inventoryToolStripMenuItem.DropDownItems.Count > 2)
+            while (inventoryToolStripMenuItem.DropDownItems.Count > 2)
                 inventoryToolStripMenuItem.DropDownItems.RemoveAt(2);
 
             try
@@ -593,9 +593,40 @@ namespace SendToManager
 
                 if (bCreateDefaultItems)
                 {
-                    string targetfullpath = Path.Combine(ToolsDir, "ChangeFileName.exe");
-                    string shortcutfilefullpath = Path.Combine(CurrentInventoryFolder, "ChangeFileName.lnk");
-                    CreateShortcutWSH(shortcutfilefullpath, targetfullpath);
+                    KeyValuePair<string, string>[] kvpArr = new KeyValuePair<string, string>[] {
+new KeyValuePair<string, string>(@"CommandPrompt.bat", Properties.Resources.TOOL_EXPLANATION_COMMANDLINE),
+new KeyValuePair<string, string>(@"ChangeFileName.exe", Properties.Resources.TOOL_EXPLANATION_CHANGEFILENAME),
+new KeyValuePair<string, string>(@"ChangeFileTime.exe", Properties.Resources.TOOL_EXPLANATION_CHANGEFILETIME),
+new KeyValuePair<string, string>(@"CopyFileContent.exe", Properties.Resources.TOOL_EXPLANATION_COPYFILECONTENT),
+new KeyValuePair<string, string>(@"CopyFirstLine.exe", Properties.Resources.TOOL_EXPLANATION_COPYFIRSTLINE),
+new KeyValuePair<string, string>(@"DotNet4Runnable.exe", Properties.Resources.TOOL_EXPLANATION_DOTNET4RUNNABLE),
+new KeyValuePair<string, string>(@"MoveTo.exe", Properties.Resources.TOOL_EXPLANATION_MOVETO),
+new KeyValuePair<string, string>(@"PathToClipboard.exe", Properties.Resources.TOOL_EXPLANATION_PATHTOCLIPBOARD),
+new KeyValuePair<string, string>(@"RegexFilenameRenamer.exe", Properties.Resources.TOOL_EXPLANATION_REGEXFILENAMERENAMER),
+
+new KeyValuePair<string, string>(@"RenameToFoldername.exe", Properties.Resources.TOOL_EXPLANATION_RENAMETOFOLDERNAME),
+new KeyValuePair<string, string>(@"RunFileAs.exe", Properties.Resources.TOOL_EXPLANATION_RUNASFILE),
+new KeyValuePair<string, string>(@"RunOnebyOne.exe", Properties.Resources.TOOL_EXPLANATION_RUNONEBYONE),
+new KeyValuePair<string, string>(@"RunWithArgs.exe", Properties.Resources.TOOL_EXPLANATION_RUNWITHARGS),
+new KeyValuePair<string, string>(@"SendToSender.exe", Properties.Resources.TOOL_EXPLANATION_SENDTOSENDER),
+new KeyValuePair<string, string>(@"touch.exe", Properties.Resources.TOOL_EXPLANATION_TOUCH),
+
+
+//@"ShortcutRenamer.exe",
+//@"ShortcutRenamer.vshost.exe",
+//@"ShowEnv.exe",
+//@"Switch3264.exe",
+
+
+                    };
+
+
+                    foreach (var kv in kvpArr)
+                    {
+                        string targetfullpath = Path.Combine(ToolsDir, kv.Key);
+                        string shortcutfilefullpath = Path.Combine(CurrentInventoryFolder, kv.Value + ".lnk");
+                        CreateShortcutWSH(shortcutfilefullpath, targetfullpath);
+                    }
                 }
             }
             catch (Exception ex)
@@ -632,7 +663,7 @@ namespace SendToManager
                 {
                     Profile.GetString(SECTION_OPTION, KEY_CURRENT_INVENTORY, "Main", out currentInventory_, LoadedIni);
                 }
-                
+
                 return currentInventory_;
             }
             set
@@ -691,16 +722,16 @@ namespace SendToManager
             // complete with their corresponding name and icon indices.
 
             constructInventory();
-            if(!string.IsNullOrEmpty(Program.ApplyInventory))
+            if (!string.IsNullOrEmpty(Program.ApplyInventory))
             {
-                string folder = GetInventoryFolder(Program.ApplyInventory); 
-                if(!Directory.Exists(folder))
+                string folder = GetInventoryFolder(Program.ApplyInventory);
+                if (!Directory.Exists(folder))
                 {
                     Alert(this, string.Format(Properties.Resources.INVENTORY_NOT_EXIST, Program.ApplyInventory), true);
                 }
                 else
                 {
-                    Deploy(this, folder, Program.ApplyInventory,true);
+                    Deploy(this, folder, Program.ApplyInventory, true);
                 }
                 Close();
                 return;
@@ -751,7 +782,7 @@ namespace SendToManager
             int selCount = lvMain.SelectedItems.Count;
             ListViewItem[] selItems = new ListViewItem[selCount];
             lvMain.SelectedItems.CopyTo(selItems, 0);
-            if(bDown)
+            if (bDown)
             {
                 List<ListViewItem> revs = new List<ListViewItem>(selItems);
                 revs.Reverse();
@@ -794,7 +825,7 @@ namespace SendToManager
         {
 
             UpDown(false);
-            
+
         }
 
         private void tsbDown_Click(object sender, EventArgs e)
@@ -869,12 +900,12 @@ namespace SendToManager
 
                 if (toRemoves.Count > 0)
                 {
-                    DialogResult dr= YesOrNoOrCancel( form, sb.ToString(), commandRunOnly );
-                    if(dr==DialogResult.No)
+                    DialogResult dr = YesOrNoOrCancel(form, sb.ToString(), commandRunOnly);
+                    if (dr == DialogResult.No)
                     {
                         break;
                     }
-                    else if (dr==DialogResult.Cancel)
+                    else if (dr == DialogResult.Cancel)
                     {
                         return false;
                     }
@@ -891,7 +922,7 @@ namespace SendToManager
 
         private void tsbDeploy_Click(object sender, EventArgs e)
         {
-            Deploy(this,CurrentInventoryFolder,CurrentInventory);
+            Deploy(this, CurrentInventoryFolder, CurrentInventory);
         }
         internal static void Deploy(Form form, string currentInvFolder, string curinv)
         {
@@ -900,7 +931,7 @@ namespace SendToManager
         internal static void Deploy(Form form, string currentInvFolder, string curinv, bool commandRunOnly)
         {
             // first remove deployed shortcuts
-            if (!Displace(form, Properties.Resources.DO_YOU_WANT_TO_REMOVE_FILES_BEFORE_DEPLOY,commandRunOnly))
+            if (!Displace(form, Properties.Resources.DO_YOU_WANT_TO_REMOVE_FILES_BEFORE_DEPLOY, commandRunOnly))
                 return;
 
             try
@@ -916,7 +947,7 @@ namespace SendToManager
                 int ret = CppUtils.CopyFile(src, dst);
                 if (ret != 0 && ret != 1)
                 {
-                    Alert(form,Properties.Resources.FAILED_TO_COPY_FILES);
+                    Alert(form, Properties.Resources.FAILED_TO_COPY_FILES);
                     return;
                 }
 
@@ -926,7 +957,7 @@ namespace SendToManager
                     string fulltarget = Path.Combine(SendToFolder, fi.Name);
                     if (!Helper.WriteAlternateStream(fulltarget, "1"))
                     {
-                        Alert(form,Properties.Resources.FAILED_TO_COPY_FILES);
+                        Alert(form, Properties.Resources.FAILED_TO_COPY_FILES);
                         return;
                     }
                 }
@@ -935,13 +966,13 @@ namespace SendToManager
             }
             catch (Exception ex)
             {
-                Alert(form,ex.Message);
+                Alert(form, ex.Message);
             }
         }
 
         private void tsbAssignNumber_Click(object sender, EventArgs e)
         {
-            if(DialogResult.Yes!= CppUtils.CenteredMessageBox(this,
+            if (DialogResult.Yes != CppUtils.CenteredMessageBox(this,
                 Properties.Resources.ASK_ASSIGN_NUMBERS,
                 ProductName,
                 MessageBoxButtons.YesNo,
@@ -1009,7 +1040,7 @@ namespace SendToManager
 
         private void tsbDisplace_Click(object sender, EventArgs e)
         {
-            Displace(this,Properties.Resources.DO_YOU_WANT_TO_REMOVE_FILES,false);
+            Displace(this, Properties.Resources.DO_YOU_WANT_TO_REMOVE_FILES, false);
         }
 
         private void FormMain_FormClosing(object sender, FormClosingEventArgs e)
@@ -1019,7 +1050,7 @@ namespace SendToManager
             AmbLib.SaveFormXYWH(this, SECTION_OPTION, ini);
 
             AmbLib.SaveListViewColumnWidth(lvMain, SECTION_OPTION, KEY_COLUMN, ini);
-            
+
 
             Profile.WriteInt(SECTION_OPTION, KEY_LISTVIEWCOLOR1, option_.btnLVColor1.BackColor.ToArgb(), ini);
             Profile.WriteInt(SECTION_OPTION, KEY_LISTVIEWCOLOR2, option_.btnLVColor2.BackColor.ToArgb(), ini);
@@ -1038,12 +1069,12 @@ namespace SendToManager
         }
         private void tsbRefresh_Click(object sender, EventArgs e)
         {
-            RefreshItems(); 
+            RefreshItems();
         }
 
         private void lvMain_KeyDown(object sender, KeyEventArgs e)
         {
-            if(e.KeyCode==Keys.F2)
+            if (e.KeyCode == Keys.F2)
             {
                 if (lvMain.SelectedItems.Count != 0)
                 {
@@ -1055,7 +1086,7 @@ namespace SendToManager
 
         private void cmbEditDirectory_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            using(FolderBrowserDialog fbd=new FolderBrowserDialog())
+            using (FolderBrowserDialog fbd = new FolderBrowserDialog())
             {
                 string defaultvalue = ei_.Initial;
                 fbd.SelectedPath = defaultvalue;
@@ -1073,11 +1104,11 @@ namespace SendToManager
 
         private void cmbEditFile_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            using(OpenFileDialog ofd = new OpenFileDialog())
+            using (OpenFileDialog ofd = new OpenFileDialog())
             {
                 ofd.InitialDirectory = Path.GetDirectoryName(ei_.Initial);
                 ofd.FileName = Path.GetFileName(ei_.Initial);
-                if(DialogResult.OK != ofd.ShowDialog())
+                if (DialogResult.OK != ofd.ShowDialog())
                 {
                     cmbEditFile.Text = ei_.Initial;
                     lvMain.EndEditing(false);
@@ -1230,7 +1261,7 @@ namespace SendToManager
         private void addInventoryToolStripMenuItem_Click(object sender, EventArgs e)
         {
             string target = null;
-            if(!GetTextDialog.DoModalDialog(this,
+            if (!GetTextDialog.DoModalDialog(this,
                 Properties.Resources.ENTER_INVECTORY_NAME,
                 Properties.Resources.INVENTORY_NAME,
                 ref target))
@@ -1253,7 +1284,7 @@ namespace SendToManager
             foreach (ListViewItem lvi in lvMain.SelectedItems)
             {
                 string filename = GetLVInfo(lvi).FullName;
-                if(!System.IO.File.Exists(filename))
+                if (!System.IO.File.Exists(filename))
                 {
                     Alert(string.Format(Properties.Resources.SELECTED_FILE_DOESNOT_EXIST_REFRESH_FIRST,
                         filename));
@@ -1265,10 +1296,10 @@ namespace SendToManager
                 string ext = Path.GetExtension(filename);
 
                 string dstFull;
-                for(int i=1 ;; ++i)
+                for (int i = 1; ; ++i)
                 {
                     string newname = name + "_" + i.ToString();
-                    string test = Path.Combine(dir, newname) + ext ;
+                    string test = Path.Combine(dir, newname) + ext;
                     if (!System.IO.File.Exists(test))
                     {
                         dstFull = test;
@@ -1280,7 +1311,7 @@ namespace SendToManager
             }
             if (dupSrc.Count == 0)
                 return;
-            if(dupSrc.Count!=dupDst.Count)
+            if (dupSrc.Count != dupDst.Count)
             {
                 Alert("Unexpected Error");
                 return;
@@ -1299,17 +1330,17 @@ namespace SendToManager
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             List<ListViewItem> delItems = new List<ListViewItem>();
-            foreach(ListViewItem lvi in lvMain.SelectedItems)
+            foreach (ListViewItem lvi in lvMain.SelectedItems)
             {
                 delItems.Add(lvi);
             }
 
-            List<string> delFiles=new List<string>();
-            foreach(ListViewItem lvi in delItems)
+            List<string> delFiles = new List<string>();
+            foreach (ListViewItem lvi in delItems)
             {
                 LVInfo lvInfo = GetLVInfo(lvi);
                 string filename = lvInfo.FullName;
-                if(System.IO.File.Exists(filename))
+                if (System.IO.File.Exists(filename))
                 {
                     delFiles.Add(filename);
                 }

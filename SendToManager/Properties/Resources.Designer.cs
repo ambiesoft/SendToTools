@@ -268,6 +268,141 @@ namespace SendToManager.Properties {
         }
         
         /// <summary>
+        ///   Change File Name に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string TOOL_EXPLANATION_CHANGEFILENAME {
+            get {
+                return ResourceManager.GetString("TOOL_EXPLANATION_CHANGEFILENAME", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Change File Time に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string TOOL_EXPLANATION_CHANGEFILETIME {
+            get {
+                return ResourceManager.GetString("TOOL_EXPLANATION_CHANGEFILETIME", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Open CommandPrompt に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string TOOL_EXPLANATION_COMMANDLINE {
+            get {
+                return ResourceManager.GetString("TOOL_EXPLANATION_COMMANDLINE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Copy File Content に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string TOOL_EXPLANATION_COPYFILECONTENT {
+            get {
+                return ResourceManager.GetString("TOOL_EXPLANATION_COPYFILECONTENT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Copy First Line of File に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string TOOL_EXPLANATION_COPYFIRSTLINE {
+            get {
+                return ResourceManager.GetString("TOOL_EXPLANATION_COPYFIRSTLINE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Make .NET2 Application to Run with .NET4 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string TOOL_EXPLANATION_DOTNET4RUNNABLE {
+            get {
+                return ResourceManager.GetString("TOOL_EXPLANATION_DOTNET4RUNNABLE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Move to に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string TOOL_EXPLANATION_MOVETO {
+            get {
+                return ResourceManager.GetString("TOOL_EXPLANATION_MOVETO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Copy Path に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string TOOL_EXPLANATION_PATHTOCLIPBOARD {
+            get {
+                return ResourceManager.GetString("TOOL_EXPLANATION_PATHTOCLIPBOARD", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Rename with Regex に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string TOOL_EXPLANATION_REGEXFILENAMERENAMER {
+            get {
+                return ResourceManager.GetString("TOOL_EXPLANATION_REGEXFILENAMERENAMER", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Rename to Folder Name に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string TOOL_EXPLANATION_RENAMETOFOLDERNAME {
+            get {
+                return ResourceManager.GetString("TOOL_EXPLANATION_RENAMETOFOLDERNAME", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Run as Administrator に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string TOOL_EXPLANATION_RUNASFILE {
+            get {
+                return ResourceManager.GetString("TOOL_EXPLANATION_RUNASFILE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Run one by one に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string TOOL_EXPLANATION_RUNONEBYONE {
+            get {
+                return ResourceManager.GetString("TOOL_EXPLANATION_RUNONEBYONE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Run with Arguments に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string TOOL_EXPLANATION_RUNWITHARGS {
+            get {
+                return ResourceManager.GetString("TOOL_EXPLANATION_RUNWITHARGS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Send to Sendto に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string TOOL_EXPLANATION_SENDTOSENDER {
+            get {
+                return ResourceManager.GetString("TOOL_EXPLANATION_SENDTOSENDER", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Touch に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string TOOL_EXPLANATION_TOUCH {
+            get {
+                return ResourceManager.GetString("TOOL_EXPLANATION_TOUCH", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Unknow option に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string UNKNOWN_OPTION {
