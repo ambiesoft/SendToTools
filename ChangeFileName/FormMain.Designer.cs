@@ -149,7 +149,6 @@
             this.tsmiUnderbar2hyphen,
             this.tsmiCn2Jp});
             this.cmModify.Name = "ccmModify";
-            this.cmModify.OwnerItem = this.modifyToolStripMenuItem;
             resources.ApplyResources(this.cmModify, "cmModify");
             // 
             // tsmiMakeFileNamable

@@ -124,7 +124,7 @@
     <value>実行(&amp;L)</value>
   </data>
   <data name="btnTrash.Text" xml:space="preserve">
-    <value>ゴミ箱(&amp;R)</value>
+    <value>ごみ箱(&amp;R)</value>
   </data>
   <data name="btnMoveTo.Text" xml:space="preserve">
     <value>移動して閉じる(&amp;M)</value>
@@ -2007,5 +2007,11 @@
   </data>
   <data name="pasteTotailToolStripMenuItem1.Text" xml:space="preserve">
     <value>末尾に追加(&amp;T)</value>
+  </data>
+  <data name="tsmiUnderbar2hyphenSel.Text" xml:space="preserve">
+    <value>_2-</value>
+  </data>
+  <data name="addModifyToolToolStripMenuItem.Text" xml:space="preserve">
+    <value>変更ツールを追加(&amp;A)</value>
   </data>
 </root>

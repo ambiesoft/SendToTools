@@ -86,36 +86,32 @@ namespace ChangeFileName
         }
         private void itemNewFolder_Click(object sender, EventArgs e)
         {
+            //var dlg1 = new Ionic.Utils.FolderBrowserDialogEx();
+            //dlg1.Description = "Select a folder to extract to:";
+            //dlg1.ShowNewFolderButton = true;
+            //dlg1.ShowEditBox = true;
+            ////dlg1.NewStyle = false;
+            ////dlg1.SelectedPath = txtExtractDirectory.Text;
+            //dlg1.ShowFullPathInEditBox = true;
+            //// dlg1.RootFolder = System.Environment.SpecialFolder.MyComputer;
 
-
-            var dlg1 = new Ionic.Utils.FolderBrowserDialogEx();
-            dlg1.Description = "Select a folder to extract to:";
-            dlg1.ShowNewFolderButton = true;
-            dlg1.ShowEditBox = true;
-            //dlg1.NewStyle = false;
-            //dlg1.SelectedPath = txtExtractDirectory.Text;
-            dlg1.ShowFullPathInEditBox = true;
-            // dlg1.RootFolder = System.Environment.SpecialFolder.MyComputer;
-
-            // Show the FolderBrowserDialog.
-            DialogResult result = dlg1.ShowDialog();
-            if (result != DialogResult.OK)
-            {
-                // txtExtractDirectory.Text = dlg1.SelectedPath;
-                return;
-            }
-
-
-            //FolderBrowserDialog fbd = new FolderBrowserDialog();
-            //using (new Ambiesoft.CenterWinDialog(this))
+            //// Show the FolderBrowserDialog.
+            //DialogResult result = dlg1.ShowDialog();
+            //if (result != DialogResult.OK)
             //{
-            //    if (DialogResult.OK != fbd.ShowDialog(this))
-            //        return;
+            //    // txtExtractDirectory.Text = dlg1.SelectedPath;
+            //    return;
             //}
+            //string selectedPath = dlg1.SelectedPath;
+
+            string selectedPath = Ambiesoft.CppUtils.GetSelectedFolder(this, Application.ProductName);
+            if (string.IsNullOrEmpty(selectedPath))
+                return;
+
             List<string> dirs = new List<string>(DiskDirs);
 
-            dirs.RemoveAll(n => n.Equals(dlg1.SelectedPath, StringComparison.OrdinalIgnoreCase));
-            dirs.Insert(0, dlg1.SelectedPath);
+            dirs.RemoveAll(n => n.Equals(selectedPath, StringComparison.OrdinalIgnoreCase));
+            dirs.Insert(0, selectedPath);
 
             if (dirs.Count > MaxDirCount)
             {
@@ -123,7 +119,7 @@ namespace ChangeFileName
             }
             DiskDirs = dirs.ToArray();
 
-            moveToAndClose(dlg1.SelectedPath);
+            moveToAndClose(selectedPath);
         }
         private void itemClearFolder_Click(object sender, EventArgs e)
         {
