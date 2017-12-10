@@ -37,6 +37,8 @@ using Ambiesoft;
 using System.Reflection;
 using System.Diagnostics;
 
+
+
 namespace ChangeFileName
 {
     public partial class FormMain : Form
@@ -50,39 +52,45 @@ namespace ChangeFileName
         {
             InitializeComponent();
 
-            if (File.Exists(IniFile))
+            HashIni ini = Profile.ReadAll(IniFile);
+            int x, y;
+            Ambiesoft.Profile.GetInt("settings", "X", 60, out x, ini);
+            Ambiesoft.Profile.GetInt("settings", "Y", 60, out y, ini);
+
+            bool isin = false;
+            foreach (Screen s in Screen.AllScreens)
             {
-                int x, y;
-                Ambiesoft.Profile.GetInt("settings", "X", 0, out x, IniFile);
-                Ambiesoft.Profile.GetInt("settings", "Y", 0, out y, IniFile);
-
-                bool isin = false;
-                foreach (Screen s in Screen.AllScreens)
+                Point pos = new Point(x, y);
+                if (s.WorkingArea.Contains(pos))
                 {
-                    Point pos = new Point(x, y);
-                    if (s.WorkingArea.Contains(pos))
-                    {
-                        isin = true;
-                        break;
-                    }
+                    isin = true;
+                    break;
                 }
+            }
 
-                if (isin)
-                {
-                    StartPosition = FormStartPosition.Manual;
-                    this.Location = new Point(x, y);
-                }
-            }            
+            if (isin)
+            {
+                StartPosition = FormStartPosition.Manual;
+                this.Location = new Point(x, y);
+
+                int width, height;
+                Profile.GetInt("settings", "Width", -1, out width, ini);
+                Profile.GetInt("settings", "Height", -1, out height, ini);
+                if (width > 0 && height > 0)
+                    this.Size = new Size(width, height);
+            }
+
 
             int intval;
             bool boolval;
-            if (Ambiesoft.Profile.GetInt("settings", "AutoRun", 0, out intval, IniFile))
+            if (Ambiesoft.Profile.GetInt("settings", "AutoRun", 0, out intval, ini))
             {
                 chkAutoRun.Checked = intval != 0;
             }
 
-            Ambiesoft.Profile.GetBool("settings", "TopMost", false, out boolval, IniFile);
+            Ambiesoft.Profile.GetBool("settings", "TopMost", false, out boolval, ini);
             this.TopMost = alwaysOnTopToolStripMenuItem.Checked = boolval;
+
         }
 
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
@@ -100,7 +108,7 @@ namespace ChangeFileName
             Program.SafeProcessStart(this.textName.Tag.ToString(), true);
         }
 
-     
+
 
         private void btnPaste_Click(object sender, EventArgs e)
         {
@@ -175,18 +183,26 @@ namespace ChangeFileName
             }
         }
 
-    
 
-  
+
+
 
         private void FormMain_FormClosed(object sender, FormClosedEventArgs e)
         {
-            Ambiesoft.Profile.WriteInt("settings", "X", Location.X, IniFile);
-            Ambiesoft.Profile.WriteInt("settings", "Y", Location.Y, IniFile);
+            HashIni ini = Profile.ReadAll(IniFile);
+
+            Profile.WriteInt("settings", "X", Location.X, ini);
+            Profile.WriteInt("settings", "Y", Location.Y, ini);
+            Profile.WriteInt("settings", "Width", Size.Width, ini);
+            Profile.WriteInt("settings", "Height", Size.Height, ini);
+
+            if (!Profile.WriteAll(ini, IniFile))
+            {
+                CppUtils.Alert("failed saving ini.");
+            }
         }
 
-        static readonly string[] SizeSuffixes =
-                   { "bytes", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB" };
+        static readonly string[] SizeSuffixes = { "bytes", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB" };
         static string SizeSuffix(Int64 value, int decimalPlaces = 1)
         {
             if (value < 0) { return "-" + SizeSuffix(-value); }
@@ -263,7 +279,7 @@ namespace ChangeFileName
                 MessageBoxIcon.Error);
             }
         }
-  
+
 
 
 
@@ -273,7 +289,7 @@ namespace ChangeFileName
             {
                 Clipboard.SetText(textName.Text);
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
                 showError(ex.Message);
             }
@@ -344,8 +360,8 @@ namespace ChangeFileName
                 if (_currentUnreIndex < 0)
                     _currentUnreIndex = _undoBuffer.Count - 1;
 
-                if(_currentUnreIndex>0)
-                { 
+                if (_currentUnreIndex > 0)
+                {
                     _currentUnreIndex--;
                     string s = _undoBuffer[_currentUnreIndex];
                     // _undoBuffer.RemoveAt(_currentUnreIndex);
@@ -353,7 +369,7 @@ namespace ChangeFileName
                     textName.Text = s;
                 }
             }
-            catch(Exception)
+            catch (Exception)
             {
 
             }
@@ -375,7 +391,7 @@ namespace ChangeFileName
                     textName.Text = s;
                 }
             }
-            catch(Exception)
+            catch (Exception)
             {
 
             }
@@ -384,7 +400,7 @@ namespace ChangeFileName
 
         private void addModifyToolToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            using(ModificationTool dlg = new ModificationTool())
+            using (ModificationTool dlg = new ModificationTool())
             {
                 dlg.ShowDialog();
             }
@@ -411,14 +427,14 @@ namespace ChangeFileName
             {
                 Process.Start("https://github.com/erasoni/SendToTools");
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message,
                     ProductName,
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Exclamation);
             }
-            
+
         }
     }
 }
