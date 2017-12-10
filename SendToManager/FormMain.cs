@@ -373,6 +373,14 @@ namespace SendToManager
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Question);
         }
+        static DialogResult YesOrNoOrCancel(Form win, string message, bool noParent)
+        {
+            return CppUtils.CenteredMessageBox(noParent ? null : win,
+                message,
+                win.ProductName,
+                MessageBoxButtons.YesNoCancel,
+                MessageBoxIcon.Question);
+        }
         static DialogResult YesOrNo(Form win, string message)
         {
             return YesOrNo(win, message, false);
@@ -427,8 +435,14 @@ namespace SendToManager
         {
             UpdateList(false);
         }
-
-        static string InventoryDir
+        static string ToolsDir
+        {
+            get
+            {
+                return Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), "tools");
+            }
+        }
+        static string InventoryRootDir
         {
             get
             {
@@ -437,13 +451,13 @@ namespace SendToManager
         }
         static string GetInventoryFolder(string inv)
         {
-            return Path.Combine(InventoryDir, inv);
+            return Path.Combine(InventoryRootDir, inv);
         }
         string CurrentInventoryFolder
         {
             get
             {
-                string ret = Path.Combine(InventoryDir, CurrentInventory);
+                string ret = Path.Combine(InventoryRootDir, CurrentInventory);
                 if (!Directory.Exists(ret))
                 {
                     Directory.CreateDirectory(ret);
@@ -550,7 +564,8 @@ namespace SendToManager
 
             try
             {
-                if (!Directory.Exists(InventoryDir))
+                bool bCreateDefaultItems = false;
+                if (!Directory.Exists(InventoryRootDir))
                 {
                     if (!Program.YesOrNo(Properties.Resources.DO_YOU_WANT_TO_CREATE_DEFAULT_INVENTORY))
                     {
@@ -558,13 +573,15 @@ namespace SendToManager
                         return;
                     }
 
-                    Directory.CreateDirectory(InventoryDir);
-                    string mainDir = Path.Combine(InventoryDir, "Main");
+                    Directory.CreateDirectory(InventoryRootDir);
+                    string mainDir = Path.Combine(InventoryRootDir, "Main");
                     Directory.CreateDirectory(mainDir);
                     currentInventory_ = "Main";
+
+                    bCreateDefaultItems = true;
                 }
 
-                DirectoryInfo di = new DirectoryInfo(InventoryDir);
+                DirectoryInfo di = new DirectoryInfo(InventoryRootDir);
                 foreach (DirectoryInfo inv in di.GetDirectories())
                 {
                     ToolStripMenuItem tsmi = new ToolStripMenuItem();
@@ -574,7 +591,12 @@ namespace SendToManager
                     inventoryToolStripMenuItem.DropDownItems.Add(tsmi);
                 }
 
-
+                if (bCreateDefaultItems)
+                {
+                    string targetfullpath = Path.Combine(ToolsDir, "ChangeFileName.exe");
+                    string shortcutfilefullpath = Path.Combine(CurrentInventoryFolder, "ChangeFileName.lnk");
+                    CreateShortcutWSH(shortcutfilefullpath, targetfullpath);
+                }
             }
             catch (Exception ex)
             {
@@ -726,30 +748,53 @@ namespace SendToManager
             if (lvMain.SelectedItems.Count <= 0)
                 return;
 
-            ListViewItem item = lvMain.SelectedItems[0];
-            if (item == null)
-                return;
+            int selCount = lvMain.SelectedItems.Count;
+            ListViewItem[] selItems = new ListViewItem[selCount];
+            lvMain.SelectedItems.CopyTo(selItems, 0);
+            if(bDown)
+            {
+                List<ListViewItem> revs = new List<ListViewItem>(selItems);
+                revs.Reverse();
+                selItems = revs.ToArray(); ;
+            }
 
-            int index = lvMain.SelectedIndices[0];
-            int nextI = -1;
-            if (bDown)
+            try
             {
-                if (index + 1 >= lvMain.Items.Count)
-                    return;
-                nextI = index + 1;
+                lvMain.BeginUpdate();
+                foreach (var item in selItems)
+                {
+                    // ListViewItem item = selItems[i];
+                    if (item == null)
+                        return;
+
+                    int index = item.Index;
+                    int nextI = -1;
+                    if (bDown)
+                    {
+                        if (index + 1 >= lvMain.Items.Count)
+                            return;
+                        nextI = index + 1;
+                    }
+                    else
+                    {
+                        if (index <= 0)
+                            return;
+                        nextI = index - 1;
+                    }
+                    lvMain.Items.Remove(item);
+                    lvMain.Items.Insert(nextI, item);
+                }
             }
-            else
+            finally
             {
-                if (index <= 0)
-                    return;
-                nextI = index - 1;
+                lvMain.EndUpdate();
             }
-            lvMain.Items.Remove(item);
-            lvMain.Items.Insert(nextI, item);
         }
         private void tsbUp_Click(object sender, EventArgs e)
         {
+
             UpDown(false);
+            
         }
 
         private void tsbDown_Click(object sender, EventArgs e)
@@ -824,9 +869,14 @@ namespace SendToManager
 
                 if (toRemoves.Count > 0)
                 {
-                    if (DialogResult.Yes != YesOrNo( form, sb.ToString(), commandRunOnly ))
+                    DialogResult dr= YesOrNoOrCancel( form, sb.ToString(), commandRunOnly );
+                    if(dr==DialogResult.No)
                     {
                         break;
+                    }
+                    else if (dr==DialogResult.Cancel)
+                    {
+                        return false;
                     }
 
                     if (0 != CppUtils.DeleteFiles(toRemoves.ToArray()))
@@ -891,6 +941,14 @@ namespace SendToManager
 
         private void tsbAssignNumber_Click(object sender, EventArgs e)
         {
+            if(DialogResult.Yes!= CppUtils.CenteredMessageBox(this,
+                Properties.Resources.ASK_ASSIGN_NUMBERS,
+                ProductName,
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question))
+            {
+                return;
+            }
             UpdateList(true);
         }
 
@@ -1258,9 +1316,12 @@ namespace SendToManager
             }
             if (delFiles.Count == 0)
                 return;
-            
-            CppUtils.DeleteFiles(delFiles.ToArray());
-            RefreshItems();
+
+            if (0 == CppUtils.DeleteFiles(delFiles.ToArray()))
+            {
+                foreach (var item in delItems)
+                    lvMain.Items.Remove(item);
+            }
         }
 
         private void refershToolStripMenuItem_Click(object sender, EventArgs e)

@@ -61,6 +61,7 @@
             this.duplicateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.refershToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
             this.tsList.SuspendLayout();
             this.menuMain.SuspendLayout();
             this.panelRoot.SuspendLayout();
@@ -278,8 +279,9 @@
             // 
             this.ctxList.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.duplicateToolStripMenuItem,
-            this.deleteToolStripMenuItem,
-            this.refershToolStripMenuItem});
+            this.refershToolStripMenuItem,
+            this.toolStripMenuItem2,
+            this.deleteToolStripMenuItem});
             this.ctxList.Name = "ctxList";
             resources.ApplyResources(this.ctxList, "ctxList");
             // 
@@ -300,6 +302,11 @@
             this.refershToolStripMenuItem.Name = "refershToolStripMenuItem";
             resources.ApplyResources(this.refershToolStripMenuItem, "refershToolStripMenuItem");
             this.refershToolStripMenuItem.Click += new System.EventHandler(this.refershToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            resources.ApplyResources(this.toolStripMenuItem2, "toolStripMenuItem2");
             // 
             // FormMain
             // 
@@ -356,6 +363,7 @@
         private System.Windows.Forms.ToolStripMenuItem duplicateToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem refershToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
     }
 }
 

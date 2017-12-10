@@ -8,6 +8,7 @@
 *.suo
 *.aps
 
+SendToTools.opensdf
 SendToTools.sdf
 ipch/
 

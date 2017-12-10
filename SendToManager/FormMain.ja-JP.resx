@@ -2257,4 +2257,13 @@
         hDbYDh+ltmrv937vwIhi8n8fYEPJXjEdhgAAAABJRU5ErkJggg==
 </value>
   </data>
+  <data name="duplicateToolStripMenuItem.Text" xml:space="preserve">
+    <value>複製(&amp;U)</value>
+  </data>
+  <data name="deleteToolStripMenuItem.Text" xml:space="preserve">
+    <value>削除(&amp;D)</value>
+  </data>
+  <data name="refershToolStripMenuItem.Text" xml:space="preserve">
+    <value>リフレッシュ(&amp;R)</value>
+  </data>
 </root>
