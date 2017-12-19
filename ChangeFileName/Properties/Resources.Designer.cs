@@ -79,6 +79,15 @@ namespace ChangeFileName.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The destination already has a file named &quot;{0}&quot;. Do you want to replace the file in the destination?.
+        /// </summary>
+        internal static string DESTINATION_EXISTS {
+            get {
+                return ResourceManager.GetString("DESTINATION_EXISTS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Please enter Filename.
         /// </summary>
         internal static string ENTER_FILENAME {

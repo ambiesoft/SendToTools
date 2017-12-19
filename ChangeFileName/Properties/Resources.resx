@@ -123,6 +123,9 @@
   <data name="CLEAR" xml:space="preserve">
     <value>&amp;Clear</value>
   </data>
+  <data name="DESTINATION_EXISTS" xml:space="preserve">
+    <value>The destination already has a file named "{0}". Do you want to replace the file in the destination?</value>
+  </data>
   <data name="ENTER_FILENAME" xml:space="preserve">
     <value>Please enter Filename</value>
   </data>

@@ -47,24 +47,39 @@ namespace ChangeFileName
 
                     string destfilename = textName.Text + fiorig.Extension;
                     string destfn = System.IO.Path.Combine(path, destfilename);
-                    fiorig.MoveTo(destfn);
+
+                    bool overwrite = false;
+                    if(File.Exists(destfn))
+                    {
+                        if(DialogResult.Yes != Ambiesoft.CppUtils.YesOrNo(string.Format(Properties.Resources.DESTINATION_EXISTS, destfn),
+                            MessageBoxDefaultButton.Button2))
+                        {
+                            return;
+                        }
+                        overwrite = true;
+                    }
+                    fiorig.CopyTo(destfn, overwrite);
+                    fiorig.Delete();
                 }
                 else if(Directory.Exists(srcfilename))
                 {
                     DirectoryInfo diorig = new DirectoryInfo(srcfilename);
 
                     string destfilename = textName.Text + diorig.Extension;
-                    string destfn = System.IO.Path.Combine(path, destfilename);
+                    string destfn = path;// System.IO.Path.Combine(path, destfilename);
                     // diorig.MoveTo(destfn);
 
                     // Directory.Move(this.textName.Tag.ToString(), destfn);
 
-                    if(File.Exists(destfn) || Directory.Exists(destfn))
-                    {
-                        showError("\"" + destfn + "\" " + "already exists.");
+                    //if(File.Exists(destfn) || Directory.Exists(destfn))
+                    //{
+                    //    showError("\"" + destfn + "\" " + "already exists.");
+                    //    return;
+                    //}
+                    //Microsoft.VisualBasic.FileIO.FileSystem.MoveDirectory(srcfilename, destfn);
+
+                    if (0 != Ambiesoft.CppUtils.MoveFile(srcfilename, destfn))
                         return;
-                    }
-                    Microsoft.VisualBasic.FileIO.FileSystem.MoveDirectory(srcfilename, destfn);
                 }
                 this.Close();
             }

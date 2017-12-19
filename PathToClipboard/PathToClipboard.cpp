@@ -227,10 +227,13 @@ tstring ConvertPath(const DialogData& dt, LPCTSTR pPath)
 		ret = _T("\"") + ret;
 		ret += _T("\"");
 
-		if (dt.codeName_ == CODENAME_CPPWIDE)
-			ret = L"L" + ret;
-		else if (dt.codeName_ == CODENAME_CSHARP)
-			ret = L"@" + ret;
+		if (dt.code_)
+		{
+			if (dt.codeName_ == CODENAME_CPPWIDE)
+				ret = L"L" + ret;
+			else if (dt.codeName_ == CODENAME_CSHARP)
+				ret = L"@" + ret;
+		}
 	}
 	if (dt.code_)
 		ret += L",";
@@ -268,7 +271,8 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	if (!bDetail)
 	{
 		bDetail = (GetAsyncKeyState(VK_SHIFT) < 0) ||
-			(GetAsyncKeyState(VK_CONTROL) < 0);
+			(GetAsyncKeyState(VK_CONTROL) < 0) ||
+			(GetAsyncKeyState(VK_RBUTTON) < 0);
 	}
 	if ( bDetail)
 	{
