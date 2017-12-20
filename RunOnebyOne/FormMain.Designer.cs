@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             this.listMain = new System.Windows.Forms.ListView();
             this.chIndicator = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.chFile = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -39,17 +40,12 @@
             // listMain
             // 
             this.listMain.AllowDrop = true;
-            this.listMain.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.listMain, "listMain");
             this.listMain.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.chIndicator,
             this.chFile,
             this.chResult});
-            this.listMain.Location = new System.Drawing.Point(12, 12);
             this.listMain.Name = "listMain";
-            this.listMain.Size = new System.Drawing.Size(631, 203);
-            this.listMain.TabIndex = 0;
             this.listMain.UseCompatibleStateImageBehavior = false;
             this.listMain.View = System.Windows.Forms.View.Details;
             this.listMain.DragDrop += new System.Windows.Forms.DragEventHandler(this.listMain_DragDrop);
@@ -58,46 +54,36 @@
             // 
             // chIndicator
             // 
-            this.chIndicator.Text = "     ";
+            resources.ApplyResources(this.chIndicator, "chIndicator");
             // 
             // chFile
             // 
-            this.chFile.Text = "File to launch";
-            this.chFile.Width = 487;
+            resources.ApplyResources(this.chFile, "chFile");
             // 
             // chResult
             // 
-            this.chResult.Text = "Result";
+            resources.ApplyResources(this.chResult, "chResult");
             // 
             // btnRun
             // 
-            this.btnRun.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnRun.Location = new System.Drawing.Point(12, 223);
+            resources.ApplyResources(this.btnRun, "btnRun");
             this.btnRun.Name = "btnRun";
-            this.btnRun.Size = new System.Drawing.Size(95, 24);
-            this.btnRun.TabIndex = 1;
-            this.btnRun.Text = "&Run";
             this.btnRun.UseVisualStyleBackColor = true;
             this.btnRun.Click += new System.EventHandler(this.btnRun_Click);
             // 
             // btnClose
             // 
-            this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.btnClose, "btnClose");
             this.btnClose.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnClose.Location = new System.Drawing.Point(548, 223);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(95, 24);
-            this.btnClose.TabIndex = 2;
-            this.btnClose.Text = "&Close";
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // FormMain
             // 
             this.AcceptButton = this.btnClose;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(655, 258);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnRun);
             this.Controls.Add(this.listMain);

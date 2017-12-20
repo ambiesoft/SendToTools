@@ -32,6 +32,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using System.Diagnostics;
+using System.Runtime.InteropServices;
 
 namespace RunWithArgs
 {
@@ -42,11 +43,69 @@ namespace RunWithArgs
             InitializeComponent();
         }
 
+        [DllImport("shell32.dll")]
+        static extern int FindExecutable(string lpFile, string lpDirectory, [Out] StringBuilder lpResult);
+
+        string getExe(string file)
+        {
+            try
+            {
+                StringBuilder sb = new StringBuilder();
+                FindExecutable(txtExe.Text, "", sb);
+                return sb.ToString();
+            }
+            catch { }
+            return string.Empty;
+        }
+        bool isExe(string file)
+        {
+            switch (ShellFileGetInfo.GetExeType(file))
+            {
+                //case ShellFileGetInfo.ShellFileType.Unknown:
+                //    // System.Diagnostics.Debug.WriteLine("Unknown: " + file);
+                //    return false;
+                case ShellFileGetInfo.ShellFileType.Dos:
+                    // System.Diagnostics.Debug.WriteLine("DOS: " + file);
+                    return true;
+                case ShellFileGetInfo.ShellFileType.Windows:
+                    // System.Diagnostics.Debug.WriteLine("Windows: " + file);
+                    return true;
+                case ShellFileGetInfo.ShellFileType.Console:
+                    // System.Diagnostics.Debug.WriteLine("Console: " + file);
+                    return true;
+            }
+            return false;
+        }
         private void btnRun_Click(object sender, EventArgs e)
         {
+            string fileName = txtExe.Text;
+            string arguments = txtArg.Text;
+
+            // When user tries to launch normal file with arguments,
+            // We'll find executable and append original argument after
+            // user-input argument.
+            if (!string.IsNullOrEmpty(txtArg.Text) && !isExe(txtExe.Text))
+            {
+
+                string exe = getExe(txtExe.Text);
+                fileName = exe;
+                if (!string.IsNullOrEmpty(exe))
+                {
+                    if (!string.IsNullOrEmpty(arguments))
+                    {
+                        arguments += " " + Ambiesoft.AmbLib.doubleQuoteIfSpace(txtExe.Text);
+                    }
+                    else
+                    {
+                        arguments = Ambiesoft.AmbLib.doubleQuoteIfSpace(txtExe.Text);
+                    }
+                }
+
+            }
             ProcessStartInfo si = new ProcessStartInfo();
-            si.FileName = txtExe.Text;
-            si.Arguments = txtArg.Text;
+            si.UseShellExecute = true;
+            si.FileName = fileName;
+            si.Arguments = arguments;
             if (chkRunas.Checked)
                 si.Verb = "runas";
             si.WorkingDirectory = System.IO.Path.GetDirectoryName(txtExe.Text);

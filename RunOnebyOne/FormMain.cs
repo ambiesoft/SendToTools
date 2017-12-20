@@ -58,8 +58,10 @@ namespace RunOnebyOne
             lvi.SubItems.Add(file);
             lvi.SubItems.Add(""); // result
                                   // lvi.Tag = new ItemInfo();
-
+            
             listMain.Items.Add(lvi);
+
+            btnRun.Enabled = true;
         }
 
         bool IsListAllDone()
@@ -99,9 +101,15 @@ namespace RunOnebyOne
                    try
                    {
                         Process proc = Process.Start(psi);
-                        proc.WaitForExit();
-
-                        result = proc.ExitCode.ToString();
+                        if (proc == null)
+                        {
+                            result = "null";
+                        }
+                        else
+                        {
+                            proc.WaitForExit();
+                            result = proc.ExitCode.ToString();
+                        }
                    }
                    catch (Exception ex)
                    {
