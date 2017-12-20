@@ -608,7 +608,7 @@ new KeyValuePair<string, string>(@"RenameToFoldername.exe", Properties.Resources
 new KeyValuePair<string, string>(@"RunFileAs.exe", Properties.Resources.TOOL_EXPLANATION_RUNASFILE),
 new KeyValuePair<string, string>(@"RunOnebyOne.exe", Properties.Resources.TOOL_EXPLANATION_RUNONEBYONE),
 new KeyValuePair<string, string>(@"RunWithArgs.exe", Properties.Resources.TOOL_EXPLANATION_RUNWITHARGS),
-new KeyValuePair<string, string>(@"SendToSender.exe", Properties.Resources.TOOL_EXPLANATION_SENDTOSENDER),
+// new KeyValuePair<string, string>(@"SendToSender.exe", Properties.Resources.TOOL_EXPLANATION_SENDTOSENDER),
 new KeyValuePair<string, string>(@"touch.exe", Properties.Resources.TOOL_EXPLANATION_TOUCH),
 
 

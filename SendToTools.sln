@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.40629.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShortcutRenamer", "ShortcutRenamer\ShortcutRenamer.csproj", "{AF635702-0D11-4CEF-AA87-8F4F9588523E}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChangeFileName", "ChangeFileName\ChangeFileName.csproj", "{4CDB360C-E7E6-4D39-B473-91EE2E717698}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RegexFilenameRenamer", "RegexFilenameRenamer\RegexFilenameRenamer.csproj", "{D6D9AB38-C008-4AEA-A50B-F10FC6E1CE23}"
@@ -14,8 +12,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "touch", "touch\touch.csproj", "{1251059E-80C6-41D0-91DD-E97C6A687685}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RunWithArgs", "RunWithArgs\RunWithArgs.csproj", "{16650F72-467C-42C4-B4E9-0CF2A2432A0F}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SendToSender", "SendToSender\SendToSender.csproj", "{DCE811FB-1C96-4C1A-A385-98264E2533F3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SendToManager", "SendToManager\SendToManager.csproj", "{33C5F142-259F-48A4-B2F8-1930A448C041}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -56,10 +52,6 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{AF635702-0D11-4CEF-AA87-8F4F9588523E}.Debug|x86.ActiveCfg = Debug|x86
-		{AF635702-0D11-4CEF-AA87-8F4F9588523E}.Debug|x86.Build.0 = Debug|x86
-		{AF635702-0D11-4CEF-AA87-8F4F9588523E}.Release|x86.ActiveCfg = Release|x86
-		{AF635702-0D11-4CEF-AA87-8F4F9588523E}.Release|x86.Build.0 = Release|x86
 		{4CDB360C-E7E6-4D39-B473-91EE2E717698}.Debug|x86.ActiveCfg = Debug|x86
 		{4CDB360C-E7E6-4D39-B473-91EE2E717698}.Debug|x86.Build.0 = Debug|x86
 		{4CDB360C-E7E6-4D39-B473-91EE2E717698}.Release|x86.ActiveCfg = Release|x86
@@ -80,10 +72,6 @@ Global
 		{16650F72-467C-42C4-B4E9-0CF2A2432A0F}.Debug|x86.Build.0 = Debug|x86
 		{16650F72-467C-42C4-B4E9-0CF2A2432A0F}.Release|x86.ActiveCfg = Release|x86
 		{16650F72-467C-42C4-B4E9-0CF2A2432A0F}.Release|x86.Build.0 = Release|x86
-		{DCE811FB-1C96-4C1A-A385-98264E2533F3}.Debug|x86.ActiveCfg = Debug|x86
-		{DCE811FB-1C96-4C1A-A385-98264E2533F3}.Debug|x86.Build.0 = Debug|x86
-		{DCE811FB-1C96-4C1A-A385-98264E2533F3}.Release|x86.ActiveCfg = Release|x86
-		{DCE811FB-1C96-4C1A-A385-98264E2533F3}.Release|x86.Build.0 = Release|x86
 		{33C5F142-259F-48A4-B2F8-1930A448C041}.Debug|x86.ActiveCfg = Debug|x86
 		{33C5F142-259F-48A4-B2F8-1930A448C041}.Debug|x86.Build.0 = Debug|x86
 		{33C5F142-259F-48A4-B2F8-1930A448C041}.Release|x86.ActiveCfg = Release|x86
