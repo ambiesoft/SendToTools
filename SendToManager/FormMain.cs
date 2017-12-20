@@ -610,6 +610,7 @@ new KeyValuePair<string, string>(@"RunOnebyOne.exe", Properties.Resources.TOOL_E
 new KeyValuePair<string, string>(@"RunWithArgs.exe", Properties.Resources.TOOL_EXPLANATION_RUNWITHARGS),
 // new KeyValuePair<string, string>(@"SendToSender.exe", Properties.Resources.TOOL_EXPLANATION_SENDTOSENDER),
 new KeyValuePair<string, string>(@"touch.exe", Properties.Resources.TOOL_EXPLANATION_TOUCH),
+new KeyValuePair<string, string>(@"Switch3264.exe", Properties.Resources.TOOL_EXPLANATION_SWITCH3264),
 
 
 //@"ShortcutRenamer.exe",

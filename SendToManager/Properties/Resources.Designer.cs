@@ -394,6 +394,15 @@ namespace SendToManager.Properties {
         }
         
         /// <summary>
+        ///   Switch3264 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string TOOL_EXPLANATION_SWITCH3264 {
+            get {
+                return ResourceManager.GetString("TOOL_EXPLANATION_SWITCH3264", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Touch に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string TOOL_EXPLANATION_TOUCH {

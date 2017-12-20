@@ -79,9 +79,9 @@ namespace touch
         }
         static void doit(string[] args)
         {
-            bool recursive;
-            int depth;
-            bool touchfolder;
+            bool recursive = false;
+            int depth = -1;
+            bool touchfolder = false;
             var p = new OptionSet() {
                     { 
                         "r|recursive", 
@@ -135,14 +135,16 @@ namespace touch
             DateTime now = DateTime.Now;
             foreach (string filename in extra)
             {
-                dotouch(now, filename);
+                dotouch(now, filename, 0, depth);
             }
             showtip(5000, Application.ProductName, Properties.Resources.STR_TOUCHED,Properties.Resources.icon);
         }
 
         static List<string> untouchabled_ = new List<string>();
-        static void dotouch(DateTime now, string filename)
+        static void dotouch(DateTime now, string filename, int curdepth, int maxdepth)
         {
+            check 
+                startwithmaxdepth
             try
             {
                 if (File.Exists(filename))
