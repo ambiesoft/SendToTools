@@ -37,27 +37,57 @@ namespace ChangeFileTime
 {
     public partial class FormMain : Form
     {
-        readonly FileInfo fi_;
+        internal DateTime dtCRResult;
+        internal DateTime dtLWResult;
+        internal DateTime dtLAResult;
 
-        public FormMain(FileInfo fi)
+        public FormMain()
         {
-            fi_ = fi;
             InitializeComponent();
         }
 
+
+        private void btnNowCRTime_Click(object sender, EventArgs e)
+        {
+            dtpCRTime.Value = DateTime.Now;
+        }
         private void btnNowLWTime_Click(object sender, EventArgs e)
         {
             dtpLWTime.Value = DateTime.Now;
         }
-
-        private void btnModify_Click(object sender, EventArgs e)
+        private void btnNowLATime_Click(object sender, EventArgs e)
         {
-            fi_.LastWriteTime = dtpLWTime.Value;
+            dtpLATime.Value = DateTime.Now;
         }
+        private void btnNowForAllTime_Click(object sender, EventArgs e)
+        {
+            dtpCRTime.Value = dtpLWTime.Value = dtpLATime.Value = DateTime.Now;
+        }
+
+        void DoUpdate()
+        {
+            dtCRResult = dtpCRTime.Value;
+            dtLWResult = dtpLWTime.Value;
+            dtLAResult = dtpLATime.Value;
+        }
+     
 
         private void btnOK_Click(object sender, EventArgs e)
         {
-            fi_.LastWriteTime = dtpLWTime.Value;
+            DoUpdate();
         }
+
+        private void FormMain_Load(object sender, EventArgs e)
+        {
+            this.Text = Properties.Resources.TITLE;
+        }
+
+       
+
+       
+
+     
+
+       
     }
 }

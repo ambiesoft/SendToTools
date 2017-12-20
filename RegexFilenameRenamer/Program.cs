@@ -46,10 +46,10 @@ namespace Ambiesoft.RegexFilenameRenamer
             sb.AppendLine("  /rf REGEXSEARCH");
             sb.AppendLine("    Use () for grouping.");
             sb.AppendLine("  /ft REPLACE");
-            sb.AppendLine("    Use \"\" for empty string.)");
-            sb.AppendLine("    Use $1 to refer to the group.)");
+            sb.AppendLine("    Use \"\" for empty string.");
+            sb.AppendLine("    Use $1 to refer to the group.");
             sb.AppendLine("  /ie");
-            sb.AppendLine("    Include extension for operation.");
+            sb.AppendLine("    Extension will be included for rename operation.");
             sb.AppendLine("  /ic");
             sb.AppendLine("    Ignore Case.");
             sb.AppendLine("  /cf");
@@ -57,7 +57,21 @@ namespace Ambiesoft.RegexFilenameRenamer
             sb.AppendLine("  /ca");
             sb.AppendLine("    Check input by showing argv.");
             sb.AppendLine("  /blob");
-            sb.AppendLine("    Input files contain blob.");
+            sb.AppendLine("    Input files contain blobs.");
+
+            sb.AppendLine();
+            sb.AppendLine("Examples:");
+            sb.AppendLine("  Replace \"a\" with \"b\"");
+            sb.Append("  > " + Path.GetFileName(Application.ExecutablePath));
+            sb.Append(" /rf a /rt b /cf [file]");
+            sb.AppendLine();
+            sb.AppendLine();
+
+            sb.AppendLine("  Replace continuous space with single space");
+            sb.Append("  > " + Path.GetFileName(Application.ExecutablePath));
+            sb.Append(" /rf \"\\s+\" /rt \" \" /cf [file]");
+            sb.AppendLine();
+
 
             return sb.ToString();
         }

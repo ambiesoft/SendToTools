@@ -123,4 +123,7 @@
   <data name="NO_ARGUMENTS" xml:space="preserve">
     <value>引数がありません</value>
   </data>
+  <data name="TITLE" xml:space="preserve">
+    <value>ファイルの日付を変更</value>
+  </data>
 </root>

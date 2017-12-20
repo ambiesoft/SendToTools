@@ -135,12 +135,13 @@ namespace CopyFileContent
                         throw new Exception("Not implemented");
 
                     case ConvertType.Unknown:
-                        throw new Exception("Unknown file type, use -t or -i.");
+                        throw new Exception(Properties.Resources.UNKNOWN_FILETYPE);
                 }
 
                 NotifyIcon ni = new NotifyIcon();
                 ni.BalloonTipTitle = Application.ProductName;
-                ni.BalloonTipText = Properties.Resources.CLIPBOARDSET;
+                ni.BalloonTipText = string.Format(Properties.Resources.CLIPBOARDSET,
+                    ct.ToString());
                 ni.Icon = Properties.Resources.icon;
 
                 ni.Text = Application.ProductName;

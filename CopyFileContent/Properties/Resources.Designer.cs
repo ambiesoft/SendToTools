@@ -61,7 +61,7 @@ namespace CopyFileContent.Properties {
         }
         
         /// <summary>
-        ///   File context is set on the clipboard. に類似しているローカライズされた文字列を検索します。
+        ///   File context has been treated as {0} and set on the clipboard. に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string CLIPBOARDSET {
             get {
@@ -94,6 +94,15 @@ namespace CopyFileContent.Properties {
         internal static string TOO_MANY_OPTIONS {
             get {
                 return ResourceManager.GetString("TOO_MANY_OPTIONS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Failed to determine file type. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string UNKNOWN_FILETYPE {
+            get {
+                return ResourceManager.GetString("UNKNOWN_FILETYPE", resourceCulture);
             }
         }
         

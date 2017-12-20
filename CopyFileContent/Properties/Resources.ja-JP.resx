@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="CLIPBOARDSET" xml:space="preserve">
-    <value>ファイルの内容がクリップボードにセットされました。</value>
+    <value>ファイルの内容を [{0}] としてクリップボードにセットしました。</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
@@ -132,5 +132,8 @@
   </data>
   <data name="NO_FILE" xml:space="preserve">
     <value>ファイルが指定されていません。</value>
+  </data>
+  <data name="UNKNOWN_FILETYPE" xml:space="preserve">
+    <value>ファイルタイプの特定に失敗しました。</value>
   </data>
 </root>

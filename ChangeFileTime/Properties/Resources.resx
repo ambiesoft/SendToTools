@@ -123,4 +123,7 @@
   <data name="NO_ARGUMENTS" xml:space="preserve">
     <value>No arguments.</value>
   </data>
+  <data name="TITLE" xml:space="preserve">
+    <value>Change File Time</value>
+  </data>
 </root>
