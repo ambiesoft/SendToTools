@@ -225,18 +225,30 @@ namespace Ambiesoft.RegexFilenameRenamer
                         sbDry.AppendLine();
                         sbDry.AppendLine();
                     }
-                    sbDry.AppendLine();
-                    sbDry.AppendLine(Properties.Resources.DO_YOU_WANT_TO_PERFORM);
+                    //sbDry.AppendLine();
+                    //sbDry.AppendLine(Properties.Resources.DO_YOU_WANT_TO_PERFORM);
 
-                    if(DialogResult.Yes != MessageBox.Show(
-                        sbDry.ToString(),
-                        Application.ProductName + " " + Properties.Resources.CONFIRM,
-                        MessageBoxButtons.YesNo,
-                        MessageBoxIcon.Question,
-                        MessageBoxDefaultButton.Button2))
+
+                    using(FormConfirm form = new FormConfirm())
                     {
-                        return 0;
+                        // form.rtxtMessage.Font = form.lblMessage.Font;
+
+                        form.Text = Application.ProductName + " " + Properties.Resources.CONFIRM;
+                        form.lblMessage.Text = Properties.Resources.DO_YOU_WANT_TO_PERFORM;
+                        // form.txtConfirm.Text = sbDry.ToString();
+                        form.rtxtMessage.Text = sbDry.ToString();
+                        if (DialogResult.Yes != form.ShowDialog())
+                            return 0;
                     }
+                    //if(DialogResult.Yes != MessageBox.Show(
+                    //    sbDry.ToString(),
+                    //    Application.ProductName + " " + Properties.Resources.CONFIRM,
+                    //    MessageBoxButtons.YesNo,
+                    //    MessageBoxIcon.Question,
+                    //    MessageBoxDefaultButton.Button2))
+                    //{
+                    //    return 0;
+                    //}
                 }
 
                 foreach( string org in targets.Keys)
