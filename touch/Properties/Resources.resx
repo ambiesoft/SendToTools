@@ -130,4 +130,7 @@
   <data name="STR_TOUCHED" xml:space="preserve">
     <value>{0} File(s) has been touched.</value>
   </data>
+  <data name="STR_TOUCH_FAILED" xml:space="preserve">
+    <value>Failed to touch following files.</value>
+  </data>
 </root>

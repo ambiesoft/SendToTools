@@ -134,9 +134,29 @@ namespace touch
 
             DateTime now = DateTime.Now;
             int touchedCount = 0;
+            var untouchabled = new Dictionary<string, Exception>();
             foreach (string filename in extra)
             {
-                dotouch(now, filename, touchfolder, recursive, 0, depth, ref touchedCount);
+                dotouch(now, filename, touchfolder, recursive, 0, depth, ref touchedCount, untouchabled);
+            }
+            if(untouchabled.Count!=0)
+            {
+                var sb = new StringBuilder();
+                sb.AppendLine(Properties.Resources.STR_TOUCH_FAILED);
+                sb.AppendLine();
+
+                foreach(string key in untouchabled.Keys)
+                {
+                    sb.Append(key);
+                    sb.Append(" (");
+                    sb.Append(untouchabled[key].Message);
+                    sb.Append(")");
+                    sb.AppendLine();
+                }
+                MessageBox.Show(sb.ToString(),
+                    Application.ProductName,
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Exclamation);
             }
             showtip(5000, Application.ProductName, 
                 string.Format(Properties.Resources.STR_TOUCHED, touchedCount),Properties.Resources.icon);
@@ -147,12 +167,12 @@ namespace touch
             if (maxdepth == -1)
                 return false;
             if (maxdepth < 0)
-                maxdepth = 0;
+                return true;
 
             return curdepth > maxdepth;
         }
-        static List<string> untouchabled_ = new List<string>();
-        static void dotouch(DateTime now, string filename, bool touchfolder,bool recursive, int curdepth, int maxdepth, ref int touchedCount)
+
+        static void dotouch(DateTime now, string filename, bool touchfolder, bool recursive, int curdepth, int maxdepth, ref int touchedCount, Dictionary<string, Exception> untouchabled)
         {
             if (isDepthReached(curdepth , maxdepth))
                 return;
@@ -168,9 +188,9 @@ namespace touch
                         fi.LastWriteTime = now;
                         touchedCount++;
                     }
-                    catch
+                    catch(Exception ex)
                     {
-                        untouchabled_.Add(filename);
+                        untouchabled.Add(filename, ex);
                     }
                 }
                 else if (Directory.Exists(filename))
@@ -178,10 +198,16 @@ namespace touch
                     var di = new DirectoryInfo(filename);
                     if (touchfolder)
                     {
-                        k
-                        di.LastAccessTime = now;
-                        di.LastWriteTime = now;
-                        touchedCount++;
+                        try
+                        {
+                            di.LastAccessTime = now;
+                            di.LastWriteTime = now;
+                            touchedCount++;
+                        }
+                        catch(Exception ex)
+                        {
+                            untouchabled.Add(filename,ex);
+                        }
                     }
                     
                     if (recursive)
@@ -189,24 +215,24 @@ namespace touch
                         FileInfo[] fis = di.GetFiles();
                         foreach (FileInfo fi in fis)
                         {
-                            dotouch(now, fi.FullName, touchfolder, recursive, curdepth + 1, maxdepth, ref touchedCount);
+                            dotouch(now, fi.FullName, touchfolder, recursive, curdepth + 1, maxdepth, ref touchedCount, untouchabled);
                         }
                         
                         DirectoryInfo[] dis = di.GetDirectories();
                         foreach(DirectoryInfo di2 in dis)
                         {
-                            dotouch(now, di2.FullName, touchfolder, recursive, curdepth + 1, maxdepth, ref touchedCount);
+                            dotouch(now, di2.FullName, touchfolder, recursive, curdepth + 1, maxdepth, ref touchedCount,untouchabled);
                         }
                     }
                 }
                 else
                 {
-                    untouchabled_.Add(filename);
+                    untouchabled.Add(filename, new Exception("Unknown path type"));
                 }
             }
-            catch
+            catch(Exception ex)
             {
-                untouchabled_.Add(filename);
+                untouchabled.Add(filename,ex);
             }
         }
     }

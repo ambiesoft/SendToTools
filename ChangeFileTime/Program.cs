@@ -52,7 +52,7 @@ namespace ChangeFileTime
             //string theFileName = @"C:\Documents and Settings\tt\My Documents\Productivity Distribution, Firm Heterogeneity, and Agglomeration.pdf";
             string theFileName = args[0];
 
-            if (!System.IO.File.Exists(theFileName))
+            if (!System.IO.File.Exists(theFileName) )//&& !System.IO.Directory.Exists(theFileName))
             {
                 MessageBox.Show(string.Format(Properties.Resources.FILE_NOT_EXIST, theFileName),
                     Application.ProductName,

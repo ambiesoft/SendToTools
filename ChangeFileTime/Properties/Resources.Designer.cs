@@ -61,7 +61,7 @@ namespace ChangeFileTime.Properties {
         }
         
         /// <summary>
-        ///   &quot;{0}&quot; does not exists. に類似しているローカライズされた文字列を検索します。
+        ///   &quot;{0}&quot; does not exists or is not a file. に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string FILE_NOT_EXIST {
             get {

@@ -124,6 +124,9 @@
     <value>引数がありません。</value>
   </data>
   <data name="STR_TOUCHED" xml:space="preserve">
-    <value>ファイルはtouchされました。</value>
+    <value>{0} ファイルがtouchされました。</value>
+  </data>
+  <data name="STR_TOUCH_FAILED" xml:space="preserve">
+    <value>以下のファイルのtouchに失敗しました。</value>
   </data>
 </root>

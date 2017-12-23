@@ -232,7 +232,7 @@
     <value>送るに送る</value>
   </data>
   <data name="TOOL_EXPLANATION_TOUCH" xml:space="preserve">
-    <value>ファイルの更新時刻を更新</value>
+    <value>Touch</value>
   </data>
   <data name="TOOL_EXPLANATION_SWITCH3264" xml:space="preserve">
     <value>Switch3264</value>

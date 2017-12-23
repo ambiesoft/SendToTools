@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="FILE_NOT_EXIST" xml:space="preserve">
-    <value>"{0}" は存在しません。</value>
+    <value>"{0}" は存在しないか、ファイルではありません。</value>
   </data>
   <data name="NO_ARGUMENTS" xml:space="preserve">
     <value>引数がありません</value>
