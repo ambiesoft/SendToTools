@@ -206,8 +206,12 @@ namespace ChangeFileName
         static string SizeSuffix(Int64 value, int decimalPlaces = 1)
         {
             if (value < 0) { return "-" + SizeSuffix(-value); }
-            if (value == 0) { return "0.0 bytes"; }
+            if (value == 0) { return "0 bytes"; }
 
+            if(value < 1024)
+            {
+                return value.ToString() + " bytes";
+            }
             // mag is 0 for bytes, 1 for KB, 2, for MB, etc.
             int mag = (int)Math.Log(value, 1024);
 

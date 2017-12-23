@@ -133,31 +133,71 @@ namespace touch
             //string theFileName = @"C:\Documents and Settings\tt\My Documents\Productivity Distribution, Firm Heterogeneity, and Agglomeration.pdf";
 
             DateTime now = DateTime.Now;
+            int touchedCount = 0;
             foreach (string filename in extra)
             {
-                dotouch(now, filename, 0, depth);
+                dotouch(now, filename, touchfolder, recursive, 0, depth, ref touchedCount);
             }
-            showtip(5000, Application.ProductName, Properties.Resources.STR_TOUCHED,Properties.Resources.icon);
+            showtip(5000, Application.ProductName, 
+                string.Format(Properties.Resources.STR_TOUCHED, touchedCount),Properties.Resources.icon);
         }
 
-        static List<string> untouchabled_ = new List<string>();
-        static void dotouch(DateTime now, string filename, int curdepth, int maxdepth)
+        static bool isDepthReached(int curdepth, int maxdepth)
         {
-            check 
-                startwithmaxdepth
+            if (maxdepth == -1)
+                return false;
+            if (maxdepth < 0)
+                maxdepth = 0;
+
+            return curdepth > maxdepth;
+        }
+        static List<string> untouchabled_ = new List<string>();
+        static void dotouch(DateTime now, string filename, bool touchfolder,bool recursive, int curdepth, int maxdepth, ref int touchedCount)
+        {
+            if (isDepthReached(curdepth , maxdepth))
+                return;
+
             try
             {
                 if (File.Exists(filename))
                 {
-                    FileInfo fi = new FileInfo(filename);
-                    fi.LastAccessTime = now;
-                    fi.LastWriteTime = now;
+                    try
+                    {
+                        FileInfo fi = new FileInfo(filename);
+                        fi.LastAccessTime = now;
+                        fi.LastWriteTime = now;
+                        touchedCount++;
+                    }
+                    catch
+                    {
+                        untouchabled_.Add(filename);
+                    }
                 }
                 else if (Directory.Exists(filename))
                 {
                     var di = new DirectoryInfo(filename);
-                    di.LastAccessTime = now;
-                    di.LastWriteTime = now;
+                    if (touchfolder)
+                    {
+                        k
+                        di.LastAccessTime = now;
+                        di.LastWriteTime = now;
+                        touchedCount++;
+                    }
+                    
+                    if (recursive)
+                    {
+                        FileInfo[] fis = di.GetFiles();
+                        foreach (FileInfo fi in fis)
+                        {
+                            dotouch(now, fi.FullName, touchfolder, recursive, curdepth + 1, maxdepth, ref touchedCount);
+                        }
+                        
+                        DirectoryInfo[] dis = di.GetDirectories();
+                        foreach(DirectoryInfo di2 in dis)
+                        {
+                            dotouch(now, di2.FullName, touchfolder, recursive, curdepth + 1, maxdepth, ref touchedCount);
+                        }
+                    }
                 }
                 else
                 {
