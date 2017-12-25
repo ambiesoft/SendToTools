@@ -15,3 +15,6 @@
 "&Full path"="フルパス(&F)"
 "&Name only"="ファイル名のみ(&N)"
 "&Path"="パス(&P)"
+
+"&Multi Lines"="マルチライン(&M)"
+"Programming code"="プログラムコード"
