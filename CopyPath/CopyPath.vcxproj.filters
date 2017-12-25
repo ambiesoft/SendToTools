@@ -27,9 +27,6 @@
     <ClInclude Include="Resource.h">
       <Filter>1 Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="PathToClipboard.h">
-      <Filter>1 Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\lsMisc\CenterWindow.h">
       <Filter>1 Header Files</Filter>
     </ClInclude>
@@ -60,12 +57,12 @@
     <ClInclude Include="..\..\lsMisc\UTF16toUTF8.h">
       <Filter>1 Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="CopyPath.h">
+      <Filter>1 Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
-      <Filter>2 Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="PathToClipboard.cpp">
       <Filter>2 Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\lsMisc\CenterWindow.cpp">
@@ -101,17 +98,15 @@
     <ClCompile Include="..\..\lsMisc\UTF16toUTF8.cpp">
       <Filter>2 Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="CopyPath.cpp">
+      <Filter>2 Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="PathToClipboard.rc">
-      <Filter>3 Resource Files</Filter>
-    </ResourceCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="PathToClipboard.ico">
+    <Image Include="icon1.ico">
       <Filter>3 Resource Files</Filter>
     </Image>
-    <Image Include="icon1.ico">
+    <Image Include="CopyPath.ico">
       <Filter>3 Resource Files</Filter>
     </Image>
   </ItemGroup>
@@ -119,5 +114,10 @@
     <Text Include="jpn.txt">
       <Filter>4 lang</Filter>
     </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="CopyPath.rc">
+      <Filter>3 Resource Files</Filter>
+    </ResourceCompile>
   </ItemGroup>
 </Project>

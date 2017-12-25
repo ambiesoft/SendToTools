@@ -202,14 +202,14 @@
   <data name="TOOL_EXPLANATION_COPYFIRSTLINE" xml:space="preserve">
     <value>Copy First Line of File</value>
   </data>
+  <data name="TOOL_EXPLANATION_COPYPATH" xml:space="preserve">
+    <value>Copy Path</value>
+  </data>
   <data name="TOOL_EXPLANATION_DOTNET4RUNNABLE" xml:space="preserve">
     <value>Make .NET2 Application to Run with .NET4</value>
   </data>
   <data name="TOOL_EXPLANATION_MOVETO" xml:space="preserve">
     <value>Move to</value>
-  </data>
-  <data name="TOOL_EXPLANATION_PATHTOCLIPBOARD" xml:space="preserve">
-    <value>Copy Path</value>
   </data>
   <data name="TOOL_EXPLANATION_REGEXFILENAMERENAMER" xml:space="preserve">
     <value>Rename with Regex</value>

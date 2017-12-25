@@ -24,7 +24,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CopyFirstLine", "CopyFirstL
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNet4Runnable", "DotNet4Runnable\DotNet4Runnable.csproj", "{7EB31E6F-AC69-4E5E-8165-71DBD5D398E5}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PathToClipboard", "PathToClipboard\PathToClipboard.vcxproj", "{3409B881-FBB7-4BF9-B99E-A0865DB495AC}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CopyPath", "CopyPath\CopyPath.vcxproj", "{3409B881-FBB7-4BF9-B99E-A0865DB495AC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RunOnebyOne", "RunOnebyOne\RunOnebyOne.csproj", "{852E0EED-52E5-48B1-B0D0-D5169F550B3B}"
 EndProject

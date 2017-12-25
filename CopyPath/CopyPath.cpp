@@ -30,7 +30,7 @@
 #include "stdafx.h"
 
 #include "../../lsMisc/CommandLineParser.h"
-#include "PathToClipboard.h"
+#include "CopyPath.h"
 
 
 using namespace stdwin32;

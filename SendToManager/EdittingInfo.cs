@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Windows.Forms;
 
 namespace SendToManager
 {
@@ -15,6 +16,8 @@ namespace SendToManager
         public void Clear()
         {
             initial_ = result_ = null;
+            item_ = null;
+            subitem_ = -1;
         }
         public string Initial
         { 
@@ -30,5 +33,7 @@ namespace SendToManager
             get { return result_; }
             set { result_ = value; }
         }
+        public ListViewItem item_;
+        public int subitem_;
     }
 }

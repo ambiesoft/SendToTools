@@ -121,7 +121,7 @@ namespace SendToManager
                 chIconPath.Name = COLUMN_ICONPATH;
                 chIconPath.Text = Properties.Resources.COLUMN_ICONPATH;
                 chIconPath.Width = 50;
-                chIconPath.Tag = new ColumnInfo(cmbEditDirectory);
+                chIconPath.Tag = new ColumnInfo(cmbEditFile);
                 lvMain.Columns.Add(chIconPath);
             }
 
@@ -245,24 +245,30 @@ namespace SendToManager
             if (e.Cancel)
                 return;
 
+            string resultText = e.DisplayText;
+            if (ei_.HasResult)
+                e.DisplayText = resultText = ei_.Result;
+
+            lvMain_SubItemEndEditingWork(e.Item, e.SubItem, e.DisplayText, resultText);
+
+            e.DisplayText = e.Item.SubItems[e.SubItem].Text;
+        }
+        void lvMain_SubItemEndEditingWork(ListViewItem item, int subitem, string disptext, string resultText)
+        {
             try
             {
-                string resultText = e.DisplayText;
-                if (ei_.HasResult)
-                    e.DisplayText = resultText = ei_.Result;
-
-                LVInfo lvinfo = (LVInfo)e.Item.Tag;
+                LVInfo lvinfo = (LVInfo)item.Tag;
                 LinkData lnk = new LinkData(lvinfo.FullName, this);
 
-                string column = GetColumnName(e.SubItem);
+                string column = GetColumnName(subitem);
                 if (column == COLUMN_NAME)
                 {
                     try
                     {
                         string from = lvinfo.FullName;
-                        string to = Path.Combine(lvinfo.ParentDir, e.DisplayText + ".lnk");
+                        string to = Path.Combine(lvinfo.ParentDir, disptext + ".lnk");
                         System.IO.File.Move(from, to);
-                        e.Item.Tag = new LVInfo(to);
+                        item.Tag = new LVInfo(to);
                     }
                     catch (Exception ex)
                     {
@@ -303,8 +309,8 @@ namespace SendToManager
                 Alert(ex.Message);
             }
 
-            UpdateItem(e.Item);
-            e.DisplayText = e.Item.SubItems[e.SubItem].Text;
+            UpdateItem(item);
+          
         }
 
         Control GetEdittingControl(ColumnHeader ch)
@@ -326,6 +332,8 @@ namespace SendToManager
 
             ei_.Clear();
             ei_.Initial = e.Item.SubItems[e.SubItem].Text;
+            ei_.item_ = e.Item;
+            ei_.subitem_ = e.SubItem;
             Control edittingControl = GetEdittingControl(ch);
             lvMain.StartEditing(edittingControl, e.Item, e.SubItem);
         }
@@ -601,10 +609,10 @@ new KeyValuePair<string, string>(@"CopyFileContent.exe", Properties.Resources.TO
 new KeyValuePair<string, string>(@"CopyFirstLine.exe", Properties.Resources.TOOL_EXPLANATION_COPYFIRSTLINE),
 new KeyValuePair<string, string>(@"DotNet4Runnable.exe", Properties.Resources.TOOL_EXPLANATION_DOTNET4RUNNABLE),
 new KeyValuePair<string, string>(@"MoveTo.exe", Properties.Resources.TOOL_EXPLANATION_MOVETO),
-new KeyValuePair<string, string>(@"PathToClipboard.exe", Properties.Resources.TOOL_EXPLANATION_PATHTOCLIPBOARD),
+new KeyValuePair<string, string>(@"CopyPath.exe", Properties.Resources.TOOL_EXPLANATION_COPYPATH),
 new KeyValuePair<string, string>(@"RegexFilenameRenamer.exe", Properties.Resources.TOOL_EXPLANATION_REGEXFILENAMERENAMER),
 
-new KeyValuePair<string, string>(@"RenameToFoldername.exe", Properties.Resources.TOOL_EXPLANATION_RENAMETOFOLDERNAME),
+// new KeyValuePair<string, string>(@"RenameToFoldername.exe", Properties.Resources.TOOL_EXPLANATION_RENAMETOFOLDERNAME),
 new KeyValuePair<string, string>(@"RunFileAs.exe", Properties.Resources.TOOL_EXPLANATION_RUNASFILE),
 new KeyValuePair<string, string>(@"RunOnebyOne.exe", Properties.Resources.TOOL_EXPLANATION_RUNONEBYONE),
 new KeyValuePair<string, string>(@"RunWithArgs.exe", Properties.Resources.TOOL_EXPLANATION_RUNWITHARGS),
@@ -1098,8 +1106,9 @@ new KeyValuePair<string, string>(@"Switch3264.exe", Properties.Resources.TOOL_EX
                     return;
                 }
 
-                ei_.Result = fbd.SelectedPath;
-                lvMain.EndEditing(true);
+                lvMain_SubItemEndEditingWork(ei_.item_, ei_.subitem_, fbd.SelectedPath, fbd.SelectedPath);
+                //ei_.Result = fbd.SelectedPath;
+                //lvMain.EndEditing(true);
             }
         }
 
@@ -1107,16 +1116,21 @@ new KeyValuePair<string, string>(@"Switch3264.exe", Properties.Resources.TOOL_EX
         {
             using (OpenFileDialog ofd = new OpenFileDialog())
             {
-                ofd.InitialDirectory = Path.GetDirectoryName(ei_.Initial);
-                ofd.FileName = Path.GetFileName(ei_.Initial);
+                if (System.IO.File.Exists(ei_.Initial))
+                {
+                    ofd.InitialDirectory = Path.GetDirectoryName(ei_.Initial);
+                    ofd.FileName = Path.GetFileName(ei_.Initial);
+                }
                 if (DialogResult.OK != ofd.ShowDialog())
                 {
                     cmbEditFile.Text = ei_.Initial;
                     lvMain.EndEditing(false);
                     return;
                 }
-                ei_.Result = ofd.FileName;
-                lvMain.EndEditing(true);
+
+                // ei_.Result = ofd.FileName;
+                lvMain_SubItemEndEditingWork(ei_.item_, ei_.subitem_, ofd.FileName, ofd.FileName);
+                // lvMain.EndEditing(true);
             }
         }
 
