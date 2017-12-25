@@ -81,6 +81,7 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Dist\FolderConfig.ini" />
+    <None Include="Dist\ReadMe.jp.md" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -97,13 +98,14 @@
   <ItemGroup>
     <Content Include="Dist\History.txt" />
     <Content Include="Dist\Copying.txt" />
-    <Content Include="Dist\ReadMe.txt" />
+    <None Include="Dist\ReadMe.md" />
     <Content Include="icon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>xcopy "$(ProjectDir)Dist\History.txt" "$(TargetDir)" /F /Y
-xcopy "$(ProjectDir)Dist\Readme.txt" "$(TargetDir)" /F /Y
+xcopy "$(ProjectDir)Dist\Readme.md" "$(TargetDir)" /F /Y
+xcopy "$(ProjectDir)Dist\Readme.jp.md" "$(TargetDir)" /F /Y
 xcopy "$(ProjectDir)Dist\Copying.txt" "$(TargetDir)" /F /Y
 
 del "$(OutDir)FolderConfig.ini.sample"
