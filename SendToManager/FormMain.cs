@@ -150,11 +150,60 @@ namespace SendToManager
             lvMain.SubItemClicked += lvMain_SubItemClicked;
             lvMain.SubItemEndEditing += lvMain_SubItemEndEditing;
 
+            lvMain.ListViewItemSorter = new ListViewColumnSorter();
+            lvMain.ColumnClick += lvMain_ColumnClick;
+
             lvMain.DoubleClickActivation = true;
 
             lvMain.Font = SystemFonts.IconTitleFont;
             txtEditName.Font = SystemFonts.IconTitleFont;
             cmbEditDirectory.Font = SystemFonts.IconTitleFont;
+
+            Application.Idle += Application_Idle;
+        }
+
+        void lvMain_ColumnClick(object sender, ColumnClickEventArgs eventArgs)
+        {
+            var sorter = (ListViewColumnSorter)lvMain.ListViewItemSorter;
+            if (sorter == null)
+                lvMain.ListViewItemSorter = sorter = new ListViewColumnSorter();
+
+            if (eventArgs.Column == sorter.SortColumn)
+            {
+                // Inverser le sens de tri en cours pour cette colonne.
+                if (sorter.Order == SortOrder.Ascending)
+                {
+                    sorter.Order = SortOrder.Descending;
+                }
+                else
+                {
+                    sorter.Order = SortOrder.Ascending;
+                }
+            }
+            else
+            {
+                // Définir le numéro de colonne à trier ; par défaut sur croissant.
+                sorter.SortColumn = eventArgs.Column;
+                sorter.Order = SortOrder.Ascending;
+            }
+
+            // Procéder au tri avec les nouvelles options.
+            lvMain.Sort();
+        }
+
+        void Application_Idle(object sender, EventArgs e)
+        {
+            if (!IsHandleCreated || IsDisposed)
+                return;
+
+            bool hasItem = lvMain.Items.Count != 0;
+            bool hasSelItem = lvMain.SelectedItems.Count != 0;
+
+            tsbUp.Enabled = upToolStripMenuItem.Enabled = hasSelItem;
+            tsbDown.Enabled = downToolStripMenuItem.Enabled = hasSelItem;
+
+            tsbNumber.Enabled = numberToolStripMenuItem.Enabled = hasItem;
+            tsbDeploy.Enabled = deployToolStripMenuItem.Enabled = hasItem;
         }
 
         string GetColumnName(int index)
@@ -565,6 +614,57 @@ namespace SendToManager
             }
         }
 
+        void insertDefaultItems()
+        {
+            KeyValuePair<string, string>[] kvpArr = new KeyValuePair<string, string>[] {
+new KeyValuePair<string, string>(@"CommandPrompt.bat", Properties.Resources.TOOL_EXPLANATION_COMMANDLINE),
+new KeyValuePair<string, string>(@"ChangeFileName.exe", Properties.Resources.TOOL_EXPLANATION_CHANGEFILENAME),
+new KeyValuePair<string, string>(@"ChangeFileTime.exe", Properties.Resources.TOOL_EXPLANATION_CHANGEFILETIME),
+new KeyValuePair<string, string>(@"CopyFileContent.exe", Properties.Resources.TOOL_EXPLANATION_COPYFILECONTENT),
+new KeyValuePair<string, string>(@"CopyFirstLine.exe", Properties.Resources.TOOL_EXPLANATION_COPYFIRSTLINE),
+new KeyValuePair<string, string>(@"DotNet4Runnable.exe", Properties.Resources.TOOL_EXPLANATION_DOTNET4RUNNABLE),
+new KeyValuePair<string, string>(@"MoveTo.exe", Properties.Resources.TOOL_EXPLANATION_MOVETO),
+new KeyValuePair<string, string>(@"CopyPath.exe", Properties.Resources.TOOL_EXPLANATION_COPYPATH),
+new KeyValuePair<string, string>(@"RegexFilenameRenamer.exe", Properties.Resources.TOOL_EXPLANATION_REGEXFILENAMERENAMER),
+
+// new KeyValuePair<string, string>(@"RenameToFoldername.exe", Properties.Resources.TOOL_EXPLANATION_RENAMETOFOLDERNAME),
+new KeyValuePair<string, string>(@"RunFileAs.exe", Properties.Resources.TOOL_EXPLANATION_RUNASFILE),
+new KeyValuePair<string, string>(@"RunOnebyOne.exe", Properties.Resources.TOOL_EXPLANATION_RUNONEBYONE),
+new KeyValuePair<string, string>(@"RunWithArgs.exe", Properties.Resources.TOOL_EXPLANATION_RUNWITHARGS),
+// new KeyValuePair<string, string>(@"SendToSender.exe", Properties.Resources.TOOL_EXPLANATION_SENDTOSENDER),
+new KeyValuePair<string, string>(@"touch.exe", Properties.Resources.TOOL_EXPLANATION_TOUCH),
+new KeyValuePair<string, string>(@"Switch3264.exe", Properties.Resources.TOOL_EXPLANATION_SWITCH3264),
+
+
+//@"ShortcutRenamer.exe",
+//@"ShortcutRenamer.vshost.exe",
+//@"ShowEnv.exe",
+//@"Switch3264.exe",
+
+
+                    };
+
+
+            foreach (var kv in kvpArr)
+            {
+                string targetfullpath = Path.Combine(ToolsDir, kv.Key);
+                string shortcutfilefullpath = Path.Combine(CurrentInventoryFolder, kv.Value + ".lnk");
+                if(System.IO.File.Exists(shortcutfilefullpath))
+                {
+                    switch(YesOrNoOrCancel(this, 
+                        string.Format(Properties.Resources.ARE_YOU_SURE_REPLACE_FILE,shortcutfilefullpath),
+                        false))
+                    {
+                        case DialogResult.No:
+                            continue;
+                        case DialogResult.Cancel:
+                            return;
+                    }
+                }
+                CreateShortcutWSH(shortcutfilefullpath, targetfullpath);
+            }
+
+        }
         void constructInventory()
         {
             while (inventoryToolStripMenuItem.DropDownItems.Count > 2)
@@ -601,41 +701,7 @@ namespace SendToManager
 
                 if (bCreateDefaultItems)
                 {
-                    KeyValuePair<string, string>[] kvpArr = new KeyValuePair<string, string>[] {
-new KeyValuePair<string, string>(@"CommandPrompt.bat", Properties.Resources.TOOL_EXPLANATION_COMMANDLINE),
-new KeyValuePair<string, string>(@"ChangeFileName.exe", Properties.Resources.TOOL_EXPLANATION_CHANGEFILENAME),
-new KeyValuePair<string, string>(@"ChangeFileTime.exe", Properties.Resources.TOOL_EXPLANATION_CHANGEFILETIME),
-new KeyValuePair<string, string>(@"CopyFileContent.exe", Properties.Resources.TOOL_EXPLANATION_COPYFILECONTENT),
-new KeyValuePair<string, string>(@"CopyFirstLine.exe", Properties.Resources.TOOL_EXPLANATION_COPYFIRSTLINE),
-new KeyValuePair<string, string>(@"DotNet4Runnable.exe", Properties.Resources.TOOL_EXPLANATION_DOTNET4RUNNABLE),
-new KeyValuePair<string, string>(@"MoveTo.exe", Properties.Resources.TOOL_EXPLANATION_MOVETO),
-new KeyValuePair<string, string>(@"CopyPath.exe", Properties.Resources.TOOL_EXPLANATION_COPYPATH),
-new KeyValuePair<string, string>(@"RegexFilenameRenamer.exe", Properties.Resources.TOOL_EXPLANATION_REGEXFILENAMERENAMER),
-
-// new KeyValuePair<string, string>(@"RenameToFoldername.exe", Properties.Resources.TOOL_EXPLANATION_RENAMETOFOLDERNAME),
-new KeyValuePair<string, string>(@"RunFileAs.exe", Properties.Resources.TOOL_EXPLANATION_RUNASFILE),
-new KeyValuePair<string, string>(@"RunOnebyOne.exe", Properties.Resources.TOOL_EXPLANATION_RUNONEBYONE),
-new KeyValuePair<string, string>(@"RunWithArgs.exe", Properties.Resources.TOOL_EXPLANATION_RUNWITHARGS),
-// new KeyValuePair<string, string>(@"SendToSender.exe", Properties.Resources.TOOL_EXPLANATION_SENDTOSENDER),
-new KeyValuePair<string, string>(@"touch.exe", Properties.Resources.TOOL_EXPLANATION_TOUCH),
-new KeyValuePair<string, string>(@"Switch3264.exe", Properties.Resources.TOOL_EXPLANATION_SWITCH3264),
-
-
-//@"ShortcutRenamer.exe",
-//@"ShortcutRenamer.vshost.exe",
-//@"ShowEnv.exe",
-//@"Switch3264.exe",
-
-
-                    };
-
-
-                    foreach (var kv in kvpArr)
-                    {
-                        string targetfullpath = Path.Combine(ToolsDir, kv.Key);
-                        string shortcutfilefullpath = Path.Combine(CurrentInventoryFolder, kv.Value + ".lnk");
-                        CreateShortcutWSH(shortcutfilefullpath, targetfullpath);
-                    }
+                    insertDefaultItems();
                 }
             }
             catch (Exception ex)
@@ -1363,6 +1429,13 @@ new KeyValuePair<string, string>(@"Switch3264.exe", Properties.Resources.TOOL_EX
             if (delFiles.Count == 0)
                 return;
 
+            if(DialogResult.Yes != CppUtils.YesOrNo(this,
+                string.Format(Properties.Resources.ARE_YOU_SURE_DELETE_FILE,delFiles.Count),
+                MessageBoxDefaultButton.Button2))
+            {
+                return;
+            }
+
             if (0 == CppUtils.DeleteFiles(delFiles.ToArray()))
             {
                 foreach (var item in delItems)
@@ -1373,6 +1446,22 @@ new KeyValuePair<string, string>(@"Switch3264.exe", Properties.Resources.TOOL_EX
         private void refershToolStripMenuItem_Click(object sender, EventArgs e)
         {
             RefreshItems();
+        }
+
+        private void insertDefaultItemsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Cursor preCursor = Cursor.Current;
+            try
+            {
+                Cursor.Current = Cursors.WaitCursor;
+
+                insertDefaultItems();
+                RefreshItems();
+            }
+            finally
+            {
+                Cursor.Current = preCursor;
+            }
         }
     }
 }

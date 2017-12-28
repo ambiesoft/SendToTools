@@ -70,6 +70,24 @@ namespace SendToManager.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to delete {0} item(s)?.
+        /// </summary>
+        internal static string ARE_YOU_SURE_DELETE_FILE {
+            get {
+                return ResourceManager.GetString("ARE_YOU_SURE_DELETE_FILE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to replace &quot;{0}&quot;?.
+        /// </summary>
+        internal static string ARE_YOU_SURE_REPLACE_FILE {
+            get {
+                return ResourceManager.GetString("ARE_YOU_SURE_REPLACE_FILE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Do you want to put numbers in order?.
         /// </summary>
         internal static string ASK_ASSIGN_NUMBERS {

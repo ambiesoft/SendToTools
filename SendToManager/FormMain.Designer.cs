@@ -37,12 +37,22 @@
             this.tsbUp = new System.Windows.Forms.ToolStripButton();
             this.tsbDown = new System.Windows.Forms.ToolStripButton();
             this.tsbRefresh = new System.Windows.Forms.ToolStripButton();
-            this.tsbAssignNumber = new System.Windows.Forms.ToolStripButton();
+            this.tsbNumber = new System.Windows.Forms.ToolStripButton();
             this.tsbDeploy = new System.Windows.Forms.ToolStripButton();
             this.tsbDisplace = new System.Windows.Forms.ToolStripButton();
             this.menuMain = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.closeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.newItemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.upToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.downToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.refreshToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.numberToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.deployToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.displaceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
+            this.insertDefaultItemsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.inventoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addInventoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
@@ -59,9 +69,9 @@
             this.lvMain = new ListViewEx.ListViewEx();
             this.ctxList = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.duplicateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.refershToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
+            this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tsList.SuspendLayout();
             this.menuMain.SuspendLayout();
             this.panelRoot.SuspendLayout();
@@ -90,7 +100,7 @@
             this.tsbUp,
             this.tsbDown,
             this.tsbRefresh,
-            this.tsbAssignNumber,
+            this.tsbNumber,
             this.tsbDeploy,
             this.tsbDisplace});
             resources.ApplyResources(this.tsList, "tsList");
@@ -120,11 +130,11 @@
             this.tsbRefresh.Name = "tsbRefresh";
             this.tsbRefresh.Click += new System.EventHandler(this.tsbRefresh_Click);
             // 
-            // tsbAssignNumber
+            // tsbNumber
             // 
-            resources.ApplyResources(this.tsbAssignNumber, "tsbAssignNumber");
-            this.tsbAssignNumber.Name = "tsbAssignNumber";
-            this.tsbAssignNumber.Click += new System.EventHandler(this.tsbAssignNumber_Click);
+            resources.ApplyResources(this.tsbNumber, "tsbNumber");
+            this.tsbNumber.Name = "tsbNumber";
+            this.tsbNumber.Click += new System.EventHandler(this.tsbAssignNumber_Click);
             // 
             // tsbDeploy
             // 
@@ -142,6 +152,7 @@
             // 
             this.menuMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
+            this.editToolStripMenuItem,
             this.inventoryToolStripMenuItem,
             this.folderToolStripMenuItem,
             this.toolsToolStripMenuItem,
@@ -161,6 +172,74 @@
             this.closeToolStripMenuItem.Name = "closeToolStripMenuItem";
             resources.ApplyResources(this.closeToolStripMenuItem, "closeToolStripMenuItem");
             this.closeToolStripMenuItem.Click += new System.EventHandler(this.closeToolStripMenuItem_Click);
+            // 
+            // editToolStripMenuItem
+            // 
+            this.editToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.newItemToolStripMenuItem,
+            this.upToolStripMenuItem,
+            this.downToolStripMenuItem,
+            this.refreshToolStripMenuItem,
+            this.numberToolStripMenuItem,
+            this.deployToolStripMenuItem,
+            this.displaceToolStripMenuItem,
+            this.toolStripMenuItem3,
+            this.insertDefaultItemsToolStripMenuItem});
+            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
+            resources.ApplyResources(this.editToolStripMenuItem, "editToolStripMenuItem");
+            // 
+            // newItemToolStripMenuItem
+            // 
+            resources.ApplyResources(this.newItemToolStripMenuItem, "newItemToolStripMenuItem");
+            this.newItemToolStripMenuItem.Name = "newItemToolStripMenuItem";
+            this.newItemToolStripMenuItem.Click += new System.EventHandler(this.tsbNewItem_Click);
+            // 
+            // upToolStripMenuItem
+            // 
+            resources.ApplyResources(this.upToolStripMenuItem, "upToolStripMenuItem");
+            this.upToolStripMenuItem.Name = "upToolStripMenuItem";
+            this.upToolStripMenuItem.Click += new System.EventHandler(this.tsbUp_Click);
+            // 
+            // downToolStripMenuItem
+            // 
+            resources.ApplyResources(this.downToolStripMenuItem, "downToolStripMenuItem");
+            this.downToolStripMenuItem.Name = "downToolStripMenuItem";
+            this.downToolStripMenuItem.Click += new System.EventHandler(this.tsbDown_Click);
+            // 
+            // refreshToolStripMenuItem
+            // 
+            resources.ApplyResources(this.refreshToolStripMenuItem, "refreshToolStripMenuItem");
+            this.refreshToolStripMenuItem.Name = "refreshToolStripMenuItem";
+            this.refreshToolStripMenuItem.Click += new System.EventHandler(this.tsbRefresh_Click);
+            // 
+            // numberToolStripMenuItem
+            // 
+            resources.ApplyResources(this.numberToolStripMenuItem, "numberToolStripMenuItem");
+            this.numberToolStripMenuItem.Name = "numberToolStripMenuItem";
+            this.numberToolStripMenuItem.Click += new System.EventHandler(this.tsbAssignNumber_Click);
+            // 
+            // deployToolStripMenuItem
+            // 
+            resources.ApplyResources(this.deployToolStripMenuItem, "deployToolStripMenuItem");
+            this.deployToolStripMenuItem.Name = "deployToolStripMenuItem";
+            this.deployToolStripMenuItem.Click += new System.EventHandler(this.tsbDeploy_Click);
+            // 
+            // displaceToolStripMenuItem
+            // 
+            resources.ApplyResources(this.displaceToolStripMenuItem, "displaceToolStripMenuItem");
+            this.displaceToolStripMenuItem.Name = "displaceToolStripMenuItem";
+            this.displaceToolStripMenuItem.Click += new System.EventHandler(this.tsbDisplace_Click);
+            // 
+            // toolStripMenuItem3
+            // 
+            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
+            resources.ApplyResources(this.toolStripMenuItem3, "toolStripMenuItem3");
+            // 
+            // insertDefaultItemsToolStripMenuItem
+            // 
+            this.insertDefaultItemsToolStripMenuItem.Name = "insertDefaultItemsToolStripMenuItem";
+            resources.ApplyResources(this.insertDefaultItemsToolStripMenuItem, "insertDefaultItemsToolStripMenuItem");
+            this.insertDefaultItemsToolStripMenuItem.Click += new System.EventHandler(this.insertDefaultItemsToolStripMenuItem_Click);
             // 
             // inventoryToolStripMenuItem
             // 
@@ -291,12 +370,6 @@
             resources.ApplyResources(this.duplicateToolStripMenuItem, "duplicateToolStripMenuItem");
             this.duplicateToolStripMenuItem.Click += new System.EventHandler(this.duplicateToolStripMenuItem_Click);
             // 
-            // deleteToolStripMenuItem
-            // 
-            this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            resources.ApplyResources(this.deleteToolStripMenuItem, "deleteToolStripMenuItem");
-            this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
-            // 
             // refershToolStripMenuItem
             // 
             this.refershToolStripMenuItem.Name = "refershToolStripMenuItem";
@@ -307,6 +380,12 @@
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
             resources.ApplyResources(this.toolStripMenuItem2, "toolStripMenuItem2");
+            // 
+            // deleteToolStripMenuItem
+            // 
+            this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
+            resources.ApplyResources(this.deleteToolStripMenuItem, "deleteToolStripMenuItem");
+            this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
             // 
             // FormMain
             // 
@@ -338,7 +417,7 @@
         private System.Windows.Forms.ToolStripButton tsbUp;
         private System.Windows.Forms.ToolStripButton tsbDown;
         private System.Windows.Forms.ToolStripMenuItem inventoryToolStripMenuItem;
-        private System.Windows.Forms.ToolStripButton tsbAssignNumber;
+        private System.Windows.Forms.ToolStripButton tsbNumber;
         private System.Windows.Forms.ToolStripButton tsbNewItem;
         private System.Windows.Forms.ToolStripMenuItem folderToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem openCurrentInventoryToolStripMenuItem;
@@ -364,6 +443,16 @@
         private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem refershToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem newItemToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem upToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem downToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem refreshToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem numberToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem deployToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem displaceToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem3;
+        private System.Windows.Forms.ToolStripMenuItem insertDefaultItemsToolStripMenuItem;
     }
 }
 

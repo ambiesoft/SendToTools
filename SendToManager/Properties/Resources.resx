@@ -120,6 +120,12 @@
   <data name="ALERT_DIRECTORY_UNAVAILABLE" xml:space="preserve">
     <value>Failed to read or write to a file in the directory "{0}".</value>
   </data>
+  <data name="ARE_YOU_SURE_DELETE_FILE" xml:space="preserve">
+    <value>Are you sure you want to delete {0} item(s)?</value>
+  </data>
+  <data name="ARE_YOU_SURE_REPLACE_FILE" xml:space="preserve">
+    <value>Are you sure you want to replace "{0}"?</value>
+  </data>
   <data name="ASK_ASSIGN_NUMBERS" xml:space="preserve">
     <value>Do you want to put numbers in order?</value>
   </data>

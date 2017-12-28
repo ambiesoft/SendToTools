@@ -1,5 +1,6 @@
-## Sendto Manager
-Sendto Manegaer adds various tools on "SendTo" menu of the explorer.
+## SendtoTools
+SendtoTools can add various tools on "SendTo" menu of the explorer.
+It can also manage these tools.
 
 ### Features
 * You can manage your favorite tools by categolized by "Inventory".
@@ -7,38 +8,61 @@ Sendto Manegaer adds various tools on "SendTo" menu of the explorer.
 * This application can be portable.
 * You can put your tools on "Sendto" when you need them and remove them when it is no longer needed.
 
-## Tools
-Basically you can put any shortcut files on "SendTo", but Sendto Manager also ships with various tools.
+## Download
+Download binary from https://github.com/erasoni/SendToTools/releases
 
-### ChangeFileName
+## Environment
+.Net4 and Visual Studio 2013 runtime library are required.
+
+## Tools
+Basically you can put any shortcut files on "SendTo", but SendtoTools also ships with various tools.
+
+#### ChangeFileName
 This tool can change file name or move file with the name you specified. One of the benefit of this tools is that if you want to change the file name as a part of the content of the file, you can paste the content into this app before closing app, then after closing the app, renaming operation can be performed.
 
-### ChangeFileTime
+#### ChangeFileTime
 You can change file time (Creation time, Last Modified time and Last Access time).
 
-### CopyFileContent
+#### CopyFileContent
 Copy file content onto the clipboard. Only Text file and Image file can be copiable.
 
-### CopyPath
+#### CopyPath
 Copy path of the file. You can show a dialog by pressing shift, ctrl or RightButton when launching the app. With this dialog, more customized form of path can be copiable.
 
-### DotNet4Runnable
+#### DotNet4Runnable
 This tool creates .config file so that .Net2.0 application can be runnable on .Net4.0 platform. If the environment does not have .Net2.0 installed and you want to run .Net2.0 application, you can send .exe to this tool to create .config.
 
-### Move to
+#### Move to
 Move file(s) to favorites location.
 
-### CommandPrompt
+#### CommandPrompt
 Open Command Prompt as current directory is a path sent to this app.
 
-### RegexFileRenamer
+#### RegexFileRenamer
 Rename file by a regular expression.
 
-### RunFileAs
+#### RunFileAs
 Run file as administrator.
 
-### Switch3264
+#### Switch3264
 You need specify two option, "-32" and "-64". When launched in 32bit enviromment, the argument of "-32" will be launched. Same will do in 64bit.
 
-### touch
+#### touch
 Change file time(Last Access time and Last Write time) as current time.
+
+
+## License
+This software is freeware, See Copying.txt
+
+## Install
+Extract downloaded archive and lanucn '''SendToManager.exe'''.
+
+## Uninstall
+Remove extracted files.
+
+## Contact
+- E-mail: ambiesoft.trueff@gmail.com
+- Webpage: http://ambiesoft.fam.cx/main/index.php?page=sendtotools
+- Forum: http://ambiesoft.fam.cx/minibbs/minibbs.php
+- Development: https://github.com/erasoni/SendToTools
+

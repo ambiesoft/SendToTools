@@ -108,6 +108,7 @@
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
     <Compile Include="Helper.cs" />
+    <Compile Include="ListViewColumnSorter.cs" />
     <Compile Include="ListViewCustomReorder.ListViewEx.cs">
       <SubType>Component</SubType>
     </Compile>
