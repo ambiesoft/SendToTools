@@ -153,11 +153,17 @@ namespace Ambiesoft.RegexFilenameRenamer
                 if (parser["?"] != null)
                     sb.AppendLine("?");
 
-                MessageBox.Show(sb.ToString(),
+                sb.AppendLine();
+                sb.AppendLine(Properties.Resources.DO_YOU_WANT_TO_CONTINUE);
+
+                if (DialogResult.Yes != MessageBox.Show(sb.ToString(),
                     Application.ProductName + " " + "check arg",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information);
-                return 0;
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question,
+                    MessageBoxDefaultButton.Button2))
+                {
+                    return 0;
+                }
             }
             if (parser["rf"] == null || parser["rt"] == null)
             {
@@ -267,8 +273,12 @@ namespace Ambiesoft.RegexFilenameRenamer
                     {
                         if (Directory.Exists(org))
                             Directory.Move(org, targets[org]);
-                        else
+                        else if(File.Exists(org))
                             File.Move(org, targets[org]);
+                        else
+                        {
+                            CppUtils.Alert(string.Format(Properties.Resources.FILE_NOT_EXIST, org));
+                        }
                     }
                 }
                 return 0;
