@@ -82,6 +82,7 @@ namespace touch
             bool recursive = false;
             int depth = -1;
             bool touchfolder = false;
+            bool followlink = false;
             var p = new OptionSet() {
                     { 
                         "r|recursive", 
@@ -97,6 +98,11 @@ namespace touch
                         "f|folder", 
                         "Touch folders as well as files",
                         v => { touchfolder = v!=null;}
+                    },
+                    {
+                        "l|followlink",
+                        "Follow links",
+                        v => { followlink = v!=null;}
                     }
                 };
 
@@ -137,7 +143,7 @@ namespace touch
             var untouchabled = new Dictionary<string, Exception>();
             foreach (string filename in extra)
             {
-                dotouch(now, filename, touchfolder, recursive, 0, depth, ref touchedCount, untouchabled);
+                dotouch(now, filename, touchfolder, recursive, followlink, 0, depth, ref touchedCount, untouchabled);
             }
             if(untouchabled.Count!=0)
             {
@@ -172,7 +178,7 @@ namespace touch
             return curdepth > maxdepth;
         }
 
-        static void dotouch(DateTime now, string filename, bool touchfolder, bool recursive, int curdepth, int maxdepth, ref int touchedCount, Dictionary<string, Exception> untouchabled)
+        static void dotouch(DateTime now, string filename, bool touchfolder, bool recursive, bool followlink, int curdepth, int maxdepth, ref int touchedCount, Dictionary<string, Exception> untouchabled)
         {
             if (isDepthReached(curdepth , maxdepth))
                 return;
@@ -215,13 +221,16 @@ namespace touch
                         FileInfo[] fis = di.GetFiles();
                         foreach (FileInfo fi in fis)
                         {
-                            dotouch(now, fi.FullName, touchfolder, recursive, curdepth + 1, maxdepth, ref touchedCount, untouchabled);
+                            dotouch(now, fi.FullName, touchfolder, recursive, followlink, curdepth + 1, maxdepth, ref touchedCount, untouchabled);
                         }
                         
                         DirectoryInfo[] dis = di.GetDirectories();
-                        foreach(DirectoryInfo di2 in dis)
+                        foreach (DirectoryInfo di2 in dis)
                         {
-                            dotouch(now, di2.FullName, touchfolder, recursive, curdepth + 1, maxdepth, ref touchedCount,untouchabled);
+                            if (followlink || !IsSymbolic(di2.FullName))
+                            {
+                                dotouch(now, di2.FullName, touchfolder, recursive, followlink, curdepth + 1, maxdepth, ref touchedCount, untouchabled);
+                            }
                         }
                     }
                 }
@@ -234,6 +243,16 @@ namespace touch
             {
                 untouchabled.Add(filename,ex);
             }
+        }
+        private static bool IsSymbolic(string path)
+        {
+            try
+            {
+                FileInfo pathInfo = new FileInfo(path);
+                return pathInfo.Attributes.HasFlag(FileAttributes.ReparsePoint);
+            }
+            catch { }
+            return false;
         }
     }
 }
