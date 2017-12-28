@@ -102,6 +102,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FormConfirm.ja-JP.resx">
+      <DependentUpon>FormConfirm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormConfirm.resx">
       <DependentUpon>FormConfirm.cs</DependentUpon>
     </EmbeddedResource>

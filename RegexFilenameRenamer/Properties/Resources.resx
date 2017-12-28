@@ -121,10 +121,13 @@
     <value>confirm</value>
   </data>
   <data name="DO_YOU_WANT_TO_PERFORM" xml:space="preserve">
-    <value>Do you want to perfom move operation?</value>
+    <value>Do you want to perfom rename operation?</value>
   </data>
   <data name="MUST_SPECIFY_RF_RT" xml:space="preserve">
     <value>Both -rf and -rt must be specified.</value>
+  </data>
+  <data name="NO_CHANGE" xml:space="preserve">
+    <value>&lt;No Change&gt;</value>
   </data>
   <data name="NO_FILE" xml:space="preserve">
     <value>No file.</value>

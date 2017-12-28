@@ -240,4 +240,10 @@
   <data name="TOOL_EXPLANATION_COPYPATH" xml:space="preserve">
     <value>パスをコピー</value>
   </data>
+  <data name="ARE_YOU_SURE_DELETE_FILE" xml:space="preserve">
+    <value>{0}個のアイテムを削除しますか？</value>
+  </data>
+  <data name="ARE_YOU_SURE_REPLACE_FILE" xml:space="preserve">
+    <value>"{0}"を置き換えますか？</value>
+  </data>
 </root>

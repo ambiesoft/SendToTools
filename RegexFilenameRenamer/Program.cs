@@ -221,9 +221,16 @@ namespace Ambiesoft.RegexFilenameRenamer
                     StringBuilder sbDry = new StringBuilder();
                     foreach( string org in targets.Keys)
                     {
-                        sbDry.AppendFormat("\"{0}\" -> \"{1}\"", org, targets[org]);
-                        sbDry.AppendLine();
-                        sbDry.AppendLine();
+                        if (org != targets[org])
+                        {
+                            sbDry.AppendFormat("\"{0}\" ->\n\"{1}\"", org, targets[org]);
+                            sbDry.AppendLine();
+                            sbDry.AppendLine();
+                        }
+                        else
+                        {
+                            sbDry.AppendFormat("\"{0}\" -> " + Properties.Resources.NO_CHANGE, org, targets[org]);
+                        }
                     }
                     //sbDry.AppendLine();
                     //sbDry.AppendLine(Properties.Resources.DO_YOU_WANT_TO_PERFORM);
@@ -253,10 +260,13 @@ namespace Ambiesoft.RegexFilenameRenamer
 
                 foreach( string org in targets.Keys)
                 {
-                    if (Directory.Exists(org))
-                        Directory.Move(org, targets[org]);
-                    else
-                        File.Move(org,targets[org]);
+                    if (org != targets[org])
+                    {
+                        if (Directory.Exists(org))
+                            Directory.Move(org, targets[org]);
+                        else
+                            File.Move(org, targets[org]);
+                    }
                 }
                 return 0;
             }

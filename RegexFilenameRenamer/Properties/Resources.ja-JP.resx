@@ -123,4 +123,13 @@
   <data name="NO_FILE" xml:space="preserve">
     <value>ファイルがありません。</value>
   </data>
+  <data name="CONFIRM" xml:space="preserve">
+    <value>確認</value>
+  </data>
+  <data name="DO_YOU_WANT_TO_PERFORM" xml:space="preserve">
+    <value>リネームを実行しますか？</value>
+  </data>
+  <data name="NO_CHANGE" xml:space="preserve">
+    <value>&lt;変更なし&gt;</value>
+  </data>
 </root>

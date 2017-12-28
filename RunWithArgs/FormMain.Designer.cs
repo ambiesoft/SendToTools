@@ -40,81 +40,52 @@ namespace RunWithArgs
             // 
             // btnRun
             // 
-            this.btnRun.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.btnRun, "btnRun");
             this.btnRun.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnRun.Location = new System.Drawing.Point(306, 217);
             this.btnRun.Name = "btnRun";
-            this.btnRun.Size = new System.Drawing.Size(185, 27);
-            this.btnRun.TabIndex = 5;
-            this.btnRun.Text = "&Run";
             this.btnRun.UseVisualStyleBackColor = true;
             this.btnRun.Click += new System.EventHandler(this.btnRun_Click);
             // 
             // btnCancel
             // 
-            this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.btnCancel, "btnCancel");
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(497, 217);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(106, 27);
-            this.btnCancel.TabIndex = 6;
-            this.btnCancel.Text = "&Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             // 
             // txtExe
             // 
-            this.txtExe.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtExe.Location = new System.Drawing.Point(12, 26);
+            resources.ApplyResources(this.txtExe, "txtExe");
             this.txtExe.Name = "txtExe";
             this.txtExe.ReadOnly = true;
-            this.txtExe.Size = new System.Drawing.Size(591, 19);
-            this.txtExe.TabIndex = 1;
             // 
             // txtArg
             // 
-            this.txtArg.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtArg.Location = new System.Drawing.Point(12, 82);
+            resources.ApplyResources(this.txtArg, "txtArg");
             this.txtArg.Name = "txtArg";
-            this.txtArg.Size = new System.Drawing.Size(591, 19);
-            this.txtArg.TabIndex = 3;
             // 
             // lblExe
             // 
-            this.lblExe.AutoSize = true;
-            this.lblExe.Location = new System.Drawing.Point(10, 11);
+            resources.ApplyResources(this.lblExe, "lblExe");
             this.lblExe.Name = "lblExe";
-            this.lblExe.Size = new System.Drawing.Size(24, 12);
-            this.lblExe.TabIndex = 0;
-            this.lblExe.Text = "&File";
             // 
             // lblArg
             // 
-            this.lblArg.AutoSize = true;
-            this.lblArg.Location = new System.Drawing.Point(10, 67);
+            resources.ApplyResources(this.lblArg, "lblArg");
             this.lblArg.Name = "lblArg";
-            this.lblArg.Size = new System.Drawing.Size(60, 12);
-            this.lblArg.TabIndex = 2;
-            this.lblArg.Text = "&Arguments";
             // 
             // chkRunas
             // 
-            this.chkRunas.AutoSize = true;
-            this.chkRunas.Location = new System.Drawing.Point(12, 132);
+            resources.ApplyResources(this.chkRunas, "chkRunas");
             this.chkRunas.Name = "chkRunas";
-            this.chkRunas.Size = new System.Drawing.Size(56, 16);
-            this.chkRunas.TabIndex = 4;
-            this.chkRunas.Text = "&Runas";
             this.chkRunas.UseVisualStyleBackColor = true;
             // 
             // FormMain
             // 
             this.AcceptButton = this.btnRun;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(615, 256);
             this.Controls.Add(this.chkRunas);
             this.Controls.Add(this.lblArg);
             this.Controls.Add(this.lblExe);
@@ -123,10 +94,8 @@ namespace RunWithArgs
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnRun);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "FormMain";
-            this.Text = "Run with Arguments";
             this.ResumeLayout(false);
             this.PerformLayout();
 

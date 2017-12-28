@@ -366,9 +366,6 @@
   <data name="tsbAssignNumber.Size" type="System.Drawing.Size, System.Drawing">
     <value>51, 22</value>
   </data>
-  <data name="tsbAssignNumber.Text" xml:space="preserve">
-    <value>番号</value>
-  </data>
   <data name="tsbDeploy.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
@@ -2265,5 +2262,35 @@
   </data>
   <data name="refershToolStripMenuItem.Text" xml:space="preserve">
     <value>リフレッシュ(&amp;R)</value>
+  </data>
+  <data name="tsbNumber.Text" xml:space="preserve">
+    <value>番号</value>
+  </data>
+  <data name="editToolStripMenuItem.Text" xml:space="preserve">
+    <value>編集(&amp;E)</value>
+  </data>
+  <data name="newItemToolStripMenuItem.Text" xml:space="preserve">
+    <value>新規アイテム(&amp;N)</value>
+  </data>
+  <data name="upToolStripMenuItem.Text" xml:space="preserve">
+    <value>上へ(&amp;U)</value>
+  </data>
+  <data name="downToolStripMenuItem.Text" xml:space="preserve">
+    <value>下へ(&amp;D)</value>
+  </data>
+  <data name="refreshToolStripMenuItem.Text" xml:space="preserve">
+    <value>リフレッシュ(&amp;R)</value>
+  </data>
+  <data name="numberToolStripMenuItem.Text" xml:space="preserve">
+    <value>番号(&amp;M)</value>
+  </data>
+  <data name="deployToolStripMenuItem.Text" xml:space="preserve">
+    <value>展開(&amp;P)</value>
+  </data>
+  <data name="displaceToolStripMenuItem.Text" xml:space="preserve">
+    <value>撤退(&amp;S)</value>
+  </data>
+  <data name="insertDefaultItemsToolStripMenuItem.Text" xml:space="preserve">
+    <value>デフォルトアイテムを挿入(&amp;I)</value>
   </data>
 </root>
