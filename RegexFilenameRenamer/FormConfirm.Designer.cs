@@ -67,6 +67,7 @@
             // rtxtMessage
             // 
             resources.ApplyResources(this.rtxtMessage, "rtxtMessage");
+            this.rtxtMessage.AutoWordSelection = true;
             this.rtxtMessage.Name = "rtxtMessage";
             this.rtxtMessage.ReadOnly = true;
             // 

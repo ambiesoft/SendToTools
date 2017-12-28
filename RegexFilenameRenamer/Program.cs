@@ -223,14 +223,18 @@ namespace Ambiesoft.RegexFilenameRenamer
                     {
                         if (org != targets[org])
                         {
-                            sbDry.AppendFormat("\"{0}\" ->\n\"{1}\"", org, targets[org]);
-                            sbDry.AppendLine();
-                            sbDry.AppendLine();
+                            sbDry.AppendFormat("\"{0}\" ->\n\"{1}\"", 
+                                Path.GetFileName(org),
+                                Path.GetFileName(targets[org]));
                         }
                         else
                         {
-                            sbDry.AppendFormat("\"{0}\" -> " + Properties.Resources.NO_CHANGE, org, targets[org]);
+                            sbDry.AppendFormat("\"{0}\" -> " + Properties.Resources.NO_CHANGE,
+                                Path.GetFileName(org),
+                                Path.GetFileName(targets[org]));
                         }
+                        sbDry.AppendLine();
+                        sbDry.AppendLine();
                     }
                     //sbDry.AppendLine();
                     //sbDry.AppendLine(Properties.Resources.DO_YOU_WANT_TO_PERFORM);
@@ -242,8 +246,7 @@ namespace Ambiesoft.RegexFilenameRenamer
 
                         form.Text = Application.ProductName + " " + Properties.Resources.CONFIRM;
                         form.lblMessage.Text = Properties.Resources.DO_YOU_WANT_TO_PERFORM;
-                        // form.txtConfirm.Text = sbDry.ToString();
-                        form.rtxtMessage.Text = sbDry.ToString();
+                        form.initialText_ = sbDry.ToString();
                         if (DialogResult.Yes != form.ShowDialog())
                             return 0;
                     }
