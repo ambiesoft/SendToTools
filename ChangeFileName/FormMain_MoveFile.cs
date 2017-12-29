@@ -163,12 +163,12 @@ namespace ChangeFileName
             get
             {
                 string[] dirs;
-                Ambiesoft.Profile.GetStringArray("settings", "movetodirs", out dirs, IniFile);
+                Ambiesoft.Profile.GetStringArray(SECTION_SETTING, "movetodirs", out dirs, IniFile);
                 return dirs;
             }
             set
             {
-                if(!Ambiesoft.Profile.WriteStringArray("settings", "movetodirs", value, IniFile))
+                if(!Ambiesoft.Profile.WriteStringArray(SECTION_SETTING, "movetodirs", value, IniFile))
                 {
                     // LANG
                     showError("save failed");

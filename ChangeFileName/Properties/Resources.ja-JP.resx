@@ -152,4 +152,7 @@
   <data name="DESTINATION_EXISTS" xml:space="preserve">
     <value>宛先には既に "{0}" という名前のファイルが存在します。 ファイルを置き換えますか？</value>
   </data>
+  <data name="Extention" xml:space="preserve">
+    <value>拡張子</value>
+  </data>
 </root>

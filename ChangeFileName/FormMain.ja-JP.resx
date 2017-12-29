@@ -179,31 +179,31 @@
     <value>163, 22</value>
   </data>
   <data name="tsmiMakeFileNamableSel.Text" xml:space="preserve">
-    <value>ファイル名化(&amp;M)</value>
+    <value>ファイル名化(&amp;M) (選択)</value>
   </data>
   <data name="tsmiLowerSel.Size" type="System.Drawing.Size, System.Drawing">
     <value>163, 22</value>
   </data>
   <data name="tsmiLowerSel.Text" xml:space="preserve">
-    <value>小文字(&amp;L)</value>
+    <value>小文字(&amp;L) (選択)</value>
   </data>
   <data name="tsmiUpperSel.Size" type="System.Drawing.Size, System.Drawing">
     <value>163, 22</value>
   </data>
   <data name="tsmiUpperSel.Text" xml:space="preserve">
-    <value>大文字(&amp;U)</value>
+    <value>大文字(&amp;U) (選択)</value>
   </data>
   <data name="tsmiTrimSel.Size" type="System.Drawing.Size, System.Drawing">
     <value>163, 22</value>
   </data>
   <data name="tsmiTrimSel.Text" xml:space="preserve">
-    <value>トリム(&amp;T)</value>
+    <value>トリム(&amp;T) (選択)</value>
   </data>
   <data name="tsmiRemoveSpaceSel.Size" type="System.Drawing.Size, System.Drawing">
     <value>163, 22</value>
   </data>
   <data name="tsmiRemoveSpaceSel.Text" xml:space="preserve">
-    <value>スペースを削除(&amp;R)</value>
+    <value>スペースを削除(&amp;R) (選択)</value>
   </data>
   <data name="tsmiUnderbar2hyphenSel.Size" type="System.Drawing.Size, System.Drawing">
     <value>163, 22</value>
@@ -2009,9 +2009,48 @@
     <value>末尾に追加(&amp;T)</value>
   </data>
   <data name="tsmiUnderbar2hyphenSel.Text" xml:space="preserve">
-    <value>_2-</value>
+    <value>_2- (選択)</value>
   </data>
   <data name="addModifyToolToolStripMenuItem.Text" xml:space="preserve">
     <value>変更ツールを追加(&amp;A)</value>
+  </data>
+  <data name="tsmitoHiragana.Text" xml:space="preserve">
+    <value>ひらがな(&amp;H)</value>
+  </data>
+  <data name="tsmitoKatakana.Text" xml:space="preserve">
+    <value>カタカナ(&amp;K)</value>
+  </data>
+  <data name="tsmitoHankaku.Text" xml:space="preserve">
+    <value>半角(&amp;A)</value>
+  </data>
+  <data name="tsmitoZenkaku.Text" xml:space="preserve">
+    <value>全角(&amp;Z)</value>
+  </data>
+  <data name="tsmitoHankakuKana.Text" xml:space="preserve">
+    <value>半角カナ(&amp;U)</value>
+  </data>
+  <data name="tsmitoZenkakuKana.Text" xml:space="preserve">
+    <value>全角カナ(&amp;N)</value>
+  </data>
+  <data name="tsmitoHiraganaSel.Text" xml:space="preserve">
+    <value>ひらがな(&amp;H) (選択)</value>
+  </data>
+  <data name="tsmitoKatakanaSel.Text" xml:space="preserve">
+    <value>カタカナ(&amp;K) (選択)</value>
+  </data>
+  <data name="tsmitoHankakuSel.Text" xml:space="preserve">
+    <value>半角(&amp;A) (選択)</value>
+  </data>
+  <data name="tsmitoZenkakuSel.Text" xml:space="preserve">
+    <value>全角(&amp;Z) (選択)</value>
+  </data>
+  <data name="tsmitoHankakuKanaSel.Text" xml:space="preserve">
+    <value>半角カナ(&amp;U) (選択)</value>
+  </data>
+  <data name="tsmitoZenkakuKanaSel.Text" xml:space="preserve">
+    <value>全角カナ(&amp;N) (選択)</value>
+  </data>
+  <data name="tsmiSmartDoubleClickSelection.Text" xml:space="preserve">
+    <value>スマートダブルクリック選択</value>
   </data>
 </root>

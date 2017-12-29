@@ -1,4 +1,4 @@
-//BSD 2-Clause License
+﻿//BSD 2-Clause License
 //
 //Copyright (c) 2017, Ambiesoft
 //All rights reserved.
@@ -43,6 +43,10 @@ namespace ChangeFileName
 {
     public partial class FormMain : Form
     {
+        static readonly string SECTION_SETTING = "settings";
+        static readonly string KEY_SMARTDOUBLECLICKSELECTION = "SmartDoubleClickSelection";
+        static readonly string KEY_TOPMOST = "TopMost";
+        
         public static string IniFile
         {
             get { return AmbLib.GetIniPath(); }
@@ -57,8 +61,8 @@ namespace ChangeFileName
 
             HashIni ini = Profile.ReadAll(IniFile);
             int x, y;
-            Ambiesoft.Profile.GetInt("settings", "X", 60, out x, ini);
-            Ambiesoft.Profile.GetInt("settings", "Y", 60, out y, ini);
+            Ambiesoft.Profile.GetInt(SECTION_SETTING, "X", 60, out x, ini);
+            Ambiesoft.Profile.GetInt(SECTION_SETTING, "Y", 60, out y, ini);
 
             bool isin = false;
             foreach (Screen s in Screen.AllScreens)
@@ -77,8 +81,8 @@ namespace ChangeFileName
                 this.Location = new Point(x, y);
 
                 int width, height;
-                Profile.GetInt("settings", "Width", -1, out width, ini);
-                Profile.GetInt("settings", "Height", -1, out height, ini);
+                Profile.GetInt(SECTION_SETTING, "Width", -1, out width, ini);
+                Profile.GetInt(SECTION_SETTING, "Height", -1, out height, ini);
                 if (width > 0 && height > 0)
                     this.Size = new Size(width, height);
             }
@@ -86,14 +90,17 @@ namespace ChangeFileName
 
             int intval;
             bool boolval;
-            if (Ambiesoft.Profile.GetInt("settings", "AutoRun", 0, out intval, ini))
+            if (Ambiesoft.Profile.GetInt(SECTION_SETTING, "AutoRun", 0, out intval, ini))
             {
                 chkAutoRun.Checked = intval != 0;
             }
 
-            Ambiesoft.Profile.GetBool("settings", "TopMost", false, out boolval, ini);
+            Ambiesoft.Profile.GetBool(SECTION_SETTING, KEY_TOPMOST, false, out boolval, ini);
             this.TopMost = alwaysOnTopToolStripMenuItem.Checked = boolval;
 
+
+            Profile.GetBool(SECTION_SETTING, KEY_SMARTDOUBLECLICKSELECTION, true, out boolval, ini);
+            tsmiSmartDoubleClickSelection.Checked = boolval;
         }
 
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
@@ -194,10 +201,13 @@ namespace ChangeFileName
         {
             HashIni ini = Profile.ReadAll(IniFile);
 
-            Profile.WriteInt("settings", "X", Location.X, ini);
-            Profile.WriteInt("settings", "Y", Location.Y, ini);
-            Profile.WriteInt("settings", "Width", Size.Width, ini);
-            Profile.WriteInt("settings", "Height", Size.Height, ini);
+            Profile.WriteInt(SECTION_SETTING, "X", Location.X, ini);
+            Profile.WriteInt(SECTION_SETTING, "Y", Location.Y, ini);
+            Profile.WriteInt(SECTION_SETTING, "Width", Size.Width, ini);
+            Profile.WriteInt(SECTION_SETTING, "Height", Size.Height, ini);
+
+            Profile.WriteBool(SECTION_SETTING, KEY_SMARTDOUBLECLICKSELECTION,
+                tsmiSmartDoubleClickSelection.Checked, ini);
 
             if (!Profile.WriteAll(ini, IniFile))
             {
@@ -260,7 +270,7 @@ namespace ChangeFileName
 
         private void chkAutoRun_CheckedChanged(object sender, EventArgs e)
         {
-            Ambiesoft.Profile.WriteInt("settings", "AutoRun", chkAutoRun.Checked ? 1 : 0, IniFile);
+            Ambiesoft.Profile.WriteInt(SECTION_SETTING, "AutoRun", chkAutoRun.Checked ? 1 : 0, IniFile);
         }
 
         private void btnCopyPath_Click(object sender, EventArgs e)
@@ -343,7 +353,7 @@ namespace ChangeFileName
         private void alwaysOnTopToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.TopMost = alwaysOnTopToolStripMenuItem.Checked;
-            Ambiesoft.Profile.WriteBool("settings", "TopMost", alwaysOnTopToolStripMenuItem.Checked, IniFile);
+            Ambiesoft.Profile.WriteBool(SECTION_SETTING, KEY_TOPMOST, alwaysOnTopToolStripMenuItem.Checked, IniFile);
         }
 
         private void pasteTotailToolStripMenuItem_Click(object sender, EventArgs e)
@@ -457,6 +467,97 @@ namespace ChangeFileName
                 tsi.Enabled = bHasSelection;
             }
         }
+
+        bool IsZenkakuKatakana(char c)
+        {
+            // ヽ(0x30FD) ヾ(0x30FE)
+            if (('ァ' <= c && c <= 'ヶ') ||
+                ('ヽ' <= c && c <= 'ヾ'))
+            {
+                return true;
+            }
+            // ヷ(0x30F7) ～ ヺ(0x30FA)
+            else if ('ヷ' <= c && c <= 'ヺ')
+            {
+                return true;
+            }
+            return false;
+        }
+        bool IsAsciiChar(char c)
+        {
+            if ('0' <= c && c <= '9')
+                return true;
+            if ('a' <= c && c <= 'z')
+                return true;
+            if ('A' <= c && c <= 'Z')
+                return true;
+            return false;
+        }
+        enum MojiType {
+            Unknown,
+            ZenkakuKatakana,
+            AsciiChar,
+        }
+        MojiType GetMojiType(char c)
+        {
+            if (IsZenkakuKatakana(c))
+                return MojiType.ZenkakuKatakana;
+            if (IsAsciiChar(c))
+                return MojiType.AsciiChar;
+
+            return MojiType.Unknown;
+        }
+        private void txtName_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if (!tsmiSmartDoubleClickSelection.Checked)
+                return;
+
+            string selText = txtName.SelectedText;
+            if (string.IsNullOrEmpty(selText))
+                return;
+
+            char startC = selText[0];
+            MojiType startMT = GetMojiType(startC);
+            //if (selText.Length >= 2)
+            //{
+            //    char endC = selText[selText.Length - 1];
+            //    MojiType endMT = GetMojiType(endC);
+            //    if (startMT != endMT)
+            //        return;
+            //}
+
+            // If selection moji type is different, it's over
+            //foreach(char c in selText)
+            //{
+            //    if (GetMojiType(c) != startMT)
+            //        return;
+            //}
+
+            // expand tail until mojitype are same
+            int newEnd = txtName.SelectionStart + 1;
+            for (; newEnd < txtName.TextLength; ++newEnd)
+            {
+                char c = txtName.Text[newEnd];
+                if (GetMojiType(c) != startMT)
+                    break;
+            }
+            int selLen = newEnd - txtName.SelectionStart;// +txtName.SelectionLength - 1;
+
+            // expand front
+            int newStart = txtName.SelectionStart;
+            for(; newStart>=0;--newStart)
+            {
+                char c = txtName.Text[newStart];
+                if (GetMojiType(c) != startMT)
+                    break;
+            }
+
+            selLen += txtName.SelectionStart - newStart - 1;
+
+            txtName.SelectionStart = newStart+1;
+            txtName.SelectionLength = selLen;
+        }
+
 
 
       
