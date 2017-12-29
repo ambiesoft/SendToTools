@@ -101,6 +101,7 @@
     <Compile Include="FormMain_MoveFile.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="kanaxs_ex-1.0.2.cs" />
     <Compile Include="MenuButton.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -116,6 +117,7 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="SplitButton.designer.cs" />
+    <Compile Include="UndoInfo.cs" />
     <EmbeddedResource Include="FormMain.ja-JP.resx">
       <SubType>Designer</SubType>
       <DependentUpon>FormMain.cs</DependentUpon>

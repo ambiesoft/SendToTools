@@ -32,7 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnOK = new System.Windows.Forms.Button();
-            this.textName = new System.Windows.Forms.TextBox();
+            this.txtName = new System.Windows.Forms.TextBox();
             this.btnLaunch = new System.Windows.Forms.Button();
             this.btnTrash = new System.Windows.Forms.Button();
             this.chkAutoRun = new System.Windows.Forms.CheckBox();
@@ -46,6 +46,15 @@
             this.tsmiRemoveSpace = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiUnderbar2hyphen = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiCn2Jp = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsmitoHiragana = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmitoKatakana = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsmitoHankaku = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmitoZenkaku = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsmitoHankakuKana = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmitoZenkakuKana = new System.Windows.Forms.ToolStripMenuItem();
             this.modifyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cmModifySelection = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tsmiMakeFileNamableSel = new System.Windows.Forms.ToolStripMenuItem();
@@ -55,6 +64,15 @@
             this.tsmiRemoveSpaceSel = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiUnderbar2hyphenSel = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiCn2JpSel = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsmitoHiraganaSel = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmitoKatakanaSel = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsmitoHankakuSel = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmitoZenkakuSel = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem8 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsmitoHankakuKanaSel = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmitoZenkakuKanaSel = new System.Windows.Forms.ToolStripMenuItem();
             this.modifySelectionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lblFileInfo = new System.Windows.Forms.Label();
             this.menuMain = new System.Windows.Forms.MenuStrip();
@@ -78,11 +96,14 @@
             this.goToWebPageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cmPaste = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.pasteTotailToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.tlpInfo = new System.Windows.Forms.TableLayoutPanel();
+            this.lblExtention = new System.Windows.Forms.Label();
             this.btnPaste = new SplitButtonDemo.SplitButton();
             this.cmModify.SuspendLayout();
             this.cmModifySelection.SuspendLayout();
             this.menuMain.SuspendLayout();
             this.cmPaste.SuspendLayout();
+            this.tlpInfo.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnCancel
@@ -99,11 +120,11 @@
             this.btnOK.UseVisualStyleBackColor = true;
             this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
-            // textName
+            // txtName
             // 
-            resources.ApplyResources(this.textName, "textName");
-            this.textName.Name = "textName";
-            this.textName.TextChanged += new System.EventHandler(this.textName_TextChanged);
+            resources.ApplyResources(this.txtName, "txtName");
+            this.txtName.Name = "txtName";
+            this.txtName.TextChanged += new System.EventHandler(this.txtName_TextChanged);
             // 
             // btnLaunch
             // 
@@ -147,8 +168,18 @@
             this.tsmiTrim,
             this.tsmiRemoveSpace,
             this.tsmiUnderbar2hyphen,
-            this.tsmiCn2Jp});
+            this.tsmiCn2Jp,
+            this.toolStripMenuItem3,
+            this.tsmitoHiragana,
+            this.tsmitoKatakana,
+            this.toolStripMenuItem6,
+            this.tsmitoHankaku,
+            this.tsmitoZenkaku,
+            this.toolStripMenuItem7,
+            this.tsmitoHankakuKana,
+            this.tsmitoZenkakuKana});
             this.cmModify.Name = "ccmModify";
+            this.cmModify.OwnerItem = this.modifyToolStripMenuItem;
             resources.ApplyResources(this.cmModify, "cmModify");
             // 
             // tsmiMakeFileNamable
@@ -193,6 +224,57 @@
             resources.ApplyResources(this.tsmiCn2Jp, "tsmiCn2Jp");
             this.tsmiCn2Jp.Click += new System.EventHandler(this.tsmiCn2Jp_Click);
             // 
+            // toolStripMenuItem3
+            // 
+            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
+            resources.ApplyResources(this.toolStripMenuItem3, "toolStripMenuItem3");
+            // 
+            // tsmitoHiragana
+            // 
+            this.tsmitoHiragana.Name = "tsmitoHiragana";
+            resources.ApplyResources(this.tsmitoHiragana, "tsmitoHiragana");
+            this.tsmitoHiragana.Click += new System.EventHandler(this.tsmitoHiragana_Click);
+            // 
+            // tsmitoKatakana
+            // 
+            this.tsmitoKatakana.Name = "tsmitoKatakana";
+            resources.ApplyResources(this.tsmitoKatakana, "tsmitoKatakana");
+            this.tsmitoKatakana.Click += new System.EventHandler(this.tsmitoKatakana_Click);
+            // 
+            // toolStripMenuItem6
+            // 
+            this.toolStripMenuItem6.Name = "toolStripMenuItem6";
+            resources.ApplyResources(this.toolStripMenuItem6, "toolStripMenuItem6");
+            // 
+            // tsmitoHankaku
+            // 
+            this.tsmitoHankaku.Name = "tsmitoHankaku";
+            resources.ApplyResources(this.tsmitoHankaku, "tsmitoHankaku");
+            this.tsmitoHankaku.Click += new System.EventHandler(this.tsmitoHankaku_Click);
+            // 
+            // tsmitoZenkaku
+            // 
+            this.tsmitoZenkaku.Name = "tsmitoZenkaku";
+            resources.ApplyResources(this.tsmitoZenkaku, "tsmitoZenkaku");
+            this.tsmitoZenkaku.Click += new System.EventHandler(this.tsmitoZenkaku_Click);
+            // 
+            // toolStripMenuItem7
+            // 
+            this.toolStripMenuItem7.Name = "toolStripMenuItem7";
+            resources.ApplyResources(this.toolStripMenuItem7, "toolStripMenuItem7");
+            // 
+            // tsmitoHankakuKana
+            // 
+            this.tsmitoHankakuKana.Name = "tsmitoHankakuKana";
+            resources.ApplyResources(this.tsmitoHankakuKana, "tsmitoHankakuKana");
+            this.tsmitoHankakuKana.Click += new System.EventHandler(this.tsmitoHankakuKana_Click);
+            // 
+            // tsmitoZenkakuKana
+            // 
+            this.tsmitoZenkakuKana.Name = "tsmitoZenkakuKana";
+            resources.ApplyResources(this.tsmitoZenkakuKana, "tsmitoZenkakuKana");
+            this.tsmitoZenkakuKana.Click += new System.EventHandler(this.tsmitoZenkakuKana_Click);
+            // 
             // modifyToolStripMenuItem
             // 
             this.modifyToolStripMenuItem.DropDown = this.cmModify;
@@ -208,7 +290,16 @@
             this.tsmiTrimSel,
             this.tsmiRemoveSpaceSel,
             this.tsmiUnderbar2hyphenSel,
-            this.tsmiCn2JpSel});
+            this.tsmiCn2JpSel,
+            this.toolStripMenuItem4,
+            this.tsmitoHiraganaSel,
+            this.tsmitoKatakanaSel,
+            this.toolStripMenuItem5,
+            this.tsmitoHankakuSel,
+            this.tsmitoZenkakuSel,
+            this.toolStripMenuItem8,
+            this.tsmitoHankakuKanaSel,
+            this.tsmitoZenkakuKanaSel});
             this.cmModifySelection.Name = "ccmModify";
             this.cmModifySelection.OwnerItem = this.modifySelectionToolStripMenuItem;
             resources.ApplyResources(this.cmModifySelection, "cmModifySelection");
@@ -255,11 +346,63 @@
             resources.ApplyResources(this.tsmiCn2JpSel, "tsmiCn2JpSel");
             this.tsmiCn2JpSel.Click += new System.EventHandler(this.tsmiCn2JpSel_Click);
             // 
+            // toolStripMenuItem4
+            // 
+            this.toolStripMenuItem4.Name = "toolStripMenuItem4";
+            resources.ApplyResources(this.toolStripMenuItem4, "toolStripMenuItem4");
+            // 
+            // tsmitoHiraganaSel
+            // 
+            this.tsmitoHiraganaSel.Name = "tsmitoHiraganaSel";
+            resources.ApplyResources(this.tsmitoHiraganaSel, "tsmitoHiraganaSel");
+            this.tsmitoHiraganaSel.Click += new System.EventHandler(this.tsmitoHiraganaSel_Click);
+            // 
+            // tsmitoKatakanaSel
+            // 
+            this.tsmitoKatakanaSel.Name = "tsmitoKatakanaSel";
+            resources.ApplyResources(this.tsmitoKatakanaSel, "tsmitoKatakanaSel");
+            this.tsmitoKatakanaSel.Click += new System.EventHandler(this.tsmitoKatakanaSel_Click);
+            // 
+            // toolStripMenuItem5
+            // 
+            this.toolStripMenuItem5.Name = "toolStripMenuItem5";
+            resources.ApplyResources(this.toolStripMenuItem5, "toolStripMenuItem5");
+            // 
+            // tsmitoHankakuSel
+            // 
+            this.tsmitoHankakuSel.Name = "tsmitoHankakuSel";
+            resources.ApplyResources(this.tsmitoHankakuSel, "tsmitoHankakuSel");
+            this.tsmitoHankakuSel.Click += new System.EventHandler(this.tsmitoHankakuSel_Click);
+            // 
+            // tsmitoZenkakuSel
+            // 
+            this.tsmitoZenkakuSel.Name = "tsmitoZenkakuSel";
+            resources.ApplyResources(this.tsmitoZenkakuSel, "tsmitoZenkakuSel");
+            this.tsmitoZenkakuSel.Click += new System.EventHandler(this.tsmitoZenkakuSel_Click);
+            // 
+            // toolStripMenuItem8
+            // 
+            this.toolStripMenuItem8.Name = "toolStripMenuItem8";
+            resources.ApplyResources(this.toolStripMenuItem8, "toolStripMenuItem8");
+            // 
+            // tsmitoHankakuKanaSel
+            // 
+            this.tsmitoHankakuKanaSel.Name = "tsmitoHankakuKanaSel";
+            resources.ApplyResources(this.tsmitoHankakuKanaSel, "tsmitoHankakuKanaSel");
+            this.tsmitoHankakuKanaSel.Click += new System.EventHandler(this.tsmitoHankakuKanaSel_Click);
+            // 
+            // tsmitoZenkakuKanaSel
+            // 
+            this.tsmitoZenkakuKanaSel.Name = "tsmitoZenkakuKanaSel";
+            resources.ApplyResources(this.tsmitoZenkakuKanaSel, "tsmitoZenkakuKanaSel");
+            this.tsmitoZenkakuKanaSel.Click += new System.EventHandler(this.tsmitoZenkakuKanaSel_Click);
+            // 
             // modifySelectionToolStripMenuItem
             // 
             this.modifySelectionToolStripMenuItem.DropDown = this.cmModifySelection;
             this.modifySelectionToolStripMenuItem.Name = "modifySelectionToolStripMenuItem";
             resources.ApplyResources(this.modifySelectionToolStripMenuItem, "modifySelectionToolStripMenuItem");
+            this.modifySelectionToolStripMenuItem.DropDownOpening += new System.EventHandler(this.modifySelectionToolStripMenuItem_DropDownOpening);
             // 
             // lblFileInfo
             // 
@@ -412,6 +555,18 @@
             resources.ApplyResources(this.pasteTotailToolStripMenuItem1, "pasteTotailToolStripMenuItem1");
             this.pasteTotailToolStripMenuItem1.Click += new System.EventHandler(this.pasteTotailToolStripMenuItem_Click);
             // 
+            // tlpInfo
+            // 
+            resources.ApplyResources(this.tlpInfo, "tlpInfo");
+            this.tlpInfo.Controls.Add(this.lblFileInfo, 0, 0);
+            this.tlpInfo.Controls.Add(this.lblExtention, 1, 0);
+            this.tlpInfo.Name = "tlpInfo";
+            // 
+            // lblExtention
+            // 
+            resources.ApplyResources(this.lblExtention, "lblExtention");
+            this.lblExtention.Name = "lblExtention";
+            // 
             // btnPaste
             // 
             resources.ApplyResources(this.btnPaste, "btnPaste");
@@ -426,10 +581,10 @@
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
+            this.Controls.Add(this.tlpInfo);
             this.Controls.Add(this.btnPaste);
             this.Controls.Add(this.menuMain);
-            this.Controls.Add(this.lblFileInfo);
-            this.Controls.Add(this.textName);
+            this.Controls.Add(this.txtName);
             this.Controls.Add(this.chkAutoRun);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnLaunch);
@@ -447,6 +602,8 @@
             this.menuMain.ResumeLayout(false);
             this.menuMain.PerformLayout();
             this.cmPaste.ResumeLayout(false);
+            this.tlpInfo.ResumeLayout(false);
+            this.tlpInfo.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -456,7 +613,7 @@
 
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnOK;
-        internal System.Windows.Forms.TextBox textName;
+        internal System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.Button btnLaunch;
         private System.Windows.Forms.Button btnTrash;
         private System.Windows.Forms.CheckBox chkAutoRun;
@@ -503,5 +660,25 @@
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem goToWebPageToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tsmitoHiragana;
+        private System.Windows.Forms.ToolStripMenuItem tsmitoHiraganaSel;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem3;
+        private System.Windows.Forms.ToolStripMenuItem tsmitoKatakana;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem4;
+        private System.Windows.Forms.ToolStripMenuItem tsmitoKatakanaSel;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem6;
+        private System.Windows.Forms.ToolStripMenuItem tsmitoHankaku;
+        private System.Windows.Forms.ToolStripMenuItem tsmitoZenkaku;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem5;
+        private System.Windows.Forms.ToolStripMenuItem tsmitoHankakuSel;
+        private System.Windows.Forms.ToolStripMenuItem tsmitoZenkakuSel;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem7;
+        private System.Windows.Forms.ToolStripMenuItem tsmitoHankakuKana;
+        private System.Windows.Forms.ToolStripMenuItem tsmitoZenkakuKana;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem8;
+        private System.Windows.Forms.ToolStripMenuItem tsmitoHankakuKanaSel;
+        private System.Windows.Forms.ToolStripMenuItem tsmitoZenkakuKanaSel;
+        private System.Windows.Forms.TableLayoutPanel tlpInfo;
+        private System.Windows.Forms.Label lblExtention;
     }
 }

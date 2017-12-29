@@ -129,6 +129,9 @@
   <data name="ENTER_FILENAME" xml:space="preserve">
     <value>Please enter Filename</value>
   </data>
+  <data name="Extention" xml:space="preserve">
+    <value>Extention</value>
+  </data>
   <data name="FILE_NOT_FOUND" xml:space="preserve">
     <value>File not found : {0}</value>
   </data>

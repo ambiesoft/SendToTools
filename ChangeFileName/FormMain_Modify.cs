@@ -33,7 +33,7 @@ using System.Text;
 using System.Windows.Forms;
 using Microsoft.VisualBasic.FileIO;
 using System.IO;
-
+using CSharp.Japanese.Kanaxs;
 
 namespace ChangeFileName
 {
@@ -42,29 +42,40 @@ namespace ChangeFileName
 
 
         delegate string Converter(string s);
+        void ChangeSelectionCommon(Converter converter, bool bSelection)
+        {
+            if (!bSelection)
+            {
+                txtName.Text = converter(txtName.Text);
+            }
+            else
+            {
+                if (txtName.SelectionLength == 0)
+                    return;
+
+                int start = txtName.SelectionStart;
+
+                string s = txtName.SelectedText;
+                s = converter.Invoke(s);
+                txtName.SelectedText = s;
+
+                txtName.Select(start, s.Length);
+                txtName.Focus();
+            }
+        }
         void ChangeSelectionCommon(Converter converter)
         {
-            if (textName.SelectionLength == 0)
-                return;
-
-            int start = textName.SelectionStart;
-
-            string s = textName.SelectedText;
-            s = converter.Invoke(s);
-            textName.SelectedText = s;
-
-            textName.Select(start, s.Length);
-            textName.Focus();
+            ChangeSelectionCommon(converter, false);
         }
 
 
         private void ToFileNamable_Click(object sender, EventArgs e)
         {
-            textName.Text = Ambiesoft.AmbLib.GetFilaNamableName(textName.Text);
+            ChangeSelectionCommon(Ambiesoft.AmbLib.GetFilaNamableName);
         }
         private void ToMakeFileNamableSel_Click(object sender, EventArgs e)
         {
-            ChangeSelectionCommon(Ambiesoft.AmbLib.GetFilaNamableName);
+            ChangeSelectionCommon(Ambiesoft.AmbLib.GetFilaNamableName, true);
         }
 
 
@@ -74,11 +85,11 @@ namespace ChangeFileName
         }
         private void ToLower_Click(object sender, EventArgs e)
         {
-            textName.Text = tolower(textName.Text);
+            ChangeSelectionCommon(tolower);
         }
         private void ToLowerSel_Click(object sender, EventArgs e)
         {
-            ChangeSelectionCommon(tolower);
+            ChangeSelectionCommon(tolower,true);
         }
 
 
@@ -88,11 +99,11 @@ namespace ChangeFileName
         }
         private void ToUpper_Click(object sender, EventArgs e)
         {
-            textName.Text = toupper(textName.Text);
+            ChangeSelectionCommon(toupper);
         }
         private void ToUpperSel_Click(object sender, EventArgs e)
         {
-            ChangeSelectionCommon(toupper);
+            ChangeSelectionCommon(toupper, true);
         }
 
 
@@ -102,11 +113,11 @@ namespace ChangeFileName
         }
         private void Trim_Click(object sender, EventArgs e)
         {
-            textName.Text = trim(textName.Text);
+            ChangeSelectionCommon(trim);
         }
         private void TrimSel_Click(object sender, EventArgs e)
         {
-            ChangeSelectionCommon(trim);
+            ChangeSelectionCommon(trim, true);
         }
 
 
@@ -118,11 +129,11 @@ namespace ChangeFileName
         }
         private void ToRemoveSpace_Click(object sender, EventArgs e)
         {
-            textName.Text = RemoveSpace(textName.Text);
+            ChangeSelectionCommon(RemoveSpace);
         }
         private void ToRemoveSpaceSel_Click(object sender, EventArgs e)
         {
-            ChangeSelectionCommon(RemoveSpace);
+            ChangeSelectionCommon(RemoveSpace,true);
         }
 
 
@@ -133,11 +144,11 @@ namespace ChangeFileName
         }
         private void tsmiUnderbar2hyphen_Click(object sender, EventArgs e)
         {
-            textName.Text = Underbar2Hyphen(textName.Text);
+            ChangeSelectionCommon(Underbar2Hyphen);
         }
         private void tsmiUnderbar2hyphenSel_Click(object sender, EventArgs e)
         {
-            ChangeSelectionCommon(Underbar2Hyphen);
+            ChangeSelectionCommon(Underbar2Hyphen,true);
         }
 
 
@@ -194,12 +205,73 @@ namespace ChangeFileName
         }
         private void tsmiCn2Jp_Click(object sender, EventArgs e)
         {
-            textName.Text = Cn2Jp(textName.Text);
+            ChangeSelectionCommon(Cn2Jp);
         }
         private void tsmiCn2JpSel_Click(object sender, EventArgs e)
         {
-            ChangeSelectionCommon(Cn2Jp);
+            ChangeSelectionCommon(Cn2Jp, true);
         }
 
+
+
+        private void tsmitoHiragana_Click(object sender, EventArgs e)
+        {
+            ChangeSelectionCommon(KanaEx.ToHiragana);
+        }
+        private void tsmitoHiraganaSel_Click(object sender, EventArgs e)
+        {
+            ChangeSelectionCommon(KanaEx.ToHiragana, true);
+        }
+
+
+        private void tsmitoKatakana_Click(object sender, EventArgs e)
+        {
+            ChangeSelectionCommon(KanaEx.ToKatakana);
+        }
+        private void tsmitoKatakanaSel_Click(object sender, EventArgs e)
+        {
+            ChangeSelectionCommon(KanaEx.ToKatakana, true);
+        }
+
+
+        private void tsmitoHankaku_Click(object sender, EventArgs e)
+        {
+            ChangeSelectionCommon(KanaEx.ToHankaku);
+        }
+        private void tsmitoHankakuSel_Click(object sender, EventArgs e)
+        {
+            ChangeSelectionCommon(KanaEx.ToHankaku, true);
+        }
+
+
+        private void tsmitoZenkaku_Click(object sender, EventArgs e)
+        {
+            ChangeSelectionCommon(KanaEx.ToZenkaku);
+        }
+        private void tsmitoZenkakuSel_Click(object sender, EventArgs e)
+        {
+            ChangeSelectionCommon(KanaEx.ToZenkaku, true);
+        }
+
+
+        private void tsmitoHankakuKana_Click(object sender, EventArgs e)
+        {
+            ChangeSelectionCommon(KanaEx.ToHankakuKana);
+        }
+        private void tsmitoHankakuKanaSel_Click(object sender, EventArgs e)
+        {
+            ChangeSelectionCommon(KanaEx.ToHankakuKana, true);
+        }
+
+
+
+        private void tsmitoZenkakuKana_Click(object sender, EventArgs e)
+        {
+            ChangeSelectionCommon(KanaEx.ToZenkakuKana);
+        }
+        private void tsmitoZenkakuKanaSel_Click(object sender, EventArgs e)
+        {
+            ChangeSelectionCommon(KanaEx.ToZenkakuKana, true);
+        }
     }
 }

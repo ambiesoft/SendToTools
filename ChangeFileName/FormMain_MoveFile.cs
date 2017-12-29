@@ -40,12 +40,12 @@ namespace ChangeFileName
         {
             try
             {
-                string srcfilename = this.textName.Tag.ToString();
+                string srcfilename = this.txtName.Tag.ToString();
                 if (File.Exists(srcfilename))
                 {
                     System.IO.FileInfo fiorig = new System.IO.FileInfo(srcfilename);
 
-                    string destfilename = textName.Text + fiorig.Extension;
+                    string destfilename = txtName.Text + fiorig.Extension;
                     string destfn = System.IO.Path.Combine(path, destfilename);
 
                     bool overwrite = false;
@@ -65,11 +65,11 @@ namespace ChangeFileName
                 {
                     DirectoryInfo diorig = new DirectoryInfo(srcfilename);
 
-                    string destfilename = textName.Text + diorig.Extension;
+                    string destfilename = txtName.Text + diorig.Extension;
                     string destfn = path;// System.IO.Path.Combine(path, destfilename);
                     // diorig.MoveTo(destfn);
 
-                    // Directory.Move(this.textName.Tag.ToString(), destfn);
+                    // Directory.Move(this.txtName.Tag.ToString(), destfn);
 
                     //if(File.Exists(destfn) || Directory.Exists(destfn))
                     //{

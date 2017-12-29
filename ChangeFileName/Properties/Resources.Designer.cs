@@ -97,6 +97,15 @@ namespace ChangeFileName.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Extention.
+        /// </summary>
+        internal static string Extention {
+            get {
+                return ResourceManager.GetString("Extention", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to File not found : {0}.
         /// </summary>
         internal static string FILE_NOT_FOUND {

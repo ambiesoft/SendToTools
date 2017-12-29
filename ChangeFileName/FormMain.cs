@@ -52,6 +52,9 @@ namespace ChangeFileName
         {
             InitializeComponent();
 
+            tlpInfo.Margin = new Padding(0);
+            tlpInfo.Padding = new Padding(0);
+
             HashIni ini = Profile.ReadAll(IniFile);
             int x, y;
             Ambiesoft.Profile.GetInt("settings", "X", 60, out x, ini);
@@ -97,7 +100,7 @@ namespace ChangeFileName
         {
             if (keyData == (Keys.Control | Keys.A))
             {
-                textName.SelectAll();
+                txtName.SelectAll();
                 return true;
             }
             return base.ProcessCmdKey(ref msg, keyData);
@@ -105,7 +108,7 @@ namespace ChangeFileName
 
         private void btnLaunch_Click(object sender, EventArgs e)
         {
-            Program.SafeProcessStart(this.textName.Tag.ToString(), true);
+            Program.SafeProcessStart(this.txtName.Tag.ToString(), true);
         }
 
 
@@ -114,22 +117,22 @@ namespace ChangeFileName
         {
             try
             {
-                textName.Text = Clipboard.GetText();
+                txtName.Text = Clipboard.GetText();
             }
             catch (Exception) { }
         }
 
-        List<string> _undoBuffer = new List<string>();
+        List<UndoInfo> _undoBuffer = new List<UndoInfo>();
         bool _unreDoing;
         int _currentUnreIndex = -1;
-        private void textName_TextChanged(object sender, EventArgs e)
+        private void txtName_TextChanged(object sender, EventArgs e)
         {
             if (_unreDoing)
                 return;
 
-            if (textName.Lines.Length > 1)
+            if (txtName.Lines.Length > 1)
             {
-                textName.Text = textName.Lines[0];
+                txtName.Text = txtName.Lines[0];
             }
             else
             {
@@ -141,7 +144,7 @@ namespace ChangeFileName
                     }
                 }
 
-                _undoBuffer.Add(textName.Text);
+                _undoBuffer.Add(new UndoInfo(txtName.Text, txtName.SelectionStart, txtName.SelectionLength));
                 ++_currentUnreIndex;
                 return;
             }
@@ -152,7 +155,7 @@ namespace ChangeFileName
         {
             using (new Ambiesoft.CenteringDialog(this))
             {
-                if (DialogResult.Yes != MessageBox.Show(string.Format(Properties.Resources.ARE_YOU_SURE_TO_TRASH, textName.Tag.ToString()),
+                if (DialogResult.Yes != MessageBox.Show(string.Format(Properties.Resources.ARE_YOU_SURE_TO_TRASH, txtName.Tag.ToString()),
                 Application.ProductName,
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Question,
@@ -165,7 +168,7 @@ namespace ChangeFileName
             try
             {
                 FileSystem.DeleteFile(
-                  this.textName.Tag.ToString(),
+                  this.txtName.Tag.ToString(),
                   UIOption.OnlyErrorDialogs,
                   RecycleOption.SendToRecycleBin);
 
@@ -236,22 +239,23 @@ namespace ChangeFileName
         {
             if (chkAutoRun.Checked)
             {
-                Program.SafeProcessStart(this.textName.Tag.ToString(), true);
+                Program.SafeProcessStart(this.txtName.Tag.ToString(), true);
             }
 
             try
             {
-                FileInfo fi = new FileInfo(this.textName.Tag.ToString());
+                FileInfo fi = new FileInfo(this.txtName.Tag.ToString());
                 StringBuilder sb = new StringBuilder();
                 sb.Append(Properties.Resources.Size);
                 sb.Append(": ");
                 sb.Append(SizeSuffix(fi.Length));
                 lblFileInfo.Text = sb.ToString();
+                lblExtention.Text = Properties.Resources.Extention + ": " + fi.Extension;
             }
             catch (Exception) { }
 
-            textName.SelectAll();
-            textName.Focus();
+            txtName.SelectAll();
+            txtName.Focus();
         }
 
         private void chkAutoRun_CheckedChanged(object sender, EventArgs e)
@@ -263,7 +267,7 @@ namespace ChangeFileName
         {
             try
             {
-                Clipboard.SetText(this.textName.Tag.ToString());
+                Clipboard.SetText(this.txtName.Tag.ToString());
             }
             catch (Exception ex)
             {
@@ -291,7 +295,7 @@ namespace ChangeFileName
         {
             try
             {
-                Clipboard.SetText(textName.Text);
+                Clipboard.SetText(txtName.Text);
             }
             catch (Exception ex)
             {
@@ -301,7 +305,7 @@ namespace ChangeFileName
 
         private void btnOK_Click(object sender, EventArgs e)
         {
-            string newName = textName.Text;
+            string newName = txtName.Text;
             if (string.IsNullOrEmpty(newName))
             {
                 CppUtils.CenteredMessageBox(this,
@@ -330,7 +334,7 @@ namespace ChangeFileName
 
         private void btnExplorer_Click(object sender, EventArgs e)
         {
-            string path = this.textName.Tag.ToString();
+            string path = this.txtName.Tag.ToString();
             string arg = "/select,\"" + path + "\",/n";
             System.Diagnostics.Process.Start("explorer.exe", arg);
         }
@@ -348,7 +352,7 @@ namespace ChangeFileName
             {
                 string addingText = Clipboard.GetText();
                 if (!string.IsNullOrEmpty(addingText))
-                    textName.Text = textName.Text + " " + addingText;
+                    txtName.Text = txtName.Text + " " + addingText;
             }
             catch (Exception) { }
         }
@@ -367,10 +371,11 @@ namespace ChangeFileName
                 if (_currentUnreIndex > 0)
                 {
                     _currentUnreIndex--;
-                    string s = _undoBuffer[_currentUnreIndex];
-                    // _undoBuffer.RemoveAt(_currentUnreIndex);
+                    
+                    UndoInfo ui = _undoBuffer[_currentUnreIndex];
 
-                    textName.Text = s;
+                    txtName.Text = ui.Text;
+                    txtName.SelectionStart = ui.Start;
                 }
             }
             catch (Exception)
@@ -391,8 +396,10 @@ namespace ChangeFileName
                 if (_currentUnreIndex < _undoBuffer.Count - 1)
                 {
                     _currentUnreIndex++;
-                    string s = _undoBuffer[_currentUnreIndex];
-                    textName.Text = s;
+
+                    UndoInfo ui = _undoBuffer[_currentUnreIndex];
+                    txtName.Text = ui.Text;
+                    txtName.SelectionStart = ui.Start;
                 }
             }
             catch (Exception)
@@ -440,5 +447,24 @@ namespace ChangeFileName
             }
 
         }
+
+        private void modifySelectionToolStripMenuItem_DropDownOpening(object sender, EventArgs e)
+        {
+            bool bHasSelection = txtName.SelectionLength != 0;
+
+            foreach(ToolStripItem tsi in modifySelectionToolStripMenuItem.DropDownItems)
+            {
+                tsi.Enabled = bHasSelection;
+            }
+        }
+
+
+      
+     
+
+      
+
+
+    
     }
 }

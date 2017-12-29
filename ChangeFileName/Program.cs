@@ -141,12 +141,12 @@ namespace ChangeFileName
                     FormMain fm = new FormMain();
                     AmbLib.SetFontAll(fm);
 
-                    fm.textName.Text = newName;
-                    fm.textName.Tag = theFileName;
+                    fm.txtName.Text = newName;
+                    fm.txtName.Tag = theFileName;
                     if (DialogResult.OK != fm.ShowDialog())
                         return;
 
-                    newName = fm.textName.Text;
+                    newName = fm.txtName.Text;
 
                     if (!RenameIt(fi, newName, oldname, oldext))
                         continue;
