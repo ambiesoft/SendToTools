@@ -493,10 +493,15 @@ namespace ChangeFileName
                 return true;
             return false;
         }
+        bool IsSpaceChar(char c)
+        {
+            return char.IsWhiteSpace(c);
+        }
         enum MojiType {
             Unknown,
             ZenkakuKatakana,
             AsciiChar,
+            SpaceChar
         }
         MojiType GetMojiType(char c)
         {
@@ -504,7 +509,8 @@ namespace ChangeFileName
                 return MojiType.ZenkakuKatakana;
             if (IsAsciiChar(c))
                 return MojiType.AsciiChar;
-
+            if (IsSpaceChar(c))
+                return MojiType.SpaceChar;
             return MojiType.Unknown;
         }
         private void txtName_MouseDoubleClick(object sender, MouseEventArgs e)
