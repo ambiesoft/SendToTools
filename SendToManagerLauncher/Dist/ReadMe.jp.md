@@ -69,6 +69,7 @@ SendtoToolsは以下のツールを付属しています。
 展開したファイルを削除してください。
 
 ## コンタクト
+- 製作者: Ambiesoft trueff
 - メール: ambiesoft.trueff@gmail.com
 - ウェブサイト: http://ambiesoft.fam.cx/main/index.php?page=sendtotools
 - 掲示板: http://ambiesoft.fam.cx/minibbs/minibbs.php
