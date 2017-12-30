@@ -61,6 +61,7 @@ Extract downloaded archive and lanucn '''SendToManager.exe'''.
 Remove extracted files.
 
 ## Contact
+- Author: Ambiesoft trueff
 - E-mail: ambiesoft.trueff@gmail.com
 - Webpage: http://ambiesoft.fam.cx/main/index.php?page=sendtotools
 - Forum: http://ambiesoft.fam.cx/minibbs/minibbs.php
