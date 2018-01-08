@@ -181,15 +181,15 @@ namespace ChangeFileName
 
                 Close();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                using (new Ambiesoft.CenteringDialog(this))
-                {
-                    MessageBox.Show(ex.Message,
-                    Application.ProductName,
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Exclamation);
-                }
+                //using (new Ambiesoft.CenteringDialog(this))
+                //{
+                //    MessageBox.Show(ex.Message,
+                //    Application.ProductName,
+                //    MessageBoxButtons.OK,
+                //    MessageBoxIcon.Exclamation);
+                //}
             }
         }
 
@@ -338,6 +338,10 @@ namespace ChangeFileName
                 return;
             }
 
+            if (!Program.RenameIt(txtName.Tag.ToString(), newName))
+            {
+                return;
+            }
             this.DialogResult = DialogResult.OK;
             Close();
         }

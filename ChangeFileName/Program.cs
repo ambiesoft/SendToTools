@@ -125,15 +125,16 @@ namespace ChangeFileName
                 return;
             }
 
-            System.IO.FileInfo fi = new System.IO.FileInfo(theFileName.Trim());
+            //System.IO.FileInfo fi = new System.IO.FileInfo(theFileName.Trim());
+            //string olddir = fi.Directory.FullName;
+            //string oldname = fi.Name;
+            //string oldext = fi.Extension;
+            string newName = Path.GetFileNameWithoutExtension(theFileName);
+            //if (!string.IsNullOrEmpty(oldext))
+            //{
+            //    newName = newName.Replace(oldext, "");
+            //}
 
-            string oldname = fi.Name;
-            string oldext = fi.Extension;
-            string newName = fi.Name;
-            if (!string.IsNullOrEmpty(oldext))
-            {
-                newName = newName.Replace(oldext, "");
-            }
             do
             {
                 try
@@ -146,10 +147,10 @@ namespace ChangeFileName
                     if (DialogResult.OK != fm.ShowDialog())
                         return;
 
-                    newName = fm.txtName.Text;
+                    //newName = fm.txtName.Text;
 
-                    if (!RenameIt(fi, newName, oldname, oldext))
-                        continue;
+                    //if (!RenameIt(olddir, newName, oldname, oldext))
+                    //    continue;
 
                     break;
                 }
@@ -163,17 +164,17 @@ namespace ChangeFileName
             } while (true);
         }
 
-        static bool RenameIt(FileInfo fi, string newName, string oldname, string oldext)
+        internal static bool RenameIt(string oldfull, string newName)
         {
-            if (oldname == (newName + oldext))
-            {
-                return true;
-            }
+            //if (oldname == (newName + oldext))
+            //{
+            //    return true;
+            //}
 
-            if (string.IsNullOrEmpty(oldext))
-            {
-                newName = newName.TrimEnd(' ');
-            }
+            //if (string.IsNullOrEmpty(oldext))
+            //{
+            //    newName = newName.TrimEnd(' ');
+            //}
 
             if (string.IsNullOrEmpty(newName))
             {
@@ -195,9 +196,15 @@ namespace ChangeFileName
                 return false;
             }
 
-            string dir = fi.Directory.FullName;
-            fi.MoveTo(dir + @"\" + newName + oldext);
-            return true;
+            string olddir = Path.GetDirectoryName(oldfull);
+            string oldext = Path.GetExtension(oldfull);
+            string newfull = Path.Combine(olddir, newName + oldext);
+
+            if (String.Compare(oldfull, newfull, true) == 0)
+                return true;
+
+            int ret = Ambiesoft.CppUtils.MoveFile(oldfull, newfull);
+            return ret == 0;
 
         }
 
