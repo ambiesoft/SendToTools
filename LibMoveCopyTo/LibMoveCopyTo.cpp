@@ -131,15 +131,16 @@ int libmain(LPCWSTR pAppName)
 	wstring dbFile = stdwin32::stdCombinePath(
 		stdwin32::stdGetParentDirectory(stdwin32::stdGetModuleFileName()),
 		wstring(gAppName) + L".db");
-	vector<wstring> allPrevSave;
 
-	if (!sqlGetPrivateProfileStringArray(SEC_OPTION, KEY_DIRS, allPrevSave, dbFile.c_str()))
+
+	STRINGVECTOR allSaving;
+	if (!sqlGetPrivateProfileStringArray(SEC_OPTION, KEY_DIRS, allSaving, dbFile.c_str()))
 	{
 		ShowError(I18N(L"Failed to load from db."));
 		return 1;
 	}
 
-	STRINGVECTOR allSaving;
+	
 
 	if (destDir.empty())
 	{
@@ -166,7 +167,7 @@ int libmain(LPCWSTR pAppName)
 			}
 			
 			set<wstring> dupcheck;
-			for each(wstring s in allPrevSave)
+			for each(wstring s in allSaving)
 			{
 				if (dupcheck.find(s) == dupcheck.end())
 				{
@@ -184,7 +185,8 @@ int libmain(LPCWSTR pAppName)
 				wstring t(dlg.m_arDirs[i]);
 				t=stdAddBackSlash(t);
 				
-				allSaving.push_back(t);
+				if (std::find(allSaving.begin(), allSaving.end(), t) == allSaving.end())
+					allSaving.push_back(t);
 			}
 		}
 	}
