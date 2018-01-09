@@ -182,7 +182,7 @@ namespace SendToManager
             }
             else
             {
-                // DÈfinir le numÈro de colonne ‡ trier ; par dÈfaut sur croissant.
+                // DÈfinir le numÈro de colonne ÅEtrier ; par dÈfaut sur croissant.
                 sorter.SortColumn = eventArgs.Column;
                 sorter.Order = SortOrder.Ascending;
             }
@@ -385,6 +385,39 @@ namespace SendToManager
             ei_.subitem_ = e.SubItem;
             Control edittingControl = GetEdittingControl(ch);
             lvMain.StartEditing(edittingControl, e.Item, e.SubItem);
+        }
+        static bool InfoBalloon(Form win, string message, bool noParent)
+        {
+            string path = (new System.Uri(Assembly.GetExecutingAssembly().CodeBase)).LocalPath;
+            string sbexe = Path.Combine(Path.GetDirectoryName(path), "ShowBalloon.exe");
+            if (!System.IO.File.Exists(sbexe))
+                return false;
+            string myexe = (new System.Uri(Assembly.GetEntryAssembly().CodeBase)).LocalPath;
+
+            StringBuilder sbArg = new StringBuilder();
+            sbArg.Append("/title:");
+            sbArg.Append(System.Web.HttpUtility.UrlEncode(win.ProductName));
+            sbArg.Append(" ");
+            sbArg.Append(string.Format("/icon:\"{0}\"",myexe));
+            sbArg.Append(" ");
+            sbArg.Append("/iconindex:0");
+            sbArg.Append(" ");
+            sbArg.Append("/balloonicon:1");
+            sbArg.Append(" ");
+            sbArg.Append(System.Web.HttpUtility.UrlEncode(message));
+
+            ProcessStartInfo psi = new ProcessStartInfo();
+            psi.FileName = sbexe;
+            psi.Arguments = sbArg.ToString();
+
+            Process pro = new Process();
+            pro.StartInfo = psi;
+            try
+            {
+                return pro.Start();
+            }
+            catch { }
+            return false;
         }
 
         static void Info(Form win, string message, bool noParent)
@@ -975,14 +1008,17 @@ new KeyValuePair<string, string>(@"Switch3264.exe", Properties.Resources.TOOL_EX
 
                 if (toRemoves.Count > 0)
                 {
-                    DialogResult dr = YesOrNoOrCancel(form, sb.ToString(), commandRunOnly);
-                    if (dr == DialogResult.No)
+                    if (!Program.IsApplyNoConfirm)
                     {
-                        break;
-                    }
-                    else if (dr == DialogResult.Cancel)
-                    {
-                        return false;
+                        DialogResult dr = YesOrNoOrCancel(form, sb.ToString(), commandRunOnly);
+                        if (dr == DialogResult.No)
+                        {
+                            break;
+                        }
+                        else if (dr == DialogResult.Cancel)
+                        {
+                            return false;
+                        }
                     }
 
                     if (0 != CppUtils.DeleteFiles(toRemoves.ToArray()))
@@ -1037,7 +1073,8 @@ new KeyValuePair<string, string>(@"Switch3264.exe", Properties.Resources.TOOL_EX
                     }
                 }
 
-                Info(form, string.Format(Properties.Resources.INVENTORY_DEPLOYED, curinv), commandRunOnly);
+                
+                InfoBalloon(form, string.Format(Properties.Resources.INVENTORY_DEPLOYED, curinv), commandRunOnly);
             }
             catch (Exception ex)
             {

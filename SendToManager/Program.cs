@@ -37,18 +37,34 @@ using System.Text;
 
 namespace SendToManager
 {
+    public class OkException : Exception
+    {
+        public OkException(string s) : base(s)
+        {
+            
+        }
+    }
     public static class Program
     {
         static readonly string ProductName = "SendToManager";
 
         private static string configDir_;
         private static string applyInventory_;
-
+        private static bool isApplyInventoryNoConfirm_;
+        private static bool isShowHelp_;
+        
         internal static string ApplyInventory
         {
             get
             {
                 return applyInventory_;
+            }
+        }
+        internal static bool IsApplyNoConfirm
+        {
+            get
+            {
+                return isApplyInventoryNoConfirm_;
             }
         }
         internal static void Error(string message)
@@ -168,6 +184,20 @@ namespace SendToManager
                             applyInventory_ = inv;
                         }
                     },
+                    {
+                        "y",
+                        "No confirm dialog shown.",
+                        b => {
+                            isApplyInventoryNoConfirm_ = true;
+                        }
+                    },
+                    {
+                        "h",
+                        "Show help.",
+                        b => {
+                            isShowHelp_ = true;
+                        }
+                    },
                 };
 
 
@@ -183,6 +213,14 @@ namespace SendToManager
 
                 throw new Exception(sb.ToString());
             }
+            if(isShowHelp_)
+            {
+                StringBuilder sb = new StringBuilder();
+                sb.AppendLine();
+                StringWriter sw = new StringWriter(sb);
+                p.WriteOptionDescriptions(sw);
+                throw new OkException(sb.ToString());
+            }
         }
 
         // [STAThread]
@@ -194,6 +232,14 @@ namespace SendToManager
             try
             {
                 parseCommand(new List<string>(Environment.GetCommandLineArgs()).GetRange(1, Environment.GetCommandLineArgs().Length - 1).ToArray());
+            }
+            catch(OkException ex)
+            {
+                MessageBox.Show(ex.Message,
+                    Application.ProductName,
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+                return;
             }
             catch(Exception ex)
             {
