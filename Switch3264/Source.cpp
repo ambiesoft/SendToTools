@@ -104,11 +104,12 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 		int argc = 0;
 		wchar_t** argv = NULL;
 		//argv = CommandLineToArgvW(GetCommandLine(), &argc);
-		argv = CCommandLineString::getCommandLine(GetCommandLine(), &argc);
+		argv = CCommandLineString::getCommandLineArg(GetCommandLine(), &argc);
 		if (argc >= 5)
 		{
 			argToProg = cls.subString(5);
 		}
+		CCommandLineString::freeCommandLineArg(argv);
 	}
 	wstring exe;
 	if (Is64BitWindows())

@@ -46,6 +46,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Switch3264", "Switch3264\Sw
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ListViewEx", "ListViewEx\ListViewEx.csproj", "{35A5C415-0906-4AC7-B0F6-FE3CCA884AD9}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "WaitNext", "WaitNext\WaitNext.vcxproj", "{0A41396A-9A9E-41B4-896C-1A81BC26329F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
@@ -120,6 +122,10 @@ Global
 		{35A5C415-0906-4AC7-B0F6-FE3CCA884AD9}.Debug|x86.Build.0 = Debug|Any CPU
 		{35A5C415-0906-4AC7-B0F6-FE3CCA884AD9}.Release|x86.ActiveCfg = Release|Any CPU
 		{35A5C415-0906-4AC7-B0F6-FE3CCA884AD9}.Release|x86.Build.0 = Release|Any CPU
+		{0A41396A-9A9E-41B4-896C-1A81BC26329F}.Debug|x86.ActiveCfg = Debug|Win32
+		{0A41396A-9A9E-41B4-896C-1A81BC26329F}.Debug|x86.Build.0 = Debug|Win32
+		{0A41396A-9A9E-41B4-896C-1A81BC26329F}.Release|x86.ActiveCfg = Release|Win32
+		{0A41396A-9A9E-41B4-896C-1A81BC26329F}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
