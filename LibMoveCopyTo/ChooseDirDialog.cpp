@@ -54,6 +54,8 @@ BOOL CChooseDirDialog::OnInitDialog()
 {
 	CDialogEx::OnInitDialog();
 
+	i18nChangeChildWindowText(*this);
+
 	// TODO:  Add extra initialization here
 	for (int i = 0; i < m_arDirs.GetSize(); ++i)
 	{

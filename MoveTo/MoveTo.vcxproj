@@ -77,7 +77,8 @@
       </Command>
     </PreLinkEvent>
     <PostBuildEvent>
-      <Command>mkdir "$(TargetDir)lang\"
+      <Command>copy "$(SolutionDir)$(Configuration)\LibMoveCopyTo.dll" "$(OutDir)"
+mkdir "$(TargetDir)lang\"
 copy "$(SolutionDir)LibMoveCopyTo\Dist\LibMoveCopyTo.jpn.txt" "$(TargetDir)lang"
 </Command>
     </PostBuildEvent>
@@ -105,7 +106,8 @@ copy "$(SolutionDir)LibMoveCopyTo\Dist\LibMoveCopyTo.jpn.txt" "$(TargetDir)lang"
       </Command>
     </PreLinkEvent>
     <PostBuildEvent>
-      <Command>mkdir "$(TargetDir)lang\"
+      <Command>copy "$(SolutionDir)$(Configuration)\LibMoveCopyToD.dll" "$(OutDir)"
+mkdir "$(TargetDir)lang\"
 copy "$(SolutionDir)LibMoveCopyTo\Dist\LibMoveCopyTo.jpn.txt" "$(TargetDir)lang"
 </Command>
     </PostBuildEvent>
