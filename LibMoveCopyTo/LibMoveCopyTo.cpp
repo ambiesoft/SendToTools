@@ -48,9 +48,12 @@ using Ambiesoft::COption;
 using Ambiesoft::CCommandLineParser;
 using Ambiesoft::sqlGetPrivateProfileStringArray;
 using Ambiesoft::sqlWritePrivateProfileStringArray;
+using Ambiesoft::sqlGetPrivateProfileInt;
+using Ambiesoft::sqlWritePrivateProfileInt;
 using Ambiesoft::SHMoveFile;
 using Ambiesoft::GetLastErrorStringW;
 using Ambiesoft::GetSHFileOpErrorString;
+using Ambiesoft::I18N;
 
 using stdwin32::stdAddBackSlash;
 
@@ -63,13 +66,19 @@ typedef vector<wstring> STRINGVECTOR;
 
 #define SEC_OPTION L"option"
 #define KEY_DIRS L"Dirs"
+#define KEY_PRIORITY L"Priority"
+
+extern CLibMoveCopyToApp theApp;;
 
 wstring getHelpString()
 {
 	wstring ret;
 	ret.append(I18N(L"Usage")).append(L":\r\n");
-	ret.append(L"/t TARGETDIR SOURCE1 [SOURCE2]...\r\n");
-
+	ret.append(L"/t TARGETDIR /p priority SOURCE1 [SOURCE2]...\r\n");
+	ret.append(L"\r\n");
+	ret.append(L"  priority\r\n");
+	ret.append(L"    0:Hight, 1:Normal, 2:Low, 3:Background");
+		
 	return ret;
 }
 void ShowError(LPCWSTR pMessage)
@@ -96,13 +105,17 @@ int libmain(LPCWSTR pAppName)
 {
 	//UNREFERENCED_PARAMETER(hPrevInstance);
 	//UNREFERENCED_PARAMETER(lpCmdLine);
+	Ambiesoft::i18nInitLangmap(theApp.m_hInstance, nullptr, L"LibMoveCopyTo");
+
 	gAppName = pAppName;
 
 	COption opTarget(L"/T", L"/t", 1);
 	COption opFile(L"", Ambiesoft::ArgCount_Infinite);
+	int nPriority = -1;
 	CCommandLineParser cmd;
 	cmd.AddOption(&opTarget);
 	cmd.AddOption(&opFile);
+	cmd.AddOption(L"/p", 1, &nPriority);
 	cmd.Parse();
 
 	wstring destDir = opTarget.getFirstValue();
@@ -139,9 +152,11 @@ int libmain(LPCWSTR pAppName)
 		ShowError(I18N(L"Failed to load from db."));
 		return 1;
 	}
-
 	
-
+	if (nPriority == -1)
+		nPriority = sqlGetPrivateProfileInt(SEC_OPTION, KEY_PRIORITY, -1, dbFile.c_str());
+	
+	bool isDialogProcessed = false;
 	if (destDir.empty())
 	{
 		//if (allPrevSave.empty())
@@ -175,8 +190,12 @@ int libmain(LPCWSTR pAppName)
 					dupcheck.insert(s);
 				}
 			}
+
+			dlg.m_nCmbPriority = nPriority;
 			if (IDOK != dlg.DoModal())
 				return 0;
+			isDialogProcessed = true;
+			nPriority = dlg.m_nCmbPriority;
 
 			destDir = dlg.m_strDirResult;
 
@@ -250,6 +269,13 @@ int libmain(LPCWSTR pAppName)
 		MessageBox(NULL, msg.c_str(), L"DEBUG", MB_OK);
 	}
 
+	if (CChooseDirDialog::IsValidPriority(nPriority))
+	{
+		if (!SetPriorityClass(GetCurrentProcess(), CChooseDirDialog::GetPriorityValue(nPriority)))
+		{
+			AfxMessageBox(I18N(L"Failed to set priority class."));
+		}
+	}
 	int nRet = SHMoveFile(destDir.c_str(), sourcefiles);
 	if (nRet != 0)
 	{
@@ -262,13 +288,17 @@ int libmain(LPCWSTR pAppName)
 	if (cIter == allSaving.end())
 		allSaving.push_back(destDir);
 
-	if (!sqlWritePrivateProfileStringArray(SEC_OPTION, KEY_DIRS, allSaving, dbFile.c_str()))
+	bool failed = false;
+	if(isDialogProcessed)
+		failed |= !sqlWritePrivateProfileInt(SEC_OPTION, KEY_PRIORITY, nPriority, dbFile.c_str());
+	failed |= !sqlWritePrivateProfileStringArray(SEC_OPTION, KEY_DIRS, allSaving, dbFile.c_str());
+	if (failed)
 	{
 		ShowError(I18N(L"Failed to save to db."));
 		return 1;
 	}
 
-
+	 
 	return 0;
 }
 

@@ -17,6 +17,7 @@ CChooseDirDialog::CChooseDirDialog(CWnd* pParent /*=NULL*/)
 	: CDialogEx(IDD_DIALOG_CHOOSEDIR, pParent)
 	, m_strDirResult(_T(""))
 	, m_strSource(_T(""))
+	, m_nCmbPriority(0)
 {
 
 }
@@ -34,6 +35,7 @@ void CChooseDirDialog::DoDataExchange(CDataExchange* pDX)
 	DDX_Control(pDX, IDC_COMBO_PRIORITY, m_cmbPriority);
 	DDX_Control(pDX, IDC_EDIT_DIR, m_editDirResult);
 	DDX_Control(pDX, IDOK, m_btnOK);
+	DDX_CBIndex(pDX, IDC_COMBO_PRIORITY, m_nCmbPriority);
 }
 
 
@@ -58,9 +60,13 @@ BOOL CChooseDirDialog::OnInitDialog()
 		m_listDirs.AddString(m_arDirs[i]);
 	}
 
-	m_cmbPriority.AddString(L"Priority: High");
+	m_cmbPriority.AddString(I18N(L"Priority: High"));
+	m_cmbPriority.AddString(I18N(L"Priority: Normal"));
+	m_cmbPriority.AddString(I18N(L"Priority: Low"));
+	m_cmbPriority.AddString(I18N(L"Priority: Background"));
 
 	SetWindowText(gAppName);
+	UpdateData(FALSE);
 	return TRUE;  // return TRUE unless you set the focus to a control
 				  // EXCEPTION: OCX Property Pages should return FALSE
 }
@@ -127,4 +133,20 @@ void CChooseDirDialog::OnEnChangeEditDir()
 {
 	UpdateData();
 	m_btnOK.EnableWindow(PathIsDirectory(m_strDirResult));
+}
+
+BOOL CChooseDirDialog::IsValidPriority(int nPriority)
+{
+	return nPriority != -1;
+}
+DWORD CChooseDirDialog::GetPriorityValue(int nPriority)
+{
+	switch (nPriority)
+	{
+	case 0: return HIGH_PRIORITY_CLASS;
+	case 1: return NORMAL_PRIORITY_CLASS;
+	case 2: return IDLE_PRIORITY_CLASS;
+	case 3: return PROCESS_MODE_BACKGROUND_BEGIN;
+	}
+	return -1;
 }

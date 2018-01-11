@@ -1,0 +1,2 @@
+"Failed to load from db."="データベースからの読み込みに失敗しました。"
+"\"%s\" is empty or not full path."="\"%s\" は存在しないかフルパスではありません。"

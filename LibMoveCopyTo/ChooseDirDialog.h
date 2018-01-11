@@ -23,6 +23,8 @@ protected:
 	DECLARE_MESSAGE_MAP()
 
 public:
+	static BOOL IsValidPriority(int nPriority);
+	static DWORD GetPriorityValue(int nPriority);
 	CStringArray m_arDirs;
 	virtual BOOL OnInitDialog();
 	CListBox m_listDirs;
@@ -35,4 +37,5 @@ public:
 	afx_msg void OnEnChangeEditDir();
 	CEdit m_editDirResult;
 	CButton m_btnOK;
+	int m_nCmbPriority;
 };

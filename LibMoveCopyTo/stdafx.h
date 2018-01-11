@@ -95,7 +95,8 @@
 #include <shlwapi.h>
 
 
-#define I18N(s) (s)
+#include "../../lsMisc/I18N.h"
+// #define I18N(s) (s)
 
 
 #define DllImport   __declspec( dllimport )  
