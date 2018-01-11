@@ -105,7 +105,7 @@ int libmain(LPCWSTR pAppName)
 {
 	//UNREFERENCED_PARAMETER(hPrevInstance);
 	//UNREFERENCED_PARAMETER(lpCmdLine);
-	Ambiesoft::i18nInitLangmap(theApp.m_hInstance, L"jpn", L"LibMoveCopyTo");
+	Ambiesoft::i18nInitLangmap(theApp.m_hInstance, nullptr, L"LibMoveCopyTo");
 
 	gAppName = pAppName;
 
