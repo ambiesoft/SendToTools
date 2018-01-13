@@ -46,7 +46,7 @@ BOOL CWaitNextApp::parseCommandLine()
 {
 	ASSERT(mainArgs_.empty());
 
-	CCommandLineParser parser;
+	CCommandLineParser parser(CaseFlags::CaseFlags_Default, I18N(L"Wait additional argument and launch"));
 	COption mainOption;
 	parser.AddOption(&mainOption);
 
@@ -54,7 +54,11 @@ BOOL CWaitNextApp::parseCommandLine()
 
 	if (!mainOption.hadValue())
 	{
-		AfxMessageBox(I18N(L"Main argument not found."));
+		CString strMsg = I18N(L"Main argument not found.");
+		strMsg += L"\r\n\r\n";
+		strMsg += parser.getHelpMessage().c_str();
+
+		AfxMessageBox(strMsg);
 		return FALSE;
 	}
 
