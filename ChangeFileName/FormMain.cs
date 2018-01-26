@@ -247,6 +247,11 @@ namespace ChangeFileName
 
         private void FormMain_Load(object sender, EventArgs e)
         {
+            string title = string.Format("{0} - {1}",
+                AmbLib.doubleQuoteIfSpace(Path.GetFileName(txtName.Tag.ToString())),
+                ProductName);
+            this.Text = title;
+
             if (chkAutoRun.Checked)
             {
                 Program.SafeProcessStart(this.txtName.Tag.ToString(), true);

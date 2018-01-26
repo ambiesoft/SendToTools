@@ -1,4 +1,7 @@
-﻿2018/01/11 ver 1.10
+﻿2018/01/26 ver 1.11
+ChageFileName : Add: Add filename in title bar.
+
+2018/01/11 ver 1.10
 Added : "Move to" has been I18Ned.
 
 2018/01/10 ver 1.9
