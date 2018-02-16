@@ -78,14 +78,17 @@ Change file time(Last Access time and Last Write time) as current time.
 This software is freeware, See Copying.txt
 
 
-
 ## Uninstall
 Remove extracted files.
 
+
+## Support
+If you have troubles, post *Issue* on <https://github.com/ambiesoft/SendToTools/issues>.
+
 ## Contact
 - Author: Ambiesoft trueff
-- E-mail: ambiesoft.trueff@gmail.com
-- Webpage: http://ambiesoft.fam.cx/main/index.php?page=sendtotools
-- Forum: http://ambiesoft.fam.cx/minibbs/minibbs.php
-- Development: https://github.com/ambiesoft/SendToTools
+- E-mail: <ambiesoft.trueff@gmail.com>
+- Webpage: <http://ambiesoft.fam.cx/main/index.php?page=sendtotools>
+- Forum: <http://ambiesoft.fam.cx/minibbs/minibbs.php>
+- Development: <https://github.com/ambiesoft/SendToTools>
 
