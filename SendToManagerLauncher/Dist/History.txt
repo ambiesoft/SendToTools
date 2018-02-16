@@ -1,4 +1,8 @@
-﻿2018/01/26 ver 1.11
+﻿2018/02/16 ver 1.12
+Fix: Document amend (erasoni -> ambiesoft)
+First official Release
+
+2018/01/26 ver 1.11
 ChageFileName : Add: Add filename in title bar.
 
 2018/01/11 ver 1.10
