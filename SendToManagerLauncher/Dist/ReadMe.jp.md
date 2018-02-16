@@ -9,7 +9,7 @@ SendtoToolsはエクスプローラの「送る」メニューに様々なアイ
 * 必要なときだけ「送る」メニューに登録しその後解除することができます。
 
 ## ダウンロード
-右のサイトからバイナリをダウンロードできます https://github.com/erasoni/SendToTools/releases
+右のサイトからバイナリをダウンロードできます https://github.com/ambiesoft/SendToTools/releases
 
 ## 動作環境
 .Net4 と Visual Studio 2013 runtime library が必要です。
@@ -74,5 +74,5 @@ SendtoToolsは以下のツールを付属しています。
 - メール: ambiesoft.trueff@gmail.com
 - ウェブサイト: http://ambiesoft.fam.cx/main/index.php?page=sendtotools
 - 掲示板: http://ambiesoft.fam.cx/minibbs/minibbs.php
-- 開発: https://github.com/erasoni/SendToTools
+- 開発: https://github.com/ambiesoft/SendToTools
 
