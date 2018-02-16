@@ -1,4 +1,7 @@
-﻿2018/02/16 ver 1.12
+﻿2018/02/16 ver 1.13
+Edit documents
+
+2018/02/16 ver 1.12
 Fix: Document amend (erasoni -> ambiesoft)
 First official Release
 
