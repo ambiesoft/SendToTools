@@ -14,6 +14,29 @@ Download binary from https://github.com/ambiesoft/SendToTools/releases
 ## Environment
 .Net4 and Visual Studio 2013 runtime library are required.
 
+## Install
+Extract downloaded archive and lanucn '''SendToManager.exe'''.
+
+## Basic usage
+
+1. Extract a downloaded archive and launch *SendToManager.exe*.
+2. Create new shortcut files by clicking **New Item** or copy shortcut files to the Inventory folder which can be opened by selecting **[Folder] > [Open Current Inventory]**.
+3. You can reoder items by **dragging-and-dropping** or clicking **[up] or [donw]** button on the toolbar.
+4. You can put number by the oder of the list view by clicking **[Number]** button. This makes the oder of the menus of **SendTo** equal to the oder shown in the list view.
+5. By clicking **[Deploy]**, All shortcut files will be copied on the **SendTo Folder**.
+6. By clicking **[Displace]**, All shortcut files in **SendTo Folder** will be removed.
+
+## Advanced usage
+1. You can create multiple inventories.
+
+## Command line options
+Following commnad will deploy the inventory named *MyInventory*. Additional option "-y"makes no confirmation dialog appear.
+
+```SendToManager.exe --apply MyInventory -y```
+
+
+
+
 ## Tools
 Basically you can put any shortcut files on "SendTo", but SendtoTools also ships with various tools.
 
@@ -54,8 +77,7 @@ Change file time(Last Access time and Last Write time) as current time.
 ## License
 This software is freeware, See Copying.txt
 
-## Install
-Extract downloaded archive and lanucn '''SendToManager.exe'''.
+
 
 ## Uninstall
 Remove extracted files.
