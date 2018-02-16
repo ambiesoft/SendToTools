@@ -116,7 +116,6 @@ xcopy "$(ProjectDir)jpn.txt" "$(Targetdir)lang\$(TargetName).jpn.txt*" /F /Y</Co
     <ClCompile Include="..\..\lsMisc\I18N.cpp" />
     <ClCompile Include="..\..\lsMisc\SetClipboardText.cpp" />
     <ClCompile Include="..\..\lsMisc\showballoon.cpp" />
-    <ClCompile Include="..\..\lsMisc\StdStringReplace.cpp" />
     <ClCompile Include="..\..\lsMisc\stdwin32\stdwin32.cpp" />
     <ClCompile Include="..\..\lsMisc\UrlEncode.cpp" />
     <ClCompile Include="..\..\lsMisc\UTF16toUTF8.cpp" />
