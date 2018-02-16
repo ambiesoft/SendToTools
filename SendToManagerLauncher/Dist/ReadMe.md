@@ -9,7 +9,7 @@ It can also manage these tools.
 * You can put your tools on "Sendto" when you need them and remove them when it is no longer needed.
 
 ## Download
-Download binary from https://github.com/erasoni/SendToTools/releases
+Download binary from https://github.com/ambiesoft/SendToTools/releases
 
 ## Environment
 .Net4 and Visual Studio 2013 runtime library are required.
@@ -65,5 +65,5 @@ Remove extracted files.
 - E-mail: ambiesoft.trueff@gmail.com
 - Webpage: http://ambiesoft.fam.cx/main/index.php?page=sendtotools
 - Forum: http://ambiesoft.fam.cx/minibbs/minibbs.php
-- Development: https://github.com/erasoni/SendToTools
+- Development: https://github.com/ambiesoft/SendToTools
 
