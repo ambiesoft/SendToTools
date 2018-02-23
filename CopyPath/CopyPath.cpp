@@ -57,6 +57,7 @@ struct DialogData {
 	bool kaigyo_;
 
 	bool code_;
+	bool sort_;
 	wstring codeName_;
 
 	DialogData() {
@@ -65,6 +66,7 @@ struct DialogData {
 		dq_ = false;
 		kaigyo_ = 0;
 		code_ = false;
+		sort_ = false;
 	}
 };
 // Global Variables:
@@ -168,6 +170,8 @@ INT_PTR CALLBACK DialogProc(
 					TCHAR buff[MAX_CODENAME]; buff[0] = 0;
 					SendMessage(shCmbCode, CB_GETLBTEXT, cursel,(LPARAM)buff);
 					sDT->codeName_ = buff;
+
+					sDT->sort_ = !!SendDlgItemMessage(hwndDlg, IDC_CHECK_SORT, BM_GETCHECK, 0, 0);
 
 					EndDialog(hwndDlg, IDOK);
 					return TRUE;
@@ -308,9 +312,18 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
 		str += dt.kaigyo_ ? KAIGYO : L"";
 	}
-	for (size_t i = 0; i<opMain.getValueCount();++i)
+
+	list<wstring> inputs;
+	for (size_t i = 0; i<opMain.getValueCount(); ++i)
 	{
-		str += ConvertPath(dt, opMain.getValue(i).c_str());
+		inputs.push_back(opMain.getValue(i));
+	}
+	if (dt.sort_)
+		inputs.sort();
+
+	for (wstring& s : inputs)
+	{
+		str += ConvertPath(dt, s.c_str());
 		str += dt.kaigyo_ ? KAIGYO : SPACE;
 	}
 	if (dt.code_)
