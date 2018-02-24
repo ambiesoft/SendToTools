@@ -129,7 +129,9 @@ namespace ChangeFileName
             //string olddir = fi.Directory.FullName;
             //string oldname = fi.Name;
             //string oldext = fi.Extension;
-            string newName = Path.GetFileNameWithoutExtension(theFileName);
+            bool bIsFolder = Directory.Exists(theFileName);
+            string newName = bIsFolder ? Path.GetFileName(theFileName) : Path.GetFileNameWithoutExtension(theFileName);
+
             //if (!string.IsNullOrEmpty(oldext))
             //{
             //    newName = newName.Replace(oldext, "");
@@ -197,7 +199,7 @@ namespace ChangeFileName
             }
 
             string olddir = Path.GetDirectoryName(oldfull);
-            string oldext = Path.GetExtension(oldfull);
+            string oldext = Directory.Exists(oldfull) ? string.Empty : Path.GetExtension(oldfull);
             string newfull = Path.Combine(olddir, newName + oldext);
 
             if (String.Compare(oldfull, newfull, true) == 0)

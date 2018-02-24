@@ -443,7 +443,8 @@ namespace ChangeFileName
             sb.Append(" version ");
             sb.Append(AmbLib.getAssemblyVersion(Assembly.GetExecutingAssembly()));
             sb.AppendLine();
-            sb.Append("Copyright 2017 Ambiesoft");
+            // sb.Append("Copyright 2018 Ambiesoft");
+            sb.Append(AmbLib.getAssemblyCopyright(Assembly.GetExecutingAssembly()));
             CppUtils.CenteredMessageBox(this,
                 sb.ToString(),
                 Application.ProductName,

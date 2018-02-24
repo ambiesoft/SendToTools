@@ -1,4 +1,7 @@
-﻿2018/02/16 ver 1.13
+﻿2018/02/24 ver 1.14
+Fix: ChangeFileName could not rename folder properly when its name contains dot char.
+
+2018/02/16 ver 1.13
 Edit documents
 
 2018/02/16 ver 1.12
