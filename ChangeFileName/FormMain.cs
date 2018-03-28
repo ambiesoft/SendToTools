@@ -36,6 +36,7 @@ using System.IO;
 using Ambiesoft;
 using System.Reflection;
 using System.Diagnostics;
+using System.Runtime.InteropServices;
 
 
 
@@ -523,10 +524,13 @@ namespace ChangeFileName
                 return MojiType.SpaceChar;
             return MojiType.Unknown;
         }
+        int _dbTick;
         private void txtName_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             if (!tsmiSmartDoubleClickSelection.Checked)
                 return;
+
+            _dbTick = Environment.TickCount;
 
             string selText = txtName.SelectedText;
             if (string.IsNullOrEmpty(selText))
@@ -572,6 +576,21 @@ namespace ChangeFileName
 
             txtName.SelectionStart = newStart+1;
             txtName.SelectionLength = selLen;
+        }
+        
+        [DllImport("user32.dll", CharSet = CharSet.Auto, ExactSpelling = true)]
+        public static extern int GetDoubleClickTime();
+        private void txtName_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (GetDoubleClickTime() > (Environment.TickCount - _dbTick))
+            {
+                Debug.WriteLine("Triple clicked.");
+                onTripleClickText();
+            }
+        }
+        void onTripleClickText()
+        {
+            txtName.SelectAll();
         }
 
 

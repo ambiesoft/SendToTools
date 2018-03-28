@@ -1,4 +1,7 @@
-﻿2018/02/24 ver 1.14
+﻿2018/03/28 ver 1.15
+ChangeFileName: Triple-clicking text box will select all text if "smart double click selection" is enabled.
+
+2018/02/24 ver 1.14
 Fix: ChangeFileName could not rename folder properly when its name contains dot char.
 
 2018/02/16 ver 1.13
