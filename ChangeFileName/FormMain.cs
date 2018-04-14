@@ -344,7 +344,7 @@ namespace ChangeFileName
                 return;
             }
 
-            if (!Program.RenameIt(txtName.Tag.ToString(), newName))
+            if (!Program.RenameIt(this, txtName.Tag.ToString(), newName))
             {
                 return;
             }

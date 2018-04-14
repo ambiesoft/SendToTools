@@ -166,7 +166,7 @@ namespace ChangeFileName
             } while (true);
         }
 
-        internal static bool RenameIt(string oldfull, string newName)
+        internal static bool RenameIt(IWin32Window win, string oldfull, string newName)
         {
             //if (oldname == (newName + oldext))
             //{
@@ -205,7 +205,7 @@ namespace ChangeFileName
             if (String.Compare(oldfull, newfull, true) == 0)
                 return true;
 
-            int ret = Ambiesoft.CppUtils.MoveFile(oldfull, newfull);
+            int ret = Ambiesoft.CppUtils.MoveFile(win, oldfull, newfull);
             return ret == 0;
 
         }
