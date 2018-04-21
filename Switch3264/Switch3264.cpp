@@ -40,16 +40,28 @@ using namespace Ambiesoft;
 #define APPNAME L"Switch3264"
 #define OPTION_ARGS_TOPASS L"--args-topass"
 
-void ErrorExit(LPCWSTR message, CCommandLineParser& parser)
+wstring getErrorMessage(CCommandLineParser& parser)
 {
 	wstring shown;
-	shown += message;
-	shown += L"\r\n\r\n";
 	shown += parser.getHelpMessage();
 	shown += L"\r\n";
-	shown += L"Arguments to program should be placed after ";
+	shown += L"Arguments to the launching program should be placed after ";
 	shown += OPTION_ARGS_TOPASS;
 
+	return shown;
+}
+void ErrorExit(const wstring& message, CCommandLineParser& parser)
+{
+	wstring shown;
+	if (!message.empty())
+	{
+		shown += message;
+		shown += L"\r\n--------------------------";
+
+		shown += L"\r\n\r\n";
+		
+	}
+	shown += getErrorMessage(parser).c_str();
 	MessageBox(NULL,
 		shown.c_str(),
 		APPNAME,
@@ -86,7 +98,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	if (bHelp)
 	{
 		MessageBox(NULL,
-			parser.getHelpMessage().c_str(),
+			getErrorMessage(parser).c_str(),
 			APPNAME,
 			MB_ICONINFORMATION);
 		return 0;
