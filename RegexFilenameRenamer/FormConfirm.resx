@@ -225,9 +225,6 @@
   <data name="rtxtMessage.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
   </data>
-  <data name="rtxtMessage.Font" type="System.Drawing.Font, System.Drawing">
-    <value>MS Gothic, 9.75pt</value>
-  </data>
   <data name="rtxtMessage.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 56</value>
   </data>
