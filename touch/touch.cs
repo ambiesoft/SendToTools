@@ -28,6 +28,7 @@ using NDesk.Options;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows.Forms;
 
@@ -77,6 +78,10 @@ namespace touch
             System.Threading.Thread.Sleep(waitspan);
             ni.Dispose();
         }
+        
+        [DllImport("user32.dll", CharSet = CharSet.Auto, CallingConvention = CallingConvention.StdCall)]
+        public static extern short GetKeyState(int nVirtKey);
+
         static void doit(string[] args)
         {
             bool recursive = false;
@@ -118,26 +123,37 @@ namespace touch
 
                 throw new Exception(sb.ToString());
             }
-            //if (args.Length > 1)
-            //{
-            //    for (int i = 0; i < args.Length; ++i)
-            //    {
-            //        try
-            //        {
-            //            System.Diagnostics.Process.Start(Application.ExecutablePath, "\""+args[i]+"\"");
-            //        }
-            //        catch (System.Exception e)
-            //        {
-            //            MessageBox.Show(e.Message,
-            //                    Application.ProductName,
-            //                    MessageBoxButtons.OK,
-            //                    MessageBoxIcon.Error);
-            //        }
-            //    }
-            //    return;
-            //}
-            //string theFileName = @"C:\Documents and Settings\tt\My Documents\Productivity Distribution, Firm Heterogeneity, and Agglomeration.pdf";
 
+            
+            if(((GetKeyState(0x10) & 0x8000) != 0)      || // VK_SHIFT
+               ((GetKeyState(0x11) & 0x8000) != 0 )     || // VK_CONTROL
+               ((GetKeyState(0x02) & 0x8000) != 0) )        // VK_RBUTTION
+            {
+                // check input has any folders.
+                bool hasFolder = false;
+                foreach (string filename in extra)
+                {
+                    if (Directory.Exists(filename))
+                    {
+                        hasFolder = true;
+                        break;
+                    }
+                }
+
+                if (hasFolder)
+                {
+                    if (DialogResult.Yes != MessageBox.Show(Properties.Resources.STR_CONFIRM_ALL_SUB,
+                        Application.ProductName,
+                        MessageBoxButtons.YesNo,
+                        MessageBoxIcon.Question,
+                        MessageBoxDefaultButton.Button2))
+                    {
+                        return;
+                    }
+                    recursive = true;
+                    depth = -1;
+                }
+            }
             DateTime now = DateTime.Now;
             int touchedCount = 0;
             var untouchabled = new Dictionary<string, Exception>();

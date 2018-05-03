@@ -1,4 +1,6 @@
-﻿2018/03/28 ver 1.15
+﻿With Shift, Control or Rbutton be held down, touch.exe touches all files in subdirectories.
+
+2018/03/28 ver 1.15
 ChangeFileName: Triple-clicking text box will select all text if "smart double click selection" is enabled.
 
 2018/02/24 ver 1.14

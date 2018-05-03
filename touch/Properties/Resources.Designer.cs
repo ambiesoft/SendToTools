@@ -71,6 +71,15 @@ namespace touch.Properties {
         }
         
         /// <summary>
+        ///   Do you want to touch all files in the folder? に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string STR_CONFIRM_ALL_SUB {
+            get {
+                return ResourceManager.GetString("STR_CONFIRM_ALL_SUB", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   {0} is not found. に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string STR_FILE0NOTFOUNT {

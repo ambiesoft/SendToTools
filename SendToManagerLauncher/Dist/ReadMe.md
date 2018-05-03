@@ -71,7 +71,7 @@ Run file as administrator.
 You need specify two option, "-32" and "-64". When launched in 32bit enviromment, the argument of "-32" will be launched. Same will do in 64bit.
 
 #### touch
-Change file time(Last Access time and Last Write time) as current time.
+Change file time(Last Access time and Last Write time) as current time. If you launch with shift,control or rbutton key pressed, it touches all files in subdirectories.
 
 
 ## License

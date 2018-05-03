@@ -133,4 +133,7 @@
   <data name="STR_TOUCH_FAILED" xml:space="preserve">
     <value>Failed to touch following files.</value>
   </data>
+  <data name="STR_CONFIRM_ALL_SUB" xml:space="preserve">
+    <value>Do you want to touch all files in the folder?</value>
+  </data>
 </root>
