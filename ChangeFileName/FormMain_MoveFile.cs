@@ -149,15 +149,41 @@ namespace ChangeFileName
                 return;
             }
             string dir = item.Tag as string;
-            if(dir==null || !System.IO.Directory.Exists(dir))
+            if(dir==null)
             {
                 // LANG
                 showError(dir + " is not a directory");
                 return;
             }
+            else if(!System.IO.Directory.Exists(dir))
+            {
+                if(DialogResult.Yes != MessageBox.Show(
+                    string.Format(Properties.Resources.DIR_NOT_EXIST_DO_YOU_WANT_TO_REMOVE,dir),
+                    Application.ProductName,
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question,
+                    MessageBoxDefaultButton.Button2))
+                {
+                    return;
+                }
+                removeFromDiskDirs(dir);
+                return;
+            }
             moveToAndClose(dir);
         }
+        private void removeFromDiskDirs(string dir)
+        {
+            string[] dirs = DiskDirs;
+            List<string> newdirs = new List<string>();
+            foreach(string s in dirs)
+            {
+                if(s.ToLower()==dir.ToLower())
+                    continue;
 
+                newdirs.Add(s);
+            }
+            DiskDirs = newdirs.ToArray();
+        }
         private string[] DiskDirs
         {
             get
@@ -184,6 +210,11 @@ namespace ChangeFileName
                 ToolStripMenuItem item = new ToolStripMenuItem();
                 item.Click += new EventHandler(itemExistingFolder_Click);
                 item.Text = dir; // System.IO.Path.GetDirectoryName(dir);
+                if(!Directory.Exists(dir))
+                {
+                    item.Text += " ";
+                    item.Text += Properties.Resources.NOT_EXISTS;
+                }
                 item.Tag = dir;
                 menuMoveTo.Items.Add(item);
                 hasItems = true;

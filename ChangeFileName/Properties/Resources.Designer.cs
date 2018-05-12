@@ -88,6 +88,15 @@ namespace ChangeFileName.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to &quot;{0}&quot; does not exist. Do you want to remove it from menus?.
+        /// </summary>
+        internal static string DIR_NOT_EXIST_DO_YOU_WANT_TO_REMOVE {
+            get {
+                return ResourceManager.GetString("DIR_NOT_EXIST_DO_YOU_WANT_TO_REMOVE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Please enter Filename.
         /// </summary>
         internal static string ENTER_FILENAME {
@@ -158,6 +167,15 @@ namespace ChangeFileName.Properties {
         internal static string NO_ARGUMENTS {
             get {
                 return ResourceManager.GetString("NO_ARGUMENTS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to (Not Exists).
+        /// </summary>
+        internal static string NOT_EXISTS {
+            get {
+                return ResourceManager.GetString("NOT_EXISTS", resourceCulture);
             }
         }
         

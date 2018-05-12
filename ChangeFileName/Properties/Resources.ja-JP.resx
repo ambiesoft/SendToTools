@@ -155,4 +155,10 @@
   <data name="Extention" xml:space="preserve">
     <value>拡張子</value>
   </data>
+  <data name="DIR_NOT_EXIST_DO_YOU_WANT_TO_REMOVE" xml:space="preserve">
+    <value>"{0}" は存在しません。メニューから削除しますか？</value>
+  </data>
+  <data name="NOT_EXISTS" xml:space="preserve">
+    <value>（存在しない）</value>
+  </data>
 </root>
