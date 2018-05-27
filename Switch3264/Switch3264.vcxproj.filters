@@ -33,6 +33,9 @@
     <ClCompile Include="Switch3264.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\lsMisc\stdwin32\stdwin32.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\lsMisc\CommandLineParser.h">
@@ -54,6 +57,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\lsMisc\CommandLineString.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lsMisc\stdwin32\stdwin32.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

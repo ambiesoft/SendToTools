@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("SendToManager")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Ambiesoft")]
 [assembly: AssemblyProduct("SendToManager")]
-[assembly: AssemblyCopyright("Copyright (C)  2017")]
+[assembly: AssemblyCopyright("Copyright (C) Ambiesoft 2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

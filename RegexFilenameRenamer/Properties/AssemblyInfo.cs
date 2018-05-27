@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Ambiesoft")]
 [assembly: AssemblyProduct("RegexFilenameRenamer")]
-[assembly: AssemblyCopyright("Copyright (C)  2017")]
+[assembly: AssemblyCopyright("Copyright (C) Ambiesoft 2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

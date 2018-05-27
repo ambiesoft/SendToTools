@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("touch")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("section9")]
+[assembly: AssemblyCompany("Ambiesoft")]
 [assembly: AssemblyProduct("touch")]
-[assembly: AssemblyCopyright("Copyright © section9 2014")]
+[assembly: AssemblyCopyright("Copyright © Ambiesoft 2014")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

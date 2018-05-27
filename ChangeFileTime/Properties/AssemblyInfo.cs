@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("ChangeFileTime")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Ambiesoft")]
 [assembly: AssemblyProduct("ChangeFileTime")]
-[assembly: AssemblyCopyright("Copyright (C)  2013")]
+[assembly: AssemblyCopyright("Copyright (C) Ambiesoft 2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

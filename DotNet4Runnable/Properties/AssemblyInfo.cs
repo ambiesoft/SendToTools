@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("DotNet4Runnable")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Ambiesoft")]
 [assembly: AssemblyProduct("DotNet4Runnable")]
-[assembly: AssemblyCopyright("Copyright (C)  2015")]
+[assembly: AssemblyCopyright("Copyright (C) Ambiesoft 2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

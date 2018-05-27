@@ -173,14 +173,16 @@ namespace ChangeFileName
                 }
             }
 
+            List<Control> cs = disableAll();
             try
             {
-                FileSystem.DeleteFile(
-                  this.txtName.Tag.ToString(),
-                  UIOption.OnlyErrorDialogs,
-                  RecycleOption.SendToRecycleBin);
+                //FileSystem.DeleteFile(
+                //  this.txtName.Tag.ToString(),
+                //  UIOption.OnlyErrorDialogs,
+                //  RecycleOption.SendToRecycleBin);
 
-                Close();
+                if(0==CppUtils.DeleteFile(this, this.txtName.Tag.ToString()))
+                    Close();
             }
             catch (Exception)
             {
@@ -191,6 +193,10 @@ namespace ChangeFileName
                 //    MessageBoxButtons.OK,
                 //    MessageBoxIcon.Exclamation);
                 //}
+            }
+            finally
+            {
+                enableAll(cs);
             }
         }
 
@@ -344,14 +350,34 @@ namespace ChangeFileName
                 return;
             }
 
+            List<Control> backToEnables = disableAll();
             if (!Program.RenameIt(this, txtName.Tag.ToString(), newName))
             {
+                enableAll(backToEnables);
                 return;
             }
+            enableAll(backToEnables);
             this.DialogResult = DialogResult.OK;
             Close();
         }
-
+        void enableAll(List<Control> cs)
+        {
+            foreach (Control c in cs)
+                c.Enabled = true;
+        }
+        List<Control> disableAll()
+        {
+            List<Control> ret = new List<Control>();
+            foreach(Control c in this.Controls)
+            {
+                if(c.Enabled)
+                {
+                    c.Enabled = false;
+                    ret.Add(c);
+                }
+            }
+            return ret;
+        }
         private void btnExplorer_Click(object sender, EventArgs e)
         {
             string path = this.txtName.Tag.ToString();

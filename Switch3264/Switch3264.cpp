@@ -32,9 +32,12 @@
 #include "../../lsMisc/Is64.h"
 #include "../../lsMisc/OpenCommon.h"
 #include "../../lsMisc/CommandLineString.h"
+#include "../../lsMisc/stdwin32/stdwin32.h"
+#include "../../lsMisc/stlScopedClear.h"
 
 using namespace std;
 using namespace Ambiesoft;
+using namespace stdwin32;
 
 #define I18N(s) (s)
 #define APPNAME L"Switch3264"
@@ -86,6 +89,9 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	parser.AddOption(L"-32", 1, &exe32, ArgEncodingFlags_Default, L"Specify 32bit executable");
 	parser.AddOption(L"-64", 1, &exe64, ArgEncodingFlags_Default, L"Specify 64bit executable");
 	
+	bool bDirExe = false;
+	parser.AddOption(L"-direxe", 0, &bDirExe);
+
 	vector<wstring> helpoptions{ L"-h", L"-?", L"--help" };
 	parser.AddOption(helpoptions.begin(), helpoptions.end(),
 		0,
@@ -118,14 +124,27 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	else
 	{
 		int argc = 0;
-		wchar_t** argv = NULL;
-		//argv = CommandLineToArgvW(GetCommandLine(), &argc);
-		argv = CCommandLineString::getCommandLineArg(GetCommandLine(), &argc);
-		if (argc >= 5)
+		wchar_t** argv = CCommandLineString::getCommandLineArg(GetCommandLine(), &argc);
+		STLSOFT_SCOPEDFREE(argv, wchar_t**, CCommandLineString::freeCommandLineArg);
+		wstring exe32t, exe64t;
+		bool bexedirt = false;
+		int i;
+		for (i = 1; i < cls.getCount(); ++i)
 		{
-			argToProg = cls.subString(5);
+			wstring t = cls.getArg(i);
+			
+			if (t == L"-32" || t == L"-64")
+			{
+				++i;
+				continue;
+			}
+			if(t == L"-direxe")
+			{
+				continue;
+			}
+			break;
 		}
-		CCommandLineString::freeCommandLineArg(argv);
+		argToProg = cls.subString(i);
 	}
 	wstring exe;
 	if (Is64BitWindows())
@@ -133,6 +152,15 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	else
 		exe = exe32;
 
-	OpenCommon(NULL, exe.c_str(), argToProg.c_str());
+	wstring directory;
+	if (bDirExe)
+	{
+		directory = stdGetParentDirectory(stdGetFullPathName(exe));
+		SetCurrentDirectory(directory.c_str());
+	}
+	OpenCommon(NULL,
+		exe.c_str(),
+		argToProg.c_str(),
+		directory.empty() ? NULL : directory.c_str());
 	return 0;
 }

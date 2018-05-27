@@ -38,6 +38,7 @@ namespace ChangeFileName
     {
         private void moveToAndClose(string path)
         {
+            List<Control> csBack = disableAll();
             try
             {
                 string srcfilename = this.txtName.Tag.ToString();
@@ -86,6 +87,10 @@ namespace ChangeFileName
             catch (Exception ex)
             {
                 showError(ex.Message);
+            }
+            finally
+            {
+                enableAll(csBack);
             }
         }
 
