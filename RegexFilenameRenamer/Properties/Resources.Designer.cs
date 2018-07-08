@@ -88,7 +88,16 @@ namespace Ambiesoft.RegexFilenameRenamer.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &quot;{0}&quot; does not exist..
+        ///   Looks up a localized string similar to Failed to move &apos;{0}&apos;..
+        /// </summary>
+        internal static string FAILED_TO_MOVE_S {
+            get {
+                return ResourceManager.GetString("FAILED_TO_MOVE_S", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &apos;{0}&apos; does not exist..
         /// </summary>
         internal static string FILE_NOT_EXIST {
             get {

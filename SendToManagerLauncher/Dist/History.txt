@@ -1,4 +1,7 @@
-﻿2018/05/27 ver 1.16
+﻿2018/07/08 ver 1.17.1
+RegexFilenameRenamer: Show Abort-Retry-Ignore dialog when move failed.
+
+2018/05/27 ver 1.16
 Switch3264 : add option /direxe
 With Shift, Control or Rbutton be held down, touch.exe touches all files in subdirectories.
 ChangeFileNane: disable all controls while moving or removing.

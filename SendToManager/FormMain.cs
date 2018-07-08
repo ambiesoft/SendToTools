@@ -1245,6 +1245,8 @@ new KeyValuePair<string, string>(@"Switch3264.exe", Properties.Resources.TOOL_EX
             sb.Append(Assembly.GetExecutingAssembly().GetName().Version.Major.ToString());
             sb.Append(".");
             sb.Append(Assembly.GetExecutingAssembly().GetName().Version.Minor.ToString());
+            sb.Append(".");
+            sb.Append(Assembly.GetExecutingAssembly().GetName().Version.Build.ToString());
 
             CppUtils.CenteredMessageBox(this,
                 sb.ToString(),

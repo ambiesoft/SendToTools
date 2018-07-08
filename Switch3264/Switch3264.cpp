@@ -93,7 +93,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	parser.AddOption(L"-direxe", 0, &bDirExe);
 
 	vector<wstring> helpoptions{ L"-h", L"-?", L"--help" };
-	parser.AddOption(helpoptions.begin(), helpoptions.end(),
+	parser.AddOptionRange(helpoptions.begin(), helpoptions.end(),
 		0,
 		&bHelp,
 		ArgEncodingFlags_Default,

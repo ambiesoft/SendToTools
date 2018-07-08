@@ -31,6 +31,7 @@ using System.Text.RegularExpressions;
 using System.Text;
 using System.IO;
 using Ambiesoft;
+using System.Diagnostics;
 
 namespace Ambiesoft.RegexFilenameRenamer
 {
@@ -272,9 +273,15 @@ namespace Ambiesoft.RegexFilenameRenamer
                     if (org != targets[org])
                     {
                         if (Directory.Exists(org))
-                            Directory.Move(org, targets[org]);
-                        else if(File.Exists(org))
-                            File.Move(org, targets[org]);
+                        {
+                            if (!tryMoveFile(org, targets[org], Directory.Move))
+                                return 1;
+                        }
+                        else if (File.Exists(org))
+                        {
+                            if (!tryMoveFile(org, targets[org], File.Move))
+                                return 1;
+                        }
                         else
                         {
                             CppUtils.Alert(string.Format(Properties.Resources.FILE_NOT_EXIST, org));
@@ -293,6 +300,44 @@ namespace Ambiesoft.RegexFilenameRenamer
             }
         }
 
+        delegate void MoveFileOrDirectory(string source, string dest);
+        static bool tryMoveFile(string source, string dest, MoveFileOrDirectory moveFunc)
+        {
+            // Loop while retrying
+            for (; ; )
+            {
+                try
+                {
+                    moveFunc(source, dest);
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    StringBuilder sbMessage = new StringBuilder();
+                    sbMessage.AppendLine(string.Format(Properties.Resources.FAILED_TO_MOVE_S, source));
+                    sbMessage.AppendLine();
+                    sbMessage.AppendLine(ex.Message);
+
+                    DialogResult result = CppUtils.CenteredMessageBox(
+                        sbMessage.ToString(),
+                        Application.ProductName,
+                        MessageBoxButtons.AbortRetryIgnore,
+                        MessageBoxIcon.Warning,
+                        MessageBoxDefaultButton.Button2);
+                    if (result == DialogResult.Abort)
+                        return false;
+                    else if (result == DialogResult.Retry)
+                        continue;
+                    else if (result == DialogResult.Ignore)
+                        return true;
+                    else
+                    {
+                        Debug.Assert(false);
+                        return false;
+                    }
+                }
+            }
+        }
         private static string[] ConstructMainArgs(SimpleCommandLineParser parser)
         {
             List<string> ret = new List<string>();

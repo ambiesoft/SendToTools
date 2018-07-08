@@ -110,7 +110,7 @@ int libmain(LPCWSTR pAppName)
 	gAppName = pAppName;
 
 	COption opTarget(L"/T", L"/t", 1);
-	COption opFile(L"", Ambiesoft::ArgCount_Infinite);
+	COption opFile(L"", Ambiesoft::ArgCount::ArgCount_Infinite);
 	int nPriority = -1;
 	CCommandLineParser cmd;
 	cmd.AddOption(&opTarget);

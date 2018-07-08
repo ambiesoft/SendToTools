@@ -27,7 +27,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
 	CCommandLineParser parser(L"Swap filename of two files");
 	
-	COption opMain(L"", 2, ArgEncodingFlags_Default, L"Input two files");
+	COption opMain(L"", ExactCount::Exact_2, ArgEncodingFlags_Default, L"Input two files");
 
 	parser.AddOption(&opMain);
 	
