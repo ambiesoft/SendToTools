@@ -36,6 +36,7 @@
 using namespace stdwin32;
 using namespace std;
 using namespace Ambiesoft;
+using namespace Ambiesoft::stdosd;
 
 // #define I18N(s) Ambiesoft::i
 
@@ -195,7 +196,7 @@ tstring ConvertPath(const DialogData& dt, LPCTSTR pPath)
 {
 	tstring ret(pPath);
 	if (dt.relativePath_)
-		ret = stdwin32::stdGetFileName(ret);
+		ret = stdGetFileName(ret);
 	
 	ConvertType ct = dt.ct_;
 	bool dq = dt.dq_;
@@ -218,11 +219,11 @@ tstring ConvertPath(const DialogData& dt, LPCTSTR pPath)
 		break;
 
 	case CT_DOUBLESBACKLASH:
-		ret = StdStringReplace(ret, _T("\\"), _T("\\\\"));
+		ret = stdStringReplace(ret, _T("\\"), _T("\\\\"));
 		break;
 
 	case CT_SLASH:
-		ret = StdStringReplace(ret, _T("\\"), _T("/"));
+		ret = stdStringReplace(ret, _T("\\"), _T("/"));
 		break;
 	}
 

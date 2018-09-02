@@ -38,4 +38,7 @@ public:
 	CEdit m_editDirResult;
 	CButton m_btnOK;
 	int m_nCmbPriority;
+	afx_msg void OnContextMenu(CWnd* /*pWnd*/, CPoint /*point*/);
+	afx_msg void OnListSort();
+	afx_msg void OnListRemove();
 };

@@ -8,6 +8,7 @@
 #include "../../lsMisc/CommandLineParser.h"
 #include "../../lsMisc/CommandLineString.h"
 #include "../../lsMisc/stdwin32/stdwin32.h"
+#include "../../lsMisc/stdosd/stdosd.h"
 
 #include "WaitNext.h"
 #include "WaitNextDlg.h"
@@ -17,8 +18,10 @@
 #endif
 
 using namespace Ambiesoft;
-using namespace std;
+using namespace Ambiesoft::stdosd;
 using namespace stdwin32;
+
+using namespace std;
 
 // CWaitNextApp
 

@@ -8,6 +8,7 @@
 #include "ChooseDirDialog.h"
 
 using namespace Ambiesoft;
+using namespace std;
 
 // CChooseDirDialog ダイアログ
 
@@ -44,6 +45,9 @@ BEGIN_MESSAGE_MAP(CChooseDirDialog, CDialogEx)
 	ON_BN_CLICKED(IDC_BUTTON_BROWSE, &CChooseDirDialog::OnClickedButtonBrowse)
 	ON_WM_DESTROY()
 	ON_EN_CHANGE(IDC_EDIT_DIR, &CChooseDirDialog::OnEnChangeEditDir)
+	ON_WM_CONTEXTMENU()
+	ON_COMMAND(ID_LIST_SORT, &CChooseDirDialog::OnListSort)
+	ON_COMMAND(ID_LIST_REMOVE, &CChooseDirDialog::OnListRemove)
 END_MESSAGE_MAP()
 
 
@@ -151,4 +155,56 @@ DWORD CChooseDirDialog::GetPriorityValue(int nPriority)
 	case 3: return PROCESS_MODE_BACKGROUND_BEGIN;
 	}
 	return -1;
+}
+
+
+void CChooseDirDialog::OnContextMenu(CWnd* pWnd, CPoint point)
+{
+	CMenu menu;
+	VERIFY(menu.LoadMenu(IDR_MENU_LIST_CONTEXT));
+	CMenu* pPopup = menu.GetSubMenu(0);
+	ASSERT_VALID(pPopup);
+	pPopup->TrackPopupMenu(TPM_LEFTALIGN, point.x, point.y, this);
+}
+
+
+void CChooseDirDialog::OnListSort()
+{
+	vector<wstring> all;
+	int count = m_listDirs.GetCount();
+	if (count <= 0)
+		return;
+
+	for (int i = 0; i < count; ++i)
+	{
+		CString r;
+		m_listDirs.GetText(i, r);
+		all.push_back((LPCTSTR)r);
+	}
+	
+	std::sort(all.begin(), all.end());
+	m_listDirs.ResetContent();
+
+	for (size_t i = 0; i < all.size(); ++i)
+	{
+		m_listDirs.AddString(all[i].c_str());
+	}
+}
+
+
+void CChooseDirDialog::OnListRemove()
+{
+	int sel = m_listDirs.GetCurSel();
+	if (sel < 0)
+		return;
+
+	CString data;
+	m_listDirs.GetText(sel, data);
+
+	CString message;
+	message.Format(I18N(L"Are you sure you want to remove entry '%s'?"), data);
+	if (IDYES != MessageBox(message, NULL, MB_ICONQUESTION | MB_YESNO | MB_DEFBUTTON2))
+		return;
+	
+	m_listDirs.DeleteString(sel);
 }

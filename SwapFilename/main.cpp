@@ -47,11 +47,11 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
 	if (!PathFileExists(file1.c_str()))
 	{
-		ErrorExit(string_format(I18N(L"%s does not exist."), file1));
+		ErrorExit(stdFormat(I18N(L"%s does not exist."), file1));
 	}
 	if (!PathFileExists(file2.c_str()))
 	{
-		ErrorExit(string_format(I18N(L"%s does not exist."), file2));
+		ErrorExit(stdFormat(I18N(L"%s does not exist."), file2));
 	}
 
 	file1 = stdGetFullPathName(file1);

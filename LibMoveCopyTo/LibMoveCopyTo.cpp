@@ -56,6 +56,7 @@ using Ambiesoft::GetSHFileOpErrorString;
 using Ambiesoft::I18N;
 
 using stdwin32::stdAddBackSlash;
+using Ambiesoft::stdosd::stdFormat;
 
 typedef vector<wstring> STRINGVECTOR;
 
@@ -134,7 +135,8 @@ int libmain(LPCWSTR pAppName)
 	{
 		if (!PathFileExists(it->c_str()))
 		{
-			wstring msg = stdwin32::string_format(I18N(L"\"%s\" does not exist."), it->c_str());
+			// wstring msg = stdwin32::string_format(I18N(L"\"%s\" does not exist."), it->c_str());
+			wstring msg = stdFormat(I18N(L"\"%s\" does not exist."), it->c_str());
 			ShowError(msg.c_str());
 			return 1;
 		}
@@ -212,7 +214,7 @@ int libmain(LPCWSTR pAppName)
 
 	if (destDir.empty() || !stdwin32::stdIsFullPath(destDir.c_str()))
 	{
-		wstring msg = stdwin32::string_format(I18N(L"\"%s\" is empty or not full path."), destDir.c_str());
+		wstring msg = stdFormat(I18N(L"\"%s\" is empty or not full path."), destDir.c_str());
 		ShowError(msg.c_str());
 		return 1;
 	}
@@ -221,12 +223,12 @@ int libmain(LPCWSTR pAppName)
 	{
 		if (PathFileExists(destDir.c_str()))
 		{
-			wstring msg = stdwin32::string_format(I18N(L"\"%s\" is a file."), destDir.c_str());
+			wstring msg = stdFormat(I18N(L"\"%s\" is a file."), destDir.c_str());
 			ShowError(msg.c_str());
 			return 1;
 		}
 
-		wstring msg = stdwin32::string_format(I18N(L"\"%s\" does not exist. Do you want to create a new folder?"), destDir.c_str());
+		wstring msg = stdFormat(I18N(L"\"%s\" does not exist. Do you want to create a new folder?"), destDir.c_str());
 		if (IDYES != MessageBox(NULL,
 			msg.c_str(),
 			gAppName,
@@ -241,7 +243,7 @@ int libmain(LPCWSTR pAppName)
 	// final check
 	if (!PathIsDirectory(destDir.c_str()))
 	{
-		wstring msg = stdwin32::string_format(I18N(L"\"%s\" is not a folder."), destDir.c_str());
+		wstring msg = stdFormat(I18N(L"\"%s\" is not a folder."), destDir.c_str());
 		ShowError(msg.c_str());
 		return 1;
 	}
