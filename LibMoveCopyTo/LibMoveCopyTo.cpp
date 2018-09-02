@@ -38,25 +38,28 @@
 #pragma comment(lib,"shlwapi.lib")
 
 
-using std::wstring;
-using std::vector;
-using std::find;
-using std::set;
+//using std::wstring;
+//using std::vector;
+//using std::find;
+//using std::set;
+//
+//using Ambiesoft::ArgCount;
+//using Ambiesoft::COption;
+//using Ambiesoft::CCommandLineParser;
+//using Ambiesoft::sqlGetPrivateProfileStringArray;
+//using Ambiesoft::sqlWritePrivateProfileStringArray;
+//using Ambiesoft::sqlGetPrivateProfileInt;
+//using Ambiesoft::sqlWritePrivateProfileInt;
+//using Ambiesoft::SHMoveFile;
+//using Ambiesoft::GetLastErrorStringW;
+//using Ambiesoft::GetSHFileOpErrorString;
+//using Ambiesoft::I18N;
 
-using Ambiesoft::ArgCount;
-using Ambiesoft::COption;
-using Ambiesoft::CCommandLineParser;
-using Ambiesoft::sqlGetPrivateProfileStringArray;
-using Ambiesoft::sqlWritePrivateProfileStringArray;
-using Ambiesoft::sqlGetPrivateProfileInt;
-using Ambiesoft::sqlWritePrivateProfileInt;
-using Ambiesoft::SHMoveFile;
-using Ambiesoft::GetLastErrorStringW;
-using Ambiesoft::GetSHFileOpErrorString;
-using Ambiesoft::I18N;
 
-using stdwin32::stdAddBackSlash;
-using Ambiesoft::stdosd::stdFormat;
+using namespace Ambiesoft;
+using namespace Ambiesoft::stdosd;
+using namespace stdwin32;
+using namespace std;
 
 typedef vector<wstring> STRINGVECTOR;
 
@@ -74,12 +77,17 @@ extern CLibMoveCopyToApp theApp;;
 wstring getHelpString()
 {
 	wstring ret;
+	
 	ret.append(I18N(L"Usage")).append(L":\r\n");
-	ret.append(L"/t TARGETDIR /p priority SOURCE1 [SOURCE2]...\r\n");
+	ret.append(stdGetFileName(stdGetModuleFileName()));
+	ret.append(L" [/t TARGETDIR] [/p priority] [/lang LANG] SOURCE1 [SOURCE2]...\r\n");
 	ret.append(L"\r\n");
 	ret.append(L"  priority\r\n");
 	ret.append(L"    0:Hight, 1:Normal, 2:Low, 3:Background");
-		
+	ret.append(L"\r\n");
+	ret.append(L"  lang\r\n");
+	ret.append(L"    jpn,enu");
+
 	return ret;
 }
 void ShowError(LPCWSTR pMessage)
@@ -94,7 +102,13 @@ void ShowError(LPCWSTR pMessage)
 		MB_ICONERROR);
 }
 
-
+void showHelp()
+{
+	MessageBox(NULL,
+		getHelpString().c_str(),
+		gAppName,
+		MB_ICONINFORMATION);
+}
 
 
 
@@ -106,19 +120,34 @@ int libmain(LPCWSTR pAppName)
 {
 	//UNREFERENCED_PARAMETER(hPrevInstance);
 	//UNREFERENCED_PARAMETER(lpCmdLine);
+	
 	Ambiesoft::i18nInitLangmap(theApp.m_hInstance, nullptr, L"LibMoveCopyTo");
+	
 
 	gAppName = pAppName;
 
 	COption opTarget(L"/T", L"/t", 1);
 	COption opFile(L"", Ambiesoft::ArgCount::ArgCount_Infinite);
+	wstring lang;
+	bool bHelp = false;
 	int nPriority = -1;
 	CCommandLineParser cmd;
 	cmd.AddOption(&opTarget);
 	cmd.AddOption(&opFile);
 	cmd.AddOption(L"/p", 1, &nPriority);
+	cmd.AddOption(L"/lang", 1, &lang);
+	cmd.AddOption( L"/h", L"-h" , 0, &bHelp);
+
 	cmd.Parse();
 
+	if (!lang.empty())
+		Ambiesoft::i18nInitLangmap(theApp.m_hInstance, lang.c_str(), L"LibMoveCopyTo");
+
+	if (bHelp)
+	{
+		showHelp();
+		return 0;
+	}
 	wstring destDir = opTarget.getFirstValue();
 	STRINGVECTOR sourcefiles;
 	for (unsigned int i = 0; i < opFile.getValueCount(); ++i)
@@ -324,21 +353,14 @@ BEGIN_MESSAGE_MAP(CLibMoveCopyToApp, CWinApp)
 END_MESSAGE_MAP()
 
 
-// CLibMoveCopyToApp コンストラクション
+// CLibMoveCopyToApp
 
 CLibMoveCopyToApp::CLibMoveCopyToApp()
 {
-	// TODO: この位置に構築用コードを追加してください。
-	// ここに InitInstance 中の重要な初期化処理をすべて記述してください。
 }
 
 
-// 唯一の CLibMoveCopyToApp オブジェクトです。
-
 CLibMoveCopyToApp theApp;
-
-
-// CLibMoveCopyToApp 初期化
 
 BOOL CLibMoveCopyToApp::InitInstance()
 {

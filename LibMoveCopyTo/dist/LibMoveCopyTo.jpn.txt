@@ -19,3 +19,8 @@
 "&Destination:"="宛先(&D):"
 "&Move"="移動(&M)"
 "&Source:"="送信元(&S):"
+
+
+"Are you sure you want to remove entry '%s'?"="エントリー '%s' を削除しますか？"
+"&Remove"="エントリー削除(&R)"
+"&Sort"="ソート(&S)"

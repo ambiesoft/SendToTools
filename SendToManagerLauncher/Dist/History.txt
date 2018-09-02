@@ -1,4 +1,7 @@
-﻿2018/07/08 ver 1.17.1
+﻿2018/09/03 ver 1.17.2
+Add: Recent list of 'MoveFile' can be sortable and removable.
+
+2018/07/08 ver 1.17.1
 RegexFilenameRenamer: Show Abort-Retry-Ignore dialog when move failed.
 
 2018/05/27 ver 1.16

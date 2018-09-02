@@ -162,6 +162,7 @@ void CChooseDirDialog::OnContextMenu(CWnd* pWnd, CPoint point)
 {
 	CMenu menu;
 	VERIFY(menu.LoadMenu(IDR_MENU_LIST_CONTEXT));
+	i18nChangeMenuText(menu);
 	CMenu* pPopup = menu.GetSubMenu(0);
 	ASSERT_VALID(pPopup);
 	pPopup->TrackPopupMenu(TPM_LEFTALIGN, point.x, point.y, this);
