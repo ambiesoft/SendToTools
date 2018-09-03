@@ -1,7 +1,4 @@
-﻿// ChooseDirDialog.cpp : 実装ファイル
-//
-
-#include "stdafx.h"
+﻿#include "stdafx.h"
 
 
 #include "resource.h"
@@ -10,7 +7,6 @@
 using namespace Ambiesoft;
 using namespace std;
 
-// CChooseDirDialog ダイアログ
 
 IMPLEMENT_DYNAMIC(CChooseDirDialog, CDialogEx)
 
@@ -49,9 +45,6 @@ BEGIN_MESSAGE_MAP(CChooseDirDialog, CDialogEx)
 	ON_COMMAND(ID_LIST_SORT, &CChooseDirDialog::OnListSort)
 	ON_COMMAND(ID_LIST_REMOVE, &CChooseDirDialog::OnListRemove)
 END_MESSAGE_MAP()
-
-
-// CChooseDirDialog メッセージ ハンドラー
 
 
 BOOL CChooseDirDialog::OnInitDialog()
@@ -112,11 +105,12 @@ void CChooseDirDialog::OnDestroy()
 {
 	m_arDirs.RemoveAll();
 	std::set<CString> dupcheck;
-	if (!m_strDirResult.IsEmpty())
-	{
-		m_arDirs.Add(m_strDirResult);
-		dupcheck.insert(m_strDirResult);
-	}
+	
+	//if (!m_strDirResult.IsEmpty())
+	//{
+	//	m_arDirs.Add(m_strDirResult);
+	//	dupcheck.insert(m_strDirResult);
+	//}
 
 	for (int i = 0; i < m_listDirs.GetCount(); ++i)
 	{
@@ -130,8 +124,6 @@ void CChooseDirDialog::OnDestroy()
 	}
 
 	CDialogEx::OnDestroy();
-
-
 }
 
 

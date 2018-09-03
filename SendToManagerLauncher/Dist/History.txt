@@ -1,4 +1,7 @@
-﻿2018/09/03 ver 1.17.2
+﻿2018/09/03 ver 1.17.3
+Fix: Save list of 'MoveFile' propertly.
+
+2018/09/03 ver 1.17.2
 Add: Recent list of 'MoveFile' can be sortable and removable.
 
 2018/07/08 ver 1.17.1

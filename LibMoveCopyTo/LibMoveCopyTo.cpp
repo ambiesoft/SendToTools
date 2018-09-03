@@ -187,7 +187,7 @@ int libmain(LPCWSTR pAppName)
 	if (nPriority == -1)
 		nPriority = sqlGetPrivateProfileInt(SEC_OPTION, KEY_PRIORITY, -1, dbFile.c_str());
 	
-	bool isDialogProcessed = false;
+	
 	if (destDir.empty())
 	{
 		//if (allPrevSave.empty())
@@ -223,21 +223,36 @@ int libmain(LPCWSTR pAppName)
 			}
 
 			dlg.m_nCmbPriority = nPriority;
+
 			if (IDOK != dlg.DoModal())
 				return 0;
-			isDialogProcessed = true;
+
+			
 			nPriority = dlg.m_nCmbPriority;
-
 			destDir = dlg.m_strDirResult;
-
+			
+			// reset allSaving
+			allSaving.clear();
 			for (int i = 0; i < dlg.m_arDirs.GetSize(); ++i)
 			{
 				wstring t(dlg.m_arDirs[i]);
-				t=stdAddBackSlash(t);
-				
-				if (std::find(allSaving.begin(), allSaving.end(), t) == allSaving.end())
-					allSaving.push_back(t);
+				t = stdAddBackSlash(t);
+				allSaving.emplace_back(t);
 			}
+
+
+			// save all
+			vector<wstring>::iterator cIter = find(allSaving.begin(), allSaving.end(), destDir);
+			if (cIter == allSaving.end())
+				allSaving.push_back(destDir);
+
+			bool failed = false;
+			
+			failed |= !sqlWritePrivateProfileInt(SEC_OPTION, KEY_PRIORITY, nPriority, dbFile.c_str());
+			failed |= !sqlWritePrivateProfileStringArray(SEC_OPTION, KEY_DIRS, allSaving, dbFile.c_str());
+			if (failed)
+				ShowError(I18N(L"Failed to save to db."));
+
 		}
 	}
 
@@ -315,19 +330,7 @@ int libmain(LPCWSTR pAppName)
 	}
 
 
-	vector<wstring>::iterator cIter = find(allSaving.begin(), allSaving.end(), destDir);
-	if (cIter == allSaving.end())
-		allSaving.push_back(destDir);
 
-	bool failed = false;
-	if(isDialogProcessed)
-		failed |= !sqlWritePrivateProfileInt(SEC_OPTION, KEY_PRIORITY, nPriority, dbFile.c_str());
-	failed |= !sqlWritePrivateProfileStringArray(SEC_OPTION, KEY_DIRS, allSaving, dbFile.c_str());
-	if (failed)
-	{
-		ShowError(I18N(L"Failed to save to db."));
-		return 1;
-	}
 
 	 
 	return 0;
