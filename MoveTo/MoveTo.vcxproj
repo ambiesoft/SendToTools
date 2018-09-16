@@ -142,6 +142,7 @@ copy "$(SolutionDir)LibMoveCopyTo\Dist\LibMoveCopyTo.jpn.txt" "$(TargetDir)lang"
     <ResourceCompile Include="Resource.rc" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="icon.ico" />
     <Image Include="icon1.ico" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

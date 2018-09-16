@@ -33,10 +33,12 @@
 #include "../../lsMisc/OpenCommon.h"
 #include "../../lsMisc/CommandLineString.h"
 #include "../../lsMisc/stdwin32/stdwin32.h"
+#include "../../lsMisc/stdosd/stdosd.h"
 #include "../../lsMisc/stlScopedClear.h"
 
 using namespace std;
 using namespace Ambiesoft;
+using namespace Ambiesoft::stdosd;
 using namespace stdwin32;
 
 #define I18N(s) (s)

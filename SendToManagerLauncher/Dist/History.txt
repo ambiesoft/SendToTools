@@ -1,4 +1,8 @@
-﻿2018/09/03 ver 1.17.3
+﻿2018/09/16 ver 1.17.4
+Show version of tools in About dialog.
+Renew build environment.
+
+2018/09/03 ver 1.17.3
 Fix: Save list of 'MoveFile' propertly.
 
 2018/09/03 ver 1.17.2

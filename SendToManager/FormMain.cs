@@ -1237,6 +1237,40 @@ new KeyValuePair<string, string>(@"Switch3264.exe", Properties.Resources.TOOL_EX
             }
         }
 
+        // https://stackoverflow.com/a/283917
+        public static string AssemblyDirectory
+        {
+            get
+            {
+                string codeBase = Assembly.GetExecutingAssembly().CodeBase;
+                UriBuilder uri = new UriBuilder(codeBase);
+                string path = Uri.UnescapeDataString(uri.Path);
+                return Path.GetDirectoryName(path);
+            }
+        }
+
+        private string getToolVersion(string exe, bool bNative)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append(Path.GetFileNameWithoutExtension(exe));
+            sb.Append(" version ");
+            try
+            {
+                string fullpath = Path.Combine(AssemblyDirectory, exe);
+                if (bNative)
+                {
+                    sb.Append(CppUtils.GetNativeVersionString(fullpath));
+                }
+                else
+                {
+                    sb.Append(AssemblyName.GetAssemblyName(fullpath).Version.ToString());
+                }
+            }
+            catch
+            {
+            }
+            return sb.ToString();
+        }
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             StringBuilder sb = new StringBuilder();
@@ -1248,6 +1282,24 @@ new KeyValuePair<string, string>(@"Switch3264.exe", Properties.Resources.TOOL_EX
             sb.Append(".");
             sb.Append(Assembly.GetExecutingAssembly().GetName().Version.Build.ToString());
 
+            sb.AppendLine();
+            sb.AppendLine();
+
+            sb.AppendLine(getToolVersion("ChangeFileName.exe",false));
+            sb.AppendLine(getToolVersion("ChangeFileTime.exe", false));
+            sb.AppendLine(getToolVersion("CopyFileContent.exe", false));
+            sb.AppendLine(getToolVersion("CopyFirstLine.exe", false));
+            sb.AppendLine(getToolVersion("CopyPath.exe", true));
+            sb.AppendLine(getToolVersion("DotNet4Runnable.exe", false));
+            sb.AppendLine(getToolVersion("MoveTo.exe", true));
+            sb.AppendLine(getToolVersion("RegexFilenameRenamer.exe", false));
+            sb.AppendLine(getToolVersion("RunFileAs.exe", true));
+            sb.AppendLine(getToolVersion("RunOnebyOne.exe", false));
+            sb.AppendLine(getToolVersion("RunWithArgs.exe", false));
+            sb.AppendLine(getToolVersion("Switch3264.exe", true));
+            sb.AppendLine(getToolVersion("touch.exe", false));
+
+            
             CppUtils.CenteredMessageBox(this,
                 sb.ToString(),
                 ProductName,

@@ -44,5 +44,6 @@
     <Image Include="icon1.ico">
       <Filter>3 Resources</Filter>
     </Image>
+    <Image Include="icon.ico" />
   </ItemGroup>
 </Project>

@@ -4,6 +4,7 @@
 #include "../../lsMisc/CommandLineParser.h"
 
 using namespace Ambiesoft;
+using namespace Ambiesoft::stdosd;
 using namespace std;
 
 #define APPNAME L"SwapFilename"
