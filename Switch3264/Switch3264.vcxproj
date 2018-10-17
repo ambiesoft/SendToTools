@@ -81,6 +81,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\lsMisc\CommandLineParser.cpp" />
+    <ClCompile Include="..\..\lsMisc\HighDPI.cpp" />
     <ClCompile Include="..\..\lsMisc\Is64.cpp" />
     <ClCompile Include="..\..\lsMisc\OpenCommon.cpp" />
     <ClCompile Include="..\..\lsMisc\stdosd\stdosd.cpp" />
@@ -93,6 +94,7 @@
   <ItemGroup>
     <ClInclude Include="..\..\lsMisc\CommandLineParser.h" />
     <ClInclude Include="..\..\lsMisc\CommandLineString.h" />
+    <ClInclude Include="..\..\lsMisc\HighDPI.h" />
     <ClInclude Include="..\..\lsMisc\Is64.h" />
     <ClInclude Include="..\..\lsMisc\OpenCommon.h" />
     <ClInclude Include="..\..\lsMisc\stdosd\stdosd.h" />

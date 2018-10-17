@@ -35,6 +35,7 @@
 #include "../../lsMisc/stdwin32/stdwin32.h"
 #include "../../lsMisc/stdosd/stdosd.h"
 #include "../../lsMisc/stlScopedClear.h"
+#include "../../lsMisc/HighDPI.h"
 
 using namespace std;
 using namespace Ambiesoft;
@@ -83,6 +84,8 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 {
 	UNREFERENCED_PARAMETER(hPrevInstance);
 	UNREFERENCED_PARAMETER(lpCmdLine);
+
+	Ambiesoft::InitHighDPISupport();
 
 	CCommandLineParser parser(CaseFlags_Default, L"Execute 32bit app or 64 bit app determined by execution environment");
 

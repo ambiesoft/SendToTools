@@ -30,6 +30,8 @@
 #include "stdafx.h"
 
 #include "../../lsMisc/CommandLineParser.h"
+#include "../../lsMisc/HighDPI.h"
+
 #include "CopyPath.h"
 
 
@@ -254,6 +256,8 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     UNREFERENCED_PARAMETER(hPrevInstance);
     UNREFERENCED_PARAMETER(lpCmdLine);
 	
+	InitHighDPISupport();
+
 	i18nInitLangmap(hInstance, NULL, stdGetFileNameWitoutExtension(stdGetModuleFileName()).c_str());
 	hInst = hInstance;
 

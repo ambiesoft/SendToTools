@@ -38,6 +38,8 @@ namespace RunOnebyOne
         [STAThread]
         static void Main(string[] args)
         {
+            Ambiesoft.CppUtils.AmbSetProcessDPIAware();
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 

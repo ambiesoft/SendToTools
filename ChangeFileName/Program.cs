@@ -66,6 +66,8 @@ namespace ChangeFileName
         [STAThread]
         static void Main(string[] args)
         {
+            Ambiesoft.CppUtils.AmbSetProcessDPIAware();
+
             if (args.Length < 1)
             {
                 StringBuilder sb = new StringBuilder();

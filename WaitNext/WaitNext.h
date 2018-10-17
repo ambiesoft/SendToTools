@@ -30,6 +30,8 @@ public:
 private:
 	std::vector<std::wstring> mainArgs_;
 	BOOL parseCommandLine();
+public:
+	virtual BOOL InitApplication();
 };
 
 extern CWaitNextApp theApp;

@@ -42,6 +42,9 @@
     <ClCompile Include="..\..\lsMisc\stdosd\stdosd_win.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\lsMisc\HighDPI.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\lsMisc\CommandLineParser.h">
@@ -72,6 +75,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lsMisc\HighDPI.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

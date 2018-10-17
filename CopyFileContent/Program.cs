@@ -49,6 +49,8 @@ namespace CopyFileContent
         [STAThread]
         static void Main(string[] args)
         {
+            Ambiesoft.CppUtils.AmbSetProcessDPIAware();
+
             try
             {
                 //if (args.Length < 1)

@@ -9,6 +9,7 @@
 #include "../../lsMisc/CommandLineString.h"
 #include "../../lsMisc/stdwin32/stdwin32.h"
 #include "../../lsMisc/stdosd/stdosd.h"
+#include "../../lsMisc/HighDPI.h"
 
 #include "WaitNext.h"
 #include "WaitNextDlg.h"
@@ -166,3 +167,11 @@ BOOL CWaitNextApp::InitInstance()
 
 
 
+
+
+BOOL CWaitNextApp::InitApplication()
+{
+	Ambiesoft::InitHighDPISupport();
+
+	return CWinApp::InitApplication();
+}

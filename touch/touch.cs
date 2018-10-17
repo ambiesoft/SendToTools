@@ -42,6 +42,8 @@ namespace touch
         [STAThread]
         static void Main(string[] args)
         {
+            Ambiesoft.CppUtils.AmbSetProcessDPIAware();
+
             try
             {
                 doit(args);

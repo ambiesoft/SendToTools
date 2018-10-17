@@ -38,6 +38,8 @@ namespace CopyFirstLine
         [STAThread]
         static void Main(string[] args)
         {
+            Ambiesoft.CppUtils.AmbSetProcessDPIAware();
+
             if (args.Length < 1)
             {
                 MessageBox.Show(Properties.Resources.NO_ARG,

@@ -34,10 +34,13 @@
 #include <stlsoft/smartptr/scoped_handle.hpp>
 #include "../../lsMisc/OpenCommon.h"
 #include "../../lsMisc/stdwin32/stdwin32.h"
+#include "../../lsMisc/stdosd/stdosd.h"
+#include "../../lsMisc/HighDPI.h"
 
 using namespace std;
 using namespace stdwin32;
 using namespace Ambiesoft;
+using namespace Ambiesoft::stdosd;
 
 #define APPNAME L"RunFileAs"
 #define I18N(s) (s)
@@ -137,6 +140,8 @@ int WINAPI wWinMain(
 	PWSTR pCmdLine,
 	int nCmdShow)
 {
+	Ambiesoft::InitHighDPISupport();
+
 	if (__argc < 2)
 	{
 		Alert(I18N(L"No arguments."));

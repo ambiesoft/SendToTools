@@ -38,6 +38,8 @@ namespace RunWithArgs
         [STAThread]
         static int Main(string[] args)
         {
+            Ambiesoft.CppUtils.AmbSetProcessDPIAware();
+
             if (args.Length == 0)
             {
                 MessageBox.Show("No Args");

@@ -107,6 +107,8 @@ namespace Ambiesoft.RegexFilenameRenamer
         [STAThread]
         static int Main(string[] args)
         {
+            Ambiesoft.CppUtils.AmbSetProcessDPIAware();
+
             SimpleCommandLineParser parser = new SimpleCommandLineParser(args);
             parser.addOption("rf", ARGUMENT_TYPE.MUST);
             parser.addOption("rt", ARGUMENT_TYPE.MUST);

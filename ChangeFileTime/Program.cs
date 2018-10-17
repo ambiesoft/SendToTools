@@ -37,6 +37,8 @@ namespace ChangeFileTime
         [STAThread]
         static void Main(String[] args)
         {
+            Ambiesoft.CppUtils.AmbSetProcessDPIAware();
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             // Application.Run(new FormMain());

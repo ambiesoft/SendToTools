@@ -172,8 +172,8 @@ int libmain(LPCWSTR pAppName)
 	}
 
 
-	wstring dbFile = stdwin32::stdCombinePath(
-		stdwin32::stdGetParentDirectory(stdwin32::stdGetModuleFileName()),
+	wstring dbFile = stdCombinePath(
+		stdGetParentDirectory(stdwin32::stdGetModuleFileName()),
 		wstring(gAppName) + L".db");
 
 
@@ -256,7 +256,7 @@ int libmain(LPCWSTR pAppName)
 		}
 	}
 
-	if (destDir.empty() || !stdwin32::stdIsFullPath(destDir.c_str()))
+	if (destDir.empty() || !stdIsFullPath(destDir.c_str()))
 	{
 		wstring msg = stdFormat(I18N(L"\"%s\" is empty or not full path."), destDir.c_str());
 		ShowError(msg.c_str());
