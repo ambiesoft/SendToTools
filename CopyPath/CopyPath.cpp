@@ -55,7 +55,7 @@ enum ConvertType {
 
 struct DialogData {
 	ConvertType ct_;
-	bool relativePath_;
+	bool nameonly_;
 	bool dq_;
 	bool kaigyo_;
 
@@ -65,7 +65,7 @@ struct DialogData {
 
 	DialogData() {
 		ct_ = CT_NORMAL;
-		relativePath_ = false;
+		nameonly_ = false;
 		dq_ = false;
 		kaigyo_ = 0;
 		code_ = false;
@@ -78,6 +78,22 @@ WCHAR szTitle[MAX_LOADSTRING];                  // The title bar text
 
 
 
+void showMessageAndExit(LPCTSTR pMessage)
+{
+	MessageBox(NULL,
+		pMessage,
+		szTitle,
+		MB_ICONINFORMATION);
+	exit(1);
+}
+void showHelpAndExit(LPCTSTR pMessage)
+{
+	MessageBox(NULL,
+		pMessage,
+		szTitle,
+		MB_ICONINFORMATION);
+	exit(1);
+}
 void showErrorAndExit(LPCTSTR pMessage)
 {
 	MessageBox(NULL,
@@ -86,7 +102,10 @@ void showErrorAndExit(LPCTSTR pMessage)
 		MB_ICONERROR);
 	exit(1);
 }
-
+void showErrorAndExit(const wstring& message)
+{
+	showErrorAndExit(message.c_str());
+}
 #define MAX_CODENAME 128
 #define CODENAME_CPP			TEXT("C++")
 #define CODENAME_CPPWIDE		TEXT("C++ (Wide)")
@@ -124,6 +143,14 @@ INT_PTR CALLBACK DialogProc(
 			for (int i = 0; i < _countof(codeNames);++i)
 				SendMessage(shCmbCode, CB_ADDSTRING, (WPARAM)0, (LPARAM)codeNames[i]);
 			SendMessage(shCmbCode, CB_SETCURSEL, 0, 0);
+
+
+			SendDlgItemMessage(hwndDlg, IDC_RADIO_NAMEONLY, BM_SETCHECK, sDT->nameonly_ ? BST_CHECKED : 0, 0);
+			SendDlgItemMessage(hwndDlg, IDC_RADIO_ABSOLUTEPATH, BM_SETCHECK, sDT->nameonly_ ? 0 : BST_CHECKED, 0);
+
+
+
+
 			CenterWindow(hwndDlg);
 			PostMessage(hwndDlg, WM_APP_INITIALUPDATE, 0, 0);
 			return TRUE;
@@ -150,9 +177,9 @@ INT_PTR CALLBACK DialogProc(
 				case IDOK:
 				{
 					if (SendDlgItemMessage(hwndDlg, IDC_RADIO_ABSOLUTEPATH, BM_GETCHECK, 0, 0))
-						sDT->relativePath_ = false;
-					else if (SendDlgItemMessage(hwndDlg, IDC_RADIO_RELATIVEPATH, BM_GETCHECK, 0, 0))
-						sDT->relativePath_ = true;
+						sDT->nameonly_ = false;
+					else if (SendDlgItemMessage(hwndDlg, IDC_RADIO_NAMEONLY, BM_GETCHECK, 0, 0))
+						sDT->nameonly_ = true;
 					else
 						assert(false);
 
@@ -197,8 +224,10 @@ INT_PTR CALLBACK DialogProc(
 tstring ConvertPath(const DialogData& dt, LPCTSTR pPath)
 {
 	tstring ret(pPath);
-	if (dt.relativePath_)
+	if (dt.nameonly_)
 		ret = stdGetFileName(ret);
+	else
+		ret = stdGetFullPathName(ret);
 	
 	ConvertType ct = dt.ct_;
 	bool dq = dt.dq_;
@@ -266,17 +295,38 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
 	CCommandLineParser parser;
 	bool bDetail = false;
-	parser.AddOption(L"/d", 0, &bDetail);
+	parser.AddOption(L"/d", 0, &bDetail, ArgEncodingFlags::ArgEncodingFlags_Default, L"Show Dialog");
 	COption opMain;
 	parser.AddOption(&opMain);
+
+	bool bNameOnly = false;
+	parser.AddOption(L"/n", 0, &bNameOnly, ArgEncodingFlags_Default, L"Copy Name only");
+
+	bool bHelp = false;
+	parser.AddOption(L"/h", 0, &bHelp, ArgEncodingFlags_Default, L"Show Help");
+	parser.AddOption(L"/?", 0, &bHelp, ArgEncodingFlags_Default, L"Show Help");
+
 	parser.Parse();
 
+	if (bHelp)
+	{
+		wstring message = L"CopyPath version 1.0.1";
+		message += KAIGYO;
+		message += KAIGYO;
+		message += parser.getHelpMessage().c_str();
+		showHelpAndExit(message.c_str());
+	}
 	if (opMain.getValueCount()==0)
 	{
 		showErrorAndExit(I18N(L"No Arguments"));
 	}
+	if (!parser.getUnknowOptionStrings().empty())
+	{
+		showErrorAndExit(I18N(L"Unknown Options: ") + parser.getUnknowOptionStrings());
+	}
 
 	DialogData dt;
+	dt.nameonly_ = bNameOnly;
 	if (!bDetail)
 	{
 		bDetail = (GetAsyncKeyState(VK_SHIFT) < 0) ||
