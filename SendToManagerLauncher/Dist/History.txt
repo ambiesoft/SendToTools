@@ -1,4 +1,7 @@
-﻿2018/10/18 ver 1.17.5
+﻿2018/10/28 ver 1.17.6
+Update copypath
+
+2018/10/18 ver 1.17.5
 Quick-fix for high dpi support
 
 2018/09/16 ver 1.17.4
