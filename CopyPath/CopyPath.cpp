@@ -110,12 +110,14 @@ void showErrorAndExit(const wstring& message)
 #define CODENAME_CPP			TEXT("C++")
 #define CODENAME_CPPWIDE		TEXT("C++ (Wide)")
 #define CODENAME_CSHARP			TEXT("C#")
+#define CODENAME_JSON			TEXT("Json")
 
 static LPCTSTR codeNames[] =
 {
 	CODENAME_CPP,
 	CODENAME_CPPWIDE,
 	CODENAME_CSHARP,
+	CODENAME_JSON,
 };
 INT_PTR CALLBACK DialogProc(
 	_In_ HWND   hwndDlg,
@@ -221,7 +223,7 @@ INT_PTR CALLBACK DialogProc(
 	return FALSE;
 }
 
-tstring ConvertPath(const DialogData& dt, LPCTSTR pPath)
+tstring ConvertPath(const DialogData& dt, LPCTSTR pPath, const bool isLast)
 {
 	tstring ret(pPath);
 	if (dt.nameonly_)
@@ -241,6 +243,12 @@ tstring ConvertPath(const DialogData& dt, LPCTSTR pPath)
 				ct = CT_DOUBLESBACKLASH;
 			else if (dt.codeName_ == CODENAME_CSHARP)
 				ct = CT_NORMAL;
+			else if (dt.codeName_ == CODENAME_JSON)
+				ct = CT_DOUBLESBACKLASH;
+			else
+			{
+				showErrorAndExit(stdFormat(I18N(L"Unknown code name '%s'."), dt.codeName_.c_str()));
+			}
 		}
 		dq = true;
 	}
@@ -266,13 +274,39 @@ tstring ConvertPath(const DialogData& dt, LPCTSTR pPath)
 		if (dt.code_)
 		{
 			if (dt.codeName_ == CODENAME_CPPWIDE)
+			{
 				ret = L"L" + ret;
+			}
 			else if (dt.codeName_ == CODENAME_CSHARP)
+			{
 				ret = L"@" + ret;
+			}
+			else if (dt.codeName_==CODENAME_JSON)
+			{ }
+			else
+			{
+				showErrorAndExit(stdFormat(I18N(L"Unknown code name '%s'."), dt.codeName_.c_str()));
+			}
 		}
 	}
 	if (dt.code_)
-		ret += L",";
+	{
+		if (dt.codeName_ == CODENAME_CPP)
+			ret += L",";
+		else if (dt.codeName_ == CODENAME_CPPWIDE)
+			ret += L",";
+		else if (dt.codeName_ == CODENAME_CSHARP)
+			ret += L",";
+		else if (dt.codeName_ == CODENAME_JSON)
+		{
+			if (!isLast)
+				ret += L",";
+		}
+		else
+		{
+			showErrorAndExit(stdFormat(I18N(L"Unknown code name '%s'."), dt.codeName_.c_str()));
+		}
+	}
 
 	return ret;
 }
@@ -360,8 +394,13 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 		{
 			str += L"string[] filenames = new string[]{";
 		}
+		else if (dt.codeName_ == CODENAME_JSON)
+		{
+			str += L"[";
+		}
 		else
 		{
+			showErrorAndExit(stdFormat(I18N(L"Unknown code name '%s'."), dt.codeName_.c_str()));
 			assert(false);
 		}
 
@@ -376,15 +415,42 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	if (dt.sort_)
 		inputs.sort();
 
+	size_t i = 0;
 	for (wstring& s : inputs)
+	//for (size_t i = 0; i < inputs.size(); ++i)
 	{
-		str += ConvertPath(dt, s.c_str());
+		// wstring s = inputs[i];
+		str += ConvertPath(dt, s.c_str(), i==(inputs.size()-1));
 		str += dt.kaigyo_ ? KAIGYO : SPACE;
+		++i;
 	}
 	if (dt.code_)
 	{
-		str += L"};";
-		str += dt.kaigyo_ ? KAIGYO : L"";
+		if (dt.codeName_ == CODENAME_CPP)
+		{
+			str += L"};";
+			str += dt.kaigyo_ ? KAIGYO : L"";
+		}
+		else if (dt.codeName_ == CODENAME_CPPWIDE)
+		{
+			str += L"};";
+			str += dt.kaigyo_ ? KAIGYO : L"";
+		}
+		else if (dt.codeName_ == CODENAME_CSHARP)
+		{
+			str += L"};";
+			str += dt.kaigyo_ ? KAIGYO : L"";
+		}
+		else if (dt.codeName_ == CODENAME_JSON)
+		{
+			str += L"]";
+			str += dt.kaigyo_ ? KAIGYO : L"";
+		}
+		else
+		{
+			showErrorAndExit(stdFormat(I18N(L"Unknown code name '%s'."), dt.codeName_.c_str()));
+			assert(false);
+		}
 	}
 
 	str=trim(str, dt.kaigyo_ ? KAIGYO : SPACE);

@@ -1,4 +1,6 @@
-﻿2018/10/28 ver 1.17.6
+﻿copypath has json
+
+2018/10/28 ver 1.17.6
 Update copypath
 
 2018/10/18 ver 1.17.5
