@@ -17,7 +17,7 @@
     "remotedir":   "http://ambiesoft.fam.cx/ffdav/uploads/SendToTools/",
     "remotesha1" : "http://ambiesoft.fam.cx/ffdav/uploads/getSha1.php?file=SendToTools/{}",
     
-    "TotalFileCount": 85,
+    "TotalFileCount": 87,
     "ShouldNotBeFiles": [
 		"folder.ini"
     ],
