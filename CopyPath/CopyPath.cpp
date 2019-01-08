@@ -35,7 +35,7 @@
 #include "CopyPath.h"
 
 
-using namespace stdwin32;
+using namespace Ambiesoft::stdwin32;
 using namespace std;
 using namespace Ambiesoft;
 using namespace Ambiesoft::stdosd;

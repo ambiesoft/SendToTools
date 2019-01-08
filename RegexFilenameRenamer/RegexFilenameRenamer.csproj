@@ -83,7 +83,7 @@
       <HintPath>..\..\..\..\..\..\Linkout\DNAssembly.NET4\Ambiesoft.AmbLibcpp.dll</HintPath>
     </Reference>
     <Reference Include="SimpleCommandLineParser">
-      <HintPath>Z:\From\Linkout\DNAssembly\SimpleCommandLineParser.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Linkout\DNAssembly\SimpleCommandLineParser.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
