@@ -1,4 +1,6 @@
-﻿copypath has json
+﻿2019/01/08 ver 1.17.7
+copypath has json format
+ChangeFileName can have external tools
 
 2018/10/28 ver 1.17.6
 Update copypath

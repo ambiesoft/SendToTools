@@ -657,6 +657,7 @@ namespace ChangeFileName
 
             List<Miszou.ToolManager.Macro> folderList = new List<Miszou.ToolManager.Macro>();
             ImageList toolImages = new ImageList();
+            _mTools = null;
 		    do
 			{
 				try
