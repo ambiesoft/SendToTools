@@ -167,4 +167,13 @@ Change Filename.</value>
   <data name="Size" xml:space="preserve">
     <value>Size</value>
   </data>
+  <data name="FAILED_TO_LOAD_TOOLXML" xml:space="preserve">
+    <value>Failed to load '{0}' 
+
+Reason:
+{1}
+
+Fix the file and press OK or press Cancel to exit.
+If this probrem continues, delete the file but you will lost all information about External Tools.</value>
+  </data>
 </root>

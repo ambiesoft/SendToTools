@@ -167,4 +167,13 @@
   <data name="NO_EXTERNAL_TOOLS_REGISTERED" xml:space="preserve">
     <value>＜外部ツールが登録されていません＞</value>
   </data>
+  <data name="FAILED_TO_LOAD_TOOLXML" xml:space="preserve">
+    <value>'{0}' の読み込みに失敗しました。
+
+理由：
+{1}
+
+ファイルを修正して OK をクリックするか キャンセル をクリックしてアプリケーションを閉じてください。
+もしこの問題が継続するなら、ファイルを削除してください。その場合外部ツールの情報は失われます。</value>
+  </data>
 </root>

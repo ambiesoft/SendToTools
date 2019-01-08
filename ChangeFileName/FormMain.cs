@@ -670,7 +670,7 @@ namespace ChangeFileName
 				}
 				catch (Exception ex)
 				{
-                    string message = string.Format("Failed to load '{0}' \r\n\r\nReason:\r\n{1}\r\n\r\nFix the file and press OK or press Cancel to exit.\r\nIf this probrem continues, delete the file but you will lost all information about External Tools.",
+                    string message = string.Format(Properties.Resources.FAILED_TO_LOAD_TOOLXML,
                         toolfile, ex.Message);
 					if (MessageBox.Show(
                         message,
@@ -692,7 +692,7 @@ namespace ChangeFileName
             if (_mTools.Count == 0)
             {
                 ToolStripMenuItem item = new ToolStripMenuItem();
-				item.Text = "<No External Tools registered>";
+                item.Text = Properties.Resources.NO_EXTERNAL_TOOLS_REGISTERED;
 				item.Enabled = false;
                 toolsToolStripMenuItem.DropDownItems.Insert(startIndex + 1, item);
             }
