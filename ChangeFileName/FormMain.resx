@@ -672,7 +672,10 @@
   <data name="tsmiSmartDoubleClickSelection.Text" xml:space="preserve">
     <value>Smart double click selection</value>
   </data>
-  <data name="toolStripMenuItem9.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="tsmsBeforeTools.Size" type="System.Drawing.Size, System.Drawing">
+    <value>219, 6</value>
+  </data>
+  <data name="tsmsAfterTools.Size" type="System.Drawing.Size, System.Drawing">
     <value>219, 6</value>
   </data>
   <data name="addModifyToolToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
@@ -871,7 +874,7 @@
     <value>btnPaste</value>
   </data>
   <data name="&gt;&gt;btnPaste.Type" xml:space="preserve">
-    <value>SplitButtonDemo.SplitButton, ChangeFileName, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>SplitButtonDemo.SplitButton, ChangeFileName, Version=1.3.6947.25676, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;btnPaste.Parent" xml:space="preserve">
     <value>$this</value>
@@ -2883,10 +2886,10 @@
   <data name="&gt;&gt;tsmiSmartDoubleClickSelection.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;toolStripMenuItem9.Name" xml:space="preserve">
-    <value>toolStripMenuItem9</value>
+  <data name="&gt;&gt;tsmsBeforeTools.Name" xml:space="preserve">
+    <value>tsmsBeforeTools</value>
   </data>
-  <data name="&gt;&gt;toolStripMenuItem9.Type" xml:space="preserve">
+  <data name="&gt;&gt;tsmsBeforeTools.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;addModifyToolToolStripMenuItem.Name" xml:space="preserve">
@@ -2930,6 +2933,12 @@
   </data>
   <data name="&gt;&gt;pasteTotailToolStripMenuItem1.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tsmsAfterTools.Name" xml:space="preserve">
+    <value>tsmsAfterTools</value>
+  </data>
+  <data name="&gt;&gt;tsmsAfterTools.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>FormMain</value>

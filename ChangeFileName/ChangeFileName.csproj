@@ -87,6 +87,9 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="ToolManager">
+      <HintPath>..\..\..\..\..\..\Linkout\DNAssembly.NET4\ToolManager.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FormMain.cs">

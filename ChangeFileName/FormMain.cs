@@ -37,6 +37,7 @@ using Ambiesoft;
 using System.Reflection;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
+using System.Text.RegularExpressions;
 
 
 
@@ -47,10 +48,18 @@ namespace ChangeFileName
         static readonly string SECTION_SETTING = "settings";
         static readonly string KEY_SMARTDOUBLECLICKSELECTION = "SmartDoubleClickSelection";
         static readonly string KEY_TOPMOST = "TopMost";
-        
+
         public static string IniFile
         {
             get { return AmbLib.GetIniPath(); }
+        }
+        public static string IniFolder
+        {
+            get
+            {
+                string inipath = AmbLib.GetIniPath();
+                return System.IO.Path.GetDirectoryName(inipath);
+            }
         }
 
         public FormMain()
@@ -455,13 +464,7 @@ namespace ChangeFileName
             _unreDoing = false;
         }
 
-        private void addModifyToolToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            using (ModificationTool dlg = new ModificationTool())
-            {
-                dlg.ShowDialog();
-            }
-        }
+   
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -619,14 +622,106 @@ namespace ChangeFileName
             txtName.SelectAll();
         }
 
+        Miszou.ToolManager.Tools _mTools;
+        static int _emptyToolsCount = -1;
+        const string EXTERNAL_MACRO_FILE = "$(File)";
+        Regex _extMacroRegex;
 
+        string extRegTrans(Match match)
+		{
+			string x = match.ToString();
 
-      
-     
+			if (x == EXTERNAL_MACRO_FILE)
+			{
+                x = txtName.Tag.ToString(); 
+			}
+			return x;
+		}
+        string ExpandToolMacros(string str)
+        {
+            if (_extMacroRegex == null)
+                _extMacroRegex = new Regex("\\$\\([^)]*\\)");
 
-      
+            return _extMacroRegex.Replace(str, new MatchEvaluator(extRegTrans));
+        }
+        private void toolsToolStripMenuItem_DropDownOpening(object sender, EventArgs e)
+        {
+            if (_emptyToolsCount == -1)
+            {
+                _emptyToolsCount = toolsToolStripMenuItem.DropDownItems.Count;
+            }
 
+            string toolfile = Path.Combine(IniFolder, "ChangeFileNameTools.xml");
+            List<Miszou.ToolManager.Macro> macroList = new List<Miszou.ToolManager.Macro>();
+            macroList.Add(new Miszou.ToolManager.Macro(EXTERNAL_MACRO_FILE, "File"));
 
-    
+            List<Miszou.ToolManager.Macro> folderList = new List<Miszou.ToolManager.Macro>();
+            ImageList toolImages = new ImageList();
+		    do
+			{
+				try
+				{
+					_mTools = new Miszou.ToolManager.Tools(
+						toolfile,
+						macroList,
+						folderList,
+						new Miszou.ToolManager.Tools.MacroExpander(ExpandToolMacros),
+						toolImages);
+				}
+				catch (Exception ex)
+				{
+                    string message = string.Format("Failed to load '{0}' \r\n\r\nReason:\r\n{1}\r\n\r\nFix the file and press OK or press Cancel to exit.\r\nIf this probrem continues, delete the file but you will lost all information about External Tools.",
+                        toolfile, ex.Message);
+					if (MessageBox.Show(
+                        message,
+						Application.ProductName,
+						MessageBoxButtons.OKCancel,
+						MessageBoxIcon.Error) != DialogResult.OK)
+					{
+                        System.Environment.Exit(-1);
+					}
+				}
+            } while (_mTools == null);
+
+            int startIndex = toolsToolStripMenuItem.DropDownItems.IndexOf(tsmsBeforeTools);
+            // int endIndex = toolsToolStripMenuItem.DropDownItems.IndexOf(tsmsAfterTools);
+
+            while (toolsToolStripMenuItem.DropDownItems.Count > _emptyToolsCount)
+                toolsToolStripMenuItem.DropDownItems.RemoveAt(startIndex + 1);
+
+            if (_mTools.Count == 0)
+            {
+                ToolStripMenuItem item = new ToolStripMenuItem();
+				item.Text = "<No External Tools registered>";
+				item.Enabled = false;
+                toolsToolStripMenuItem.DropDownItems.Insert(startIndex + 1, item);
+            }
+            else
+            {
+                _mTools.BuildToolMenu(toolsToolStripMenuItem, startIndex + 1);
+            }
+        }
+        private void addModifyToolToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //using (ModificationTool dlg = new ModificationTool())
+            //{
+            //    dlg.ShowDialog();
+            //}
+
+            try
+			{
+                if (DialogResult.OK !=
+                    _mTools.Edit(Miszou.ToolManager.Tools.EditFlags.AllowLockedUIEdit)
+                    )
+                {
+                    return;
+                }
+			}
+			catch (Exception ex)
+			{
+				CppUtils.Alert(ex.Message);
+				return;
+			}
+        }
     }
 }

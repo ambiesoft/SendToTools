@@ -135,6 +135,9 @@
   <data name="Extention" xml:space="preserve">
     <value>Extention</value>
   </data>
+  <data name="File" xml:space="preserve">
+    <value>File</value>
+  </data>
   <data name="FILE_NOT_FOUND" xml:space="preserve">
     <value>File not found : {0}</value>
   </data>
@@ -157,6 +160,9 @@ Change Filename.</value>
   </data>
   <data name="NO_ARGUMENTS" xml:space="preserve">
     <value>No Arguments</value>
+  </data>
+  <data name="NO_EXTERNAL_TOOLS_REGISTERED" xml:space="preserve">
+    <value>&lt;No External Tools registered&gt;</value>
   </data>
   <data name="Size" xml:space="preserve">
     <value>Size</value>

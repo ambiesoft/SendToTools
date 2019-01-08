@@ -115,6 +115,15 @@ namespace ChangeFileName.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to File.
+        /// </summary>
+        internal static string File {
+            get {
+                return ResourceManager.GetString("File", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to File not found : {0}.
         /// </summary>
         internal static string FILE_NOT_FOUND {
@@ -167,6 +176,15 @@ namespace ChangeFileName.Properties {
         internal static string NO_ARGUMENTS {
             get {
                 return ResourceManager.GetString("NO_ARGUMENTS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;No External Tools registered&gt;.
+        /// </summary>
+        internal static string NO_EXTERNAL_TOOLS_REGISTERED {
+            get {
+                return ResourceManager.GetString("NO_EXTERNAL_TOOLS_REGISTERED", resourceCulture);
             }
         }
         
