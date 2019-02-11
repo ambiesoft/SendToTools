@@ -94,7 +94,7 @@ namespace ChangeFileName
             }
         }
 
-        private static readonly int DEFAULT_MAX_DIR_COUNT = 8;
+        private static readonly int DEFAULT_MAX_DIR_COUNT = 64;
         private int MaxDirCount
         {
             get
