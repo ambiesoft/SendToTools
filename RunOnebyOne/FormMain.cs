@@ -35,12 +35,17 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using Ambiesoft;
+
 namespace RunOnebyOne
 {
     public partial class FormMain : Form
     {
+        string[] args_;
         public FormMain(string[] args)
         {
+            args_ = args;
+
             InitializeComponent();
 
             Text = Application.ProductName;
@@ -210,6 +215,31 @@ namespace RunOnebyOne
 
                 foreach (string s in files)
                     AddToList(s);
+            }
+        }
+
+        private void btnReopenAsAdmin_Click(object sender, EventArgs e)
+        {
+            btnReopenAsAdmin.Enabled = false;
+            try
+            {
+                AmbLib.StartAsAdmin();
+                this.Close();
+                return;
+            }
+            catch (Exception ex)
+            {
+                CppUtils.Alert(this, ex);
+            }
+            btnReopenAsAdmin.Enabled = true;
+        }
+
+        private void FormMain_Load(object sender, EventArgs e)
+        {
+            if(AmbLib.IsAdministrator())
+            {
+                this.Text += " (" + Properties.Resources.ADMINISTRATOR + ")";
+                btnReopenAsAdmin.Visible = false;
             }
         }
     }

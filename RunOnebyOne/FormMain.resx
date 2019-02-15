@@ -136,10 +136,10 @@
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="listMain.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 12</value>
+    <value>12, 13</value>
   </data>
   <data name="listMain.Size" type="System.Drawing.Size, System.Drawing">
-    <value>631, 203</value>
+    <value>631, 220</value>
   </data>
   <data name="listMain.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -154,7 +154,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;listMain.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="btnRun.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left</value>
@@ -163,10 +163,10 @@
     <value>False</value>
   </data>
   <data name="btnRun.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 223</value>
+    <value>166, 242</value>
   </data>
   <data name="btnRun.Size" type="System.Drawing.Size, System.Drawing">
-    <value>138, 24</value>
+    <value>376, 26</value>
   </data>
   <data name="btnRun.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -184,16 +184,16 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnRun.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="btnClose.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
   </data>
   <data name="btnClose.Location" type="System.Drawing.Point, System.Drawing">
-    <value>548, 223</value>
+    <value>548, 242</value>
   </data>
   <data name="btnClose.Size" type="System.Drawing.Size, System.Drawing">
-    <value>95, 24</value>
+    <value>95, 26</value>
   </data>
   <data name="btnClose.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -211,16 +211,40 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnClose.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="btnReopenAsAdmin.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 242</value>
+  </data>
+  <data name="btnReopenAsAdmin.Size" type="System.Drawing.Size, System.Drawing">
+    <value>148, 26</value>
+  </data>
+  <data name="btnReopenAsAdmin.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="btnReopenAsAdmin.Text" xml:space="preserve">
+    <value>Reopen As &amp;Admin</value>
+  </data>
+  <data name="&gt;&gt;btnReopenAsAdmin.Name" xml:space="preserve">
+    <value>btnReopenAsAdmin</value>
+  </data>
+  <data name="&gt;&gt;btnReopenAsAdmin.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnReopenAsAdmin.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;btnReopenAsAdmin.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>6, 12</value>
+    <value>6, 13</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>655, 258</value>
+    <value>655, 280</value>
   </data>
   <data name="&gt;&gt;chIndicator.Name" xml:space="preserve">
     <value>chIndicator</value>

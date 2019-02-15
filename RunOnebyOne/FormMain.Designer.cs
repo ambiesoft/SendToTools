@@ -35,6 +35,7 @@
             this.chResult = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btnRun = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
+            this.btnReopenAsAdmin = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // listMain
@@ -79,15 +80,24 @@
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
+            // btnReopenAsAdmin
+            // 
+            resources.ApplyResources(this.btnReopenAsAdmin, "btnReopenAsAdmin");
+            this.btnReopenAsAdmin.Name = "btnReopenAsAdmin";
+            this.btnReopenAsAdmin.UseVisualStyleBackColor = true;
+            this.btnReopenAsAdmin.Click += new System.EventHandler(this.btnReopenAsAdmin_Click);
+            // 
             // FormMain
             // 
             this.AcceptButton = this.btnClose;
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnReopenAsAdmin);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnRun);
             this.Controls.Add(this.listMain);
             this.Name = "FormMain";
+            this.Load += new System.EventHandler(this.FormMain_Load);
             this.ResumeLayout(false);
 
         }
@@ -100,6 +110,7 @@
         private System.Windows.Forms.Button btnRun;
         private System.Windows.Forms.ColumnHeader chResult;
         private System.Windows.Forms.Button btnClose;
+        private System.Windows.Forms.Button btnReopenAsAdmin;
     }
 }
 
