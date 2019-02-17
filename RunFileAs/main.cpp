@@ -165,9 +165,6 @@ int WINAPI wWinMain(
 			file.c_str(),
 			cmd.c_str()))
 		{
-			//MessageBox.Show(ex.Message, Application.ProductName,
-			//	MessageBoxButtons.OK,
-			//	MessageBoxIcon.Error);
 			return ERROR_NO_FAILED_TO_OPENPROGRAM;
 		}
 	}
@@ -187,26 +184,6 @@ int WINAPI wWinMain(
 		{
 			return ERROR_NO_FAILED_TO_OPENPROGRAM;
 		}
-		//ProcessStartInfo startInfo = new ProcessStartInfo();
-		//startInfo.FileName = Application.ExecutablePath;
-		//startInfo.UseShellExecute = true;
-		//startInfo.Verb = IsAdmin() ? null : "runas";
-		//startInfo.Arguments = "/run " + theArguments;
-		//startInfo.WorkingDirectory = System.IO.Directory.GetParent(AmbLib.unDoubleQuote(AmbLib.getAllArgs(theArguments, 0, true))).FullName;;
-
-
-		//try
-		//{
-		//	Process proc = Process.Start(startInfo);
-		//	// proc.WaitForExit();
-		//}
-		//catch (Exception ex)
-		//{
-		//	MessageBox.Show(ex.Message, Application.ProductName,
-		//		MessageBoxButtons.OK,
-		//		MessageBoxIcon.Error);
-		//}
-		//return;
 	}
 
 	return 0;

@@ -44,8 +44,8 @@ namespace SendToManagerLauncher
         {
             Ambiesoft.CppUtils.AmbSetProcessDPIAware();
 
-            //Application.EnableVisualStyles();
-            //Application.SetCompatibleTextRenderingDefault(false);
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new Form1());
 
             string dll = Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), @"tools\SendToManager.dll");

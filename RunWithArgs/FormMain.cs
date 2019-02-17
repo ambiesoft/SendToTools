@@ -34,6 +34,8 @@ using System.Windows.Forms;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 
+using Ambiesoft;
+
 namespace RunWithArgs
 {
     public partial class FormMain : Form
@@ -116,10 +118,7 @@ namespace RunWithArgs
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message,
-                    Application.ProductName,
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
+                CppUtils.Fatal(ex);
             }
         }
     }

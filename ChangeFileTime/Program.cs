@@ -44,10 +44,7 @@ namespace ChangeFileTime
             // Application.Run(new FormMain());
             if (args.Length < 1)
             {
-                MessageBox.Show(Properties.Resources.NO_ARGUMENTS,
-                    Application.ProductName,
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Asterisk);
+                CppUtils.Alert(Properties.Resources.NO_ARGUMENTS);
                 return;
             }
 
@@ -56,10 +53,7 @@ namespace ChangeFileTime
 
             if (!System.IO.File.Exists(theFileName) )//&& !System.IO.Directory.Exists(theFileName))
             {
-                MessageBox.Show(string.Format(Properties.Resources.FILE_NOT_EXIST, theFileName),
-                    Application.ProductName,
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Asterisk);
+                CppUtils.Alert(string.Format(Properties.Resources.FILE_NOT_EXIST, theFileName));
                 return;
             }
 
@@ -99,10 +93,7 @@ namespace ChangeFileTime
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.Message,
-                    Application.ProductName,
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Asterisk);
+                CppUtils.Alert(e);
             }
 
         }

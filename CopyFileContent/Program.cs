@@ -32,6 +32,8 @@ using System.IO;
 using System.Text;
 using System.Windows.Forms;
 
+using Ambiesoft;
+
 namespace CopyFileContent
 {
     static class Program
@@ -50,18 +52,11 @@ namespace CopyFileContent
         static void Main(string[] args)
         {
             Ambiesoft.CppUtils.AmbSetProcessDPIAware();
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
 
             try
             {
-                //if (args.Length < 1)
-                //{
-                //    MessageBox.Show(Properties.Resources.NO_ARG,
-                //        Application.ProductName,
-                //        MessageBoxButtons.OK,
-                //        MessageBoxIcon.Asterisk);
-                //    return;
-                //}
-
                 ConvertType ct = ConvertType.Unknown;
                 var p = new OptionSet() {
                     { 
@@ -156,10 +151,7 @@ namespace CopyFileContent
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message,
-                    Application.ProductName,
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
+                CppUtils.Fatal(ex);
             }
         }
 

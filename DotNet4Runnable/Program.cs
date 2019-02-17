@@ -29,6 +29,9 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using System.IO;
 using System.Xml;
+
+using Ambiesoft;
+
 namespace DotNet4Runnable
 {
     static class Program
@@ -65,10 +68,7 @@ namespace DotNet4Runnable
                     if (needwrite)
                         doc.Save(ficonfig.FullName);
 
-                    MessageBox.Show("Already exists and written.",
-                        Application.ProductName,
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Information);
+                    CppUtils.Info("Already exists and written.");
                     return;
                 }
                 doc.Save(ficonfig.FullName);
@@ -92,10 +92,7 @@ namespace DotNet4Runnable
 
             if (args.Length < 1)
             {
-                MessageBox.Show("No Arguments",
-                    Application.ProductName,
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning);
+                CppUtils.Alert("No Arguments");
                 return;
             }
 
@@ -105,10 +102,7 @@ namespace DotNet4Runnable
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message,
-                    Application.ProductName,
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
+                CppUtils.Fatal(ex);
             }
         }
     }

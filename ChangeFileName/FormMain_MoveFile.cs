@@ -32,6 +32,8 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
+using Ambiesoft;
+
 namespace ChangeFileName
 {
     public partial class FormMain : Form
@@ -86,7 +88,7 @@ namespace ChangeFileName
             }
             catch (Exception ex)
             {
-                showError(ex.Message);
+                CppUtils.Fatal(ex.Message);
             }
             finally
             {
@@ -157,16 +159,12 @@ namespace ChangeFileName
             if(dir==null)
             {
                 // LANG
-                showError(dir + " is not a directory");
+                CppUtils.Fatal(dir + " is not a directory");
                 return;
             }
             else if(!System.IO.Directory.Exists(dir))
             {
-                if(DialogResult.Yes != MessageBox.Show(
-                    string.Format(Properties.Resources.DIR_NOT_EXIST_DO_YOU_WANT_TO_REMOVE,dir),
-                    Application.ProductName,
-                    MessageBoxButtons.YesNo,
-                    MessageBoxIcon.Question,
+                if (DialogResult.Yes != CppUtils.YesOrNo(string.Format(Properties.Resources.DIR_NOT_EXIST_DO_YOU_WANT_TO_REMOVE, dir),
                     MessageBoxDefaultButton.Button2))
                 {
                     return;
@@ -202,7 +200,7 @@ namespace ChangeFileName
                 if(!Ambiesoft.Profile.WriteStringArray(SECTION_SETTING, "movetodirs", value, IniFile))
                 {
                     // LANG
-                    showError("save failed");
+                    CppUtils.Fatal("save failed");
                 }
             }
         }

@@ -108,6 +108,8 @@ namespace Ambiesoft.RegexFilenameRenamer
         static int Main(string[] args)
         {
             Ambiesoft.CppUtils.AmbSetProcessDPIAware();
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
 
             SimpleCommandLineParser parser = new SimpleCommandLineParser(args);
             parser.addOption("rf", ARGUMENT_TYPE.MUST);
@@ -159,7 +161,7 @@ namespace Ambiesoft.RegexFilenameRenamer
                 sb.AppendLine();
                 sb.AppendLine(Properties.Resources.DO_YOU_WANT_TO_CONTINUE);
 
-                if (DialogResult.Yes != MessageBox.Show(sb.ToString(),
+                if (DialogResult.Yes != CppUtils.CenteredMessageBox(sb.ToString(),
                     Application.ProductName + " " + "check arg",
                     MessageBoxButtons.YesNo,
                     MessageBoxIcon.Question,
@@ -259,15 +261,6 @@ namespace Ambiesoft.RegexFilenameRenamer
                         if (DialogResult.Yes != form.ShowDialog())
                             return 0;
                     }
-                    //if(DialogResult.Yes != MessageBox.Show(
-                    //    sbDry.ToString(),
-                    //    Application.ProductName + " " + Properties.Resources.CONFIRM,
-                    //    MessageBoxButtons.YesNo,
-                    //    MessageBoxIcon.Question,
-                    //    MessageBoxDefaultButton.Button2))
-                    //{
-                    //    return 0;
-                    //}
                 }
 
                 foreach( string org in targets.Keys)
@@ -294,10 +287,7 @@ namespace Ambiesoft.RegexFilenameRenamer
             }
             catch (Exception e)
             {
-                MessageBox.Show(
-                    e.Message, Application.ProductName,
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
+                CppUtils.Fatal(e.Message);
                 return -1;
             }
         }

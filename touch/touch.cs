@@ -32,6 +32,8 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows.Forms;
 
+using Ambiesoft;
+
 namespace touch
 {
     static class Program
@@ -43,6 +45,8 @@ namespace touch
         static void Main(string[] args)
         {
             Ambiesoft.CppUtils.AmbSetProcessDPIAware();
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
 
             try
             {
@@ -50,9 +54,7 @@ namespace touch
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, Application.ProductName,
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Asterisk);
+                CppUtils.Alert(ex);
             }
         }
 
@@ -144,10 +146,7 @@ namespace touch
 
                 if (hasFolder)
                 {
-                    if (DialogResult.Yes != MessageBox.Show(Properties.Resources.STR_CONFIRM_ALL_SUB,
-                        Application.ProductName,
-                        MessageBoxButtons.YesNo,
-                        MessageBoxIcon.Question,
+                    if (DialogResult.Yes != CppUtils.YesOrNo(Properties.Resources.STR_CONFIRM_ALL_SUB,
                         MessageBoxDefaultButton.Button2))
                     {
                         return;
@@ -177,10 +176,7 @@ namespace touch
                     sb.Append(")");
                     sb.AppendLine();
                 }
-                MessageBox.Show(sb.ToString(),
-                    Application.ProductName,
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Exclamation);
+                CppUtils.Alert(sb.ToString());
             }
             showtip(5000, Application.ProductName, 
                 string.Format(Properties.Resources.STR_TOUCHED, touchedCount),Properties.Resources.icon);

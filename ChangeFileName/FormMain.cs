@@ -170,16 +170,10 @@ namespace ChangeFileName
 
         private void btnTrash_Click(object sender, EventArgs e)
         {
-            using (new Ambiesoft.CenteringDialog(this))
-            {
-                if (DialogResult.Yes != MessageBox.Show(string.Format(Properties.Resources.ARE_YOU_SURE_TO_TRASH, txtName.Tag.ToString()),
-                Application.ProductName,
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Question,
+            if(DialogResult.Yes != CppUtils.YesOrNo(string.Format(Properties.Resources.ARE_YOU_SURE_TO_TRASH, txtName.Tag.ToString()),
                 MessageBoxDefaultButton.Button2))
-                {
-                    return;
-                }
+            {
+                return;
             }
 
             List<Control> cs = disableAll();
@@ -302,22 +296,11 @@ namespace ChangeFileName
             }
             catch (Exception ex)
             {
-                showError(ex.Message);
+                CppUtils.Fatal(ex.Message);
             }
         }
 
 
-        void showError(string message)
-        {
-            using (new Ambiesoft.CenteringDialog(this))
-            {
-                MessageBox.Show(
-                message,
-                Application.ProductName,
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Error);
-            }
-        }
 
 
 
@@ -330,7 +313,7 @@ namespace ChangeFileName
             }
             catch (Exception ex)
             {
-                showError(ex.Message);
+                CppUtils.Fatal(ex.Message);
             }
         }
 
@@ -343,7 +326,7 @@ namespace ChangeFileName
                     Properties.Resources.ENTER_FILENAME,
                     Application.ProductName,
                     MessageBoxButtons.OK,
-                    MessageBoxIcon.Asterisk);
+                    MessageBoxIcon.Warning);
 
                 return;
             }
@@ -354,7 +337,7 @@ namespace ChangeFileName
                     Properties.Resources.FOLLOWING_UNABLE_FILENAME + Environment.NewLine + Environment.NewLine + Program.damemoji,
                     Application.ProductName,
                     MessageBoxButtons.OK,
-                    MessageBoxIcon.Asterisk);
+                    MessageBoxIcon.Warning);
 
                 return;
             }
@@ -471,7 +454,7 @@ namespace ChangeFileName
             StringBuilder sb = new StringBuilder();
             sb.Append(Application.ProductName);
             sb.Append(" version ");
-            sb.Append(AmbLib.getAssemblyVersion(Assembly.GetExecutingAssembly()));
+            sb.Append(AmbLib.getAssemblyVersion(Assembly.GetExecutingAssembly(),3));
             sb.AppendLine();
             // sb.Append("Copyright 2018 Ambiesoft");
             sb.Append(AmbLib.getAssemblyCopyright(Assembly.GetExecutingAssembly()));
@@ -490,10 +473,7 @@ namespace ChangeFileName
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message,
-                    ProductName,
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Exclamation);
+                CppUtils.Fatal(ex);
             }
 
         }
@@ -673,7 +653,7 @@ namespace ChangeFileName
 				{
                     string message = string.Format(Properties.Resources.FAILED_TO_LOAD_TOOLXML,
                         toolfile, ex.Message);
-					if (MessageBox.Show(
+					if (CppUtils.CenteredMessageBox(
                         message,
 						Application.ProductName,
 						MessageBoxButtons.OKCancel,

@@ -176,4 +176,7 @@
 ファイルを修正して OK をクリックするか キャンセル をクリックしてアプリケーションを閉じてください。
 もしこの問題が継続するなら、ファイルを削除してください。その場合外部ツールの情報は失われます。</value>
   </data>
+  <data name="SOURCEFILE_NOT_FOUND" xml:space="preserve">
+    <value>元のファイルが見つかりません '{0}'</value>
+  </data>
 </root>

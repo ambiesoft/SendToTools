@@ -28,6 +28,8 @@ using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 
+using Ambiesoft;
+
 namespace CopyFirstLine
 {
     static class Program
@@ -39,13 +41,12 @@ namespace CopyFirstLine
         static void Main(string[] args)
         {
             Ambiesoft.CppUtils.AmbSetProcessDPIAware();
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
 
             if (args.Length < 1)
             {
-                MessageBox.Show(Properties.Resources.NO_ARG,
-                    Application.ProductName,
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Asterisk);
+                CppUtils.Alert(Properties.Resources.NO_ARG);
                 return;
             }
 
@@ -54,19 +55,13 @@ namespace CopyFirstLine
                 string[] lines = System.IO.File.ReadAllLines(args[0]);
                 if (lines.Length == 0)
                 {
-                    MessageBox.Show(Properties.Resources.NO_FILE_CONTENT,
-                        Application.ProductName,
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Asterisk);
+                    CppUtils.Alert(Properties.Resources.NO_FILE_CONTENT);
                     return;
                 }
 
                 if (lines[0].Length == 0)
                 {
-                    MessageBox.Show(Properties.Resources.EMPTY_FIRST_LINE,
-                        Application.ProductName,
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Asterisk);
+                    CppUtils.Alert(Properties.Resources.EMPTY_FIRST_LINE);
                     return;
 
                 }
@@ -91,10 +86,7 @@ namespace CopyFirstLine
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message,
-                    Application.ProductName,
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
+                CppUtils.Fatal(ex);
             }
 
         }

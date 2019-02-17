@@ -28,6 +28,8 @@ using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 
+using Ambiesoft;
+
 namespace RunWithArgs
 {
     static class Program
@@ -39,14 +41,13 @@ namespace RunWithArgs
         static int Main(string[] args)
         {
             Ambiesoft.CppUtils.AmbSetProcessDPIAware();
-
-            if (args.Length == 0)
-            {
-                MessageBox.Show("No Args");
-                return -1;
-            }
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            if (args.Length == 0)
+            {
+                CppUtils.Alert("No Args");
+                return -1;
+            }
             
             FormMain f = new FormMain();
             f.txtExe.Text = args[0];

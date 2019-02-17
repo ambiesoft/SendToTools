@@ -176,4 +176,7 @@ Reason:
 Fix the file and press OK or press Cancel to exit.
 If this probrem continues, delete the file but you will lost all information about External Tools.</value>
   </data>
+  <data name="SOURCEFILE_NOT_FOUND" xml:space="preserve">
+    <value>Source File is not found '{0}'</value>
+  </data>
 </root>

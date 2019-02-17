@@ -47,10 +47,7 @@ namespace ChangeFileName
             {
                 if (showerrorbox)
                 {
-                    MessageBox.Show(e.Message,
-                        Application.ProductName,
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Error);
+                    CppUtils.Fatal(e.Message);
                 }
             }
 
@@ -68,6 +65,9 @@ namespace ChangeFileName
         {
             Ambiesoft.CppUtils.AmbSetProcessDPIAware();
 
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+
             if (args.Length < 1)
             {
                 StringBuilder sb = new StringBuilder();
@@ -76,11 +76,7 @@ namespace ChangeFileName
                 sb.AppendLine();
 
                 sb.AppendLine(Properties.Resources.HELP);
-                MessageBox.Show(
-                    sb.ToString(),
-                    Application.ProductName,
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Asterisk);
+                CppUtils.Alert(sb.ToString());
                 return;
             }
             if (args.Length > 1)
@@ -99,19 +95,13 @@ namespace ChangeFileName
                     }
                     catch (System.Exception e)
                     {
-                        MessageBox.Show(e.Message,
-                                Application.ProductName,
-                                MessageBoxButtons.OK,
-                                MessageBoxIcon.Error);
+                        CppUtils.Fatal(e.Message);
                     }
                 }
 
                 if (sbNotFounds.Length != 0)
                 {
-                    MessageBox.Show(Properties.Resources.FOLLOWING_DOESNOT_EXIST + "\r\n\r\n" + sbNotFounds.ToString(),
-                            Application.ProductName,
-                            MessageBoxButtons.OK,
-                            MessageBoxIcon.Asterisk);
+                    CppUtils.Alert(Properties.Resources.FOLLOWING_DOESNOT_EXIST + "\r\n\r\n" + sbNotFounds.ToString());
                 }
                 return;
             }
@@ -120,10 +110,7 @@ namespace ChangeFileName
             // theFileName = @"C:\Documents and Settings\tt\My Documents\Productivity Distribution, Firm Heterogeneity, and Agglomeration.pdf";
             if (!File.Exists(theFileName) && !Directory.Exists(theFileName) )
             {
-                MessageBox.Show(string.Format(Properties.Resources.FILE_NOT_FOUND, theFileName),
-                    Application.ProductName,
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Asterisk);
+                CppUtils.Alert(string.Format(Properties.Resources.FILE_NOT_FOUND, theFileName));
                 return;
             }
 
@@ -160,10 +147,7 @@ namespace ChangeFileName
                 }
                 catch (Exception e)
                 {
-                    MessageBox.Show(e.Message,
-                        Application.ProductName,
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Asterisk);
+                    CppUtils.Alert(e.Message);
                 }
             } while (true);
         }
@@ -180,23 +164,21 @@ namespace ChangeFileName
             //    newName = newName.TrimEnd(' ');
             //}
 
+            if(!File.Exists(oldfull) && !Directory.Exists(oldfull))
+            {
+                CppUtils.Alert(string.Format(Properties.Resources.SOURCEFILE_NOT_FOUND, oldfull));
+                return false;
+            }
+
             if (string.IsNullOrEmpty(newName))
             {
-                MessageBox.Show(Properties.Resources.ENTER_FILENAME,
-                    Application.ProductName,
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Asterisk);
-
+                CppUtils.Alert(Properties.Resources.ENTER_FILENAME);
                 return false;
             }
 
             if (-1 != newName.IndexOfAny(damemoji.ToCharArray()))
             {
-                MessageBox.Show(Properties.Resources.FOLLOWING_UNABLE_FILENAME + Environment.NewLine + Environment.NewLine + damemoji,
-                    Application.ProductName,
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Asterisk);
-
+                CppUtils.Alert(Properties.Resources.FOLLOWING_UNABLE_FILENAME + Environment.NewLine + Environment.NewLine + damemoji);
                 return false;
             }
 

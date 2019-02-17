@@ -708,7 +708,7 @@ new KeyValuePair<string, string>(@"Switch3264.exe", Properties.Resources.TOOL_EX
                 bool bCreateDefaultItems = false;
                 if (!Directory.Exists(InventoryRootDir))
                 {
-                    if (!Program.YesOrNo(Properties.Resources.DO_YOU_WANT_TO_CREATE_DEFAULT_INVENTORY))
+                    if (DialogResult.Yes != CppUtils.YesOrNo(Properties.Resources.DO_YOU_WANT_TO_CREATE_DEFAULT_INVENTORY))
                     {
                         Environment.Exit(0);
                         return;
@@ -739,7 +739,7 @@ new KeyValuePair<string, string>(@"Switch3264.exe", Properties.Resources.TOOL_EX
             }
             catch (Exception ex)
             {
-                Program.Alert(ex);
+                CppUtils.Alert(ex);
             }
         }
 

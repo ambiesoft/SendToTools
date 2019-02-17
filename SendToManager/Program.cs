@@ -67,13 +67,6 @@ namespace SendToManager
                 return isApplyInventoryNoConfirm_;
             }
         }
-        internal static void Error(string message)
-        {
-            MessageBox.Show(message,
-                Application.ProductName,
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Error);
-        }
         internal static String ConfigDir
         {
             get
@@ -91,30 +84,11 @@ namespace SendToManager
                 return Path.Combine(ConfigDir, ProductName+".ini");
             }
         }
-        internal static void Alert(string msg)
-        {
-            MessageBox.Show(msg,
-                Application.ProductName,
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Exclamation);
-        }
-        internal static void Alert(Exception ex)
-        {
-            Alert(ex.Message);
-        }
-        internal static bool YesOrNo(string msg)
-        {
-            return MessageBox.Show(msg,
-                Application.ProductName,
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Question) == DialogResult.Yes;
-        }
         static bool preRun()
         {
             if(!FolderConfigHelper.IsFolderAccessible(ConfigDir))
             {
-                Alert(string.Format(
-                    Properties.Resources.ALERT_DIRECTORY_UNAVAILABLE, ConfigDir));
+                CppUtils.Alert(string.Format(Properties.Resources.ALERT_DIRECTORY_UNAVAILABLE, ConfigDir));
                 return false;
             }
 
@@ -235,18 +209,12 @@ namespace SendToManager
             }
             catch(OkException ex)
             {
-                MessageBox.Show(ex.Message,
-                    Application.ProductName,
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information);
+                CppUtils.Info(ex.Message);
                 return;
             }
             catch(Exception ex)
             {
-                MessageBox.Show(ex.Message,
-                    Application.ProductName,
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
+                CppUtils.Fatal(ex.Message);
                 return;
             }
 
