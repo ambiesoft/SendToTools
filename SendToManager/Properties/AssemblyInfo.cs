@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Ambiesoft")]
 [assembly: AssemblyProduct("SendToManager")]
-[assembly: AssemblyCopyright("Copyright (C) Ambiesoft 2018")]
+[assembly: AssemblyCopyright("Copyright (C) Ambiesoft 2019")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -29,5 +29,5 @@ using System.Runtime.InteropServices;
 //      Build Number
 //      Revision
 //
-[assembly: AssemblyVersion("1.17.8.*")]
+[assembly: AssemblyVersion("1.17.9.*")]
 
