@@ -221,61 +221,70 @@ namespace SendToManager
             string livingfile = Path.Combine(ConfigDir, "running");
             FileStream fsRunning = null;
             // string pidfile = Path.Combine(ConfigDir, "pid");
-            
-            try
+
+            // Duplicate instance check only needed if app launch without argument
+            // = normal launch
+            if (String.IsNullOrEmpty(Program.ApplyInventory))
             {
-                fsRunning = File.Open(livingfile, FileMode.OpenOrCreate, FileAccess.Write, FileShare.None);
-                //FileStream fsPid = File.Open(pidfile, FileMode.OpenOrCreate, FileAccess.Write, FileShare.ReadWrite);
-                //int pid = Process.GetCurrentProcess().Id;
-                //byte[] b = BitConverter.GetBytes(pid);
-                //fsPid.Write(b, 0, b.Length);
-                //fsPid.Close();
-            }
-            catch(Exception)
-            {
-                // multiple instance
                 try
                 {
-                    //FileStream fsPid = File.Open(pidfile, FileMode.OpenOrCreate, FileAccess.Read, FileShare.ReadWrite);
-                    //byte[] b = new byte[4];
-                    //Array.Clear(b, 0, b.Length);
-
-                    //fsPid.Read(b, 0, 4);
-                    //int pid = BitConverter.ToInt32(b, 0);
-                    //Process.GetProcessById(pid);
-
-                    // OK, anothor process is running
-                    Process[] p = Process.GetProcessesByName(Path.GetFileNameWithoutExtension(Application.ExecutablePath));
-
-                    // Activate the first application we find with this name
-                    if (p.Length > 0)
-                        BringWindowToFront(p[0].MainWindowHandle);
-                    else
-                    {
-                        //string handlefile = Path.Combine(ConfigDir, "winhandle");
-
-                        //using (StreamReader sr = new StreamReader(handlefile))
-                        //{
-                        //    string s = sr.ReadLine();
-                        //    long l;
-                        //    long.TryParse(s, out l);
-                        //    SetForegroundWindow((IntPtr)l);
-                        //}
-                    }
-                    return;
+                    fsRunning = File.Open(livingfile, FileMode.OpenOrCreate, FileAccess.Write, FileShare.None);
+                    //FileStream fsPid = File.Open(pidfile, FileMode.OpenOrCreate, FileAccess.Write, FileShare.ReadWrite);
+                    //int pid = Process.GetCurrentProcess().Id;
+                    //byte[] b = BitConverter.GetBytes(pid);
+                    //fsPid.Write(b, 0, b.Length);
+                    //fsPid.Close();
                 }
-                catch (Exception )
-                { 
-                    // still failed, uncertain what is going on , then continue.
+                catch (Exception)
+                {
+                    // multiple instance
+                    try
+                    {
+                        //FileStream fsPid = File.Open(pidfile, FileMode.OpenOrCreate, FileAccess.Read, FileShare.ReadWrite);
+                        //byte[] b = new byte[4];
+                        //Array.Clear(b, 0, b.Length);
+
+                        //fsPid.Read(b, 0, 4);
+                        //int pid = BitConverter.ToInt32(b, 0);
+                        //Process.GetProcessById(pid);
+
+                        // OK, anothor process is running
+                        Process[] p = Process.GetProcessesByName(Path.GetFileNameWithoutExtension(Application.ExecutablePath));
+
+                        // Activate the first application we find with this name
+                        if (p.Length > 0)
+                        {
+                            
+                            BringWindowToFront(p[0].MainWindowHandle);
+                            ShowWindow(p[0].MainWindowHandle, ShowWindowEnum.Restore);
+                            // MessageBox.Show(p[0].MainWindowHandle.ToString());
+                        }
+                        else
+                        {
+                            //string handlefile = Path.Combine(ConfigDir, "winhandle");
+
+                            //using (StreamReader sr = new StreamReader(handlefile))
+                            //{
+                            //    string s = sr.ReadLine();
+                            //    long l;
+                            //    long.TryParse(s, out l);
+                            //    SetForegroundWindow((IntPtr)l);
+                            //}
+                        }
+                        return;
+                    }
+                    catch (Exception)
+                    {
+                        // still failed, uncertain what is going on , then continue.
+                    }
                 }
             }
-
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new FormMain());
 
-            fsRunning.Close();
-            
+            if(fsRunning != null)
+                fsRunning.Close();
         }
     }
 }

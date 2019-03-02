@@ -128,8 +128,8 @@ BOOL CWaitNextApp::InitInstance()
 	CMFCVisualManager::SetDefaultManager(RUNTIME_CLASS(CMFCVisualManagerWindows));
 
 	{
-		wstring inipathfull = stdCombinePath(stdGetParentDirectory(stdGetModuleFileName()),
-			stdGetFileNameWitoutExtension(stdGetModuleFileName()) + L".ini");
+		wstring inipathfull = stdCombinePath(stdGetParentDirectory(stdGetModuleFileName<wchar_t>()),
+			stdGetFileNameWitoutExtension(stdGetModuleFileName<wchar_t>()) + L".ini");
 		free((void*)m_pszProfileName);
 		m_pszProfileName = _wcsdup(inipathfull.c_str());
 	}

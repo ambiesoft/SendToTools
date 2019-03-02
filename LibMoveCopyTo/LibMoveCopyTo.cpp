@@ -79,7 +79,7 @@ wstring getHelpString()
 	wstring ret;
 	
 	ret.append(I18N(L"Usage")).append(L":\r\n");
-	ret.append(stdGetFileName(stdGetModuleFileName()));
+	ret.append(stdGetFileName(stdGetModuleFileName<wchar_t>()));
 	ret.append(L" [/t TARGETDIR] [/p priority] [/lang LANG] SOURCE1 [SOURCE2]...\r\n");
 	ret.append(L"\r\n");
 	ret.append(L"  priority\r\n");
@@ -173,7 +173,7 @@ int libmain(LPCWSTR pAppName)
 
 
 	wstring dbFile = stdCombinePath(
-		stdGetParentDirectory(stdwin32::stdGetModuleFileName()),
+		stdGetParentDirectory(stdGetModuleFileName<wchar_t>()),
 		wstring(gAppName) + L".db");
 
 

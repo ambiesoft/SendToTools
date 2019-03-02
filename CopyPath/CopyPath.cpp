@@ -321,7 +321,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	
 	InitHighDPISupport();
 
-	i18nInitLangmap(hInstance, NULL, stdGetFileNameWitoutExtension(stdGetModuleFileName()).c_str());
+	i18nInitLangmap(hInstance, NULL, stdGetFileNameWitoutExtension(stdGetModuleFileName<wchar_t>()).c_str());
 	hInst = hInstance;
 
     // Initialize global strings
@@ -453,7 +453,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 		}
 	}
 
-	str=trim(str, dt.kaigyo_ ? KAIGYO : SPACE);
+	str= stdTrim(str, dt.kaigyo_ ? KAIGYO : SPACE);
 
 	if (!SetClipboardText(NULL, str.c_str()))
 	{

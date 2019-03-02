@@ -170,7 +170,7 @@ int WINAPI wWinMain(
 	}
 	else  // not with /run
 	{
-		wstring exe = stdGetModuleFileName();
+		wstring exe = stdGetModuleFileName<wchar_t>();
 		wstring cmd = L"/run " + getArgument(1, true);
 		wstring dir = stdGetParentDirectory(getArgument(1, false, true));
 		LPCWSTR pVerb = IsUserAnAdmin() ? L"" : L"runas";
