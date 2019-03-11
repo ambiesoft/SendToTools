@@ -33,7 +33,6 @@
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnOK = new System.Windows.Forms.Button();
             this.txtName = new System.Windows.Forms.TextBox();
-            this.btnLaunch = new System.Windows.Forms.Button();
             this.btnTrash = new System.Windows.Forms.Button();
             this.chkAutoRun = new System.Windows.Forms.CheckBox();
             this.btnMoveTo = new System.Windows.Forms.Button();
@@ -90,6 +89,7 @@
             this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiSmartDoubleClickSelection = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmsBeforeTools = new System.Windows.Forms.ToolStripSeparator();
+            this.tsmsAfterTools = new System.Windows.Forms.ToolStripSeparator();
             this.addModifyToolToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.windowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.alwaysOnTopToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -100,13 +100,16 @@
             this.pasteTotailToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.tlpInfo = new System.Windows.Forms.TableLayoutPanel();
             this.lblExtention = new System.Windows.Forms.Label();
+            this.cmLaunch = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.dummyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnLaunch = new SplitButtonDemo.SplitButton();
             this.btnPaste = new SplitButtonDemo.SplitButton();
-            this.tsmsAfterTools = new System.Windows.Forms.ToolStripSeparator();
             this.cmModify.SuspendLayout();
             this.cmModifySelection.SuspendLayout();
             this.menuMain.SuspendLayout();
             this.cmPaste.SuspendLayout();
             this.tlpInfo.SuspendLayout();
+            this.cmLaunch.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnCancel
@@ -130,13 +133,6 @@
             this.txtName.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txtName_MouseClick);
             this.txtName.TextChanged += new System.EventHandler(this.txtName_TextChanged);
             this.txtName.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.txtName_MouseDoubleClick);
-            // 
-            // btnLaunch
-            // 
-            resources.ApplyResources(this.btnLaunch, "btnLaunch");
-            this.btnLaunch.Name = "btnLaunch";
-            this.btnLaunch.UseVisualStyleBackColor = true;
-            this.btnLaunch.Click += new System.EventHandler(this.btnLaunch_Click);
             // 
             // btnTrash
             // 
@@ -522,6 +518,11 @@
             this.tsmsBeforeTools.Name = "tsmsBeforeTools";
             resources.ApplyResources(this.tsmsBeforeTools, "tsmsBeforeTools");
             // 
+            // tsmsAfterTools
+            // 
+            this.tsmsAfterTools.Name = "tsmsAfterTools";
+            resources.ApplyResources(this.tsmsAfterTools, "tsmsAfterTools");
+            // 
             // addModifyToolToolStripMenuItem
             // 
             this.addModifyToolToolStripMenuItem.Name = "addModifyToolToolStripMenuItem";
@@ -587,6 +588,26 @@
             resources.ApplyResources(this.lblExtention, "lblExtention");
             this.lblExtention.Name = "lblExtention";
             // 
+            // cmLaunch
+            // 
+            this.cmLaunch.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.dummyToolStripMenuItem});
+            this.cmLaunch.Name = "cmLaunch";
+            resources.ApplyResources(this.cmLaunch, "cmLaunch");
+            // 
+            // dummyToolStripMenuItem
+            // 
+            this.dummyToolStripMenuItem.Name = "dummyToolStripMenuItem";
+            resources.ApplyResources(this.dummyToolStripMenuItem, "dummyToolStripMenuItem");
+            // 
+            // btnLaunch
+            // 
+            resources.ApplyResources(this.btnLaunch, "btnLaunch");
+            this.btnLaunch.ContextMenuStrip = this.cmLaunch;
+            this.btnLaunch.Name = "btnLaunch";
+            this.btnLaunch.UseVisualStyleBackColor = true;
+            this.btnLaunch.ButtonClick += new System.EventHandler(this.btnLaunch_Click);
+            // 
             // btnPaste
             // 
             resources.ApplyResources(this.btnPaste, "btnPaste");
@@ -595,11 +616,6 @@
             this.btnPaste.UseVisualStyleBackColor = true;
             this.btnPaste.ButtonClick += new System.EventHandler(this.btnPaste_Click);
             // 
-            // tsmsAfterTools
-            // 
-            this.tsmsAfterTools.Name = "tsmsAfterTools";
-            resources.ApplyResources(this.tsmsAfterTools, "tsmsAfterTools");
-            // 
             // FormMain
             // 
             this.AcceptButton = this.btnOK;
@@ -607,12 +623,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
             this.Controls.Add(this.tlpInfo);
+            this.Controls.Add(this.btnLaunch);
             this.Controls.Add(this.btnPaste);
             this.Controls.Add(this.menuMain);
             this.Controls.Add(this.txtName);
             this.Controls.Add(this.chkAutoRun);
             this.Controls.Add(this.btnCancel);
-            this.Controls.Add(this.btnLaunch);
             this.Controls.Add(this.btnTrash);
             this.Controls.Add(this.btnMoveTo);
             this.Controls.Add(this.btnOK);
@@ -629,6 +645,7 @@
             this.cmPaste.ResumeLayout(false);
             this.tlpInfo.ResumeLayout(false);
             this.tlpInfo.PerformLayout();
+            this.cmLaunch.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -639,7 +656,6 @@
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnOK;
         internal System.Windows.Forms.TextBox txtName;
-        private System.Windows.Forms.Button btnLaunch;
         private System.Windows.Forms.Button btnTrash;
         private System.Windows.Forms.CheckBox chkAutoRun;
         private System.Windows.Forms.Button btnMoveTo;
@@ -708,5 +724,8 @@
         private System.Windows.Forms.ToolStripMenuItem tsmiSmartDoubleClickSelection;
         private System.Windows.Forms.ToolStripSeparator tsmsBeforeTools;
         private System.Windows.Forms.ToolStripSeparator tsmsAfterTools;
+        private SplitButtonDemo.SplitButton btnLaunch;
+        private System.Windows.Forms.ContextMenuStrip cmLaunch;
+        private System.Windows.Forms.ToolStripMenuItem dummyToolStripMenuItem;
     }
 }
