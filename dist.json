@@ -108,7 +108,8 @@
         "tools\\ja-JP\\ToolManager.resources.dll",
         "tools\\ja-JP\\touch.resources.dll",
         "tools\\lang\\CopyPath.jpn.txt",
-        "tools\\lang\\LibMoveCopyTo.jpn.txt"
+        "tools\\lang\\LibMoveCopyTo.jpn.txt",
+        "tools\\SimpleCommandLineParser.pdb"
     ],
     "TotalFileCount": "exact",
     "ShouldBeOneOfThem": [],
