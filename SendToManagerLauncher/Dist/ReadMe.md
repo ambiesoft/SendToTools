@@ -14,7 +14,7 @@ Download binary from https://github.com/ambiesoft/SendToTools/releases
 .Net4 and Visual Studio 2013 runtime library are required.
 
 ## Install
-Extract downloaded archive and lanucn '''SendToManager.exe'''.
+Extract the downloaded archive and lanucn '''SendToManager.exe'''.
 
 ## Basic usage
 
