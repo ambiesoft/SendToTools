@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="MUST_SPECIFY_RF_RT" xml:space="preserve">
-    <value>-rf と -rtは両方指定する必要があります。</value>
+    <value>/rf と /rtは両方指定する必要があります。</value>
   </data>
   <data name="NO_FILE" xml:space="preserve">
     <value>ファイルがありません。</value>
@@ -140,5 +140,11 @@
   </data>
   <data name="FILE_NOT_EXIST" xml:space="preserve">
     <value>'{0}' は存在ません。</value>
+  </data>
+  <data name="HYPHEN_EXPLANATION" xml:space="preserve">
+    <value>もしオプションの値が '-' で始まるときは、その前に "--" を書いてください。</value>
+  </data>
+  <data name="INVALID_OPTION" xml:space="preserve">
+    <value>無効なオプション：</value>
   </data>
 </root>

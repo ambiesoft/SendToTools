@@ -32,6 +32,7 @@ using System.Text;
 using System.IO;
 using Ambiesoft;
 using System.Diagnostics;
+using System.Reflection;
 
 namespace Ambiesoft.RegexFilenameRenamer
 {
@@ -79,7 +80,9 @@ namespace Ambiesoft.RegexFilenameRenamer
         static void ShowHelp()
         {
             CppUtils.CenteredMessageBox(GetHelpMessage(),
+                string.Format("{0} ver{1}",
                 Application.ProductName,
+                AmbLib.getAssemblyVersion(Assembly.GetExecutingAssembly(), 3)),
                 MessageBoxButtons.OK,
                 MessageBoxIcon.Information);
         }
@@ -121,7 +124,22 @@ namespace Ambiesoft.RegexFilenameRenamer
             parser.addOption("blob", ARGUMENT_TYPE.MUSTNOT);
             parser.addOption("h", ARGUMENT_TYPE.MUSTNOT);
             parser.addOption("?", ARGUMENT_TYPE.MUSTNOT);
+            
             parser.Parse();
+
+            if(parser.getInvalidOptions().Length != 0)
+            {
+                StringBuilder sb = new StringBuilder();
+                sb.AppendLine(Properties.Resources.INVALID_OPTION);
+                foreach (string s in parser.getInvalidOptions())
+                    sb.AppendLine(s);
+
+                sb.AppendLine();
+                sb.AppendLine(Properties.Resources.HYPHEN_EXPLANATION);
+
+                ShowAlert(sb.ToString());
+                return 1;
+            }
             if (parser["h"] != null || parser["?"] != null)
             {
                 ShowHelp();

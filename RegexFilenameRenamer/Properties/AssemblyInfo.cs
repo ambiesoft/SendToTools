@@ -2,31 +2,19 @@
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
-// アセンブリに関する一般情報は以下の属性セットをとおして制御されます。 
-// アセンブリに関連付けられている情報を変更するには、
-// これらの属性値を変更してください。
 [assembly: AssemblyTitle("RegexFilenameRenamer")]
 [assembly: AssemblyDescription("Rename file by Regular Expressions")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Ambiesoft")]
 [assembly: AssemblyProduct("RegexFilenameRenamer")]
-[assembly: AssemblyCopyright("Copyright (C) Ambiesoft 2018")]
+[assembly: AssemblyCopyright("Copyright (C) Ambiesoft 2019")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
-// ComVisible を false に設定すると、このアセンブリ内の型は COM コンポーネントには 
-// 参照不可能になります。COM からこのアセンブリ内の型にアクセスする場合は、 
-// その型の ComVisible 属性を true に設定してください。
 [assembly: ComVisible(false)]
 
-// 次の GUID は、このプロジェクトが COM に公開される場合の、typelib の ID です
+
 [assembly: Guid("04ed1fa6-2fa9-4975-8705-2024759c17d5")]
 
-// アセンブリのバージョン情報は、以下の 4 つの値で構成されています:
-//
-//      Major Version
-//      Minor Version 
-//      Build Number
-//      Revision
-[assembly: AssemblyVersion("1.1.0.*")]
+[assembly: AssemblyVersion("1.1.1.*")]
 

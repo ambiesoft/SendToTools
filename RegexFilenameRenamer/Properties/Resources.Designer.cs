@@ -106,7 +106,25 @@ namespace Ambiesoft.RegexFilenameRenamer.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Both -rf and -rt must be specified..
+        ///   Looks up a localized string similar to If an option value begins with &apos;-&apos;, put &quot;--&quot; before it to treat it as a value..
+        /// </summary>
+        internal static string HYPHEN_EXPLANATION {
+            get {
+                return ResourceManager.GetString("HYPHEN_EXPLANATION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid option:.
+        /// </summary>
+        internal static string INVALID_OPTION {
+            get {
+                return ResourceManager.GetString("INVALID_OPTION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Both /rf and /rt must be specified..
         /// </summary>
         internal static string MUST_SPECIFY_RF_RT {
             get {

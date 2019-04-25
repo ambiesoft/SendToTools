@@ -1,0 +1,3 @@
+﻿
+引数が-から始まる場合の書き方
+/rf "_" /rt -- "-" /cf /ca "C:\Users\bjdTfeRf\Desktop\New Text Document.txt"
