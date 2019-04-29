@@ -61,6 +61,15 @@ namespace Ambiesoft.RegexFilenameRenamer.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Both /cf and /ncf specified..
+        /// </summary>
+        internal static string BOTH_CF_NCF_SPECIFIED {
+            get {
+                return ResourceManager.GetString("BOTH_CF_NCF_SPECIFIED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to confirm.
         /// </summary>
         internal static string CONFIRM {
@@ -147,6 +156,24 @@ namespace Ambiesoft.RegexFilenameRenamer.Properties {
         internal static string NO_FILE {
             get {
                 return ResourceManager.GetString("NO_FILE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No files to rename..
+        /// </summary>
+        internal static string NO_FILES_TO_RENAME {
+            get {
+                return ResourceManager.GetString("NO_FILES_TO_RENAME", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unexpected error..
+        /// </summary>
+        internal static string UNEXPECTED_ERROR {
+            get {
+                return ResourceManager.GetString("UNEXPECTED_ERROR", resourceCulture);
             }
         }
     }

@@ -123,14 +123,14 @@
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="btnYes.Location" type="System.Drawing.Point, System.Drawing">
-    <value>366, 340</value>
+    <value>308, 335</value>
   </data>
   <data name="btnYes.Size" type="System.Drawing.Size, System.Drawing">
     <value>113, 24</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="btnYes.TabIndex" type="System.Int32, mscorlib">
-    <value>40</value>
+    <value>50</value>
   </data>
   <data name="btnYes.Text" xml:space="preserve">
     <value>&amp;Yes</value>
@@ -145,34 +145,34 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnYes.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
-  <data name="btnNo.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+  <data name="btnCancel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
   </data>
-  <data name="btnNo.Location" type="System.Drawing.Point, System.Drawing">
-    <value>485, 340</value>
+  <data name="btnCancel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>427, 335</value>
   </data>
-  <data name="btnNo.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="btnCancel.Size" type="System.Drawing.Size, System.Drawing">
     <value>113, 24</value>
   </data>
-  <data name="btnNo.TabIndex" type="System.Int32, mscorlib">
-    <value>10</value>
+  <data name="btnCancel.TabIndex" type="System.Int32, mscorlib">
+    <value>60</value>
   </data>
-  <data name="btnNo.Text" xml:space="preserve">
-    <value>&amp;No</value>
+  <data name="btnCancel.Text" xml:space="preserve">
+    <value>&amp;Cancel</value>
   </data>
-  <data name="&gt;&gt;btnNo.Name" xml:space="preserve">
-    <value>btnNo</value>
+  <data name="&gt;&gt;btnCancel.Name" xml:space="preserve">
+    <value>btnCancel</value>
   </data>
-  <data name="&gt;&gt;btnNo.Type" xml:space="preserve">
+  <data name="&gt;&gt;btnCancel.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;btnNo.Parent" xml:space="preserve">
+  <data name="&gt;&gt;btnCancel.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;btnNo.ZOrder" xml:space="preserve">
-    <value>3</value>
+  <data name="&gt;&gt;btnCancel.ZOrder" xml:space="preserve">
+    <value>4</value>
   </data>
   <data name="lblMessage.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -199,7 +199,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lblMessage.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="pictQuestion.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 12</value>
@@ -220,39 +220,66 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;pictQuestion.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
-  <data name="rtxtMessage.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+  <data name="txtMessage.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
   </data>
-  <data name="rtxtMessage.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="txtMessage.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 56</value>
   </data>
-  <data name="rtxtMessage.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>419, 130</value>
+  <data name="txtMessage.Multiline" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
-  <data name="rtxtMessage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>586, 262</value>
+  <data name="txtMessage.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
+    <value>Both</value>
   </data>
-  <data name="rtxtMessage.TabIndex" type="System.Int32, mscorlib">
+  <data name="txtMessage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>528, 273</value>
+  </data>
+  <data name="txtMessage.TabIndex" type="System.Int32, mscorlib">
     <value>30</value>
   </data>
-  <data name="rtxtMessage.Text" xml:space="preserve">
-    <value />
-  </data>
-  <data name="rtxtMessage.WordWrap" type="System.Boolean, mscorlib">
+  <data name="txtMessage.WordWrap" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="&gt;&gt;rtxtMessage.Name" xml:space="preserve">
-    <value>rtxtMessage</value>
+  <data name="&gt;&gt;txtMessage.Name" xml:space="preserve">
+    <value>txtMessage</value>
   </data>
-  <data name="&gt;&gt;rtxtMessage.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RichTextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;txtMessage.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;rtxtMessage.Parent" xml:space="preserve">
+  <data name="&gt;&gt;txtMessage.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;rtxtMessage.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;txtMessage.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="chkShowAll.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="chkShowAll.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 340</value>
+  </data>
+  <data name="chkShowAll.Size" type="System.Drawing.Size, System.Drawing">
+    <value>67, 17</value>
+  </data>
+  <data name="chkShowAll.TabIndex" type="System.Int32, mscorlib">
+    <value>40</value>
+  </data>
+  <data name="chkShowAll.Text" xml:space="preserve">
+    <value>Show &amp;All</value>
+  </data>
+  <data name="&gt;&gt;chkShowAll.Name" xml:space="preserve">
+    <value>chkShowAll</value>
+  </data>
+  <data name="&gt;&gt;chkShowAll.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;chkShowAll.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;chkShowAll.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
@@ -262,7 +289,7 @@
     <value>6, 13</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>610, 375</value>
+    <value>552, 370</value>
   </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterScreen</value>

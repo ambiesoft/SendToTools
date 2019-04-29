@@ -30,10 +30,11 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormConfirm));
             this.btnYes = new System.Windows.Forms.Button();
-            this.btnNo = new System.Windows.Forms.Button();
+            this.btnCancel = new System.Windows.Forms.Button();
             this.lblMessage = new System.Windows.Forms.Label();
             this.pictQuestion = new System.Windows.Forms.PictureBox();
-            this.rtxtMessage = new System.Windows.Forms.RichTextBox();
+            this.txtMessage = new System.Windows.Forms.TextBox();
+            this.chkShowAll = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictQuestion)).BeginInit();
             this.SuspendLayout();
             // 
@@ -44,13 +45,13 @@
             this.btnYes.Name = "btnYes";
             this.btnYes.UseVisualStyleBackColor = true;
             // 
-            // btnNo
+            // btnCancel
             // 
-            resources.ApplyResources(this.btnNo, "btnNo");
-            this.btnNo.DialogResult = System.Windows.Forms.DialogResult.No;
-            this.btnNo.Name = "btnNo";
-            this.btnNo.Tag = "";
-            this.btnNo.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.btnCancel, "btnCancel");
+            this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Tag = "";
+            this.btnCancel.UseVisualStyleBackColor = true;
             // 
             // lblMessage
             // 
@@ -64,26 +65,34 @@
             this.pictQuestion.Name = "pictQuestion";
             this.pictQuestion.TabStop = false;
             // 
-            // rtxtMessage
+            // txtMessage
             // 
-            resources.ApplyResources(this.rtxtMessage, "rtxtMessage");
-            this.rtxtMessage.AutoWordSelection = true;
-            this.rtxtMessage.Name = "rtxtMessage";
-            this.rtxtMessage.ReadOnly = true;
+            resources.ApplyResources(this.txtMessage, "txtMessage");
+            this.txtMessage.Name = "txtMessage";
+            this.txtMessage.ReadOnly = true;
+            // 
+            // chkShowAll
+            // 
+            resources.ApplyResources(this.chkShowAll, "chkShowAll");
+            this.chkShowAll.Name = "chkShowAll";
+            this.chkShowAll.UseVisualStyleBackColor = true;
+            this.chkShowAll.CheckedChanged += new System.EventHandler(this.chkShowAll_CheckedChanged);
             // 
             // FormConfirm
             // 
             this.AcceptButton = this.btnYes;
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.CancelButton = this.btnNo;
-            this.Controls.Add(this.rtxtMessage);
+            this.CancelButton = this.btnCancel;
+            this.Controls.Add(this.chkShowAll);
+            this.Controls.Add(this.txtMessage);
             this.Controls.Add(this.pictQuestion);
             this.Controls.Add(this.lblMessage);
-            this.Controls.Add(this.btnNo);
+            this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnYes);
             this.Name = "FormConfirm";
             this.ShowIcon = false;
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
             this.Load += new System.EventHandler(this.FormConfirm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictQuestion)).EndInit();
             this.ResumeLayout(false);
@@ -93,10 +102,11 @@
 
         #endregion
 
-        private System.Windows.Forms.Button btnYes;
-        private System.Windows.Forms.Button btnNo;
+        private System.Windows.Forms.Button btnCancel;
         internal System.Windows.Forms.Label lblMessage;
         private System.Windows.Forms.PictureBox pictQuestion;
-        internal System.Windows.Forms.RichTextBox rtxtMessage;
+        private System.Windows.Forms.TextBox txtMessage;
+        private System.Windows.Forms.CheckBox chkShowAll;
+        internal System.Windows.Forms.Button btnYes;
     }
 }

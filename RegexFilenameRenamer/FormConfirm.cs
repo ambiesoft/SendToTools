@@ -29,19 +29,28 @@ namespace Ambiesoft.RegexFilenameRenamer
             NativeMethods.SendMessage(RichTextBoxCtrl.Handle, NativeMethods.EM_SETLANGOPTIONS, 0, lParam);
         }
 
-        internal string initialText_;
+        internal string initialTextAll_;
+        internal string initialTextChanging_;
         private void FormConfirm_Load(object sender, EventArgs e)
         {
             // NoRichTextChange(rtxtMessage);
 
-            rtxtMessage.Text = initialText_;
+            txtMessage.Text = initialTextChanging_;
 
-            rtxtMessage.SelectAll();
-            rtxtMessage.SelectionFont = rtxtMessage.Font;
-            rtxtMessage.Select(0, 0);
+            txtMessage.SelectAll();
+            // txtMessage.SelectionFont = rtxtMessage.Font;
+            txtMessage.Select(0, 0);
 
             Icon icon = new Icon(System.Drawing.SystemIcons.Question, 16, 16);
             pictQuestion.Image = icon.ToBitmap();
+        }
+
+        private void chkShowAll_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkShowAll.Checked)
+                txtMessage.Text = initialTextAll_;
+            else
+                txtMessage.Text = initialTextChanging_;
         }
     }
 }

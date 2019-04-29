@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="BOTH_CF_NCF_SPECIFIED" xml:space="preserve">
+    <value>Both /cf and /ncf specified.</value>
+  </data>
   <data name="CONFIRM" xml:space="preserve">
     <value>confirm</value>
   </data>
@@ -146,5 +149,11 @@
   </data>
   <data name="NO_FILE" xml:space="preserve">
     <value>No file.</value>
+  </data>
+  <data name="NO_FILES_TO_RENAME" xml:space="preserve">
+    <value>No files to rename.</value>
+  </data>
+  <data name="UNEXPECTED_ERROR" xml:space="preserve">
+    <value>Unexpected error.</value>
   </data>
 </root>

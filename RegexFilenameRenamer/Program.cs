@@ -43,23 +43,36 @@ namespace Ambiesoft.RegexFilenameRenamer
             StringBuilder sb = new StringBuilder();
             sb.Append(Path.GetFileName(Application.ExecutablePath));
             sb.Append(" ");
-            sb.AppendLine("/rf REGEXSEARCH /rt REPLACE [/ca] [/ic] [/ie] [/dr] [/blob] file1 [file2 [file3...]]");
+            sb.AppendLine("/rf REGEXSEARCH /rt REPLACE [options] file1 [file2 [file3...]]");
             sb.AppendLine();
+
             sb.AppendLine("  /rf REGEXSEARCH");
             sb.AppendLine("    Use () for grouping.");
-            sb.AppendLine("  /ft REPLACE");
+            sb.AppendLine("  /rfu REGEXSEARCH_UTF8UrlEncoded");
+            sb.AppendLine("    Same as /rf but url-encoded.");
+            
+            sb.AppendLine("  /rt REPLACE");
             sb.AppendLine("    Use \"\" for empty string.");
             sb.AppendLine("    Use $1 to refer to the group.");
+            sb.AppendLine("  /rtu REPLACE_UTF8UrlEncoded");
+            sb.AppendLine("    Same as /rt but url-encoded.");
+            
             sb.AppendLine("  /ie");
             sb.AppendLine("    Extension will be included for rename operation.");
+            
             sb.AppendLine("  /ic");
             sb.AppendLine("    Ignore Case.");
+            
             sb.AppendLine("  /cf");
-            sb.AppendLine("    Show confirm dialog before renaming.");
+            sb.AppendLine("    Show confirm dialog before renaming (default).");
+            sb.AppendLine("  /ncf");
+            sb.AppendLine("    Do not show confirm dialog before renaming.");
+
             sb.AppendLine("  /ca");
             sb.AppendLine("    Check input by showing argv.");
-            sb.AppendLine("  /blob");
-            sb.AppendLine("    Input files contain blobs.");
+            
+            sb.AppendLine("  /glob");
+            sb.AppendLine("    Input files contain globs.");
 
             sb.AppendLine();
             sb.AppendLine("Examples:");
@@ -116,12 +129,16 @@ namespace Ambiesoft.RegexFilenameRenamer
 
             SimpleCommandLineParser parser = new SimpleCommandLineParser(args);
             parser.addOption("rf", ARGUMENT_TYPE.MUST);
+            parser.addOption("rfu", ARGUMENT_TYPE.MUST);
             parser.addOption("rt", ARGUMENT_TYPE.MUST);
+            parser.addOption("rtu", ARGUMENT_TYPE.MUST);
+
             parser.addOption("ie", ARGUMENT_TYPE.MUSTNOT);
             parser.addOption("ic", ARGUMENT_TYPE.MUSTNOT);
             parser.addOption("cf", ARGUMENT_TYPE.MUSTNOT);
+            parser.addOption("ncf", ARGUMENT_TYPE.MUSTNOT);
             parser.addOption("ca", ARGUMENT_TYPE.MUSTNOT);
-            parser.addOption("blob", ARGUMENT_TYPE.MUSTNOT);
+            parser.addOption("glob", ARGUMENT_TYPE.MUSTNOT);
             parser.addOption("h", ARGUMENT_TYPE.MUSTNOT);
             parser.addOption("?", ARGUMENT_TYPE.MUSTNOT);
             
@@ -154,11 +171,21 @@ namespace Ambiesoft.RegexFilenameRenamer
                     sb.Append("rf:");
                     sb.AppendLine(parser["rf"].ToString());
                 }
+                if (parser["rfu"] != null)
+                {
+                    sb.Append("rfu:");
+                    sb.AppendLine(parser["rfu"].ToString());
+                }
 
                 if (parser["rt"] != null)
                 {
                     sb.Append("rt:");
                     sb.AppendLine(parser["rt"].ToString());
+                }
+                if (parser["rtu"] != null)
+                {
+                    sb.Append("rtu:");
+                    sb.AppendLine(parser["rtu"].ToString());
                 }
 
                 if (parser["ie"] != null)
@@ -169,8 +196,10 @@ namespace Ambiesoft.RegexFilenameRenamer
                     sb.AppendLine("ca");
                 if (parser["cf"] != null)
                     sb.AppendLine("cf");
-                if (parser["blob"] != null)
-                    sb.AppendLine("blob");
+                if (parser["ncf"] != null)
+                    sb.AppendLine("ncf");
+                if (parser["glob"] != null)
+                    sb.AppendLine("glob");
                 if (parser["h"] != null)
                     sb.AppendLine("h");
                 if (parser["?"] != null)
@@ -188,14 +217,44 @@ namespace Ambiesoft.RegexFilenameRenamer
                     return 0;
                 }
             }
-            if (parser["rf"] == null || parser["rt"] == null)
+            if (parser["rf"] != null && parser["rfu"] != null)
+            {
+                ShowAlert("TODO");
+                return 1;
+            }
+            if (parser["rt"] != null && parser["rtu"] != null)
+            {
+                ShowAlert("TODO");
+                return 1;
+            }
+
+            if (parser["rf"] == null && parser["rfu"] == null)
+            {
+                ShowAlert(Properties.Resources.MUST_SPECIFY_RF_RT);
+                return 1;
+            }
+            if (parser["rt"] == null && parser["rtu"] == null)
             {
                 ShowAlert(Properties.Resources.MUST_SPECIFY_RF_RT);
                 return 1;
             }
 
-            string f = parser["rf"].ToString();
-            string t = parser["rt"].ToString();
+            string strRegFind = string.Empty;
+            if (parser["rf"] != null)
+                strRegFind = parser["rf"].ToString();
+            else if (parser["rfu"] != null)
+                strRegFind = System.Web.HttpUtility.UrlDecode(parser["rfu"].ToString());
+            else
+                throw new Exception(Properties.Resources.UNEXPECTED_ERROR);
+
+            string strTarget = string.Empty;
+            if (parser["rt"] != null)
+                strTarget = parser["rt"].ToString();
+            else if (parser["rtu"] != null)
+                strTarget = System.Web.HttpUtility.UrlDecode(parser["rtu"].ToString());
+            else
+                throw new Exception(Properties.Resources.UNEXPECTED_ERROR);
+            
 
             if (parser.MainargLength == 0)
             {
@@ -207,9 +266,9 @@ namespace Ambiesoft.RegexFilenameRenamer
             try
             {
                 if (parser["ic"] != null)
-                    regf = new Regex(f, RegexOptions.IgnoreCase);
+                    regf = new Regex(strRegFind, RegexOptions.IgnoreCase);
                 else
-                    regf = new Regex(f);
+                    regf = new Regex(strRegFind);
             }
             catch (Exception ex)
             {
@@ -217,65 +276,69 @@ namespace Ambiesoft.RegexFilenameRenamer
                 return 1;
             }
             bool isAlsoExt = null != parser["ie"];
-            bool dryrun = parser["cf"] != null;
+            if(parser["cf"] != null && parser["ncf"]!=null)
+            {
+                ShowAlert(Properties.Resources.BOTH_CF_NCF_SPECIFIED);
+                return 1;
+            }
+            bool dryrun = parser["ncf"] == null;
             Dictionary <string, string> targets = new Dictionary<string,string>();
 
             string[] mainArgs = ConstructMainArgs(parser);
             try
             {
-                foreach(string orgFullorRelativeFileName in mainArgs)// (int i = 0; i < parser.MainargLength; ++i)
+                foreach(string orgFullorRelativeFileName in mainArgs)
                 {
                     FileInfo fiorig = new FileInfo(orgFullorRelativeFileName);
                     string orgFileName = getProperName(fiorig, isAlsoExt);
                     string orgFolder = fiorig.DirectoryName;
 
-                    string newFileName = regf.Replace(orgFileName, t);
+                    string newFileName = regf.Replace(orgFileName, strTarget);
                     if (!isAlsoExt)
                         newFileName += fiorig.Extension;
 
-                    //if (dryrun)
-                    //{
-                    //    sbDry.AppendLine(string.Format("\"{0}\" -> \"{1}\"",
-                    //        fiorig.FullName, orgFolder + @"\" + newFileName));
-                    //}
-                    //else
-                    //{
-                    //    fiorig.MoveTo(orgFolder + @"\" + newFileName);
-                    //}
                     targets.Add(fiorig.FullName, orgFolder + @"\" + newFileName);
                 }
 
                 if (dryrun)
                 {
-                    StringBuilder sbDry = new StringBuilder();
-                    foreach( string org in targets.Keys)
+                    StringBuilder sbDryAll = new StringBuilder();
+                    StringBuilder sbDryChanging = new StringBuilder();
+                    bool bRenameExists = false;
+                    foreach (string org in targets.Keys)
                     {
                         if (org != targets[org])
                         {
-                            sbDry.AppendFormat("\"{0}\" ->\n\"{1}\"", 
+                            bRenameExists = true;
+                            string tmp = string.Format("\"{0}\" ->\r\n\"{1}\"", 
                                 Path.GetFileName(org),
                                 Path.GetFileName(targets[org]));
+                            
+                            sbDryAll.Append(tmp);
+
+                            sbDryChanging.Append(tmp);
+                            sbDryChanging.AppendLine();
+                            sbDryChanging.AppendLine();
                         }
                         else
                         {
-                            sbDry.AppendFormat("\"{0}\" -> " + Properties.Resources.NO_CHANGE,
+                            sbDryAll.AppendFormat("\"{0}\" -> " + Properties.Resources.NO_CHANGE,
                                 Path.GetFileName(org),
                                 Path.GetFileName(targets[org]));
                         }
-                        sbDry.AppendLine();
-                        sbDry.AppendLine();
+                        sbDryAll.AppendLine();
+                        sbDryAll.AppendLine();
                     }
-                    //sbDry.AppendLine();
-                    //sbDry.AppendLine(Properties.Resources.DO_YOU_WANT_TO_PERFORM);
 
-
-                    using(FormConfirm form = new FormConfirm())
+                    using (FormConfirm form = new FormConfirm())
                     {
-                        // form.rtxtMessage.Font = form.lblMessage.Font;
-
                         form.Text = Application.ProductName + " " + Properties.Resources.CONFIRM;
-                        form.lblMessage.Text = Properties.Resources.DO_YOU_WANT_TO_PERFORM;
-                        form.initialText_ = sbDry.ToString();
+                        form.lblMessage.Text = !bRenameExists ?
+                            Properties.Resources.NO_FILES_TO_RENAME:
+                            Properties.Resources.DO_YOU_WANT_TO_PERFORM;
+                        form.initialTextAll_ = sbDryAll.ToString();
+                        form.initialTextChanging_ = sbDryChanging.ToString();
+                        form.btnYes.Enabled = bRenameExists;
                         if (DialogResult.Yes != form.ShowDialog())
                             return 0;
                     }
@@ -351,13 +414,19 @@ namespace Ambiesoft.RegexFilenameRenamer
         private static string[] ConstructMainArgs(SimpleCommandLineParser parser)
         {
             List<string> ret = new List<string>();
-            bool isBlobbing = parser["blob"] != null;
+            bool isBlobbing = parser["glob"] != null;
             for (int i = 0; i < parser.MainargLength; ++i)
             {
                 string file = parser.getMainargs(i);
-                if (isBlobbing)
+                if (isBlobbing && file.IndexOf('*') >= 0)
                 {
-                    DirectoryInfo di = new DirectoryInfo(Path.GetDirectoryName(file));
+                    //if (file == "*")
+                    //    file = @".\*";
+                    DirectoryInfo di=null;
+                    if (Path.IsPathRooted(file))
+                        di = new DirectoryInfo(Path.GetDirectoryName(file));
+                    else
+                        di = new DirectoryInfo(".");
 
                     FileInfo[] allfi = di.GetFiles(Path.GetFileName(file));
                     bool isAdded = false;
@@ -366,11 +435,11 @@ namespace Ambiesoft.RegexFilenameRenamer
                         isAdded = true;
                         ret.Add(f.FullName);
                     }
-                    if(!isAdded)
-                    {
-                        // not a blob and does not exist, or it wa directory
-                        ret.Add(file);
-                    }
+                    //if(!isAdded)
+                    //{
+                    //    // not a glob and does not exist, or it wa directory
+                    //    ret.Add(file);
+                    //}
                 }
                 else
                 {

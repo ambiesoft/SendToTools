@@ -120,10 +120,14 @@
   <data name="btnYes.Text" xml:space="preserve">
     <value>はい(&amp;Y)</value>
   </data>
-  <data name="btnNo.Text" xml:space="preserve">
-    <value>いいえ(&amp;N)</value>
+  <data name="btnCancel.Text" xml:space="preserve">
+    <value>キャンセル(&amp;C)</value>
   </data>
-  <data name="lblMessage.Text" xml:space="preserve">
-    <value>lblMessage</value>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="chkShowAll.Size" type="System.Drawing.Size, System.Drawing">
+    <value>101, 17</value>
+  </data>
+  <data name="chkShowAll.Text" xml:space="preserve">
+    <value>すべてを表示(&amp;A)</value>
   </data>
 </root>

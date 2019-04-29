@@ -147,4 +147,13 @@
   <data name="INVALID_OPTION" xml:space="preserve">
     <value>無効なオプション：</value>
   </data>
+  <data name="BOTH_CF_NCF_SPECIFIED" xml:space="preserve">
+    <value>/cf と /ncf が両方指定されています。</value>
+  </data>
+  <data name="NO_FILES_TO_RENAME" xml:space="preserve">
+    <value>リネームするファイルはありません。</value>
+  </data>
+  <data name="UNEXPECTED_ERROR" xml:space="preserve">
+    <value>予期しないエラーです。</value>
+  </data>
 </root>
