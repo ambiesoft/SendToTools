@@ -31,6 +31,7 @@ using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using System.Runtime.InteropServices;
 
 namespace SendToManagerLauncher
 {
@@ -42,6 +43,10 @@ namespace SendToManagerLauncher
         [STAThread]
         static void Main()
         {
+            string tooldir = Path.Combine(Path.GetDirectoryName(Application.ExecutablePath),
+                "tools");
+            SetDllDirectory(tooldir);
+
             Ambiesoft.CppUtils.AmbSetProcessDPIAware();
 
             Application.EnableVisualStyles();
@@ -55,5 +60,9 @@ namespace SendToManagerLauncher
             MethodInfo mi = t.GetMethod("DllMain");
             mi.Invoke(null, null);
         }
+
+        [DllImport("kernel32.dll", CharSet = CharSet.Unicode, SetLastError = true)]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        static extern bool SetDllDirectory(string lpPathName);
     }
 }
