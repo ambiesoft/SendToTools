@@ -133,7 +133,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 		STLSOFT_SCOPEDFREE(argv, wchar_t**, CCommandLineString::freeCommandLineArg);
 		wstring exe32t, exe64t;
 		bool bexedirt = false;
-		int i;
+		size_t i;
 		for (i = 1; i < cls.getCount(); ++i)
 		{
 			wstring t = cls.getArg(i);

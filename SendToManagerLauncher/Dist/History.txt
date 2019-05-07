@@ -1,4 +1,6 @@
-﻿2019/05/06 ver 1.17.11
+﻿MoveTo show no error on cancel
+
+2019/05/06 ver 1.17.11
 Include C Rutime dlls in the archive.
 
 2019/04/25 ver 1.17.10

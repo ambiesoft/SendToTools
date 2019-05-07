@@ -323,7 +323,7 @@ int libmain(LPCWSTR pAppName)
 		}
 	}
 	int nRet = SHMoveFile(destDir.c_str(), sourcefiles);
-	if (nRet != 0)
+	if (nRet != 0 && nRet != 1223 /* user cancel*/ )
 	{
 		wstring error = GetSHFileOpErrorString(nRet);
 		ShowError(error.c_str());
