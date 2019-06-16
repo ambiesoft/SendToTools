@@ -52,6 +52,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SwapFilename", "SwapFilenam
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CreateSizedFile", "CreateSizedFile\CreateSizedFile.csproj", "{C15756E6-CB9A-457E-85C1-686BC71BBF62}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CopyTo", "CopyTo\CopyTo.vcxproj", "{6C077D7E-99DD-4DEE-B77D-1AE475779371}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
@@ -138,6 +140,10 @@ Global
 		{C15756E6-CB9A-457E-85C1-686BC71BBF62}.Debug|x86.Build.0 = Debug|x86
 		{C15756E6-CB9A-457E-85C1-686BC71BBF62}.Release|x86.ActiveCfg = Release|x86
 		{C15756E6-CB9A-457E-85C1-686BC71BBF62}.Release|x86.Build.0 = Release|x86
+		{6C077D7E-99DD-4DEE-B77D-1AE475779371}.Debug|x86.ActiveCfg = Debug|Win32
+		{6C077D7E-99DD-4DEE-B77D-1AE475779371}.Debug|x86.Build.0 = Debug|Win32
+		{6C077D7E-99DD-4DEE-B77D-1AE475779371}.Release|x86.ActiveCfg = Release|Win32
+		{6C077D7E-99DD-4DEE-B77D-1AE475779371}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

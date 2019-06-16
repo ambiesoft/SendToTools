@@ -2,23 +2,20 @@
 #include "afxwin.h"
 
 
-// CChooseDirDialog ダイアログ
-
 class CChooseDirDialog : public CDialogEx
 {
 	DECLARE_DYNAMIC(CChooseDirDialog)
 
 public:
-	CChooseDirDialog(CWnd* pParent = NULL);   // 標準コンストラクター
+	CChooseDirDialog(CWnd* pParent = NULL);
 	virtual ~CChooseDirDialog();
 
-// ダイアログ データ
 #ifdef AFX_DESIGN_TIME
 	enum { IDD = IDD_DIALOG_CHOOSEDIR };
 #endif
 
 protected:
-	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV サポート
+	virtual void DoDataExchange(CDataExchange* pDX);
 
 	DECLARE_MESSAGE_MAP()
 

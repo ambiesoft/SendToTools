@@ -72,6 +72,7 @@
         "tools\\LibMoveCopyTo.dll",
         "tools\\ListViewEx.dll",
         "tools\\MoveTo.exe",
+   		"tools\\CopyTo.exe",
         "tools\\RegexFilenameRenamer.exe",
         "tools\\RegexFilenameRenamer.exe.config",
         "tools\\RegexFilenameRenamer.pdb",
@@ -110,6 +111,9 @@
         "tools\\lang\\CopyPath.jpn.txt",
         "tools\\lang\\LibMoveCopyTo.jpn.txt",
         "tools\\SimpleCommandLineParser.pdb",
+		"tools\\ja-JP\\CreateSizedFile.resources.dll",
+		"tools\\CreateSizedFile.pdb",
+		"tools\\CreateSizedFile.exe",
         "tools\\vccorlib120.dll",
 		"tools\\msvcp120.dll",
 		"tools\\msvcr120.dll"

@@ -100,3 +100,4 @@
 #define DllExport   __declspec( dllexport ) 
 
 extern LPCWSTR gAppName;
+extern LPCWSTR gOperationName;

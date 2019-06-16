@@ -101,6 +101,10 @@ void ShowError(LPCWSTR pMessage)
 		gAppName,
 		MB_ICONERROR);
 }
+void ShowError(wstring message)
+{
+	ShowError(message.c_str());
+}
 
 void showHelp()
 {
@@ -125,7 +129,17 @@ int libmain(LPCWSTR pAppName)
 	
 
 	gAppName = pAppName;
+	if (_wcsicmp(gAppName, L"MoveTo") == 0)
+		gOperationName = L"Move";
+	else if (_wcsicmp(gAppName, L"CopyTo") == 0)
+		gOperationName = L"Copy";
+	else
+	{
+		ShowError(stdFormat(I18N(L"Unknown app (%s)"), gAppName));
+		return 1;
+	}
 
+	
 	COption opTarget(L"/T", L"/t", 1);
 	COption opFile(L"", Ambiesoft::ArgCount::ArgCount_Infinite);
 	wstring lang;
@@ -322,7 +336,18 @@ int libmain(LPCWSTR pAppName)
 			AfxMessageBox(I18N(L"Failed to set priority class."));
 		}
 	}
-	int nRet = SHMoveFile(destDir.c_str(), sourcefiles);
+
+	int nRet = -1;
+	if (_wcsicmp(gAppName, L"MoveTo") == 0)
+		nRet = SHMoveFile(destDir.c_str(), sourcefiles);
+	else if (_wcsicmp(gAppName,  L"CopyTo") == 0)
+		nRet = SHCopyFile(destDir.c_str(), sourcefiles);
+	else
+	{
+		ShowError(stdFormat(I18N(L"Unknown app (%s)"), gAppName));
+		return 1;
+	}
+
 	if (nRet != 0 && nRet != 1223 /* user cancel*/ )
 	{
 		wstring error = GetSHFileOpErrorString(nRet);

@@ -65,6 +65,8 @@ BOOL CChooseDirDialog::OnInitDialog()
 	m_cmbPriority.AddString(I18N(L"Priority: Background"));
 
 	SetWindowText(gAppName);
+	GetDlgItem(IDOK)->SetWindowText(gOperationName);
+
 	UpdateData(FALSE);
 	return TRUE;  // return TRUE unless you set the focus to a control
 				  // EXCEPTION: OCX Property Pages should return FALSE
