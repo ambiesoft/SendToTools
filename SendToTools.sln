@@ -54,6 +54,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CreateSizedFile", "CreateSi
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CopyTo", "CopyTo\CopyTo.vcxproj", "{6C077D7E-99DD-4DEE-B77D-1AE475779371}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResumeCopy", "ResumeCopy\ResumeCopy.csproj", "{FCCF923C-980D-4607-B416-B2D51F69D60D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ComputeFileHash", "ComputeFileHash\ComputeFileHash.csproj", "{4A98D79F-CCA4-4837-B45D-905D65F5237D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
@@ -144,6 +148,14 @@ Global
 		{6C077D7E-99DD-4DEE-B77D-1AE475779371}.Debug|x86.Build.0 = Debug|Win32
 		{6C077D7E-99DD-4DEE-B77D-1AE475779371}.Release|x86.ActiveCfg = Release|Win32
 		{6C077D7E-99DD-4DEE-B77D-1AE475779371}.Release|x86.Build.0 = Release|Win32
+		{FCCF923C-980D-4607-B416-B2D51F69D60D}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{FCCF923C-980D-4607-B416-B2D51F69D60D}.Debug|x86.Build.0 = Debug|Any CPU
+		{FCCF923C-980D-4607-B416-B2D51F69D60D}.Release|x86.ActiveCfg = Release|Any CPU
+		{FCCF923C-980D-4607-B416-B2D51F69D60D}.Release|x86.Build.0 = Release|Any CPU
+		{4A98D79F-CCA4-4837-B45D-905D65F5237D}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{4A98D79F-CCA4-4837-B45D-905D65F5237D}.Debug|x86.Build.0 = Debug|Any CPU
+		{4A98D79F-CCA4-4837-B45D-905D65F5237D}.Release|x86.ActiveCfg = Release|Any CPU
+		{4A98D79F-CCA4-4837-B45D-905D65F5237D}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
