@@ -1,4 +1,4 @@
-﻿2019/06/17 ver 1.17.12
+2019/06/17 ver 1.17.12
 Add 'CreateSizedFile' and 'CopyTo'
 
 2019/05/06 ver 1.17.11
