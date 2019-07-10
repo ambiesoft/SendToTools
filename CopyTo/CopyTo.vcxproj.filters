@@ -17,18 +17,15 @@
     <ClCompile Include="stdafx.cpp">
       <Filter>2 Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="MoveToApp.cpp">
+    <ClCompile Include="..\..\lsMisc\HighDPI.cpp">
       <Filter>2 Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\lsMisc\HighDPI.cpp">
+    <ClCompile Include="CopyToApp.cpp">
       <Filter>2 Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
-      <Filter>1 Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="MoveToApp.h">
       <Filter>1 Header Files</Filter>
     </ClInclude>
     <ClInclude Include="target.h">
@@ -38,6 +35,12 @@
       <Filter>1 Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\lsMisc\HighDPI.h">
+      <Filter>1 Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CopyToApp.h">
+      <Filter>1 Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\LibMoveCopyTo\LibMoveCopyToLib.h">
       <Filter>1 Header Files</Filter>
     </ClInclude>
   </ItemGroup>

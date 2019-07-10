@@ -87,13 +87,16 @@ namespace ResumeCopy
  
             MessageBox.Show(message);
         }
-        
+
+        delegate bool BSDelegate(string message);
         bool AskRetry(string message)
         {
-            if(InvokeRequired)
+            if (InvokeRequired)
             {
                 // When called from the thread, call in ui thread and wait.
-                return (bool)this.EndInvoke(this.BeginInvoke(new Action<bool>(() => return this.AskRetry(message))));
+                IAsyncResult ar = this.BeginInvoke(new BSDelegate(AskRetry), message);
+                object o = this.EndInvoke(ar);
+                return (bool)o;
             }
             return MessageBox.Show(message,
                 Application.ProductName,
@@ -101,6 +104,7 @@ namespace ResumeCopy
                 MessageBoxIcon.Exclamation) != DialogResult.Cancel;
         }
 
+            
         void onEndThread()
         {
             _thCopy.Join();

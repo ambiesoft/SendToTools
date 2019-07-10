@@ -131,6 +131,9 @@
     <ClInclude Include="..\..\lsMisc\stdosd\stdosd.h">
       <Filter>1 Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="LibMoveCopyToLib.h">
+      <Filter>1 Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="LibMoveCopyTo.def">

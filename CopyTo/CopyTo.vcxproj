@@ -123,6 +123,7 @@ copy "$(SolutionDir)LibMoveCopyTo\Dist\LibMoveCopyTo.jpn.txt" "$(TargetDir)lang"
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\lsMisc\HighDPI.h" />
+    <ClInclude Include="..\LibMoveCopyTo\LibMoveCopyToLib.h" />
     <ClInclude Include="CopyToApp.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="stdafx.h" />

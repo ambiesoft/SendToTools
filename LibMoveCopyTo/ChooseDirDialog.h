@@ -6,8 +6,9 @@ class CChooseDirDialog : public CDialogEx
 {
 	DECLARE_DYNAMIC(CChooseDirDialog)
 
+	HICON m_hIcon;
 public:
-	CChooseDirDialog(CWnd* pParent = NULL);
+	CChooseDirDialog(HICON hIcon = nullptr, CWnd* pParent = NULL);
 	virtual ~CChooseDirDialog();
 
 #ifdef AFX_DESIGN_TIME

@@ -25,14 +25,10 @@
 //OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include "stdafx.h"
-
+#include "resource.h"
+#include "../LibMoveCopyTo/LibMoveCopyToLib.h"
 #include "../../lsMisc/HighDPI.h"
 
-extern "C" {
-	DllImport int libmain(LPCWSTR pAppName);
-}
-
-//int libmain();
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	_In_opt_ HINSTANCE hPrevInstance,
 	_In_ LPWSTR    lpCmdLine,
@@ -43,5 +39,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	UNREFERENCED_PARAMETER(hPrevInstance);
 	UNREFERENCED_PARAMETER(lpCmdLine);
 	// return AfxWinInit(hInstance, hPrevInstance, lpCmdLine, nCmdShow);
-	return libmain(L"MoveTo");
+	
+	HICON hIcon = LoadIcon(hInstance, MAKEINTRESOURCE(IDI_ICON1));
+	return libmain(L"MoveTo", hIcon);
 }

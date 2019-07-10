@@ -10,8 +10,9 @@ using namespace std;
 
 IMPLEMENT_DYNAMIC(CChooseDirDialog, CDialogEx)
 
-CChooseDirDialog::CChooseDirDialog(CWnd* pParent /*=NULL*/)
+CChooseDirDialog::CChooseDirDialog(HICON hIcon, CWnd* pParent /*=NULL*/)
 	: CDialogEx(IDD_DIALOG_CHOOSEDIR, pParent)
+	, m_hIcon(hIcon)
 	, m_strDirResult(_T(""))
 	, m_strSource(_T(""))
 	, m_nCmbPriority(0)
@@ -68,6 +69,10 @@ BOOL CChooseDirDialog::OnInitDialog()
 	GetDlgItem(IDOK)->SetWindowText(gOperationName);
 
 	UpdateData(FALSE);
+
+	if (m_hIcon != nullptr) {
+		SetIcon(m_hIcon, FALSE);
+	}
 	return TRUE;  // return TRUE unless you set the focus to a control
 				  // EXCEPTION: OCX Property Pages should return FALSE
 }

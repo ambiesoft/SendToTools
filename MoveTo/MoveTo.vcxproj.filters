@@ -40,6 +40,9 @@
     <ClInclude Include="..\..\lsMisc\HighDPI.h">
       <Filter>1 Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\LibMoveCopyTo\LibMoveCopyToLib.h">
+      <Filter>1 Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Resource.rc">

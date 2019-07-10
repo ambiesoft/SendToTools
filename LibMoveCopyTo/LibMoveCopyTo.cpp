@@ -27,6 +27,7 @@
 
 #include "stdafx.h"
 
+#include "LibMoveCopyToLib.h"
 #include "LibMoveCopyTo.h"
 
 #include "../../lsMisc/CommandLineParser.h"
@@ -116,11 +117,8 @@ void showHelp()
 
 
 
-extern "C" {
-	DllExport int libmain(LPCWSTR pAppName);
-}
 
-int libmain(LPCWSTR pAppName)
+int libmain(LPCWSTR pAppName, HICON hIcon)
 {
 	//UNREFERENCED_PARAMETER(hPrevInstance);
 	//UNREFERENCED_PARAMETER(lpCmdLine);
@@ -219,7 +217,7 @@ int libmain(LPCWSTR pAppName)
 		//}
 		//else
 		{
-			CChooseDirDialog dlg;
+			CChooseDirDialog dlg(hIcon);
 			for (STRINGVECTOR::iterator it = sourcefiles.begin(); it != sourcefiles.end(); ++it)
 			{
 				dlg.m_strSource += it->c_str();
