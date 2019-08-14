@@ -101,7 +101,7 @@
             this.tlpInfo = new System.Windows.Forms.TableLayoutPanel();
             this.lblExtention = new System.Windows.Forms.Label();
             this.cmLaunch = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.dummyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiRevealInFolder = new System.Windows.Forms.ToolStripMenuItem();
             this.btnLaunch = new SplitButtonDemo.SplitButton();
             this.btnPaste = new SplitButtonDemo.SplitButton();
             this.cmModify.SuspendLayout();
@@ -180,7 +180,6 @@
             this.tsmitoHankakuKana,
             this.tsmitoZenkakuKana});
             this.cmModify.Name = "ccmModify";
-            this.cmModify.OwnerItem = this.modifyToolStripMenuItem;
             resources.ApplyResources(this.cmModify, "cmModify");
             // 
             // tsmiMakeFileNamable
@@ -302,7 +301,6 @@
             this.tsmitoHankakuKanaSel,
             this.tsmitoZenkakuKanaSel});
             this.cmModifySelection.Name = "ccmModify";
-            this.cmModifySelection.OwnerItem = this.modifySelectionToolStripMenuItem;
             resources.ApplyResources(this.cmModifySelection, "cmModifySelection");
             // 
             // tsmiMakeFileNamableSel
@@ -591,14 +589,15 @@
             // cmLaunch
             // 
             this.cmLaunch.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.dummyToolStripMenuItem});
+            this.tsmiRevealInFolder});
             this.cmLaunch.Name = "cmLaunch";
             resources.ApplyResources(this.cmLaunch, "cmLaunch");
             // 
-            // dummyToolStripMenuItem
+            // tsmiRevealInFolder
             // 
-            this.dummyToolStripMenuItem.Name = "dummyToolStripMenuItem";
-            resources.ApplyResources(this.dummyToolStripMenuItem, "dummyToolStripMenuItem");
+            this.tsmiRevealInFolder.Name = "tsmiRevealInFolder";
+            resources.ApplyResources(this.tsmiRevealInFolder, "tsmiRevealInFolder");
+            this.tsmiRevealInFolder.Click += new System.EventHandler(this.tsmiRevealInFolder_Click);
             // 
             // btnLaunch
             // 
@@ -726,6 +725,6 @@
         private System.Windows.Forms.ToolStripSeparator tsmsAfterTools;
         private SplitButtonDemo.SplitButton btnLaunch;
         private System.Windows.Forms.ContextMenuStrip cmLaunch;
-        private System.Windows.Forms.ToolStripMenuItem dummyToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tsmiRevealInFolder;
     }
 }

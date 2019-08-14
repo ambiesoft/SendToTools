@@ -429,10 +429,10 @@ namespace Ambiesoft.RegexFilenameRenamer
                         di = new DirectoryInfo(".");
 
                     FileInfo[] allfi = di.GetFiles(Path.GetFileName(file));
-                    bool isAdded = false;
+                    // bool isAdded = false;
                     foreach (FileInfo f in allfi)
                     {
-                        isAdded = true;
+                        // isAdded = true;
                         ret.Add(f.FullName);
                     }
                     //if(!isAdded)

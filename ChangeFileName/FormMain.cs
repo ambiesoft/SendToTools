@@ -704,5 +704,10 @@ namespace ChangeFileName
 				return;
 			}
         }
+
+        private void tsmiRevealInFolder_Click(object sender, EventArgs e)
+        {
+            Ambiesoft.CppUtils.OpenFolder(this, txtName.Tag.ToString());
+        }
     }
 }
