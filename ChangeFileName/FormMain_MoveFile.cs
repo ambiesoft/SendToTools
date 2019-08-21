@@ -52,9 +52,9 @@ namespace ChangeFileName
                     string destfn = System.IO.Path.Combine(path, destfilename);
 
                     bool overwrite = false;
-                    if(File.Exists(destfn))
+                    if (File.Exists(destfn))
                     {
-                        if(DialogResult.Yes != Ambiesoft.CppUtils.YesOrNo(string.Format(Properties.Resources.DESTINATION_EXISTS, destfn),
+                        if (DialogResult.Yes != Ambiesoft.CppUtils.YesOrNo(string.Format(Properties.Resources.DESTINATION_EXISTS, destfn),
                             MessageBoxDefaultButton.Button2))
                         {
                             return;
@@ -64,7 +64,7 @@ namespace ChangeFileName
                     fiorig.CopyTo(destfn, overwrite);
                     fiorig.Delete();
                 }
-                else if(Directory.Exists(srcfilename))
+                else if (Directory.Exists(srcfilename))
                 {
                     DirectoryInfo diorig = new DirectoryInfo(srcfilename);
 
@@ -147,22 +147,35 @@ namespace ChangeFileName
         {
             DiskDirs = new string[0];
         }
-        
+        private void itemClearNonExistent_Click(object sender, EventArgs e)
+        {
+            var newItems = new List<string>();
+            foreach (string dir in DiskDirs)
+            {
+                if (!Directory.Exists(dir))
+                {
+                    continue;
+                }
+                newItems.Add(dir);
+            }
+            DiskDirs = newItems.ToArray();
+        }
+
         private void itemExistingFolder_Click(object sender, EventArgs e)
         {
             ToolStripMenuItem item = sender as ToolStripMenuItem;
-            if(item==null)
+            if (item == null)
             {
                 return;
             }
             string dir = item.Tag as string;
-            if(dir==null)
+            if (dir == null)
             {
                 // LANG
                 CppUtils.Fatal(dir + " is not a directory");
                 return;
             }
-            else if(!System.IO.Directory.Exists(dir))
+            else if (!System.IO.Directory.Exists(dir))
             {
                 if (DialogResult.Yes != CppUtils.YesOrNo(string.Format(Properties.Resources.DIR_NOT_EXIST_DO_YOU_WANT_TO_REMOVE, dir),
                     MessageBoxDefaultButton.Button2))
@@ -178,9 +191,9 @@ namespace ChangeFileName
         {
             string[] dirs = DiskDirs;
             List<string> newdirs = new List<string>();
-            foreach(string s in dirs)
+            foreach (string s in dirs)
             {
-                if(s.ToLower()==dir.ToLower())
+                if (s.ToLower() == dir.ToLower())
                     continue;
 
                 newdirs.Add(s);
@@ -197,7 +210,7 @@ namespace ChangeFileName
             }
             set
             {
-                if(!Ambiesoft.Profile.WriteStringArray(SECTION_SETTING, "movetodirs", value, IniFile))
+                if (!Ambiesoft.Profile.WriteStringArray(SECTION_SETTING, "movetodirs", value, IniFile))
                 {
                     // LANG
                     CppUtils.Fatal("save failed");
@@ -208,15 +221,17 @@ namespace ChangeFileName
         {
             menuMoveTo.Items.Clear();
             bool hasItems = false;
+            bool hasNonExistant = false;
             foreach (string dir in DiskDirs)
             {
                 ToolStripMenuItem item = new ToolStripMenuItem();
                 item.Click += new EventHandler(itemExistingFolder_Click);
                 item.Text = dir; // System.IO.Path.GetDirectoryName(dir);
-                if(!Directory.Exists(dir))
+                if (!Directory.Exists(dir))
                 {
                     item.Text += " ";
                     item.Text += Properties.Resources.NOT_EXISTS;
+                    hasNonExistant = true;
                 }
                 item.Tag = dir;
                 menuMoveTo.Items.Add(item);
@@ -226,21 +241,31 @@ namespace ChangeFileName
             menuMoveTo.Items.Add(new ToolStripSeparator());
 
 
-            ToolStripMenuItem itemNewFolder = new ToolStripMenuItem();
-            itemNewFolder.Click += new EventHandler(itemNewFolder_Click);
-            itemNewFolder.Text = Properties.Resources.NEW_FOLDER_DDD;
-            menuMoveTo.Items.Add(itemNewFolder);
-
-            if (hasItems)
+            // Add 'Others' Menu
+            ToolStripMenuItem itemOthers = new ToolStripMenuItem(Properties.Resources.OTHERS);
             {
+                ToolStripMenuItem itemNewFolder = new ToolStripMenuItem();
+                itemNewFolder.Click += new EventHandler(itemNewFolder_Click);
+                itemNewFolder.Text = Properties.Resources.NEW_FOLDER_DDD;
+                itemOthers.DropDownItems.Add(itemNewFolder);
+
                 ToolStripMenuItem itemClearFolder = new ToolStripMenuItem();
+                itemClearFolder.Enabled = hasItems;
                 itemClearFolder.Click += new EventHandler(itemClearFolder_Click);
-                itemClearFolder.Text = Properties.Resources.CLEAR;
-                menuMoveTo.Items.Add(itemClearFolder);
+                itemClearFolder.Text = Properties.Resources.CLEAR_ALL;
+                itemOthers.DropDownItems.Add(itemClearFolder);
+
+                ToolStripMenuItem itemClearNonExistant = new ToolStripMenuItem();
+                itemClearNonExistant.Enabled = hasNonExistant;
+                itemClearNonExistant.Click += new EventHandler(itemClearNonExistent_Click);
+                itemClearNonExistant.Text = Properties.Resources.CLEAR_NON_EXISTENT;
+                itemOthers.DropDownItems.Add(itemClearNonExistant);
+
             }
+            menuMoveTo.Items.Add(itemOthers);
 
 
-
+            // Show menu
             Point pt = btnMoveTo.Location;
             pt.Y += btnMoveTo.Size.Height;
             menuMoveTo.Show(this.PointToScreen(pt));

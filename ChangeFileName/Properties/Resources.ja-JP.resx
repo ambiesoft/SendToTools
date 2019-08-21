@@ -120,8 +120,8 @@
   <data name="ARE_YOU_SURE_TO_TRASH" xml:space="preserve">
     <value>'{0}' をごみ箱へ移動しますか？</value>
   </data>
-  <data name="CLEAR" xml:space="preserve">
-    <value>クリア(&amp;C)</value>
+  <data name="CLEAR_ALL" xml:space="preserve">
+    <value>すべてクリア(&amp;C)</value>
   </data>
   <data name="ENTER_FILENAME" xml:space="preserve">
     <value>ファイル名を入力してください</value>
@@ -178,5 +178,11 @@
   </data>
   <data name="SOURCEFILE_NOT_FOUND" xml:space="preserve">
     <value>元のファイルが見つかりません '{0}'</value>
+  </data>
+  <data name="CLEAR_NON_EXISTENT" xml:space="preserve">
+    <value>存在しないアイテムをクリア(&amp;N)</value>
+  </data>
+  <data name="OTHERS" xml:space="preserve">
+    <value>その他(&amp;O)</value>
   </data>
 </root>

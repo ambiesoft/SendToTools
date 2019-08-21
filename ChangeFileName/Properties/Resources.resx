@@ -120,8 +120,8 @@
   <data name="ARE_YOU_SURE_TO_TRASH" xml:space="preserve">
     <value>Are you sure to trash '{0}'</value>
   </data>
-  <data name="CLEAR" xml:space="preserve">
-    <value>&amp;Clear</value>
+  <data name="CLEAR_ALL" xml:space="preserve">
+    <value>&amp;Clear All items</value>
   </data>
   <data name="DESTINATION_EXISTS" xml:space="preserve">
     <value>The destination already has a file named "{0}". Do you want to replace the file in the destination?</value>
@@ -178,5 +178,11 @@ If this probrem continues, delete the file but you will lost all information abo
   </data>
   <data name="SOURCEFILE_NOT_FOUND" xml:space="preserve">
     <value>Source File is not found '{0}'</value>
+  </data>
+  <data name="CLEAR_NON_EXISTENT" xml:space="preserve">
+    <value>Clear &amp;Non-Existent items</value>
+  </data>
+  <data name="OTHERS" xml:space="preserve">
+    <value>&amp;Others</value>
   </data>
 </root>

@@ -70,11 +70,20 @@ namespace ChangeFileName.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &amp;Clear.
+        ///   Looks up a localized string similar to &amp;Clear All items.
         /// </summary>
-        internal static string CLEAR {
+        internal static string CLEAR_ALL {
             get {
-                return ResourceManager.GetString("CLEAR", resourceCulture);
+                return ResourceManager.GetString("CLEAR_ALL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Clear &amp;Non-Existent items.
+        /// </summary>
+        internal static string CLEAR_NON_EXISTENT {
+            get {
+                return ResourceManager.GetString("CLEAR_NON_EXISTENT", resourceCulture);
             }
         }
         
@@ -209,6 +218,15 @@ namespace ChangeFileName.Properties {
         internal static string NOT_EXISTS {
             get {
                 return ResourceManager.GetString("NOT_EXISTS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;Others.
+        /// </summary>
+        internal static string OTHERS {
+            get {
+                return ResourceManager.GetString("OTHERS", resourceCulture);
             }
         }
         
