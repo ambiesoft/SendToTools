@@ -1,4 +1,6 @@
-icon on moveto and copyto
+2019/09/07 ver 1.17.13
+Runas keeps current directory now
+Change icon of MoveTo and CopyTo
 
 2019/06/17 ver 1.17.12
 Add 'CreateSizedFile' and 'CopyTo'

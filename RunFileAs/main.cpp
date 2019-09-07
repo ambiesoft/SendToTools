@@ -172,13 +172,13 @@ int WINAPI wWinMain(
 	{
 		wstring exe = stdGetModuleFileName<wchar_t>();
 		wstring cmd = L"/run " + getArgument(1, true);
-		wstring dir = stdGetParentDirectory(getArgument(1, false, true));
+		// wstring dir = stdGetParentDirectory(getArgument(1, false, true));
 		LPCWSTR pVerb = IsUserAnAdmin() ? L"" : L"runas";
 		if (!OpenCommon(
 			NULL,
 			exe.c_str(),
 			cmd.c_str(),
-			dir.c_str(),
+			NULL, // dir.c_str(),
 			NULL,
 			pVerb))
 		{
