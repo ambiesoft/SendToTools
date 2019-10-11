@@ -68,9 +68,6 @@ SendtoToolsは以下のツールを付属しています。
 #### RunFileAs
 管理者権限でファイルを開きます。
 
-#### Switch3264
-環境が32ビットか64ビットかによって違うコマンドを実行します。
-オプションで"-32"と"-64"を指定する必要があります。
 
 #### touch
 ファイルの時刻を現在の時刻に設定します。シフト、コントロールまたはマウスの右ボタンを押しながらクリックするとサブフォルダのすべてのファイルをtouchします。
@@ -93,7 +90,7 @@ SendtoToolsは以下のツールを付属しています。
 ## コンタクト
 - 製作者: Ambiesoft trueff
 - メール: <ambiesoft.trueff@gmail.com>
-- ウェブサイト: <http://ambiesoft.fam.cx/main/index.php?page=sendtotools>
-- 掲示板: <http://ambiesoft.fam.cx/minibbs/minibbs.php>
+- ウェブサイト: <http://ambiesoft.mooo.com/main/index.php?page=sendtotools>
+- 掲示板: <http://ambiesoft.mooo.com/minibbs/minibbs.php>
 - 開発: <https://github.com/ambiesoft/SendToTools>
 

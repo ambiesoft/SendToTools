@@ -63,8 +63,6 @@ Rename file by a regular expression.
 #### RunFileAs
 Run file as administrator.
 
-#### Switch3264
-You need specify two option, "-32" and "-64". When launched in 32bit enviromment, the argument of "-32" will be launched. Same will do in 64bit.
 
 #### touch
 Change file time(Last Access time and Last Write time) to current time. If you launch with shift,control key or R-Button pressed, it touches all files in subdirectories.
@@ -84,7 +82,7 @@ If you have troubles, post *Issue* on <https://github.com/ambiesoft/SendToTools/
 ## Contact
 - Author: Ambiesoft trueff
 - E-mail: <ambiesoft.trueff@gmail.com>
-- Webpage: <http://ambiesoft.fam.cx/main/index.php?page=sendtotools>
-- Forum: <http://ambiesoft.fam.cx/minibbs/minibbs.php>
+- Webpage: <http://ambiesoft.mooo.com/main/index.php?page=sendtotools>
+- Forum: <http://ambiesoft.mooo.com/minibbs/minibbs.php>
 - Development: <https://github.com/ambiesoft/SendToTools>
 
