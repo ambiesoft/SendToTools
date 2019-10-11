@@ -1554,5 +1554,17 @@ new KeyValuePair<string, string>(@"touch.exe", Properties.Resources.TOOL_EXPLANA
                 Cursor.Current = preCursor;
             }
         }
+
+        private void goToWebPageToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Process.Start("https://ambiesoft.github.io/webjumper/");
+            }
+            catch(Exception ex)
+            {
+                CppUtils.Alert(ex);
+            }
+        }
     }
 }
