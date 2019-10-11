@@ -57,6 +57,7 @@
         "tools\\ChangeFileTime.exe.config",
         "tools\\ChangeFileTime.pdb",
         "tools\\CommandPrompt.bat",
+        "tools\\OpenPsPrompt.bat",
         "tools\\CopyFileContent.exe",
         "tools\\CopyFileContent.exe.config",
         "tools\\CopyFileContent.pdb",
