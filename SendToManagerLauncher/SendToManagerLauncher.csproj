@@ -117,6 +117,7 @@ del "$(OutDir)FolderConfig.ini.sample"
 xcopy "$(ProjectDir)Dist\FolderConfig.ini" "$(TargetDir)" /F /Y
 
 xcopy "$(SolutionDir)OpenCommnadPrompt\CommandPrompt.bat" "$(TargetDir)tools\" /F /Y
+xcopy "$(SolutionDir)OpenCommnadPrompt\clink.bat" "$(TargetDir)tools\" /F /Y
 xcopy "$(SolutionDir)OpenPsPrompt\OpenPsPrompt.bat" "$(TargetDir)tools\" /F /Y
 </PostBuildEvent>
   </PropertyGroup>
