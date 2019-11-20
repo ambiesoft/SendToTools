@@ -38,6 +38,7 @@
             this.chkRandom = new System.Windows.Forms.CheckBox();
             this.chkZero = new System.Windows.Forms.CheckBox();
             this.btnNavigate = new System.Windows.Forms.Button();
+            this.lblActualSize = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lblFilename
@@ -59,6 +60,7 @@
             // 
             resources.ApplyResources(this.txtSize, "txtSize");
             this.txtSize.Name = "txtSize";
+            this.txtSize.TextChanged += new System.EventHandler(this.txtSize_TextChanged);
             // 
             // btnOK
             // 
@@ -95,12 +97,18 @@
             this.btnNavigate.UseVisualStyleBackColor = true;
             this.btnNavigate.Click += new System.EventHandler(this.btnNavigate_Click);
             // 
+            // lblActualSize
+            // 
+            resources.ApplyResources(this.lblActualSize, "lblActualSize");
+            this.lblActualSize.Name = "lblActualSize";
+            // 
             // FormMain
             // 
             this.AcceptButton = this.btnOK;
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
+            this.Controls.Add(this.lblActualSize);
             this.Controls.Add(this.btnNavigate);
             this.Controls.Add(this.chkZero);
             this.Controls.Add(this.chkRandom);
@@ -128,5 +136,6 @@
         internal System.Windows.Forms.CheckBox chkRandom;
         internal System.Windows.Forms.CheckBox chkZero;
         private System.Windows.Forms.Button btnNavigate;
+        private System.Windows.Forms.Label lblActualSize;
     }
 }

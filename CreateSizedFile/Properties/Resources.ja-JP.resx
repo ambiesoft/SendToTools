@@ -126,10 +126,19 @@
   <data name="FILESIZE_NOTBE_MINUS" xml:space="preserve">
     <value>ファイルサイズはマイナスにできません。</value>
   </data>
+  <data name="FILE_CREATED" xml:space="preserve">
+    <value>ファイルが作成されました。</value>
+  </data>
   <data name="FOLDER_NOT_EXIST" xml:space="preserve">
     <value>"{0}" は存在しません。</value>
   </data>
+  <data name="INVALID_FILE_SIZE" xml:space="preserve">
+    <value>無効なファイルサイズです</value>
+  </data>
   <data name="NO_ARGUMENTS" xml:space="preserve">
     <value>引数がありません。</value>
+  </data>
+  <data name="SIZE_IN_BYTE_IS" xml:space="preserve">
+    <value>バイト数＝{0}</value>
   </data>
 </root>

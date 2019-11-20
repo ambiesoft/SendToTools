@@ -65,25 +65,73 @@ namespace CreateSizedFile
 
         Int64 GetCreatingFileSize()
         {
+            Int64 multi = 1;
+            string result = txtSize.Text.ToUpper();
+
+            if(false)
+            { }
+            else if (result.EndsWith("K"))
+            {
+                multi = 1000;
+                result = result.Substring(0, result.Length - 1);
+            }
+            else if (result.EndsWith("KI"))
+            {
+                multi = 1024;
+                result = result.Substring(0, result.Length - 2);
+            }
+
+            else if (result.EndsWith("M"))
+            {
+                multi = 1000 * 1000;
+                result = result.Substring(0, result.Length - 1);
+            }
+            else if (result.EndsWith("MI"))
+            {
+                multi = 1024 * 1024;
+                result = result.Substring(0, result.Length - 2);
+            }
+
+            else if (result.EndsWith("G"))
+            {
+                multi = 1000 * 1000 * 1000;
+                result = result.Substring(0, result.Length - 1);
+            }
+            else if (result.EndsWith("GI"))
+            {
+                multi = 1024 * 1024 * 1024;
+                result = result.Substring(0, result.Length - 2);
+            }
+
+
+
             Int64 ret;
-            if (!Int64.TryParse(txtSize.Text, out ret))
+            if (!Int64.TryParse(result, out ret))
                 return -1;
-            return ret;
+            return ret * multi;
         }
         private void btnOK_Click(object sender, EventArgs e)
         {
             Int64 fsize = GetCreatingFileSize();
-            if (fsize < 0)
+            if(fsize==-1)
             {
-                MessageBox.Show(Properties.Resources.FILESIZE_NOTBE_MINUS,
+                CppUtils.CenteredMessageBox(Properties.Resources.INVALID_FILE_SIZE,
                     Application.ProductName,
                     MessageBoxButtons.OK,
-                    MessageBoxIcon.Asterisk);
+                    MessageBoxIcon.Error);
+                return;
+            }
+            if (fsize < 0)
+            {
+                CppUtils.CenteredMessageBox(Properties.Resources.FILESIZE_NOTBE_MINUS,
+                    Application.ProductName,
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
                 return;
             }
             if (fsize > ((Int64)2 * 1024 * 1024 * 1024))
             {
-                if (DialogResult.Yes != MessageBox.Show(
+                if (DialogResult.Yes != CppUtils.CenteredMessageBox(
                     string.Format(Properties.Resources.ARE_YOU_GOING_TO_CREATE, fsize),
                     Application.ProductName,
                     MessageBoxButtons.YesNo,
@@ -97,7 +145,7 @@ namespace CreateSizedFile
 
                 if (File.Exists(txtFilename.Text))
                 {
-                    if (DialogResult.Yes != MessageBox.Show(
+                    if (DialogResult.Yes != CppUtils.CenteredMessageBox(
                         string.Format(Properties.Resources.ALREADY_EXISTS_DO_YOU_WANT_TO_OVERRIDE, txtFilename.Text),
                         Application.ProductName,
                         MessageBoxButtons.YesNo,
@@ -107,7 +155,7 @@ namespace CreateSizedFile
                     }
                 }
                 FileStream fs = File.Create(
-                    txtFilename.Text, 
+                    txtFilename.Text,
                     1,
                     System.IO.FileOptions.RandomAccess);
                 if (chkRandom.Checked)
@@ -139,7 +187,8 @@ namespace CreateSizedFile
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message,
+                CppUtils.CenteredMessageBox(
+                    ex.Message,
                     ProductName,
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
@@ -155,6 +204,15 @@ namespace CreateSizedFile
 
                 txtFilename.Text = dlg.FileName;
             }            
+        }
+
+        private void txtSize_TextChanged(object sender, EventArgs e)
+        {
+            Int64 actualSize = GetCreatingFileSize();
+            if (actualSize >= 0)
+                lblActualSize.Text = string.Format(Properties.Resources.SIZE_IN_BYTE_IS, actualSize);
+            else
+                lblActualSize.Text = Properties.Resources.INVALID_FILE_SIZE;
         }
     }
 }

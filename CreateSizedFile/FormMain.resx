@@ -144,7 +144,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lblFilename.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>9</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="txtFilename.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
@@ -154,7 +154,7 @@
     <value>14, 25</value>
   </data>
   <data name="txtFilename.Size" type="System.Drawing.Size, System.Drawing">
-    <value>543, 20</value>
+    <value>518, 20</value>
   </data>
   <data name="txtFilename.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -169,7 +169,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;txtFilename.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>7</value>
   </data>
   <data name="lblSize.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -178,13 +178,13 @@
     <value>12, 49</value>
   </data>
   <data name="lblSize.Size" type="System.Drawing.Size, System.Drawing">
-    <value>56, 13</value>
+    <value>253, 13</value>
   </data>
   <data name="lblSize.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
   <data name="lblSize.Text" xml:space="preserve">
-    <value>&amp;Size(byte):</value>
+    <value>&amp;Size (You can put a suffix 'K', 'Ki', 'M', 'Mi', 'G' or 'Gi'):</value>
   </data>
   <data name="&gt;&gt;lblSize.Name" xml:space="preserve">
     <value>lblSize</value>
@@ -196,7 +196,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lblSize.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>8</value>
   </data>
   <data name="txtSize.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
@@ -205,7 +205,7 @@
     <value>14, 65</value>
   </data>
   <data name="txtSize.Size" type="System.Drawing.Size, System.Drawing">
-    <value>579, 20</value>
+    <value>554, 20</value>
   </data>
   <data name="txtSize.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -220,13 +220,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;txtSize.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="btnOK.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
   </data>
   <data name="btnOK.Location" type="System.Drawing.Point, System.Drawing">
-    <value>372, 131</value>
+    <value>347, 166</value>
   </data>
   <data name="btnOK.Size" type="System.Drawing.Size, System.Drawing">
     <value>110, 25</value>
@@ -247,13 +247,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnOK.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="btnCancel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
   </data>
   <data name="btnCancel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>483, 131</value>
+    <value>458, 166</value>
   </data>
   <data name="btnCancel.Size" type="System.Drawing.Size, System.Drawing">
     <value>110, 25</value>
@@ -274,13 +274,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnCancel.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="chkRandom.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="chkRandom.Location" type="System.Drawing.Point, System.Drawing">
-    <value>14, 91</value>
+    <value>12, 114</value>
   </data>
   <data name="chkRandom.Size" type="System.Drawing.Size, System.Drawing">
     <value>143, 17</value>
@@ -301,13 +301,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;chkRandom.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="chkZero.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="chkZero.Location" type="System.Drawing.Point, System.Drawing">
-    <value>14, 114</value>
+    <value>12, 137</value>
   </data>
   <data name="chkZero.Size" type="System.Drawing.Size, System.Drawing">
     <value>85, 17</value>
@@ -328,10 +328,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;chkZero.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
+  </data>
+  <data name="btnNavigate.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
   </data>
   <data name="btnNavigate.Location" type="System.Drawing.Point, System.Drawing">
-    <value>563, 23</value>
+    <value>538, 23</value>
   </data>
   <data name="btnNavigate.Size" type="System.Drawing.Size, System.Drawing">
     <value>31, 23</value>
@@ -352,6 +355,30 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnNavigate.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="lblActualSize.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblActualSize.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 88</value>
+  </data>
+  <data name="lblActualSize.Size" type="System.Drawing.Size, System.Drawing">
+    <value>0, 13</value>
+  </data>
+  <data name="lblActualSize.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="&gt;&gt;lblActualSize.Name" xml:space="preserve">
+    <value>lblActualSize</value>
+  </data>
+  <data name="&gt;&gt;lblActualSize.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblActualSize.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblActualSize.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
@@ -361,7 +388,10 @@
     <value>6, 13</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>606, 168</value>
+    <value>581, 203</value>
+  </data>
+  <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>415, 232</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Create Sized File</value>

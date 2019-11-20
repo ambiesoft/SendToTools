@@ -106,11 +106,29 @@ namespace CreateSizedFile.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Invalid file size.
+        /// </summary>
+        internal static string INVALID_FILE_SIZE {
+            get {
+                return ResourceManager.GetString("INVALID_FILE_SIZE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No arguments..
         /// </summary>
         internal static string NO_ARGUMENTS {
             get {
                 return ResourceManager.GetString("NO_ARGUMENTS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Size in byte is {0}.
+        /// </summary>
+        internal static string SIZE_IN_BYTE_IS {
+            get {
+                return ResourceManager.GetString("SIZE_IN_BYTE_IS", resourceCulture);
             }
         }
     }
