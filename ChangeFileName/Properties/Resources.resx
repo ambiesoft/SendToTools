@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="ARE_YOU_SURE_TO_TRASH" xml:space="preserve">
-    <value>Are you sure to trash '{0}'</value>
+    <value>Are you sure to you want to move '{0}' to the Recycle Bin?</value>
   </data>
   <data name="CLEAR_ALL" xml:space="preserve">
     <value>&amp;Clear All items</value>
@@ -184,5 +184,11 @@ If this probrem continues, delete the file but you will lost all information abo
   </data>
   <data name="OTHERS" xml:space="preserve">
     <value>&amp;Others</value>
+  </data>
+  <data name="ARE_YOU_SURE_CLEAR_ALL_ITEMS" xml:space="preserve">
+    <value>Are you sure you want to clear all items?</value>
+  </data>
+  <data name="SORT" xml:space="preserve">
+    <value>&amp;Sort</value>
   </data>
 </root>

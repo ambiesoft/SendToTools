@@ -1,3 +1,6 @@
+2019/12/08 ver 1.17.16
+Add 'Sort' on ChangeFileName
+
 2019/09/13 ver 1.17.15
 Change Webpage address
 Add OpenPsPrompt

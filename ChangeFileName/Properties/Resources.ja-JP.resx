@@ -185,4 +185,10 @@
   <data name="OTHERS" xml:space="preserve">
     <value>その他(&amp;O)</value>
   </data>
+  <data name="ARE_YOU_SURE_CLEAR_ALL_ITEMS" xml:space="preserve">
+    <value>すべてのアイテムをクリアしますか？</value>
+  </data>
+  <data name="SORT" xml:space="preserve">
+    <value>ソート(&amp;S)</value>
+  </data>
 </root>

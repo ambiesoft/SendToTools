@@ -61,7 +61,16 @@ namespace ChangeFileName.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Are you sure to trash &apos;{0}&apos;.
+        ///   Looks up a localized string similar to Are you sure you want to clear all items?.
+        /// </summary>
+        internal static string ARE_YOU_SURE_CLEAR_ALL_ITEMS {
+            get {
+                return ResourceManager.GetString("ARE_YOU_SURE_CLEAR_ALL_ITEMS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure to you want to move &apos;{0}&apos; to the Recycle Bin?.
         /// </summary>
         internal static string ARE_YOU_SURE_TO_TRASH {
             get {
@@ -236,6 +245,15 @@ namespace ChangeFileName.Properties {
         internal static string Size {
             get {
                 return ResourceManager.GetString("Size", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;Sort.
+        /// </summary>
+        internal static string SORT {
+            get {
+                return ResourceManager.GetString("SORT", resourceCulture);
             }
         }
         

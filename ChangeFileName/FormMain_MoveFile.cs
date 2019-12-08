@@ -143,8 +143,19 @@ namespace ChangeFileName
 
             moveToAndClose(selectedPath);
         }
+        private void itemSort_Click(object sender, EventArgs e)
+        {
+            string[] tmp = DiskDirs;
+            Array.Sort(tmp);
+            DiskDirs = tmp;
+        }
         private void itemClearFolder_Click(object sender, EventArgs e)
         {
+            if (DialogResult.Yes != CppUtils.YesOrNo(Properties.Resources.ARE_YOU_SURE_CLEAR_ALL_ITEMS,
+                  MessageBoxDefaultButton.Button2))
+            {
+                return;
+            }
             DiskDirs = new string[0];
         }
         private void itemClearNonExistent_Click(object sender, EventArgs e)
@@ -248,6 +259,16 @@ namespace ChangeFileName
                 itemNewFolder.Click += new EventHandler(itemNewFolder_Click);
                 itemNewFolder.Text = Properties.Resources.NEW_FOLDER_DDD;
                 itemOthers.DropDownItems.Add(itemNewFolder);
+
+                itemOthers.DropDownItems.Add(new ToolStripSeparator());
+
+                ToolStripMenuItem itemSort = new ToolStripMenuItem();
+                itemSort.Enabled = hasItems;
+                itemSort.Click += new EventHandler(itemSort_Click);
+                itemSort.Text = Properties.Resources.SORT;
+                itemOthers.DropDownItems.Add(itemSort);
+
+                itemOthers.DropDownItems.Add(new ToolStripSeparator());
 
                 ToolStripMenuItem itemClearFolder = new ToolStripMenuItem();
                 itemClearFolder.Enabled = hasItems;
