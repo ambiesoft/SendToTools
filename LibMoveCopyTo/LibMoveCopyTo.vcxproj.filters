@@ -75,6 +75,12 @@
     <ClCompile Include="..\..\lsMisc\stdosd\stdosd_win.cpp">
       <Filter>2 Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="ReleaseMutex.cpp">
+      <Filter>2 Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="WaitingDialog.cpp">
+      <Filter>2 Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="LibMoveCopyTo.h">
@@ -132,6 +138,12 @@
       <Filter>1 Header Files</Filter>
     </ClInclude>
     <ClInclude Include="LibMoveCopyToLib.h">
+      <Filter>1 Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ReleaseMutex.h">
+      <Filter>1 Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="WaitingDialog.h">
       <Filter>1 Header Files</Filter>
     </ClInclude>
   </ItemGroup>

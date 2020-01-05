@@ -33,6 +33,8 @@
 #include "../../lsMisc/CommandLineParser.h"
 #include "../../lsMisc/GetLastErrorString.h"
 #include "ChooseDirDialog.h"
+#include "ReleaseMutex.h"
+#include "WaitingDialog.h"
 
 #include "../../lsMisc/DebugNew.h"
 
@@ -116,8 +118,23 @@ void showHelp()
 }
 
 
+struct WaitingDialogData
+{
+	HANDLE hFinishEvent_;
+	WORD wResult_;
+	WaitingDialogData() : hFinishEvent_(nullptr), wResult_(0){}
+};
 
+UINT __cdecl MyControllingFunction(LPVOID pParam)
+{
+	WaitingDialogData* pData = (WaitingDialogData*)pParam;
+	CWaitingDialog waitingDlg;
+	waitingDlg.m_hWait = pData->hFinishEvent_;
 
+	pData->wResult_ = waitingDlg.DoModal();
+	
+	return 0;
+}
 int libmain(LPCWSTR pAppName, HICON hIcon)
 {
 	//UNREFERENCED_PARAMETER(hPrevInstance);
@@ -308,7 +325,7 @@ int libmain(LPCWSTR pAppName, HICON hIcon)
 	destDir = stdwin32::stdAddBackSlash(destDir);
 
 #ifdef _DEBUG
-	bool bShowDebugInfo = true;
+	bool bShowDebugInfo = !true;
 #else
 	bool bShowDebugInfo = (GetAsyncKeyState(VK_CONTROL) < 0) && (GetAsyncKeyState(VK_SHIFT) < 0);
 #endif
@@ -335,6 +352,31 @@ int libmain(LPCWSTR pAppName, HICON hIcon)
 		}
 	}
 
+	CReleaseMutex mutex(L"LibMoveCopyTo_Mutex", TRUE);
+	if (!mutex)
+	{
+		AfxMessageBox(I18N(L"Failed to create a mutex."));
+		return 1;
+	}
+	if (mutex.WillWait())
+	{
+		WaitingDialogData wdd;
+		CEvent eventDialogWait(FALSE, TRUE);
+		wdd.hFinishEvent_ = eventDialogWait;
+		// HANDLE eventDialogWait = CreateEvent(NULL, TRUE, FALSE, NULL);
+		CWinThread* pThread = AfxBeginThread(MyControllingFunction, &wdd);
+		mutex.Wait();    // wait other app
+		SetEvent(eventDialogWait);  // let dialog finish
+		WaitForSingleObject(*pThread, INFINITE);
+		if (wdd.wResult_ == IDCANCEL)
+			return 0;
+	}
+	else
+	{
+		// AfxMessageBox(L"waiting");
+		mutex.Wait();
+	}
+
 	int nRet = -1;
 	if (_wcsicmp(gAppName, L"MoveTo") == 0)
 		nRet = SHMoveFile(destDir.c_str(), sourcefiles);
@@ -349,6 +391,18 @@ int libmain(LPCWSTR pAppName, HICON hIcon)
 	if (nRet != 0 && nRet != 1223 /* user cancel*/ )
 	{
 		wstring error = GetSHFileOpErrorString(nRet);
+		error += L"\n";
+		error += L"Source:\n";
+		for (auto&& s : sourcefiles)
+		{
+			error += L"  ";
+			error += s;
+			error += L"\n";
+		}
+		error += L"Destination:\n";
+		error += L"  ";
+		error += destDir;
+		error += L"\n";
 		ShowError(error.c_str());
 	}
 

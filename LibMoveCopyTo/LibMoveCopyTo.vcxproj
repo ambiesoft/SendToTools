@@ -143,10 +143,12 @@
     <ClCompile Include="..\..\lsMisc\UTF16toUTF8.cpp" />
     <ClCompile Include="ChooseDirDialog.cpp" />
     <ClCompile Include="LibMoveCopyTo.cpp" />
+    <ClCompile Include="ReleaseMutex.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="WaitingDialog.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\lsMisc\browseFolder.h" />
@@ -165,9 +167,11 @@
     <ClInclude Include="ChooseDirDialog.h" />
     <ClInclude Include="LibMoveCopyToLib.h" />
     <ClInclude Include="LibMoveCopyTo.h" />
+    <ClInclude Include="ReleaseMutex.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
+    <ClInclude Include="WaitingDialog.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="LibMoveCopyTo.def" />
