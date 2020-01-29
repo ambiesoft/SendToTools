@@ -1,4 +1,6 @@
-reg dialog
+2020/01/30 ver 1.17.17
+MoveTo wait dialog
+Fix reg dialog
 
 2019/12/08 ver 1.17.16
 Add 'Sort' on ChangeFileName

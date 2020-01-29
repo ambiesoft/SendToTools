@@ -97,9 +97,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Dist\History.txt" />
     <Content Include="Dist\Copying.txt" />
     <None Include="Dist\ReadMe.md" />

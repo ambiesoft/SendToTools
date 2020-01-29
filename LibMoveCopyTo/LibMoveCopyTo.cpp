@@ -122,7 +122,25 @@ struct WaitingDialogData
 {
 	HANDLE hFinishEvent_;
 	WORD wResult_;
-	WaitingDialogData() : hFinishEvent_(nullptr), wResult_(0){}
+	CString strAppName_;
+	CString strFrom_;
+	CString strTo_;
+	WaitingDialogData(CString strAppName, CString strFrom, CString strTo) : 
+		hFinishEvent_(nullptr), 
+		wResult_(0),
+		strAppName_(strAppName),
+		strFrom_(strFrom),
+		strTo_(strTo) {}
+
+	CString appName() const {
+		return strAppName_;
+	}
+	CString from() const {
+		return strFrom_;
+	}
+	CString to() const {
+		return strTo_;
+	}
 };
 
 UINT __cdecl MyControllingFunction(LPVOID pParam)
@@ -130,7 +148,9 @@ UINT __cdecl MyControllingFunction(LPVOID pParam)
 	WaitingDialogData* pData = (WaitingDialogData*)pParam;
 	CWaitingDialog waitingDlg;
 	waitingDlg.m_hWait = pData->hFinishEvent_;
-
+	waitingDlg.m_strAppName = pData->appName();
+	waitingDlg.m_strFrom = pData->from();
+	waitingDlg.m_strTo = pData->to();
 	pData->wResult_ = waitingDlg.DoModal();
 	
 	return 0;
@@ -360,7 +380,16 @@ int libmain(LPCWSTR pAppName, HICON hIcon)
 	}
 	if (mutex.WillWait())
 	{
-		WaitingDialogData wdd;
+		CString strFrom, strTo;
+		for (STRINGVECTOR::iterator it = sourcefiles.begin(); it != sourcefiles.end(); ++it)
+		{
+			strFrom += stdAddDQIfNecessary(*it).c_str();
+			strFrom += L" ";
+		}
+		strFrom = stdTrim(wstring((LPCTSTR)strFrom)).c_str();
+		strTo = destDir.c_str();
+
+		WaitingDialogData wdd(pAppName, strFrom, strTo);
 		CEvent eventDialogWait(FALSE, TRUE);
 		wdd.hFinishEvent_ = eventDialogWait;
 		// HANDLE eventDialogWait = CreateEvent(NULL, TRUE, FALSE, NULL);
