@@ -13,10 +13,10 @@ using namespace std;
 
 #define APPNAME L"SwapFilename"
 
-void ErrorExit(const wstring& error)
+void ErrorExit(const wstring& error, LPCTSTR funcname)
 {
 	MessageBox(nullptr,
-		error.c_str(),
+		stdFormat(L"%s:%s", error.c_str(), funcname).c_str(),
 		APPNAME,
 		MB_ICONERROR);
 
@@ -24,7 +24,45 @@ void ErrorExit(const wstring& error)
 }
 
 
-
+BOOL DoReplaceFilePlane(wstring file1, wstring file2, wstring fileback)
+{
+	if (!MoveFile(file1.c_str(), fileback.c_str()))
+	{
+		ErrorExit(GetLastErrorString(GetLastError()), L"MoveFile");
+	}
+	if (!MoveFile(file2.c_str(), file1.c_str()))
+	{
+		ErrorExit(GetLastErrorString(GetLastError()), L"MoveFile");
+	}
+	if (!MoveFile(fileback.c_str(), file2.c_str()))
+	{
+		ErrorExit(GetLastErrorString(GetLastError()), L"MoveFile");
+	}
+	return TRUE;
+}
+BOOL DoReplaceFile(wstring file1, wstring file2, wstring fileback)
+{
+	if (!ReplaceFile(
+		file1.c_str(),
+		file2.c_str(),
+		fileback.c_str(),
+		0, 0, 0 // flags and reserved
+		))
+	{
+		// ErrorExit(GetLastErrorString(GetLastError()), L"ReplaceFile");
+		// Use regular method
+		return FALSE;
+	}
+	if (PathFileExists(file2.c_str()))
+	{
+		ErrorExit(I18N(L"Unknown Error"), L"");
+	}
+	if (!MoveFile(fileback.c_str(), file2.c_str()))
+	{
+		ErrorExit(GetLastErrorString(GetLastError()), L"MoveFile");
+	}
+	return TRUE;
+}
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	_In_opt_ HINSTANCE hPrevInstance,
 	_In_ LPWSTR    lpCmdLine,
@@ -58,15 +96,15 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
 	if (!PathFileExists(file1.c_str()))
 	{
-		ErrorExit(stdFormat(I18N(L"%s does not exist."), file1));
+		ErrorExit(stdFormat(I18N(L"%s does not exist."), file1), L"PathFileExists");
 	}
 	if (!PathFileExists(file2.c_str()))
 	{
-		ErrorExit(stdFormat(I18N(L"%s does not exist."), file2));
+		ErrorExit(stdFormat(I18N(L"%s does not exist."), file2), L"PathFileExists");
 	}
 	if (PathFileExists(fileback.c_str()))
 	{
-		ErrorExit(stdFormat(I18N(L"%s does exist."), fileback));
+		ErrorExit(stdFormat(I18N(L"%s does exist."), fileback), L"PathFileExists");
 	}
 
 	file1 = stdGetFullPathName(file1);
@@ -83,23 +121,8 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	//	tempfilename = tempfilenameOrig + stdItoT(i++);
 	//}
 
-	if (!ReplaceFile(
-		file1.c_str(),
-		file2.c_str(),
-		fileback.c_str(),
-		0, 0, 0 // flags and reserved
-		))
-	{
-		ErrorExit(GetLastErrorString(GetLastError()));
-	}
-	if (PathFileExists(file2.c_str()))
-	{
-		ErrorExit(I18N(L"Unknown Error"));
-	}
-	if (!MoveFile(fileback.c_str(), file2.c_str()))
-	{
-		ErrorExit(GetLastErrorString(GetLastError()));
-	}
+	if (!DoReplaceFile(file1, file2, fileback))
+		DoReplaceFilePlane(file1, file2, fileback);
 
 	showballoon(NULL,
 		APP_NAME,
