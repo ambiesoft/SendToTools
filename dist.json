@@ -107,6 +107,8 @@
 		"tools\\ja-JP\\CreateSizedFile.resources.dll",
 		"tools\\CreateSizedFile.pdb",
 		"tools\\CreateSizedFile.exe",
+		"tools\\SwapFilename.pdb",
+		"tools\\SwapFilename.exe",
         "tools\\vccorlib120.dll",
 		"tools\\msvcp120.dll",
 		"tools\\msvcr120.dll"
