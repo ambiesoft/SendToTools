@@ -1,10 +1,11 @@
 #include "StdAfx.h"
-
+#include "resource.h"
 
 #include "../../lsMisc/CommandLineParser.h"
 #include "../../lsMisc/HighDPI.h"
 #include "../../lsMisc/GetLastErrorString.h"
 #include "../../lsMisc/GetBackupFile.h"
+#include "../../lsMisc/showballoon.h"
 
 using namespace Ambiesoft;
 using namespace Ambiesoft::stdosd;
@@ -93,11 +94,20 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	}
 	if (PathFileExists(file2.c_str()))
 	{
-		ErrorExit(L"Unknown Error");
+		ErrorExit(I18N(L"Unknown Error"));
 	}
 	if (!MoveFile(fileback.c_str(), file2.c_str()))
 	{
 		ErrorExit(GetLastErrorString(GetLastError()));
 	}
+
+	showballoon(NULL,
+		APP_NAME,
+		stdFormat(I18N(L"'%s' and '%s' are swapped."), stdGetFileName(file1).c_str(), stdGetFileName(file2).c_str()),
+		LoadIcon(hInstance, MAKEINTRESOURCE(IDI_ICON_MAIN)),
+		5000,
+		1,
+		FALSE,
+		1);
 	return 0;
 }

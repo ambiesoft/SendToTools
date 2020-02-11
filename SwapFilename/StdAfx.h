@@ -10,3 +10,5 @@ using namespace Ambiesoft::stdwin32;
 using namespace Ambiesoft::stdosd;
 
 #define I18N(s) (s)
+
+#define APP_NAME L"SwapFilename"
