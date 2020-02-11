@@ -3,6 +3,8 @@
 
 #include "../../lsMisc/CommandLineParser.h"
 #include "../../lsMisc/HighDPI.h"
+#include "../../lsMisc/GetLastErrorString.h"
+#include "../../lsMisc/GetBackupFile.h"
 
 using namespace Ambiesoft;
 using namespace Ambiesoft::stdosd;
@@ -19,6 +21,9 @@ void ErrorExit(const wstring& error)
 
 	exit(1);
 }
+
+
+
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	_In_opt_ HINSTANCE hPrevInstance,
 	_In_ LPWSTR    lpCmdLine,
@@ -48,6 +53,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	
 	wstring file1 = opMain.getValue(0);
 	wstring file2 = opMain.getValue(1);
+	wstring fileback = GetBackupFile(file2.c_str());
 
 	if (!PathFileExists(file1.c_str()))
 	{
@@ -57,20 +63,41 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	{
 		ErrorExit(stdFormat(I18N(L"%s does not exist."), file2));
 	}
+	if (PathFileExists(fileback.c_str()))
+	{
+		ErrorExit(stdFormat(I18N(L"%s does exist."), fileback));
+	}
 
 	file1 = stdGetFullPathName(file1);
 	file2 = stdGetFullPathName(file2);
+	
+	//wstring dir1 = stdGetParentDirectory(file1);
+	//wstring dir2 = stdGetParentDirectory(file2);
 
-	wstring dir1 = stdGetParentDirectory(file1);
-	wstring dir2 = stdGetParentDirectory(file2);
+	//wstring tempfilenameOrig = stdCombinePath(dir1, L"3_v-jz");
+	//wstring tempfilename = tempfilenameOrig;
+	//int i = 1;
+	//while (PathFileExists(tempfilename.c_str()))
+	//{
+	//	tempfilename = tempfilenameOrig + stdItoT(i++);
+	//}
 
-	wstring tempfilenameOrig = stdCombinePath(dir1, L"3_v-jz");
-	wstring tempfilename = tempfilenameOrig;
-	int i = 1;
-	while (PathFileExists(tempfilename.c_str()))
+	if (!ReplaceFile(
+		file1.c_str(),
+		file2.c_str(),
+		fileback.c_str(),
+		0, 0, 0 // flags and reserved
+		))
 	{
-		tempfilename = tempfilenameOrig + stdItoT(i++);
+		ErrorExit(GetLastErrorString(GetLastError()));
 	}
-	// tukare
+	if (PathFileExists(file2.c_str()))
+	{
+		ErrorExit(L"Unknown Error");
+	}
+	if (!MoveFile(fileback.c_str(), file2.c_str()))
+	{
+		ErrorExit(GetLastErrorString(GetLastError()));
+	}
 	return 0;
 }
