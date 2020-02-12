@@ -92,7 +92,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	
 	wstring file1 = opMain.getValue(0);
 	wstring file2 = opMain.getValue(1);
-	wstring fileback = GetBackupFile(file2.c_str());
+	wstring fileback = GetBackupFile(file1.c_str());
 
 	if (!PathFileExists(file1.c_str()))
 	{
