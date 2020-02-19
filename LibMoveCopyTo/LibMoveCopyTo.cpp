@@ -155,6 +155,16 @@ UINT __cdecl MyControllingFunction(LPVOID pParam)
 	
 	return 0;
 }
+
+STRINGVECTOR addBackSlash(const STRINGVECTOR& input)
+{
+	STRINGVECTOR rets;
+	for (auto&& s : input)
+	{
+		rets.emplace_back(stdAddBackSlash(s));
+	}
+	return rets;
+}
 int libmain(LPCWSTR pAppName, HICON hIcon)
 {
 	//UNREFERENCED_PARAMETER(hPrevInstance);
@@ -232,7 +242,8 @@ int libmain(LPCWSTR pAppName, HICON hIcon)
 		ShowError(I18N(L"Failed to load from db."));
 		return 1;
 	}
-	
+	allSaving = addBackSlash(allSaving);
+
 	if (nPriority == -1)
 		nPriority = sqlGetPrivateProfileInt(SEC_OPTION, KEY_PRIORITY, -1, dbFile.c_str());
 	

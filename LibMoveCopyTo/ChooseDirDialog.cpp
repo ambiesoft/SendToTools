@@ -99,6 +99,7 @@ void CChooseDirDialog::OnClickedButtonBrowse()
 	if (!browseFolder(*this, I18N(L"Move to"), szFolder))
 		return;
 
+	PathAddBackslash(szFolder);
 	int sel = m_listDirs.InsertString(0, szFolder);
 	m_listDirs.SetCurSel(sel);
 	m_strDirResult = szFolder;
