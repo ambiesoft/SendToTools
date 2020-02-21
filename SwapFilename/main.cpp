@@ -1,4 +1,6 @@
 #include "StdAfx.h"
+#include <atlstr.h>
+#include <atltransactionmanager.h>
 #include "resource.h"
 
 #include "../../lsMisc/CommandLineParser.h"
@@ -16,7 +18,7 @@ using namespace std;
 void ErrorExit(const wstring& error, LPCTSTR funcname)
 {
 	MessageBox(nullptr,
-		stdFormat(L"%s:%s", error.c_str(), funcname).c_str(),
+		stdFormat(L"%s\n%s", error.c_str(), funcname).c_str(),
 		APPNAME,
 		MB_ICONERROR);
 
@@ -41,6 +43,27 @@ BOOL DoReplaceFilePlane(wstring file1, wstring file2, wstring fileback)
 	return TRUE;
 }
 BOOL DoReplaceFile(wstring file1, wstring file2, wstring fileback)
+{
+	CAtlTransactionManager trans;
+	if (!trans.GetHandle())
+		return FALSE;
+
+	if (!trans.MoveFile(file1.c_str(), fileback.c_str()))
+	{
+		ErrorExit(GetLastErrorString(GetLastError()), L"MoveFile");
+	}
+	if (!trans.MoveFile(file2.c_str(), file1.c_str()))
+	{
+		ErrorExit(GetLastErrorString(GetLastError()), L"MoveFile");
+	}
+	if (!trans.MoveFile(fileback.c_str(), file2.c_str()))
+	{
+		ErrorExit(GetLastErrorString(GetLastError()), L"MoveFile");
+	}
+
+	return trans.Commit();
+}
+BOOL DoReplaceFile_obsolete(wstring file1, wstring file2, wstring fileback)
 {
 	if (!ReplaceFile(
 		file1.c_str(),
@@ -96,15 +119,15 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
 	if (!PathFileExists(file1.c_str()))
 	{
-		ErrorExit(stdFormat(I18N(L"%s does not exist."), file1), L"PathFileExists");
+		ErrorExit(stdFormat(I18N(L"%s does not exist."), file1.c_str()), L"PathFileExists");
 	}
 	if (!PathFileExists(file2.c_str()))
 	{
-		ErrorExit(stdFormat(I18N(L"%s does not exist."), file2), L"PathFileExists");
+		ErrorExit(stdFormat(I18N(L"%s does not exist."), file2.c_str()), L"PathFileExists");
 	}
 	if (PathFileExists(fileback.c_str()))
 	{
-		ErrorExit(stdFormat(I18N(L"%s does exist."), fileback), L"PathFileExists");
+		ErrorExit(stdFormat(I18N(L"%s does exist."), fileback.c_str()), L"PathFileExists");
 	}
 
 	file1 = stdGetFullPathName(file1);
