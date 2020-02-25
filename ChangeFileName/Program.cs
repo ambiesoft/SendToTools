@@ -84,7 +84,13 @@ namespace ChangeFileName
             List<string> args = new List<string>();
             foreach(string arg in argsOriginal)
             {
-                if(arg=="/run")
+                if(arg=="-h" || arg=="/h" || arg=="--help")
+                {
+                    sb.AppendLine(Properties.Resources.HELP);
+                    CppUtils.Alert(sb.ToString());
+                    return;
+                }
+                else if(arg=="/run")
                 {
                     run_ = true;
                     continue;

@@ -148,9 +148,9 @@
     <value>File name must not include following letters</value>
   </data>
   <data name="HELP" xml:space="preserve">
-    <value>ChangeFileName.exe file
+    <value>ChangeFileName.exe [/run] file
 
-Change Filename.</value>
+/run: Runs the file</value>
   </data>
   <data name="NEW_FOLDER_DDD" xml:space="preserve">
     <value>&amp;New Folder...</value>

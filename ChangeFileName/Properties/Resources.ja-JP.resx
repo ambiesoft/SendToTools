@@ -145,9 +145,9 @@
     <value>以下のファイルは存在しません。</value>
   </data>
   <data name="HELP" xml:space="preserve">
-    <value>ChangeFileName.exe file
+    <value>ChangeFileName.exe [/run] file
 
-ファイル名を変更します。</value>
+/run: ファイルを実行</value>
   </data>
   <data name="DESTINATION_EXISTS" xml:space="preserve">
     <value>宛先には既に "{0}" という名前のファイルが存在します。 ファイルを置き換えますか？</value>

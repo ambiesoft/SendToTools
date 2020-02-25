@@ -184,9 +184,9 @@ namespace ChangeFileName.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ChangeFileName.exe file
+        ///   Looks up a localized string similar to ChangeFileName.exe [/run] file
         ///
-        ///Change Filename..
+        ////run: Runs the file.
         /// </summary>
         internal static string HELP {
             get {
