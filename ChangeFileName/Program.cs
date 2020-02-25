@@ -55,20 +55,21 @@ namespace ChangeFileName
         }
 
 
-
+        internal static bool run_;
         static readonly internal string damemoji = "\\/:;*?\"<>|";
         /// <summary>
         /// 
         /// </summary>
         [STAThread]
-        static void Main(string[] args)
+        static void Main(string[] argsOriginal)
         {
             Ambiesoft.CppUtils.AmbSetProcessDPIAware();
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            if (args.Length < 1)
+
+            if (argsOriginal.Length < 1)
             {
                 StringBuilder sb = new StringBuilder();
                 sb.Append(Properties.Resources.NO_ARGUMENTS);
@@ -79,15 +80,32 @@ namespace ChangeFileName
                 CppUtils.Alert(sb.ToString());
                 return;
             }
-            if (args.Length > 1)
+
+            List<string> args = new List<string>();
+            foreach(string arg in argsOriginal)
+            {
+                if(arg=="/run")
+                {
+                    run_ = true;
+                    continue;
+                }
+                args.Add(arg);
+            }
+            
+            if (args.Count > 1)
             {
                 StringBuilder sbNotFounds = new StringBuilder();
-                for (int i = 0; i < args.Length; ++i)
+                for (int i = 0; i < args.Count; ++i)
                 {
                     try
                     {
-                        if(File.Exists(args[i]) || Directory.Exists(args[i]))
-                            System.Diagnostics.Process.Start(Application.ExecutablePath, "\""+args[i]+"\"");
+                        if (File.Exists(args[i]) || Directory.Exists(args[i]))
+                        {
+
+                            System.Diagnostics.Process.Start(
+                                Application.ExecutablePath, 
+                                (run_ ? "/run ": "") +  "\"" + args[i] + "\"");
+                        }
                         else
                         {
                             sbNotFounds.AppendLine(args[i]);

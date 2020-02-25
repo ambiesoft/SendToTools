@@ -262,7 +262,7 @@ namespace ChangeFileName
                 ProductName);
             this.Text = title;
 
-            if (chkAutoRun.Checked)
+            if (chkAutoRun.Checked || Program.run_)
             {
                 Program.SafeProcessStart(this.txtName.Tag.ToString(), true);
             }
