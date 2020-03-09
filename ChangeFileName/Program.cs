@@ -86,6 +86,7 @@ namespace ChangeFileName
             {
                 if(arg=="-h" || arg=="/h" || arg=="--help")
                 {
+                    StringBuilder sb = new StringBuilder();
                     sb.AppendLine(Properties.Resources.HELP);
                     CppUtils.Alert(sb.ToString());
                     return;
