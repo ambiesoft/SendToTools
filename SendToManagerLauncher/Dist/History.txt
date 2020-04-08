@@ -1,3 +1,6 @@
+2020/04/09 ver 1.17.19
+Modify 'RunOnebyOne'
+
 2020/02/19 ver 1.17.18
 Add backslash on MoveTo dialog
 

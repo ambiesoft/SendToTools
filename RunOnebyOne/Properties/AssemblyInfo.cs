@@ -7,7 +7,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Ambiesoft")]
 [assembly: AssemblyProduct("RunOnebyOne")]
-[assembly: AssemblyCopyright("Copyright © Ambiesoft 2019")]
+[assembly: AssemblyCopyright("Copyright © Ambiesoft 2020")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -15,5 +15,5 @@ using System.Runtime.InteropServices;
 
 [assembly: Guid("852e0eed-52e5-48b1-b0d0-d5169f550b3b")]
 
-[assembly: AssemblyVersion("1.1.1.*")]
+[assembly: AssemblyVersion("1.1.2.*")]
 

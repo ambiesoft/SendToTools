@@ -185,7 +185,7 @@ int libmain(LPCWSTR pAppName, HICON hIcon)
 	}
 
 	
-	COption opTarget(L"/T", L"/t", 1);
+	COption opTarget({ L"/T", L"/t" }, 1);
 	COption opFile(L"", Ambiesoft::ArgCount::ArgCount_Infinite);
 	wstring lang;
 	bool bHelp = false;
@@ -195,7 +195,7 @@ int libmain(LPCWSTR pAppName, HICON hIcon)
 	cmd.AddOption(&opFile);
 	cmd.AddOption(L"/p", 1, &nPriority);
 	cmd.AddOption(L"/lang", 1, &lang);
-	cmd.AddOption( L"/h", L"-h" , 0, &bHelp);
+	cmd.AddOption({ L"/h", L"-h" }, 0, &bHelp);
 
 	cmd.Parse();
 

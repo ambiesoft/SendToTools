@@ -56,13 +56,17 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Ambiesoft.AmbLib, Version=1.0.0.34678, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Ambiesoft.AmbLib, Version=1.0.15.7916, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Linkout\DNAssembly\Ambiesoft.AmbLib.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Linkout\DNAssembly.NET4\Ambiesoft.AmbLib.dll</HintPath>
     </Reference>
     <Reference Include="Ambiesoft.AmbLibcpp, Version=1.1.6864.5042, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\Linkout\DNAssembly.NET4\Ambiesoft.AmbLibcpp.dll</HintPath>
+    </Reference>
+    <Reference Include="Ambiesoft.Profile, Version=1.0.1.6950, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Linkout\DNAssembly.NET4\Ambiesoft.Profile.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -83,6 +87,7 @@
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
     <Compile Include="ItemInfo.cs" />
+    <Compile Include="Options.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FormMain.ja-JP.resx">

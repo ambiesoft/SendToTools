@@ -34,13 +34,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using System.IO;
+using NDesk.Options;
 using Ambiesoft;
 
 namespace RunOnebyOne
 {
     public partial class FormMain : Form
     {
+        readonly string SECTION_OPTION = "Option";
+        readonly string SECTION_LOCATION = "Location";
+        readonly string SECTION_APP_COMBO = "AppCombo";
+        readonly string SECTION_ARG_COMBO = "ArgCombo";
+        readonly int MAX_COMBO_SAVE = 64;
+        readonly string KEY_COLUMN_WIDTH = "ListViewColumnWidth";
+
         string[] args_;
         public FormMain(string[] args)
         {
@@ -48,12 +56,81 @@ namespace RunOnebyOne
 
             InitializeComponent();
 
-            Text = Application.ProductName;
+            // LoadFromIni
+            HashIni ini = Profile.ReadAll(IniPath);
+            AmbLib.LoadFormXYWH(this, SECTION_LOCATION, ini);
+            AmbLib.LoadListViewColumnWidth(listMain, SECTION_OPTION, KEY_COLUMN_WIDTH, ini);
+            AmbLib.LoadComboBox(cmbApplication, SECTION_APP_COMBO, MAX_COMBO_SAVE, ini);
+            AmbLib.LoadComboBox(cmbArguments, SECTION_ARG_COMBO, MAX_COMBO_SAVE, ini);
 
-            foreach (string file in args)
+
+            OptionSet p = new OptionSet()
+                .Add("v|version", dummy => { ShowHelp(); Environment.Exit(0); })
+                .Add("?|h|help", dummy => { ShowHelp(); Environment.Exit(0); })
+                .Add("@=", reportFile => { ImportFromReport(reportFile); })
+                .Add("dir=", dir => { ImportDirectory(dir); })
+                ;
+
+
+            // Parse CommandLine
+            List<string> defaultArgs = p.Parse(args);
+            foreach (string file in defaultArgs)
             {
                 AddToList(file);
             }
+
+            UpdateTitle();
+        }
+
+        string IniPath
+        {
+            get
+            {
+                return Path.Combine(Path.GetDirectoryName(Application.ExecutablePath),
+                    Path.GetFileNameWithoutExtension(Application.ExecutablePath) + ".ini");
+            }
+        }
+        void ImportDirectory(string dir)
+        {
+            try
+            {
+                DirectoryInfo di = new DirectoryInfo(dir);
+                foreach (var file in di.GetFiles())
+                {
+                    AddToList(file.FullName);
+                }
+            }
+            catch (Exception ex)
+            {
+                CppUtils.Fatal(ex);
+                Environment.Exit(1);
+            }
+        }
+        void ImportFromReport(string reportFile)
+        {
+            if (string.IsNullOrEmpty(reportFile))
+                return;
+
+            try
+            {
+                foreach (string line in File.ReadAllLines(reportFile))
+                {
+                    if (string.IsNullOrEmpty(line))
+                        continue;
+                    AddToList(line);
+                }
+            }
+            catch(Exception ex)
+            {
+                CppUtils.Fatal(ex);
+                Environment.Exit(1);
+            }
+        }
+        void ShowHelp()
+        {
+            MessageBox.Show("help", Application.ProductName,
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Information);
         }
 
         private void AddToList(string file)
@@ -81,9 +158,47 @@ namespace RunOnebyOne
             return true;
         }
 
-        private async void RunAsync()
+        int GetDoneCount()
         {
-            Doing = true;
+            int done = 0;
+            foreach (ListViewItem lvi in listMain.Items)
+            {
+                ListViewItem.ListViewSubItem subIndicator = lvi.SubItems[0];
+
+                if (subIndicator.Text == "*")
+                    ++done;
+            }
+            return done;
+        }
+        int GetAllCount()
+        {
+            return listMain.Items.Count;
+        }
+        void UpdateTitle()
+        {
+            int done = GetDoneCount();
+            int all = GetAllCount();
+            string ratio = AmbLib.GetRatioString(done, all);
+            if (Running)
+            {
+                Text = string.Format("{0}% {1}/{2} - {3}",
+                    string.IsNullOrEmpty(ratio) ? "0" : ratio,
+                    done,
+                    all,
+                    Application.ProductName);
+            }
+            else
+            {
+                Text = string.Format("{0}{1}/{2} - {3}",
+                    string.Empty,
+                    done, 
+                    all,
+                    Application.ProductName);
+            }
+        }
+        private async void RunAsync(string exe,string args)
+        {
+            Running = true;
             foreach (ListViewItem lvi in listMain.Items)
             {
                 if (Cancelling)
@@ -99,12 +214,14 @@ namespace RunOnebyOne
                 subIndicator.Text = "=";
                 string file = subFile.Text;
                 string result = "";
-                await Task.Run(() => {
-                   ProcessStartInfo psi = new ProcessStartInfo();
-                   psi.FileName = file;
-                   psi.UseShellExecute = true;
-                   try
-                   {
+                await Task.Run(() =>
+                {
+                    ProcessStartInfo psi = new ProcessStartInfo();
+                    psi.FileName = exe;
+                    psi.Arguments = string.Format("{0} \"{1}\"", args, file);
+                    psi.UseShellExecute = true;
+                    try
+                    {
                         Process proc = Process.Start(psi);
                         if (proc == null)
                         {
@@ -115,46 +232,47 @@ namespace RunOnebyOne
                             proc.WaitForExit();
                             result = proc.ExitCode.ToString();
                         }
-                   }
-                   catch (Exception ex)
-                   {
+                    }
+                    catch (Exception ex)
+                    {
                         result = ex.Message;
-                   }
-               });
+                    }
+                });
                 subIndicator.Text = "*";
                 subResult.Text = result;
+                UpdateTitle();
             }
 
             if(!Cancelling)
             {
                 if (IsListAllDone())
                 {
-                    btnRun.Enabled = false;
-                    btnRun.Visible = false;
-                    btnRun.Text = Properties.Resources.DONE_BUTTON_TEXT;
+                    //btnRun.Enabled = false;
+                    //btnRun.Visible = false;
+                    //btnRun.Text = Properties.Resources.DONE_BUTTON_TEXT;
                 }
                 else
                 {
-                    RunAsync();
+                    RunAsync(exe,args);
                 }
             }
             Cancelling = false;
-            Doing = false;
+            Running = false;
         }
-        bool doing_;
-        bool Doing
+        bool running_;
+        bool Running
         {
-            get { return doing_; }
+            get { return running_; }
             set
             {
                 if(value)
                 {
-                    doing_ = true;
+                    running_ = true;
                     btnRun.Text = Properties.Resources.PAUSE_BUTTON_TEXT;
                 }
                 else
                 {
-                    doing_ = false;
+                    running_ = false;
                     btnRun.Text = Properties.Resources.RUN_BUTTON_TEXT;
                 }
             }
@@ -170,22 +288,49 @@ namespace RunOnebyOne
                 {
                     btnRun.Text = Properties.Resources.CANCELLING_BUTTON_TEXT;
                     btnRun.Enabled = false;
+                    btnClearResults.Enabled = false;
                 }
                 else
                 {
                     btnRun.Enabled = true;
+                    btnClearResults.Enabled = true;
                 }
             }
         }
+        void ClearAllListIndicator()
+        {
+            foreach (ListViewItem lvi in listMain.Items)
+            {
+                ListViewItem.ListViewSubItem subIndicator = lvi.SubItems[0];
+                subIndicator.Text = "";
+            }
+        }
+        void UpdateComboCommon(ComboBox cmb)
+        {
+            if (!cmb.Items.Contains(cmb.Text))
+                cmb.Items.Add(cmb.Text);
+        }
+        void UpdateCombo()
+        {
+            UpdateComboCommon(cmbApplication);
+            UpdateComboCommon(cmbArguments);
+        }
         private void btnRun_Click(object sender, EventArgs e)
         {
-            if (Doing)
+            if (Running)
             {
                 Cancelling = true;
                 return;
             }
             Cancelling = false;
-            RunAsync();
+            if(IsListAllDone())
+            {
+                if (DialogResult.Yes != CppUtils.YesOrNo("Do it again?",MessageBoxDefaultButton.Button2))
+                    return;
+                ClearAllListIndicator();
+            }
+            UpdateCombo();
+            RunAsync(cmbApplication.Text,cmbArguments.Text);
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -223,15 +368,18 @@ namespace RunOnebyOne
             btnReopenAsAdmin.Enabled = false;
             try
             {
-                AmbLib.StartAsAdmin();
-                this.Close();
+                if (AmbLib.StartAsAdmin())
+                    this.Close();
                 return;
             }
             catch (Exception ex)
             {
                 CppUtils.Alert(this, ex);
             }
-            btnReopenAsAdmin.Enabled = true;
+            finally
+            {
+                btnReopenAsAdmin.Enabled = true;
+            }
         }
 
         private void FormMain_Load(object sender, EventArgs e)
@@ -241,6 +389,72 @@ namespace RunOnebyOne
                 this.Text += " (" + Properties.Resources.ADMINISTRATOR + ")";
                 btnReopenAsAdmin.Visible = false;
             }
+        }
+
+        private void btnBrowseApp_Click(object sender, EventArgs e)
+        {
+            if (DialogResult.OK != ofdApplication.ShowDialog())
+                return;
+            cmbApplication.Text = ofdApplication.FileName;
+        }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            if (Running)
+                return;
+            if (DialogResult.Yes != CppUtils.YesOrNo("Clear?", MessageBoxDefaultButton.Button2))
+                return;
+
+            ClearAllListIndicator();
+        }
+
+        void ClearSelectedListItems()
+        {
+            foreach (ListViewItem lvi in listMain.Items)
+            {
+                if (lvi.Selected)
+                    listMain.Items.Remove(lvi);
+            }
+        }
+        int GetSelectedItemCount()
+        {
+            return listMain.SelectedItems.Count;
+        }
+        private void tsmiRemove_Click(object sender, EventArgs e)
+        {
+            int countSelected = GetSelectedItemCount();
+            if (countSelected == 0)
+                return;
+
+            if(DialogResult.Yes != CppUtils.YesOrNo(string.Format("sure {0} items?",countSelected),
+                MessageBoxDefaultButton.Button2))
+            {
+                return;
+            }
+
+            ClearSelectedListItems();
+        }
+
+        private void tsmiRemoveAll_Click(object sender, EventArgs e)
+        {
+            if (DialogResult.Yes != CppUtils.YesOrNo(string.Format("sure all items?"),
+                MessageBoxDefaultButton.Button2))
+            {
+                return;
+            }
+
+            listMain.Items.Clear();
+        }
+
+        private void FormMain_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            HashIni ini = Profile.ReadAll(IniPath);
+            AmbLib.SaveFormXYWH(this, SECTION_LOCATION, ini);
+            AmbLib.SaveListViewColumnWidth(listMain,SECTION_OPTION, KEY_COLUMN_WIDTH, ini);
+            AmbLib.SaveComboBox(cmbApplication, SECTION_APP_COMBO, MAX_COMBO_SAVE, ini);
+            AmbLib.SaveComboBox(cmbArguments, SECTION_ARG_COMBO, MAX_COMBO_SAVE, ini);
+            if (!Profile.WriteAll(ini, IniPath))
+                CppUtils.Alert("Failed to save ini");
         }
     }
 }

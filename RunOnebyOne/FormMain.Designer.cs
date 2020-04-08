@@ -28,14 +28,27 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             this.listMain = new System.Windows.Forms.ListView();
             this.chIndicator = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.chFile = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.chResult = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.cmList = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.tsmiRemove = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsmiRemoveAll = new System.Windows.Forms.ToolStripMenuItem();
             this.btnRun = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             this.btnReopenAsAdmin = new System.Windows.Forms.Button();
+            this.labelApplication = new System.Windows.Forms.Label();
+            this.btnBrowseApp = new System.Windows.Forms.Button();
+            this.ofdApplication = new System.Windows.Forms.OpenFileDialog();
+            this.lblArguments = new System.Windows.Forms.Label();
+            this.btnClearResults = new System.Windows.Forms.Button();
+            this.cmbApplication = new System.Windows.Forms.ComboBox();
+            this.cmbArguments = new System.Windows.Forms.ComboBox();
+            this.cmList.SuspendLayout();
             this.SuspendLayout();
             // 
             // listMain
@@ -46,6 +59,9 @@
             this.chIndicator,
             this.chFile,
             this.chResult});
+            this.listMain.ContextMenuStrip = this.cmList;
+            this.listMain.FullRowSelect = true;
+            this.listMain.HideSelection = false;
             this.listMain.Name = "listMain";
             this.listMain.UseCompatibleStateImageBehavior = false;
             this.listMain.View = System.Windows.Forms.View.Details;
@@ -64,6 +80,32 @@
             // chResult
             // 
             resources.ApplyResources(this.chResult, "chResult");
+            // 
+            // cmList
+            // 
+            this.cmList.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiRemove,
+            this.toolStripMenuItem1,
+            this.tsmiRemoveAll});
+            this.cmList.Name = "cmList";
+            resources.ApplyResources(this.cmList, "cmList");
+            // 
+            // tsmiRemove
+            // 
+            this.tsmiRemove.Name = "tsmiRemove";
+            resources.ApplyResources(this.tsmiRemove, "tsmiRemove");
+            this.tsmiRemove.Click += new System.EventHandler(this.tsmiRemove_Click);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            resources.ApplyResources(this.toolStripMenuItem1, "toolStripMenuItem1");
+            // 
+            // tsmiRemoveAll
+            // 
+            this.tsmiRemoveAll.Name = "tsmiRemoveAll";
+            resources.ApplyResources(this.tsmiRemoveAll, "tsmiRemoveAll");
+            this.tsmiRemoveAll.Click += new System.EventHandler(this.tsmiRemoveAll_Click);
             // 
             // btnRun
             // 
@@ -87,18 +129,68 @@
             this.btnReopenAsAdmin.UseVisualStyleBackColor = true;
             this.btnReopenAsAdmin.Click += new System.EventHandler(this.btnReopenAsAdmin_Click);
             // 
+            // labelApplication
+            // 
+            resources.ApplyResources(this.labelApplication, "labelApplication");
+            this.labelApplication.Name = "labelApplication";
+            // 
+            // btnBrowseApp
+            // 
+            resources.ApplyResources(this.btnBrowseApp, "btnBrowseApp");
+            this.btnBrowseApp.Name = "btnBrowseApp";
+            this.btnBrowseApp.UseVisualStyleBackColor = true;
+            this.btnBrowseApp.Click += new System.EventHandler(this.btnBrowseApp_Click);
+            // 
+            // ofdApplication
+            // 
+            this.ofdApplication.DefaultExt = "exe";
+            resources.ApplyResources(this.ofdApplication, "ofdApplication");
+            // 
+            // lblArguments
+            // 
+            resources.ApplyResources(this.lblArguments, "lblArguments");
+            this.lblArguments.Name = "lblArguments";
+            // 
+            // btnClearResults
+            // 
+            resources.ApplyResources(this.btnClearResults, "btnClearResults");
+            this.btnClearResults.Name = "btnClearResults";
+            this.btnClearResults.UseVisualStyleBackColor = true;
+            this.btnClearResults.Click += new System.EventHandler(this.btnClear_Click);
+            // 
+            // cmbApplication
+            // 
+            resources.ApplyResources(this.cmbApplication, "cmbApplication");
+            this.cmbApplication.FormattingEnabled = true;
+            this.cmbApplication.Name = "cmbApplication";
+            // 
+            // cmbArguments
+            // 
+            resources.ApplyResources(this.cmbArguments, "cmbArguments");
+            this.cmbArguments.FormattingEnabled = true;
+            this.cmbArguments.Name = "cmbArguments";
+            // 
             // FormMain
             // 
             this.AcceptButton = this.btnClose;
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.cmbArguments);
+            this.Controls.Add(this.cmbApplication);
+            this.Controls.Add(this.btnClearResults);
+            this.Controls.Add(this.btnBrowseApp);
+            this.Controls.Add(this.lblArguments);
+            this.Controls.Add(this.labelApplication);
             this.Controls.Add(this.btnReopenAsAdmin);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnRun);
             this.Controls.Add(this.listMain);
             this.Name = "FormMain";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormMain_FormClosed);
             this.Load += new System.EventHandler(this.FormMain_Load);
+            this.cmList.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -111,6 +203,17 @@
         private System.Windows.Forms.ColumnHeader chResult;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Button btnReopenAsAdmin;
+        private System.Windows.Forms.Label labelApplication;
+        private System.Windows.Forms.Button btnBrowseApp;
+        private System.Windows.Forms.OpenFileDialog ofdApplication;
+        private System.Windows.Forms.Label lblArguments;
+        private System.Windows.Forms.Button btnClearResults;
+        private System.Windows.Forms.ContextMenuStrip cmList;
+        private System.Windows.Forms.ToolStripMenuItem tsmiRemove;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem tsmiRemoveAll;
+        private System.Windows.Forms.ComboBox cmbApplication;
+        private System.Windows.Forms.ComboBox cmbArguments;
     }
 }
 

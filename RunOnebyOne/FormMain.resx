@@ -134,12 +134,24 @@
   <data name="chResult.Text" xml:space="preserve">
     <value>Result</value>
   </data>
+  <metadata name="cmList.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>149, 17</value>
+  </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="cmList.Size" type="System.Drawing.Size, System.Drawing">
+    <value>135, 54</value>
+  </data>
+  <data name="&gt;&gt;cmList.Name" xml:space="preserve">
+    <value>cmList</value>
+  </data>
+  <data name="&gt;&gt;cmList.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="listMain.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 13</value>
   </data>
   <data name="listMain.Size" type="System.Drawing.Size, System.Drawing">
-    <value>630, 297</value>
+    <value>701, 276</value>
   </data>
   <data name="listMain.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -154,7 +166,22 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;listMain.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>10</value>
+  </data>
+  <data name="tsmiRemove.Size" type="System.Drawing.Size, System.Drawing">
+    <value>134, 22</value>
+  </data>
+  <data name="tsmiRemove.Text" xml:space="preserve">
+    <value>&amp;Remove</value>
+  </data>
+  <data name="toolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>131, 6</value>
+  </data>
+  <data name="tsmiRemoveAll.Size" type="System.Drawing.Size, System.Drawing">
+    <value>134, 22</value>
+  </data>
+  <data name="tsmiRemoveAll.Text" xml:space="preserve">
+    <value>Remove All</value>
   </data>
   <data name="btnRun.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left, Right</value>
@@ -163,10 +190,10 @@
     <value>False</value>
   </data>
   <data name="btnRun.Location" type="System.Drawing.Point, System.Drawing">
-    <value>166, 319</value>
+    <value>166, 355</value>
   </data>
   <data name="btnRun.Size" type="System.Drawing.Size, System.Drawing">
-    <value>375, 26</value>
+    <value>313, 26</value>
   </data>
   <data name="btnRun.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -184,13 +211,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnRun.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>9</value>
   </data>
   <data name="btnClose.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
   </data>
   <data name="btnClose.Location" type="System.Drawing.Point, System.Drawing">
-    <value>547, 319</value>
+    <value>618, 355</value>
   </data>
   <data name="btnClose.Size" type="System.Drawing.Size, System.Drawing">
     <value>95, 26</value>
@@ -211,13 +238,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnClose.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>8</value>
   </data>
   <data name="btnReopenAsAdmin.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left</value>
   </data>
   <data name="btnReopenAsAdmin.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 319</value>
+    <value>12, 355</value>
   </data>
   <data name="btnReopenAsAdmin.Size" type="System.Drawing.Size, System.Drawing">
     <value>148, 26</value>
@@ -238,6 +265,180 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnReopenAsAdmin.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="labelApplication.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
+  </data>
+  <data name="labelApplication.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelApplication.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 303</value>
+  </data>
+  <data name="labelApplication.Size" type="System.Drawing.Size, System.Drawing">
+    <value>62, 13</value>
+  </data>
+  <data name="labelApplication.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="labelApplication.Text" xml:space="preserve">
+    <value>&amp;Application:</value>
+  </data>
+  <data name="&gt;&gt;labelApplication.Name" xml:space="preserve">
+    <value>labelApplication</value>
+  </data>
+  <data name="&gt;&gt;labelApplication.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelApplication.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;labelApplication.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="btnBrowseApp.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
+  </data>
+  <data name="btnBrowseApp.Location" type="System.Drawing.Point, System.Drawing">
+    <value>679, 298</value>
+  </data>
+  <data name="btnBrowseApp.Size" type="System.Drawing.Size, System.Drawing">
+    <value>34, 23</value>
+  </data>
+  <data name="btnBrowseApp.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="btnBrowseApp.Text" xml:space="preserve">
+    <value>&amp;...</value>
+  </data>
+  <data name="&gt;&gt;btnBrowseApp.Name" xml:space="preserve">
+    <value>btnBrowseApp</value>
+  </data>
+  <data name="&gt;&gt;btnBrowseApp.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnBrowseApp.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;btnBrowseApp.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <metadata name="ofdApplication.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <data name="ofdApplication.Filter" xml:space="preserve">
+    <value>Application|*.exe|All Files|*.*</value>
+  </data>
+  <data name="lblArguments.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
+  </data>
+  <data name="lblArguments.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblArguments.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblArguments.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 327</value>
+  </data>
+  <data name="lblArguments.Size" type="System.Drawing.Size, System.Drawing">
+    <value>60, 13</value>
+  </data>
+  <data name="lblArguments.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="lblArguments.Text" xml:space="preserve">
+    <value>&amp;Arguments:</value>
+  </data>
+  <data name="&gt;&gt;lblArguments.Name" xml:space="preserve">
+    <value>lblArguments</value>
+  </data>
+  <data name="&gt;&gt;lblArguments.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblArguments.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblArguments.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="btnClearResults.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
+  </data>
+  <data name="btnClearResults.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnClearResults.Location" type="System.Drawing.Point, System.Drawing">
+    <value>485, 355</value>
+  </data>
+  <data name="btnClearResults.Size" type="System.Drawing.Size, System.Drawing">
+    <value>127, 26</value>
+  </data>
+  <data name="btnClearResults.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="btnClearResults.Text" xml:space="preserve">
+    <value>&amp;Clear Results</value>
+  </data>
+  <data name="&gt;&gt;btnClearResults.Name" xml:space="preserve">
+    <value>btnClearResults</value>
+  </data>
+  <data name="&gt;&gt;btnClearResults.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnClearResults.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;btnClearResults.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="cmbApplication.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left, Right</value>
+  </data>
+  <data name="cmbApplication.Location" type="System.Drawing.Point, System.Drawing">
+    <value>80, 299</value>
+  </data>
+  <data name="cmbApplication.Size" type="System.Drawing.Size, System.Drawing">
+    <value>593, 21</value>
+  </data>
+  <data name="cmbApplication.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;cmbApplication.Name" xml:space="preserve">
+    <value>cmbApplication</value>
+  </data>
+  <data name="&gt;&gt;cmbApplication.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cmbApplication.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;cmbApplication.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="cmbArguments.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left, Right</value>
+  </data>
+  <data name="cmbArguments.Location" type="System.Drawing.Point, System.Drawing">
+    <value>80, 324</value>
+  </data>
+  <data name="cmbArguments.Size" type="System.Drawing.Size, System.Drawing">
+    <value>593, 21</value>
+  </data>
+  <data name="cmbArguments.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="&gt;&gt;cmbArguments.Name" xml:space="preserve">
+    <value>cmbArguments</value>
+  </data>
+  <data name="&gt;&gt;cmbArguments.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cmbArguments.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;cmbArguments.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
@@ -247,7 +448,7 @@
     <value>6, 13</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>654, 357</value>
+    <value>725, 393</value>
   </data>
   <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>433, 260</value>
@@ -269,6 +470,30 @@
   </data>
   <data name="&gt;&gt;chResult.Type" xml:space="preserve">
     <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tsmiRemove.Name" xml:space="preserve">
+    <value>tsmiRemove</value>
+  </data>
+  <data name="&gt;&gt;tsmiRemove.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripMenuItem1.Name" xml:space="preserve">
+    <value>toolStripMenuItem1</value>
+  </data>
+  <data name="&gt;&gt;toolStripMenuItem1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tsmiRemoveAll.Name" xml:space="preserve">
+    <value>tsmiRemoveAll</value>
+  </data>
+  <data name="&gt;&gt;tsmiRemoveAll.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ofdApplication.Name" xml:space="preserve">
+    <value>ofdApplication</value>
+  </data>
+  <data name="&gt;&gt;ofdApplication.Type" xml:space="preserve">
+    <value>System.Windows.Forms.OpenFileDialog, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>FormMain</value>
