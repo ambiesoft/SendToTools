@@ -32,6 +32,8 @@
 
 #include "../../lsMisc/CommandLineParser.h"
 #include "../../lsMisc/GetLastErrorString.h"
+#include "../../lsMisc/RevealFolder.h"
+
 #include "ChooseDirDialog.h"
 #include "ReleaseMutex.h"
 #include "WaitingDialog.h"
@@ -156,15 +158,16 @@ UINT __cdecl MyControllingFunction(LPVOID pParam)
 	return 0;
 }
 
-STRINGVECTOR addBackSlash(const STRINGVECTOR& input)
-{
-	STRINGVECTOR rets;
-	for (auto&& s : input)
-	{
-		rets.emplace_back(stdAddBackSlash(s));
-	}
-	return rets;
-}
+//STRINGVECTOR addBackSlash(const STRINGVECTOR& input)
+//{
+//	STRINGVECTOR rets;
+//	for (auto&& s : input)
+//	{
+//		rets.emplace_back(stdAddBackSlash(s));
+//	}
+//	return rets;
+//}
+
 int libmain(LPCWSTR pAppName, HICON hIcon)
 {
 	//UNREFERENCED_PARAMETER(hPrevInstance);
@@ -231,7 +234,7 @@ int libmain(LPCWSTR pAppName, HICON hIcon)
 	}
 
 
-	wstring dbFile = stdCombinePath(
+	const wstring dbFile = stdCombinePath(
 		stdGetParentDirectory(stdGetModuleFileName<wchar_t>()),
 		wstring(gAppName) + L".db");
 
@@ -242,7 +245,13 @@ int libmain(LPCWSTR pAppName, HICON hIcon)
 		ShowError(I18N(L"Failed to load from db."));
 		return 1;
 	}
-	allSaving = addBackSlash(allSaving);
+
+	std::for_each(allSaving.begin(), allSaving.end(), [](wstring &s)
+	{
+		s = stdAddBackSlash(s);
+	});
+
+	// allSaving = addBackSlash(allSaving);
 
 	if (nPriority == -1)
 		nPriority = sqlGetPrivateProfileInt(SEC_OPTION, KEY_PRIORITY, -1, dbFile.c_str());
@@ -332,16 +341,30 @@ int libmain(LPCWSTR pAppName, HICON hIcon)
 			return 1;
 		}
 
-		wstring msg = stdFormat(I18N(L"\"%s\" does not exist. Do you want to create a new folder?"), destDir.c_str());
-		if (IDYES != MessageBox(NULL,
-			msg.c_str(),
-			gAppName,
-			MB_ICONQUESTION | MB_YESNO))
-		{
-			return 1;
-		}
+		if (PathIsUNC(destDir.c_str()))
+			RevealFolder(destDir.c_str());
 
-		CreateDirectory(destDir.c_str(), NULL);
+		if (!PathIsDirectory(destDir.c_str()))
+		{
+			wstring msg = stdFormat(I18N(L"\"%s\" does not exist. Do you want to create a new folder?"), destDir.c_str());
+			if (IDYES != MessageBox(NULL,
+				msg.c_str(),
+				gAppName,
+				MB_ICONQUESTION | MB_YESNO))
+			{
+				return 1;
+			}
+
+			if (!CreateDirectory(destDir.c_str(), NULL))
+			{
+				wstring error = GetLastErrorString(GetLastError());
+				wstring msg = stdFormat(I18N(L"Failed to create folder '%s'\n%s"), 
+					destDir.c_str(),
+					error.c_str());
+				ShowError(msg.c_str());
+				return 1;
+			}
+		}
 	}
 
 	// final check

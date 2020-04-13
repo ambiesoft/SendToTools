@@ -81,6 +81,9 @@
     <ClCompile Include="WaitingDialog.cpp">
       <Filter>2 Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\lsMisc\RevealFolder.cpp">
+      <Filter>2 Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="LibMoveCopyTo.h">
@@ -144,6 +147,9 @@
       <Filter>1 Header Files</Filter>
     </ClInclude>
     <ClInclude Include="WaitingDialog.h">
+      <Filter>1 Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lsMisc\RevealFolder.h">
       <Filter>1 Header Files</Filter>
     </ClInclude>
   </ItemGroup>
