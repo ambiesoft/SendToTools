@@ -1263,7 +1263,7 @@ new KeyValuePair<string, string>(@"touch.exe", Properties.Resources.TOOL_EXPLANA
                 }
                 else
                 {
-                    sb.Append(AssemblyName.GetAssemblyName(fullpath).Version.ToString());
+                    sb.Append(AmbLib.getAssemblyVersion(Assembly.LoadFrom(fullpath), 3));
                 }
             }
             catch

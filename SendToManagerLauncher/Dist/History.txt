@@ -1,3 +1,6 @@
+2020/05/12 ver 1.17.20
+RunOneByOne can run executable
+
 2020/04/09 ver 1.17.19
 Modify 'RunOnebyOne'
 

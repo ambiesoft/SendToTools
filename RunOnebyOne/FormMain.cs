@@ -179,22 +179,14 @@ namespace RunOnebyOne
             int done = GetDoneCount();
             int all = GetAllCount();
             string ratio = AmbLib.GetRatioString(done, all);
-            if (Running)
-            {
-                Text = string.Format("{0}% {1}/{2} - {3}",
-                    string.IsNullOrEmpty(ratio) ? "0" : ratio,
-                    done,
-                    all,
-                    Application.ProductName);
-            }
-            else
-            {
-                Text = string.Format("{0}{1}/{2} - {3}",
-                    string.Empty,
-                    done, 
-                    all,
-                    Application.ProductName);
-            }
+            string version = AmbLib.getAssemblyVersion(System.Reflection.Assembly.GetExecutingAssembly(), 3);
+            Text = string.Format("{0}{1} {2}/{3} - {4} v{5}",
+                Running ? (string.IsNullOrEmpty(ratio) ? "0" : ratio) : string.Empty,
+                Running ? "%" : string.Empty,
+                done,
+                all,
+                Application.ProductName,
+                version);
         }
         private async void RunAsync(string exe,string args)
         {
@@ -217,8 +209,29 @@ namespace RunOnebyOne
                 await Task.Run(() =>
                 {
                     ProcessStartInfo psi = new ProcessStartInfo();
-                    psi.FileName = exe;
-                    psi.Arguments = string.Format("{0} \"{1}\"", args, file);
+                    if(string.IsNullOrEmpty(exe) && string.IsNullOrEmpty(args))
+                    {
+                        // both is null
+                        psi.FileName = file;
+                    }
+                    else if(string.IsNullOrEmpty(exe) && !string.IsNullOrEmpty(args))
+                    {
+                        // only args, but this fails if file is not an executable
+                        psi.FileName = file;
+                        psi.Arguments = args;
+                    }
+                    else if (!string.IsNullOrEmpty(exe) && string.IsNullOrEmpty(args))
+                    {
+                        // only exe
+                        psi.FileName = exe;
+                        psi.Arguments = AmbLib.doubleQuoteIfSpace(file);
+                    }
+                    else
+                    {
+                        // both exe and args
+                        psi.FileName = exe;
+                        psi.Arguments = string.Format("{0} {1}", args, AmbLib.doubleQuoteIfSpace(file));
+                    }
                     psi.UseShellExecute = true;
                     try
                     {

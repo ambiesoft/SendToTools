@@ -138,6 +138,21 @@
     <value>149, 17</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="tsmiRemove.Size" type="System.Drawing.Size, System.Drawing">
+    <value>134, 22</value>
+  </data>
+  <data name="tsmiRemove.Text" xml:space="preserve">
+    <value>&amp;Remove</value>
+  </data>
+  <data name="toolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>131, 6</value>
+  </data>
+  <data name="tsmiRemoveAll.Size" type="System.Drawing.Size, System.Drawing">
+    <value>134, 22</value>
+  </data>
+  <data name="tsmiRemoveAll.Text" xml:space="preserve">
+    <value>Remove All</value>
+  </data>
   <data name="cmList.Size" type="System.Drawing.Size, System.Drawing">
     <value>135, 54</value>
   </data>
@@ -154,7 +169,7 @@
     <value>701, 276</value>
   </data>
   <data name="listMain.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+    <value>100</value>
   </data>
   <data name="&gt;&gt;listMain.Name" xml:space="preserve">
     <value>listMain</value>
@@ -167,21 +182,6 @@
   </data>
   <data name="&gt;&gt;listMain.ZOrder" xml:space="preserve">
     <value>10</value>
-  </data>
-  <data name="tsmiRemove.Size" type="System.Drawing.Size, System.Drawing">
-    <value>134, 22</value>
-  </data>
-  <data name="tsmiRemove.Text" xml:space="preserve">
-    <value>&amp;Remove</value>
-  </data>
-  <data name="toolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>131, 6</value>
-  </data>
-  <data name="tsmiRemoveAll.Size" type="System.Drawing.Size, System.Drawing">
-    <value>134, 22</value>
-  </data>
-  <data name="tsmiRemoveAll.Text" xml:space="preserve">
-    <value>Remove All</value>
   </data>
   <data name="btnRun.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left, Right</value>
@@ -196,7 +196,7 @@
     <value>313, 26</value>
   </data>
   <data name="btnRun.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+    <value>800</value>
   </data>
   <data name="btnRun.Text" xml:space="preserve">
     <value>&amp;Run</value>
@@ -223,7 +223,7 @@
     <value>95, 26</value>
   </data>
   <data name="btnClose.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+    <value>1000</value>
   </data>
   <data name="btnClose.Text" xml:space="preserve">
     <value>&amp;Close</value>
@@ -250,10 +250,10 @@
     <value>148, 26</value>
   </data>
   <data name="btnReopenAsAdmin.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
+    <value>700</value>
   </data>
   <data name="btnReopenAsAdmin.Text" xml:space="preserve">
-    <value>Reopen As &amp;Admin</value>
+    <value>Re&amp;open As Admin</value>
   </data>
   <data name="&gt;&gt;btnReopenAsAdmin.Name" xml:space="preserve">
     <value>btnReopenAsAdmin</value>
@@ -280,7 +280,7 @@
     <value>62, 13</value>
   </data>
   <data name="labelApplication.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
+    <value>200</value>
   </data>
   <data name="labelApplication.Text" xml:space="preserve">
     <value>&amp;Application:</value>
@@ -307,7 +307,7 @@
     <value>34, 23</value>
   </data>
   <data name="btnBrowseApp.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
+    <value>400</value>
   </data>
   <data name="btnBrowseApp.Text" xml:space="preserve">
     <value>&amp;...</value>
@@ -346,10 +346,10 @@
     <value>60, 13</value>
   </data>
   <data name="lblArguments.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
+    <value>500</value>
   </data>
   <data name="lblArguments.Text" xml:space="preserve">
-    <value>&amp;Arguments:</value>
+    <value>Ar&amp;guments:</value>
   </data>
   <data name="&gt;&gt;lblArguments.Name" xml:space="preserve">
     <value>lblArguments</value>
@@ -376,10 +376,10 @@
     <value>127, 26</value>
   </data>
   <data name="btnClearResults.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
+    <value>900</value>
   </data>
   <data name="btnClearResults.Text" xml:space="preserve">
-    <value>&amp;Clear Results</value>
+    <value>C&amp;lear Results</value>
   </data>
   <data name="&gt;&gt;btnClearResults.Name" xml:space="preserve">
     <value>btnClearResults</value>
@@ -403,7 +403,7 @@
     <value>593, 21</value>
   </data>
   <data name="cmbApplication.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
+    <value>300</value>
   </data>
   <data name="&gt;&gt;cmbApplication.Name" xml:space="preserve">
     <value>cmbApplication</value>
@@ -415,7 +415,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;cmbApplication.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="cmbArguments.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left, Right</value>
@@ -427,7 +427,7 @@
     <value>593, 21</value>
   </data>
   <data name="cmbArguments.TabIndex" type="System.Int32, mscorlib">
-    <value>10</value>
+    <value>600</value>
   </data>
   <data name="&gt;&gt;cmbArguments.Name" xml:space="preserve">
     <value>cmbArguments</value>
@@ -439,7 +439,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;cmbArguments.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
