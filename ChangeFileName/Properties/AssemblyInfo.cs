@@ -7,7 +7,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Ambiesoft")]
 [assembly: AssemblyProduct("ChangeFileName")]
-[assembly: AssemblyCopyright("Copyright (C) Ambiesoft 2019")]
+[assembly: AssemblyCopyright("Copyright (C) Ambiesoft 2020")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -16,5 +16,5 @@ using System.Runtime.InteropServices;
 
 [assembly: Guid("2c1a5512-9010-4861-9cbf-61bb6995ecdd")]
 
-[assembly: AssemblyVersion("1.5.3.*")]
+[assembly: AssemblyVersion("1.5.4.*")]
 

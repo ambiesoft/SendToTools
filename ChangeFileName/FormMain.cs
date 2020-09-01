@@ -255,6 +255,13 @@ namespace ChangeFileName
                 SizeSuffixes[mag]);
         }
 
+        void afterLoad(object sender, EventArgs e)
+        {            
+            // select all texts and put the cursor on top
+            txtName.Focus();
+            // key stroke 'END'-> 'Shift+HOME'
+            SendKeys.Send("{END}+{HOME}");
+        }
         private void FormMain_Load(object sender, EventArgs e)
         {
             string title = string.Format("{0} - {1}",
@@ -279,8 +286,7 @@ namespace ChangeFileName
             }
             catch (Exception) { }
 
-            txtName.SelectAll();
-            txtName.Focus();
+            BeginInvoke(new EventHandler(this.afterLoad), sender, e);
         }
 
         private void chkAutoRun_CheckedChanged(object sender, EventArgs e)
