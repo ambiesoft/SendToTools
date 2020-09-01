@@ -74,7 +74,7 @@
 #define STRING(x) STRING2(x)
 #pragma message("WINVER        : " STRING(WINVER))
 #pragma message("_MSC_VER: " STRING(_MSC_VER))
-#include <stlsoft/smartptr/scoped_handle.hpp>
+// #include <stlsoft/smartptr/scoped_handle.hpp>
 
 #include <windows.h>
 

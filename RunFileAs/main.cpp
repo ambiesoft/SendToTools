@@ -31,7 +31,7 @@
 
 #include <string>
 
-#include <stlsoft/smartptr/scoped_handle.hpp>
+// #include <stlsoft/smartptr/scoped_handle.hpp>
 #include "../../lsMisc/OpenCommon.h"
 #include "../../lsMisc/stdwin32/stdwin32.h"
 #include "../../lsMisc/stdosd/stdosd.h"
@@ -106,8 +106,8 @@ wstring quote(LPCWSTR p)
 wstring getArgument(int nStart, bool toLast = false, bool noQuate = false)
 {
 	int nArgs = 0;
-	LPWSTR* p = CommandLineToArgvW(GetCommandLine(), &nArgs);
-	stlsoft::scoped_handle<HLOCAL> ha(p, LocalFree);
+	unique_ptr<LPWSTR, HLOCAL(WINAPI *)(HLOCAL)> up(CommandLineToArgvW(GetCommandLine(), &nArgs), ::LocalFree);
+	LPWSTR* p = up.get();
 
 	wstring ret;
 	for (int i = 0; (i < nArgs) && *p ; ++i, ++p)
