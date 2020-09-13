@@ -42,7 +42,7 @@ BOOL DoReplaceFilePlane(wstring file1, wstring file2, wstring fileback)
 	}
 	return TRUE;
 }
-BOOL DoReplaceFile(wstring file1, wstring file2, wstring fileback)
+BOOL DoReplaceFileWithTransaction(wstring file1, wstring file2, wstring fileback)
 {
 	CAtlTransactionManager trans;
 	if (!trans.GetHandle())
@@ -63,7 +63,7 @@ BOOL DoReplaceFile(wstring file1, wstring file2, wstring fileback)
 
 	return trans.Commit();
 }
-BOOL DoReplaceFile_obsolete(wstring file1, wstring file2, wstring fileback)
+BOOL DoReplaceFileWithReplaceFile(wstring file1, wstring file2, wstring fileback)
 {
 	if (!ReplaceFile(
 		file1.c_str(),
@@ -144,8 +144,17 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	//	tempfilename = tempfilenameOrig + stdItoT(i++);
 	//}
 
-	if (!DoReplaceFile(file1, file2, fileback))
-		DoReplaceFilePlane(file1, file2, fileback);
+	if (PathIsUNC(file1.c_str()) || PathIsUNC(file2.c_str()))
+	{
+		// Transaction does not support UNC
+		if (!DoReplaceFileWithReplaceFile(file1, file2, fileback))
+			DoReplaceFilePlane(file1, file2, fileback);
+	}
+	else
+	{
+		if (!DoReplaceFileWithTransaction(file1, file2, fileback))
+			DoReplaceFilePlane(file1, file2, fileback);
+	}
 
 	showballoon(NULL,
 		APP_NAME,
