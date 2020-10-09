@@ -127,6 +127,7 @@ struct WaitingDialogData
 	CString strAppName_;
 	CString strFrom_;
 	CString strTo_;
+	bool bStartNow_ = false;
 	WaitingDialogData(CString strAppName, CString strFrom, CString strTo) : 
 		hFinishEvent_(nullptr), 
 		wResult_(0),
@@ -154,7 +155,8 @@ UINT __cdecl MyControllingFunction(LPVOID pParam)
 	waitingDlg.m_strFrom = pData->from();
 	waitingDlg.m_strTo = pData->to();
 	pData->wResult_ = waitingDlg.DoModal();
-	
+	if (pData->wResult_ == IDC_BUTTON_STARTNOW)
+		pData->bStartNow_ = true;
 	return 0;
 }
 
@@ -426,13 +428,27 @@ int libmain(LPCWSTR pAppName, HICON hIcon)
 		WaitingDialogData wdd(pAppName, strFrom, strTo);
 		CEvent eventDialogWait(FALSE, TRUE);
 		wdd.hFinishEvent_ = eventDialogWait;
-		// HANDLE eventDialogWait = CreateEvent(NULL, TRUE, FALSE, NULL);
+
 		CWinThread* pThread = AfxBeginThread(MyControllingFunction, &wdd);
-		mutex.Wait();    // wait other app
-		SetEvent(eventDialogWait);  // let dialog finish
-		WaitForSingleObject(*pThread, INFINITE);
-		if (wdd.wResult_ == IDCANCEL)
-			return 0;
+
+		HANDLE wh[] = { *pThread, mutex };
+		DWORD dwWait = WaitForMultipleObjects(_countof(wh), wh, FALSE, INFINITE);
+		if ((WAIT_OBJECT_0 + 0) == dwWait || (WAIT_ABANDONED_0 + 0) == dwWait)
+		{ 
+			// thread signaled or abandoned
+			if (wdd.wResult_ == IDCANCEL)
+				return 0;
+			else if (wdd.wResult_ == IDC_BUTTON_STARTNOW)
+				;  // go through
+			else
+				ASSERT(false);
+		}
+		else if ((WAIT_OBJECT_0 + 1) == dwWait || (WAIT_ABANDONED_0 + 1) == dwWait)
+		{
+			// mutex signaled or abandoned
+			SetEvent(eventDialogWait);  // let dialog finish
+			WaitForSingleObject(*pThread, INFINITE); // wait dialog
+		}
 	}
 	else
 	{

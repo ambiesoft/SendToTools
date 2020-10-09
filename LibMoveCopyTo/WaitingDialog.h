@@ -31,4 +31,5 @@ public:
 	CString m_strAppName;
 	CString m_strFrom;
 	CString m_strTo;
+	afx_msg void OnBnClickedButtonStartnow();
 };

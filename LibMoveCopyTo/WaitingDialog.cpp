@@ -38,6 +38,7 @@ void CWaitingDialog::DoDataExchange(CDataExchange* pDX)
 BEGIN_MESSAGE_MAP(CWaitingDialog, CDialogEx)
 	ON_WM_TIMER()
 	ON_MESSAGE(WM_APP_INITMINIMIZE, OnInitMinimize)
+	ON_BN_CLICKED(IDC_BUTTON_STARTNOW, &CWaitingDialog::OnBnClickedButtonStartnow)
 END_MESSAGE_MAP()
 
 
@@ -79,4 +80,9 @@ LRESULT CWaitingDialog::OnInitMinimize(WPARAM, LPARAM)
 	// MessageBox(L"afwejo");
 	// PostMessage(WM_SYSCOMMAND, SC_MINIMIZE);
 	return 0;
+}
+
+void CWaitingDialog::OnBnClickedButtonStartnow()
+{
+	this->EndDialog(IDC_BUTTON_STARTNOW);
 }

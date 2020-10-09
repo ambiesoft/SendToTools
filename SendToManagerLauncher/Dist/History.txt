@@ -1,3 +1,6 @@
+2020/10/09 ver 1.17.23
+LibMoveCopyTo can start immediately in case of waiting.
+
 2020/09/13 ver 1.17.22
 SwapFilename: On UNC, use ReplaceFile
 

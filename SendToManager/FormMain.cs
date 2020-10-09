@@ -1291,7 +1291,13 @@ new KeyValuePair<string, string>(@"touch.exe", Properties.Resources.TOOL_EXPLANA
             sb.AppendLine(getToolVersion("CopyFirstLine.exe", false));
             sb.AppendLine(getToolVersion("CopyPath.exe", true));
             sb.AppendLine(getToolVersion("DotNet4Runnable.exe", false));
-            sb.AppendLine(getToolVersion("MoveTo.exe", true));
+            sb.AppendLine(getToolVersion(
+#if DEBUG
+                "LibMoveCopyToD.dll"
+#else
+                "LibMoveCopyTo.dll"
+#endif
+, true));
             sb.AppendLine(getToolVersion("RegexFilenameRenamer.exe", false));
             sb.AppendLine(getToolVersion("RunFileAs.exe", true));
             sb.AppendLine(getToolVersion("RunOnebyOne.exe", false));
