@@ -17,11 +17,13 @@ namespace ComputeFileHash
 {
     public partial class FormMain : Form
     {
-        public FormMain()
+        public FormMain(string inputFile)
         {
             InitializeComponent();
 
             this.Text = Application.ProductName;
+            if (!string.IsNullOrEmpty(inputFile))
+                this.txtFile.Text = inputFile;
         }
 
         void Info(string message)
