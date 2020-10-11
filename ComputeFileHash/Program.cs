@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NDesk.Options;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -12,13 +13,34 @@ namespace ComputeFileHash
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
-        static void Main()
+        static int Main(string[] args)
         {
             Ambiesoft.CppUtils.AmbSetProcessDPIAware();
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormMain());
+
+
+            string inputFile = null;
+
+            var p = new OptionSet();
+
+            try
+            {
+                var extraCommandLineArgs = p.Parse(args);
+                foreach (var arg in extraCommandLineArgs)
+                {
+                    inputFile = arg;
+                    break;
+                }
+            }
+            catch (Exception ex)
+            {
+                Ambiesoft.CppUtils.Alert(ex);
+                return 1;
+            }
+            Application.Run(new FormMain(inputFile));
+            return 0;
         }
     }
 }
