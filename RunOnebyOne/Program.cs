@@ -35,9 +35,19 @@ namespace RunOnebyOne
 {
     static class Program
     {
+
+
         [STAThread]
-        static void Main(string[] args)
+        static int Main(string[] args)
         {
+            if(!AmbLib.IsNet45OrNewer())
+            {
+                MessageBox.Show(Properties.Resources.DOTNET_45_REQUIRED,
+                    Application.ProductName,
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                return 1;
+            }
             Ambiesoft.CppUtils.AmbSetProcessDPIAware();
 
             Application.EnableVisualStyles();
@@ -47,6 +57,7 @@ namespace RunOnebyOne
             FormMain form = new FormMain(args);
             AmbLib.SetFontAll(form);
             Application.Run(form);
+            return 0;
         }
     }
 }

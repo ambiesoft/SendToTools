@@ -126,6 +126,9 @@
   <data name="DONE_BUTTON_TEXT" xml:space="preserve">
     <value>終了</value>
   </data>
+  <data name="DOTNET_45_REQUIRED" xml:space="preserve">
+    <value>このアプリケーションは.NET 4.5以上がインストールされている必要があります。</value>
+  </data>
   <data name="PAUSE_BUTTON_TEXT" xml:space="preserve">
     <value>一時停止(&amp;P)</value>
   </data>
