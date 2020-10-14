@@ -1,3 +1,6 @@
+2020/10/14 ver 1.17.24
+Shows waring:'RunOneByOne' can only runs on .NET4.5
+
 2020/10/09 ver 1.17.23
 LibMoveCopyTo can start immediately in case of waiting.
 
