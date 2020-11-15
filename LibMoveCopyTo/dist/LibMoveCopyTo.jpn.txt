@@ -24,3 +24,14 @@
 "Are you sure you want to remove entry '%s'?"="エントリー '%s' を削除しますか？"
 "&Remove"="エントリー削除(&R)"
 "&Sort"="ソート(&S)"
+
+
+"Source file is empty."="ソースファイルが指定されていません。"
+
+"&From:"="元のファイル(&F):"
+"&To:"="宛先(&T):"
+"Cancel"="キャンセル"
+"Start Now"="今すぐ開始する"
+"Waiting..."="待機中・・・"
+
+"&Start Now"="今すぐ開始する(&S)"

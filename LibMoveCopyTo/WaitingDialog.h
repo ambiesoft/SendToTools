@@ -6,6 +6,8 @@
 class CWaitingDialog : public CDialogEx
 {
 	DECLARE_DYNAMIC(CWaitingDialog)
+	using ParentClass = CDialogEx;
+
 private:
 	bool m_bMinimizeSent = false;
 public:
@@ -32,4 +34,5 @@ public:
 	CString m_strFrom;
 	CString m_strTo;
 	afx_msg void OnBnClickedButtonStartnow();
+	afx_msg void OnSysCommand(UINT nID, LPARAM lParam);
 };
