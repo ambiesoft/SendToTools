@@ -65,6 +65,14 @@ void CWaitingDialog::OnTimer(UINT_PTR nIDEvent)
 BOOL CWaitingDialog::OnInitDialog()
 {
 	CDialogEx::OnInitDialog();
+
+	CMenu* pSysMenu = GetSystemMenu(FALSE);
+	if (pSysMenu != NULL)
+	{
+		pSysMenu->AppendMenu(MF_SEPARATOR);
+		pSysMenu->AppendMenu(MF_STRING, IDR_MENU_STARTNOW, I18N(L"&Start Now"));
+	}
+
 	CString strTitle;
 	GetWindowText(strTitle);
 	SetWindowText(stdFormat(L"%s - %s", (LPCWSTR)strTitle, (LPCWSTR)m_strAppName).c_str());
