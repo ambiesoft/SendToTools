@@ -49,39 +49,35 @@ namespace ChangeFileName
                     System.IO.FileInfo fiorig = new System.IO.FileInfo(srcfilename);
 
                     string destfilename = txtName.Text + fiorig.Extension;
-                    string destfn = System.IO.Path.Combine(path, destfilename);
+                    string destfullname = System.IO.Path.Combine(path, destfilename);
 
-                    bool overwrite = false;
-                    if (File.Exists(destfn))
-                    {
-                        if (DialogResult.Yes != Ambiesoft.CppUtils.YesOrNo(string.Format(Properties.Resources.DESTINATION_EXISTS, destfn),
-                            MessageBoxDefaultButton.Button2))
-                        {
-                            return;
-                        }
-                        overwrite = true;
-                    }
-                    fiorig.CopyTo(destfn, overwrite);
-                    fiorig.Delete();
+                    //bool overwrite = false;
+                    //if (File.Exists(destfullname))
+                    //{
+                    //    if (DialogResult.Yes != Ambiesoft.CppUtils.YesOrNo(
+                    //        string.Format(Properties.Resources.DESTINATION_EXISTS, destfullname),
+                    //        MessageBoxDefaultButton.Button2))
+                    //    {
+                    //        return;
+                    //    }
+                    //    overwrite = true;
+                    //}
+
+                    // why?
+                    //fiorig.CopyTo(destfn, overwrite);
+                    //fiorig.Delete();
+
+                    if (0 != Ambiesoft.CppUtils.MoveFile(srcfilename, destfullname))
+                        return;
                 }
                 else if (Directory.Exists(srcfilename))
                 {
                     DirectoryInfo diorig = new DirectoryInfo(srcfilename);
 
                     string destfilename = txtName.Text + diorig.Extension;
-                    string destfn = path;// System.IO.Path.Combine(path, destfilename);
-                    // diorig.MoveTo(destfn);
+                    string destfullname = path;
 
-                    // Directory.Move(this.txtName.Tag.ToString(), destfn);
-
-                    //if(File.Exists(destfn) || Directory.Exists(destfn))
-                    //{
-                    //    showError("\"" + destfn + "\" " + "already exists.");
-                    //    return;
-                    //}
-                    //Microsoft.VisualBasic.FileIO.FileSystem.MoveDirectory(srcfilename, destfn);
-
-                    if (0 != Ambiesoft.CppUtils.MoveFile(srcfilename, destfn))
+                    if (0 != Ambiesoft.CppUtils.MoveFile(srcfilename, destfullname))
                         return;
                 }
                 this.Close();
