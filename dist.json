@@ -70,7 +70,9 @@
         "tools\\LibMoveCopyTo.dll",
         "tools\\ListViewEx.dll",
         "tools\\MoveTo.exe",
-   		"tools\\CopyTo.exe",
+        "tools\\MoveTo.pdb",
+        "tools\\CopyTo.exe",
+        "tools\\CopyTo.pdb",
         "tools\\RegexFilenameRenamer.exe",
         "tools\\RegexFilenameRenamer.pdb",
         "tools\\RunFileAs.exe",
@@ -108,10 +110,7 @@
 		"tools\\CreateSizedFile.pdb",
 		"tools\\CreateSizedFile.exe",
 		"tools\\SwapFilename.pdb",
-		"tools\\SwapFilename.exe",
-        "tools\\vccorlib120.dll",
-		"tools\\msvcp120.dll",
-		"tools\\msvcr120.dll"
+		"tools\\SwapFilename.exe"
     ],
     "TotalFileCount": "exact",
     "ShouldBeOneOfThem": [],
