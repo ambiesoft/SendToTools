@@ -200,7 +200,7 @@ int libmain(LPCWSTR pAppName, HICON hIcon)
 	cmd.AddOption(&opFile);
 	cmd.AddOption(L"/p", 1, &nPriority);
 	cmd.AddOption(L"/lang", 1, &lang);
-	cmd.AddOption({ L"/h", L"-h" }, 0, &bHelp);
+	cmd.AddOptionRange({ L"/h", L"-h" }, 0, &bHelp);
 
 	cmd.Parse();
 
