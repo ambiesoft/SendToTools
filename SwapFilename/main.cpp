@@ -8,6 +8,7 @@
 #include "../../lsMisc/GetLastErrorString.h"
 #include "../../lsMisc/GetBackupFile.h"
 #include "../../lsMisc/showballoon.h"
+#include "../../lsMisc/SHMoveFile.h"
 
 using namespace Ambiesoft;
 using namespace Ambiesoft::stdosd;
@@ -28,17 +29,22 @@ void ErrorExit(const wstring& error, LPCTSTR funcname)
 
 BOOL DoReplaceFilePlane(wstring file1, wstring file2, wstring fileback)
 {
-	if (!MoveFile(file1.c_str(), fileback.c_str()))
+	int ret;
+	
+	ret = SHMoveFileEx(file1.c_str(), fileback.c_str());
+	if (ret != 0)
 	{
-		ErrorExit(GetLastErrorString(GetLastError()), L"MoveFile");
+		ErrorExit(GetLastErrorString(ret), L"SHMoveFile");
 	}
-	if (!MoveFile(file2.c_str(), file1.c_str()))
+	ret = SHMoveFileEx(file2.c_str(), file1.c_str());
+	if (ret != 0)
 	{
-		ErrorExit(GetLastErrorString(GetLastError()), L"MoveFile");
+		ErrorExit(GetLastErrorString(ret), L"SHMoveFile");
 	}
-	if (!MoveFile(fileback.c_str(), file2.c_str()))
+	ret = SHMoveFileEx(fileback.c_str(), file2.c_str());
+	if (ret != 0)
 	{
-		ErrorExit(GetLastErrorString(GetLastError()), L"MoveFile");
+		ErrorExit(GetLastErrorString(ret), L"SHMoveFile");
 	}
 	return TRUE;
 }
@@ -50,15 +56,15 @@ BOOL DoReplaceFileWithTransaction(wstring file1, wstring file2, wstring fileback
 
 	if (!trans.MoveFile(file1.c_str(), fileback.c_str()))
 	{
-		ErrorExit(GetLastErrorString(GetLastError()), L"MoveFile");
+		return FALSE;
 	}
 	if (!trans.MoveFile(file2.c_str(), file1.c_str()))
 	{
-		ErrorExit(GetLastErrorString(GetLastError()), L"MoveFile");
+		return FALSE;
 	}
 	if (!trans.MoveFile(fileback.c_str(), file2.c_str()))
 	{
-		ErrorExit(GetLastErrorString(GetLastError()), L"MoveFile");
+		return FALSE;
 	}
 
 	return trans.Commit();
@@ -97,9 +103,12 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	Ambiesoft::InitHighDPISupport();
 
 	CCommandLineParser parser(L"Swap filename of two files");
-	
-	COption opMain(L"", ExactCount::Exact_2, ArgEncodingFlags_Default, L"Input two files");
 
+	//bool bRetry = false;
+	//parser.AddOption(L"-retry", 0, &bRetry, ArgEncodingFlags::ArgEncodingFlags_Default,
+	//	L"Retry if failed");
+
+	COption opMain(L"", ExactCount::Exact_2, ArgEncodingFlags_Default, L"Input two files");
 	parser.AddOption(&opMain);
 	
 	parser.Parse();
@@ -133,27 +142,20 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	file1 = stdGetFullPathName(file1);
 	file2 = stdGetFullPathName(file2);
 	
-	//wstring dir1 = stdGetParentDirectory(file1);
-	//wstring dir2 = stdGetParentDirectory(file2);
-
-	//wstring tempfilenameOrig = stdCombinePath(dir1, L"3_v-jz");
-	//wstring tempfilename = tempfilenameOrig;
-	//int i = 1;
-	//while (PathFileExists(tempfilename.c_str()))
-	//{
-	//	tempfilename = tempfilenameOrig + stdItoT(i++);
-	//}
-
 	if (PathIsUNC(file1.c_str()) || PathIsUNC(file2.c_str()))
 	{
 		// Transaction does not support UNC
 		if (!DoReplaceFileWithReplaceFile(file1, file2, fileback))
+		{
 			DoReplaceFilePlane(file1, file2, fileback);
+		}
 	}
 	else
 	{
 		if (!DoReplaceFileWithTransaction(file1, file2, fileback))
+		{
 			DoReplaceFilePlane(file1, file2, fileback);
+		}
 	}
 
 	showballoon(NULL,

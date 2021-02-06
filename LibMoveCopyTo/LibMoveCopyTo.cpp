@@ -458,9 +458,9 @@ int libmain(LPCWSTR pAppName, HICON hIcon)
 
 	int nRet = -1;
 	if (_wcsicmp(gAppName, L"MoveTo") == 0)
-		nRet = SHMoveFile(destDir.c_str(), sourcefiles);
+		nRet = SHMoveFileEx(sourcefiles, destDir.c_str());
 	else if (_wcsicmp(gAppName,  L"CopyTo") == 0)
-		nRet = SHCopyFile(destDir.c_str(), sourcefiles);
+		nRet = SHCopyFileEx(sourcefiles, destDir.c_str());
 	else
 	{
 		ShowError(stdFormat(I18N(L"Unknown app (%s)"), gAppName));
