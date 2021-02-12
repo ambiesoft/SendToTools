@@ -10,8 +10,12 @@ using namespace std;
 
 IMPLEMENT_DYNAMIC(CChooseDirDialog, CDialogEx)
 
-CChooseDirDialog::CChooseDirDialog(HICON hIcon, CWnd* pParent /*=NULL*/)
+CChooseDirDialog::CChooseDirDialog(
+	CString strButtonText,
+	HICON hIcon, 
+	CWnd* pParent /*=NULL*/)
 	: CDialogEx(IDD_DIALOG_CHOOSEDIR, pParent)
+	, m_strButtonText(strButtonText)
 	, m_hIcon(hIcon)
 	, m_strDirResult(_T(""))
 	, m_strSource(_T(""))
@@ -66,7 +70,7 @@ BOOL CChooseDirDialog::OnInitDialog()
 	m_cmbPriority.AddString(I18N(L"Priority: Background"));
 
 	SetWindowText(gAppName);
-	GetDlgItem(IDOK)->SetWindowText(gOperationName);
+	GetDlgItem(IDOK)->SetWindowText(m_strButtonText);
 
 	UpdateData(FALSE);
 

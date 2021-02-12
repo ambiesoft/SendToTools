@@ -28,18 +28,23 @@
 #include "resource.h"
 #include "../LibMoveCopyTo/LibMoveCopyToLib.h"
 #include "../../lsMisc/HighDPI.h"
+#include "../../lsMisc/I18N.h"
+
+using namespace Ambiesoft;
 
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	_In_opt_ HINSTANCE hPrevInstance,
 	_In_ LPWSTR    lpCmdLine,
 	_In_ int       nCmdShow)
 {
-	Ambiesoft::InitHighDPISupport();
+	InitHighDPISupport();
 
 	UNREFERENCED_PARAMETER(hPrevInstance);
 	UNREFERENCED_PARAMETER(lpCmdLine);
-	// return AfxWinInit(hInstance, hPrevInstance, lpCmdLine, nCmdShow);
+	
+	const wchar_t* pAppName = L"CopyTo";
+	i18nInitLangmap(NULL, NULL, pAppName);
 
 	HICON hIcon = LoadIcon(hInstance, MAKEINTRESOURCE(IDI_ICON1));
-	return libmain(L"CopyTo", hIcon);
+	return libmain(pAppName, I18N(L"&Copy"), hIcon);
 }

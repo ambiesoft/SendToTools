@@ -170,7 +170,7 @@ UINT __cdecl MyControllingFunction(LPVOID pParam)
 //	return rets;
 //}
 
-int libmain(LPCWSTR pAppName, HICON hIcon)
+int libmain(LPCWSTR pAppName, LPCWSTR pButtonText, HICON hIcon)
 {
 	//UNREFERENCED_PARAMETER(hPrevInstance);
 	//UNREFERENCED_PARAMETER(lpCmdLine);
@@ -180,9 +180,9 @@ int libmain(LPCWSTR pAppName, HICON hIcon)
 
 	gAppName = pAppName;
 	if (_wcsicmp(gAppName, L"MoveTo") == 0)
-		gOperationName = L"Move";
+		;
 	else if (_wcsicmp(gAppName, L"CopyTo") == 0)
-		gOperationName = L"Copy";
+		;
 	else
 	{
 		ShowError(stdFormat(I18N(L"Unknown app (%s)"), gAppName));
@@ -276,7 +276,7 @@ int libmain(LPCWSTR pAppName, HICON hIcon)
 		//}
 		//else
 		{
-			CChooseDirDialog dlg(hIcon);
+			CChooseDirDialog dlg(pButtonText, hIcon);
 			for (STRINGVECTOR::iterator it = sourcefiles.begin(); it != sourcefiles.end(); ++it)
 			{
 				dlg.m_strSource += it->c_str();

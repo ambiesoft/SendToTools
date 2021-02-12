@@ -25,21 +25,25 @@
 //OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include "stdafx.h"
+
 #include "resource.h"
 #include "../LibMoveCopyTo/LibMoveCopyToLib.h"
 #include "../../lsMisc/HighDPI.h"
+#include "../../lsMisc/I18N.h"
 
+using namespace Ambiesoft;
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	_In_opt_ HINSTANCE hPrevInstance,
 	_In_ LPWSTR    lpCmdLine,
 	_In_ int       nCmdShow)
 {
-	Ambiesoft::InitHighDPISupport();
+	InitHighDPISupport();
 
 	UNREFERENCED_PARAMETER(hPrevInstance);
 	UNREFERENCED_PARAMETER(lpCmdLine);
-	// return AfxWinInit(hInstance, hPrevInstance, lpCmdLine, nCmdShow);
-	
+
+	const wchar_t* pAppName = L"MoveTo";
+	i18nInitLangmap(NULL, NULL, pAppName);
 	HICON hIcon = LoadIcon(hInstance, MAKEINTRESOURCE(IDI_ICON1));
-	return libmain(L"MoveTo", hIcon);
+	return libmain(pAppName, I18N(L"&Move"), hIcon);
 }

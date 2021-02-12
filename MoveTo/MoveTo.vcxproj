@@ -76,9 +76,8 @@
       </Command>
     </PreLinkEvent>
     <PostBuildEvent>
-      <Command>copy "$(SolutionDir)$(Configuration)\LibMoveCopyTo.dll" "$(OutDir)"
-mkdir "$(TargetDir)lang\"
-copy "$(SolutionDir)LibMoveCopyTo\Dist\LibMoveCopyTo.jpn.txt" "$(TargetDir)lang"
+      <Command>mkdir "$(TargetDir)lang\"
+copy "$(ProjectDir)langs\moveto.jpn.txt" "$(TargetDir)lang\"
 </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -104,14 +103,14 @@ copy "$(SolutionDir)LibMoveCopyTo\Dist\LibMoveCopyTo.jpn.txt" "$(TargetDir)lang"
       </Command>
     </PreLinkEvent>
     <PostBuildEvent>
-      <Command>copy "$(SolutionDir)$(Configuration)\LibMoveCopyToD.dll" "$(OutDir)"
-mkdir "$(TargetDir)lang\"
-copy "$(SolutionDir)LibMoveCopyTo\Dist\LibMoveCopyTo.jpn.txt" "$(TargetDir)lang"
+      <Command>mkdir "$(TargetDir)lang\"
+copy "$(ProjectDir)langs\moveto.jpn.txt" "$(TargetDir)lang\"
 </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\lsMisc\HighDPI.cpp" />
+    <ClCompile Include="..\..\lsMisc\I18N.cpp" />
     <ClCompile Include="MoveToApp.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Use</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Use</PrecompiledHeader>
@@ -123,6 +122,7 @@ copy "$(SolutionDir)LibMoveCopyTo\Dist\LibMoveCopyTo.jpn.txt" "$(TargetDir)lang"
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\lsMisc\HighDPI.h" />
+    <ClInclude Include="..\..\lsMisc\I18N.h" />
     <ClInclude Include="..\LibMoveCopyTo\LibMoveCopyToLib.h" />
     <ClInclude Include="MoveToApp.h" />
     <ClInclude Include="resource.h" />
@@ -132,9 +132,9 @@ copy "$(SolutionDir)LibMoveCopyTo\Dist\LibMoveCopyTo.jpn.txt" "$(TargetDir)lang"
   <ItemGroup>
     <ProjectReference Include="..\LibMoveCopyTo\LibMoveCopyTo.vcxproj">
       <Project>{d7a0d165-7d00-4929-a51b-58d098349cae}</Project>
-      <Private>false</Private>
+      <Private>true</Private>
       <ReferenceOutputAssembly>true</ReferenceOutputAssembly>
-      <CopyLocalSatelliteAssemblies>false</CopyLocalSatelliteAssemblies>
+      <CopyLocalSatelliteAssemblies>true</CopyLocalSatelliteAssemblies>
       <LinkLibraryDependencies>true</LinkLibraryDependencies>
       <UseLibraryDependencyInputs>false</UseLibraryDependencyInputs>
     </ProjectReference>
@@ -145,6 +145,9 @@ copy "$(SolutionDir)LibMoveCopyTo\Dist\LibMoveCopyTo.jpn.txt" "$(TargetDir)lang"
   <ItemGroup>
     <Image Include="icon.ico" />
     <Image Include="icon1.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="langs\moveto.jpn.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

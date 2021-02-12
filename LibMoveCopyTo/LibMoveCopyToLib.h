@@ -6,5 +6,5 @@
 #define EXORIM DllImport
 #endif
 extern "C" {
-	EXORIM int libmain(LPCWSTR pAppName, HICON hIcon);
+	EXORIM int libmain(LPCWSTR pAppName, LPCWSTR pButtonText, HICON hIcon);
 }

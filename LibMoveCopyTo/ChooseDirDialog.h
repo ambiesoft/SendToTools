@@ -8,12 +8,17 @@ class CChooseDirDialog : public CDialogEx
 
 	HICON m_hIcon;
 public:
-	CChooseDirDialog(HICON hIcon = nullptr, CWnd* pParent = NULL);
+	CChooseDirDialog(
+		CString strButtonText,
+		HICON hIcon = nullptr, 
+		CWnd* pParent = NULL);
 	virtual ~CChooseDirDialog();
 
 #ifdef AFX_DESIGN_TIME
 	enum { IDD = IDD_DIALOG_CHOOSEDIR };
 #endif
+
+	CString m_strButtonText;
 
 protected:
 	virtual void DoDataExchange(CDataExchange* pDX);
