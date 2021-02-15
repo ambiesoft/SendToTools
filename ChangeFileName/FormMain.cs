@@ -43,7 +43,7 @@ using System.Text.RegularExpressions;
 
 namespace ChangeFileName
 {
-    public partial class FormMain : Form
+    public partial class FormMain : Form, Miszou.ToolManager.ToolManagerCallback
     {
         static readonly string SECTION_SETTING = "settings";
         static readonly string KEY_SMARTDOUBLECLICKSELECTION = "SmartDoubleClickSelection";
@@ -688,17 +688,18 @@ namespace ChangeFileName
                 _mTools.BuildToolMenu(toolsToolStripMenuItem, startIndex + 1);
             }
         }
+
+        public void OnToolManagerFormLoaded(Form form)
+        {
+            form.TopMost = TopMost;
+        }
+
         private void addModifyToolToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //using (ModificationTool dlg = new ModificationTool())
-            //{
-            //    dlg.ShowDialog();
-            //}
-
             try
 			{
                 if (DialogResult.OK !=
-                    _mTools.Edit(Miszou.ToolManager.Tools.EditFlags.AllowLockedUIEdit)
+                    _mTools.Edit(Miszou.ToolManager.Tools.EditFlags.AllowLockedUIEdit, this)
                     )
                 {
                     return;
