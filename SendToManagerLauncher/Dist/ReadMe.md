@@ -11,7 +11,7 @@ SendtoTools can edit various tools of "SendTo" menu of the explorer.
 Download binary from https://github.com/ambiesoft/SendToTools/releases
 
 ## Environment
-.Net4 and Visual Studio 2013 runtime library are required.
+.Net4 and Visual Studio 2019 runtime library are required.
 
 ## Install
 Extract the downloaded archive and lanucn '''SendToManager.exe'''.

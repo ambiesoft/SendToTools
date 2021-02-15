@@ -12,7 +12,7 @@ SendtoToolsはエクスプローラの「送る」メニューに様々なアイ
 右のサイトからバイナリをダウンロードできます https://github.com/ambiesoft/SendToTools/releases
 
 ## 動作環境
-.Net4 と Visual Studio 2013 runtime library が必要です。
+.Net4 と Visual Studio 2019 runtime library が必要です。
 
 ## インストール
 アーカイブを展開して、SendtoManager.exeを起動してください。

@@ -1565,7 +1565,7 @@ new KeyValuePair<string, string>(@"touch.exe", Properties.Resources.TOOL_EXPLANA
         {
             try
             {
-                Process.Start("https://ambiesoft.github.io/webjumper/");
+                Process.Start("https://ambiesoft.github.io/webjumper/index.html?target=sendtotools");
             }
             catch(Exception ex)
             {
