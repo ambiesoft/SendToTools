@@ -19,7 +19,7 @@ namespace SendToManager.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -426,6 +426,15 @@ namespace SendToManager.Properties {
         internal static string TOOL_EXPLANATION_TOUCH {
             get {
                 return ResourceManager.GetString("TOOL_EXPLANATION_TOUCH", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unable to handle internet shortcut file..
+        /// </summary>
+        internal static string UNABLE_TO_HANDLE_INTERNET_SHORTCUT_FILE {
+            get {
+                return ResourceManager.GetString("UNABLE_TO_HANDLE_INTERNET_SHORTCUT_FILE", resourceCulture);
             }
         }
         

@@ -246,4 +246,7 @@
   <data name="ARE_YOU_SURE_REPLACE_FILE" xml:space="preserve">
     <value>"{0}"を置き換えますか？</value>
   </data>
+  <data name="UNABLE_TO_HANDLE_INTERNET_SHORTCUT_FILE" xml:space="preserve">
+    <value>インターネットショートカットファイルは扱えません。</value>
+  </data>
 </root>

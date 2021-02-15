@@ -241,6 +241,9 @@
   <data name="TOOL_EXPLANATION_TOUCH" xml:space="preserve">
     <value>Touch</value>
   </data>
+  <data name="UNABLE_TO_HANDLE_INTERNET_SHORTCUT_FILE" xml:space="preserve">
+    <value>Unable to handle internet shortcut file.</value>
+  </data>
   <data name="UNKNOWN_OPTION" xml:space="preserve">
     <value>Unknow option</value>
   </data>

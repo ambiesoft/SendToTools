@@ -1,4 +1,4 @@
-//BSD 2-Clause License
+Ôªø//BSD 2-Clause License
 //
 //Copyright (c) 2017, Ambiesoft
 //All rights reserved.
@@ -182,12 +182,12 @@ namespace SendToManager
             }
             else
             {
-                // DÈfinir le numÈro de colonne ÅEtrier ; par dÈfaut sur croissant.
+                // D√©finir le num√©ro de colonne ¬ÅEtrier ; par d√©faut sur croissant.
                 sorter.SortColumn = eventArgs.Column;
                 sorter.Order = SortOrder.Ascending;
             }
 
-            // ProcÈder au tri avec les nouvelles options.
+            // Proc√©der au tri avec les nouvelles options.
             lvMain.Sort();
         }
 
@@ -870,7 +870,6 @@ new KeyValuePair<string, string>(@"touch.exe", Properties.Resources.TOOL_EXPLANA
 
         private void CreateShortcutWSH(string shortcutfile, string targetpath)
         {
-            object shDesktop = (object)"Desktop";
             WshShell shell = new WshShell();
             string shortcutAddress = shortcutfile;
             IWshShortcut shortcut = (IWshShortcut)shell.CreateShortcut(shortcutAddress);
@@ -1571,6 +1570,98 @@ new KeyValuePair<string, string>(@"touch.exe", Properties.Resources.TOOL_EXPLANA
             {
                 CppUtils.Alert(ex);
             }
+        }
+
+        private void FormMain_DragEnter(object sender, DragEventArgs e)
+        {
+            if(e.Data.GetDataPresent(DataFormats.FileDrop))
+            {
+                e.Effect = DragDropEffects.Copy;
+            }
+        }
+
+        private void FormMain_DragOver(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+            {
+                e.Effect = DragDropEffects.Copy;
+            }
+        }
+
+        private void FormMain_DragLeave(object sender, EventArgs e)
+        {
+
+        }
+
+        /// <summary>
+        /// https://dobon.net/vb/dotnet/file/createshortcut.html
+        /// </summary>
+        /// <returns></returns>
+        bool CreateShortcutAutoRename(string targetFolder, string targetPath)
+        {
+            try
+            {
+                string targetName = Path.GetFileNameWithoutExtension(targetPath);
+                string shortcutPath;
+
+                // Find non-existent shortcut file
+                for (int tryint = 0; true; ++tryint)
+                {
+                    string tryName;
+                    if (tryint != 0)
+                        tryName = string.Format("{0} ({1})", targetName, tryint);
+                    else
+                        tryName = targetName;
+
+                    shortcutPath = Path.Combine(
+                        targetFolder,
+                        tryName + ".lnk");
+                    if (!System.IO.File.Exists(shortcutPath))
+                        break;
+                }
+
+                // Create WshShell
+                //Type t = Type.GetTypeFromCLSID(new Guid("72C24DD5-D70A-438B-8A42-98424B88AFB8"));
+                //dynamic shell = Activator.CreateInstance(t);
+
+                //// Create WshShortcut
+                //var shortcut = shell.CreateShortcut(shortcutPath);
+
+                //// Link
+                //shortcut.TargetPath = targetPath;
+                //shortcut.Save();
+
+                //System.Runtime.InteropServices.Marshal.FinalReleaseComObject(shortcut);
+                //System.Runtime.InteropServices.Marshal.FinalReleaseComObject(shell);
+
+                CreateShortcutWSH(shortcutPath, targetPath);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                CppUtils.Alert(this, ex);
+            }
+            return false;
+        }
+        private void FormMain_DragDrop(object sender, DragEventArgs e)
+        {
+            string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
+            foreach(string file in files)
+            {
+                if (Path.GetExtension(file).ToLower() == ".url")
+                {
+                    CppUtils.Alert(this, Properties.Resources.UNABLE_TO_HANDLE_INTERNET_SHORTCUT_FILE);
+                }
+                else if (Path.GetExtension(file).ToLower() == ".lnk")
+                {
+                    CppUtils.CopyFile(file, CurrentInventoryFolder);
+                }
+                else
+                {
+                    CreateShortcutAutoRename(CurrentInventoryFolder, file);
+                }
+            }
+            UpdateList();
         }
     }
 }

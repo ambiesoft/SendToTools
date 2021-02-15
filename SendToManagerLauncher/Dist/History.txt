@@ -1,3 +1,6 @@
+2021/02/15 ver 2.0.4
+Accept file drop
+
 2021/02/15 ver 2.0.3
 update link and desc
 
