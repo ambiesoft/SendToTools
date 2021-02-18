@@ -1,3 +1,6 @@
+2021/02/18 ver 2.1.1
+HighDPI Form
+
 2021/02/15 ver 2.0.4
 Accept file drop
 

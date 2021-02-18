@@ -407,6 +407,8 @@ namespace RunOnebyOne
                 this.Text += " (" + Properties.Resources.ADMINISTRATOR + ")";
                 btnReopenAsAdmin.Visible = false;
             }
+
+            FormMain_Resize(this, null);
         }
 
         private void btnBrowseApp_Click(object sender, EventArgs e)

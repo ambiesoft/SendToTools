@@ -138,23 +138,8 @@
     <value>149, 17</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="tsmiRemove.Size" type="System.Drawing.Size, System.Drawing">
-    <value>133, 22</value>
-  </data>
-  <data name="tsmiRemove.Text" xml:space="preserve">
-    <value>&amp;Remove</value>
-  </data>
-  <data name="toolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>130, 6</value>
-  </data>
-  <data name="tsmiRemoveAll.Size" type="System.Drawing.Size, System.Drawing">
-    <value>133, 22</value>
-  </data>
-  <data name="tsmiRemoveAll.Text" xml:space="preserve">
-    <value>Remove All</value>
-  </data>
   <data name="cmList.Size" type="System.Drawing.Size, System.Drawing">
-    <value>134, 54</value>
+    <value>128, 54</value>
   </data>
   <data name="&gt;&gt;cmList.Name" xml:space="preserve">
     <value>cmList</value>
@@ -183,6 +168,21 @@
   <data name="&gt;&gt;listMain.ZOrder" xml:space="preserve">
     <value>14</value>
   </data>
+  <data name="tsmiRemove.Size" type="System.Drawing.Size, System.Drawing">
+    <value>127, 22</value>
+  </data>
+  <data name="tsmiRemove.Text" xml:space="preserve">
+    <value>&amp;Remove</value>
+  </data>
+  <data name="toolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>124, 6</value>
+  </data>
+  <data name="tsmiRemoveAll.Size" type="System.Drawing.Size, System.Drawing">
+    <value>127, 22</value>
+  </data>
+  <data name="tsmiRemoveAll.Text" xml:space="preserve">
+    <value>Remove All</value>
+  </data>
   <data name="btnRun.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left, Right</value>
   </data>
@@ -190,7 +190,7 @@
     <value>False</value>
   </data>
   <data name="btnRun.Location" type="System.Drawing.Point, System.Drawing">
-    <value>166, 263</value>
+    <value>166, 275</value>
   </data>
   <data name="btnRun.Size" type="System.Drawing.Size, System.Drawing">
     <value>122, 24</value>
@@ -217,7 +217,7 @@
     <value>Bottom, Right</value>
   </data>
   <data name="btnClose.Location" type="System.Drawing.Point, System.Drawing">
-    <value>427, 263</value>
+    <value>427, 275</value>
   </data>
   <data name="btnClose.Size" type="System.Drawing.Size, System.Drawing">
     <value>95, 24</value>
@@ -244,7 +244,7 @@
     <value>Bottom, Left</value>
   </data>
   <data name="btnReopenAsAdmin.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 263</value>
+    <value>12, 275</value>
   </data>
   <data name="btnReopenAsAdmin.Size" type="System.Drawing.Size, System.Drawing">
     <value>148, 24</value>
@@ -370,7 +370,7 @@
     <value>NoControl</value>
   </data>
   <data name="btnClearResults.Location" type="System.Drawing.Point, System.Drawing">
-    <value>294, 263</value>
+    <value>294, 275</value>
   </data>
   <data name="btnClearResults.Size" type="System.Drawing.Size, System.Drawing">
     <value>127, 24</value>
@@ -565,7 +565,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lblCombo2BottomRight.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -574,7 +574,7 @@
     <value>96, 96</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>534, 299</value>
+    <value>542, 311</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Meiryo UI, 9pt</value>
