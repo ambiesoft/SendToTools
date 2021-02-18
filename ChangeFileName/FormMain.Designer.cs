@@ -180,6 +180,7 @@
             this.tsmitoHankakuKana,
             this.tsmitoZenkakuKana});
             this.cmModify.Name = "ccmModify";
+            this.cmModify.OwnerItem = this.modifyToolStripMenuItem;
             resources.ApplyResources(this.cmModify, "cmModify");
             // 
             // tsmiMakeFileNamable
@@ -301,6 +302,7 @@
             this.tsmitoHankakuKanaSel,
             this.tsmitoZenkakuKanaSel});
             this.cmModifySelection.Name = "ccmModify";
+            this.cmModifySelection.OwnerItem = this.modifySelectionToolStripMenuItem;
             resources.ApplyResources(this.cmModifySelection, "cmModifySelection");
             // 
             // tsmiMakeFileNamableSel
@@ -619,7 +621,7 @@
             // 
             this.AcceptButton = this.btnOK;
             resources.ApplyResources(this, "$this");
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.CancelButton = this.btnCancel;
             this.Controls.Add(this.tlpInfo);
             this.Controls.Add(this.btnLaunch);

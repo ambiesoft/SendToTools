@@ -56,6 +56,11 @@ namespace RunOnebyOne
 
             InitializeComponent();
 
+            lblCombo1TopLeft.Visible = false;
+            lblCombo1BottomRight.Visible = false;
+            lblCombo2TopLeft.Visible = false;
+            lblCombo2BottomRight.Visible = false;
+
             // LoadFromIni
             HashIni ini = Profile.ReadAll(IniPath);
             AmbLib.LoadFormXYWH(this, SECTION_LOCATION, ini);
@@ -468,6 +473,28 @@ namespace RunOnebyOne
             AmbLib.SaveComboBox(cmbArguments, SECTION_ARG_COMBO, MAX_COMBO_SAVE, ini);
             if (!Profile.WriteAll(ini, IniPath))
                 CppUtils.Alert("Failed to save ini");
+        }
+
+        private void FormMain_Resize(object sender, EventArgs e)
+        {
+            {
+                Point location = new Point(lblCombo1TopLeft.Left, lblCombo1TopLeft.Top);
+                cmbApplication.Location = location;
+
+                Size size = new Size(lblCombo1BottomRight.Left - (lblCombo1TopLeft.Left),
+                    cmbApplication.Size.Height);
+                cmbApplication.Size = size;
+            }
+            {
+                Point location = new Point(lblCombo2TopLeft.Left, lblCombo2TopLeft.Top);
+                cmbArguments.Location = location;
+
+                Size size = new Size(lblCombo2BottomRight.Left - (lblCombo2TopLeft.Left),
+                    cmbArguments.Size.Height);
+                cmbArguments.Size = size;
+            }
+
+
         }
     }
 }

@@ -139,22 +139,22 @@
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="tsmiRemove.Size" type="System.Drawing.Size, System.Drawing">
-    <value>134, 22</value>
+    <value>133, 22</value>
   </data>
   <data name="tsmiRemove.Text" xml:space="preserve">
     <value>&amp;Remove</value>
   </data>
   <data name="toolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>131, 6</value>
+    <value>130, 6</value>
   </data>
   <data name="tsmiRemoveAll.Size" type="System.Drawing.Size, System.Drawing">
-    <value>134, 22</value>
+    <value>133, 22</value>
   </data>
   <data name="tsmiRemoveAll.Text" xml:space="preserve">
     <value>Remove All</value>
   </data>
   <data name="cmList.Size" type="System.Drawing.Size, System.Drawing">
-    <value>135, 54</value>
+    <value>134, 54</value>
   </data>
   <data name="&gt;&gt;cmList.Name" xml:space="preserve">
     <value>cmList</value>
@@ -163,10 +163,10 @@
     <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="listMain.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 13</value>
+    <value>12, 12</value>
   </data>
   <data name="listMain.Size" type="System.Drawing.Size, System.Drawing">
-    <value>701, 276</value>
+    <value>510, 173</value>
   </data>
   <data name="listMain.TabIndex" type="System.Int32, mscorlib">
     <value>100</value>
@@ -181,7 +181,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;listMain.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>14</value>
   </data>
   <data name="btnRun.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left, Right</value>
@@ -190,10 +190,10 @@
     <value>False</value>
   </data>
   <data name="btnRun.Location" type="System.Drawing.Point, System.Drawing">
-    <value>166, 355</value>
+    <value>166, 263</value>
   </data>
   <data name="btnRun.Size" type="System.Drawing.Size, System.Drawing">
-    <value>313, 26</value>
+    <value>122, 24</value>
   </data>
   <data name="btnRun.TabIndex" type="System.Int32, mscorlib">
     <value>800</value>
@@ -211,16 +211,16 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnRun.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>13</value>
   </data>
   <data name="btnClose.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
   </data>
   <data name="btnClose.Location" type="System.Drawing.Point, System.Drawing">
-    <value>618, 355</value>
+    <value>427, 263</value>
   </data>
   <data name="btnClose.Size" type="System.Drawing.Size, System.Drawing">
-    <value>95, 26</value>
+    <value>95, 24</value>
   </data>
   <data name="btnClose.TabIndex" type="System.Int32, mscorlib">
     <value>1000</value>
@@ -238,16 +238,16 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnClose.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>12</value>
   </data>
   <data name="btnReopenAsAdmin.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left</value>
   </data>
   <data name="btnReopenAsAdmin.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 355</value>
+    <value>12, 263</value>
   </data>
   <data name="btnReopenAsAdmin.Size" type="System.Drawing.Size, System.Drawing">
-    <value>148, 26</value>
+    <value>148, 24</value>
   </data>
   <data name="btnReopenAsAdmin.TabIndex" type="System.Int32, mscorlib">
     <value>700</value>
@@ -265,7 +265,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnReopenAsAdmin.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>11</value>
   </data>
   <data name="labelApplication.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left</value>
@@ -274,10 +274,10 @@
     <value>True</value>
   </data>
   <data name="labelApplication.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 303</value>
+    <value>12, 194</value>
   </data>
   <data name="labelApplication.Size" type="System.Drawing.Size, System.Drawing">
-    <value>62, 13</value>
+    <value>75, 15</value>
   </data>
   <data name="labelApplication.TabIndex" type="System.Int32, mscorlib">
     <value>200</value>
@@ -295,13 +295,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;labelApplication.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>10</value>
   </data>
   <data name="btnBrowseApp.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
   </data>
   <data name="btnBrowseApp.Location" type="System.Drawing.Point, System.Drawing">
-    <value>679, 298</value>
+    <value>488, 191</value>
   </data>
   <data name="btnBrowseApp.Size" type="System.Drawing.Size, System.Drawing">
     <value>34, 23</value>
@@ -322,7 +322,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnBrowseApp.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>8</value>
   </data>
   <metadata name="ofdApplication.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
@@ -340,10 +340,10 @@
     <value>NoControl</value>
   </data>
   <data name="lblArguments.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 327</value>
+    <value>12, 221</value>
   </data>
   <data name="lblArguments.Size" type="System.Drawing.Size, System.Drawing">
-    <value>60, 13</value>
+    <value>76, 15</value>
   </data>
   <data name="lblArguments.TabIndex" type="System.Int32, mscorlib">
     <value>500</value>
@@ -361,7 +361,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lblArguments.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>9</value>
   </data>
   <data name="btnClearResults.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
@@ -370,10 +370,10 @@
     <value>NoControl</value>
   </data>
   <data name="btnClearResults.Location" type="System.Drawing.Point, System.Drawing">
-    <value>485, 355</value>
+    <value>294, 263</value>
   </data>
   <data name="btnClearResults.Size" type="System.Drawing.Size, System.Drawing">
-    <value>127, 26</value>
+    <value>127, 24</value>
   </data>
   <data name="btnClearResults.TabIndex" type="System.Int32, mscorlib">
     <value>900</value>
@@ -391,16 +391,16 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnClearResults.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>7</value>
   </data>
   <data name="cmbApplication.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Left, Right</value>
+    <value>None</value>
   </data>
   <data name="cmbApplication.Location" type="System.Drawing.Point, System.Drawing">
-    <value>80, 299</value>
+    <value>388, 252</value>
   </data>
   <data name="cmbApplication.Size" type="System.Drawing.Size, System.Drawing">
-    <value>593, 21</value>
+    <value>156, 23</value>
   </data>
   <data name="cmbApplication.TabIndex" type="System.Int32, mscorlib">
     <value>300</value>
@@ -415,16 +415,16 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;cmbApplication.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>6</value>
   </data>
   <data name="cmbArguments.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Left, Right</value>
+    <value>None</value>
   </data>
   <data name="cmbArguments.Location" type="System.Drawing.Point, System.Drawing">
-    <value>80, 324</value>
+    <value>388, 223</value>
   </data>
   <data name="cmbArguments.Size" type="System.Drawing.Size, System.Drawing">
-    <value>593, 21</value>
+    <value>156, 23</value>
   </data>
   <data name="cmbArguments.TabIndex" type="System.Int32, mscorlib">
     <value>600</value>
@@ -439,19 +439,148 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;cmbArguments.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>5</value>
+  </data>
+  <data name="lblCombo1TopLeft.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
+  </data>
+  <data name="lblCombo1TopLeft.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblCombo1TopLeft.Location" type="System.Drawing.Point, System.Drawing">
+    <value>122, 191</value>
+  </data>
+  <data name="lblCombo1TopLeft.Size" type="System.Drawing.Size, System.Drawing">
+    <value>41, 15</value>
+  </data>
+  <data name="lblCombo1TopLeft.TabIndex" type="System.Int32, mscorlib">
+    <value>1001</value>
+  </data>
+  <data name="lblCombo1TopLeft.Text" xml:space="preserve">
+    <value>label1</value>
+  </data>
+  <data name="&gt;&gt;lblCombo1TopLeft.Name" xml:space="preserve">
+    <value>lblCombo1TopLeft</value>
+  </data>
+  <data name="&gt;&gt;lblCombo1TopLeft.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblCombo1TopLeft.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblCombo1TopLeft.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="lblCombo1BottomRight.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
+  </data>
+  <data name="lblCombo1BottomRight.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblCombo1BottomRight.Location" type="System.Drawing.Point, System.Drawing">
+    <value>481, 214</value>
+  </data>
+  <data name="lblCombo1BottomRight.Size" type="System.Drawing.Size, System.Drawing">
+    <value>41, 15</value>
+  </data>
+  <data name="lblCombo1BottomRight.TabIndex" type="System.Int32, mscorlib">
+    <value>1002</value>
+  </data>
+  <data name="lblCombo1BottomRight.Text" xml:space="preserve">
+    <value>label1</value>
+  </data>
+  <data name="&gt;&gt;lblCombo1BottomRight.Name" xml:space="preserve">
+    <value>lblCombo1BottomRight</value>
+  </data>
+  <data name="&gt;&gt;lblCombo1BottomRight.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblCombo1BottomRight.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblCombo1BottomRight.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="lblCombo2TopLeft.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
+  </data>
+  <data name="lblCombo2TopLeft.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblCombo2TopLeft.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblCombo2TopLeft.Location" type="System.Drawing.Point, System.Drawing">
+    <value>122, 217</value>
+  </data>
+  <data name="lblCombo2TopLeft.Size" type="System.Drawing.Size, System.Drawing">
+    <value>41, 15</value>
+  </data>
+  <data name="lblCombo2TopLeft.TabIndex" type="System.Int32, mscorlib">
+    <value>1001</value>
+  </data>
+  <data name="lblCombo2TopLeft.Text" xml:space="preserve">
+    <value>label1</value>
+  </data>
+  <data name="&gt;&gt;lblCombo2TopLeft.Name" xml:space="preserve">
+    <value>lblCombo2TopLeft</value>
+  </data>
+  <data name="&gt;&gt;lblCombo2TopLeft.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblCombo2TopLeft.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblCombo2TopLeft.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="lblCombo2BottomRight.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
+  </data>
+  <data name="lblCombo2BottomRight.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblCombo2BottomRight.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblCombo2BottomRight.Location" type="System.Drawing.Point, System.Drawing">
+    <value>481, 241</value>
+  </data>
+  <data name="lblCombo2BottomRight.Size" type="System.Drawing.Size, System.Drawing">
+    <value>41, 15</value>
+  </data>
+  <data name="lblCombo2BottomRight.TabIndex" type="System.Int32, mscorlib">
+    <value>1002</value>
+  </data>
+  <data name="lblCombo2BottomRight.Text" xml:space="preserve">
+    <value>label1</value>
+  </data>
+  <data name="&gt;&gt;lblCombo2BottomRight.Name" xml:space="preserve">
+    <value>lblCombo2BottomRight</value>
+  </data>
+  <data name="&gt;&gt;lblCombo2BottomRight.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblCombo2BottomRight.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblCombo2BottomRight.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>6, 13</value>
+    <value>96, 96</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>725, 393</value>
+    <value>534, 299</value>
+  </data>
+  <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Meiryo UI, 9pt</value>
   </data>
   <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>433, 260</value>
+    <value>550, 338</value>
   </data>
   <data name="&gt;&gt;chIndicator.Name" xml:space="preserve">
     <value>chIndicator</value>

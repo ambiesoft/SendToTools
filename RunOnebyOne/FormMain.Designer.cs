@@ -48,6 +48,10 @@
             this.btnClearResults = new System.Windows.Forms.Button();
             this.cmbApplication = new System.Windows.Forms.ComboBox();
             this.cmbArguments = new System.Windows.Forms.ComboBox();
+            this.lblCombo1TopLeft = new System.Windows.Forms.Label();
+            this.lblCombo1BottomRight = new System.Windows.Forms.Label();
+            this.lblCombo2TopLeft = new System.Windows.Forms.Label();
+            this.lblCombo2BottomRight = new System.Windows.Forms.Label();
             this.cmList.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -170,11 +174,35 @@
             this.cmbArguments.FormattingEnabled = true;
             this.cmbArguments.Name = "cmbArguments";
             // 
+            // lblCombo1TopLeft
+            // 
+            resources.ApplyResources(this.lblCombo1TopLeft, "lblCombo1TopLeft");
+            this.lblCombo1TopLeft.Name = "lblCombo1TopLeft";
+            // 
+            // lblCombo1BottomRight
+            // 
+            resources.ApplyResources(this.lblCombo1BottomRight, "lblCombo1BottomRight");
+            this.lblCombo1BottomRight.Name = "lblCombo1BottomRight";
+            // 
+            // lblCombo2TopLeft
+            // 
+            resources.ApplyResources(this.lblCombo2TopLeft, "lblCombo2TopLeft");
+            this.lblCombo2TopLeft.Name = "lblCombo2TopLeft";
+            // 
+            // lblCombo2BottomRight
+            // 
+            resources.ApplyResources(this.lblCombo2BottomRight, "lblCombo2BottomRight");
+            this.lblCombo2BottomRight.Name = "lblCombo2BottomRight";
+            // 
             // FormMain
             // 
             this.AcceptButton = this.btnClose;
             resources.ApplyResources(this, "$this");
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            this.Controls.Add(this.lblCombo2BottomRight);
+            this.Controls.Add(this.lblCombo1BottomRight);
+            this.Controls.Add(this.lblCombo2TopLeft);
+            this.Controls.Add(this.lblCombo1TopLeft);
             this.Controls.Add(this.cmbArguments);
             this.Controls.Add(this.cmbApplication);
             this.Controls.Add(this.btnClearResults);
@@ -188,6 +216,7 @@
             this.Name = "FormMain";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormMain_FormClosed);
             this.Load += new System.EventHandler(this.FormMain_Load);
+            this.Resize += new System.EventHandler(this.FormMain_Resize);
             this.cmList.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -214,6 +243,10 @@
         private System.Windows.Forms.ToolStripMenuItem tsmiRemoveAll;
         private System.Windows.Forms.ComboBox cmbApplication;
         private System.Windows.Forms.ComboBox cmbArguments;
+        private System.Windows.Forms.Label lblCombo1TopLeft;
+        private System.Windows.Forms.Label lblCombo1BottomRight;
+        private System.Windows.Forms.Label lblCombo2TopLeft;
+        private System.Windows.Forms.Label lblCombo2BottomRight;
     }
 }
 

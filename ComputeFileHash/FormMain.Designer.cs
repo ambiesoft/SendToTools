@@ -43,10 +43,9 @@
             // 
             // txtFile
             // 
-            this.txtFile.Location = new System.Drawing.Point(16, 15);
-            this.txtFile.Margin = new System.Windows.Forms.Padding(4);
+            this.txtFile.Location = new System.Drawing.Point(12, 11);
             this.txtFile.Name = "txtFile";
-            this.txtFile.Size = new System.Drawing.Size(772, 22);
+            this.txtFile.Size = new System.Drawing.Size(580, 23);
             this.txtFile.TabIndex = 0;
             // 
             // panelRoot
@@ -60,17 +59,15 @@
             this.panelRoot.Controls.Add(this.txtFile);
             this.panelRoot.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelRoot.Location = new System.Drawing.Point(0, 0);
-            this.panelRoot.Margin = new System.Windows.Forms.Padding(4);
             this.panelRoot.Name = "panelRoot";
-            this.panelRoot.Size = new System.Drawing.Size(859, 356);
+            this.panelRoot.Size = new System.Drawing.Size(644, 277);
             this.panelRoot.TabIndex = 1;
             // 
             // progMain
             // 
-            this.progMain.Location = new System.Drawing.Point(16, 313);
-            this.progMain.Margin = new System.Windows.Forms.Padding(4);
+            this.progMain.Location = new System.Drawing.Point(12, 236);
             this.progMain.Name = "progMain";
-            this.progMain.Size = new System.Drawing.Size(625, 28);
+            this.progMain.Size = new System.Drawing.Size(469, 29);
             this.progMain.TabIndex = 6;
             // 
             // lvMain
@@ -78,10 +75,10 @@
             this.lvMain.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.colMethod,
             this.colValue});
-            this.lvMain.Location = new System.Drawing.Point(16, 123);
-            this.lvMain.Margin = new System.Windows.Forms.Padding(4);
+            this.lvMain.HideSelection = false;
+            this.lvMain.Location = new System.Drawing.Point(12, 92);
             this.lvMain.Name = "lvMain";
-            this.lvMain.Size = new System.Drawing.Size(825, 181);
+            this.lvMain.Size = new System.Drawing.Size(620, 137);
             this.lvMain.TabIndex = 5;
             this.lvMain.UseCompatibleStateImageBehavior = false;
             this.lvMain.View = System.Windows.Forms.View.Details;
@@ -98,10 +95,9 @@
             // 
             // btnCompute
             // 
-            this.btnCompute.Location = new System.Drawing.Point(649, 313);
-            this.btnCompute.Margin = new System.Windows.Forms.Padding(4);
+            this.btnCompute.Location = new System.Drawing.Point(487, 236);
             this.btnCompute.Name = "btnCompute";
-            this.btnCompute.Size = new System.Drawing.Size(193, 28);
+            this.btnCompute.Size = new System.Drawing.Size(145, 29);
             this.btnCompute.TabIndex = 4;
             this.btnCompute.Text = "&Compute";
             this.btnCompute.UseVisualStyleBackColor = true;
@@ -110,10 +106,9 @@
             // chkSha1
             // 
             this.chkSha1.AutoSize = true;
-            this.chkSha1.Location = new System.Drawing.Point(89, 66);
-            this.chkSha1.Margin = new System.Windows.Forms.Padding(4);
+            this.chkSha1.Location = new System.Drawing.Point(67, 50);
             this.chkSha1.Name = "chkSha1";
-            this.chkSha1.Size = new System.Drawing.Size(63, 21);
+            this.chkSha1.Size = new System.Drawing.Size(55, 19);
             this.chkSha1.TabIndex = 3;
             this.chkSha1.Text = "&Sha1";
             this.chkSha1.UseVisualStyleBackColor = true;
@@ -121,20 +116,18 @@
             // chkMD5
             // 
             this.chkMD5.AutoSize = true;
-            this.chkMD5.Location = new System.Drawing.Point(16, 66);
-            this.chkMD5.Margin = new System.Windows.Forms.Padding(4);
+            this.chkMD5.Location = new System.Drawing.Point(12, 50);
             this.chkMD5.Name = "chkMD5";
-            this.chkMD5.Size = new System.Drawing.Size(59, 21);
+            this.chkMD5.Size = new System.Drawing.Size(52, 19);
             this.chkMD5.TabIndex = 2;
             this.chkMD5.Text = "&MD5";
             this.chkMD5.UseVisualStyleBackColor = true;
             // 
             // btnBrowse
             // 
-            this.btnBrowse.Location = new System.Drawing.Point(797, 11);
-            this.btnBrowse.Margin = new System.Windows.Forms.Padding(4);
+            this.btnBrowse.Location = new System.Drawing.Point(598, 8);
             this.btnBrowse.Name = "btnBrowse";
-            this.btnBrowse.Size = new System.Drawing.Size(45, 28);
+            this.btnBrowse.Size = new System.Drawing.Size(34, 21);
             this.btnBrowse.TabIndex = 1;
             this.btnBrowse.Text = "&...";
             this.btnBrowse.UseVisualStyleBackColor = true;
@@ -142,11 +135,11 @@
             // 
             // FormMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(859, 356);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            this.ClientSize = new System.Drawing.Size(644, 277);
             this.Controls.Add(this.panelRoot);
-            this.Margin = new System.Windows.Forms.Padding(4);
+            this.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.Name = "FormMain";
             this.Text = "Form1";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormMain_FormClosing);

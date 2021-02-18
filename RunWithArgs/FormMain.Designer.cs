@@ -84,7 +84,7 @@ namespace RunWithArgs
             // 
             this.AcceptButton = this.btnRun;
             resources.ApplyResources(this, "$this");
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.CancelButton = this.btnCancel;
             this.Controls.Add(this.chkRunas);
             this.Controls.Add(this.lblArg);

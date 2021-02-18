@@ -37,8 +37,8 @@
             this.btnBrowseDest = new System.Windows.Forms.Button();
             this.timerFreeSpace = new System.Windows.Forms.Timer(this.components);
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.panelRoot = new System.Windows.Forms.Panel();
             this.sslMain = new System.Windows.Forms.ToolStripStatusLabel();
+            this.panelRoot = new System.Windows.Forms.Panel();
             this.statusStrip1.SuspendLayout();
             this.panelRoot.SuspendLayout();
             this.SuspendLayout();
@@ -47,21 +47,21 @@
             // 
             this.txtSource.Location = new System.Drawing.Point(3, 6);
             this.txtSource.Name = "txtSource";
-            this.txtSource.Size = new System.Drawing.Size(467, 20);
+            this.txtSource.Size = new System.Drawing.Size(467, 23);
             this.txtSource.TabIndex = 0;
             // 
             // txtDest
             // 
-            this.txtDest.Location = new System.Drawing.Point(3, 29);
+            this.txtDest.Location = new System.Drawing.Point(3, 35);
             this.txtDest.Name = "txtDest";
-            this.txtDest.Size = new System.Drawing.Size(467, 20);
+            this.txtDest.Size = new System.Drawing.Size(467, 23);
             this.txtDest.TabIndex = 1;
             // 
             // btnCopy
             // 
-            this.btnCopy.Location = new System.Drawing.Point(310, 249);
+            this.btnCopy.Location = new System.Drawing.Point(259, 221);
             this.btnCopy.Name = "btnCopy";
-            this.btnCopy.Size = new System.Drawing.Size(126, 23);
+            this.btnCopy.Size = new System.Drawing.Size(126, 28);
             this.btnCopy.TabIndex = 2;
             this.btnCopy.Text = "&Copy";
             this.btnCopy.UseVisualStyleBackColor = true;
@@ -69,16 +69,16 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(442, 249);
+            this.btnCancel.Location = new System.Drawing.Point(391, 221);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 23);
+            this.btnCancel.Size = new System.Drawing.Size(126, 28);
             this.btnCancel.TabIndex = 3;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             // 
             // btnBrowseSource
             // 
-            this.btnBrowseSource.Location = new System.Drawing.Point(476, 3);
+            this.btnBrowseSource.Location = new System.Drawing.Point(476, 6);
             this.btnBrowseSource.Name = "btnBrowseSource";
             this.btnBrowseSource.Size = new System.Drawing.Size(41, 23);
             this.btnBrowseSource.TabIndex = 4;
@@ -88,7 +88,7 @@
             // 
             // btnBrowseDest
             // 
-            this.btnBrowseDest.Location = new System.Drawing.Point(476, 29);
+            this.btnBrowseDest.Location = new System.Drawing.Point(476, 35);
             this.btnBrowseDest.Name = "btnBrowseDest";
             this.btnBrowseDest.Size = new System.Drawing.Size(41, 23);
             this.btnBrowseDest.TabIndex = 5;
@@ -106,11 +106,16 @@
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.sslMain});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 275);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 252);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(520, 22);
             this.statusStrip1.TabIndex = 6;
             this.statusStrip1.Text = "ssMain";
+            // 
+            // sslMain
+            // 
+            this.sslMain.Name = "sslMain";
+            this.sslMain.Size = new System.Drawing.Size(0, 17);
             // 
             // panelRoot
             // 
@@ -123,21 +128,17 @@
             this.panelRoot.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelRoot.Location = new System.Drawing.Point(0, 0);
             this.panelRoot.Name = "panelRoot";
-            this.panelRoot.Size = new System.Drawing.Size(520, 275);
+            this.panelRoot.Size = new System.Drawing.Size(520, 252);
             this.panelRoot.TabIndex = 7;
-            // 
-            // sslMain
-            // 
-            this.sslMain.Name = "sslMain";
-            this.sslMain.Size = new System.Drawing.Size(0, 17);
             // 
             // FormMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(520, 297);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            this.ClientSize = new System.Drawing.Size(520, 274);
             this.Controls.Add(this.panelRoot);
             this.Controls.Add(this.statusStrip1);
+            this.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.Name = "FormMain";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.FormMain_Load);

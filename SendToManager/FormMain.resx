@@ -119,10 +119,10 @@
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="txtEditName.Location" type="System.Drawing.Point, System.Drawing">
-    <value>39, 47</value>
+    <value>39, 43</value>
   </data>
   <data name="txtEditName.Size" type="System.Drawing.Size, System.Drawing">
-    <value>132, 20</value>
+    <value>132, 23</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="txtEditName.TabIndex" type="System.Int32, mscorlib">
@@ -147,10 +147,10 @@
     <value>&lt;browse...&gt;</value>
   </data>
   <data name="cmbEditDirectory.Location" type="System.Drawing.Point, System.Drawing">
-    <value>39, 73</value>
+    <value>39, 67</value>
   </data>
   <data name="cmbEditDirectory.Size" type="System.Drawing.Size, System.Drawing">
-    <value>121, 21</value>
+    <value>121, 23</value>
   </data>
   <data name="cmbEditDirectory.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -173,27 +173,6 @@
   <metadata name="tsList.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>127, 17</value>
   </metadata>
-  <data name="tsList.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="tsList.Size" type="System.Drawing.Size, System.Drawing">
-    <value>789, 25</value>
-  </data>
-  <data name="tsList.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;tsList.Name" xml:space="preserve">
-    <value>tsList</value>
-  </data>
-  <data name="&gt;&gt;tsList.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tsList.Parent" xml:space="preserve">
-    <value>panelRoot</value>
-  </data>
-  <data name="&gt;&gt;tsList.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
   <data name="tsbNewItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAQAAAAEACAYAAABccqhmAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
@@ -318,7 +297,7 @@
     <value>Magenta</value>
   </data>
   <data name="tsbNewItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>78, 22</value>
+    <value>77, 22</value>
   </data>
   <data name="tsbNewItem.Text" xml:space="preserve">
     <value>New Item</value>
@@ -326,39 +305,39 @@
   <data name="tsbUp.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         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
-        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
-        WnXPAwQAAAAASUVORK5CYII=
+        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
+        tRzmgcFEAAAAAElFTkSuQmCC
 </value>
   </data>
   <data name="tsbUp.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
@@ -373,38 +352,38 @@
   <data name="tsbDown.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         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
-        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
+        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
 </value>
   </data>
   <data name="tsbDown.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
@@ -453,7 +432,7 @@
     <value>Magenta</value>
   </data>
   <data name="tsbNumber.Size" type="System.Drawing.Size, System.Drawing">
-    <value>71, 22</value>
+    <value>70, 22</value>
   </data>
   <data name="tsbNumber.Text" xml:space="preserve">
     <value>Number</value>
@@ -495,47 +474,41 @@
   <data name="tsbDisplace.Text" xml:space="preserve">
     <value>Displace</value>
   </data>
+  <data name="tsList.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="tsList.Size" type="System.Drawing.Size, System.Drawing">
+    <value>789, 25</value>
+  </data>
+  <data name="tsList.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;tsList.Name" xml:space="preserve">
+    <value>tsList</value>
+  </data>
+  <data name="&gt;&gt;tsList.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tsList.Parent" xml:space="preserve">
+    <value>panelRoot</value>
+  </data>
+  <data name="&gt;&gt;tsList.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
   <metadata name="menuMain.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
-  <data name="menuMain.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
+  <data name="closeToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>102, 22</value>
   </data>
-  <data name="menuMain.Size" type="System.Drawing.Size, System.Drawing">
-    <value>789, 24</value>
-  </data>
-  <data name="menuMain.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="&gt;&gt;menuMain.Name" xml:space="preserve">
-    <value>menuMain</value>
-  </data>
-  <data name="&gt;&gt;menuMain.Type" xml:space="preserve">
-    <value>System.Windows.Forms.MenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;menuMain.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;menuMain.ZOrder" xml:space="preserve">
-    <value>2</value>
+  <data name="closeToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;Close</value>
   </data>
   <data name="fileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>37, 20</value>
   </data>
   <data name="fileToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;File</value>
-  </data>
-  <data name="closeToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>103, 22</value>
-  </data>
-  <data name="closeToolStripMenuItem.Text" xml:space="preserve">
-    <value>&amp;Close</value>
-  </data>
-  <data name="editToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>39, 20</value>
-  </data>
-  <data name="editToolStripMenuItem.Text" xml:space="preserve">
-    <value>&amp;Edit</value>
   </data>
   <data name="newItemToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -569,7 +542,7 @@
 </value>
   </data>
   <data name="newItemToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>175, 22</value>
+    <value>174, 22</value>
   </data>
   <data name="newItemToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;New Item</value>
@@ -614,7 +587,7 @@
 </value>
   </data>
   <data name="upToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>175, 22</value>
+    <value>174, 22</value>
   </data>
   <data name="upToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Up</value>
@@ -659,7 +632,7 @@
 </value>
   </data>
   <data name="downToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>175, 22</value>
+    <value>174, 22</value>
   </data>
   <data name="downToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Down</value>
@@ -678,7 +651,7 @@
 </value>
   </data>
   <data name="refreshToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>175, 22</value>
+    <value>174, 22</value>
   </data>
   <data name="refreshToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Refresh</value>
@@ -695,7 +668,7 @@
 </value>
   </data>
   <data name="numberToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>175, 22</value>
+    <value>174, 22</value>
   </data>
   <data name="numberToolStripMenuItem.Text" xml:space="preserve">
     <value>Nu&amp;mber</value>
@@ -710,7 +683,7 @@
 </value>
   </data>
   <data name="deployToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>175, 22</value>
+    <value>174, 22</value>
   </data>
   <data name="deployToolStripMenuItem.Text" xml:space="preserve">
     <value>De&amp;ploy</value>
@@ -724,19 +697,34 @@
 </value>
   </data>
   <data name="displaceToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>175, 22</value>
+    <value>174, 22</value>
   </data>
   <data name="displaceToolStripMenuItem.Text" xml:space="preserve">
     <value>Di&amp;splace</value>
   </data>
   <data name="toolStripMenuItem3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>172, 6</value>
+    <value>171, 6</value>
   </data>
   <data name="insertDefaultItemsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>175, 22</value>
+    <value>174, 22</value>
   </data>
   <data name="insertDefaultItemsToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Insert default items</value>
+  </data>
+  <data name="editToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>39, 20</value>
+  </data>
+  <data name="editToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;Edit</value>
+  </data>
+  <data name="addInventoryToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>157, 22</value>
+  </data>
+  <data name="addInventoryToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;Add Inventory...</value>
+  </data>
+  <data name="toolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>154, 6</value>
   </data>
   <data name="inventoryToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>69, 20</value>
@@ -744,14 +732,17 @@
   <data name="inventoryToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Inventory</value>
   </data>
-  <data name="addInventoryToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>158, 22</value>
+  <data name="openCurrentInventoryToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>198, 22</value>
   </data>
-  <data name="addInventoryToolStripMenuItem.Text" xml:space="preserve">
-    <value>&amp;Add Inventory...</value>
+  <data name="openCurrentInventoryToolStripMenuItem.Text" xml:space="preserve">
+    <value>Open Current &amp;Inventory</value>
   </data>
-  <data name="toolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>155, 6</value>
+  <data name="openSendToToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>198, 22</value>
+  </data>
+  <data name="openSendToToolStripMenuItem.Text" xml:space="preserve">
+    <value>Open &amp;SendTo</value>
   </data>
   <data name="folderToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>52, 20</value>
@@ -759,35 +750,17 @@
   <data name="folderToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Folder</value>
   </data>
-  <data name="openCurrentInventoryToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>199, 22</value>
-  </data>
-  <data name="openCurrentInventoryToolStripMenuItem.Text" xml:space="preserve">
-    <value>Open Current &amp;Inventory</value>
-  </data>
-  <data name="openSendToToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>199, 22</value>
-  </data>
-  <data name="openSendToToolStripMenuItem.Text" xml:space="preserve">
-    <value>Open &amp;SendTo</value>
-  </data>
-  <data name="toolsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>46, 20</value>
-  </data>
-  <data name="toolsToolStripMenuItem.Text" xml:space="preserve">
-    <value>&amp;Tools</value>
-  </data>
   <data name="optionToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>120, 22</value>
   </data>
   <data name="optionToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Option...</value>
   </data>
-  <data name="helpToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>44, 20</value>
+  <data name="toolsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>46, 20</value>
   </data>
-  <data name="helpToolStripMenuItem.Text" xml:space="preserve">
-    <value>&amp;Help</value>
+  <data name="toolsToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;Tools</value>
   </data>
   <data name="aboutToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>165, 22</value>
@@ -801,66 +774,32 @@
   <data name="goToWebPageToolStripMenuItem.Text" xml:space="preserve">
     <value>Go to &amp;WebPage...</value>
   </data>
-  <data name="&gt;&gt;cmbEditBool.Name" xml:space="preserve">
-    <value>cmbEditBool</value>
+  <data name="helpToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>44, 20</value>
   </data>
-  <data name="&gt;&gt;cmbEditBool.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="helpToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;Help</value>
   </data>
-  <data name="&gt;&gt;cmbEditBool.Parent" xml:space="preserve">
-    <value>panelRoot</value>
+  <data name="menuMain.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
   </data>
-  <data name="&gt;&gt;cmbEditBool.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="menuMain.Size" type="System.Drawing.Size, System.Drawing">
+    <value>789, 24</value>
   </data>
-  <data name="&gt;&gt;cmbEditFile.Name" xml:space="preserve">
-    <value>cmbEditFile</value>
+  <data name="menuMain.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
   </data>
-  <data name="&gt;&gt;cmbEditFile.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;menuMain.Name" xml:space="preserve">
+    <value>menuMain</value>
   </data>
-  <data name="&gt;&gt;cmbEditFile.Parent" xml:space="preserve">
-    <value>panelRoot</value>
+  <data name="&gt;&gt;menuMain.Type" xml:space="preserve">
+    <value>System.Windows.Forms.MenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;cmbEditFile.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;lvMain.Name" xml:space="preserve">
-    <value>lvMain</value>
-  </data>
-  <data name="&gt;&gt;lvMain.Type" xml:space="preserve">
-    <value>ListViewEx.ListViewEx, ListViewEx, Version=1.0.7701.6099, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;lvMain.Parent" xml:space="preserve">
-    <value>panelRoot</value>
-  </data>
-  <data name="&gt;&gt;lvMain.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="panelRoot.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="panelRoot.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 24</value>
-  </data>
-  <data name="panelRoot.Size" type="System.Drawing.Size, System.Drawing">
-    <value>789, 497</value>
-  </data>
-  <data name="panelRoot.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
-  </data>
-  <data name="&gt;&gt;panelRoot.Name" xml:space="preserve">
-    <value>panelRoot</value>
-  </data>
-  <data name="&gt;&gt;panelRoot.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;panelRoot.Parent" xml:space="preserve">
+  <data name="&gt;&gt;menuMain.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;panelRoot.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="&gt;&gt;menuMain.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <data name="cmbEditBool.Items" xml:space="preserve">
     <value>True</value>
@@ -869,10 +808,10 @@
     <value>False</value>
   </data>
   <data name="cmbEditBool.Location" type="System.Drawing.Point, System.Drawing">
-    <value>50, 189</value>
+    <value>50, 174</value>
   </data>
   <data name="cmbEditBool.Size" type="System.Drawing.Size, System.Drawing">
-    <value>121, 21</value>
+    <value>121, 23</value>
   </data>
   <data name="cmbEditBool.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -896,10 +835,10 @@
     <value>&lt;browse...&gt;</value>
   </data>
   <data name="cmbEditFile.Location" type="System.Drawing.Point, System.Drawing">
-    <value>39, 147</value>
+    <value>39, 136</value>
   </data>
   <data name="cmbEditFile.Size" type="System.Drawing.Size, System.Drawing">
-    <value>121, 21</value>
+    <value>121, 23</value>
   </data>
   <data name="cmbEditFile.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -922,39 +861,6 @@
   <metadata name="ctxList.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>210, 17</value>
   </metadata>
-  <data name="ctxList.Size" type="System.Drawing.Size, System.Drawing">
-    <value>125, 76</value>
-  </data>
-  <data name="&gt;&gt;ctxList.Name" xml:space="preserve">
-    <value>ctxList</value>
-  </data>
-  <data name="&gt;&gt;ctxList.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="lvMain.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="lvMain.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 25</value>
-  </data>
-  <data name="lvMain.Size" type="System.Drawing.Size, System.Drawing">
-    <value>789, 472</value>
-  </data>
-  <data name="lvMain.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;lvMain.Name" xml:space="preserve">
-    <value>lvMain</value>
-  </data>
-  <data name="&gt;&gt;lvMain.Type" xml:space="preserve">
-    <value>ListViewEx.ListViewEx, ListViewEx, Version=1.0.7701.6099, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;lvMain.Parent" xml:space="preserve">
-    <value>panelRoot</value>
-  </data>
-  <data name="&gt;&gt;lvMain.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
   <data name="duplicateToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>124, 22</value>
   </data>
@@ -976,14 +882,75 @@
   <data name="deleteToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Delete</value>
   </data>
+  <data name="ctxList.Size" type="System.Drawing.Size, System.Drawing">
+    <value>125, 76</value>
+  </data>
+  <data name="&gt;&gt;ctxList.Name" xml:space="preserve">
+    <value>ctxList</value>
+  </data>
+  <data name="&gt;&gt;ctxList.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="lvMain.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="lvMain.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 25</value>
+  </data>
+  <data name="lvMain.Size" type="System.Drawing.Size, System.Drawing">
+    <value>789, 432</value>
+  </data>
+  <data name="lvMain.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;lvMain.Name" xml:space="preserve">
+    <value>lvMain</value>
+  </data>
+  <data name="&gt;&gt;lvMain.Type" xml:space="preserve">
+    <value>ListViewEx.ListViewEx, ListViewEx, Version=1.0.7719.26372, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;lvMain.Parent" xml:space="preserve">
+    <value>panelRoot</value>
+  </data>
+  <data name="&gt;&gt;lvMain.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="panelRoot.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="panelRoot.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 24</value>
+  </data>
+  <data name="panelRoot.Size" type="System.Drawing.Size, System.Drawing">
+    <value>789, 457</value>
+  </data>
+  <data name="panelRoot.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;panelRoot.Name" xml:space="preserve">
+    <value>panelRoot</value>
+  </data>
+  <data name="&gt;&gt;panelRoot.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panelRoot.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;panelRoot.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>6, 13</value>
+    <value>96, 96</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>789, 521</value>
+    <value>789, 481</value>
+  </data>
+  <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Meiryo UI, 9pt</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

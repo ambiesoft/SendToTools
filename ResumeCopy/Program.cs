@@ -14,6 +14,7 @@ namespace ResumeCopy
         [STAThread]
         static void Main()
         {
+            Ambiesoft.CppUtils.AmbSetProcessDPIAware();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new FormMain());

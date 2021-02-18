@@ -178,10 +178,10 @@
     <value>Top, Left, Right</value>
   </data>
   <data name="txtExe.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 26</value>
+    <value>12, 29</value>
   </data>
   <data name="txtExe.Size" type="System.Drawing.Size, System.Drawing">
-    <value>591, 19</value>
+    <value>591, 23</value>
   </data>
   <data name="txtExe.TabIndex" type="System.Int32, mscorlib">
     <value>20</value>
@@ -202,10 +202,10 @@
     <value>Top, Left, Right</value>
   </data>
   <data name="txtArg.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 82</value>
+    <value>12, 85</value>
   </data>
   <data name="txtArg.Size" type="System.Drawing.Size, System.Drawing">
-    <value>591, 19</value>
+    <value>591, 23</value>
   </data>
   <data name="txtArg.TabIndex" type="System.Int32, mscorlib">
     <value>40</value>
@@ -229,7 +229,7 @@
     <value>10, 11</value>
   </data>
   <data name="lblExe.Size" type="System.Drawing.Size, System.Drawing">
-    <value>24, 12</value>
+    <value>27, 15</value>
   </data>
   <data name="lblExe.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
@@ -256,7 +256,7 @@
     <value>10, 67</value>
   </data>
   <data name="lblArg.Size" type="System.Drawing.Size, System.Drawing">
-    <value>60, 12</value>
+    <value>71, 15</value>
   </data>
   <data name="lblArg.TabIndex" type="System.Int32, mscorlib">
     <value>30</value>
@@ -283,7 +283,7 @@
     <value>12, 132</value>
   </data>
   <data name="chkRunas.Size" type="System.Drawing.Size, System.Drawing">
-    <value>56, 16</value>
+    <value>61, 19</value>
   </data>
   <data name="chkRunas.TabIndex" type="System.Int32, mscorlib">
     <value>50</value>
@@ -307,10 +307,13 @@
     <value>True</value>
   </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>6, 12</value>
+    <value>96, 96</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>615, 256</value>
+  </data>
+  <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Meiryo UI, 9pt</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
