@@ -47,8 +47,6 @@ namespace SendToManagerLauncher
                 "tools");
             SetDllDirectory(tooldir);
 
-            Ambiesoft.CppUtils.AmbSetProcessDPIAware();
-
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new Form1());

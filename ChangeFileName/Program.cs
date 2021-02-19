@@ -131,7 +131,7 @@ namespace ChangeFileName
                 return;
             }
             
-            string theFileName = args[0];
+            string theFileName = args[0].Trim();
             // theFileName = @"C:\Documents and Settings\tt\My Documents\Productivity Distribution, Firm Heterogeneity, and Agglomeration.pdf";
             if (!File.Exists(theFileName) && !Directory.Exists(theFileName) )
             {

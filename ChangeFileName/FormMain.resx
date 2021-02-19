@@ -183,14 +183,11 @@
   <data name="txtName.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
   </data>
-  <data name="txtName.Font" type="System.Drawing.Font, System.Drawing">
-    <value>MS UI Gothic, 14.25pt</value>
-  </data>
   <data name="txtName.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 27</value>
   </data>
   <data name="txtName.Size" type="System.Drawing.Size, System.Drawing">
-    <value>530, 26</value>
+    <value>530, 23</value>
   </data>
   <data name="txtName.TabIndex" type="System.Int32, mscorlib">
     <value>100</value>
@@ -862,7 +859,7 @@
     <value>btnLaunch</value>
   </data>
   <data name="&gt;&gt;btnLaunch.Type" xml:space="preserve">
-    <value>SplitButtonDemo.SplitButton, ChangeFileName, Version=1.5.5.34915, Culture=neutral, PublicKeyToken=null</value>
+    <value>SplitButtonDemo.SplitButton, ChangeFileName, Version=1.6.1.27809, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;btnLaunch.Parent" xml:space="preserve">
     <value>$this</value>
@@ -916,7 +913,7 @@
     <value>btnPaste</value>
   </data>
   <data name="&gt;&gt;btnPaste.Type" xml:space="preserve">
-    <value>SplitButtonDemo.SplitButton, ChangeFileName, Version=1.5.5.34915, Culture=neutral, PublicKeyToken=null</value>
+    <value>SplitButtonDemo.SplitButton, ChangeFileName, Version=1.6.1.27809, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;btnPaste.Parent" xml:space="preserve">
     <value>$this</value>
