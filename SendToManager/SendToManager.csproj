@@ -83,12 +83,12 @@
     <Reference Include="Ambiesoft.FolderConfigHelper">
       <HintPath>C:\Linkout\FolderConfig\Ambiesoft.FolderConfigHelper.dll</HintPath>
     </Reference>
+    <Reference Include="Ambiesoft.GetTextDialog">
+      <HintPath>..\..\..\..\..\..\Linkout\DNAssembly.NET4\Ambiesoft.GetTextDialog.dll</HintPath>
+    </Reference>
     <Reference Include="Ambiesoft.Profile, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\Linkout\DNAssembly\Ambiesoft.Profile.dll</HintPath>
-    </Reference>
-    <Reference Include="GetTextDialog">
-      <HintPath>C:\Linkout\DNAssembly\GetTextDialog.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
