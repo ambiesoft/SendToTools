@@ -142,7 +142,7 @@ namespace ChangeFileName
         private void itemSort_Click(object sender, EventArgs e)
         {
             string[] tmp = DiskDirs;
-            Array.Sort(tmp);
+            Array.Sort(tmp, StringComparer.InvariantCultureIgnoreCase);
             DiskDirs = tmp;
         }
         private void itemClearFolder_Click(object sender, EventArgs e)
