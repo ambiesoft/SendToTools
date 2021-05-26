@@ -49,6 +49,11 @@ namespace ChangeFileName
                     System.IO.FileInfo fiorig = new System.IO.FileInfo(srcfilename);
 
                     string destfilename = txtName.Text + fiorig.Extension;
+                    if (-1 != destfilename.IndexOfAny(Program.damemoji.ToCharArray()))
+                    {
+                        showDamemojiError();
+                        return;
+                    }
                     string destfullname = System.IO.Path.Combine(path, destfilename);
 
                     //bool overwrite = false;

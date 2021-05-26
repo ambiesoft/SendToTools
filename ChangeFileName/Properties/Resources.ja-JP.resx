@@ -130,7 +130,7 @@
     <value>ファイルが見つかりません : {0}</value>
   </data>
   <data name="FOLLOWING_UNABLE_FILENAME" xml:space="preserve">
-    <value>以下の文字はファイル名には使えません</value>
+    <value>以下の文字はファイル名には使えません：</value>
   </data>
   <data name="NEW_FOLDER_DDD" xml:space="preserve">
     <value>新規フォルダ(&amp;N)...</value>

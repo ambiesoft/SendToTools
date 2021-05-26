@@ -145,7 +145,7 @@
     <value>Following files do not exist.</value>
   </data>
   <data name="FOLLOWING_UNABLE_FILENAME" xml:space="preserve">
-    <value>File name must not include following letters</value>
+    <value>File name must not include following letters:</value>
   </data>
   <data name="HELP" xml:space="preserve">
     <value>ChangeFileName.exe [/run] file

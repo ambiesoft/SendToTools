@@ -323,6 +323,14 @@ namespace ChangeFileName
             }
         }
 
+        void showDamemojiError()
+        {
+            CppUtils.CenteredMessageBox(this,
+                  Properties.Resources.FOLLOWING_UNABLE_FILENAME + Environment.NewLine + Program.damemoji,
+                  Application.ProductName,
+                  MessageBoxButtons.OK,
+                  MessageBoxIcon.Warning);
+        }
         private void btnOK_Click(object sender, EventArgs e)
         {
             string newName = txtName.Text;
@@ -339,12 +347,7 @@ namespace ChangeFileName
 
             if (-1 != newName.IndexOfAny(Program.damemoji.ToCharArray()))
             {
-                CppUtils.CenteredMessageBox(this,
-                    Properties.Resources.FOLLOWING_UNABLE_FILENAME + Environment.NewLine + Environment.NewLine + Program.damemoji,
-                    Application.ProductName,
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning);
-
+                showDamemojiError();
                 return;
             }
 
