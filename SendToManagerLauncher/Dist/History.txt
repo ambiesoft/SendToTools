@@ -1,3 +1,5 @@
+CopyPath has options to double-quote or not
+
 2021/05/26 ver 2.1.4
 Shows error when user specifies illegal filename and tries to move it
 
