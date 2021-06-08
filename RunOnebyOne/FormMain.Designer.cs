@@ -52,6 +52,10 @@
             this.lblCombo1BottomRight = new System.Windows.Forms.Label();
             this.lblCombo2TopLeft = new System.Windows.Forms.Label();
             this.lblCombo2BottomRight = new System.Windows.Forms.Label();
+            this.txtActualArg = new System.Windows.Forms.TextBox();
+            this.lblActualArgTopLeft = new System.Windows.Forms.Label();
+            this.lblActualArgBottomRight = new System.Windows.Forms.Label();
+            this.btnBrowseMacro = new System.Windows.Forms.Button();
             this.cmList.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -69,6 +73,7 @@
             this.listMain.Name = "listMain";
             this.listMain.UseCompatibleStateImageBehavior = false;
             this.listMain.View = System.Windows.Forms.View.Details;
+            this.listMain.SelectedIndexChanged += new System.EventHandler(this.listMain_SelectedIndexChanged);
             this.listMain.DragDrop += new System.Windows.Forms.DragEventHandler(this.listMain_DragDrop);
             this.listMain.DragEnter += new System.Windows.Forms.DragEventHandler(this.listMain_DragEnter);
             this.listMain.DragOver += new System.Windows.Forms.DragEventHandler(this.listMain_DragOver);
@@ -173,6 +178,7 @@
             resources.ApplyResources(this.cmbArguments, "cmbArguments");
             this.cmbArguments.FormattingEnabled = true;
             this.cmbArguments.Name = "cmbArguments";
+            this.cmbArguments.TextChanged += new System.EventHandler(this.cmbArguments_TextChanged);
             // 
             // lblCombo1TopLeft
             // 
@@ -194,13 +200,40 @@
             resources.ApplyResources(this.lblCombo2BottomRight, "lblCombo2BottomRight");
             this.lblCombo2BottomRight.Name = "lblCombo2BottomRight";
             // 
+            // txtActualArg
+            // 
+            resources.ApplyResources(this.txtActualArg, "txtActualArg");
+            this.txtActualArg.Name = "txtActualArg";
+            this.txtActualArg.ReadOnly = true;
+            // 
+            // lblActualArgTopLeft
+            // 
+            resources.ApplyResources(this.lblActualArgTopLeft, "lblActualArgTopLeft");
+            this.lblActualArgTopLeft.Name = "lblActualArgTopLeft";
+            // 
+            // lblActualArgBottomRight
+            // 
+            resources.ApplyResources(this.lblActualArgBottomRight, "lblActualArgBottomRight");
+            this.lblActualArgBottomRight.Name = "lblActualArgBottomRight";
+            // 
+            // btnBrowseMacro
+            // 
+            resources.ApplyResources(this.btnBrowseMacro, "btnBrowseMacro");
+            this.btnBrowseMacro.Name = "btnBrowseMacro";
+            this.btnBrowseMacro.UseVisualStyleBackColor = true;
+            this.btnBrowseMacro.Click += new System.EventHandler(this.btnBrowseMacro_Click);
+            // 
             // FormMain
             // 
             this.AcceptButton = this.btnClose;
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            this.Controls.Add(this.btnBrowseMacro);
+            this.Controls.Add(this.txtActualArg);
+            this.Controls.Add(this.lblActualArgBottomRight);
             this.Controls.Add(this.lblCombo2BottomRight);
             this.Controls.Add(this.lblCombo1BottomRight);
+            this.Controls.Add(this.lblActualArgTopLeft);
             this.Controls.Add(this.lblCombo2TopLeft);
             this.Controls.Add(this.lblCombo1TopLeft);
             this.Controls.Add(this.cmbArguments);
@@ -247,6 +280,10 @@
         private System.Windows.Forms.Label lblCombo1BottomRight;
         private System.Windows.Forms.Label lblCombo2TopLeft;
         private System.Windows.Forms.Label lblCombo2BottomRight;
+        private System.Windows.Forms.TextBox txtActualArg;
+        private System.Windows.Forms.Label lblActualArgTopLeft;
+        private System.Windows.Forms.Label lblActualArgBottomRight;
+        private System.Windows.Forms.Button btnBrowseMacro;
     }
 }
 

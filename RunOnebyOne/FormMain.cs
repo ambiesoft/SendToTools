@@ -193,7 +193,36 @@ namespace RunOnebyOne
                 Application.ProductName,
                 version);
         }
-        private async void RunAsync(string exe,string args)
+
+        string GetIndicatorText(ListViewItem lvi)
+        {
+            ListViewItem.ListViewSubItem subIndicator = lvi.SubItems[0];
+            return subIndicator.Text;
+        }
+        void SetIndicatorText(ListViewItem lvi, string text)
+        {
+            ListViewItem.ListViewSubItem subIndicator = lvi.SubItems[0];
+            subIndicator.Text = text;
+        }
+
+        string GetLVFile(ListViewItem lvi)
+        {
+            return lvi.SubItems[1].Text;
+        }
+        void SetLVFile(ListViewItem lvi, string text)
+        {
+            lvi.SubItems[1].Text = text;
+        }
+
+        string GetLVResult(ListViewItem lvi)
+        {
+            return lvi.SubItems[2].Text;
+        }
+        void SetLVResult(ListViewItem lvi, string text)
+        {
+            lvi.SubItems[2].Text = text;
+        }
+        private async void RunAsync(string exe)
         {
             Running = true;
             foreach (ListViewItem lvi in listMain.Items)
@@ -201,15 +230,18 @@ namespace RunOnebyOne
                 if (Cancelling)
                     break;
 
-                ListViewItem.ListViewSubItem subIndicator = lvi.SubItems[0];
-                ListViewItem.ListViewSubItem subFile = lvi.SubItems[1];
-                ListViewItem.ListViewSubItem subResult = lvi.SubItems[2];
+                // string prevArgs = txtActualArg.Text;
+                // update txtActualArg
+                UpdateMacros(lvi);
 
-                if (subIndicator.Text == "*")
+                string args = txtActualArg.Text;
+                // Debug.Assert(prevArgs != args);
+
+                if (GetIndicatorText(lvi) == "*")
                     continue;
-                    
-                subIndicator.Text = "=";
-                string file = subFile.Text;
+
+                SetIndicatorText(lvi, "=");
+                string file = GetLVFile(lvi);
                 string result = "";
                 await Task.Run(() =>
                 {
@@ -235,7 +267,7 @@ namespace RunOnebyOne
                     {
                         // both exe and args
                         psi.FileName = exe;
-                        psi.Arguments = string.Format("{0} {1}", args, AmbLib.doubleQuoteIfSpace(file));
+                        psi.Arguments = args; // string.Format("{0} {1}", args, AmbLib.doubleQuoteIfSpace(file));
                     }
                     psi.UseShellExecute = true;
                     try
@@ -256,8 +288,8 @@ namespace RunOnebyOne
                         result = ex.Message;
                     }
                 });
-                subIndicator.Text = "*";
-                subResult.Text = result;
+                SetIndicatorText(lvi, "*");
+                SetLVResult(lvi, result);
                 UpdateTitle();
             }
 
@@ -271,7 +303,7 @@ namespace RunOnebyOne
                 }
                 else
                 {
-                    RunAsync(exe,args);
+                    RunAsync(exe);
                 }
             }
             Cancelling = false;
@@ -348,7 +380,8 @@ namespace RunOnebyOne
                 ClearAllListIndicator();
             }
             UpdateCombo();
-            RunAsync(cmbApplication.Text,cmbArguments.Text);
+
+            RunAsync(cmbApplication.Text);
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -409,6 +442,8 @@ namespace RunOnebyOne
             }
 
             FormMain_Resize(this, null);
+
+            UpdateMacros();
         }
 
         private void btnBrowseApp_Click(object sender, EventArgs e)
@@ -495,8 +530,67 @@ namespace RunOnebyOne
                     cmbArguments.Size.Height);
                 cmbArguments.Size = size;
             }
+            {
+                Point location = new Point(lblActualArgTopLeft.Left, lblActualArgTopLeft.Top);
+                txtActualArg.Location = location;
+
+                Size size = new Size(lblActualArgBottomRight.Left - (lblActualArgTopLeft.Left),
+                    txtActualArg.Size.Height);
+                txtActualArg.Size = size;
+            }
+        }
 
 
+        MacroManager _mm = new MacroManager();
+
+        private void btnBrowseMacro_Click(object sender, EventArgs e)
+        {
+            _mm.InputString = cmbArguments.Text;
+            if (DialogResult.OK != _mm.ShowDialog())
+                return;
+
+            cmbArguments.Text = _mm.InputString;
+        }
+
+        private void cmbArguments_TextChanged(object sender, EventArgs e)
+        {
+            _mm.InputString = cmbArguments.Text;
+            txtActualArg.Text = _mm.ResultString;
+        }
+
+        private void listMain_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            UpdateMacros();
+        }
+        
+        void UpdateMacros(ListViewItem item)
+        {
+            if (listMain.Items.Count == 0)
+                return;
+
+            if (item == null)
+            {
+                if (listMain.SelectedItems.Count != 0)
+                {
+                    item = listMain.SelectedItems[0];
+                }
+            }
+            if (item == null)
+                item = listMain.Items[0];
+
+            string file = GetLVFile(item);
+            _mm.SetMacro("FullName", file);
+            _mm.SetMacro("FileName", Path.GetFileName(file));
+            _mm.SetMacro("ParentFolder", Path.GetDirectoryName(file));
+            _mm.SetMacro("FileNameWithoutExtension", Path.GetFileNameWithoutExtension(file));
+            _mm.SetMacro("Extension", Path.GetExtension(file));
+
+            _mm.InputString = cmbArguments.Text;
+            txtActualArg.Text = _mm.ResultString;
+        }
+        void UpdateMacros()
+        {
+            UpdateMacros(null);
         }
     }
 }
