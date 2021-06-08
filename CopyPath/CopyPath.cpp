@@ -31,7 +31,9 @@
 
 #include "../../lsMisc/CommandLineParser.h"
 #include "../../lsMisc/HighDPI.h"
+#include "../../lsMisc/stdosd/stdosd.h"
 
+#include "resource.h"
 #include "CopyPath.h"
 
 
@@ -53,10 +55,16 @@ enum ConvertType {
 	CT_SLASH,
 };
 
+enum DoubleQuoteType {
+	DQ_DEFAULT,
+	DQ_TRUE,
+	DQ_FALSE,
+};
 struct DialogData {
+	
 	ConvertType ct_;
 	bool nameonly_;
-	bool dq_;
+	DoubleQuoteType dqt_;
 	bool kaigyo_;
 
 	bool code_;
@@ -66,7 +74,7 @@ struct DialogData {
 	DialogData() {
 		ct_ = CT_NORMAL;
 		nameonly_ = false;
-		dq_ = false;
+		dqt_ = DQ_DEFAULT;
 		kaigyo_ = 0;
 		code_ = false;
 		sort_ = false;
@@ -146,12 +154,8 @@ INT_PTR CALLBACK DialogProc(
 				SendMessage(shCmbCode, CB_ADDSTRING, (WPARAM)0, (LPARAM)codeNames[i]);
 			SendMessage(shCmbCode, CB_SETCURSEL, 0, 0);
 
-
 			SendDlgItemMessage(hwndDlg, IDC_RADIO_NAMEONLY, BM_SETCHECK, sDT->nameonly_ ? BST_CHECKED : 0, 0);
 			SendDlgItemMessage(hwndDlg, IDC_RADIO_ABSOLUTEPATH, BM_SETCHECK, sDT->nameonly_ ? 0 : BST_CHECKED, 0);
-
-
-
 
 			CenterWindow(hwndDlg);
 			PostMessage(hwndDlg, WM_APP_INITIALUPDATE, 0, 0);
@@ -172,10 +176,25 @@ INT_PTR CALLBACK DialogProc(
 			{
 				case IDC_CHECK_PROGRAMCODE:
 				{
-					BOOL bCodeChecked=SendDlgItemMessage(hwndDlg, IDC_CHECK_PROGRAMCODE, BM_GETCHECK, 0, 0);
+					BOOL bCodeChecked = SendDlgItemMessage(hwndDlg, IDC_CHECK_PROGRAMCODE, BM_GETCHECK, 0, 0);
 					EnableWindow(shCmbCode, bCodeChecked);
 				}
 				break;
+				case IDC_CHECK_DQ:
+				{
+					BOOL bDQChecked = SendDlgItemMessage(hwndDlg, IDC_CHECK_DQ, BM_GETCHECK, 0, 0);
+					if(bDQChecked)
+						SendDlgItemMessage(hwndDlg, IDC_CHECK_NODQ, BM_SETCHECK, BST_UNCHECKED, 0);
+				}
+				break;
+				case IDC_CHECK_NODQ:
+				{
+					BOOL bNoDQChecked = SendDlgItemMessage(hwndDlg, IDC_CHECK_NODQ, BM_GETCHECK, 0, 0);
+					if(bNoDQChecked)
+						SendDlgItemMessage(hwndDlg, IDC_CHECK_DQ, BM_SETCHECK, BST_UNCHECKED, 0);
+				}
+				break;
+
 				case IDOK:
 				{
 					if (SendDlgItemMessage(hwndDlg, IDC_RADIO_ABSOLUTEPATH, BM_GETCHECK, 0, 0))
@@ -194,7 +213,12 @@ INT_PTR CALLBACK DialogProc(
 					else
 						assert(false);
 
-					sDT->dq_ = !!SendDlgItemMessage(hwndDlg, IDC_CHECK_DQ, BM_GETCHECK, 0, 0);
+					sDT->dqt_ = DQ_DEFAULT;
+					if (!!SendDlgItemMessage(hwndDlg, IDC_CHECK_DQ, BM_GETCHECK, 0, 0))
+						sDT->dqt_ = DQ_TRUE;
+					else if (!!SendDlgItemMessage(hwndDlg, IDC_CHECK_NODQ, BM_GETCHECK, 0, 0))
+						sDT->dqt_ = DQ_FALSE;
+
 					sDT->kaigyo_ = !!SendDlgItemMessage(hwndDlg, IDC_CHECK_LINE, BM_GETCHECK, 0, 0);
 					
 					sDT->code_ = !!SendDlgItemMessage(hwndDlg, IDC_CHECK_PROGRAMCODE, BM_GETCHECK, 0, 0);
@@ -232,7 +256,7 @@ tstring ConvertPath(const DialogData& dt, LPCTSTR pPath, const bool isLast)
 		ret = stdGetFullPathName(ret);
 	
 	ConvertType ct = dt.ct_;
-	bool dq = dt.dq_;
+	DoubleQuoteType dqt = dt.dqt_;
 	if (dt.code_)
 	{
 		if (ct != CT_SLASH)
@@ -250,7 +274,7 @@ tstring ConvertPath(const DialogData& dt, LPCTSTR pPath, const bool isLast)
 				showErrorAndExit(stdFormat(I18N(L"Unknown code name '%s'."), dt.codeName_.c_str()));
 			}
 		}
-		dq = true;
+		dqt = DQ_TRUE;
 	}
 	switch (ct)
 	{
@@ -266,14 +290,20 @@ tstring ConvertPath(const DialogData& dt, LPCTSTR pPath, const bool isLast)
 		break;
 	}
 
-	if (dq)
+	if (dqt == DQ_TRUE || (dqt == DQ_DEFAULT && stdIsDQNecessary(ret)))
 	{
 		ret = _T("\"") + ret;
 		ret += _T("\"");
 
 		if (dt.code_)
 		{
-			if (dt.codeName_ == CODENAME_CPPWIDE)
+			if(false)
+			{ }
+			else if (dt.codeName_ == CODENAME_CPP)
+			{
+				// nothing
+			}
+			else if (dt.codeName_ == CODENAME_CPPWIDE)
 			{
 				ret = L"L" + ret;
 			}
@@ -281,8 +311,9 @@ tstring ConvertPath(const DialogData& dt, LPCTSTR pPath, const bool isLast)
 			{
 				ret = L"@" + ret;
 			}
-			else if (dt.codeName_==CODENAME_JSON)
-			{ }
+			else if (dt.codeName_ == CODENAME_JSON)
+			{
+			}
 			else
 			{
 				showErrorAndExit(stdFormat(I18N(L"Unknown code name '%s'."), dt.codeName_.c_str()));
@@ -291,7 +322,9 @@ tstring ConvertPath(const DialogData& dt, LPCTSTR pPath, const bool isLast)
 	}
 	if (dt.code_)
 	{
-		if (dt.codeName_ == CODENAME_CPP)
+		if (false)
+			;
+		else if (dt.codeName_ == CODENAME_CPP)
 			ret += L",";
 		else if (dt.codeName_ == CODENAME_CPPWIDE)
 			ret += L",";
@@ -312,33 +345,46 @@ tstring ConvertPath(const DialogData& dt, LPCTSTR pPath, const bool isLast)
 }
 
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
-                     _In_opt_ HINSTANCE hPrevInstance,
-                     _In_ LPWSTR    lpCmdLine,
-                     _In_ int       nCmdShow)
+	_In_opt_ HINSTANCE hPrevInstance,
+	_In_ LPWSTR    lpCmdLine,
+	_In_ int       nCmdShow)
 {
-    UNREFERENCED_PARAMETER(hPrevInstance);
-    UNREFERENCED_PARAMETER(lpCmdLine);
-	
+	UNREFERENCED_PARAMETER(hPrevInstance);
+	UNREFERENCED_PARAMETER(lpCmdLine);
+
 	InitHighDPISupport();
 
 	i18nInitLangmap(hInstance, NULL, stdGetFileNameWitoutExtension(stdGetModuleFileName<wchar_t>()).c_str());
 	hInst = hInstance;
 
-    // Initialize global strings
-    LoadStringW(hInstance, IDS_APP_TITLE, szTitle, MAX_LOADSTRING);
+	// Initialize global strings
+	LoadStringW(hInstance, IDS_APP_TITLE, szTitle, MAX_LOADSTRING);
 
 	CCommandLineParser parser;
 	bool bDetail = false;
-	parser.AddOption(L"/d", 0, &bDetail, ArgEncodingFlags::ArgEncodingFlags_Default, L"Show Dialog");
-	COption opMain;
+	parser.AddOptionRange({ L"/d",L"-d",L"--dialog" },
+		0,
+		&bDetail,
+		ArgEncodingFlags::ArgEncodingFlags_Default,
+		L"Show Dialog");
+
+	COption opMain(L"", ArgCount::ArgCount_Infinite, ArgEncodingFlags_Default,
+		L"Path to copy");
 	parser.AddOption(&opMain);
 
 	bool bNameOnly = false;
-	parser.AddOption(L"/n", 0, &bNameOnly, ArgEncodingFlags_Default, L"Copy Name only");
+	parser.AddOptionRange({ L"/n",L"-n",L"--name-only" },
+		0,
+		&bNameOnly,
+		ArgEncodingFlags_Default,
+		L"Copy Name only");
 
 	bool bHelp = false;
-	parser.AddOption(L"/h", 0, &bHelp, ArgEncodingFlags_Default, L"Show Help");
-	parser.AddOption(L"/?", 0, &bHelp, ArgEncodingFlags_Default, L"Show Help");
+	parser.AddOptionRange({L"/h", L"/?", L"-h", L"--help"},
+		0,
+		&bHelp, 
+		ArgEncodingFlags_Default, 
+		L"Show Help");
 
 	parser.Parse();
 
