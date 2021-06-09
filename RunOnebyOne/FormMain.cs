@@ -546,6 +546,7 @@ namespace RunOnebyOne
 
         private void btnBrowseMacro_Click(object sender, EventArgs e)
         {
+            UpdateMacros();
             _mm.Text = string.Format("{0} - Macro", Application.ProductName);
             _mm.InputString = cmbArguments.Text;
             if (DialogResult.OK != _mm.ShowDialog())
@@ -556,6 +557,7 @@ namespace RunOnebyOne
 
         private void cmbArguments_TextChanged(object sender, EventArgs e)
         {
+            UpdateMacros();
             _mm.InputString = cmbArguments.Text;
             txtActualArg.Text = _mm.ResultString;
         }

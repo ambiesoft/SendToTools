@@ -117,191 +117,347 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="listMain.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
+  </data>
+  <data name="chIndicator.Text" xml:space="preserve">
+    <value>Progress</value>
+  </data>
+  <data name="chFile.Text" xml:space="preserve">
+    <value>Files</value>
+  </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="lblActualArgBottomRight.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
+  <data name="chFile.Width" type="System.Int32, mscorlib">
+    <value>487</value>
   </data>
-  <data name="&gt;&gt;cmbApplication.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="chResult.Text" xml:space="preserve">
+    <value>Result</value>
   </data>
-  <data name="ofdApplication.Filter" xml:space="preserve">
-    <value>Application|*.exe|All Files|*.*</value>
-  </data>
+  <metadata name="cmList.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>149, 17</value>
+  </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="tsmiRemove.Size" type="System.Drawing.Size, System.Drawing">
-    <value>134, 22</value>
+    <value>140, 22</value>
   </data>
-  <data name="&gt;&gt;tsmiRemoveAll.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="tsmiRemove.Text" xml:space="preserve">
+    <value>&amp;Remove</value>
   </data>
-  <data name="btnRun.Location" type="System.Drawing.Point, System.Drawing">
-    <value>166, 307</value>
+  <data name="toolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>137, 6</value>
   </data>
-  <data name="lblActualArgTopLeft.Text" xml:space="preserve">
-    <value>label1</value>
+  <data name="tsmiRemoveAll.Size" type="System.Drawing.Size, System.Drawing">
+    <value>140, 22</value>
   </data>
-  <data name="btnReopenAsAdmin.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 307</value>
+  <data name="tsmiRemoveAll.Text" xml:space="preserve">
+    <value>Remove All</value>
   </data>
-  <data name="&gt;&gt;btnRun.ZOrder" xml:space="preserve">
-    <value>17</value>
+  <data name="cmList.Size" type="System.Drawing.Size, System.Drawing">
+    <value>141, 54</value>
   </data>
-  <data name="btnBrowseApp.Size" type="System.Drawing.Size, System.Drawing">
-    <value>34, 23</value>
-  </data>
-  <data name="lblCombo1TopLeft.Location" type="System.Drawing.Point, System.Drawing">
-    <value>119, 198</value>
-  </data>
-  <data name="lblActualArgTopLeft.Location" type="System.Drawing.Point, System.Drawing">
-    <value>119, 256</value>
-  </data>
-  <data name="lblCombo1BottomRight.Location" type="System.Drawing.Point, System.Drawing">
-    <value>481, 202</value>
-  </data>
-  <data name="&gt;&gt;tsmiRemoveAll.Name" xml:space="preserve">
-    <value>tsmiRemoveAll</value>
-  </data>
-  <data name="btnClearResults.Text" xml:space="preserve">
-    <value>C&amp;lear Results</value>
-  </data>
-  <data name="&gt;&gt;lblCombo2BottomRight.Name" xml:space="preserve">
-    <value>lblCombo2BottomRight</value>
-  </data>
-  <data name="&gt;&gt;lblCombo1BottomRight.Name" xml:space="preserve">
-    <value>lblCombo1BottomRight</value>
-  </data>
-  <data name="&gt;&gt;chIndicator.Name" xml:space="preserve">
-    <value>chIndicator</value>
-  </data>
-  <data name="&gt;&gt;lblArguments.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>542, 343</value>
-  </data>
-  <data name="txtActualArg.TabIndex" type="System.Int32, mscorlib">
-    <value>1003</value>
+  <data name="&gt;&gt;cmList.Name" xml:space="preserve">
+    <value>cmList</value>
   </data>
   <data name="&gt;&gt;cmList.Type" xml:space="preserve">
     <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;cmbArguments.ZOrder" xml:space="preserve">
-    <value>9</value>
-  </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="lblCombo2BottomRight.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="cmbApplication.TabIndex" type="System.Int32, mscorlib">
-    <value>300</value>
-  </data>
-  <data name="&gt;&gt;btnBrowseApp.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="btnClearResults.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Right</value>
-  </data>
-  <data name="&gt;&gt;chFile.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="btnClose.Size" type="System.Drawing.Size, System.Drawing">
-    <value>95, 24</value>
-  </data>
-  <data name="&gt;&gt;btnReopenAsAdmin.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="btnClose.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Right</value>
-  </data>
-  <data name="&gt;&gt;btnClose.ZOrder" xml:space="preserve">
-    <value>16</value>
-  </data>
-  <data name="btnBrowseMacro.Location" type="System.Drawing.Point, System.Drawing">
-    <value>488, 227</value>
-  </data>
-  <data name="lblActualArgBottomRight.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Right</value>
-  </data>
-  <data name="btnRun.TabIndex" type="System.Int32, mscorlib">
-    <value>800</value>
-  </data>
-  <data name="btnClose.Location" type="System.Drawing.Point, System.Drawing">
-    <value>427, 307</value>
-  </data>
-  <data name="btnBrowseApp.TabIndex" type="System.Int32, mscorlib">
-    <value>400</value>
-  </data>
-  <data name="&gt;&gt;btnBrowseMacro.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;lblCombo2BottomRight.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="lblActualArgBottomRight.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="btnBrowseMacro.TabIndex" type="System.Int32, mscorlib">
-    <value>1004</value>
-  </data>
-  <data name="cmbArguments.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 278</value>
-  </data>
-  <data name="&gt;&gt;lblCombo2BottomRight.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblArguments.Name" xml:space="preserve">
-    <value>lblArguments</value>
+  <data name="listMain.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 12</value>
   </data>
   <data name="listMain.Size" type="System.Drawing.Size, System.Drawing">
     <value>510, 172</value>
   </data>
-  <data name="txtActualArg.Location" type="System.Drawing.Point, System.Drawing">
-    <value>69, 278</value>
+  <data name="listMain.TabIndex" type="System.Int32, mscorlib">
+    <value>100</value>
   </data>
-  <data name="lblCombo2TopLeft.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+  <data name="&gt;&gt;listMain.Name" xml:space="preserve">
+    <value>listMain</value>
   </data>
-  <data name="&gt;&gt;lblActualArgTopLeft.Parent" xml:space="preserve">
+  <data name="&gt;&gt;listMain.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ListView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;listMain.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;lblActualArgTopLeft.ZOrder" xml:space="preserve">
-    <value>6</value>
+  <data name="&gt;&gt;listMain.ZOrder" xml:space="preserve">
+    <value>18</value>
   </data>
-  <data name="lblCombo2BottomRight.Text" xml:space="preserve">
-    <value>label1</value>
+  <data name="btnRun.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left, Right</value>
   </data>
-  <data name="&gt;&gt;lblActualArgBottomRight.Name" xml:space="preserve">
-    <value>lblActualArgBottomRight</value>
+  <data name="btnRun.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
-  <data name="lblCombo2TopLeft.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+  <data name="btnRun.Location" type="System.Drawing.Point, System.Drawing">
+    <value>166, 307</value>
+  </data>
+  <data name="btnRun.Size" type="System.Drawing.Size, System.Drawing">
+    <value>122, 24</value>
+  </data>
+  <data name="btnRun.TabIndex" type="System.Int32, mscorlib">
+    <value>800</value>
+  </data>
+  <data name="btnRun.Text" xml:space="preserve">
+    <value>&amp;Run</value>
+  </data>
+  <data name="&gt;&gt;btnRun.Name" xml:space="preserve">
+    <value>btnRun</value>
+  </data>
+  <data name="&gt;&gt;btnRun.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnRun.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;btnRun.ZOrder" xml:space="preserve">
+    <value>17</value>
+  </data>
+  <data name="btnClose.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
+  </data>
+  <data name="btnClose.Location" type="System.Drawing.Point, System.Drawing">
+    <value>427, 307</value>
+  </data>
+  <data name="btnClose.Size" type="System.Drawing.Size, System.Drawing">
+    <value>95, 24</value>
+  </data>
+  <data name="btnClose.TabIndex" type="System.Int32, mscorlib">
+    <value>1000</value>
+  </data>
+  <data name="btnClose.Text" xml:space="preserve">
+    <value>&amp;Close</value>
+  </data>
+  <data name="&gt;&gt;btnClose.Name" xml:space="preserve">
+    <value>btnClose</value>
+  </data>
+  <data name="&gt;&gt;btnClose.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnClose.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;btnClose.ZOrder" xml:space="preserve">
+    <value>16</value>
+  </data>
+  <data name="btnReopenAsAdmin.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left</value>
+  </data>
+  <data name="btnReopenAsAdmin.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 307</value>
   </data>
   <data name="btnReopenAsAdmin.Size" type="System.Drawing.Size, System.Drawing">
     <value>148, 24</value>
   </data>
-  <data name="lblActualArgBottomRight.Size" type="System.Drawing.Size, System.Drawing">
-    <value>41, 15</value>
+  <data name="btnReopenAsAdmin.TabIndex" type="System.Int32, mscorlib">
+    <value>700</value>
   </data>
-  <data name="lblCombo1TopLeft.Size" type="System.Drawing.Size, System.Drawing">
-    <value>41, 15</value>
+  <data name="btnReopenAsAdmin.Text" xml:space="preserve">
+    <value>Re&amp;open As Admin</value>
+  </data>
+  <data name="&gt;&gt;btnReopenAsAdmin.Name" xml:space="preserve">
+    <value>btnReopenAsAdmin</value>
+  </data>
+  <data name="&gt;&gt;btnReopenAsAdmin.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnReopenAsAdmin.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;btnReopenAsAdmin.ZOrder" xml:space="preserve">
+    <value>15</value>
+  </data>
+  <data name="labelApplication.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
   </data>
   <data name="labelApplication.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="btnClearResults.Size" type="System.Drawing.Size, System.Drawing">
-    <value>127, 24</value>
+  <data name="labelApplication.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 202</value>
   </data>
-  <data name="&gt;&gt;txtActualArg.Name" xml:space="preserve">
-    <value>txtActualArg</value>
+  <data name="labelApplication.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 15</value>
+  </data>
+  <data name="labelApplication.TabIndex" type="System.Int32, mscorlib">
+    <value>200</value>
+  </data>
+  <data name="labelApplication.Text" xml:space="preserve">
+    <value>&amp;Application:</value>
+  </data>
+  <data name="&gt;&gt;labelApplication.Name" xml:space="preserve">
+    <value>labelApplication</value>
+  </data>
+  <data name="&gt;&gt;labelApplication.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;labelApplication.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="lblActualArgTopLeft.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="&gt;&gt;labelApplication.ZOrder" xml:space="preserve">
+    <value>14</value>
+  </data>
+  <data name="btnBrowseApp.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
+  </data>
+  <data name="btnBrowseApp.Location" type="System.Drawing.Point, System.Drawing">
+    <value>488, 198</value>
+  </data>
+  <data name="btnBrowseApp.Size" type="System.Drawing.Size, System.Drawing">
+    <value>34, 23</value>
+  </data>
+  <data name="btnBrowseApp.TabIndex" type="System.Int32, mscorlib">
+    <value>400</value>
+  </data>
+  <data name="btnBrowseApp.Text" xml:space="preserve">
+    <value>&amp;...</value>
+  </data>
+  <data name="&gt;&gt;btnBrowseApp.Name" xml:space="preserve">
+    <value>btnBrowseApp</value>
+  </data>
+  <data name="&gt;&gt;btnBrowseApp.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnBrowseApp.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;btnBrowseApp.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <metadata name="ofdApplication.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <data name="ofdApplication.Filter" xml:space="preserve">
+    <value>Application|*.exe|All Files|*.*</value>
+  </data>
+  <data name="lblArguments.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
+  </data>
+  <data name="lblArguments.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblArguments.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="btnReopenAsAdmin.TabIndex" type="System.Int32, mscorlib">
-    <value>700</value>
+  <data name="lblArguments.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 231</value>
+  </data>
+  <data name="lblArguments.Size" type="System.Drawing.Size, System.Drawing">
+    <value>76, 15</value>
+  </data>
+  <data name="lblArguments.TabIndex" type="System.Int32, mscorlib">
+    <value>500</value>
+  </data>
+  <data name="lblArguments.Text" xml:space="preserve">
+    <value>Ar&amp;guments:</value>
+  </data>
+  <data name="&gt;&gt;lblArguments.Name" xml:space="preserve">
+    <value>lblArguments</value>
+  </data>
+  <data name="&gt;&gt;lblArguments.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblArguments.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblArguments.ZOrder" xml:space="preserve">
+    <value>13</value>
+  </data>
+  <data name="btnClearResults.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
+  </data>
+  <data name="btnClearResults.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnClearResults.Location" type="System.Drawing.Point, System.Drawing">
+    <value>294, 307</value>
+  </data>
+  <data name="btnClearResults.Size" type="System.Drawing.Size, System.Drawing">
+    <value>127, 24</value>
+  </data>
+  <data name="btnClearResults.TabIndex" type="System.Int32, mscorlib">
+    <value>900</value>
+  </data>
+  <data name="btnClearResults.Text" xml:space="preserve">
+    <value>C&amp;lear Results</value>
+  </data>
+  <data name="&gt;&gt;btnClearResults.Name" xml:space="preserve">
+    <value>btnClearResults</value>
+  </data>
+  <data name="&gt;&gt;btnClearResults.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnClearResults.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;btnClearResults.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="cmbApplication.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <data name="cmbApplication.Location" type="System.Drawing.Point, System.Drawing">
+    <value>43, 278</value>
+  </data>
+  <data name="cmbApplication.Size" type="System.Drawing.Size, System.Drawing">
+    <value>156, 23</value>
+  </data>
+  <data name="cmbApplication.TabIndex" type="System.Int32, mscorlib">
+    <value>300</value>
+  </data>
+  <data name="&gt;&gt;cmbApplication.Name" xml:space="preserve">
+    <value>cmbApplication</value>
+  </data>
+  <data name="&gt;&gt;cmbApplication.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cmbApplication.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;cmbApplication.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="cmbArguments.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <data name="cmbArguments.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 278</value>
+  </data>
+  <data name="cmbArguments.Size" type="System.Drawing.Size, System.Drawing">
+    <value>156, 23</value>
+  </data>
+  <data name="cmbArguments.TabIndex" type="System.Int32, mscorlib">
+    <value>600</value>
+  </data>
+  <data name="&gt;&gt;cmbArguments.Name" xml:space="preserve">
+    <value>cmbArguments</value>
+  </data>
+  <data name="&gt;&gt;cmbArguments.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cmbArguments.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;cmbArguments.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="lblCombo1TopLeft.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
+  </data>
+  <data name="lblCombo1TopLeft.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblCombo1TopLeft.Location" type="System.Drawing.Point, System.Drawing">
+    <value>119, 198</value>
+  </data>
+  <data name="lblCombo1TopLeft.Size" type="System.Drawing.Size, System.Drawing">
+    <value>41, 15</value>
+  </data>
+  <data name="lblCombo1TopLeft.TabIndex" type="System.Int32, mscorlib">
+    <value>1001</value>
+  </data>
+  <data name="lblCombo1TopLeft.Text" xml:space="preserve">
+    <value>label1</value>
   </data>
   <data name="&gt;&gt;lblCombo1TopLeft.Name" xml:space="preserve">
     <value>lblCombo1TopLeft</value>
@@ -309,62 +465,62 @@
   <data name="&gt;&gt;lblCombo1TopLeft.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="lblActualArgTopLeft.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Left</value>
-  </data>
-  <data name="&gt;&gt;cmbArguments.Name" xml:space="preserve">
-    <value>cmbArguments</value>
-  </data>
-  <data name="cmbApplication.Location" type="System.Drawing.Point, System.Drawing">
-    <value>43, 278</value>
-  </data>
-  <data name="&gt;&gt;toolStripMenuItem1.Name" xml:space="preserve">
-    <value>toolStripMenuItem1</value>
-  </data>
-  <data name="&gt;&gt;lblActualArgBottomRight.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="lblActualArgTopLeft.Size" type="System.Drawing.Size, System.Drawing">
-    <value>41, 15</value>
-  </data>
-  <data name="lblCombo1TopLeft.Text" xml:space="preserve">
-    <value>label1</value>
-  </data>
-  <data name="&gt;&gt;toolStripMenuItem1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="tsmiRemoveAll.Size" type="System.Drawing.Size, System.Drawing">
-    <value>134, 22</value>
-  </data>
-  <data name="&gt;&gt;listMain.Name" xml:space="preserve">
-    <value>listMain</value>
-  </data>
-  <data name="&gt;&gt;txtActualArg.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cmbApplication.ZOrder" xml:space="preserve">
-    <value>10</value>
-  </data>
-  <data name="&gt;&gt;chIndicator.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="listMain.TabIndex" type="System.Int32, mscorlib">
-    <value>100</value>
-  </data>
   <data name="&gt;&gt;lblCombo1TopLeft.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="chFile.Text" xml:space="preserve">
-    <value>Files</value>
+  <data name="&gt;&gt;lblCombo1TopLeft.ZOrder" xml:space="preserve">
+    <value>8</value>
   </data>
-  <data name="lblActualArgTopLeft.AutoSize" type="System.Boolean, mscorlib">
+  <data name="lblCombo1BottomRight.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
+  </data>
+  <data name="lblCombo1BottomRight.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
+  </data>
+  <data name="lblCombo1BottomRight.Location" type="System.Drawing.Point, System.Drawing">
+    <value>481, 202</value>
+  </data>
+  <data name="lblCombo1BottomRight.Size" type="System.Drawing.Size, System.Drawing">
+    <value>41, 15</value>
+  </data>
+  <data name="lblCombo1BottomRight.TabIndex" type="System.Int32, mscorlib">
+    <value>1002</value>
   </data>
   <data name="lblCombo1BottomRight.Text" xml:space="preserve">
     <value>label1</value>
   </data>
-  <data name="btnRun.Text" xml:space="preserve">
-    <value>&amp;Run</value>
+  <data name="&gt;&gt;lblCombo1BottomRight.Name" xml:space="preserve">
+    <value>lblCombo1BottomRight</value>
+  </data>
+  <data name="&gt;&gt;lblCombo1BottomRight.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblCombo1BottomRight.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblCombo1BottomRight.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="lblCombo2TopLeft.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
+  </data>
+  <data name="lblCombo2TopLeft.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblCombo2TopLeft.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblCombo2TopLeft.Location" type="System.Drawing.Point, System.Drawing">
+    <value>119, 227</value>
+  </data>
+  <data name="lblCombo2TopLeft.Size" type="System.Drawing.Size, System.Drawing">
+    <value>41, 15</value>
+  </data>
+  <data name="lblCombo2TopLeft.TabIndex" type="System.Int32, mscorlib">
+    <value>1001</value>
+  </data>
+  <data name="lblCombo2TopLeft.Text" xml:space="preserve">
+    <value>label1</value>
   </data>
   <data name="&gt;&gt;lblCombo2TopLeft.Name" xml:space="preserve">
     <value>lblCombo2TopLeft</value>
@@ -372,388 +528,308 @@
   <data name="&gt;&gt;lblCombo2TopLeft.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>550, 338</value>
-  </data>
-  <data name="&gt;&gt;btnClearResults.Name" xml:space="preserve">
-    <value>btnClearResults</value>
-  </data>
-  <data name="&gt;&gt;btnClose.Name" xml:space="preserve">
-    <value>btnClose</value>
-  </data>
-  <data name="btnClearResults.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="&gt;&gt;lblArguments.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;chFile.Name" xml:space="preserve">
-    <value>chFile</value>
-  </data>
-  <data name="labelApplication.Text" xml:space="preserve">
-    <value>&amp;Application:</value>
-  </data>
-  <data name="lblArguments.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 231</value>
-  </data>
-  <data name="btnReopenAsAdmin.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Left</value>
-  </data>
-  <data name="&gt;&gt;tsmiRemove.Name" xml:space="preserve">
-    <value>tsmiRemove</value>
-  </data>
-  <data name="&gt;&gt;lblArguments.ZOrder" xml:space="preserve">
-    <value>13</value>
-  </data>
-  <data name="lblCombo1TopLeft.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="chIndicator.Text" xml:space="preserve">
-    <value>Progress</value>
-  </data>
-  <data name="labelApplication.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 202</value>
-  </data>
-  <data name="&gt;&gt;listMain.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="tsmiRemoveAll.Text" xml:space="preserve">
-    <value>Remove All</value>
-  </data>
-  <data name="&gt;&gt;txtActualArg.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="lblCombo2BottomRight.Location" type="System.Drawing.Point, System.Drawing">
-    <value>481, 231</value>
-  </data>
-  <data name="&gt;&gt;listMain.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ListView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblCombo1BottomRight.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;labelApplication.ZOrder" xml:space="preserve">
-    <value>14</value>
-  </data>
-  <data name="lblCombo2TopLeft.TabIndex" type="System.Int32, mscorlib">
-    <value>1001</value>
-  </data>
-  <data name="lblCombo2BottomRight.Size" type="System.Drawing.Size, System.Drawing">
-    <value>41, 15</value>
-  </data>
-  <data name="&gt;&gt;btnRun.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="tsmiRemove.Text" xml:space="preserve">
-    <value>&amp;Remove</value>
-  </data>
-  <data name="lblArguments.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Left</value>
-  </data>
-  <data name="&gt;&gt;cmList.Name" xml:space="preserve">
-    <value>cmList</value>
-  </data>
-  <data name="lblCombo1BottomRight.TabIndex" type="System.Int32, mscorlib">
-    <value>1002</value>
-  </data>
-  <data name="&gt;&gt;btnReopenAsAdmin.Name" xml:space="preserve">
-    <value>btnReopenAsAdmin</value>
-  </data>
-  <data name="btnClearResults.Location" type="System.Drawing.Point, System.Drawing">
-    <value>294, 307</value>
-  </data>
-  <data name="cmbArguments.TabIndex" type="System.Int32, mscorlib">
-    <value>600</value>
-  </data>
-  <data name="lblActualArgTopLeft.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="btnClearResults.TabIndex" type="System.Int32, mscorlib">
-    <value>900</value>
-  </data>
-  <data name="&gt;&gt;chResult.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="btnBrowseApp.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Right</value>
-  </data>
-  <data name="&gt;&gt;listMain.ZOrder" xml:space="preserve">
-    <value>18</value>
-  </data>
-  <data name="&gt;&gt;btnClose.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;lblActualArgTopLeft.Name" xml:space="preserve">
-    <value>lblActualArgTopLeft</value>
-  </data>
-  <data name="labelApplication.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 15</value>
-  </data>
-  <data name="&gt;&gt;btnClearResults.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="cmbArguments.Size" type="System.Drawing.Size, System.Drawing">
-    <value>156, 23</value>
-  </data>
-  <data name="btnRun.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Left, Right</value>
-  </data>
-  <data name="lblArguments.TabIndex" type="System.Int32, mscorlib">
-    <value>500</value>
-  </data>
-  <data name="lblCombo2TopLeft.Location" type="System.Drawing.Point, System.Drawing">
-    <value>119, 227</value>
-  </data>
-  <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Meiryo UI, 9pt</value>
-  </data>
-  <data name="&gt;&gt;lblCombo2BottomRight.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="lblCombo2BottomRight.TabIndex" type="System.Int32, mscorlib">
-    <value>1002</value>
-  </data>
-  <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>FormMain</value>
-  </data>
-  <data name="&gt;&gt;cmbArguments.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblActualArgTopLeft.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="lblActualArgBottomRight.TabIndex" type="System.Int32, mscorlib">
-    <value>1002</value>
-  </data>
-  <data name="&gt;&gt;btnClose.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="listMain.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Bottom, Left, Right</value>
-  </data>
-  <data name="&gt;&gt;tsmiRemove.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnRun.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnClearResults.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="lblActualArgBottomRight.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="lblCombo1BottomRight.Size" type="System.Drawing.Size, System.Drawing">
-    <value>41, 15</value>
-  </data>
-  <data name="&gt;&gt;cmbArguments.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="btnBrowseMacro.Text" xml:space="preserve">
-    <value>&amp;...</value>
-  </data>
-  <data name="&gt;&gt;btnBrowseMacro.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="lblArguments.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="cmbApplication.Size" type="System.Drawing.Size, System.Drawing">
-    <value>156, 23</value>
-  </data>
-  <data name="lblCombo2TopLeft.Size" type="System.Drawing.Size, System.Drawing">
-    <value>41, 15</value>
-  </data>
-  <data name="&gt;&gt;cmbApplication.Name" xml:space="preserve">
-    <value>cmbApplication</value>
-  </data>
-  <data name="&gt;&gt;lblCombo1BottomRight.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblActualArgBottomRight.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="btnBrowseApp.Text" xml:space="preserve">
-    <value>&amp;...</value>
-  </data>
-  <data name="btnBrowseMacro.Size" type="System.Drawing.Size, System.Drawing">
-    <value>34, 23</value>
-  </data>
-  <data name="listMain.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 12</value>
-  </data>
   <data name="&gt;&gt;lblCombo2TopLeft.Parent" xml:space="preserve">
     <value>$this</value>
-  </data>
-  <data name="btnRun.Size" type="System.Drawing.Size, System.Drawing">
-    <value>122, 24</value>
-  </data>
-  <data name="cmbArguments.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>None</value>
-  </data>
-  <data name="btnClose.Text" xml:space="preserve">
-    <value>&amp;Close</value>
-  </data>
-  <data name="btnBrowseApp.Location" type="System.Drawing.Point, System.Drawing">
-    <value>488, 198</value>
-  </data>
-  <data name="&gt;&gt;btnReopenAsAdmin.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="btnBrowseMacro.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="&gt;&gt;btnReopenAsAdmin.ZOrder" xml:space="preserve">
-    <value>15</value>
-  </data>
-  <data name="lblCombo1TopLeft.TabIndex" type="System.Int32, mscorlib">
-    <value>1001</value>
-  </data>
-  <data name="&gt;&gt;lblCombo1TopLeft.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="lblActualArgBottomRight.Location" type="System.Drawing.Point, System.Drawing">
-    <value>481, 256</value>
-  </data>
-  <data name="lblCombo1BottomRight.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Right</value>
-  </data>
-  <data name="txtActualArg.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Left</value>
-  </data>
-  <data name="&gt;&gt;txtActualArg.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="lblCombo2TopLeft.Text" xml:space="preserve">
-    <value>label1</value>
-  </data>
-  <data name="btnReopenAsAdmin.Text" xml:space="preserve">
-    <value>Re&amp;open As Admin</value>
-  </data>
-  <data name="&gt;&gt;lblActualArgBottomRight.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="lblCombo1BottomRight.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="btnBrowseMacro.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Right</value>
-  </data>
-  <data name="chFile.Width" type="System.Int32, mscorlib">
-    <value>487</value>
-  </data>
-  <data name="cmList.Size" type="System.Drawing.Size, System.Drawing">
-    <value>135, 54</value>
-  </data>
-  <data name="lblActualArgTopLeft.TabIndex" type="System.Int32, mscorlib">
-    <value>1001</value>
-  </data>
-  <data name="&gt;&gt;labelApplication.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="toolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>131, 6</value>
-  </data>
-  <data name="labelApplication.TabIndex" type="System.Int32, mscorlib">
-    <value>200</value>
-  </data>
-  <data name="&gt;&gt;btnBrowseMacro.Name" xml:space="preserve">
-    <value>btnBrowseMacro</value>
-  </data>
-  <data name="&gt;&gt;btnClearResults.ZOrder" xml:space="preserve">
-    <value>11</value>
-  </data>
-  <data name="lblActualArgBottomRight.Text" xml:space="preserve">
-    <value>label1</value>
-  </data>
-  <data name="labelApplication.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Left</value>
-  </data>
-  <data name="&gt;&gt;btnBrowseApp.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ofdApplication.Name" xml:space="preserve">
-    <value>ofdApplication</value>
-  </data>
-  <data name="lblCombo2BottomRight.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Right</value>
-  </data>
-  <data name="chResult.Text" xml:space="preserve">
-    <value>Result</value>
-  </data>
-  <data name="&gt;&gt;btnBrowseMacro.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="lblCombo2TopLeft.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="lblArguments.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="&gt;&gt;cmbApplication.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>96, 96</value>
-  </data>
-  <data name="&gt;&gt;labelApplication.Name" xml:space="preserve">
-    <value>labelApplication</value>
-  </data>
-  <data name="btnClose.TabIndex" type="System.Int32, mscorlib">
-    <value>1000</value>
-  </data>
-  <data name="&gt;&gt;lblCombo1BottomRight.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="btnRun.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
   </data>
   <data name="&gt;&gt;lblCombo2TopLeft.ZOrder" xml:space="preserve">
     <value>7</value>
   </data>
-  <data name="&gt;&gt;btnBrowseApp.Name" xml:space="preserve">
-    <value>btnBrowseApp</value>
-  </data>
-  <data name="&gt;&gt;chResult.Name" xml:space="preserve">
-    <value>chResult</value>
-  </data>
-  <data name="cmbApplication.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>None</value>
-  </data>
-  <data name="&gt;&gt;btnBrowseApp.ZOrder" xml:space="preserve">
-    <value>12</value>
-  </data>
-  <data name="&gt;&gt;btnRun.Name" xml:space="preserve">
-    <value>btnRun</value>
-  </data>
-  <data name="lblArguments.Text" xml:space="preserve">
-    <value>Ar&amp;guments:</value>
+  <data name="lblCombo2BottomRight.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
   </data>
   <data name="lblCombo2BottomRight.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="lblArguments.Size" type="System.Drawing.Size, System.Drawing">
-    <value>76, 15</value>
+  <data name="lblCombo2BottomRight.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
-  <data name="lblCombo1TopLeft.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+  <data name="lblCombo2BottomRight.Location" type="System.Drawing.Point, System.Drawing">
+    <value>481, 231</value>
+  </data>
+  <data name="lblCombo2BottomRight.Size" type="System.Drawing.Size, System.Drawing">
+    <value>41, 15</value>
+  </data>
+  <data name="lblCombo2BottomRight.TabIndex" type="System.Int32, mscorlib">
+    <value>1002</value>
+  </data>
+  <data name="lblCombo2BottomRight.Text" xml:space="preserve">
+    <value>label1</value>
+  </data>
+  <data name="&gt;&gt;lblCombo2BottomRight.Name" xml:space="preserve">
+    <value>lblCombo2BottomRight</value>
+  </data>
+  <data name="&gt;&gt;lblCombo2BottomRight.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblCombo2BottomRight.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblCombo2BottomRight.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="txtActualArg.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left</value>
+  </data>
+  <data name="txtActualArg.Location" type="System.Drawing.Point, System.Drawing">
+    <value>69, 278</value>
   </data>
   <data name="txtActualArg.Size" type="System.Drawing.Size, System.Drawing">
     <value>100, 23</value>
   </data>
-  <data name="&gt;&gt;ofdApplication.Type" xml:space="preserve">
-    <value>System.Windows.Forms.OpenFileDialog, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="txtActualArg.TabIndex" type="System.Int32, mscorlib">
+    <value>1003</value>
+  </data>
+  <data name="&gt;&gt;txtActualArg.Name" xml:space="preserve">
+    <value>txtActualArg</value>
+  </data>
+  <data name="&gt;&gt;txtActualArg.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtActualArg.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;txtActualArg.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="lblActualArgTopLeft.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
+  </data>
+  <data name="lblActualArgTopLeft.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblActualArgTopLeft.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblActualArgTopLeft.Location" type="System.Drawing.Point, System.Drawing">
+    <value>119, 256</value>
+  </data>
+  <data name="lblActualArgTopLeft.Size" type="System.Drawing.Size, System.Drawing">
+    <value>41, 15</value>
+  </data>
+  <data name="lblActualArgTopLeft.TabIndex" type="System.Int32, mscorlib">
+    <value>1001</value>
+  </data>
+  <data name="lblActualArgTopLeft.Text" xml:space="preserve">
+    <value>label1</value>
+  </data>
+  <data name="lblActualArgTopLeft.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;lblActualArgTopLeft.Name" xml:space="preserve">
+    <value>lblActualArgTopLeft</value>
+  </data>
+  <data name="&gt;&gt;lblActualArgTopLeft.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblActualArgTopLeft.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblActualArgTopLeft.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="lblActualArgBottomRight.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
+  </data>
+  <data name="lblActualArgBottomRight.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblActualArgBottomRight.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblActualArgBottomRight.Location" type="System.Drawing.Point, System.Drawing">
+    <value>481, 256</value>
+  </data>
+  <data name="lblActualArgBottomRight.Size" type="System.Drawing.Size, System.Drawing">
+    <value>41, 15</value>
+  </data>
+  <data name="lblActualArgBottomRight.TabIndex" type="System.Int32, mscorlib">
+    <value>1002</value>
+  </data>
+  <data name="lblActualArgBottomRight.Text" xml:space="preserve">
+    <value>label1</value>
+  </data>
+  <data name="lblActualArgBottomRight.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;lblActualArgBottomRight.Name" xml:space="preserve">
+    <value>lblActualArgBottomRight</value>
+  </data>
+  <data name="&gt;&gt;lblActualArgBottomRight.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblActualArgBottomRight.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblActualArgBottomRight.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="btnBrowseMacro.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
+  </data>
+  <data name="btnBrowseMacro.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnBrowseMacro.Location" type="System.Drawing.Point, System.Drawing">
+    <value>488, 227</value>
+  </data>
+  <data name="btnBrowseMacro.Size" type="System.Drawing.Size, System.Drawing">
+    <value>34, 23</value>
+  </data>
+  <data name="btnBrowseMacro.TabIndex" type="System.Int32, mscorlib">
+    <value>1004</value>
+  </data>
+  <data name="btnBrowseMacro.Text" xml:space="preserve">
+    <value>&amp;...</value>
+  </data>
+  <data name="&gt;&gt;btnBrowseMacro.Name" xml:space="preserve">
+    <value>btnBrowseMacro</value>
+  </data>
+  <data name="&gt;&gt;btnBrowseMacro.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnBrowseMacro.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;btnBrowseMacro.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <metadata name="ofdApplication.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
-  <metadata name="cmList.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>149, 17</value>
-  </metadata>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>96, 96</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>542, 343</value>
+  </data>
+  <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Meiryo UI, 9pt</value>
+  </data>
+  <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        AAABAAEAICAAAAEAIACoEAAAFgAAACgAAAAgAAAAQAAAAAEAIAAAAAAAABAAAMMOAADDDgAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAD/VqL//1ai//9Wov//VqL//1ai/wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAP9Wov//VqL//1ai//9Wov//VqL/AAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/ba///1ai//9Wov//VqL//1ai//9Wov//Y6n/AAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAP9dpv//VqL//2Cn/wAAAAAAAAAAAAAAAP9Wov//WKP//1ai//9Wov//VqL//1mj//9W
+        ov8AAAAAAAAAAAAAAAD/YKf//1ai//9Yo/8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAD/V6L//1ai//9fp///VqL//1ai//9Wov//VqL//1ai//9Wov//VqL//1ai//9W
+        ov//VqL//1ai//9Wov//VqL//1ai//9Wov//Xab//1ai//9Xov8AAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAA/1ij//9Wov//VqL//1ai//9Wov//WaT//1ei//9Wov//VqL//1ai//9W
+        ov//VqL//1ai//9Wov//VqL//1ai//9Xov//WqT//1ai//9Wov//VqL//1ai//9Wov8AAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/WKP//1ai//9Wov//VqL//1ai//9Wov//VqL//1ai//9W
+        ov//VqL//1ai//9Wov//VqL//1ai//9Wov//VqL//1ai//9Wov//VqL//1ai//9Wov//V6L//1ai/wAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/VqL//1qk//9Wov//VqL//1ai//9W
+        ov//VqL//1ai//9Wov//VqL//1ai//9Wov//VqL//1ai//9Wov//VqL//1ai//9Wov//VqL//1mk//9W
+        ov8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP9dpv//VqL//1ai//9W
+        ov//VqL//1ai//9Wov//VqL//1mj//9Wov//VqL//1ai//9Zo///VqL//1ai//9Wov//VqL//1ai//9W
+        ov//VqL//1uk/wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/1ai//9X
+        ov//VqL//1ai//9Wov//VqL//1qk//9Wov//VqL//2Cn//9rrf//YKf//1ai//9Wov//WqT//1ai//9W
+        ov//VqL//1ai//9Xov//VqL/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP9r
+        rf//VqL//1ai//9Wov//VqL//1ai//9Wov//VqL//2Wq/wAAAAAAAAAAAAAAAAAAAAAAAAAA/2Wq//9W
+        ov//VqL//1ai//9Wov//VqL//1ai//9Wov//a63/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/1ij//9W
+        ov//VqL//1ai//9Yo///VqL//1ai//9Wov//VqL//1ai//9ao/8AAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAA/1qj//9Wov//VqL//1ai//9Wov//VqL//1ij//9Wov//VqL//1ai//9Yo/8AAAAAAAAAAAAA
+        AAD/VqL//1ai//9Wov//VqL//1ai//9Wov//VqL//1ai//9Wov//VqL/AAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAA/1ai//9Wov//VqL//1ai//9Wov//VqL//1ai//9Wov//VqL//1ai/wAA
+        AAAAAAAAAAAAAP9Wov//VqL//1ai//9Wov//VqL//1ai//9Wov//VqL//1ai//9Wov8AAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/VqL//1ai//9Wov//VqL//1ai//9Wov//VqL//1ai//9W
+        ov//VqL/AAAAAAAAAAAAAAAA/1ai//9Wov//VqL//1ai//9Wov//VqL//1ai//9Wov//VqL//1ai/wAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP9Wov//VqL//1ai//9Wov//VqL//1ai//9W
+        ov//VqL//1ai//9Wov8AAAAAAAAAAAAAAAD/VqL//1ai//9Wov//VqL//1qk//9Wov//VqL//1ai//9W
+        ov//VqL//1qj/wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/WqP//1ai//9Wov//VqL//1ai//9W
+        ov//WqT//1ai//9Wov//VqL//1ai/wAAAAAAAAAAAAAAAAAAAAAAAAAA/4O6//9bpP//VqL//1ai//9W
+        ov//VqL//1ai//9Wov//VqL//2Op/wAAAAAAAAAAAAAAAAAAAAAAAAAA/2Op//9Wov//VqL//1ai//9W
+        ov//VqL//1ai//9Wov//W6T//4C5/wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP9W
+        ov//V6L//1ai//9Wov//VqL//1ai//9apP//VqL//1ai//9gp///a63//2Cn//9Wov//VqL//1qk//9W
+        ov//VqL//1ai//9Wov//V6L//1ai/wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAA/2Op//9Wov//VqL//1ai//9Wov//VqL//1ai//9Wov//WaT//1ai//9Wov//VqL//1mk//9W
+        ov//VqL//1ai//9Wov//VqL//1ai//9Wov//YKf/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAD/VqL//1qk//9Wov//VqL//1ai//9Wov//VqL//1ai//9Wov//VqL//1ai//9W
+        ov//VqL//1ai//9Wov//VqL//1ai//9Wov//VqL//1qk//9Wov8AAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAA/12m//9Wov//VqL//1ai//9Wov//VqL//1ai//9Wov//VqL//1ai//9W
+        ov//VqL//1ai//9Wov//VqL//1ai//9Wov//VqL//1ai//9Wov//VqL//1ai//9bpP8AAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/WKP//1ai//9Wov//VqL//1ai//9Wov//V6L//1ai//9W
+        ov//VqL//1ai//9Wov//VqL//1ai//9Wov//VqL//1ai//9Wov//VqL//1ai//9Wov//VqL//1ij/wAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/W6X//1ai//9fp///VqL//1ai//9W
+        ov//VqL//1ai//9Wov//VqL//1ai//9Wov//VqL//1ai//9Wov//VqL//1ai//9Wov//YKf//1ai//9X
+        ov8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/Xab//1ai//9Y
+        o/8AAAAAAAAAAAAAAAD/VqL//1ij//9Wov//VqL//1ai//9Zo///VqL/AAAAAAAAAAAAAAAA/1uk//9W
+        ov//Xab/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAP91s///VqL//1ai//9Wov//VqL//1ai//9orP8AAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP9Wov//VqL//1ai//9Wov//VqL/AAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/1ai//9Wov//VqL//1ai//9W
+        ov8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAA/////////////B////wf///4D//+OA4//AAAH/gAAA/4AAAP/AAAH/wA
+        AB/8AAAf+APgD8AH8AHAD/gBwA/4AcAP+AHAB/AB8APgB/wAAB/8AAAf/AAAH/gAAA/4AAAP/AAAH/44
+        Dj//+A////wf///8H/////////////////8=
+</value>
+  </data>
+  <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>550, 338</value>
+  </data>
+  <data name="&gt;&gt;chIndicator.Name" xml:space="preserve">
+    <value>chIndicator</value>
+  </data>
+  <data name="&gt;&gt;chIndicator.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;chFile.Name" xml:space="preserve">
+    <value>chFile</value>
+  </data>
+  <data name="&gt;&gt;chFile.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;chResult.Name" xml:space="preserve">
+    <value>chResult</value>
+  </data>
+  <data name="&gt;&gt;chResult.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tsmiRemove.Name" xml:space="preserve">
+    <value>tsmiRemove</value>
+  </data>
+  <data name="&gt;&gt;tsmiRemove.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripMenuItem1.Name" xml:space="preserve">
+    <value>toolStripMenuItem1</value>
+  </data>
+  <data name="&gt;&gt;toolStripMenuItem1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tsmiRemoveAll.Name" xml:space="preserve">
+    <value>tsmiRemoveAll</value>
+  </data>
+  <data name="&gt;&gt;tsmiRemoveAll.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ofdApplication.Name" xml:space="preserve">
+    <value>ofdApplication</value>
+  </data>
+  <data name="&gt;&gt;ofdApplication.Type" xml:space="preserve">
+    <value>System.Windows.Forms.OpenFileDialog, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>FormMain</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
 </root>
