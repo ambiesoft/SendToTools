@@ -132,6 +132,12 @@
   <data name="PAUSE_BUTTON_TEXT" xml:space="preserve">
     <value>&amp;Pause</value>
   </data>
+  <data name="PROCESS_EXIT_WITH" xml:space="preserve">
+    <value>Process exited with {0}.</value>
+  </data>
+  <data name="PROCESS_IS_NULL" xml:space="preserve">
+    <value>Process is null.</value>
+  </data>
   <data name="RUN_BUTTON_TEXT" xml:space="preserve">
     <value>&amp;Run</value>
   </data>

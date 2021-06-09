@@ -121,7 +121,7 @@
     <value>進捗</value>
   </data>
   <data name="chFile.Text" xml:space="preserve">
-    <value>実行するファイル</value>
+    <value>ファイル</value>
   </data>
   <data name="chResult.Text" xml:space="preserve">
     <value>結果</value>
@@ -137,30 +137,18 @@
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="labelApplication.Size" type="System.Drawing.Size, System.Drawing">
-    <value>92, 13</value>
+    <value>99, 15</value>
   </data>
   <data name="labelApplication.Text" xml:space="preserve">
     <value>アプリケーション(&amp;A):</value>
   </data>
   <data name="lblArguments.Size" type="System.Drawing.Size, System.Drawing">
-    <value>48, 13</value>
+    <value>55, 15</value>
   </data>
   <data name="lblArguments.Text" xml:space="preserve">
     <value>引数(&amp;G):</value>
   </data>
   <data name="btnClearResults.Text" xml:space="preserve">
     <value>結果をクリア(&amp;L)</value>
-  </data>
-  <data name="cmbApplication.Location" type="System.Drawing.Point, System.Drawing">
-    <value>110, 299</value>
-  </data>
-  <data name="cmbApplication.Size" type="System.Drawing.Size, System.Drawing">
-    <value>563, 21</value>
-  </data>
-  <data name="cmbArguments.Location" type="System.Drawing.Point, System.Drawing">
-    <value>110, 324</value>
-  </data>
-  <data name="cmbArguments.Size" type="System.Drawing.Size, System.Drawing">
-    <value>563, 21</value>
   </data>
 </root>

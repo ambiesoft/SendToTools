@@ -246,12 +246,12 @@ namespace RunOnebyOne
                 await Task.Run(() =>
                 {
                     ProcessStartInfo psi = new ProcessStartInfo();
-                    if(string.IsNullOrEmpty(exe) && string.IsNullOrEmpty(args))
+                    if (string.IsNullOrEmpty(exe) && string.IsNullOrEmpty(args))
                     {
                         // both is null
                         psi.FileName = file;
                     }
-                    else if(string.IsNullOrEmpty(exe) && !string.IsNullOrEmpty(args))
+                    else if (string.IsNullOrEmpty(exe) && !string.IsNullOrEmpty(args))
                     {
                         // only args, but this fails if file is not an executable
                         psi.FileName = file;
@@ -261,7 +261,7 @@ namespace RunOnebyOne
                     {
                         // only exe
                         psi.FileName = exe;
-                        psi.Arguments = AmbLib.doubleQuoteIfSpace(file);
+                        // psi.Arguments = AmbLib.doubleQuoteIfSpace(file);
                     }
                     else
                     {
@@ -275,12 +275,13 @@ namespace RunOnebyOne
                         Process proc = Process.Start(psi);
                         if (proc == null)
                         {
-                            result = "null";
+                            result = Properties.Resources.PROCESS_IS_NULL;
                         }
                         else
                         {
                             proc.WaitForExit();
-                            result = proc.ExitCode.ToString();
+                            result = string.Format(Properties.Resources.PROCESS_EXIT_WITH,
+                                proc.ExitCode.ToString());
                         }
                     }
                     catch (Exception ex)
@@ -545,6 +546,7 @@ namespace RunOnebyOne
 
         private void btnBrowseMacro_Click(object sender, EventArgs e)
         {
+            _mm.Text = string.Format("{0} - Macro", Application.ProductName);
             _mm.InputString = cmbArguments.Text;
             if (DialogResult.OK != _mm.ShowDialog())
                 return;

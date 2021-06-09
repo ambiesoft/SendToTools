@@ -61,8 +61,8 @@
             // 
             // listMain
             // 
-            this.listMain.AllowDrop = true;
             resources.ApplyResources(this.listMain, "listMain");
+            this.listMain.AllowDrop = true;
             this.listMain.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.chIndicator,
             this.chFile,
@@ -92,28 +92,28 @@
             // 
             // cmList
             // 
+            resources.ApplyResources(this.cmList, "cmList");
             this.cmList.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmiRemove,
             this.toolStripMenuItem1,
             this.tsmiRemoveAll});
             this.cmList.Name = "cmList";
-            resources.ApplyResources(this.cmList, "cmList");
             // 
             // tsmiRemove
             // 
-            this.tsmiRemove.Name = "tsmiRemove";
             resources.ApplyResources(this.tsmiRemove, "tsmiRemove");
+            this.tsmiRemove.Name = "tsmiRemove";
             this.tsmiRemove.Click += new System.EventHandler(this.tsmiRemove_Click);
             // 
             // toolStripMenuItem1
             // 
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
             resources.ApplyResources(this.toolStripMenuItem1, "toolStripMenuItem1");
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
             // 
             // tsmiRemoveAll
             // 
-            this.tsmiRemoveAll.Name = "tsmiRemoveAll";
             resources.ApplyResources(this.tsmiRemoveAll, "tsmiRemoveAll");
+            this.tsmiRemoveAll.Name = "tsmiRemoveAll";
             this.tsmiRemoveAll.Click += new System.EventHandler(this.tsmiRemoveAll_Click);
             // 
             // btnRun

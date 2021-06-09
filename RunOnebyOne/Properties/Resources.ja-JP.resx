@@ -132,6 +132,12 @@
   <data name="PAUSE_BUTTON_TEXT" xml:space="preserve">
     <value>一時停止(&amp;P)</value>
   </data>
+  <data name="PROCESS_EXIT_WITH" xml:space="preserve">
+    <value>プロセスは {0} で終了しました。</value>
+  </data>
+  <data name="PROCESS_IS_NULL" xml:space="preserve">
+    <value>プロセスがnullです。</value>
+  </data>
   <data name="RUN_BUTTON_TEXT" xml:space="preserve">
     <value>実行(&amp;R)</value>
   </data>

@@ -19,7 +19,7 @@ namespace RunOnebyOne.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -102,6 +102,24 @@ namespace RunOnebyOne.Properties {
         internal static string PAUSE_BUTTON_TEXT {
             get {
                 return ResourceManager.GetString("PAUSE_BUTTON_TEXT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Process exited with {0}..
+        /// </summary>
+        internal static string PROCESS_EXIT_WITH {
+            get {
+                return ResourceManager.GetString("PROCESS_EXIT_WITH", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Process is null..
+        /// </summary>
+        internal static string PROCESS_IS_NULL {
+            get {
+                return ResourceManager.GetString("PROCESS_IS_NULL", resourceCulture);
             }
         }
         
