@@ -1,3 +1,6 @@
+2021/06/10 ver 2.1.6
+RunOneByOne: Show confirmation dialog before running the command
+
 2021/06/09 ver 2.1.5
 CopyPath: has options to double-quote or not
 RunOnebyOne: able to specify macro on Arguments

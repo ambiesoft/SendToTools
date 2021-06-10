@@ -56,6 +56,7 @@
             this.lblActualArgTopLeft = new System.Windows.Forms.Label();
             this.lblActualArgBottomRight = new System.Windows.Forms.Label();
             this.btnBrowseMacro = new System.Windows.Forms.Button();
+            this.btnAbout = new System.Windows.Forms.Button();
             this.cmList.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -223,11 +224,19 @@
             this.btnBrowseMacro.UseVisualStyleBackColor = true;
             this.btnBrowseMacro.Click += new System.EventHandler(this.btnBrowseMacro_Click);
             // 
+            // btnAbout
+            // 
+            resources.ApplyResources(this.btnAbout, "btnAbout");
+            this.btnAbout.Name = "btnAbout";
+            this.btnAbout.UseVisualStyleBackColor = true;
+            this.btnAbout.Click += new System.EventHandler(this.btnAbout_Click);
+            // 
             // FormMain
             // 
             this.AcceptButton = this.btnClose;
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            this.Controls.Add(this.btnAbout);
             this.Controls.Add(this.btnBrowseMacro);
             this.Controls.Add(this.txtActualArg);
             this.Controls.Add(this.lblActualArgBottomRight);
@@ -284,6 +293,7 @@
         private System.Windows.Forms.Label lblActualArgTopLeft;
         private System.Windows.Forms.Label lblActualArgBottomRight;
         private System.Windows.Forms.Button btnBrowseMacro;
+        private System.Windows.Forms.Button btnAbout;
     }
 }
 

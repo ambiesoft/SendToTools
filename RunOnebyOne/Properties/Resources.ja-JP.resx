@@ -120,6 +120,9 @@
   <data name="ADMINISTRATOR" xml:space="preserve">
     <value>管理者</value>
   </data>
+  <data name="BEFORE_RUN_MESSAGE" xml:space="preserve">
+    <value>以下のコマンドを実行しますか？</value>
+  </data>
   <data name="CANCELLING_BUTTON_TEXT" xml:space="preserve">
     <value>キャンセルしています</value>
   </data>
@@ -129,8 +132,14 @@
   <data name="DOTNET_45_REQUIRED" xml:space="preserve">
     <value>このアプリケーションは.NET 4.5以上がインストールされている必要があります。</value>
   </data>
+  <data name="DO_IT_AGAIN" xml:space="preserve">
+    <value>すべてのコマンドの実行は終了しています。もう一度実行しますか？</value>
+  </data>
   <data name="PAUSE_BUTTON_TEXT" xml:space="preserve">
     <value>一時停止(&amp;P)</value>
+  </data>
+  <data name="PRESS_CTRL_OK" xml:space="preserve">
+    <value>Ctrlを押しながらOKをクリックするとURLへ移動します</value>
   </data>
   <data name="PROCESS_EXIT_WITH" xml:space="preserve">
     <value>プロセスは {0} で終了しました。</value>

@@ -35,7 +35,13 @@ namespace RunOnebyOne
 {
     static class Program
     {
-
+        internal static string Url
+        {
+            get
+            {
+                return "https://ambiesoft.github.io/webjumper/?target=sendtotools";
+            }
+        }
 
         [STAThread]
         static int Main(string[] args)

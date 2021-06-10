@@ -139,22 +139,22 @@
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="tsmiRemove.Size" type="System.Drawing.Size, System.Drawing">
-    <value>140, 22</value>
+    <value>142, 22</value>
   </data>
   <data name="tsmiRemove.Text" xml:space="preserve">
     <value>&amp;Remove</value>
   </data>
   <data name="toolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>137, 6</value>
+    <value>139, 6</value>
   </data>
   <data name="tsmiRemoveAll.Size" type="System.Drawing.Size, System.Drawing">
-    <value>140, 22</value>
+    <value>142, 22</value>
   </data>
   <data name="tsmiRemoveAll.Text" xml:space="preserve">
     <value>Remove All</value>
   </data>
   <data name="cmList.Size" type="System.Drawing.Size, System.Drawing">
-    <value>141, 54</value>
+    <value>143, 54</value>
   </data>
   <data name="&gt;&gt;cmList.Name" xml:space="preserve">
     <value>cmList</value>
@@ -166,7 +166,7 @@
     <value>12, 12</value>
   </data>
   <data name="listMain.Size" type="System.Drawing.Size, System.Drawing">
-    <value>510, 172</value>
+    <value>559, 171</value>
   </data>
   <data name="listMain.TabIndex" type="System.Int32, mscorlib">
     <value>100</value>
@@ -181,7 +181,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;listMain.ZOrder" xml:space="preserve">
-    <value>18</value>
+    <value>19</value>
   </data>
   <data name="btnRun.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left, Right</value>
@@ -190,10 +190,10 @@
     <value>False</value>
   </data>
   <data name="btnRun.Location" type="System.Drawing.Point, System.Drawing">
-    <value>166, 307</value>
+    <value>190, 306</value>
   </data>
   <data name="btnRun.Size" type="System.Drawing.Size, System.Drawing">
-    <value>122, 24</value>
+    <value>147, 24</value>
   </data>
   <data name="btnRun.TabIndex" type="System.Int32, mscorlib">
     <value>800</value>
@@ -211,13 +211,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnRun.ZOrder" xml:space="preserve">
-    <value>17</value>
+    <value>18</value>
   </data>
   <data name="btnClose.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
   </data>
   <data name="btnClose.Location" type="System.Drawing.Point, System.Drawing">
-    <value>427, 307</value>
+    <value>476, 306</value>
   </data>
   <data name="btnClose.Size" type="System.Drawing.Size, System.Drawing">
     <value>95, 24</value>
@@ -238,16 +238,16 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnClose.ZOrder" xml:space="preserve">
-    <value>16</value>
+    <value>17</value>
   </data>
   <data name="btnReopenAsAdmin.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left</value>
   </data>
   <data name="btnReopenAsAdmin.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 307</value>
+    <value>47, 306</value>
   </data>
   <data name="btnReopenAsAdmin.Size" type="System.Drawing.Size, System.Drawing">
-    <value>148, 24</value>
+    <value>137, 24</value>
   </data>
   <data name="btnReopenAsAdmin.TabIndex" type="System.Int32, mscorlib">
     <value>700</value>
@@ -265,7 +265,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnReopenAsAdmin.ZOrder" xml:space="preserve">
-    <value>15</value>
+    <value>16</value>
   </data>
   <data name="labelApplication.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left</value>
@@ -274,7 +274,7 @@
     <value>True</value>
   </data>
   <data name="labelApplication.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 202</value>
+    <value>9, 201</value>
   </data>
   <data name="labelApplication.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 15</value>
@@ -295,13 +295,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;labelApplication.ZOrder" xml:space="preserve">
-    <value>14</value>
+    <value>15</value>
   </data>
   <data name="btnBrowseApp.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
   </data>
   <data name="btnBrowseApp.Location" type="System.Drawing.Point, System.Drawing">
-    <value>488, 198</value>
+    <value>537, 197</value>
   </data>
   <data name="btnBrowseApp.Size" type="System.Drawing.Size, System.Drawing">
     <value>34, 23</value>
@@ -322,7 +322,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnBrowseApp.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>13</value>
   </data>
   <metadata name="ofdApplication.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
@@ -340,7 +340,7 @@
     <value>NoControl</value>
   </data>
   <data name="lblArguments.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 231</value>
+    <value>9, 230</value>
   </data>
   <data name="lblArguments.Size" type="System.Drawing.Size, System.Drawing">
     <value>76, 15</value>
@@ -361,7 +361,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lblArguments.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>14</value>
   </data>
   <data name="btnClearResults.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
@@ -370,7 +370,7 @@
     <value>NoControl</value>
   </data>
   <data name="btnClearResults.Location" type="System.Drawing.Point, System.Drawing">
-    <value>294, 307</value>
+    <value>343, 306</value>
   </data>
   <data name="btnClearResults.Size" type="System.Drawing.Size, System.Drawing">
     <value>127, 24</value>
@@ -391,13 +391,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnClearResults.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>12</value>
   </data>
   <data name="cmbApplication.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>None</value>
   </data>
   <data name="cmbApplication.Location" type="System.Drawing.Point, System.Drawing">
-    <value>43, 278</value>
+    <value>67, 278</value>
   </data>
   <data name="cmbApplication.Size" type="System.Drawing.Size, System.Drawing">
     <value>156, 23</value>
@@ -415,13 +415,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;cmbApplication.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>11</value>
   </data>
   <data name="cmbArguments.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>None</value>
   </data>
   <data name="cmbArguments.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 278</value>
+    <value>28, 278</value>
   </data>
   <data name="cmbArguments.Size" type="System.Drawing.Size, System.Drawing">
     <value>156, 23</value>
@@ -439,7 +439,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;cmbArguments.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>10</value>
   </data>
   <data name="lblCombo1TopLeft.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left</value>
@@ -448,7 +448,7 @@
     <value>True</value>
   </data>
   <data name="lblCombo1TopLeft.Location" type="System.Drawing.Point, System.Drawing">
-    <value>119, 198</value>
+    <value>119, 197</value>
   </data>
   <data name="lblCombo1TopLeft.Size" type="System.Drawing.Size, System.Drawing">
     <value>41, 15</value>
@@ -469,7 +469,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lblCombo1TopLeft.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>9</value>
   </data>
   <data name="lblCombo1BottomRight.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
@@ -478,7 +478,7 @@
     <value>True</value>
   </data>
   <data name="lblCombo1BottomRight.Location" type="System.Drawing.Point, System.Drawing">
-    <value>481, 202</value>
+    <value>530, 201</value>
   </data>
   <data name="lblCombo1BottomRight.Size" type="System.Drawing.Size, System.Drawing">
     <value>41, 15</value>
@@ -499,7 +499,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lblCombo1BottomRight.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="lblCombo2TopLeft.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left</value>
@@ -511,7 +511,7 @@
     <value>NoControl</value>
   </data>
   <data name="lblCombo2TopLeft.Location" type="System.Drawing.Point, System.Drawing">
-    <value>119, 227</value>
+    <value>119, 226</value>
   </data>
   <data name="lblCombo2TopLeft.Size" type="System.Drawing.Size, System.Drawing">
     <value>41, 15</value>
@@ -532,7 +532,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lblCombo2TopLeft.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>8</value>
   </data>
   <data name="lblCombo2BottomRight.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
@@ -544,7 +544,7 @@
     <value>NoControl</value>
   </data>
   <data name="lblCombo2BottomRight.Location" type="System.Drawing.Point, System.Drawing">
-    <value>481, 231</value>
+    <value>530, 230</value>
   </data>
   <data name="lblCombo2BottomRight.Size" type="System.Drawing.Size, System.Drawing">
     <value>41, 15</value>
@@ -565,13 +565,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lblCombo2BottomRight.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="txtActualArg.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left</value>
   </data>
   <data name="txtActualArg.Location" type="System.Drawing.Point, System.Drawing">
-    <value>69, 278</value>
+    <value>69, 277</value>
   </data>
   <data name="txtActualArg.Size" type="System.Drawing.Size, System.Drawing">
     <value>100, 23</value>
@@ -589,7 +589,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;txtActualArg.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="lblActualArgTopLeft.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left</value>
@@ -601,7 +601,7 @@
     <value>NoControl</value>
   </data>
   <data name="lblActualArgTopLeft.Location" type="System.Drawing.Point, System.Drawing">
-    <value>119, 256</value>
+    <value>119, 255</value>
   </data>
   <data name="lblActualArgTopLeft.Size" type="System.Drawing.Size, System.Drawing">
     <value>41, 15</value>
@@ -625,7 +625,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lblActualArgTopLeft.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>7</value>
   </data>
   <data name="lblActualArgBottomRight.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
@@ -637,7 +637,7 @@
     <value>NoControl</value>
   </data>
   <data name="lblActualArgBottomRight.Location" type="System.Drawing.Point, System.Drawing">
-    <value>481, 256</value>
+    <value>530, 255</value>
   </data>
   <data name="lblActualArgBottomRight.Size" type="System.Drawing.Size, System.Drawing">
     <value>41, 15</value>
@@ -661,7 +661,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lblActualArgBottomRight.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="btnBrowseMacro.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
@@ -670,7 +670,7 @@
     <value>NoControl</value>
   </data>
   <data name="btnBrowseMacro.Location" type="System.Drawing.Point, System.Drawing">
-    <value>488, 227</value>
+    <value>537, 226</value>
   </data>
   <data name="btnBrowseMacro.Size" type="System.Drawing.Size, System.Drawing">
     <value>34, 23</value>
@@ -691,7 +691,34 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnBrowseMacro.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
+  </data>
+  <data name="btnAbout.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
+  </data>
+  <data name="btnAbout.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 306</value>
+  </data>
+  <data name="btnAbout.Size" type="System.Drawing.Size, System.Drawing">
+    <value>29, 24</value>
+  </data>
+  <data name="btnAbout.TabIndex" type="System.Int32, mscorlib">
+    <value>650</value>
+  </data>
+  <data name="btnAbout.Text" xml:space="preserve">
+    <value>?</value>
+  </data>
+  <data name="&gt;&gt;btnAbout.Name" xml:space="preserve">
+    <value>btnAbout</value>
+  </data>
+  <data name="&gt;&gt;btnAbout.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnAbout.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;btnAbout.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -700,7 +727,7 @@
     <value>96, 96</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>542, 343</value>
+    <value>591, 342</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Meiryo UI, 9pt</value>

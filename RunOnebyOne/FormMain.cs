@@ -37,6 +37,7 @@ using System.Windows.Forms;
 using System.IO;
 using NDesk.Options;
 using Ambiesoft;
+using System.Reflection;
 
 namespace RunOnebyOne
 {
@@ -222,94 +223,122 @@ namespace RunOnebyOne
         {
             lvi.SubItems[2].Text = text;
         }
-        private async void RunAsync(string exe)
+
+        enum RunAsyncType
         {
+            RunAsync_Normal,
+            RunAsync_DryRun,
+        }
+
+
+        private async void RunAsync(RunAsyncType runType, List<KeyValuePair<string,string>> willExecutes)
+        {
+            string exe = cmbApplication.Text;
             Running = true;
             foreach (ListViewItem lvi in listMain.Items)
             {
                 if (Cancelling)
                     break;
 
-                // string prevArgs = txtActualArg.Text;
-                // update txtActualArg
                 UpdateMacros(lvi);
 
                 string args = txtActualArg.Text;
-                // Debug.Assert(prevArgs != args);
 
                 if (GetIndicatorText(lvi) == "*")
                     continue;
 
-                SetIndicatorText(lvi, "=");
+                if (runType == RunAsyncType.RunAsync_Normal)
+                    SetIndicatorText(lvi, "=");
                 string file = GetLVFile(lvi);
                 string result = "";
-                await Task.Run(() =>
-                {
-                    ProcessStartInfo psi = new ProcessStartInfo();
-                    if (string.IsNullOrEmpty(exe) && string.IsNullOrEmpty(args))
-                    {
-                        // both is null
-                        psi.FileName = file;
-                    }
-                    else if (string.IsNullOrEmpty(exe) && !string.IsNullOrEmpty(args))
-                    {
-                        // only args, but this fails if file is not an executable
-                        psi.FileName = file;
-                        psi.Arguments = args;
-                    }
-                    else if (!string.IsNullOrEmpty(exe) && string.IsNullOrEmpty(args))
-                    {
-                        // only exe
-                        psi.FileName = exe;
-                        // psi.Arguments = AmbLib.doubleQuoteIfSpace(file);
-                    }
-                    else
-                    {
-                        // both exe and args
-                        psi.FileName = exe;
-                        psi.Arguments = args; // string.Format("{0} {1}", args, AmbLib.doubleQuoteIfSpace(file));
-                    }
-                    psi.UseShellExecute = true;
-                    try
-                    {
-                        Process proc = Process.Start(psi);
-                        if (proc == null)
-                        {
-                            result = Properties.Resources.PROCESS_IS_NULL;
-                        }
-                        else
-                        {
-                            proc.WaitForExit();
-                            result = string.Format(Properties.Resources.PROCESS_EXIT_WITH,
-                                proc.ExitCode.ToString());
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        result = ex.Message;
-                    }
-                });
-                SetIndicatorText(lvi, "*");
-                SetLVResult(lvi, result);
-                UpdateTitle();
-            }
 
-            if(!Cancelling)
-            {
-                if (IsListAllDone())
+                string psiFileName = string.Empty;
+                string psiArguments = string.Empty;
+                if (string.IsNullOrEmpty(exe) && string.IsNullOrEmpty(args))
                 {
-                    //btnRun.Enabled = false;
-                    //btnRun.Visible = false;
-                    //btnRun.Text = Properties.Resources.DONE_BUTTON_TEXT;
+                    // both is null
+                    psiFileName = file;
+                }
+                else if (string.IsNullOrEmpty(exe) && !string.IsNullOrEmpty(args))
+                {
+                    // only args, but this fails if file is not an executable
+                    psiFileName = file;
+                    psiArguments = args;
+                }
+                else if (!string.IsNullOrEmpty(exe) && string.IsNullOrEmpty(args))
+                {
+                    // only exe
+                    psiFileName = exe;
+                    // psi.Arguments = AmbLib.doubleQuoteIfSpace(file);
                 }
                 else
                 {
-                    RunAsync(exe);
+                    // both exe and args
+                    psiFileName = exe;
+                    psiArguments = args; // string.Format("{0} {1}", args, AmbLib.doubleQuoteIfSpace(file));
+                }
+
+                if (runType == RunAsyncType.RunAsync_Normal)
+                {
+                    await Task.Run(() =>
+                    {
+                        ProcessStartInfo psi = new ProcessStartInfo();
+                        psi.FileName = psiFileName;
+                        psi.Arguments = psiArguments;
+                        psi.UseShellExecute = true;
+                        try
+                        {
+                            Process proc = Process.Start(psi);
+                            if (proc == null)
+                            {
+                                result = Properties.Resources.PROCESS_IS_NULL;
+                            }
+                            else
+                            {
+                                proc.WaitForExit();
+                                result = string.Format(Properties.Resources.PROCESS_EXIT_WITH,
+                                    proc.ExitCode.ToString());
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            result = ex.Message;
+                        }
+                    });
+                    SetIndicatorText(lvi, "*");
+                    SetLVResult(lvi, result);
+                    UpdateTitle();
+                }
+                else if (runType == RunAsyncType.RunAsync_DryRun)
+                {
+                    willExecutes.Add(new KeyValuePair<string, string>(psiFileName, psiArguments));
+                }
+                else
+                {
+                    Debug.Assert(false);
+                }
+            }
+
+            if (runType == RunAsyncType.RunAsync_Normal)
+            {
+                if (!Cancelling)
+                {
+                    if (IsListAllDone())
+                    {
+                        //btnRun.Enabled = false;
+                        //btnRun.Visible = false;
+                        //btnRun.Text = Properties.Resources.DONE_BUTTON_TEXT;
+                    }
+                    else
+                    {
+                        RunAsync(runType, willExecutes);
+                    }
                 }
             }
             Cancelling = false;
             Running = false;
         }
+        
         bool running_;
         bool Running
         {
@@ -376,13 +405,40 @@ namespace RunOnebyOne
             Cancelling = false;
             if(IsListAllDone())
             {
-                if (DialogResult.Yes != CppUtils.YesOrNo("Do it again?",MessageBoxDefaultButton.Button2))
+                if (DialogResult.Yes != CppUtils.YesOrNo(
+                    Properties.Resources.DO_IT_AGAIN,
+                    MessageBoxDefaultButton.Button2))
+                {
                     return;
+                }
                 ClearAllListIndicator();
             }
             UpdateCombo();
 
-            RunAsync(cmbApplication.Text);
+            List<KeyValuePair<string, string>> willExecute = new List<KeyValuePair<string, string>>();
+            RunAsync(RunAsyncType.RunAsync_DryRun, willExecute);
+            StringBuilder sbFilesAndArgs = new StringBuilder();
+            for(int i=0; i < willExecute.Count; ++i)
+            {
+                sbFilesAndArgs.AppendLine(string.Format("File{0}={1}",i, willExecute[i].Key));
+                sbFilesAndArgs.AppendLine(string.Format("Args{0}={1}",i, willExecute[i].Value));
+                sbFilesAndArgs.AppendLine();
+            }
+
+            StringBuilder sbMessage = new StringBuilder();
+            sbMessage.AppendLine(Properties.Resources.BEFORE_RUN_MESSAGE);
+            sbMessage.AppendLine();
+            sbMessage.Append(sbFilesAndArgs);
+            if (DialogResult.Yes != CppUtils.CenteredMessageBox(this,
+                sbMessage.ToString(),
+                Application.ProductName,
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question))
+            {
+                return;
+            }
+                
+            RunAsync(RunAsyncType.RunAsync_Normal, null);
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -595,6 +651,39 @@ namespace RunOnebyOne
         void UpdateMacros()
         {
             UpdateMacros(null);
+        }
+
+        private void btnAbout_Click(object sender, EventArgs e)
+        {
+            StringBuilder sbMessage = new StringBuilder();
+            sbMessage.AppendLine(string.Format("{0} v{1}",
+                Application.ProductName,
+                AmbLib.getAssemblyVersion(Assembly.GetExecutingAssembly(), 3)));
+            sbMessage.AppendLine();
+
+            sbMessage.AppendLine(AmbLib.getAssemblyCopyright(Assembly.GetExecutingAssembly()));
+            sbMessage.AppendLine();
+
+            sbMessage.AppendLine(Program.Url);
+            sbMessage.AppendLine(Properties.Resources.PRESS_CTRL_OK);
+
+            CppUtils.CenteredMessageBox(this,
+                sbMessage.ToString(),
+                Application.ProductName,
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Information);
+
+            if (CppUtils.IsCtrlPressed())
+            {
+                try
+                {
+                    Process.Start(Program.Url);
+                }
+                catch (Exception ex)
+                {
+                    CppUtils.Alert(ex);
+                }
+            }
         }
     }
 }
