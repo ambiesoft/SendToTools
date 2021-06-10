@@ -17,4 +17,10 @@
 "&Path"="パス(&P)"
 
 "&Multi Lines"="マルチライン(&M)"
-"Programming code"="プログラムコード"
+"Pro&gramming code"="プログラムコード(&G)"
+
+"N&ormal"="ノーマル(&O)"
+"No Do&uble Quote"="ダブルクオートなし(&U)"
+"Opt&ion"="オプション(&I)"
+"S&lash"="スラッシュ(&L)"
+"So&rt"="ソート(&R)"
