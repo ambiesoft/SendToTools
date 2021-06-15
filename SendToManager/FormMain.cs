@@ -37,6 +37,7 @@ using System.Diagnostics;
 using Ambiesoft;
 using System.Runtime.InteropServices;
 using System.Reflection;
+using System.Threading;
 
 namespace SendToManager
 {
@@ -983,7 +984,26 @@ new KeyValuePair<string, string>(@"touch.exe", Properties.Resources.TOOL_EXPLANA
             }
             return false;
         }
+
+        static Mutex CreateDeployMutex()
+        {
+            return new Mutex(false, "Ambiesoft.SendToManager.Deploy");
+        }
         static bool Displace(Form form, string message, bool commandRunOnly)
+        {
+            Mutex mut = CreateDeployMutex();
+            try
+            {
+                mut.WaitOne();
+                return DisplaceLocked(form, message, commandRunOnly);
+            }
+            finally
+            {
+                mut.ReleaseMutex();
+                mut.Close();
+            }
+        }
+        static bool DisplaceLocked(Form form, string message, bool commandRunOnly)
         {
             do
             {
@@ -1040,44 +1060,57 @@ new KeyValuePair<string, string>(@"touch.exe", Properties.Resources.TOOL_EXPLANA
         }
         internal static void Deploy(Form form, string currentInvFolder, string curinv, bool commandRunOnly)
         {
-            // first remove deployed shortcuts
-            if (!Displace(form, Properties.Resources.DO_YOU_WANT_TO_REMOVE_FILES_BEFORE_DEPLOY, commandRunOnly))
-                return;
-
+            Mutex mut = CreateDeployMutex();
             try
             {
-                DirectoryInfo di = new DirectoryInfo(currentInvFolder);
-                FileInfo[] srcFis = di.GetFiles("*.lnk", SearchOption.TopDirectoryOnly);
+                mut.WaitOne();
 
-
-                // do copy
-                string src = Path.Combine(currentInvFolder, "*.lnk");
-                string dst = SendToFolder;
-
-                int ret = CppUtils.CopyFile(src, dst);
-                if (ret != 0 && ret != 1)
+                // first remove deployed shortcuts
+                if (!DisplaceLocked(form,
+                    Properties.Resources.DO_YOU_WANT_TO_REMOVE_FILES_BEFORE_DEPLOY,
+                    commandRunOnly))
                 {
-                    Alert(form, Properties.Resources.FAILED_TO_COPY_FILES);
                     return;
                 }
 
-                // put alternate info
-                foreach (FileInfo fi in srcFis)
+                try
                 {
-                    string fulltarget = Path.Combine(SendToFolder, fi.Name);
-                    if (!Helper.WriteAlternateStream(fulltarget, "1"))
+                    DirectoryInfo di = new DirectoryInfo(currentInvFolder);
+                    FileInfo[] srcFis = di.GetFiles("*.lnk", SearchOption.TopDirectoryOnly);
+
+                    // do copy
+                    string src = Path.Combine(currentInvFolder, "*.lnk");
+                    string dst = SendToFolder;
+
+                    int ret = CppUtils.CopyFile(src, dst);
+                    if (ret != 0 && ret != 1)
                     {
                         Alert(form, Properties.Resources.FAILED_TO_COPY_FILES);
                         return;
                     }
-                }
 
-                
-                InfoBalloon(form, string.Format(Properties.Resources.INVENTORY_DEPLOYED, curinv), commandRunOnly);
+                    // put alternate info
+                    foreach (FileInfo fi in srcFis)
+                    {
+                        string fulltarget = Path.Combine(SendToFolder, fi.Name);
+                        if (!Helper.WriteAlternateStream(fulltarget, "1"))
+                        {
+                            Alert(form, Properties.Resources.FAILED_TO_COPY_FILES);
+                            return;
+                        }
+                    }
+
+                    InfoBalloon(form, string.Format(Properties.Resources.INVENTORY_DEPLOYED, curinv), commandRunOnly);
+                }
+                catch (Exception ex)
+                {
+                    Alert(form, ex.Message);
+                }
             }
-            catch (Exception ex)
+            finally
             {
-                Alert(form, ex.Message);
+                mut.ReleaseMutex();
+                mut.Close();
             }
         }
 
