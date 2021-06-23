@@ -58,6 +58,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ComputeFileHash", "ComputeF
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "zzzDist", "zzzDist\zzzDist.vcxproj", "{D5B9A7CD-ED2D-4941-916D-DD43D220EDDD}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MoreSendTo", "MoreSendTo\MoreSendTo.vcxproj", "{0046C766-3A42-47B4-AAE4-FB52C1804590}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
@@ -156,6 +158,10 @@ Global
 		{D5B9A7CD-ED2D-4941-916D-DD43D220EDDD}.Debug|x86.Build.0 = Debug|Win32
 		{D5B9A7CD-ED2D-4941-916D-DD43D220EDDD}.Release|x86.ActiveCfg = Release|Win32
 		{D5B9A7CD-ED2D-4941-916D-DD43D220EDDD}.Release|x86.Build.0 = Release|Win32
+		{0046C766-3A42-47B4-AAE4-FB52C1804590}.Debug|x86.ActiveCfg = Debug|Win32
+		{0046C766-3A42-47B4-AAE4-FB52C1804590}.Debug|x86.Build.0 = Debug|Win32
+		{0046C766-3A42-47B4-AAE4-FB52C1804590}.Release|x86.ActiveCfg = Release|Win32
+		{0046C766-3A42-47B4-AAE4-FB52C1804590}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
