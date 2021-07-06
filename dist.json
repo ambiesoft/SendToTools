@@ -22,8 +22,6 @@
     ],
 
     "ShouldBeFiles": [
-        "Ambiesoft.AmbLib.dll",
-        "Ambiesoft.AmbLib.pdb",
         "Ambiesoft.FolderConfig.dll",
         "Ambiesoft.FolderConfig.pdb",
         "Ambiesoft.FolderConfigHelper.dll",
