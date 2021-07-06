@@ -1,0 +1,15 @@
+[submodule "ComputeFileHash/OptionSet"]
+	path = ComputeFileHash/OptionSet
+	url = git@github.com:ambiesoft/OptionSet.git
+[submodule "CopyFileContent/OptionSet"]
+	path = CopyFileContent/OptionSet
+	url = git@github.com:ambiesoft/OptionSet.git
+[submodule "RunOnebyOne/OptionSet"]
+	path = RunOnebyOne/OptionSet
+	url = git@github.com:ambiesoft/OptionSet.git
+[submodule "SendToManager/OptionSet"]
+	path = SendToManager/OptionSet
+	url = git@github.com:ambiesoft/OptionSet.git
+[submodule "touch/OptionSet"]
+	path = touch/OptionSet
+	url = git@github.com:ambiesoft/OptionSet.git

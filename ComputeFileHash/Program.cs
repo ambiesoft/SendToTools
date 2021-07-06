@@ -27,7 +27,7 @@ namespace ComputeFileHash
 
             try
             {
-                var extraCommandLineArgs = p.Parse(args);
+                var extraCommandLineArgs = p.SafeParse(args);
                 foreach (var arg in extraCommandLineArgs)
                 {
                     inputFile = arg;

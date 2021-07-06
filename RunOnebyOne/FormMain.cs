@@ -79,7 +79,7 @@ namespace RunOnebyOne
 
 
             // Parse CommandLine
-            List<string> defaultArgs = p.Parse(args);
+            List<string> defaultArgs = p.SafeParse(args);
             foreach (string file in defaultArgs)
             {
                 AddToList(file);

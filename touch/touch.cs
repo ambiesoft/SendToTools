@@ -115,7 +115,7 @@ namespace touch
                     }
                 };
 
-            List<string> extra = p.Parse(args);
+            List<string> extra = p.SafeParse(args);
             if (extra.Count < 1)
             {
                 StringBuilder sb = new StringBuilder();

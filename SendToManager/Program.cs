@@ -175,7 +175,7 @@ namespace SendToManager
                 };
 
 
-            List<string> extra = p.Parse(args);
+            List<string> extra = p.SafeParse(args);
             if (extra.Count != 0)
             {
                 StringBuilder sb = new StringBuilder();
