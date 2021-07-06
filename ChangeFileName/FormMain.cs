@@ -478,7 +478,7 @@ namespace ChangeFileName
         {
             try
             {
-                Process.Start("https://github.com/erasoni/SendToTools");
+                Process.Start("https://ambiesoft.github.io/webjumper/?target=sendtotools");
             }
             catch (Exception ex)
             {
