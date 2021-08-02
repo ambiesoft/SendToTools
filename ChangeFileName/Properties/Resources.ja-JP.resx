@@ -155,8 +155,8 @@
   <data name="Extention" xml:space="preserve">
     <value>拡張子</value>
   </data>
-  <data name="DIR_NOT_EXIST_DO_YOU_WANT_TO_REMOVE" xml:space="preserve">
-    <value>"{0}" は存在しません。メニューから削除しますか？</value>
+  <data name="DIR_NOT_EXIST_DO_YOU_WANT_TO_CREATE" xml:space="preserve">
+    <value>"{0}" は存在しません。作成しますか？</value>
   </data>
   <data name="NOT_EXISTS" xml:space="preserve">
     <value>（存在しない）</value>
@@ -190,5 +190,8 @@
   </data>
   <data name="SORT" xml:space="preserve">
     <value>ソート(&amp;S)</value>
+  </data>
+  <data name="FAILED_TO_CREATE_DIRECTORY" xml:space="preserve">
+    <value>ディレクトリの作成に失敗しました。</value>
   </data>
 </root>

@@ -47,6 +47,7 @@ namespace ChangeFileName
     {
         static readonly string SECTION_SETTING = "settings";
         static readonly string KEY_SMARTDOUBLECLICKSELECTION = "SmartDoubleClickSelection";
+        static readonly string KEY_MOVELASTSELECTEDFOLDERTOTOP = "MoveLastSelectedFolderToTop";
         static readonly string KEY_TOPMOST = "TopMost";
 
         public static string IniFile
@@ -111,6 +112,9 @@ namespace ChangeFileName
 
             Profile.GetBool(SECTION_SETTING, KEY_SMARTDOUBLECLICKSELECTION, true, out boolval, ini);
             tsmiSmartDoubleClickSelection.Checked = boolval;
+
+            Profile.GetBool(SECTION_SETTING, KEY_MOVELASTSELECTEDFOLDERTOTOP, true, out boolval, ini);
+            tsmiMoveLastSelectionFolderToTop.Checked = boolval;
         }
 
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
@@ -218,6 +222,8 @@ namespace ChangeFileName
 
             Profile.WriteBool(SECTION_SETTING, KEY_SMARTDOUBLECLICKSELECTION,
                 tsmiSmartDoubleClickSelection.Checked, ini);
+            Profile.WriteBool(SECTION_SETTING, KEY_MOVELASTSELECTEDFOLDERTOTOP,
+                tsmiMoveLastSelectionFolderToTop.Checked, ini);
 
             if (!Profile.WriteAll(ini, IniFile))
             {

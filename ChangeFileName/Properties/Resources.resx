@@ -126,8 +126,8 @@
   <data name="DESTINATION_EXISTS" xml:space="preserve">
     <value>The destination already has a file named "{0}". Do you want to replace the file in the destination?</value>
   </data>
-  <data name="DIR_NOT_EXIST_DO_YOU_WANT_TO_REMOVE" xml:space="preserve">
-    <value>"{0}" does not exist. Do you want to remove it from menus?</value>
+  <data name="DIR_NOT_EXIST_DO_YOU_WANT_TO_CREATE" xml:space="preserve">
+    <value>"{0}" does not exist. Do you want to create?</value>
   </data>
   <data name="ENTER_FILENAME" xml:space="preserve">
     <value>Please enter Filename</value>
@@ -190,5 +190,8 @@ If this probrem continues, delete the file but you will lost all information abo
   </data>
   <data name="SORT" xml:space="preserve">
     <value>&amp;Sort</value>
+  </data>
+  <data name="FAILED_TO_CREATE_DIRECTORY" xml:space="preserve">
+    <value>Failed to create directory</value>
   </data>
 </root>

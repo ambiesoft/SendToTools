@@ -107,40 +107,27 @@ namespace ChangeFileName
                 return ret;
             }
         }
-        private void itemNewFolder_Click(object sender, EventArgs e)
+
+        void putFolderToTop(string folder)
         {
-            //var dlg1 = new Ionic.Utils.FolderBrowserDialogEx();
-            //dlg1.Description = "Select a folder to extract to:";
-            //dlg1.ShowNewFolderButton = true;
-            //dlg1.ShowEditBox = true;
-            ////dlg1.NewStyle = false;
-            ////dlg1.SelectedPath = txtExtractDirectory.Text;
-            //dlg1.ShowFullPathInEditBox = true;
-            //// dlg1.RootFolder = System.Environment.SpecialFolder.MyComputer;
-
-            //// Show the FolderBrowserDialog.
-            //DialogResult result = dlg1.ShowDialog();
-            //if (result != DialogResult.OK)
-            //{
-            //    // txtExtractDirectory.Text = dlg1.SelectedPath;
-            //    return;
-            //}
-            //string selectedPath = dlg1.SelectedPath;
-
-            string selectedPath = Ambiesoft.CppUtils.GetSelectedFolder(this, Application.ProductName);
-            if (string.IsNullOrEmpty(selectedPath))
-                return;
-
             List<string> dirs = new List<string>(DiskDirs);
 
-            dirs.RemoveAll(n => n.Equals(selectedPath, StringComparison.OrdinalIgnoreCase));
-            dirs.Insert(0, selectedPath);
+            dirs.RemoveAll(n => n.Equals(folder, StringComparison.OrdinalIgnoreCase));
+            dirs.Insert(0, folder);
 
             if (dirs.Count > MaxDirCount)
             {
                 dirs = dirs.GetRange(0, MaxDirCount);
             }
             DiskDirs = dirs.ToArray();
+        }
+        private void itemNewFolder_Click(object sender, EventArgs e)
+        {
+            string selectedPath = Ambiesoft.CppUtils.GetSelectedFolder(this, Application.ProductName);
+            if (string.IsNullOrEmpty(selectedPath))
+                return;
+
+            putFolderToTop(selectedPath);
 
             moveToAndClose(selectedPath);
         }
@@ -189,13 +176,33 @@ namespace ChangeFileName
             }
             else if (!System.IO.Directory.Exists(dir))
             {
-                if (DialogResult.Yes != CppUtils.YesOrNo(string.Format(Properties.Resources.DIR_NOT_EXIST_DO_YOU_WANT_TO_REMOVE, dir),
+                if (DialogResult.Yes != CppUtils.YesOrNo(
+                    string.Format(Properties.Resources.DIR_NOT_EXIST_DO_YOU_WANT_TO_CREATE, dir),
                     MessageBoxDefaultButton.Button2))
                 {
                     return;
                 }
-                removeFromDiskDirs(dir);
-                return;
+                
+                try
+                {
+                    Directory.CreateDirectory(dir);
+                }
+                catch(Exception ex)
+                {
+                    CppUtils.Alert(ex);
+                    return;
+                }
+
+                if(!Directory.Exists(dir))
+                {
+                    CppUtils.Alert(Properties.Resources.FAILED_TO_CREATE_DIRECTORY);
+                    return;
+                }
+            }
+
+            if(tsmiMoveLastSelectionFolderToTop.Checked)
+            {
+                putFolderToTop(dir);
             }
             moveToAndClose(dir);
         }

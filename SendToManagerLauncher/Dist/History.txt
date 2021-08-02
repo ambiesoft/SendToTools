@@ -1,3 +1,7 @@
+2021/08/02 ver 2.1.10
+Change build parameter
+Add 'MoveLastSelectedFolderToTop' on ChangeFileName
+
 2021/07/06 ver 2.1.9
 Move OptionSet to submodule
 
