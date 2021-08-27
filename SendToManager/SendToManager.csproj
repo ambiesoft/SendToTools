@@ -108,6 +108,7 @@
     <Compile Include="FormMain.Designer.cs">
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="gitrev.cs" />
     <Compile Include="Helper.cs" />
     <Compile Include="ListViewColumnSorter.cs" />
     <Compile Include="ListViewCustomReorder.ListViewEx.cs">

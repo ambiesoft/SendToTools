@@ -9,7 +9,15 @@
                 "platform":"x86"
             }
     ],
-    
+    "gitrev": {
+    	"gits": ["C:/cygwin/bin/git.exe", "C:/local/msys2/usr/bin/git.exe"],
+    	"gitdirs": [
+	    	".", 
+	    	"../lsMisc",
+	    	"../distSolution"
+	    ],
+    	"outcsharp": "SendToManager/gitrev.cs"
+    },
     
     
     

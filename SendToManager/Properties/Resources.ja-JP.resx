@@ -249,4 +249,7 @@
   <data name="UNABLE_TO_HANDLE_INTERNET_SHORTCUT_FILE" xml:space="preserve">
     <value>インターネットショートカットファイルは扱えません。</value>
   </data>
+  <data name="STR_SUPPORTING_TOOLS" xml:space="preserve">
+    <value>サポートツール</value>
+  </data>
 </root>

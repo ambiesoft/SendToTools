@@ -1317,6 +1317,7 @@ new KeyValuePair<string, string>(@"touch.exe", Properties.Resources.TOOL_EXPLANA
             sb.AppendLine();
             sb.AppendLine();
 
+            sb.AppendLine(Properties.Resources.STR_SUPPORTING_TOOLS + ":");
             sb.AppendLine(getToolVersion("ChangeFileName.exe",false));
             sb.AppendLine(getToolVersion("ChangeFileTime.exe", false));
             sb.AppendLine(getToolVersion("CopyFileContent.exe", false));
@@ -1339,8 +1340,12 @@ new KeyValuePair<string, string>(@"touch.exe", Properties.Resources.TOOL_EXPLANA
             sb.AppendLine(getToolVersion("SwapFilename.exe", true));
 
 
+            sb.AppendLine();
+            sb.AppendLine("GitRev:");
+            sb.AppendLine(GitRev.GetHashMessage());
+
             CppUtils.CenteredMessageBox(this,
-                sb.ToString(),
+                sb.ToString().Trim(),
                 ProductName,
                 MessageBoxButtons.OK,
                 MessageBoxIcon.Information);

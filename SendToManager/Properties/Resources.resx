@@ -193,6 +193,9 @@
   <data name="SHORTCUT_CREATION_FAILED" xml:space="preserve">
     <value>Failed to create shortcut.</value>
   </data>
+  <data name="STR_SUPPORTING_TOOLS" xml:space="preserve">
+    <value>Support tools</value>
+  </data>
   <data name="TOOL_EXPLANATION_CHANGEFILENAME" xml:space="preserve">
     <value>Change File Name</value>
   </data>
