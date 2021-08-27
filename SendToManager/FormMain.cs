@@ -1285,13 +1285,13 @@ new KeyValuePair<string, string>(@"touch.exe", Properties.Resources.TOOL_EXPLANA
         {
             StringBuilder sb = new StringBuilder();
             sb.Append(Path.GetFileNameWithoutExtension(exe));
-            sb.Append(" version ");
+            sb.Append(" v");
             try
             {
                 string fullpath = Path.Combine(AssemblyDirectory, exe);
                 if (bNative)
                 {
-                    sb.Append(CppUtils.GetNativeVersionString(fullpath));
+                    sb.Append(CppUtils.GetNativeVersionString(fullpath, 3));
                 }
                 else
                 {
@@ -1336,8 +1336,9 @@ new KeyValuePair<string, string>(@"touch.exe", Properties.Resources.TOOL_EXPLANA
             sb.AppendLine(getToolVersion("RunWithArgs.exe", false));
             // sb.AppendLine(getToolVersion("Switch3264.exe", true));
             sb.AppendLine(getToolVersion("touch.exe", false));
+            sb.AppendLine(getToolVersion("SwapFilename.exe", true));
 
-            
+
             CppUtils.CenteredMessageBox(this,
                 sb.ToString(),
                 ProductName,

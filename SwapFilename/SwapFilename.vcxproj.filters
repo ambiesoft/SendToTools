@@ -30,9 +30,6 @@
     <ClCompile Include="..\..\lsMisc\UTF16toUTF8.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\lsMisc\stdwin32\stdwin32.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\lsMisc\stdosd\stdosd.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -57,6 +54,12 @@
     <ClCompile Include="..\..\lsMisc\SHMoveFile.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\lsMisc\DebugMacro.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lsMisc\GetVersionString.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\lsMisc\CommandLineParser.h">
@@ -69,9 +72,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\lsMisc\UTF16toUTF8.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\lsMisc\stdwin32\stdwin32.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\lsMisc\stdosd\stdosd.h">
@@ -98,6 +98,12 @@
     <ClInclude Include="..\..\lsMisc\SHMoveFile.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\lsMisc\DebugMacro.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lsMisc\GetVersionString.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="SwapFilename.rc">
@@ -106,6 +112,9 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="icon1.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="iconmain.ico">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

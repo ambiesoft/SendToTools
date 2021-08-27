@@ -1,14 +1,20 @@
 #include <Windows.h>
 #include <Shlwapi.h>
 
+#include <atlstr.h>
+#include <atltransactionmanager.h>
+
 #include <string>
 
-#include "../../lsMisc/stdwin32/stdwin32.h"
+#include "../../lsMisc/DebugMacro.h"
 #include "../../lsMisc/stdosd/stdosd.h"
-
-using namespace Ambiesoft::stdwin32;
-using namespace Ambiesoft::stdosd;
+#include "../../lsMisc/CommandLineParser.h"
+#include "../../lsMisc/HighDPI.h"
+#include "../../lsMisc/GetLastErrorString.h"
+#include "../../lsMisc/GetBackupFile.h"
+#include "../../lsMisc/showballoon.h"
+#include "../../lsMisc/SHMoveFile.h"
+#include "../../lsMisc/GetVersionString.h"
 
 #define I18N(s) (s)
-
 #define APP_NAME L"SwapFilename"

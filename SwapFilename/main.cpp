@@ -1,14 +1,5 @@
 #include "StdAfx.h"
-#include <atlstr.h>
-#include <atltransactionmanager.h>
 #include "resource.h"
-
-#include "../../lsMisc/CommandLineParser.h"
-#include "../../lsMisc/HighDPI.h"
-#include "../../lsMisc/GetLastErrorString.h"
-#include "../../lsMisc/GetBackupFile.h"
-#include "../../lsMisc/showballoon.h"
-#include "../../lsMisc/SHMoveFile.h"
 
 using namespace Ambiesoft;
 using namespace Ambiesoft::stdosd;
@@ -25,7 +16,10 @@ void ErrorExit(const wstring& error, LPCTSTR funcname)
 
 	exit(1);
 }
-
+void ErrorExit(const wstring& error)
+{
+	ErrorExit(error, L"");
+}
 
 BOOL DoReplaceFilePlane(wstring file1, wstring file2, wstring fileback)
 {
@@ -48,26 +42,39 @@ BOOL DoReplaceFilePlane(wstring file1, wstring file2, wstring fileback)
 	}
 	return TRUE;
 }
-BOOL DoReplaceFileWithTransaction(wstring file1, wstring file2, wstring fileback)
-{
-	CAtlTransactionManager trans;
-	if (!trans.GetHandle())
-		return FALSE;
 
+enum ReplaceTransactionResult {
+	RTR_TRNAS_NA,
+	RTR_TRUE,
+	RTR_FALSE,
+};
+ReplaceTransactionResult DoReplaceFileWithTransaction(wstring file1, wstring file2, wstring fileback)
+{
+	CAtlTransactionManager trans(FALSE);
+	if (!trans.GetHandle())
+		return RTR_TRNAS_NA;
+
+	auto failfunc = [&]() {
+		DVERIFY(trans.Rollback());
+		DVERIFY(trans.Close());
+	};
 	if (!trans.MoveFile(file1.c_str(), fileback.c_str()))
 	{
-		return FALSE;
+		failfunc();
+		return RTR_FALSE;
 	}
 	if (!trans.MoveFile(file2.c_str(), file1.c_str()))
 	{
-		return FALSE;
+		failfunc();
+		return RTR_FALSE;
 	}
 	if (!trans.MoveFile(fileback.c_str(), file2.c_str()))
 	{
-		return FALSE;
+		failfunc();
+		return RTR_FALSE;
 	}
 
-	return trans.Commit();
+	return trans.Commit() ? RTR_TRUE : RTR_FALSE;
 }
 BOOL DoReplaceFileWithReplaceFile(wstring file1, wstring file2, wstring fileback)
 {
@@ -108,16 +115,30 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	//parser.AddOption(L"-retry", 0, &bRetry, ArgEncodingFlags::ArgEncodingFlags_Default,
 	//	L"Retry if failed");
 
+	bool bHelp = false;
+	parser.AddOptionRange({ L"-h",L"--help", L"/?" },
+		0,
+		&bHelp,
+		ArgEncodingFlags::ArgEncodingFlags_Default,
+		L"Show Help");
+
+	bool bShowVersion = false;
+	parser.AddOptionRange({ L"-v",L"--version" },
+		0,
+		&bShowVersion,
+		ArgEncodingFlags::ArgEncodingFlags_Default,
+		L"Show Version");
+
 	COption opMain(L"", ExactCount::Exact_2, ArgEncodingFlags_Default, L"Input two files");
 	parser.AddOption(&opMain);
 	
 	parser.Parse();
 
-	if (opMain.getValueCount() != 2)
+	if (bShowVersion || bHelp || opMain.getValueCount() != 2)
 	{
 		MessageBox(NULL,
 			parser.getHelpMessage().c_str(),
-			APPNAME,
+			stdFormat(L"%s v%s", APPNAME, GetVersionString(NULL, 3).c_str()).c_str(), 
 			MB_ICONINFORMATION);
 		return 0;
 	}
@@ -152,9 +173,13 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	}
 	else
 	{
-		if (!DoReplaceFileWithTransaction(file1, file2, fileback))
+		switch(DoReplaceFileWithTransaction(file1, file2, fileback))
 		{
+		case RTR_TRNAS_NA:
+			// transaction is not available
 			DoReplaceFilePlane(file1, file2, fileback);
+		case RTR_FALSE:
+			ErrorExit(GetLastErrorString(GetLastError()));
 		}
 	}
 
