@@ -831,16 +831,16 @@ new KeyValuePair<string, string>(@"touch.exe", Properties.Resources.TOOL_EXPLANA
             // complete with their corresponding name and icon indices.
 
             constructInventory();
-            if (!string.IsNullOrEmpty(Program.ApplyInventory))
+            if (!string.IsNullOrEmpty(Program.InputApplyInventory))
             {
-                string folder = GetInventoryFolder(Program.ApplyInventory);
+                string folder = GetInventoryFolder(Program.InputApplyInventory);
                 if (!Directory.Exists(folder))
                 {
-                    Alert(this, string.Format(Properties.Resources.INVENTORY_NOT_EXIST, Program.ApplyInventory), true);
+                    Alert(this, string.Format(Properties.Resources.INVENTORY_NOT_EXIST, Program.InputApplyInventory), true);
                 }
                 else
                 {
-                    Deploy(this, folder, Program.ApplyInventory, true);
+                    Deploy(this, folder, Program.InputApplyInventory, true);
                 }
                 Close();
                 return;
@@ -1027,7 +1027,7 @@ new KeyValuePair<string, string>(@"touch.exe", Properties.Resources.TOOL_EXPLANA
 
                 if (toRemoves.Count > 0)
                 {
-                    if (!Program.IsApplyNoConfirm)
+                    if (!Program.InputIsApplyNoConfirm)
                     {
                         DialogResult dr = YesOrNoOrCancel(form, sb.ToString(), commandRunOnly);
                         if (dr == DialogResult.No)

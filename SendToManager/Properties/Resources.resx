@@ -120,6 +120,9 @@
   <data name="ALERT_DIRECTORY_UNAVAILABLE" xml:space="preserve">
     <value>Failed to read or write to a file in the directory "{0}".</value>
   </data>
+  <data name="ANOTHER_INSTANCE_IS_RUNNING" xml:space="preserve">
+    <value>Another instance is already runnning. Please close it and press 'Retry'.</value>
+  </data>
   <data name="ARE_YOU_SURE_DELETE_FILE" xml:space="preserve">
     <value>Are you sure you want to delete {0} item(s)?</value>
   </data>

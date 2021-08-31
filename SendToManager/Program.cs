@@ -49,22 +49,23 @@ namespace SendToManager
         static readonly string ProductName = "SendToManager";
 
         private static string configDir_;
-        private static string applyInventory_;
-        private static bool isApplyInventoryNoConfirm_;
-        private static bool isShowHelp_;
-        
-        internal static string ApplyInventory
+        private static string inputApplyInventory_;
+        private static bool inputIsApplyInventoryNoConfirm_;
+        private static bool inputIsShowHelp_;
+        private static bool isAlreadyRunning_;
+
+        internal static string InputApplyInventory
         {
             get
             {
-                return applyInventory_;
+                return inputApplyInventory_;
             }
         }
-        internal static bool IsApplyNoConfirm
+        internal static bool InputIsApplyNoConfirm
         {
             get
             {
-                return isApplyInventoryNoConfirm_;
+                return inputIsApplyInventoryNoConfirm_;
             }
         }
         internal static String ConfigDir
@@ -84,6 +85,13 @@ namespace SendToManager
                 return Path.Combine(ConfigDir, ProductName+".ini");
             }
         }
+        private static bool IsAlreadyRunning
+        {
+            get
+            {
+                return isAlreadyRunning_;
+            }
+        }
         static bool preRun()
         {
             if(!FolderConfigHelper.IsFolderAccessible(ConfigDir))
@@ -92,6 +100,7 @@ namespace SendToManager
                 return false;
             }
 
+            PrepareAlreadyRunning();
             return true;
         }
 
@@ -155,21 +164,21 @@ namespace SendToManager
                         "apply=", 
                         "Apply inventory.",
                         inv => {
-                            applyInventory_ = inv;
+                            inputApplyInventory_ = inv;
                         }
                     },
                     {
                         "y",
                         "No confirm dialog shown.",
                         b => {
-                            isApplyInventoryNoConfirm_ = true;
+                            inputIsApplyInventoryNoConfirm_ = true;
                         }
                     },
                     {
                         "h",
                         "Show help.",
                         b => {
-                            isShowHelp_ = true;
+                            inputIsShowHelp_ = true;
                         }
                     },
                 };
@@ -187,7 +196,7 @@ namespace SendToManager
 
                 throw new Exception(sb.ToString());
             }
-            if(isShowHelp_)
+            if(inputIsShowHelp_)
             {
                 StringBuilder sb = new StringBuilder();
                 sb.AppendLine();
@@ -197,6 +206,41 @@ namespace SendToManager
             }
         }
 
+        static void PrepareAlreadyRunning()
+        {
+            Debug.Assert(!string.IsNullOrEmpty(ConfigDir));
+            string livingfile = Path.Combine(ConfigDir, "running");
+            FileStream fsRunning = null;
+            try
+            {
+                fsRunning = File.Open(livingfile, FileMode.OpenOrCreate, FileAccess.Write, FileShare.None);
+                isAlreadyRunning_ = false;
+                return;
+            }
+            catch (Exception)
+            {
+            }
+            isAlreadyRunning_ = true;
+        }
+
+        static bool ProcessDuplicateInstance()
+        {
+            if (!IsAlreadyRunning)
+                return true;
+
+            switch (MessageBox.Show(Properties.Resources.ANOTHER_INSTANCE_IS_RUNNING,
+                Application.ProductName,
+                MessageBoxButtons.RetryCancel,
+                MessageBoxIcon.Question))
+            {
+                case DialogResult.Retry:
+                    PrepareAlreadyRunning();
+                    return ProcessDuplicateInstance();
+            }
+
+            return false;
+        }
+        
         // [STAThread]
         public static void DllMain()
         {
@@ -218,58 +262,29 @@ namespace SendToManager
                 return;
             }
 
-            string livingfile = Path.Combine(ConfigDir, "running");
-            FileStream fsRunning = null;
-            // string pidfile = Path.Combine(ConfigDir, "pid");
-
-            // Duplicate instance check only needed if app launch without argument
-            // = normal launch
-            if (String.IsNullOrEmpty(Program.ApplyInventory))
+            if (!String.IsNullOrEmpty(Program.InputApplyInventory))
             {
-                try
-                {
-                    fsRunning = File.Open(livingfile, FileMode.OpenOrCreate, FileAccess.Write, FileShare.None);
-                    //FileStream fsPid = File.Open(pidfile, FileMode.OpenOrCreate, FileAccess.Write, FileShare.ReadWrite);
-                    //int pid = Process.GetCurrentProcess().Id;
-                    //byte[] b = BitConverter.GetBytes(pid);
-                    //fsPid.Write(b, 0, b.Length);
-                    //fsPid.Close();
-                }
-                catch (Exception)
+                // commnad line exists
+                if (!ProcessDuplicateInstance())
+                    return;
+            }
+            else
+            {
+                if(IsAlreadyRunning)
                 {
                     // multiple instance
                     try
                     {
-                        //FileStream fsPid = File.Open(pidfile, FileMode.OpenOrCreate, FileAccess.Read, FileShare.ReadWrite);
-                        //byte[] b = new byte[4];
-                        //Array.Clear(b, 0, b.Length);
-
-                        //fsPid.Read(b, 0, 4);
-                        //int pid = BitConverter.ToInt32(b, 0);
-                        //Process.GetProcessById(pid);
-
                         // OK, anothor process is running
                         Process[] p = Process.GetProcessesByName(Path.GetFileNameWithoutExtension(Application.ExecutablePath));
 
                         // Activate the first application we find with this name
                         if (p.Length > 0)
                         {
-                            
+                            // TODO: Check p[0] is window
+                            // When an instance with commandline exists, this will do nothing
                             BringWindowToFront(p[0].MainWindowHandle);
                             ShowWindow(p[0].MainWindowHandle, ShowWindowEnum.Restore);
-                            // MessageBox.Show(p[0].MainWindowHandle.ToString());
-                        }
-                        else
-                        {
-                            //string handlefile = Path.Combine(ConfigDir, "winhandle");
-
-                            //using (StreamReader sr = new StreamReader(handlefile))
-                            //{
-                            //    string s = sr.ReadLine();
-                            //    long l;
-                            //    long.TryParse(s, out l);
-                            //    SetForegroundWindow((IntPtr)l);
-                            //}
                         }
                         return;
                     }
@@ -283,8 +298,8 @@ namespace SendToManager
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new FormMain());
 
-            if(fsRunning != null)
-                fsRunning.Close();
+            //if(fsRunning != null)
+            //    fsRunning.Close();
         }
     }
 }

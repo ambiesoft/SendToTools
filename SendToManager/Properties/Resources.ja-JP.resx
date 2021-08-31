@@ -252,4 +252,7 @@
   <data name="STR_SUPPORTING_TOOLS" xml:space="preserve">
     <value>サポートツール</value>
   </data>
+  <data name="ANOTHER_INSTANCE_IS_RUNNING" xml:space="preserve">
+    <value>他のインスタンスが既に起動しています。起動中のインスタンスを閉じてから再試行してください。</value>
+  </data>
 </root>
