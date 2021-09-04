@@ -104,6 +104,9 @@
     <ClInclude Include="..\..\lsMisc\GetVersionString.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\lsMisc\CHandle.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="SwapFilename.rc">

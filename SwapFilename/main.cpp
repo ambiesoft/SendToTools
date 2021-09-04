@@ -1,4 +1,6 @@
 #include "StdAfx.h"
+#include "../../lsMisc/CHandle.h"
+
 #include "resource.h"
 
 using namespace Ambiesoft;
@@ -99,6 +101,33 @@ BOOL DoReplaceFileWithReplaceFile(wstring file1, wstring file2, wstring fileback
 	}
 	return TRUE;
 }
+
+static wstring GetOlderFile(const wstring& file1, const wstring& file2)
+{
+	Ambiesoft::CHandle h1(CreateFile(file1.c_str(),
+		GENERIC_READ,
+		FILE_SHARE_READ,
+		NULL,
+		OPEN_EXISTING,
+		FILE_ATTRIBUTE_NORMAL,
+		NULL));
+	Ambiesoft::CHandle h2(CreateFile(file2.c_str(),
+		GENERIC_READ,
+		FILE_SHARE_READ,
+		NULL,
+		OPEN_EXISTING,
+		FILE_ATTRIBUTE_NORMAL,
+		NULL));
+	if (!h1 || !h2)
+		return wstring();
+
+	FILETIME ft1, ft2;
+	if (!GetFileTime(h1, NULL, NULL, &ft1) || !GetFileTime(h2, NULL, NULL, &ft2))
+		return wstring();
+
+	LONG result = CompareFileTime(&ft1, &ft2);
+	return result < 0 ? file1 : file2;
+}
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	_In_opt_ HINSTANCE hPrevInstance,
 	_In_ LPWSTR    lpCmdLine,
@@ -114,6 +143,16 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	//bool bRetry = false;
 	//parser.AddOption(L"-retry", 0, &bRetry, ArgEncodingFlags::ArgEncodingFlags_Default,
 	//	L"Retry if failed");
+
+	bool bRemoveOld = false;
+	parser.AddOption(L"-removeold", 0, &bRemoveOld, 
+		ArgEncodingFlags::ArgEncodingFlags_Default,
+		L"Remove an older file after swapping");
+
+	bool bAlwaysYes = false;
+	parser.AddOption(L"-alwaysyes", 0, &bAlwaysYes,
+		ArgEncodingFlags::ArgEncodingFlags_Default,
+		L"Answer 'yes' in all questions");
 
 	bool bHelp = false;
 	parser.AddOptionRange({ L"-h",L"--help", L"/?" },
@@ -134,6 +173,10 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	
 	parser.Parse();
 
+	if (parser.hadUnknownOption())
+	{
+		ErrorExit(I18N(L"Unknown Option:") + (L"\r\n" + parser.getUnknowOptionStrings()));
+	}
 	if (bShowVersion || bHelp || opMain.getValueCount() != 2)
 	{
 		MessageBox(NULL,
@@ -183,9 +226,45 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 		}
 	}
 
+	wstring additionalMessage;
+	bool bShowRemoveMessage = !bAlwaysYes;
+	if (GetKeyState(VK_CONTROL) < 0)
+	{
+		bRemoveOld = true;
+		bShowRemoveMessage = true;
+	}
+	if (bRemoveOld)
+	{
+		do
+		{
+			wstring olderfile = GetOlderFile(file1, file2);
+			if (olderfile.empty())
+			{
+				ErrorExit(I18N(L"Failed to find an older file."));
+			}
+			if (bShowRemoveMessage)
+			{
+				if (IDYES != MessageBox(NULL,
+					stdFormat(I18N(L"Do you want to remove '%s'?"), olderfile.c_str()).c_str(),
+					stdFormat(I18N(L"Remove older file | %s"), APPNAME).c_str(),
+					MB_ICONQUESTION | MB_YESNO | MB_DEFBUTTON2))
+				{
+					break;
+				}
+			}
+			int nRet = SHDeleteFileEx(olderfile.c_str());
+			if (nRet != 0)
+			{
+				ErrorExit(GetLastErrorString(nRet));
+			}
+			additionalMessage = L"\r\n" +
+				stdFormat(I18N(L"'%s' is removed."), stdGetFileName(olderfile).c_str());
+		} while (false);
+	}
 	showballoon(NULL,
 		APP_NAME,
-		stdFormat(I18N(L"'%s' and '%s' are swapped."), stdGetFileName(file1).c_str(), stdGetFileName(file2).c_str()),
+		stdFormat(I18N(L"'%s' and '%s' are swapped."), stdGetFileName(file1).c_str(), stdGetFileName(file2).c_str()) + 
+			additionalMessage,
 		LoadIcon(hInstance, MAKEINTRESOURCE(IDI_ICON_MAIN)),
 		5000,
 		1,
