@@ -102,7 +102,7 @@ BOOL DoReplaceFileWithReplaceFile(wstring file1, wstring file2, wstring fileback
 	return TRUE;
 }
 
-static wstring GetOlderFile(const wstring& file1, const wstring& file2)
+static wstring GetOlderFile(const wstring& file1, const wstring& file2, bool* pIsSame)
 {
 	Ambiesoft::CHandle h1(CreateFile(file1.c_str(),
 		GENERIC_READ,
@@ -126,6 +126,7 @@ static wstring GetOlderFile(const wstring& file1, const wstring& file2)
 		return wstring();
 
 	LONG result = CompareFileTime(&ft1, &ft2);
+	*pIsSame = (result == 0);
 	return result < 0 ? file1 : file2;
 }
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
@@ -136,6 +137,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	UNREFERENCED_PARAMETER(hPrevInstance);
 	UNREFERENCED_PARAMETER(lpCmdLine);
 
+	i18nInitLangmap(NULL, NULL, APPNAME);
 	Ambiesoft::InitHighDPISupport();
 
 	CCommandLineParser parser(L"Swap filename of two files");
@@ -189,18 +191,18 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	wstring file1 = opMain.getValue(0);
 	wstring file2 = opMain.getValue(1);
 	wstring fileback = GetBackupFile(file1.c_str());
-
+#define STR_FILE_DOES_NOT_EXIST L"'%s' does not exist."
 	if (!PathFileExists(file1.c_str()))
 	{
-		ErrorExit(stdFormat(I18N(L"%s does not exist."), file1.c_str()), L"PathFileExists");
+		ErrorExit(stdFormat(I18N(STR_FILE_DOES_NOT_EXIST), file1.c_str()));
 	}
 	if (!PathFileExists(file2.c_str()))
 	{
-		ErrorExit(stdFormat(I18N(L"%s does not exist."), file2.c_str()), L"PathFileExists");
+		ErrorExit(stdFormat(I18N(STR_FILE_DOES_NOT_EXIST), file2.c_str()));
 	}
 	if (PathFileExists(fileback.c_str()))
 	{
-		ErrorExit(stdFormat(I18N(L"%s does exist."), fileback.c_str()), L"PathFileExists");
+		ErrorExit(stdFormat(I18N(L"'%s' does exist."), fileback.c_str()));
 	}
 
 	file1 = stdGetFullPathName(file1);
@@ -227,22 +229,28 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	}
 
 	wstring additionalMessage;
-	bool bShowRemoveMessage = !bAlwaysYes;
+	bool bShowRemoveConfirmMessage = !bAlwaysYes;
 	if (GetKeyState(VK_CONTROL) < 0)
 	{
 		bRemoveOld = true;
-		bShowRemoveMessage = true;
+		bShowRemoveConfirmMessage = true;
 	}
 	if (bRemoveOld)
 	{
 		do
 		{
-			wstring olderfile = GetOlderFile(file1, file2);
+			bool isSame = false;
+			wstring olderfile = GetOlderFile(file1, file2, &isSame);
+			if (isSame)
+			{
+				additionalMessage = I18N(L"File time is same.");
+				break;
+			}
 			if (olderfile.empty())
 			{
 				ErrorExit(I18N(L"Failed to find an older file."));
 			}
-			if (bShowRemoveMessage)
+			if (bShowRemoveConfirmMessage)
 			{
 				if (IDYES != MessageBox(NULL,
 					stdFormat(I18N(L"Do you want to remove '%s'?"), olderfile.c_str()).c_str(),
@@ -257,14 +265,13 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 			{
 				ErrorExit(GetLastErrorString(nRet));
 			}
-			additionalMessage = L"\r\n" +
-				stdFormat(I18N(L"'%s' is removed."), stdGetFileName(olderfile).c_str());
+			additionalMessage = stdFormat(I18N(L"'%s' has been removed."), stdGetFileName(olderfile).c_str());
 		} while (false);
 	}
 	showballoon(NULL,
 		APP_NAME,
-		stdFormat(I18N(L"'%s' and '%s' are swapped."), stdGetFileName(file1).c_str(), stdGetFileName(file2).c_str()) + 
-			additionalMessage,
+		stdFormat(I18N(L"'%s' and '%s' have been swapped."), stdGetFileName(file1).c_str(), stdGetFileName(file2).c_str()) + 
+			(additionalMessage.empty() ? L"" : L"\r\n" + additionalMessage),
 		LoadIcon(hInstance, MAKEINTRESOURCE(IDI_ICON_MAIN)),
 		5000,
 		1,

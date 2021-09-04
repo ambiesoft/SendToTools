@@ -1,124 +1,138 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Source Files">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
-    <Filter Include="Header Files">
+    <Filter Include="01 Header Files">
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
     </Filter>
-    <Filter Include="Resource Files">
+    <Filter Include="03 Resource Files">
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="02 Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="04 lang">
+      <UniqueIdentifier>{8f5dbce2-c87e-4a7f-a373-20a7029e004d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>02 Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\lsMisc\CommandLineParser.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>02 Source Files</Filter>
     </ClCompile>
     <ClCompile Include="StdAfx.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>02 Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\lsMisc\UrlEncode.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>02 Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\lsMisc\UTF16toUTF8.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>02 Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\lsMisc\stdosd\stdosd.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>02 Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\lsMisc\stdosd\stdosd_win.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>02 Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\lsMisc\HighDPI.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>02 Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\lsMisc\GetLastErrorString.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>02 Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\lsMisc\GetBackupFile.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>02 Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\lsMisc\showballoon.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>02 Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\lsMisc\CreateSimpleWindow.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>02 Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\lsMisc\SHMoveFile.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>02 Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\lsMisc\DebugMacro.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>02 Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\lsMisc\GetVersionString.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>02 Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lsMisc\I18N.cpp">
+      <Filter>02 Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\lsMisc\CommandLineParser.h">
-      <Filter>Header Files</Filter>
+      <Filter>01 Header Files</Filter>
     </ClInclude>
     <ClInclude Include="StdAfx.h">
-      <Filter>Header Files</Filter>
+      <Filter>01 Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\lsMisc\UrlEncode.h">
-      <Filter>Header Files</Filter>
+      <Filter>01 Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\lsMisc\UTF16toUTF8.h">
-      <Filter>Header Files</Filter>
+      <Filter>01 Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\lsMisc\stdosd\stdosd.h">
-      <Filter>Header Files</Filter>
+      <Filter>01 Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\lsMisc\HighDPI.h">
-      <Filter>Header Files</Filter>
+      <Filter>01 Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\lsMisc\GetLastErrorString.h">
-      <Filter>Header Files</Filter>
+      <Filter>01 Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\lsMisc\GetBackupFile.h">
-      <Filter>Header Files</Filter>
+      <Filter>01 Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\lsMisc\showballoon.h">
-      <Filter>Header Files</Filter>
+      <Filter>01 Header Files</Filter>
     </ClInclude>
     <ClInclude Include="resource.h">
-      <Filter>Header Files</Filter>
+      <Filter>01 Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\lsMisc\CreateSimpleWindow.h">
-      <Filter>Header Files</Filter>
+      <Filter>01 Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\lsMisc\SHMoveFile.h">
-      <Filter>Header Files</Filter>
+      <Filter>01 Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\lsMisc\DebugMacro.h">
-      <Filter>Header Files</Filter>
+      <Filter>01 Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\lsMisc\GetVersionString.h">
-      <Filter>Header Files</Filter>
+      <Filter>01 Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\lsMisc\CHandle.h">
-      <Filter>Header Files</Filter>
+      <Filter>01 Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lsMisc\I18N.h">
+      <Filter>01 Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="SwapFilename.rc">
-      <Filter>Resource Files</Filter>
+      <Filter>03 Resource Files</Filter>
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="icon1.ico">
-      <Filter>Resource Files</Filter>
+      <Filter>03 Resource Files</Filter>
     </Image>
     <Image Include="iconmain.ico">
-      <Filter>Resource Files</Filter>
+      <Filter>03 Resource Files</Filter>
     </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="lang\SwapFilename.jpn.txt">
+      <Filter>04 lang</Filter>
+    </Text>
   </ItemGroup>
 </Project>

@@ -15,6 +15,6 @@
 #include "../../lsMisc/showballoon.h"
 #include "../../lsMisc/SHMoveFile.h"
 #include "../../lsMisc/GetVersionString.h"
+#include "../../lsMisc/I18N.h"
 
-#define I18N(s) (s)
 #define APP_NAME L"SwapFilename"

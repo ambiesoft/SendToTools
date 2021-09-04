@@ -1,3 +1,7 @@
+2021/09/04 ver 2.1.14
+Add: SwapFilename has new option '-removeold' and '-alwaysyes'
+When CTRL key is pressed while swapping, '-removeold' is enabled.
+
 2021/08/31 ver 2.1.13
 Only single instance will run if a second instance with command line starts
 

@@ -1,0 +1,6 @@
+﻿"'%s' and '%s' have been swapped."="'%s' と '%s' を入れ替えました。"
+"Do you want to remove '%s'?"="'%s' を削除しますか？"
+"Remove older file | %s"="古いファイルの削除 | %s"
+"'%s' has been removed."="'%s' を削除しました。"
+
+"'%s' does not exist."="'%s' は存在しません。"
