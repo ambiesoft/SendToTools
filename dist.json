@@ -156,6 +156,7 @@
         "tools\\SimpleCommandLineParser.pdb",
         "tools\\SwapFilename.exe",
         "tools\\SwapFilename.pdb",
+        "tools\\lang\\SwapFilename.jpn.txt",
         "tools\\ToolManager.dll",
         "tools\\ToolManager.pdb",
         "tools\\touch.exe",
