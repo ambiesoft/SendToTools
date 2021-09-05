@@ -66,6 +66,9 @@
     <ClCompile Include="..\..\lsMisc\I18N.cpp">
       <Filter>02 Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\lsMisc\OpenCommon.cpp">
+      <Filter>02 Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\lsMisc\CommandLineParser.h">
@@ -114,6 +117,9 @@
       <Filter>01 Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\lsMisc\I18N.h">
+      <Filter>01 Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lsMisc\OpenCommon.h">
       <Filter>01 Header Files</Filter>
     </ClInclude>
   </ItemGroup>

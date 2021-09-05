@@ -1,5 +1,7 @@
 #include "StdAfx.h"
 #include "../../lsMisc/CHandle.h"
+#include "../../lsMisc/UrlEncode.h"
+#include "../../lsMisc/OpenCommon.h"
 
 #include "resource.h"
 
@@ -128,6 +130,29 @@ static wstring GetOlderFile(const wstring& file1, const wstring& file2, bool* pI
 	LONG result = CompareFileTime(&ft1, &ft2);
 	*pIsSame = (result == 0);
 	return result < 0 ? file1 : file2;
+}
+
+static bool showballoonexe(
+	const wchar_t* title,
+	const wchar_t* text,
+	const wchar_t* iconexe,
+	int duration,
+	DWORD dwBalloonIcon)
+{
+	const wstring thisapp = stdGetModuleFileName();
+	wstring app = stdCombinePath(
+		stdGetParentDirectory(thisapp),
+		L"showballoon.exe");
+	wstring cmd = stdFormat(L"/title:%s /icon:\"%s\" /defaulticon /duration:%d /balloonicon:%d %s",
+		UrlEncodeStd(title).c_str(),
+		iconexe,
+		duration,
+		dwBalloonIcon,
+		UrlEncodeStd(text).c_str());
+		
+	return OpenCommon(NULL,
+		app.c_str(),
+		cmd.c_str());
 }
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	_In_opt_ HINSTANCE hPrevInstance,
@@ -268,14 +293,23 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 			additionalMessage = stdFormat(I18N(L"'%s' has been removed."), stdGetFileName(olderfile).c_str());
 		} while (false);
 	}
-	showballoon(NULL,
+
+	wstring balloontext = stdFormat(I18N(L"'%s' and '%s' have been swapped."), stdGetFileName(file1).c_str(), stdGetFileName(file2).c_str()) +
+		(additionalMessage.empty() ? L"" : L"\r\n" + additionalMessage);
+
+	//showballoon(NULL,
+	//	APP_NAME,
+	// balloontext
+	//	LoadIcon(hInstance, MAKEINTRESOURCE(IDI_ICON_MAIN)),
+	//	5000,
+	//	1,
+	//	FALSE,
+	//	1);
+	showballoonexe(
 		APP_NAME,
-		stdFormat(I18N(L"'%s' and '%s' have been swapped."), stdGetFileName(file1).c_str(), stdGetFileName(file2).c_str()) + 
-			(additionalMessage.empty() ? L"" : L"\r\n" + additionalMessage),
-		LoadIcon(hInstance, MAKEINTRESOURCE(IDI_ICON_MAIN)),
+		balloontext.c_str(),
+		stdGetModuleFileName().c_str(),
 		5000,
-		1,
-		FALSE,
 		1);
 	return 0;
 }
