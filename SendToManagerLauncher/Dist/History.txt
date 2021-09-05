@@ -1,3 +1,5 @@
+Modify: 'unknown option' error in MoveCopyTo
+
 2021/09/05 ver 2.1.15
 Add: MoveTo has new option '/unrs'
 Modify: SwapFilename uses the exe of showballoon

@@ -213,6 +213,11 @@ int libmain(LPCWSTR pAppName, LPCWSTR pButtonText, HICON hIcon)
 
 	cmd.Parse();
 
+	if (cmd.hadUnknownOption())
+	{
+		ShowError(wstring() + I18N(L"Unknown Option:") + L"\r\n" + cmd.getUnknowOptionStrings());
+		return 1;
+	}
 	if (!lang.empty())
 		Ambiesoft::i18nInitLangmap(theApp.m_hInstance, lang.c_str(), L"LibMoveCopyTo");
 
@@ -496,10 +501,6 @@ int libmain(LPCWSTR pAppName, LPCWSTR pButtonText, HICON hIcon)
 		ShowError(error.c_str());
 	}
 
-
-
-
-	 
 	return 0;
 }
 
