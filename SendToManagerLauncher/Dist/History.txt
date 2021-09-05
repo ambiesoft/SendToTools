@@ -1,5 +1,7 @@
 Modify: DotNet4Runnable has modified many
 Modify: 'unknown option' error in MoveCopyTo
+Modify: SwapFilename cat accept VK_RBUTTON while processing
+        for showing the messagebox to confirm remove older file
 
 2021/09/05 ver 2.1.15
 Add: MoveTo has new option '/unrs'

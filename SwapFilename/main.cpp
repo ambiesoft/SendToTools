@@ -255,7 +255,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
 	wstring additionalMessage;
 	bool bShowRemoveConfirmMessage = !bAlwaysYes;
-	if (GetKeyState(VK_CONTROL) < 0)
+	if ((GetKeyState(VK_CONTROL) < 0) || GetKeyState(VK_RBUTTON) < 0)
 	{
 		bRemoveOld = true;
 		bShowRemoveConfirmMessage = true;
