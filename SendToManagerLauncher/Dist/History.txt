@@ -1,3 +1,4 @@
+2021/09/05 ver 2.1.16
 Modify: DotNet4Runnable has modified many
 Modify: 'unknown option' error in MoveCopyTo
 Modify: SwapFilename cat accept VK_RBUTTON while processing
