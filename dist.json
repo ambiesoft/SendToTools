@@ -125,6 +125,7 @@
         "tools\\DotNet4Runnable.exe",
         "tools\\DotNet4Runnable.exe.config",
         "tools\\DotNet4Runnable.pdb",
+        "tools\\ja-JP\\DotNet4Runnable.resources.dll",
         "tools\\LibMoveCopyTo.dll",
         "tools\\LibMoveCopyTo.pdb",
         "tools\\ListViewEx.dll",
