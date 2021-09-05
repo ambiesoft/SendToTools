@@ -31,52 +31,131 @@ using System.IO;
 using System.Xml;
 
 using Ambiesoft;
+using NDesk.Options;
+using System.Text;
+using System.Reflection;
 
 namespace DotNet4Runnable
 {
     static class Program
     {
+        static string ddd(string[] args)
+        {
+            bool opListVersions = false;
+            bool opShowHelp = false;
+            var p = new OptionSet() {
+                    {
+                        "l|list",
+                        "List versions",
+                        v => { opListVersions = v!=null;}
+                    },
+                    {
+                        "h|help",
+                        "Show Help",
+                        v => { opShowHelp = v!=null;}
+                    },
+                };
+
+            List<string> extra = p.SafeParse(args);
+
+            if (opShowHelp)
+            {
+                MessageBox.Show("Help not ready",
+                    string.Format("{0} v{1}",
+                    Application.ProductName, AmbLib.getAssemblyVersion(
+                        Assembly.GetExecutingAssembly(), 3)));
+                System.Environment.Exit(0);
+            }
+
+            if (extra.Count != 1)
+            {
+                StringBuilder sb = new StringBuilder();
+                if (extra.Count == 0)
+                    sb.Append(Properties.Resources.NO_ARGUMENTS);
+                else
+                    sb.Append(Properties.Resources.MORETHAN_ONEARG);
+                sb.AppendLine();
+                sb.AppendLine();
+                StringWriter sw = new StringWriter(sb);
+                p.WriteOptionDescriptions(sw);
+
+                throw new Exception(sb.ToString());
+            }
+            return extra[0];
+        }
         static void dowork(string arg)
         {
             FileInfo fi = new FileInfo(arg);
             if (fi.Extension.ToLower() != ".exe")
-                throw new Exception("Not an Executable file");
+                throw new Exception(string.Format(Properties.Resources.NOTEXECUTABLE, fi.FullName));
 
             FileInfo ficonfig = new FileInfo(fi.FullName + ".config");
-            if (ficonfig.Exists)
+            if (ficonfig.Exists && ficonfig.Length != 0)
             {
                 XmlDocument doc = new XmlDocument();
 
                 doc.Load(ficonfig.FullName);
                 XmlNode root = doc.DocumentElement;
-                XmlNode myNode = root.SelectSingleNode("startup");
-                bool needwrite = false;
-                if(myNode==null)
+                if (root.Name != "configuration")
+                {
+                    throw new Exception(
+                        string.Format(Properties.Resources.NOTCONFIGFILE, ficonfig.FullName));
+                }
+                XmlNode startupNode = root.SelectSingleNode("startup");
+
+                if (startupNode == null)
                 {
                     XmlElement elem = root.OwnerDocument.CreateElement("startup");
                     elem.InnerXml = "<supportedRuntime version=\"v4.0\" /><supportedRuntime version=\"v2.0.50727\" />";
                     root.AppendChild(elem);
-                    myNode = elem;
-                    needwrite = true;
-                }
-                XmlNode c1 = myNode.ChildNodes[0];
-                XmlNode c2 = myNode.ChildNodes[1];
-
-                if ((c1.Name == "supportedRuntime" && c1.Attributes["version"].Value == "v4.0") &&
-                    (c2.Name == "supportedRuntime" && c2.Attributes["version"].Value == "v2.0.50727"))
-                {
-                    if (needwrite)
-                        doc.Save(ficonfig.FullName);
-
-                    CppUtils.Info("Already exists and written.");
+                    doc.Save(ficonfig.FullName);
+                    CppUtils.Info(Properties.Resources.NEWLYADDED);
                     return;
                 }
+
+                // check startupnode begins with value lower than 4.0
+                int firstver = -1;
+                XmlNode afterNode = null;
+                foreach (XmlNode node in startupNode.ChildNodes)
+                {
+                    if (node.Name != "supportedRuntime")
+                        continue;
+
+                    if (node.Attributes["version"] == null)
+                        continue;
+                    string ver = node.Attributes["version"].Value;
+                    if (string.IsNullOrEmpty(ver))
+                        continue;
+                    if (ver.Length < 2)
+                        continue;
+                    if (ver[0] != 'v')
+                        continue;
+
+                    if (!int.TryParse(ver[1].ToString(), out firstver))
+                        continue;
+
+                    afterNode = node;
+                    break;
+                }
+
+                if(firstver >= 4)
+                {
+                    CppUtils.Info(Properties.Resources.DN4ISSET);
+                    return;
+                }
+
+                // append v4 at first of startup
+                XmlElement firstv4Elem = startupNode.OwnerDocument.CreateElement("supportedRuntime");
+                firstv4Elem.SetAttribute("version", "v4.0");
+                startupNode.PrependChild(firstv4Elem);
                 doc.Save(ficonfig.FullName);
-                throw new Exception("Unknown content");
+                CppUtils.Info(Properties.Resources.NEWLYADDED);
             }
             else
             {
                 File.WriteAllText(ficonfig.FullName, Properties.Resources.configstring);
+                CppUtils.Info(string.Format(Properties.Resources.NEWLYCREATED,
+                    ficonfig.FullName));
             }
         }
         /// <summary>
@@ -86,19 +165,13 @@ namespace DotNet4Runnable
         static void Main(string[] args)
         {
             Ambiesoft.CppUtils.AmbSetProcessDPIAware();
-
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            if (args.Length < 1)
-            {
-                CppUtils.Alert("No Arguments");
-                return;
-            }
 
             try
             {
-                dowork(args[0]);
+                dowork(ddd(args));
             }
             catch (Exception ex)
             {

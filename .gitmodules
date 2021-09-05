@@ -13,3 +13,6 @@
 [submodule "touch/OptionSet"]
 	path = touch/OptionSet
 	url = git@github.com:ambiesoft/OptionSet.git
+[submodule "DotNet4Runnable/OptionSet"]
+	path = DotNet4Runnable/OptionSet
+	url = git@github.com:ambiesoft/OptionSet.git

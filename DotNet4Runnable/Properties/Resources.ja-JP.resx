@@ -126,24 +126,24 @@
 &lt;/configuration&gt;</value>
   </data>
   <data name="DN4ISSET" xml:space="preserve">
-    <value>v4 is already set as the first entry of &lt;startup&gt;</value>
+    <value>v4 はすでに &lt;startup&gt; に設定されています。</value>
   </data>
   <data name="MORETHAN_ONEARG" xml:space="preserve">
-    <value>More than one arguments or unknown options are provided.</value>
+    <value>1つ以上の引数が指定されているか、未知のオプションが指定されています。</value>
   </data>
   <data name="NEWLYADDED" xml:space="preserve">
-    <value>New supportedRuntime are added.</value>
+    <value>新規にサポートされるバージョンを追加しました。</value>
   </data>
   <data name="NEWLYCREATED" xml:space="preserve">
-    <value>'{0}' is created.</value>
+    <value>'{0}' が作成されました。</value>
   </data>
   <data name="NOTCONFIGFILE" xml:space="preserve">
-    <value>'{0}' is not a config file. The root node is not &lt;configuration&gt;</value>
+    <value>'{0}' は configファイルではありません。 ルートノードが &lt;configuration&gt; ではありません。</value>
   </data>
   <data name="NOTEXECUTABLE" xml:space="preserve">
-    <value>'{0}' is not an executable file.</value>
+    <value>'{0}' は実行ファイルではありません。</value>
   </data>
   <data name="NO_ARGUMENTS" xml:space="preserve">
-    <value>No Arguments</value>
+    <value>引数がありません。</value>
   </data>
 </root>
