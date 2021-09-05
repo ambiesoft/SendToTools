@@ -32,20 +32,36 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using System.IO;
+using Ambiesoft;
 
 namespace ChangeFileTime
 {
     public partial class FormMain : Form
     {
-        internal DateTime dtCRResult;
-        internal DateTime dtLWResult;
-        internal DateTime dtLAResult;
+        System.IO.FileInfo _fi;
+        string _theFile;
 
-        public FormMain()
+        public FormMain(string theFileName)
         {
             InitializeComponent();
+            
+            AmbLib.SetFontAll(this);
+            txtFileName.Text = theFileName;
+
+            TheFile = theFileName;
+            RefreshTimes();
         }
 
+        string TheFile
+        {
+            get { return _theFile; }
+            set
+            {
+                _theFile = value;
+                this.Text = string.Format("{0} | {1}",
+                    Path.GetFileName(value), Properties.Resources.TITLE);
+            }
+        }
 
         private void btnNowCRTime_Click(object sender, EventArgs e)
         {
@@ -66,11 +82,23 @@ namespace ChangeFileTime
 
         void DoUpdate()
         {
-            dtCRResult = dtpCRTime.Value;
-            dtLWResult = dtpLWTime.Value;
-            dtLAResult = dtpLATime.Value;
+            if (!dtpCRTime.Value.Equals(dtpCRTime.Tag))
+            {
+                _fi.CreationTime = dtpCRTime.Value;
+                dtpCRTime.Tag = dtpCRTime.Value;
+            }
+            if (!dtpLWTime.Value.Equals(dtpLWTime.Tag))
+            {
+                _fi.LastWriteTime = dtpLWTime.Value;
+                dtpLWTime.Tag = dtpLWTime.Value;
+            }
+            if (!dtpLATime.Value.Equals(dtpLATime.Tag))
+            {
+                _fi.LastAccessTime = dtpLATime.Value;
+                dtpLATime.Tag = dtpLATime.Value;
+            }
         }
-     
+
 
         private void btnOK_Click(object sender, EventArgs e)
         {
@@ -79,15 +107,29 @@ namespace ChangeFileTime
 
         private void FormMain_Load(object sender, EventArgs e)
         {
-            this.Text = Properties.Resources.TITLE;
         }
 
-       
+        void RefreshTimes()
+        {
+            _fi = new System.IO.FileInfo(_theFile);
 
-       
+            dtpCRTime.Tag = _fi.CreationTime;
+            dtpCRTime.Value = _fi.CreationTime;
 
-     
+            dtpLWTime.Tag = _fi.LastWriteTime;
+            dtpLWTime.Value = _fi.LastWriteTime;
 
-       
+            dtpLATime.Tag = _fi.LastAccessTime;
+            dtpLATime.Value = _fi.LastAccessTime;
+        }
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            RefreshTimes();
+        }
+
+        private void btnApply_Click(object sender, EventArgs e)
+        {
+            DoUpdate();
+        }
     }
 }

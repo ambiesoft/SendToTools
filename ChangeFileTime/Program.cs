@@ -58,38 +58,11 @@ namespace ChangeFileTime
             }
 
 
-            System.IO.FileInfo fi = new System.IO.FileInfo(theFileName);
-            DateTime oldCRTime = fi.CreationTime;
-            DateTime oldLWTime = fi.LastWriteTime;
-            DateTime oldLATime = fi.LastAccessTime;
 
             try
             {
-                FormMain fm = new FormMain();
-                AmbLib.SetFontAll(fm);
-
-                fm.Text = Application.ProductName;
-                fm.txtFileName.Text = theFileName;
-                
-                
-                fm.dtpCRTime.Tag = oldCRTime;
-                fm.dtpCRTime.Value = oldCRTime;
-
-                fm.dtpLWTime.Tag = oldLWTime;
-                fm.dtpLWTime.Value = oldLWTime;
-
-                fm.dtpLATime.Tag = oldLATime;
-                fm.dtpLATime.Value = oldLATime;
-                
-                if(DialogResult.OK== fm.ShowDialog())
-                {
-                    if (fm.dtCRResult != null)
-                        fi.CreationTime = fm.dtCRResult;
-                    if (fm.dtLWResult != null)
-                        fi.LastWriteTime = fm.dtLWResult;
-                    if (fm.dtLAResult != null)
-                        fi.LastAccessTime = fm.dtLAResult;
-                }
+                FormMain fm = new FormMain(theFileName);
+                fm.ShowDialog();
             }
             catch (Exception e)
             {

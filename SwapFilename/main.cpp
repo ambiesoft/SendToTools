@@ -123,9 +123,11 @@ static wstring GetOlderFile(const wstring& file1, const wstring& file2, bool* pI
 	if (!h1 || !h2)
 		return wstring();
 
-	FILETIME ft1, ft2;
-	if (!GetFileTime(h1, NULL, NULL, &ft1) || !GetFileTime(h2, NULL, NULL, &ft2))
+	FILETIME ftCreation1, ftCreation2, ftLastWrite1, ftLastWrite2;
+	if (!GetFileTime(h1, &ftCreation1, NULL, &ftLastWrite1) || !GetFileTime(h2, &ftCreation2, NULL, &ftLastWrite2))
 		return wstring();
+	FILETIME ft1 = CompareFileTime(&ftCreation1, &ftLastWrite1) > 0 ? ftCreation1 : ftLastWrite1;
+	FILETIME ft2 = CompareFileTime(&ftCreation2, &ftLastWrite2) > 0 ? ftCreation2 : ftLastWrite2;
 
 	LONG result = CompareFileTime(&ft1, &ft2);
 	*pIsSame = (result == 0);
@@ -233,6 +235,36 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	file1 = stdGetFullPathName(file1);
 	file2 = stdGetFullPathName(file2);
 	
+	FILETIME ftCreation1, ftLastAccess1, ftLastWrite1;
+	FILETIME ftCreation2, ftLastAccess2, ftLastWrite2;
+	bool bFtGot = false;
+	do
+	{	
+		Ambiesoft::CHandle h1(CreateFile(file1.c_str(),
+			GENERIC_READ,
+			FILE_SHARE_READ,
+			NULL,
+			OPEN_EXISTING,
+			FILE_ATTRIBUTE_NORMAL,
+			NULL));
+		Ambiesoft::CHandle h2(CreateFile(file2.c_str(),
+			GENERIC_READ,
+			FILE_SHARE_READ,
+			NULL,
+			OPEN_EXISTING,
+			FILE_ATTRIBUTE_NORMAL,
+			NULL));
+		if (!h1 || !h2)
+			break;
+		if (!GetFileTime(h1, &ftCreation1, &ftLastAccess1, &ftLastWrite1))
+			break;
+		if (!GetFileTime(h2, &ftCreation2, &ftLastAccess2, &ftLastWrite2))
+			break;
+		bFtGot = true;
+	} while (false);
+
+
+	// rename
 	if (PathIsUNC(file1.c_str()) || PathIsUNC(file2.c_str()))
 	{
 		// Transaction does not support UNC
@@ -251,6 +283,31 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 		case RTR_FALSE:
 			ErrorExit(GetLastErrorString(GetLastError()));
 		}
+	}
+
+	// change time
+	if (bFtGot)
+	{
+		do {
+			Ambiesoft::CHandle h1(CreateFile(file1.c_str(),
+				GENERIC_WRITE,
+				FILE_SHARE_READ,
+				NULL,
+				OPEN_EXISTING,
+				FILE_ATTRIBUTE_NORMAL,
+				NULL));
+			Ambiesoft::CHandle h2(CreateFile(file2.c_str(),
+				GENERIC_WRITE,
+				FILE_SHARE_READ,
+				NULL,
+				OPEN_EXISTING,
+				FILE_ATTRIBUTE_NORMAL,
+				NULL));
+			if (!h1 || !h2)
+				break;
+			DVERIFY(SetFileTime(h1, &ftCreation2, &ftLastAccess2, &ftLastWrite2));
+			DVERIFY(SetFileTime(h2, &ftCreation1, &ftLastAccess1, &ftLastWrite1));
+		} while (false);
 	}
 
 	wstring additionalMessage;

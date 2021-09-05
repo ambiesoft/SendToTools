@@ -43,6 +43,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.btnNowForAllTime = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
+            this.btnRefresh = new System.Windows.Forms.Button();
+            this.btnApply = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtFileName
@@ -132,12 +134,28 @@
             resources.ApplyResources(this.label4, "label4");
             this.label4.Name = "label4";
             // 
+            // btnRefresh
+            // 
+            resources.ApplyResources(this.btnRefresh, "btnRefresh");
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.UseVisualStyleBackColor = true;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
+            // 
+            // btnApply
+            // 
+            resources.ApplyResources(this.btnApply, "btnApply");
+            this.btnApply.Name = "btnApply";
+            this.btnApply.UseVisualStyleBackColor = true;
+            this.btnApply.Click += new System.EventHandler(this.btnApply_Click);
+            // 
             // FormMain
             // 
             this.AcceptButton = this.btnOK;
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.CancelButton = this.btnCancel;
+            this.Controls.Add(this.btnApply);
+            this.Controls.Add(this.btnRefresh);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.btnNowForAllTime);
             this.Controls.Add(this.label3);
@@ -152,7 +170,6 @@
             this.Controls.Add(this.dtpCRTime);
             this.Controls.Add(this.dtpLWTime);
             this.Controls.Add(this.txtFileName);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "FormMain";
             this.Load += new System.EventHandler(this.FormMain_Load);
@@ -178,7 +195,8 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnNowForAllTime;
         private System.Windows.Forms.Label label4;
-
+        private System.Windows.Forms.Button btnRefresh;
+        private System.Windows.Forms.Button btnApply;
     }
 }
 

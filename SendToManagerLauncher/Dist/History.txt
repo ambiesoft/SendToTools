@@ -1,3 +1,7 @@
+2021/09/06 ver 2.1.17
+Modify: ChangeFileTime
+Modify: SwapFilename also swap file time
+
 2021/09/05 ver 2.1.16
 Modify: DotNet4Runnable has modified many
 Modify: 'unknown option' error in MoveCopyTo
