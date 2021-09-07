@@ -181,6 +181,11 @@ namespace SendToManager
                             inputIsShowHelp_ = true;
                         }
                     },
+                    {
+                        "relaunch",
+                        "internal command line",
+                        dummy => {}
+                    },
                 };
 
 

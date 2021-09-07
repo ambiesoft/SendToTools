@@ -32,21 +32,71 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using System.Runtime.InteropServices;
+using System.Diagnostics;
+using System.Text;
 
 namespace SendToManagerLauncher
 {
     static class Program
     {
+        static Program()
+        {
+            string tooldir = Path.Combine(Path.GetDirectoryName(Application.ExecutablePath),
+                "tools");
+            Environment.CurrentDirectory = tooldir;
+        }
+
+        static bool IsRelaunch(string[] args)
+        {
+            foreach (string arg in args)
+                if (arg == "--relaunch")
+                    return true;
+            return false;
+        }
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
-        static void Main()
+        static void Main(string[] args)
         {
             string tooldir = Path.Combine(Path.GetDirectoryName(Application.ExecutablePath),
                 "tools");
             SetDllDirectory(tooldir);
 
+            // Add 'too' to PATH so that this app is runnable in a environemnt
+            // where no vc2019 library exists
+            if (Environment.GetEnvironmentVariable("PATH").IndexOf(tooldir) < 0)
+            {
+                // for safety measure not to sure to going infinite loop
+                if(IsRelaunch(args))
+                {
+                    MessageBox.Show("--relaunch but not PATH is set. Quitting");
+                    return;
+                }
+                Environment.SetEnvironmentVariable("PATH", Environment.GetEnvironmentVariable("PATH") + ";" + tooldir);
+
+                ProcessStartInfo psi = new ProcessStartInfo();
+                psi.FileName = Application.ExecutablePath;
+
+                List<string> sb = new List<string>();
+                foreach(string arg in args)
+                {
+                    if(arg.Length > 0 && arg[0] != '"' && arg.IndexOf(' ') >= 0)
+                    {
+                        sb.Add("\"" + arg + "\"");
+                    }
+                    else
+                        sb.Add(arg);
+                }
+                sb.Add("--relaunch");
+
+                psi.Arguments = string.Join(" ", sb.ToArray());
+                psi.UseShellExecute = true;
+
+                Process.Start(psi);
+                return;
+            }
+            
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new Form1());
