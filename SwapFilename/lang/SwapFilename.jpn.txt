@@ -4,3 +4,11 @@
 "'%s' has been removed."="'%s' を削除しました。"
 
 "'%s' does not exist."="'%s' は存在しません。"
+"The count of files provided by command line is %d. Two files must be provided."="コマンドラインで%d個のファイルが指定されています。指定するファイルは2個である必要があります。"
+"Answer 'yes' in all questions"="すべての質問に'はい'で答える"
+"Language in 3-letter"="３文字であらわされる言語"
+"Remove an older file after swapping"="スワップ後に古いファイルを削除する"
+"Show Help"="ヘルプを表示する"
+"Show Version"="ヴァージョンを表示する"
+"Swap filename of two files"="２つのファイルをスワップする"
+"Input two files"="２つの入力ファイル"

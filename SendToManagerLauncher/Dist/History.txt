@@ -1,3 +1,7 @@
+Modify: SwapFilename taske /lang as commad line option
+Modify: I18N on SwapFilename
+Modify: Error in SwapFilename if not two files are passed
+
 2021/09/06 ver 2.1.17
 Modify: ChangeFileTime
 Modify: SwapFilename also swap file time

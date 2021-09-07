@@ -156,6 +156,22 @@ static bool showballoonexe(
 		app.c_str(),
 		cmd.c_str());
 }
+
+wstring GetLangFromCommandLine()
+{
+	CCommandLineParser parser;
+
+	wstring lang;
+	parser.AddOption(L"-lang",
+		1,
+		&lang,
+		ArgEncodingFlags_Default,
+		L"Language in 3-letter");
+
+	parser.Parse();
+
+	return lang;
+}
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	_In_opt_ HINSTANCE hPrevInstance,
 	_In_ LPWSTR    lpCmdLine,
@@ -164,49 +180,56 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	UNREFERENCED_PARAMETER(hPrevInstance);
 	UNREFERENCED_PARAMETER(lpCmdLine);
 
-	i18nInitLangmap(NULL, NULL, APPNAME);
 	Ambiesoft::InitHighDPISupport();
+	wstring lang = GetLangFromCommandLine();
+	i18nInitLangmap(NULL, lang.c_str(), APPNAME);
 
-	CCommandLineParser parser(L"Swap filename of two files");
-
-	//bool bRetry = false;
-	//parser.AddOption(L"-retry", 0, &bRetry, ArgEncodingFlags::ArgEncodingFlags_Default,
-	//	L"Retry if failed");
+	CCommandLineParser parser(I18N(L"Swap filename of two files"));
 
 	bool bRemoveOld = false;
 	parser.AddOption(L"-removeold", 0, &bRemoveOld, 
 		ArgEncodingFlags::ArgEncodingFlags_Default,
-		L"Remove an older file after swapping");
+		I18N(L"Remove an older file after swapping"));
 
 	bool bAlwaysYes = false;
 	parser.AddOption(L"-alwaysyes", 0, &bAlwaysYes,
 		ArgEncodingFlags::ArgEncodingFlags_Default,
-		L"Answer 'yes' in all questions");
+		I18N(L"Answer 'yes' in all questions"));
 
 	bool bHelp = false;
 	parser.AddOptionRange({ L"-h",L"--help", L"/?" },
 		0,
 		&bHelp,
 		ArgEncodingFlags::ArgEncodingFlags_Default,
-		L"Show Help");
+		I18N(L"Show Help"));
 
 	bool bShowVersion = false;
 	parser.AddOptionRange({ L"-v",L"--version" },
 		0,
 		&bShowVersion,
 		ArgEncodingFlags::ArgEncodingFlags_Default,
-		L"Show Version");
+		I18N(L"Show Version"));
 
-	COption opMain(L"", ExactCount::Exact_2, ArgEncodingFlags_Default, L"Input two files");
+	COption opMain(L"", 
+		ExactCount::Exact_2, 
+		ArgEncodingFlags_Default, 
+		I18N(L"Input two files"));
 	parser.AddOption(&opMain);
-	
+
+	// lang is already defined
+	parser.AddOption(L"-lang",
+		1,
+		&lang,
+		ArgEncodingFlags_Default,
+		I18N(L"Language in 3-letter"));
+
 	parser.Parse();
 
 	if (parser.hadUnknownOption())
 	{
 		ErrorExit(I18N(L"Unknown Option:") + (L"\r\n" + parser.getUnknowOptionStrings()));
 	}
-	if (bShowVersion || bHelp || opMain.getValueCount() != 2)
+	if (bShowVersion || bHelp)
 	{
 		MessageBox(NULL,
 			parser.getHelpMessage().c_str(),
@@ -214,7 +237,12 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 			MB_ICONINFORMATION);
 		return 0;
 	}
-	
+	if (opMain.getValueCount() != 2)
+	{
+		ErrorExit(stdFormat(
+			I18N(L"The count of files provided by command line is %d. Two files must be provided."),
+			opMain.getValueCount()));
+	}
 	wstring file1 = opMain.getValue(0);
 	wstring file2 = opMain.getValue(1);
 	wstring fileback = GetBackupFile(file1.c_str());
