@@ -486,7 +486,7 @@ int libmain(LPCWSTR pAppName, LPCWSTR pButtonText, HICON hIcon)
 	if (nRet != 0 && nRet != 1223 /* user cancel*/ )
 	{
 		wstring error = GetSHFileOpErrorString(nRet);
-		error += L"\n";
+		error += L"\n\n";
 		error += L"Source:\n";
 		for (auto&& s : sourcefiles)
 		{
