@@ -34,6 +34,7 @@
 #include "../../lsMisc/GetLastErrorString.h"
 #include "../../lsMisc/RevealFolder.h"
 #include "../../lsMisc/GetUnreparsePath.h"
+#include "../../lsMisc/GetLocalPathFromNetPath.h"
 
 #include "ChooseDirDialog.h"
 #include "ReleaseMutex.h"
@@ -86,7 +87,7 @@ wstring getHelpString()
 	
 	ret.append(I18N(L"Usage")).append(L":\r\n");
 	ret.append(stdGetFileName(stdGetModuleFileName<wchar_t>()));
-	ret.append(L" [/t TARGETDIR] [/p priority] [/lang LANG] [/unrs] SOURCE1 [SOURCE2]...\r\n");
+	ret.append(L" [/t TARGETDIR] [/p priority] [/lang LANG] [/unrs] [/unnet] SOURCE1 [SOURCE2]...\r\n");
 	
 	ret.append(L"\r\n");
 	ret.append(L"  priority\r\n");
@@ -99,6 +100,10 @@ wstring getHelpString()
 	ret.append(L"\r\n");
 	ret.append(L"  /unrs\r\n");
 	ret.append(L"    Resolve source's reparse point before opration");
+
+	ret.append(L"\r\n");
+	ret.append(L"  /unnet\r\n");
+	ret.append(L"    Resolve source's network path to local path before opration");
 
 	return ret;
 }
@@ -209,6 +214,8 @@ int libmain(LPCWSTR pAppName, LPCWSTR pButtonText, HICON hIcon)
 	cmd.AddOption(L"/lang", 1, &lang);
 	bool bUnrS = false;
 	cmd.AddOption(L"/unrs", 0, &bUnrS);
+	bool bUnNetpath = false;
+	cmd.AddOption(L"/unnet", 0, &bUnNetpath);
 	cmd.AddOptionRange({ L"/h", L"-h" }, 0, &bHelp);
 
 	cmd.Parse();
@@ -472,6 +479,8 @@ int libmain(LPCWSTR pAppName, LPCWSTR pButtonText, HICON hIcon)
 
 	if (bUnrS)
 		sourcefiles = GetUnreparsePath(sourcefiles);
+	if (bUnNetpath)
+		sourcefiles = GetLocalPathFromNetPath(sourcefiles);
 	int nRet = -1;
 	if (_wcsicmp(gAppName, L"MoveTo") == 0)
 		nRet = SHMoveFileEx(sourcefiles, destDir.c_str());
