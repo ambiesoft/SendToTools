@@ -90,7 +90,7 @@ SendtoToolsは以下のツールを付属しています。
 ## コンタクト
 - 製作者: Ambiesoft trueff
 - メール: <ambiesoft.trueff@gmail.com>
-- ウェブサイト: <http://ambiesoft.mooo.com/main/index.php?page=sendtotools>
-- 掲示板: <http://ambiesoft.mooo.com/minibbs/minibbs.php>
+- ウェブサイト: <https://ambiesoft.com/main/index.php?page=sendtotools>
+- 掲示板: <https://ambiesoft.com/minibbs/minibbs.php>
 - 開発: <https://github.com/ambiesoft/SendToTools>
 
