@@ -106,14 +106,14 @@ BOOL DoReplaceFileWithReplaceFile(wstring file1, wstring file2, wstring fileback
 
 static wstring GetOlderFile(const wstring& file1, const wstring& file2, bool* pIsSame)
 {
-	Ambiesoft::CHandle h1(CreateFile(file1.c_str(),
+	CFileHandle h1(CreateFile(file1.c_str(),
 		GENERIC_READ,
 		FILE_SHARE_READ,
 		NULL,
 		OPEN_EXISTING,
 		FILE_ATTRIBUTE_NORMAL,
 		NULL));
-	Ambiesoft::CHandle h2(CreateFile(file2.c_str(),
+	CFileHandle h2(CreateFile(file2.c_str(),
 		GENERIC_READ,
 		FILE_SHARE_READ,
 		NULL,
@@ -268,14 +268,14 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	bool bFtGot = false;
 	do
 	{	
-		Ambiesoft::CHandle h1(CreateFile(file1.c_str(),
+		CFileHandle h1(CreateFile(file1.c_str(),
 			GENERIC_READ,
 			FILE_SHARE_READ,
 			NULL,
 			OPEN_EXISTING,
 			FILE_ATTRIBUTE_NORMAL,
 			NULL));
-		Ambiesoft::CHandle h2(CreateFile(file2.c_str(),
+		CFileHandle h2(CreateFile(file2.c_str(),
 			GENERIC_READ,
 			FILE_SHARE_READ,
 			NULL,
@@ -317,14 +317,14 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	if (bFtGot)
 	{
 		do {
-			Ambiesoft::CHandle h1(CreateFile(file1.c_str(),
+			CFileHandle h1(CreateFile(file1.c_str(),
 				GENERIC_WRITE,
 				FILE_SHARE_READ,
 				NULL,
 				OPEN_EXISTING,
 				FILE_ATTRIBUTE_NORMAL,
 				NULL));
-			Ambiesoft::CHandle h2(CreateFile(file2.c_str(),
+			CFileHandle h2(CreateFile(file2.c_str(),
 				GENERIC_WRITE,
 				FILE_SHARE_READ,
 				NULL,
