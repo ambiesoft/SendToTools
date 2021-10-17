@@ -82,7 +82,7 @@ If you have troubles, post *Issue* on <https://github.com/ambiesoft/SendToTools/
 ## Contact
 - Author: Ambiesoft trueff
 - E-mail: <ambiesoft.trueff@gmail.com>
-- Webpage: <http://ambiesoft.mooo.com/main/index.php?page=sendtotools>
-- Forum: <http://ambiesoft.mooo.com/minibbs/minibbs.php>
+- Webpage: <https://ambiesoft.com/main/index.php?page=sendtotools>
+- Forum: <https://ambiesoft.com/minibbs/minibbs.php>
 - Development: <https://github.com/ambiesoft/SendToTools>
 
