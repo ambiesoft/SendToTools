@@ -5,7 +5,7 @@ SendtoTools can edit various tools of "SendTo" menu of the explorer.
 * You can manage your favorite tools.
 * You can sort tools by putting numbers at the head of tool name os 'SendTo' menu will be sorted.
 * This application can be portable.
-* You can put and remove your tools in "Sendto" in an arbitrary way.
+* Replace all tools in "Sendto" menu.
 
 ## Download
 Download binary from https://github.com/ambiesoft/SendToTools/releases
@@ -29,12 +29,12 @@ Extract the downloaded archive and lanucn '''SendToManager.exe'''.
 1. You can create multiple inventories.
 
 ## Command line options
-Following commnad will deploy the inventory named *MyInventory*. Additional option "-y"makes no confirmation dialog appear.
+Following commnad will deploy the inventory named *MyInventory*. Additional option "-y" shows no confirmation dialog.
 
 ```SendToManager.exe --apply MyInventory -y```
 
 ## Tools
-Any shortcut files can be put on "SendTo". SendtoTools ships with various tools.
+Any shortcut files can be put on "SendTo". But SendtoTools ships with various tools.
 
 #### ChangeFileName
 This tool can change file name or move the file with the name you specified. One of the benefit of this tools is that if you want to change the file name but it is locked by a process from which you want to get name information, you can paste the name into this app before closing app, then after closing the app, renaming operation can be performed.
@@ -49,7 +49,7 @@ Copy a file content onto the clipboard. Only Text file and Image file can be cop
 Copy the path of the file. This shows a dialog when launch with pressing shift, ctrl or RightButton. With this dialog, more customized form of path can be specified.
 
 #### DotNet4Runnable
-This tool creates .config file so that .Net2.0 application can be runnable on .Net4.0 platform. If the environment does not have .Net2.0 installed and you want to run .Net2.0 application in .NET4 environment, you can send the executable to this tool to create .config.
+This tool creates ".config" file so that .Net2.0 application can be runnable on .Net4.0 platform. If the environment does not have .Net2.0 installed and you want to run .Net2.0 application in .NET4 environment, you can send the executable to this tool to create .config.
 
 #### Move to
 Move file(s) to favorites location.
@@ -62,7 +62,6 @@ Rename file by a regular expression.
 
 #### RunFileAs
 Run file as administrator.
-
 
 #### touch
 Change file time(Last Access time and Last Write time) to current time. If you launch with shift,control key or R-Button pressed, it touches all files in subdirectories.
