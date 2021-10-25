@@ -63,14 +63,14 @@ namespace SendToManagerLauncher
                 "tools");
             SetDllDirectory(tooldir);
 
-            // Add 'too' to PATH so that this app is runnable in a environemnt
+            // Add 'tools' to PATH so that this app is runnable in a environemnt
             // where no vc2019 library exists
-            if (Environment.GetEnvironmentVariable("PATH").IndexOf(tooldir) < 0)
+            if (Environment.GetEnvironmentVariable("PATH").ToLower().IndexOf(tooldir.ToLower()) < 0)
             {
                 // for safety measure not to sure to going infinite loop
                 if(IsRelaunch(args))
                 {
-                    MessageBox.Show("--relaunch but not PATH is set. Quitting");
+                    MessageBox.Show("--relaunch but tools int not in PATH. Quitting");
                     return;
                 }
                 Environment.SetEnvironmentVariable("PATH", Environment.GetEnvironmentVariable("PATH") + ";" + tooldir);

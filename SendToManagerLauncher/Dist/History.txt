@@ -1,3 +1,6 @@
+2021/10/25 ver 2.1.20
+Fix: SendToManger failed to be launched from command line
+
 2021/10/17 ver 2.1.19
 MoveTo/CopyTo: Added option '/unnet'
 

@@ -368,7 +368,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 		ArgEncodingFlags::ArgEncodingFlags_Default,
 		L"Show Dialog");
 
-	COption opMain(L"", ArgCount::ArgCount_Infinite, ArgEncodingFlags_Default,
+	COption opMain(L"", ArgCount::ArgCount_OneToInfinite, ArgEncodingFlags_Default,
 		L"Path to copy");
 	parser.AddOption(&opMain);
 

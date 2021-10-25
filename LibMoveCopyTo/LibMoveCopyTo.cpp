@@ -203,7 +203,7 @@ int libmain(LPCWSTR pAppName, LPCWSTR pButtonText, HICON hIcon)
 
 	
 	COption opTarget({ L"/T", L"/t" }, 1);
-	COption opFile(L"", Ambiesoft::ArgCount::ArgCount_Infinite);
+	COption opFile(L"", Ambiesoft::ArgCount::ArgCount_OneToInfinite);
 	wstring lang;
 	bool bHelp = false;
 	int nPriority = -1;
