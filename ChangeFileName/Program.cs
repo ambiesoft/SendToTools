@@ -36,6 +36,8 @@ namespace ChangeFileName
 {
     static class Program
     {
+        static readonly int MAX_CONFIRMLESS_OPEN_COUNT = 16;
+
         static internal bool SafeProcessStart(string s, bool showerrorbox)
         {
             try
@@ -98,7 +100,18 @@ namespace ChangeFileName
                 }
                 args.Add(arg);
             }
-            
+
+            if (args.Count > MAX_CONFIRMLESS_OPEN_COUNT)
+            {
+                if (DialogResult.Yes != CppUtils.YesOrNo(
+                    string.Format(Properties.Resources.ARE_YOU_SURE_TO_OPEN_S_FILES,
+                    args.Count),
+                    MessageBoxDefaultButton.Button2))
+                {
+                    return;
+                }
+            }
+
             if (args.Count > 1)
             {
                 StringBuilder sbNotFounds = new StringBuilder();

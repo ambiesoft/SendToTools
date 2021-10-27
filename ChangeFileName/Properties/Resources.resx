@@ -194,4 +194,7 @@ If this probrem continues, delete the file but you will lost all information abo
   <data name="FAILED_TO_CREATE_DIRECTORY" xml:space="preserve">
     <value>Failed to create directory</value>
   </data>
+  <data name="ARE_YOU_SURE_TO_OPEN_S_FILES" xml:space="preserve">
+    <value>Are you sure to open {0} files?</value>
+  </data>
 </root>

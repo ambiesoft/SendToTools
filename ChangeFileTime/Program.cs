@@ -28,25 +28,91 @@ using Ambiesoft;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
+using System.Text;
 using System.Windows.Forms;
 
 namespace ChangeFileTime
 {
     static class Program
     {
+        static readonly int MAX_CONFIRMLESS_OPEN_COUNT = 16;
+
         [STAThread]
-        static void Main(String[] args)
+        static void Main(String[] argsOriginal)
         {
             Ambiesoft.CppUtils.AmbSetProcessDPIAware();
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             // Application.Run(new FormMain());
-            if (args.Length < 1)
+            if (argsOriginal.Length < 1)
             {
                 CppUtils.Alert(Properties.Resources.NO_ARGUMENTS);
                 return;
             }
+
+            List<string> args = new List<string>();
+            foreach (string arg in argsOriginal)
+            {
+                //if (arg == "-h" || arg == "/h" || arg == "--help")
+                //{
+                //    StringBuilder sb = new StringBuilder();
+                //    sb.AppendLine(Properties.Resources.HELP);
+                //    CppUtils.Alert(sb.ToString());
+                //    return;
+                //}
+                //if (arg == "/run")
+                //{
+                //    run_ = true;
+                //    continue;
+                //}
+                args.Add(arg);
+            }
+            if (args.Count > MAX_CONFIRMLESS_OPEN_COUNT)
+            {
+                if (DialogResult.Yes != CppUtils.YesOrNo(
+                    string.Format(Properties.Resources.ARE_YOU_SURE_TO_OPEN_S_FILES,
+                    args.Count),
+                    MessageBoxDefaultButton.Button2))
+                {
+                    return;
+                }
+            }
+
+            if (args.Count > 1)
+            {
+                StringBuilder sbNotFounds = new StringBuilder();
+                for (int i = 0; i < args.Count; ++i)
+                {
+                    try
+                    {
+                        if (File.Exists(args[i]) || Directory.Exists(args[i]))
+                        {
+
+                            System.Diagnostics.Process.Start(
+                                Application.ExecutablePath,
+                                "\"" + args[i] + "\"");
+                        }
+                        else
+                        {
+                            sbNotFounds.AppendLine(args[i]);
+                        }
+                    }
+                    catch (System.Exception e)
+                    {
+                        CppUtils.Fatal(e.Message);
+                    }
+                }
+
+                if (sbNotFounds.Length != 0)
+                {
+                    CppUtils.Alert(Properties.Resources.FOLLOWING_DOESNOT_EXIST + "\r\n\r\n" + sbNotFounds.ToString());
+                }
+                return;
+            }
+
+
 
             //string theFileName = @"C:\Documents and Settings\tt\My Documents\Productivity Distribution, Firm Heterogeneity, and Agglomeration.pdf";
             string theFileName = args[0];

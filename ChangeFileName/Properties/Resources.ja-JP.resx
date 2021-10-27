@@ -194,4 +194,7 @@
   <data name="FAILED_TO_CREATE_DIRECTORY" xml:space="preserve">
     <value>ディレクトリの作成に失敗しました。</value>
   </data>
+  <data name="ARE_YOU_SURE_TO_OPEN_S_FILES" xml:space="preserve">
+    <value>{0} 個のファイルをすべて開きますか？</value>
+  </data>
 </root>
