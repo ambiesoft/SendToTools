@@ -1,3 +1,5 @@
+SwapFilename: Detect Ctrl or RButton early, PathIsUNC can take time
+
 2021/10/27 ver 2.1.21
 ChangeFileName: Add confirmation dialog at startup when input files are many
 ChangeFileTime: Will take multiple files

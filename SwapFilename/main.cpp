@@ -291,6 +291,8 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 		bFtGot = true;
 	} while (false);
 
+	// Detect Ctrl or RButton early, PathIsUNC can take time
+	const bool bCtrlOrRbuttonPressed = ((GetKeyState(VK_CONTROL) < 0) || GetKeyState(VK_RBUTTON) < 0);
 
 	// rename
 	if (PathIsUNC(file1.c_str()) || PathIsUNC(file2.c_str()))
@@ -340,7 +342,8 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
 	wstring additionalMessage;
 	bool bShowRemoveConfirmMessage = !bAlwaysYes;
-	if ((GetKeyState(VK_CONTROL) < 0) || GetKeyState(VK_RBUTTON) < 0)
+
+	if(bCtrlOrRbuttonPressed)
 	{
 		bRemoveOld = true;
 		bShowRemoveConfirmMessage = true;
