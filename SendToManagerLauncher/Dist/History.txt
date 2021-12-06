@@ -1,4 +1,6 @@
+2021/12/06 ver 2.1.22
 SwapFilename: Detect Ctrl or RButton early, PathIsUNC can take time
+ChangeFileName: rename files that are diffenet in case only
 
 2021/10/27 ver 2.1.21
 ChangeFileName: Add confirmation dialog at startup when input files are many

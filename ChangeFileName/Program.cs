@@ -29,6 +29,7 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
+using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
@@ -225,12 +226,34 @@ namespace ChangeFileName
             string newfull = Path.Combine(olddir, newName + oldext);
 
             if (String.Compare(oldfull, newfull, true) == 0)
-                return true;
+            {
+                string oldfullcase = Directory.GetFiles(Path.GetDirectoryName(oldfull), Path.GetFileName(oldfull)).FirstOrDefault();
 
+                // user supplied path is not same as the physical path
+                if (String.Compare(oldfullcase, newfull, true) == 0 &&
+                    String.Compare(oldfullcase, newfull, false) != 0)
+                {
+                    oldfull = oldfullcase;
+
+                    // only case is different
+                    if (Path.GetDirectoryName(oldfull) != Path.GetDirectoryName(newfull))
+                        return false;
+
+                    // use ntfs transaction
+                    string tmp = oldfull + "trans";
+                    if (File.Exists(tmp))
+                        return false;
+
+                    List<KeyValuePair<string, string>> srcdests = new List<KeyValuePair<string, string>>();
+                    srcdests.Add(new KeyValuePair<string, string>(oldfull, tmp));
+                    srcdests.Add(new KeyValuePair<string, string>(tmp, newfull));
+
+                    return CppUtils.MoveFileAtomic(srcdests);
+                }
+                return true;
+            }
             int ret = Ambiesoft.CppUtils.MoveFile(win, oldfull, newfull);
             return ret == 0;
-
         }
-
     }
 }
