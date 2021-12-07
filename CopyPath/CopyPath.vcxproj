@@ -97,15 +97,19 @@ xcopy "$(ProjectDir)jpn.txt" "$(Targetdir)lang\$(TargetName).jpn.txt*" /F /Y</Co
     <ClInclude Include="..\..\lsMisc\CommandLineParser.h" />
     <ClInclude Include="..\..\lsMisc\CreateSimpleWindow.h" />
     <ClInclude Include="..\..\lsMisc\GetLastErrorString.h" />
+    <ClInclude Include="..\..\lsMisc\GetVersionString.h" />
     <ClInclude Include="..\..\lsMisc\HighDPI.h" />
     <ClInclude Include="..\..\lsMisc\I18N.h" />
+    <ClInclude Include="..\..\lsMisc\OpenCommon.h" />
     <ClInclude Include="..\..\lsMisc\SetClipboardText.h" />
     <ClInclude Include="..\..\lsMisc\showballoon.h" />
     <ClInclude Include="..\..\lsMisc\stdosd\stdosd.h" />
     <ClInclude Include="..\..\lsMisc\stdwin32\stdwin32.h" />
     <ClInclude Include="..\..\lsMisc\UrlEncode.h" />
     <ClInclude Include="..\..\lsMisc\UTF16toUTF8.h" />
+    <ClInclude Include="..\..\profile\cpp\Profile\include\ambiesoft.profile.h" />
     <ClInclude Include="CopyPath.h" />
+    <ClInclude Include="DialogData.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
@@ -127,11 +131,19 @@ xcopy "$(ProjectDir)jpn.txt" "$(Targetdir)lang\$(TargetName).jpn.txt*" /F /Y</Co
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="..\..\lsMisc\GetVersionString.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
     <ClCompile Include="..\..\lsMisc\HighDPI.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="..\..\lsMisc\I18N.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\..\lsMisc\OpenCommon.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
     </ClCompile>
@@ -164,6 +176,7 @@ xcopy "$(ProjectDir)jpn.txt" "$(Targetdir)lang\$(TargetName).jpn.txt*" /F /Y</Co
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="CopyPath.cpp" />
+    <ClCompile Include="DialogData.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>

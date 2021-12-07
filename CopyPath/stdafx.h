@@ -32,6 +32,10 @@
 #include "../../lsMisc/CenterWindow.h"
 #include "../../lsMisc/I18N.h"
 #include "../../lsMisc/GetLastErrorString.h"
+#include "../../profile/cpp/Profile/include/ambiesoft.profile.h"
+#include "../../lsMisc/UTF16toUTF8.h"
+#include "../../lsMisc/OpenCommon.h"
+#include "../../lsMisc/GetVersionString.h"
 
 enum {
 	WM_APP_INITIALUPDATE = (WM_APP + 1)

@@ -27,3 +27,5 @@
 #pragma once
 
 #include "resource.h"
+
+extern WCHAR szTitle[];
