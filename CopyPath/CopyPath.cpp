@@ -50,7 +50,7 @@ using namespace Ambiesoft::stdosd;
 
 // Global Variables:
 HINSTANCE hInst;                                // current instance
-WCHAR szTitle[MAX_LOADSTRING];                  // The title bar text
+WCHAR gszTitle[MAX_LOADSTRING];                  // The title bar text
 
 static wstring GetIniPath()
 {
@@ -63,7 +63,7 @@ void showMessageAndExit(LPCTSTR pMessage)
 {
 	MessageBox(NULL,
 		pMessage,
-		szTitle,
+		gszTitle,
 		MB_ICONINFORMATION);
 	exit(1);
 }
@@ -71,7 +71,7 @@ void showHelpAndExit(LPCTSTR pMessage)
 {
 	MessageBox(NULL,
 		pMessage,
-		szTitle,
+		gszTitle,
 		MB_ICONINFORMATION);
 	exit(1);
 }
@@ -79,7 +79,7 @@ void showErrorAndExit(LPCTSTR pMessage)
 {
 	MessageBox(NULL,
 		pMessage,
-		szTitle,
+		gszTitle,
 		MB_ICONERROR);
 	exit(1);
 }
@@ -439,7 +439,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	hInst = hInstance;
 
 	// Initialize global strings
-	LoadStringW(hInstance, IDS_APP_TITLE, szTitle, MAX_LOADSTRING);
+	LoadStringW(hInstance, IDS_APP_TITLE, gszTitle, MAX_LOADSTRING);
 
 	auto fNoLoadIni = [](CCommandLineParser& parser, bool* pResult) {
 		parser.AddOption(L"--no-ini",
@@ -711,7 +711,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 		HICON hIcon = LoadIcon(hInstance, MAKEINTRESOURCE(IDI_PATHTOCLIPBOARD));
 		showballoon(
 			NULL,
-			szTitle,
+			gszTitle,
 			I18N(L"Path has been set onto the clipbard."),
 			hIcon,
 			5000,

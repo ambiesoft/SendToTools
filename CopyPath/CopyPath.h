@@ -28,4 +28,4 @@
 
 #include "resource.h"
 
-extern WCHAR szTitle[];
+extern WCHAR gszTitle[];

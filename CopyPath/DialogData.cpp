@@ -64,7 +64,7 @@ bool DialogData::Load(const std::wstring& iniPath)
 	{
 		MessageBox(nullptr,  
 			toStdWstringFromACP(ex.what()).c_str(),
-			szTitle,
+			gszTitle,
 			MB_ICONERROR);
 		return false;
 	}
@@ -91,7 +91,7 @@ bool DialogData::Save(const std::wstring& iniPath)
 	{
 		MessageBox(nullptr,
 			toStdWstringFromACP(ex.what()).c_str(),
-			szTitle,
+			gszTitle,
 			MB_ICONERROR);
 		return false;
 	}
