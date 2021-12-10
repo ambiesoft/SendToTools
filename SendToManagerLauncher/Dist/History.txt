@@ -1,3 +1,4 @@
+2021/12/10 ver 2.1.24
 ChangeFileName v1.6.9 : Add Custom Replace Tools
 
 2021/12/07 ver 2.1.23
