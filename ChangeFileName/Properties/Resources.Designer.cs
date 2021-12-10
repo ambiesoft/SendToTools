@@ -283,5 +283,41 @@ namespace ChangeFileName.Properties {
                 return ResourceManager.GetString("SOURCEFILE_NOT_FOUND", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;No Name&gt;.
+        /// </summary>
+        internal static string SRT_REG_NONAME {
+            get {
+                return ResourceManager.GetString("SRT_REG_NONAME", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to delete Replace Tool &apos;{0}&apos;?.
+        /// </summary>
+        internal static string STR_DOYOUDELETE_REGITEM {
+            get {
+                return ResourceManager.GetString("STR_DOYOUDELETE_REGITEM", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failed to delete the Replace Tool item..
+        /// </summary>
+        internal static string STR_FAILED_DELETE_REGITEM {
+            get {
+                return ResourceManager.GetString("STR_FAILED_DELETE_REGITEM", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;No Replace Tools&gt;.
+        /// </summary>
+        internal static string STR_NO_REPLACE_TOOLS {
+            get {
+                return ResourceManager.GetString("STR_NO_REPLACE_TOOLS", resourceCulture);
+            }
+        }
     }
 }

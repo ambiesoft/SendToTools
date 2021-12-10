@@ -54,6 +54,13 @@
             this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripSeparator();
             this.tsmitoHankakuKana = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmitoZenkakuKana = new System.Windows.Forms.ToolStripMenuItem();
+            this.sepBeforeCustomRegsAll = new System.Windows.Forms.ToolStripSeparator();
+            this.tsmiReplaceTool = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiNewReplaceToo = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiEditReplaceTool = new System.Windows.Forms.ToolStripMenuItem();
+            this.dummyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiDeleteReplaceTool = new System.Windows.Forms.ToolStripMenuItem();
+            this.dummyToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiReplaceAll = new System.Windows.Forms.ToolStripMenuItem();
             this.cmReplaceSelection = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tsmiMakeFileNamableSel = new System.Windows.Forms.ToolStripMenuItem();
@@ -72,6 +79,8 @@
             this.toolStripMenuItem8 = new System.Windows.Forms.ToolStripSeparator();
             this.tsmitoHankakuKanaSel = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmitoZenkakuKanaSel = new System.Windows.Forms.ToolStripMenuItem();
+            this.sepBeforeCustomRegsSelection = new System.Windows.Forms.ToolStripSeparator();
+            this.tsmiDummy = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiReplaceSelection = new System.Windows.Forms.ToolStripMenuItem();
             this.lblFileInfo = new System.Windows.Forms.Label();
             this.menuMain = new System.Windows.Forms.MenuStrip();
@@ -181,7 +190,9 @@
             this.tsmitoZenkaku,
             this.toolStripMenuItem7,
             this.tsmitoHankakuKana,
-            this.tsmitoZenkakuKana});
+            this.tsmitoZenkakuKana,
+            this.sepBeforeCustomRegsAll,
+            this.tsmiReplaceTool});
             this.cmReplace.Name = "cmReplace";
             // 
             // tsmiMakeFileNamable
@@ -277,11 +288,58 @@
             this.tsmitoZenkakuKana.Name = "tsmitoZenkakuKana";
             this.tsmitoZenkakuKana.Click += new System.EventHandler(this.tsmitoZenkakuKana_Click);
             // 
+            // sepBeforeCustomRegsAll
+            // 
+            resources.ApplyResources(this.sepBeforeCustomRegsAll, "sepBeforeCustomRegsAll");
+            this.sepBeforeCustomRegsAll.Name = "sepBeforeCustomRegsAll";
+            // 
+            // tsmiReplaceTool
+            // 
+            resources.ApplyResources(this.tsmiReplaceTool, "tsmiReplaceTool");
+            this.tsmiReplaceTool.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiNewReplaceToo,
+            this.tsmiEditReplaceTool,
+            this.tsmiDeleteReplaceTool});
+            this.tsmiReplaceTool.Name = "tsmiReplaceTool";
+            // 
+            // tsmiNewReplaceToo
+            // 
+            resources.ApplyResources(this.tsmiNewReplaceToo, "tsmiNewReplaceToo");
+            this.tsmiNewReplaceToo.Name = "tsmiNewReplaceToo";
+            this.tsmiNewReplaceToo.Click += new System.EventHandler(this.tsmiNewReplaceToo_Click);
+            // 
+            // tsmiEditReplaceTool
+            // 
+            resources.ApplyResources(this.tsmiEditReplaceTool, "tsmiEditReplaceTool");
+            this.tsmiEditReplaceTool.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.dummyToolStripMenuItem});
+            this.tsmiEditReplaceTool.Name = "tsmiEditReplaceTool";
+            this.tsmiEditReplaceTool.DropDownOpening += new System.EventHandler(this.tsmiEditReplaceTool_DropDownOpening);
+            // 
+            // dummyToolStripMenuItem
+            // 
+            resources.ApplyResources(this.dummyToolStripMenuItem, "dummyToolStripMenuItem");
+            this.dummyToolStripMenuItem.Name = "dummyToolStripMenuItem";
+            // 
+            // tsmiDeleteReplaceTool
+            // 
+            resources.ApplyResources(this.tsmiDeleteReplaceTool, "tsmiDeleteReplaceTool");
+            this.tsmiDeleteReplaceTool.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.dummyToolStripMenuItem1});
+            this.tsmiDeleteReplaceTool.Name = "tsmiDeleteReplaceTool";
+            this.tsmiDeleteReplaceTool.DropDownOpening += new System.EventHandler(this.tsmiDeleteReplaceTool_DropDownOpening);
+            // 
+            // dummyToolStripMenuItem1
+            // 
+            resources.ApplyResources(this.dummyToolStripMenuItem1, "dummyToolStripMenuItem1");
+            this.dummyToolStripMenuItem1.Name = "dummyToolStripMenuItem1";
+            // 
             // tsmiReplaceAll
             // 
             resources.ApplyResources(this.tsmiReplaceAll, "tsmiReplaceAll");
             this.tsmiReplaceAll.DropDown = this.cmReplace;
             this.tsmiReplaceAll.Name = "tsmiReplaceAll";
+            this.tsmiReplaceAll.DropDownOpening += new System.EventHandler(this.tsmiReplaceAll_DropDownOpening);
             // 
             // cmReplaceSelection
             // 
@@ -302,8 +360,11 @@
             this.tsmitoZenkakuSel,
             this.toolStripMenuItem8,
             this.tsmitoHankakuKanaSel,
-            this.tsmitoZenkakuKanaSel});
+            this.tsmitoZenkakuKanaSel,
+            this.sepBeforeCustomRegsSelection,
+            this.tsmiDummy});
             this.cmReplaceSelection.Name = "cmReplace";
+            this.cmReplaceSelection.OwnerItem = this.tsmiReplaceSelection;
             // 
             // tsmiMakeFileNamableSel
             // 
@@ -397,6 +458,16 @@
             resources.ApplyResources(this.tsmitoZenkakuKanaSel, "tsmitoZenkakuKanaSel");
             this.tsmitoZenkakuKanaSel.Name = "tsmitoZenkakuKanaSel";
             this.tsmitoZenkakuKanaSel.Click += new System.EventHandler(this.tsmitoZenkakuKanaSel_Click);
+            // 
+            // sepBeforeCustomRegsSelection
+            // 
+            resources.ApplyResources(this.sepBeforeCustomRegsSelection, "sepBeforeCustomRegsSelection");
+            this.sepBeforeCustomRegsSelection.Name = "sepBeforeCustomRegsSelection";
+            // 
+            // tsmiDummy
+            // 
+            resources.ApplyResources(this.tsmiDummy, "tsmiDummy");
+            this.tsmiDummy.Name = "tsmiDummy";
             // 
             // tsmiReplaceSelection
             // 
@@ -744,5 +815,14 @@
         private System.Windows.Forms.ToolStripMenuItem tsmiOptions;
         private System.Windows.Forms.ToolStripMenuItem tsmiSmartDoubleClickSelection;
         private System.Windows.Forms.ToolStripMenuItem tsmiMoveLastSelectionFolderToTop;
+        private System.Windows.Forms.ToolStripSeparator sepBeforeCustomRegsAll;
+        private System.Windows.Forms.ToolStripSeparator sepBeforeCustomRegsSelection;
+        private System.Windows.Forms.ToolStripMenuItem tsmiDummy;
+        private System.Windows.Forms.ToolStripMenuItem tsmiReplaceTool;
+        private System.Windows.Forms.ToolStripMenuItem tsmiNewReplaceToo;
+        private System.Windows.Forms.ToolStripMenuItem tsmiEditReplaceTool;
+        private System.Windows.Forms.ToolStripMenuItem dummyToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tsmiDeleteReplaceTool;
+        private System.Windows.Forms.ToolStripMenuItem dummyToolStripMenuItem1;
     }
 }

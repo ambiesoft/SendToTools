@@ -197,4 +197,16 @@ If this probrem continues, delete the file but you will lost all information abo
   <data name="ARE_YOU_SURE_TO_OPEN_S_FILES" xml:space="preserve">
     <value>Are you sure to open {0} files?</value>
   </data>
+  <data name="SRT_REG_NONAME" xml:space="preserve">
+    <value>&lt;No Name&gt;</value>
+  </data>
+  <data name="STR_DOYOUDELETE_REGITEM" xml:space="preserve">
+    <value>Are you sure you want to delete Replace Tool '{0}'?</value>
+  </data>
+  <data name="STR_FAILED_DELETE_REGITEM" xml:space="preserve">
+    <value>Failed to delete the Replace Tool item.</value>
+  </data>
+  <data name="STR_NO_REPLACE_TOOLS" xml:space="preserve">
+    <value>&lt;No Replace Tools&gt;</value>
+  </data>
 </root>

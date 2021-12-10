@@ -214,8 +214,35 @@
   <data name="tsmitoZenkakuKana.Text" xml:space="preserve">
     <value>全角カナ(&amp;N)</value>
   </data>
+  <data name="sepBeforeCustomRegsAll.Size" type="System.Drawing.Size, System.Drawing">
+    <value>164, 6</value>
+  </data>
+  <data name="tsmiNewReplaceToo.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
+  </data>
+  <data name="tsmiNewReplaceToo.Text" xml:space="preserve">
+    <value>新規置換ツール(&amp;N)</value>
+  </data>
+  <data name="tsmiEditReplaceTool.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
+  </data>
+  <data name="tsmiEditReplaceTool.Text" xml:space="preserve">
+    <value>編集(&amp;E)</value>
+  </data>
+  <data name="tsmiDeleteReplaceTool.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
+  </data>
+  <data name="tsmiDeleteReplaceTool.Text" xml:space="preserve">
+    <value>削除(&amp;D)</value>
+  </data>
+  <data name="tsmiReplaceTool.Size" type="System.Drawing.Size, System.Drawing">
+    <value>167, 22</value>
+  </data>
+  <data name="tsmiReplaceTool.Text" xml:space="preserve">
+    <value>置換ツール(&amp;R)...</value>
+  </data>
   <data name="cmReplace.Size" type="System.Drawing.Size, System.Drawing">
-    <value>168, 308</value>
+    <value>168, 336</value>
   </data>
   <data name="tsmiReplaceAll.Size" type="System.Drawing.Size, System.Drawing">
     <value>102, 20</value>
@@ -307,14 +334,20 @@
   <data name="tsmitoZenkakuKanaSel.Text" xml:space="preserve">
     <value>全角カナ(&amp;N) (選択)</value>
   </data>
-  <data name="cmReplaceSelection.Size" type="System.Drawing.Size, System.Drawing">
-    <value>205, 308</value>
+  <data name="sepBeforeCustomRegsSelection.Size" type="System.Drawing.Size, System.Drawing">
+    <value>201, 6</value>
+  </data>
+  <data name="tsmiDummy.Size" type="System.Drawing.Size, System.Drawing">
+    <value>204, 22</value>
   </data>
   <data name="tsmiReplaceSelection.Size" type="System.Drawing.Size, System.Drawing">
     <value>121, 20</value>
   </data>
   <data name="tsmiReplaceSelection.Text" xml:space="preserve">
     <value>選択範囲を置換(&amp;S)</value>
+  </data>
+  <data name="cmReplaceSelection.Size" type="System.Drawing.Size, System.Drawing">
+    <value>205, 336</value>
   </data>
   <data name="openInExplorerToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>187, 22</value>

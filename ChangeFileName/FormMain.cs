@@ -33,13 +33,13 @@ using System.Text;
 using System.Windows.Forms;
 using Microsoft.VisualBasic.FileIO;
 using System.IO;
-using Ambiesoft;
 using System.Reflection;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
 
-
+using Ambiesoft;
+using System.Web;
 
 namespace ChangeFileName
 {
@@ -49,6 +49,11 @@ namespace ChangeFileName
         static readonly string KEY_SMARTDOUBLECLICKSELECTION = "SmartDoubleClickSelection";
         static readonly string KEY_MOVELASTSELECTEDFOLDERTOTOP = "MoveLastSelectedFolderToTop";
         static readonly string KEY_TOPMOST = "TopMost";
+        static readonly string KEY_REGREXES_NAME = "RegExeName";
+        static readonly string KEY_REGREXES_REGEX = "RegExeRegex";
+        static readonly string KEY_REGREXES_REPLACEMENT = "RegExeReplacement";
+
+        List<RegexItem> customRegexes_ = new List<RegexItem>();
 
         public static string IniFile
         {
@@ -115,6 +120,36 @@ namespace ChangeFileName
 
             Profile.GetBool(SECTION_SETTING, KEY_MOVELASTSELECTEDFOLDERTOTOP, true, out boolval, ini);
             tsmiMoveLastSelectionFolderToTop.Checked = boolval;
+
+            string[] arRegexName;
+            Profile.GetStringArray(SECTION_SETTING, KEY_REGREXES_NAME,
+                out arRegexName, ini);
+            string[] arRegexRegex;
+            Profile.GetStringArray(SECTION_SETTING, KEY_REGREXES_REGEX,
+                out arRegexRegex, ini);
+            string[] arRegexReplacement;
+            Profile.GetStringArray(SECTION_SETTING, KEY_REGREXES_REPLACEMENT,
+                out arRegexReplacement, ini);
+            Debug.Assert(customRegexes_.Count == 0);
+            for (int i = 0; i < arRegexRegex.Length; ++i)
+            {
+                string name = string.Empty;
+                string regex = string.Empty;
+                string replacement = string.Empty;
+                try
+                {
+                    name = HttpUtility.UrlDecode(arRegexName[i]);
+                }
+                catch (Exception) { }
+                regex = HttpUtility.UrlDecode(arRegexRegex[i]);
+                try
+                {
+                    replacement = HttpUtility.UrlDecode(arRegexReplacement[i]);
+                }
+                catch (Exception) { }
+
+                customRegexes_.Add(new RegexItem(name, regex, replacement));
+            }
         }
 
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
@@ -225,6 +260,23 @@ namespace ChangeFileName
             Profile.WriteBool(SECTION_SETTING, KEY_MOVELASTSELECTEDFOLDERTOTOP,
                 tsmiMoveLastSelectionFolderToTop.Checked, ini);
 
+            // save regex
+            List<string> regexNames = new List<string>();
+            List<string> regexRegexes = new List<string>();
+            List<string> regexReplacements = new List<string>();
+            foreach (var regexitem in customRegexes_)
+            {
+                regexNames.Add(HttpUtility.UrlEncode(regexitem.Name));
+                regexRegexes.Add(HttpUtility.UrlEncode(regexitem.RegexString));
+                regexReplacements.Add(HttpUtility.UrlEncode(regexitem.Replacement));
+            }
+            Profile.WriteStringArray(SECTION_SETTING, KEY_REGREXES_NAME,
+                regexNames.ToArray(), ini);
+            Profile.WriteStringArray(SECTION_SETTING, KEY_REGREXES_REGEX,
+                regexRegexes.ToArray(), ini);
+            Profile.WriteStringArray(SECTION_SETTING, KEY_REGREXES_REPLACEMENT,
+                regexReplacements.ToArray(), ini);
+            
             if (!Profile.WriteAll(ini, IniFile))
             {
                 CppUtils.Alert("failed saving ini.");
@@ -493,16 +545,6 @@ namespace ChangeFileName
 
         }
 
-        private void tsmiReplaceSelection_DropDownOpening(object sender, EventArgs e)
-        {
-            bool bHasSelection = txtName.SelectionLength != 0;
-
-            foreach(ToolStripItem tsi in tsmiReplaceSelection.DropDownItems)
-            {
-                tsi.Enabled = bHasSelection;
-            }
-        }
-
         bool IsZenkakuKatakana(char c)
         {
             // ヽ(0x30FD) ヾ(0x30FE)
@@ -725,5 +767,141 @@ namespace ChangeFileName
         {
             Ambiesoft.CppUtils.OpenFolder(this, txtName.Tag.ToString());
         }
+
+        
+
+        private void tsmiNewReplaceToo_Click(object sender, EventArgs e)
+        {
+            using (ReplaceToolDialog npt = new ReplaceToolDialog(txtName.Text))
+            {
+                if (DialogResult.OK != npt.ShowDialog(this))
+                    return;
+                customRegexes_.Add(new RegexItem(
+                    npt.RegexName,
+                    npt.RegExString,
+                    npt.RegExReplacement));
+            }
+        }
+
+        private void tsmiReplace_DropDownOpeningCommon(
+            bool bAll,
+            ToolStripMenuItem tsmi,
+            ToolStripSeparator sep)
+        {
+            // arrange custom reg menus
+            int sepIndex = tsmi.DropDownItems.IndexOf(sep);
+            Debug.Assert(sepIndex >= 0);
+            while(tsmi.DropDownItems.Count > (1+sepIndex))
+                tsmi.DropDownItems.RemoveAt(sepIndex + 1);
+
+            foreach(var ritem in customRegexes_)
+            {
+                var newItem = new ToolStripMenuItem();
+                newItem.Text = ritem.Name;
+                newItem.Tag = new RegexItem(
+                    ritem.Name,
+                    ritem.RegexString,
+                    ritem.Replacement,
+                    bAll);
+                newItem.Click += NewItem_Click;
+                tsmi.DropDownItems.Add(newItem);
+            }
+            if (customRegexes_.Count != 0)
+                tsmi.DropDownItems.Add(new ToolStripSeparator());
+            tsmi.DropDownItems.Add(tsmiReplaceTool);
+        }
+        private void tsmiReplaceAll_DropDownOpening(object sender, EventArgs e)
+        {
+            tsmiReplace_DropDownOpeningCommon(true, tsmiReplaceAll, sepBeforeCustomRegsAll);
+        }
+        private void tsmiReplaceSelection_DropDownOpening(object sender, EventArgs e)
+        {
+            bool bHasSelection = txtName.SelectionLength != 0;
+
+            foreach (ToolStripItem tsi in tsmiReplaceSelection.DropDownItems)
+            {
+                tsi.Enabled = bHasSelection;
+            }
+            tsmiReplace_DropDownOpeningCommon(false, tsmiReplaceSelection, sepBeforeCustomRegsSelection);
+        }
+
+
+        private void NewItem_Click(object sender, EventArgs e)
+        {
+            ToolStripMenuItem item = sender as ToolStripMenuItem;
+            RegexItem ritem = item.Tag as RegexItem;
+            ChangeSelectionCommon(new Converter((string input) =>
+            {
+                try
+                {
+                    return Regex.Replace(input, ritem.RegexString, ritem.Replacement);
+                }
+                catch(Exception ex)
+                {
+                    CppUtils.Alert(ex);
+                    return string.Empty;
+                }
+            }),!ritem.IsAll);
+        }
+
+        private void tsmiEditOrDelete_DropDownOpeningCommon(bool bDelete,
+            ToolStripMenuItem tsmi)
+        {
+            tsmi.DropDownItems.Clear();
+            foreach (RegexItem ri in customRegexes_)
+            {
+                ToolStripMenuItem item = new ToolStripMenuItem();
+                item.Text = ri.Name;
+                item.Tag = ri;
+                if(!bDelete)
+                    item.Click += RegItemEdit_Click;
+                else
+                    item.Click += RegItemDelete_Click;
+                tsmi.DropDownItems.Add(item);
+            }
+            if (customRegexes_.Count == 0)
+            {
+                ToolStripMenuItem item = new ToolStripMenuItem();
+                item.Text = Properties.Resources.STR_NO_REPLACE_TOOLS;
+                item.Enabled = false;
+                tsmi.DropDownItems.Add(item);
+            }
+        }
+        private void tsmiEditReplaceTool_DropDownOpening(object sender, EventArgs e)
+        {
+            tsmiEditOrDelete_DropDownOpeningCommon(false, tsmiEditReplaceTool);
+        }
+        private void tsmiDeleteReplaceTool_DropDownOpening(object sender, EventArgs e)
+        {
+            tsmiEditOrDelete_DropDownOpeningCommon(true, tsmiDeleteReplaceTool);
+        }
+        private void RegItemEdit_Click(object sender, EventArgs e)
+        {
+            ToolStripMenuItem item = sender as ToolStripMenuItem;
+            RegexItem ri = item.Tag as RegexItem;
+            using (var dlg = new ReplaceToolDialog(txtName.Text, ri))
+            {
+                if (DialogResult.OK != dlg.ShowDialog(this))
+                    return;
+                ri.reset(dlg.RegexName, dlg.RegExString, dlg.RegExReplacement);
+            }
+        }
+        private void RegItemDelete_Click(object sender, EventArgs e)
+        {
+            ToolStripMenuItem item = sender as ToolStripMenuItem;
+            RegexItem ri = item.Tag as RegexItem;
+
+            if (DialogResult.Yes != CppUtils.YesOrNo(
+                string.Format(Properties.Resources.STR_DOYOUDELETE_REGITEM, ri.Name),
+                MessageBoxDefaultButton.Button2))
+            {
+                return;
+            }
+
+            if (!customRegexes_.Remove(ri))
+                CppUtils.Alert(Properties.Resources.STR_FAILED_DELETE_REGITEM);
+        }
+
+
     }
 }

@@ -117,96 +117,41 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ARE_YOU_SURE_TO_TRASH" xml:space="preserve">
-    <value>'{0}' をごみ箱へ移動しますか？</value>
+  <data name="btnCancel.Text" xml:space="preserve">
+    <value>キャンセル</value>
   </data>
-  <data name="CLEAR_ALL" xml:space="preserve">
-    <value>すべてクリア(&amp;C)</value>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>54, 15</value>
   </data>
-  <data name="ENTER_FILENAME" xml:space="preserve">
-    <value>ファイル名を入力してください</value>
+  <data name="label3.Text" xml:space="preserve">
+    <value>結果(&amp;S):</value>
   </data>
-  <data name="FILE_NOT_FOUND" xml:space="preserve">
-    <value>ファイルが見つかりません : {0}</value>
+  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>80, 15</value>
   </data>
-  <data name="FOLLOWING_UNABLE_FILENAME" xml:space="preserve">
-    <value>以下の文字はファイル名には使えません：</value>
+  <data name="label2.Text" xml:space="preserve">
+    <value>テスト入力(&amp;T):</value>
   </data>
-  <data name="NEW_FOLDER_DDD" xml:space="preserve">
-    <value>新規フォルダ(&amp;N)...</value>
+  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>89, 15</value>
   </data>
-  <data name="NO_ARGUMENTS" xml:space="preserve">
-    <value>引数がありません</value>
+  <data name="label1.Text" xml:space="preserve">
+    <value>置換文字列(&amp;P):</value>
   </data>
-  <data name="Size" xml:space="preserve">
-    <value>サイズ</value>
+  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>55, 15</value>
   </data>
-  <data name="FOLLOWING_DOESNOT_EXIST" xml:space="preserve">
-    <value>以下のファイルは存在しません。</value>
+  <data name="label4.Text" xml:space="preserve">
+    <value>名前(&amp;N):</value>
   </data>
-  <data name="HELP" xml:space="preserve">
-    <value>ChangeFileName.exe [/run] file
-
-/run: ファイルを実行</value>
+  <data name="lblRegEx.Size" type="System.Drawing.Size, System.Drawing">
+    <value>78, 15</value>
   </data>
-  <data name="DESTINATION_EXISTS" xml:space="preserve">
-    <value>宛先には既に "{0}" という名前のファイルが存在します。 ファイルを置き換えますか？</value>
+  <data name="lblRegEx.Text" xml:space="preserve">
+    <value>正規表現(&amp;R):</value>
   </data>
-  <data name="Extention" xml:space="preserve">
-    <value>拡張子</value>
-  </data>
-  <data name="DIR_NOT_EXIST_DO_YOU_WANT_TO_CREATE" xml:space="preserve">
-    <value>"{0}" は存在しません。作成しますか？</value>
-  </data>
-  <data name="NOT_EXISTS" xml:space="preserve">
-    <value>（存在しない）</value>
-  </data>
-  <data name="File" xml:space="preserve">
-    <value>ファイル</value>
-  </data>
-  <data name="NO_EXTERNAL_TOOLS_REGISTERED" xml:space="preserve">
-    <value>＜外部ツールが登録されていません＞</value>
-  </data>
-  <data name="FAILED_TO_LOAD_TOOLXML" xml:space="preserve">
-    <value>'{0}' の読み込みに失敗しました。
-
-理由：
-{1}
-
-ファイルを修正して OK をクリックするか キャンセル をクリックしてアプリケーションを閉じてください。
-もしこの問題が継続するなら、ファイルを削除してください。その場合外部ツールの情報は失われます。</value>
-  </data>
-  <data name="SOURCEFILE_NOT_FOUND" xml:space="preserve">
-    <value>元のファイルが見つかりません '{0}'</value>
-  </data>
-  <data name="CLEAR_NON_EXISTENT" xml:space="preserve">
-    <value>存在しないアイテムをクリア(&amp;N)</value>
-  </data>
-  <data name="OTHERS" xml:space="preserve">
-    <value>その他(&amp;O)</value>
-  </data>
-  <data name="ARE_YOU_SURE_CLEAR_ALL_ITEMS" xml:space="preserve">
-    <value>すべてのアイテムをクリアしますか？</value>
-  </data>
-  <data name="SORT" xml:space="preserve">
-    <value>ソート(&amp;S)</value>
-  </data>
-  <data name="FAILED_TO_CREATE_DIRECTORY" xml:space="preserve">
-    <value>ディレクトリの作成に失敗しました。</value>
-  </data>
-  <data name="ARE_YOU_SURE_TO_OPEN_S_FILES" xml:space="preserve">
-    <value>{0} 個のファイルをすべて開きますか？</value>
-  </data>
-  <data name="SRT_REG_NONAME" xml:space="preserve">
-    <value>＜名前なし＞</value>
-  </data>
-  <data name="STR_DOYOUDELETE_REGITEM" xml:space="preserve">
-    <value>置換アイテム '{0}' を削除しますか？</value>
-  </data>
-  <data name="STR_FAILED_DELETE_REGITEM" xml:space="preserve">
-    <value>置換アイテムの削除に失敗しました。</value>
-  </data>
-  <data name="STR_NO_REPLACE_TOOLS" xml:space="preserve">
-    <value>＜置換ツールなし＞</value>
+  <data name="$this.Text" xml:space="preserve">
+    <value>置換ツール</value>
   </data>
 </root>
