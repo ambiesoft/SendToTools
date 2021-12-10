@@ -16,111 +16,117 @@
     <Filter Include="04 lang">
       <UniqueIdentifier>{8f5dbce2-c87e-4a7f-a373-20a7029e004d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="02 Source Files\lsMisc">
+      <UniqueIdentifier>{008b2d36-a231-4e75-9909-747483392957}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01 Header Files\lsMisc">
+      <UniqueIdentifier>{621d1f53-6027-43a5-8478-282bb73b0f9d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>02 Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\lsMisc\CommandLineParser.cpp">
-      <Filter>02 Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="StdAfx.cpp">
       <Filter>02 Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\lsMisc\UrlEncode.cpp">
-      <Filter>02 Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\lsMisc\UTF16toUTF8.cpp">
-      <Filter>02 Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\lsMisc\stdosd\stdosd.cpp">
-      <Filter>02 Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\lsMisc\stdosd\stdosd_win.cpp">
-      <Filter>02 Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\lsMisc\HighDPI.cpp">
-      <Filter>02 Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\lsMisc\GetLastErrorString.cpp">
-      <Filter>02 Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\lsMisc\GetBackupFile.cpp">
-      <Filter>02 Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\lsMisc\showballoon.cpp">
-      <Filter>02 Source Files</Filter>
+    <ClCompile Include="..\..\lsMisc\CommandLineParser.cpp">
+      <Filter>02 Source Files\lsMisc</Filter>
     </ClCompile>
     <ClCompile Include="..\..\lsMisc\CreateSimpleWindow.cpp">
-      <Filter>02 Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\lsMisc\SHMoveFile.cpp">
-      <Filter>02 Source Files</Filter>
+      <Filter>02 Source Files\lsMisc</Filter>
     </ClCompile>
     <ClCompile Include="..\..\lsMisc\DebugMacro.cpp">
-      <Filter>02 Source Files</Filter>
+      <Filter>02 Source Files\lsMisc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lsMisc\GetBackupFile.cpp">
+      <Filter>02 Source Files\lsMisc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lsMisc\GetLastErrorString.cpp">
+      <Filter>02 Source Files\lsMisc</Filter>
     </ClCompile>
     <ClCompile Include="..\..\lsMisc\GetVersionString.cpp">
-      <Filter>02 Source Files</Filter>
+      <Filter>02 Source Files\lsMisc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lsMisc\HighDPI.cpp">
+      <Filter>02 Source Files\lsMisc</Filter>
     </ClCompile>
     <ClCompile Include="..\..\lsMisc\I18N.cpp">
-      <Filter>02 Source Files</Filter>
+      <Filter>02 Source Files\lsMisc</Filter>
     </ClCompile>
     <ClCompile Include="..\..\lsMisc\OpenCommon.cpp">
-      <Filter>02 Source Files</Filter>
+      <Filter>02 Source Files\lsMisc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lsMisc\SHMoveFile.cpp">
+      <Filter>02 Source Files\lsMisc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lsMisc\stdosd\stdosd.cpp">
+      <Filter>02 Source Files\lsMisc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lsMisc\stdosd\stdosd_win.cpp">
+      <Filter>02 Source Files\lsMisc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lsMisc\UrlEncode.cpp">
+      <Filter>02 Source Files\lsMisc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lsMisc\UTF16toUTF8.cpp">
+      <Filter>02 Source Files\lsMisc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lsMisc\showballoon.cpp">
+      <Filter>02 Source Files\lsMisc</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\lsMisc\CommandLineParser.h">
-      <Filter>01 Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="StdAfx.h">
-      <Filter>01 Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\lsMisc\UrlEncode.h">
-      <Filter>01 Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\lsMisc\UTF16toUTF8.h">
-      <Filter>01 Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\lsMisc\stdosd\stdosd.h">
-      <Filter>01 Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\lsMisc\HighDPI.h">
-      <Filter>01 Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\lsMisc\GetLastErrorString.h">
-      <Filter>01 Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\lsMisc\GetBackupFile.h">
-      <Filter>01 Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\lsMisc\showballoon.h">
       <Filter>01 Header Files</Filter>
     </ClInclude>
     <ClInclude Include="resource.h">
       <Filter>01 Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\lsMisc\CreateSimpleWindow.h">
-      <Filter>01 Header Files</Filter>
+    <ClInclude Include="..\..\lsMisc\CHandle.h">
+      <Filter>01 Header Files\lsMisc</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\lsMisc\SHMoveFile.h">
-      <Filter>01 Header Files</Filter>
+    <ClInclude Include="..\..\lsMisc\CommandLineParser.h">
+      <Filter>01 Header Files\lsMisc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lsMisc\CreateSimpleWindow.h">
+      <Filter>01 Header Files\lsMisc</Filter>
     </ClInclude>
     <ClInclude Include="..\..\lsMisc\DebugMacro.h">
-      <Filter>01 Header Files</Filter>
+      <Filter>01 Header Files\lsMisc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lsMisc\GetBackupFile.h">
+      <Filter>01 Header Files\lsMisc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lsMisc\GetLastErrorString.h">
+      <Filter>01 Header Files\lsMisc</Filter>
     </ClInclude>
     <ClInclude Include="..\..\lsMisc\GetVersionString.h">
-      <Filter>01 Header Files</Filter>
+      <Filter>01 Header Files\lsMisc</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\lsMisc\CHandle.h">
-      <Filter>01 Header Files</Filter>
+    <ClInclude Include="..\..\lsMisc\HighDPI.h">
+      <Filter>01 Header Files\lsMisc</Filter>
     </ClInclude>
     <ClInclude Include="..\..\lsMisc\I18N.h">
-      <Filter>01 Header Files</Filter>
+      <Filter>01 Header Files\lsMisc</Filter>
     </ClInclude>
     <ClInclude Include="..\..\lsMisc\OpenCommon.h">
-      <Filter>01 Header Files</Filter>
+      <Filter>01 Header Files\lsMisc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lsMisc\SHMoveFile.h">
+      <Filter>01 Header Files\lsMisc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lsMisc\showballoon.h">
+      <Filter>01 Header Files\lsMisc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lsMisc\stdosd\stdosd.h">
+      <Filter>01 Header Files\lsMisc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lsMisc\UrlEncode.h">
+      <Filter>01 Header Files\lsMisc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lsMisc\UTF16toUTF8.h">
+      <Filter>01 Header Files\lsMisc</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

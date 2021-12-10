@@ -246,7 +246,8 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	wstring file1 = opMain.getValue(0);
 	wstring file2 = opMain.getValue(1);
 	wstring fileback = GetBackupFile(file1.c_str());
-#define STR_FILE_DOES_NOT_EXIST L"'%s' does not exist."
+
+	constexpr const wchar_t* STR_FILE_DOES_NOT_EXIST = L"'%s' does not exist.";
 	if (!PathFileExists(file1.c_str()))
 	{
 		ErrorExit(stdFormat(I18N(STR_FILE_DOES_NOT_EXIST), file1.c_str()));
@@ -257,7 +258,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	}
 	if (PathFileExists(fileback.c_str()))
 	{
-		ErrorExit(stdFormat(I18N(L"'%s' does exist."), fileback.c_str()));
+		ErrorExit(stdFormat(I18N(STR_FILE_DOES_NOT_EXIST), fileback.c_str()));
 	}
 
 	file1 = stdGetFullPathName(file1);
