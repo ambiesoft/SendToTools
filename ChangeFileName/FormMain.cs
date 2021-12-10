@@ -493,11 +493,11 @@ namespace ChangeFileName
 
         }
 
-        private void modifySelectionToolStripMenuItem_DropDownOpening(object sender, EventArgs e)
+        private void tsmiReplaceSelection_DropDownOpening(object sender, EventArgs e)
         {
             bool bHasSelection = txtName.SelectionLength != 0;
 
-            foreach(ToolStripItem tsi in modifySelectionToolStripMenuItem.DropDownItems)
+            foreach(ToolStripItem tsi in tsmiReplaceSelection.DropDownItems)
             {
                 tsi.Enabled = bHasSelection;
             }

@@ -37,7 +37,7 @@
             this.chkAutoRun = new System.Windows.Forms.CheckBox();
             this.btnMoveTo = new System.Windows.Forms.Button();
             this.menuMoveTo = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.cmModify = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.cmReplace = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tsmiMakeFileNamable = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiLower = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiUpper = new System.Windows.Forms.ToolStripMenuItem();
@@ -54,8 +54,8 @@
             this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripSeparator();
             this.tsmitoHankakuKana = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmitoZenkakuKana = new System.Windows.Forms.ToolStripMenuItem();
-            this.modifyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.cmModifySelection = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.tsmiReplaceAll = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmReplaceSelection = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tsmiMakeFileNamableSel = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiLowerSel = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiUpperSel = new System.Windows.Forms.ToolStripMenuItem();
@@ -72,7 +72,7 @@
             this.toolStripMenuItem8 = new System.Windows.Forms.ToolStripSeparator();
             this.tsmitoHankakuKanaSel = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmitoZenkakuKanaSel = new System.Windows.Forms.ToolStripMenuItem();
-            this.modifySelectionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiReplaceSelection = new System.Windows.Forms.ToolStripMenuItem();
             this.lblFileInfo = new System.Windows.Forms.Label();
             this.menuMain = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -106,8 +106,8 @@
             this.tsmiRevealInFolder = new System.Windows.Forms.ToolStripMenuItem();
             this.btnLaunch = new SplitButtonDemo.SplitButton();
             this.btnPaste = new SplitButtonDemo.SplitButton();
-            this.cmModify.SuspendLayout();
-            this.cmModifySelection.SuspendLayout();
+            this.cmReplace.SuspendLayout();
+            this.cmReplaceSelection.SuspendLayout();
             this.menuMain.SuspendLayout();
             this.cmPaste.SuspendLayout();
             this.tlpInfo.SuspendLayout();
@@ -162,10 +162,10 @@
             resources.ApplyResources(this.menuMoveTo, "menuMoveTo");
             this.menuMoveTo.Name = "menuMoveTo";
             // 
-            // cmModify
+            // cmReplace
             // 
-            resources.ApplyResources(this.cmModify, "cmModify");
-            this.cmModify.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            resources.ApplyResources(this.cmReplace, "cmReplace");
+            this.cmReplace.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmiMakeFileNamable,
             this.tsmiLower,
             this.tsmiUpper,
@@ -182,8 +182,7 @@
             this.toolStripMenuItem7,
             this.tsmitoHankakuKana,
             this.tsmitoZenkakuKana});
-            this.cmModify.Name = "ccmModify";
-            this.cmModify.OwnerItem = this.modifyToolStripMenuItem;
+            this.cmReplace.Name = "cmReplace";
             // 
             // tsmiMakeFileNamable
             // 
@@ -278,16 +277,16 @@
             this.tsmitoZenkakuKana.Name = "tsmitoZenkakuKana";
             this.tsmitoZenkakuKana.Click += new System.EventHandler(this.tsmitoZenkakuKana_Click);
             // 
-            // modifyToolStripMenuItem
+            // tsmiReplaceAll
             // 
-            resources.ApplyResources(this.modifyToolStripMenuItem, "modifyToolStripMenuItem");
-            this.modifyToolStripMenuItem.DropDown = this.cmModify;
-            this.modifyToolStripMenuItem.Name = "modifyToolStripMenuItem";
+            resources.ApplyResources(this.tsmiReplaceAll, "tsmiReplaceAll");
+            this.tsmiReplaceAll.DropDown = this.cmReplace;
+            this.tsmiReplaceAll.Name = "tsmiReplaceAll";
             // 
-            // cmModifySelection
+            // cmReplaceSelection
             // 
-            resources.ApplyResources(this.cmModifySelection, "cmModifySelection");
-            this.cmModifySelection.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            resources.ApplyResources(this.cmReplaceSelection, "cmReplaceSelection");
+            this.cmReplaceSelection.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmiMakeFileNamableSel,
             this.tsmiLowerSel,
             this.tsmiUpperSel,
@@ -304,8 +303,7 @@
             this.toolStripMenuItem8,
             this.tsmitoHankakuKanaSel,
             this.tsmitoZenkakuKanaSel});
-            this.cmModifySelection.Name = "ccmModify";
-            this.cmModifySelection.OwnerItem = this.modifySelectionToolStripMenuItem;
+            this.cmReplaceSelection.Name = "cmReplace";
             // 
             // tsmiMakeFileNamableSel
             // 
@@ -400,12 +398,12 @@
             this.tsmitoZenkakuKanaSel.Name = "tsmitoZenkakuKanaSel";
             this.tsmitoZenkakuKanaSel.Click += new System.EventHandler(this.tsmitoZenkakuKanaSel_Click);
             // 
-            // modifySelectionToolStripMenuItem
+            // tsmiReplaceSelection
             // 
-            resources.ApplyResources(this.modifySelectionToolStripMenuItem, "modifySelectionToolStripMenuItem");
-            this.modifySelectionToolStripMenuItem.DropDown = this.cmModifySelection;
-            this.modifySelectionToolStripMenuItem.Name = "modifySelectionToolStripMenuItem";
-            this.modifySelectionToolStripMenuItem.DropDownOpening += new System.EventHandler(this.modifySelectionToolStripMenuItem_DropDownOpening);
+            resources.ApplyResources(this.tsmiReplaceSelection, "tsmiReplaceSelection");
+            this.tsmiReplaceSelection.DropDown = this.cmReplaceSelection;
+            this.tsmiReplaceSelection.Name = "tsmiReplaceSelection";
+            this.tsmiReplaceSelection.DropDownOpening += new System.EventHandler(this.tsmiReplaceSelection_DropDownOpening);
             // 
             // lblFileInfo
             // 
@@ -418,8 +416,8 @@
             this.menuMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
             this.editToolStripMenuItem,
-            this.modifyToolStripMenuItem,
-            this.modifySelectionToolStripMenuItem,
+            this.tsmiReplaceAll,
+            this.tsmiReplaceSelection,
             this.toolsToolStripMenuItem,
             this.windowToolStripMenuItem,
             this.helpToolStripMenuItem});
@@ -655,8 +653,8 @@
             this.Name = "FormMain";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormMain_FormClosed);
             this.Load += new System.EventHandler(this.FormMain_Load);
-            this.cmModify.ResumeLayout(false);
-            this.cmModifySelection.ResumeLayout(false);
+            this.cmReplace.ResumeLayout(false);
+            this.cmReplaceSelection.ResumeLayout(false);
             this.menuMain.ResumeLayout(false);
             this.menuMain.PerformLayout();
             this.cmPaste.ResumeLayout(false);
@@ -677,13 +675,13 @@
         private System.Windows.Forms.CheckBox chkAutoRun;
         private System.Windows.Forms.Button btnMoveTo;
         private System.Windows.Forms.ContextMenuStrip menuMoveTo;
-        private System.Windows.Forms.ContextMenuStrip cmModify;
+        private System.Windows.Forms.ContextMenuStrip cmReplace;
         private System.Windows.Forms.ToolStripMenuItem tsmiMakeFileNamable;
         private System.Windows.Forms.ToolStripMenuItem tsmiLower;
         private System.Windows.Forms.ToolStripMenuItem tsmiUpper;
         private System.Windows.Forms.ToolStripMenuItem tsmiTrim;
         private System.Windows.Forms.ToolStripMenuItem tsmiRemoveSpace;
-        private System.Windows.Forms.ContextMenuStrip cmModifySelection;
+        private System.Windows.Forms.ContextMenuStrip cmReplaceSelection;
         private System.Windows.Forms.ToolStripMenuItem tsmiRemoveSpaceSel;
         private System.Windows.Forms.ToolStripMenuItem tsmiMakeFileNamableSel;
         private System.Windows.Forms.ToolStripMenuItem tsmiLowerSel;
@@ -702,8 +700,8 @@
         private System.Windows.Forms.ToolStripMenuItem copyPathToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pasteToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pasteTotailToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem modifyToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem modifySelectionToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tsmiReplaceAll;
+        private System.Windows.Forms.ToolStripMenuItem tsmiReplaceSelection;
         private System.Windows.Forms.ToolStripMenuItem windowToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem alwaysOnTopToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
