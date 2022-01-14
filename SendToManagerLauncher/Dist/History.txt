@@ -1,3 +1,5 @@
+Add CommonControlv6 support on CopyPath and SwapFilename
+
 2021/12/10 ver 2.1.24
 ChangeFileName v1.6.9 : Add Custom Replace Tools
 
