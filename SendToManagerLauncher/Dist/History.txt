@@ -1,3 +1,5 @@
+2022/01/18 ver 2.1.25
+SwapFilename: Show the file size in the message when deleting a file
 Add CommonControlv6 support on CopyPath and SwapFilename
 
 2021/12/10 ver 2.1.24

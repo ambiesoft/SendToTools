@@ -75,6 +75,9 @@
     <ClCompile Include="..\..\lsMisc\showballoon.cpp">
       <Filter>02 Source Files\lsMisc</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\lsMisc\FormatSizeof.cpp">
+      <Filter>02 Source Files\lsMisc</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="StdAfx.h">
@@ -126,6 +129,9 @@
       <Filter>01 Header Files\lsMisc</Filter>
     </ClInclude>
     <ClInclude Include="..\..\lsMisc\UTF16toUTF8.h">
+      <Filter>01 Header Files\lsMisc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lsMisc\FormatSizeof.h">
       <Filter>01 Header Files\lsMisc</Filter>
     </ClInclude>
   </ItemGroup>

@@ -1,5 +1,5 @@
 ﻿"'%s' and '%s' have been swapped."="'%s' と '%s' を入れ替えました。"
-"Do you want to remove '%s'?"="'%s' を削除しますか？"
+"Do you want to remove '%s' of size '%s'?"="'%s' （ファイルサイズ：%s）を削除しますか？"
 "Remove older file | %s"="古いファイルの削除 | %s"
 "'%s' has been removed."="'%s' を削除しました。"
 

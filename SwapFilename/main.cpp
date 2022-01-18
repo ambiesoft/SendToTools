@@ -2,6 +2,7 @@
 #include "../../lsMisc/CHandle.h"
 #include "../../lsMisc/UrlEncode.h"
 #include "../../lsMisc/OpenCommon.h"
+#include "../../lsMisc/FormatSizeof.h"
 
 #include "resource.h"
 
@@ -171,6 +172,19 @@ wstring GetLangFromCommandLine()
 	parser.Parse();
 
 	return lang;
+}
+bool GetFileSizeFromPath(const wchar_t* pPath, LARGE_INTEGER* pLI)
+{
+	CFileHandle h1(CreateFile(pPath,
+		GENERIC_READ,
+		FILE_SHARE_READ,
+		NULL,
+		OPEN_EXISTING,
+		FILE_ATTRIBUTE_NORMAL,
+		NULL));
+	if (!h1)
+		return false;
+	return !!GetFileSizeEx(h1, pLI);
 }
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	_In_opt_ HINSTANCE hPrevInstance,
@@ -366,8 +380,21 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 			}
 			if (bShowRemoveConfirmMessage)
 			{
+				wstring sizeString;
+				LARGE_INTEGER liFileSize;
+				liFileSize.QuadPart = 0;
+				if (GetFileSizeFromPath(olderfile.c_str(), &liFileSize))
+					sizeString = FormatSizeof(liFileSize.QuadPart);
+				else
+					sizeString = I18N(L"Unknown");
+
+				wstring msg = stdFormat(I18N(L"Do you want to remove '%s' of size '%s'?"),
+					olderfile.c_str(),
+					sizeString.c_str()
+				).c_str();
+
 				if (IDYES != MessageBox(NULL,
-					stdFormat(I18N(L"Do you want to remove '%s'?"), olderfile.c_str()).c_str(),
+					msg.c_str(),
 					stdFormat(I18N(L"Remove older file | %s"), APPNAME).c_str(),
 					MB_ICONQUESTION | MB_YESNO | MB_DEFBUTTON2))
 				{
@@ -386,14 +413,6 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	wstring balloontext = stdFormat(I18N(L"'%s' and '%s' have been swapped."), stdGetFileName(file1).c_str(), stdGetFileName(file2).c_str()) +
 		(additionalMessage.empty() ? L"" : L"\r\n" + additionalMessage);
 
-	//showballoon(NULL,
-	//	APP_NAME,
-	// balloontext
-	//	LoadIcon(hInstance, MAKEINTRESOURCE(IDI_ICON_MAIN)),
-	//	5000,
-	//	1,
-	//	FALSE,
-	//	1);
 	showballoonexe(
 		APP_NAME,
 		balloontext.c_str(),
