@@ -1,3 +1,6 @@
+2022/01/25 ver 3.1.1
+Migrated to VS2022 and .NET Framework4.8
+
 2022/01/18 ver 2.1.25
 SwapFilename: Show the file size in the message when deleting a file
 Add CommonControlv6 support on CopyPath and SwapFilename

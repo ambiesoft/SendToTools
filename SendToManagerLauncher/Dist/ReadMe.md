@@ -1,28 +1,28 @@
 ## SendtoTools
-SendtoTools can edit various tools of "SendTo" menu of the explorer.
+SendtoTools is an application that adds and manages various items to the "Send" menu of Explorer.
 
 ### Features
-* You can manage your favorite tools.
-* You can sort tools by putting numbers at the head of tool name os 'SendTo' menu will be sorted.
+* You can register and manage your favorite tools in the "Inventory".
+* The tool's file names can be numbered and sorted.
 * This application can be portable.
-* Replace all tools in "Sendto" menu.
+* You can register in the "Send" menu only when necessary, and then cancel it.
 
 ## Download
 Download binary from https://github.com/ambiesoft/SendToTools/releases
 
 ## Environment
-.Net4 and Visual Studio 2019 runtime library are required.
+.NET Framework4.8 and Visual Studio 2022 runtime library are required.
 
 ## Install
-Extract the downloaded archive and lanucn '''SendToManager.exe'''.
+Extract the downloaded archive and launch '''SendToManager.exe'''.
 
 ## Basic usage
 
-1. Extract the downloaded archive and launch *SendToManager.exe*.
+1. Unzip the downloaded archive and start *SendToManager.exe*.
 2. Create new shortcut files by clicking **New Item** or copy shortcut files to the **Inventory** folder which can be opened by selecting **[Folder] > [Open Current Inventory]**.
-3. You can reoder items by **dragging-and-dropping** or clicking **[up] or [donw]** button on the toolbar.
+3. You can reoder items by **dragging-and-dropping** or clicking **[up] or [down]** button on the toolbar.
 4. You can put ordered numbers by clicking **[Number]** button. This makes the order of **SendTo** menu same as this order.
-5. By clicking **[Deploy]**, All shortcut files will be copied on the **SendTo Folder**.
+5. By clicking **[Deploy]**, All shortcut files will be copied onto the **SendTo Folder**.
 6. By clicking **[Displace]**, All shortcut files in **SendTo Folder** will be removed.
 
 ## Advanced usage
@@ -34,7 +34,7 @@ Following commnad will deploy the inventory named *MyInventory*. Additional opti
 ```SendToManager.exe --apply MyInventory -y```
 
 ## Tools
-Any shortcut files can be put on "SendTo". But SendtoTools ships with various tools.
+Any shortcut files can be put on "SendTo". But SendtoTools comes with the following tools.
 
 #### ChangeFileName
 This tool can change file name or move the file with the name you specified. One of the benefit of this tools is that if you want to change the file name but it is locked by a process from which you want to get name information, you can paste the name into this app before closing app, then after closing the app, renaming operation can be performed.
@@ -58,13 +58,13 @@ Move file(s) to favorites location.
 Open a Command Prompt with current directory as the directory of the file or folder.
 
 #### RegexFileRenamer
-Rename file by a regular expression.
+Rename files using a regular expression.
 
 #### RunFileAs
-Run file as administrator.
+Run a file as administrator.
 
 #### touch
-Change file time(Last Access time and Last Write time) to current time. If you launch with shift,control key or R-Button pressed, it touches all files in subdirectories.
+Change the file time(Last Access time and Last Write time) to current time. If you launch with shift,control key or R-Button pressed, it touches all files in subdirectories.
 
 
 ## License
