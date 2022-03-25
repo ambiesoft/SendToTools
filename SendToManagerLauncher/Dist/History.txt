@@ -1,3 +1,6 @@
+2022/03/25 ver 3.1.2
+Fixed to warn when 4.6.1 is not installed
+
 2022/01/25 ver 3.1.1
 Migrated to VS2022 and .NET Framework4.8
 

@@ -153,6 +153,9 @@
   <data name="COLUMN_WORKINGDIRECTORY" xml:space="preserve">
     <value>Working Directory</value>
   </data>
+  <data name="DOTNET461_OR_NEWER_REQUIRED" xml:space="preserve">
+    <value>.NetFramework4.6.1 or newer is required to run this application.</value>
+  </data>
   <data name="DO_YOU_WANT_TO_CREATE_DEFAULT_INVENTORY" xml:space="preserve">
     <value>Inventory does not exist. Do you want to create default inventory?</value>
   </data>

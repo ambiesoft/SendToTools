@@ -249,6 +249,11 @@ namespace SendToManager
         // [STAThread]
         public static void DllMain()
         {
+            if(!AmbLib.IsNet461OrNewer())
+            {
+                CppUtils.Alert(Properties.Resources.DOTNET461_OR_NEWER_REQUIRED);
+                return;
+            }
             if (!preRun())
                 return;
 

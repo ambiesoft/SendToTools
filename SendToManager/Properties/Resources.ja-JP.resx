@@ -255,4 +255,7 @@
   <data name="ANOTHER_INSTANCE_IS_RUNNING" xml:space="preserve">
     <value>他のインスタンスが既に起動しています。起動中のインスタンスを閉じてから再試行してください。</value>
   </data>
+  <data name="DOTNET461_OR_NEWER_REQUIRED" xml:space="preserve">
+    <value>このアプリケーションを実行するには、.NetFramework4.6.1以上がインストールされている必要があります。</value>
+  </data>
 </root>
