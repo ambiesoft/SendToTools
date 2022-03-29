@@ -167,6 +167,7 @@
         "tools\\vcruntime140.dll",
         "tools\\WaitNext.exe",
         "tools\\WaitNext.pdb",
+        "tools\\RefreshDesktop.exe",
         "tools\\ja-JP\\Ambiesoft.GetTextDialog.resources.dll",
         "tools\\ja-JP\\ChangeFileName.resources.dll",
         "tools\\ja-JP\\ChangeFileTime.resources.dll",
