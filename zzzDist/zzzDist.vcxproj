@@ -63,7 +63,9 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <PostBuildEvent>
-      <Command>mkdir "$(OutDir)lang"
+      <Command>C:\LegacyPrograms\FFC\FFC.exe /t12 "\\MinpSrv\Share\Linkout\RefreshDesktop\x86\RefreshDesktop.exe" /to:"$(OutDir)"
+
+mkdir "$(OutDir)lang"
 copy "$(SolutionDir)SwapFilename\lang\SwapFilename.jpn.txt" "$(OutDir)lang\"
 
 C:\LegacyPrograms\FFC\FFC.exe /t12 "$(UniversalCRTSdkDir)Redist\$(TargetPlatformVersion)\ucrt\DLLs\$(PlatformTarget)\*" /to:"$(OutDir)"
@@ -96,7 +98,9 @@ del "$(TargetDir)zzzDist.*"
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <PostBuildEvent>
-      <Command>mkdir "$(OutDir)lang"
+      <Command>C:\LegacyPrograms\FFC\FFC.exe /t12 "\\MinpSrv\Share\Linkout\RefreshDesktop\x86\RefreshDesktop.exe" /to:"$(OutDir)"
+
+mkdir "$(OutDir)lang"
 copy "$(SolutionDir)SwapFilename\lang\SwapFilename.jpn.txt" "$(OutDir)lang\"
 
 C:\LegacyPrograms\FFC\FFC.exe /t12 "$(UniversalCRTSdkDir)Redist\$(TargetPlatformVersion)\ucrt\DLLs\$(PlatformTarget)\*" /to:"$(OutDir)"

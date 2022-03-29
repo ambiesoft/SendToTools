@@ -27,6 +27,7 @@
 using Ambiesoft;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -191,6 +192,14 @@ namespace ChangeFileName
             } while (true);
         }
 
+        static string GetFullPathWithCase(string oldfull)
+        {
+            string dir = Path.GetDirectoryName(oldfull);
+            string name = Path.GetFileName(oldfull);
+            if (File.Exists(oldfull))
+                return Directory.GetFiles(dir, name).FirstOrDefault();
+            return Directory.GetDirectories(dir, name).FirstOrDefault();
+        }
         internal static bool RenameIt(IWin32Window win, string oldfull, string newName)
         {
             //if (oldname == (newName + oldext))
@@ -227,7 +236,7 @@ namespace ChangeFileName
 
             if (String.Compare(oldfull, newfull, true) == 0)
             {
-                string oldfullcase = Directory.GetFiles(Path.GetDirectoryName(oldfull), Path.GetFileName(oldfull)).FirstOrDefault();
+                string oldfullcase = GetFullPathWithCase(oldfull);
 
                 // user supplied path is not same as the physical path
                 if (String.Compare(oldfullcase, newfull, true) == 0 &&
@@ -240,15 +249,30 @@ namespace ChangeFileName
                         return false;
 
                     // use ntfs transaction
-                    string tmp = oldfull + "trans";
-                    if (File.Exists(tmp))
-                        return false;
-
+                    string tmp;
+                    for (int i = 0; ; i++)
+                    {
+                        tmp = oldfull + "trans" + (i == 0 ? "" : i.ToString());
+                        if (File.Exists(tmp) || Directory.Exists(tmp))
+                            continue;
+                        break;
+                    }
                     List<KeyValuePair<string, string>> srcdests = new List<KeyValuePair<string, string>>();
                     srcdests.Add(new KeyValuePair<string, string>(oldfull, tmp));
                     srcdests.Add(new KeyValuePair<string, string>(tmp, newfull));
 
-                    return CppUtils.MoveFileAtomic(srcdests);
+                    if (!CppUtils.MoveFileAtomic(srcdests))
+                        return false;
+
+                    // Refresh Desktop
+                    string exeRD = Path.Combine(
+                        Path.GetDirectoryName(Application.ExecutablePath),
+                        "RefreshDesktop.exe");
+                    if (File.Exists(exeRD))
+                    {
+                        Process.Start(exeRD, "--wait 3");
+                    }
+                    return true;
                 }
                 return true;
             }
