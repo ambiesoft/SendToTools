@@ -131,12 +131,6 @@ namespace ChangeFileName
 
             moveToAndClose(selectedPath);
         }
-        private void itemSort_Click(object sender, EventArgs e)
-        {
-            string[] tmp = DiskDirs;
-            Array.Sort(tmp, StringComparer.InvariantCultureIgnoreCase);
-            DiskDirs = tmp;
-        }
         private void itemClearFolder_Click(object sender, EventArgs e)
         {
             if (DialogResult.Yes != CppUtils.YesOrNo(Properties.Resources.ARE_YOU_SURE_CLEAR_ALL_ITEMS,
@@ -257,9 +251,6 @@ namespace ChangeFileName
                 hasItems = true;
             }
 
-            menuMoveTo.Items.Add(new ToolStripSeparator());
-
-
             // Add 'Others' Menu
             ToolStripMenuItem itemOthers = new ToolStripMenuItem(Properties.Resources.OTHERS);
             {
@@ -271,10 +262,26 @@ namespace ChangeFileName
                 itemOthers.DropDownItems.Add(new ToolStripSeparator());
 
                 ToolStripMenuItem itemSort = new ToolStripMenuItem();
+                {
+                    {
+                        ToolStripMenuItem itemSortByName = new ToolStripMenuItem();
+                        itemSortByName.Enabled = hasItems;
+                        itemSortByName.Click += ItemSortByName_Click;
+                        itemSortByName.Text = Properties.Resources.SORT_BY_NAME;
+                        itemSort.DropDownItems.Add(itemSortByName);
+                    }
+                    {
+                        ToolStripMenuItem itemSortByDate = new ToolStripMenuItem();
+                        itemSortByDate.Enabled = hasItems;
+                        itemSortByDate.Click += ItemSortByDate_Click;
+                        itemSortByDate.Text = Properties.Resources.SORT_BY_DATE;
+                        itemSort.DropDownItems.Add(itemSortByDate);
+                    }
+                }
                 itemSort.Enabled = hasItems;
-                itemSort.Click += new EventHandler(itemSort_Click);
                 itemSort.Text = Properties.Resources.SORT;
                 itemOthers.DropDownItems.Add(itemSort);
+                
 
                 itemOthers.DropDownItems.Add(new ToolStripSeparator());
 
@@ -291,8 +298,8 @@ namespace ChangeFileName
                 itemOthers.DropDownItems.Add(itemClearNonExistant);
 
             }
-            menuMoveTo.Items.Add(itemOthers);
-
+            menuMoveTo.Items.Insert(0, itemOthers);
+            menuMoveTo.Items.Insert(1, new ToolStripSeparator());
 
             // Show menu
             Point pt = btnMoveTo.Location;
@@ -300,8 +307,27 @@ namespace ChangeFileName
             menuMoveTo.Show(this.PointToScreen(pt));
         }
 
+        private void ItemSortByName_Click(object sender, EventArgs e)
+        {
+            string[] tmp = DiskDirs;
+            Array.Sort(tmp, StringComparer.InvariantCultureIgnoreCase);
+            DiskDirs = tmp;
+        }
 
+        private void ItemSortByDate_Click(object sender, EventArgs e)
+        {
+            string[] tmp = DiskDirs;
+            Array.Sort(tmp,
+                delegate (string s1, string s2)
+                {
+                    DirectoryInfo d1=new DirectoryInfo(s1);
+                    DirectoryInfo d2=new DirectoryInfo(s2);
 
+                    return d2.LastWriteTime.CompareTo(d1.LastWriteTime);
+                });
+
+            DiskDirs = tmp;
+        }
     }
 }
 

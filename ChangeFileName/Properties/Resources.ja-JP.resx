@@ -209,4 +209,10 @@
   <data name="STR_NO_REPLACE_TOOLS" xml:space="preserve">
     <value>＜置換ツールなし＞</value>
   </data>
+  <data name="SORT_BY_DATE" xml:space="preserve">
+    <value>日付でソート(&amp;D)</value>
+  </data>
+  <data name="SORT_BY_NAME" xml:space="preserve">
+    <value>名前でソート(&amp;N)</value>
+  </data>
 </root>

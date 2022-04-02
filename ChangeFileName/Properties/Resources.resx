@@ -209,4 +209,10 @@ If this probrem continues, delete the file but you will lost all information abo
   <data name="STR_NO_REPLACE_TOOLS" xml:space="preserve">
     <value>&lt;No Replace Tools&gt;</value>
   </data>
+  <data name="SORT_BY_DATE" xml:space="preserve">
+    <value>Sort by &amp;Date</value>
+  </data>
+  <data name="SORT_BY_NAME" xml:space="preserve">
+    <value>Sort by &amp;Name</value>
+  </data>
 </root>
