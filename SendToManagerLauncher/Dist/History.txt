@@ -1,3 +1,6 @@
+2022/04/06 ver 3.1.5
+ChangeFileName v2.0.4 : Add 'Paste at the start'
+
 2022/04/02 ver 3.1.4
 ChangeFileName v2.0.3 : Put 'Other' menu at top, and it contains more items in 'Sort' menu.
 

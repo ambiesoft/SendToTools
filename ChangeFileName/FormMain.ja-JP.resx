@@ -218,19 +218,19 @@
     <value>164, 6</value>
   </data>
   <data name="tsmiNewReplaceToo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>175, 22</value>
   </data>
   <data name="tsmiNewReplaceToo.Text" xml:space="preserve">
     <value>新規置換ツール(&amp;N)</value>
   </data>
   <data name="tsmiEditReplaceTool.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>175, 22</value>
   </data>
   <data name="tsmiEditReplaceTool.Text" xml:space="preserve">
     <value>編集(&amp;E)</value>
   </data>
   <data name="tsmiDeleteReplaceTool.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>175, 22</value>
   </data>
   <data name="tsmiDeleteReplaceTool.Text" xml:space="preserve">
     <value>削除(&amp;D)</value>
@@ -241,14 +241,14 @@
   <data name="tsmiReplaceTool.Text" xml:space="preserve">
     <value>置換ツール(&amp;R)...</value>
   </data>
-  <data name="cmReplace.Size" type="System.Drawing.Size, System.Drawing">
-    <value>168, 336</value>
-  </data>
   <data name="tsmiReplaceAll.Size" type="System.Drawing.Size, System.Drawing">
     <value>102, 20</value>
   </data>
   <data name="tsmiReplaceAll.Text" xml:space="preserve">
     <value>すべてを置換(&amp;R)</value>
+  </data>
+  <data name="cmReplace.Size" type="System.Drawing.Size, System.Drawing">
+    <value>168, 336</value>
   </data>
   <data name="tsmiMakeFileNamableSel.Size" type="System.Drawing.Size, System.Drawing">
     <value>204, 22</value>
@@ -397,6 +397,12 @@
   <data name="pasteToolStripMenuItem.Text" xml:space="preserve">
     <value>貼り付け(&amp;P)</value>
   </data>
+  <data name="pasteAtThestartToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>178, 22</value>
+  </data>
+  <data name="pasteAtThestartToolStripMenuItem.Text" xml:space="preserve">
+    <value>先頭に貼り付け(&amp;S)</value>
+  </data>
   <data name="pasteTotailToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>178, 22</value>
   </data>
@@ -469,14 +475,20 @@
   <data name="helpToolStripMenuItem.Text" xml:space="preserve">
     <value>ヘルプ(&amp;H)</value>
   </data>
-  <data name="pasteTotailToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>150, 22</value>
+  <data name="tsmPasteAtStart.Size" type="System.Drawing.Size, System.Drawing">
+    <value>169, 22</value>
   </data>
-  <data name="pasteTotailToolStripMenuItem1.Text" xml:space="preserve">
-    <value>末尾に追加(&amp;T)</value>
+  <data name="tsmPasteAtStart.Text" xml:space="preserve">
+    <value>先頭に貼り付け(&amp;S)</value>
+  </data>
+  <data name="tsmPasteAtEnd.Size" type="System.Drawing.Size, System.Drawing">
+    <value>169, 22</value>
+  </data>
+  <data name="tsmPasteAtEnd.Text" xml:space="preserve">
+    <value>末尾に貼り付け(&amp;E)</value>
   </data>
   <data name="cmPaste.Size" type="System.Drawing.Size, System.Drawing">
-    <value>151, 26</value>
+    <value>170, 48</value>
   </data>
   <data name="btnLaunch.Text" xml:space="preserve">
     <value>実行(&amp;L)</value>

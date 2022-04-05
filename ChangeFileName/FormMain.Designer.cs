@@ -94,6 +94,7 @@
             this.copyPathToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.pasteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pasteAtThestartToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pasteTotailToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiOptions = new System.Windows.Forms.ToolStripMenuItem();
@@ -108,7 +109,8 @@
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.goToWebPageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cmPaste = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.pasteTotailToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmPasteAtStart = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmPasteAtEnd = new System.Windows.Forms.ToolStripMenuItem();
             this.tlpInfo = new System.Windows.Forms.TableLayoutPanel();
             this.lblExtention = new System.Windows.Forms.Label();
             this.cmLaunch = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -194,6 +196,7 @@
             this.sepBeforeCustomRegsAll,
             this.tsmiReplaceTool});
             this.cmReplace.Name = "cmReplace";
+            this.cmReplace.OwnerItem = this.tsmiReplaceAll;
             // 
             // tsmiMakeFileNamable
             // 
@@ -518,6 +521,7 @@
             this.copyPathToolStripMenuItem,
             this.toolStripMenuItem1,
             this.pasteToolStripMenuItem,
+            this.pasteAtThestartToolStripMenuItem,
             this.pasteTotailToolStripMenuItem});
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
             // 
@@ -561,11 +565,17 @@
             this.pasteToolStripMenuItem.Name = "pasteToolStripMenuItem";
             this.pasteToolStripMenuItem.Click += new System.EventHandler(this.btnPaste_Click);
             // 
+            // pasteAtThestartToolStripMenuItem
+            // 
+            resources.ApplyResources(this.pasteAtThestartToolStripMenuItem, "pasteAtThestartToolStripMenuItem");
+            this.pasteAtThestartToolStripMenuItem.Name = "pasteAtThestartToolStripMenuItem";
+            this.pasteAtThestartToolStripMenuItem.Click += new System.EventHandler(this.tsmPasteAtStart_Click);
+            // 
             // pasteTotailToolStripMenuItem
             // 
             resources.ApplyResources(this.pasteTotailToolStripMenuItem, "pasteTotailToolStripMenuItem");
             this.pasteTotailToolStripMenuItem.Name = "pasteTotailToolStripMenuItem";
-            this.pasteTotailToolStripMenuItem.Click += new System.EventHandler(this.pasteTotailToolStripMenuItem_Click);
+            this.pasteTotailToolStripMenuItem.Click += new System.EventHandler(this.tsmPasteAtEnd_Click);
             // 
             // toolsToolStripMenuItem
             // 
@@ -652,14 +662,21 @@
             // 
             resources.ApplyResources(this.cmPaste, "cmPaste");
             this.cmPaste.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.pasteTotailToolStripMenuItem1});
+            this.tsmPasteAtStart,
+            this.tsmPasteAtEnd});
             this.cmPaste.Name = "cmPaste";
             // 
-            // pasteTotailToolStripMenuItem1
+            // tsmPasteAtStart
             // 
-            resources.ApplyResources(this.pasteTotailToolStripMenuItem1, "pasteTotailToolStripMenuItem1");
-            this.pasteTotailToolStripMenuItem1.Name = "pasteTotailToolStripMenuItem1";
-            this.pasteTotailToolStripMenuItem1.Click += new System.EventHandler(this.pasteTotailToolStripMenuItem_Click);
+            resources.ApplyResources(this.tsmPasteAtStart, "tsmPasteAtStart");
+            this.tsmPasteAtStart.Name = "tsmPasteAtStart";
+            this.tsmPasteAtStart.Click += new System.EventHandler(this.tsmPasteAtStart_Click);
+            // 
+            // tsmPasteAtEnd
+            // 
+            resources.ApplyResources(this.tsmPasteAtEnd, "tsmPasteAtEnd");
+            this.tsmPasteAtEnd.Name = "tsmPasteAtEnd";
+            this.tsmPasteAtEnd.Click += new System.EventHandler(this.tsmPasteAtEnd_Click);
             // 
             // tlpInfo
             // 
@@ -778,7 +795,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
         private SplitButtonDemo.SplitButton btnPaste;
         private System.Windows.Forms.ContextMenuStrip cmPaste;
-        private System.Windows.Forms.ToolStripMenuItem pasteTotailToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem tsmPasteAtEnd;
         private System.Windows.Forms.ToolStripMenuItem undoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem redoToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
@@ -824,5 +841,7 @@
         private System.Windows.Forms.ToolStripMenuItem dummyToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem tsmiDeleteReplaceTool;
         private System.Windows.Forms.ToolStripMenuItem dummyToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem tsmPasteAtStart;
+        private System.Windows.Forms.ToolStripMenuItem pasteAtThestartToolStripMenuItem;
     }
 }

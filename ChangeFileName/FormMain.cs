@@ -451,7 +451,18 @@ namespace ChangeFileName
             Ambiesoft.Profile.WriteBool(SECTION_SETTING, KEY_TOPMOST, alwaysOnTopToolStripMenuItem.Checked, IniFile);
         }
 
-        private void pasteTotailToolStripMenuItem_Click(object sender, EventArgs e)
+     
+        private void tsmPasteAtStart_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string addingText = Clipboard.GetText();
+                if (!string.IsNullOrEmpty(addingText))
+                    txtName.Text = addingText + " " + txtName.Text;
+            }
+            catch (Exception) { }
+        }
+        private void tsmPasteAtEnd_Click(object sender, EventArgs e)
         {
             try
             {
@@ -461,7 +472,6 @@ namespace ChangeFileName
             }
             catch (Exception) { }
         }
-
         private void undoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             _unreDoing = true;
@@ -901,7 +911,5 @@ namespace ChangeFileName
             if (!customRegexes_.Remove(ri))
                 CppUtils.Alert(Properties.Resources.STR_FAILED_DELETE_REGITEM);
         }
-
-
     }
 }
