@@ -1,3 +1,6 @@
+2022/05/11 ver 3.1.6
+ChangeFileName v2.0.5 : Fix the initial form size for custom dpi
+
 2022/04/06 ver 3.1.5
 ChangeFileName v2.0.4 : Add 'Paste at the start'
 

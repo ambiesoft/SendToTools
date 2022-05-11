@@ -123,7 +123,7 @@
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="btnYes.Location" type="System.Drawing.Point, System.Drawing">
-    <value>308, 321</value>
+    <value>228, 208</value>
   </data>
   <data name="btnYes.Size" type="System.Drawing.Size, System.Drawing">
     <value>113, 29</value>
@@ -151,7 +151,7 @@
     <value>Bottom, Right</value>
   </data>
   <data name="btnCancel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>427, 321</value>
+    <value>347, 208</value>
   </data>
   <data name="btnCancel.Size" type="System.Drawing.Size, System.Drawing">
     <value>113, 29</value>
@@ -238,7 +238,7 @@
     <value>Both</value>
   </data>
   <data name="txtMessage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>528, 256</value>
+    <value>448, 143</value>
   </data>
   <data name="txtMessage.TabIndex" type="System.Int32, mscorlib">
     <value>30</value>
@@ -258,11 +258,14 @@
   <data name="&gt;&gt;txtMessage.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <data name="chkShowAll.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
+  </data>
   <data name="chkShowAll.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="chkShowAll.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 314</value>
+    <value>12, 201</value>
   </data>
   <data name="chkShowAll.Size" type="System.Drawing.Size, System.Drawing">
     <value>76, 19</value>
@@ -292,10 +295,13 @@
     <value>96, 96</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>552, 362</value>
+    <value>472, 249</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Meiryo UI, 9pt</value>
+  </data>
+  <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>488, 288</value>
   </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterScreen</value>
