@@ -128,8 +128,29 @@ namespace ChangeFileName
                 return;
 
             putFolderToTop(selectedPath);
-
             moveToAndClose(selectedPath);
+        }
+        private void itemDateFolder_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string curFile = (string)txtName.Tag;
+                string curDir = Directory.GetParent(curFile).FullName;
+
+                DateTime now = DateTime.Now;
+                string targetDirName = string.Format("{0:D4}-{1:D2}-{2:D2}",
+                    now.Year, now.Month, now.Day);
+
+                string targetDir = Path.Combine(curDir, targetDirName);
+                Directory.CreateDirectory(targetDir);
+
+                moveToAndClose(targetDir);
+            }
+            catch(Exception ex)
+            {
+                CppUtils.Alert(ex);
+                return;
+            }
         }
         private void itemClearFolder_Click(object sender, EventArgs e)
         {
@@ -254,10 +275,18 @@ namespace ChangeFileName
             // Add 'Others' Menu
             ToolStripMenuItem itemOthers = new ToolStripMenuItem(Properties.Resources.OTHERS);
             {
-                ToolStripMenuItem itemNewFolder = new ToolStripMenuItem();
-                itemNewFolder.Click += new EventHandler(itemNewFolder_Click);
-                itemNewFolder.Text = Properties.Resources.NEW_FOLDER_DDD;
-                itemOthers.DropDownItems.Add(itemNewFolder);
+                {
+                    ToolStripMenuItem itemNewFolder = new ToolStripMenuItem();
+                    itemNewFolder.Click += new EventHandler(itemNewFolder_Click);
+                    itemNewFolder.Text = Properties.Resources.NEW_FOLDER_DDD;
+                    itemOthers.DropDownItems.Add(itemNewFolder);
+                }
+                {
+                    ToolStripMenuItem itemNewDateFolder = new ToolStripMenuItem();
+                    itemNewDateFolder.Click += new EventHandler(itemDateFolder_Click);
+                    itemNewDateFolder.Text = Properties.Resources.DATE_FOLDER;
+                    itemOthers.DropDownItems.Add(itemNewDateFolder);
+                }
 
                 itemOthers.DropDownItems.Add(new ToolStripSeparator());
 

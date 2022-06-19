@@ -215,4 +215,7 @@
   <data name="SORT_BY_NAME" xml:space="preserve">
     <value>名前でソート(&amp;N)</value>
   </data>
+  <data name="DATE_FOLDER" xml:space="preserve">
+    <value>時刻のフォルダ(&amp;D)</value>
+  </data>
 </root>

@@ -106,6 +106,15 @@ namespace ChangeFileName.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to &amp;Date Folder.
+        /// </summary>
+        internal static string DATE_FOLDER {
+            get {
+                return ResourceManager.GetString("DATE_FOLDER", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The destination already has a file named &quot;{0}&quot;. Do you want to replace the file in the destination?.
         /// </summary>
         internal static string DESTINATION_EXISTS {

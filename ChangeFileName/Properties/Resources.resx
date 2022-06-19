@@ -215,4 +215,7 @@ If this probrem continues, delete the file but you will lost all information abo
   <data name="SORT_BY_NAME" xml:space="preserve">
     <value>Sort by &amp;Name</value>
   </data>
+  <data name="DATE_FOLDER" xml:space="preserve">
+    <value>&amp;Date Folder</value>
+  </data>
 </root>
