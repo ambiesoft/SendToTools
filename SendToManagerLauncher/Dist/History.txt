@@ -1,3 +1,6 @@
+2022/06/25 ver 3.1.8
+ChangeFileName v2.0.7 : 'Remove Space' uses Regex to do it
+
 2022/06/19 ver 3.1.7
 ChangeFileName v2.0.6 : Added 'Date Folder' in move operation
 

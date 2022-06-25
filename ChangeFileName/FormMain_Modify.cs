@@ -34,6 +34,7 @@ using System.Windows.Forms;
 using Microsoft.VisualBasic.FileIO;
 using System.IO;
 using CSharp.Japanese.Kanaxs;
+using System.Text.RegularExpressions;
 
 namespace ChangeFileName
 {
@@ -123,8 +124,7 @@ namespace ChangeFileName
 
         private string RemoveSpace(string s)
         {
-            s = s.Replace(" ", "");
-            s = s.Replace("Å@", "");
+            s = Regex.Replace(s, @"\s+", "");
             return s;
         }
         private void ToRemoveSpace_Click(object sender, EventArgs e)
