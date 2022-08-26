@@ -612,22 +612,18 @@ namespace ChangeFileName
             if (string.IsNullOrEmpty(selText))
                 return;
 
+            // If selection contains space between words,
+            // Assumes that user does following action, in that case disable this function
+            // 1, double-click
+            // 2, drag to select more than one words
+            foreach (char c in selText.Trim())
+            {
+                if (GetMojiType(c) == MojiType.SpaceChar)
+                    return;
+            }
+
             char startC = selText[0];
             MojiType startMT = GetMojiType(startC);
-            //if (selText.Length >= 2)
-            //{
-            //    char endC = selText[selText.Length - 1];
-            //    MojiType endMT = GetMojiType(endC);
-            //    if (startMT != endMT)
-            //        return;
-            //}
-
-            // If selection moji type is different, it's over
-            //foreach(char c in selText)
-            //{
-            //    if (GetMojiType(c) != startMT)
-            //        return;
-            //}
 
             // expand tail until mojitype are same
             int newEnd = txtName.SelectionStart + 1;
