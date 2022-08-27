@@ -2,6 +2,7 @@
 ChangeFileName v2.0.8 If selection contains space between words,
                       Assumes that user does following action, in that case disable this function
 CopyTo/MoveTo v2.0.2 Use MFC library due to compile error in debug mode
+SendToManagerLauncher: Added version infos of 'CopyTo' and 'MoveTo'
 
 2022/06/25 ver 3.1.8
 ChangeFileName v2.0.7 : 'Remove Space' uses Regex to do it
