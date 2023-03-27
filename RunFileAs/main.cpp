@@ -33,12 +33,10 @@
 
 // #include <stlsoft/smartptr/scoped_handle.hpp>
 #include "../../lsMisc/OpenCommon.h"
-#include "../../lsMisc/stdwin32/stdwin32.h"
 #include "../../lsMisc/stdosd/stdosd.h"
 #include "../../lsMisc/HighDPI.h"
 
 using namespace std;
-using namespace Ambiesoft::stdwin32;
 using namespace Ambiesoft;
 using namespace Ambiesoft::stdosd;
 

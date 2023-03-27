@@ -7,7 +7,6 @@
 #include "../../lsMisc/SingleAppMutex.h"
 #include "../../lsMisc/CommandLineParser.h"
 #include "../../lsMisc/CommandLineString.h"
-#include "../../lsMisc/stdwin32/stdwin32.h"
 #include "../../lsMisc/stdosd/stdosd.h"
 #include "../../lsMisc/HighDPI.h"
 
@@ -20,7 +19,6 @@
 
 using namespace Ambiesoft;
 using namespace Ambiesoft::stdosd;
-using namespace stdwin32;
 
 using namespace std;
 

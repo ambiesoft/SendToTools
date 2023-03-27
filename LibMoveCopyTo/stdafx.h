@@ -38,7 +38,6 @@
 #include <algorithm>
 #include <set>
 
-#include "../../lsMisc/stdwin32/stdwin32.h"
 #include "../../lsMisc/stdosd/stdosd.h"
 
 #include "../../lsMisc/browseFolder.h"

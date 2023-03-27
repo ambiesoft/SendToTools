@@ -27,7 +27,6 @@
 // TODO: reference additional headers your program requires here
 #include "../../lsMisc/SetClipboardText.h"
 #include "../../lsMisc/showballoon.h"
-#include "../../lsMisc/stdwin32/stdwin32.h"
 #include "../../lsMisc/stdosd/stdosd.h"
 #include "../../lsMisc/CenterWindow.h"
 #include "../../lsMisc/I18N.h"

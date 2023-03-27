@@ -78,9 +78,6 @@
     <ClCompile Include="..\..\lsMisc\stdosd\stdosd_win.cpp">
       <Filter>2 Source Files\lsMisc</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\lsMisc\stdwin32\stdwin32.cpp">
-      <Filter>2 Source Files\lsMisc</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\lsMisc\UrlEncode.cpp">
       <Filter>2 Source Files\lsMisc</Filter>
     </ClCompile>
@@ -129,9 +126,6 @@
       <Filter>1 Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\lsMisc\sqliteserialize.h">
-      <Filter>1 Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\lsMisc\stdwin32\stdwin32.h">
       <Filter>1 Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\lsMisc\UTF16toUTF8.h">

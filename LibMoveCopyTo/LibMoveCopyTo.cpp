@@ -44,36 +44,12 @@
 
 #pragma comment(lib,"shlwapi.lib")
 
-
-//using std::wstring;
-//using std::vector;
-//using std::find;
-//using std::set;
-//
-//using Ambiesoft::ArgCount;
-//using Ambiesoft::COption;
-//using Ambiesoft::CCommandLineParser;
-//using Ambiesoft::sqlGetPrivateProfileStringArray;
-//using Ambiesoft::sqlWritePrivateProfileStringArray;
-//using Ambiesoft::sqlGetPrivateProfileInt;
-//using Ambiesoft::sqlWritePrivateProfileInt;
-//using Ambiesoft::SHMoveFile;
-//using Ambiesoft::GetLastErrorStringW;
-//using Ambiesoft::GetSHFileOpErrorString;
-//using Ambiesoft::I18N;
-
-
 using namespace Ambiesoft;
 using namespace Ambiesoft::stdosd;
-using namespace stdwin32;
+
 using namespace std;
 
 typedef vector<wstring> STRINGVECTOR;
-
-
-
-
-
 
 #define SEC_OPTION L"option"
 #define KEY_DIRS L"Dirs"
@@ -271,7 +247,7 @@ int libmain(LPCWSTR pAppName, LPCWSTR pButtonText, HICON hIcon)
 
 	std::for_each(allSaving.begin(), allSaving.end(), [](wstring &s)
 	{
-		s = stdAddBackSlash(s);
+		s = stdAddPathSeparator(s);
 	});
 
 	// allSaving = addBackSlash(allSaving);
@@ -328,7 +304,7 @@ int libmain(LPCWSTR pAppName, LPCWSTR pButtonText, HICON hIcon)
 			for (int i = 0; i < dlg.m_arDirs.GetSize(); ++i)
 			{
 				wstring t(dlg.m_arDirs[i]);
-				t = stdAddBackSlash(t);
+				t = stdAddPathSeparator(t);
 				allSaving.emplace_back(t);
 			}
 
@@ -399,7 +375,7 @@ int libmain(LPCWSTR pAppName, LPCWSTR pButtonText, HICON hIcon)
 	}
 
 
-	destDir = stdwin32::stdAddBackSlash(destDir);
+	destDir = stdAddPathSeparator(destDir);
 
 #ifdef _DEBUG
 	bool bShowDebugInfo = !true;
