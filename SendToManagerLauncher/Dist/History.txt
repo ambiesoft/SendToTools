@@ -1,3 +1,6 @@
+2023/03/27 ver 3.1.10
+RunOnebyOne v2.0.2 Added sort
+
 2022/08/27 ver 3.1.9
 ChangeFileName v2.0.8 If selection contains space between words,
                       Assumes that user does following action, in that case disable this function
