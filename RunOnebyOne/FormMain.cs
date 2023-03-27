@@ -41,7 +41,7 @@ using System.Reflection;
 
 namespace RunOnebyOne
 {
-    public partial class FormMain : Form
+    public partial class FormMain : Form, System.Collections.IComparer
     {
         readonly string SECTION_OPTION = "Option";
         readonly string SECTION_LOCATION = "Location";
@@ -86,7 +86,29 @@ namespace RunOnebyOne
             }
 
             UpdateTitle();
+
+            listMain.ColumnClick += ListMain_ColumnClick;
         }
+
+        bool bSortRev_;
+        int sortColumn_;
+        private void ListMain_ColumnClick(object sender, ColumnClickEventArgs e)
+        {
+            bSortRev_ = !bSortRev_;
+            sortColumn_ = e.Column;
+            listMain.ListViewItemSorter = this;
+            listMain.Sort();
+        }
+        public int Compare(object x, object y)
+        {
+            ListViewItem a = x as ListViewItem;
+            ListViewItem b = y as ListViewItem;
+
+            int ret = string.Compare(a.SubItems[1].Text, b.SubItems[1].Text);
+
+            return bSortRev_ ? ret : -ret;
+        }
+
 
         string IniPath
         {
