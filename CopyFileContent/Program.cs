@@ -45,9 +45,7 @@ namespace CopyFileContent
             Image,
             Audio,
         }
-        /// <summary>
-        /// アプリケーションのメイン エントリ ポイントです。
-        /// </summary>
+
         [STAThread]
         static void Main(string[] args)
         {

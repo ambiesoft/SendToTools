@@ -158,9 +158,7 @@ namespace DotNet4Runnable
                     ficonfig.FullName));
             }
         }
-        /// <summary>
-        /// アプリケーションのメイン エントリ ポイントです。
-        /// </summary>
+
         [STAThread]
         static void Main(string[] args)
         {

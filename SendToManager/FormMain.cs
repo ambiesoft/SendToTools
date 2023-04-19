@@ -171,7 +171,6 @@ namespace SendToManager
 
             if (eventArgs.Column == sorter.SortColumn)
             {
-                // Inverser le sens de tri en cours pour cette colonne.
                 if (sorter.Order == SortOrder.Ascending)
                 {
                     sorter.Order = SortOrder.Descending;
@@ -183,12 +182,10 @@ namespace SendToManager
             }
             else
             {
-                // Définir le numéro de colonne Etrier ; par défaut sur croissant.
                 sorter.SortColumn = eventArgs.Column;
                 sorter.Order = SortOrder.Ascending;
             }
 
-            // Procéder au tri avec les nouvelles options.
             lvMain.Sort();
         }
 

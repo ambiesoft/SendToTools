@@ -34,9 +34,6 @@ namespace CopyFirstLine
 {
     static class Program
     {
-        /// <summary>
-        /// アプリケーションのメイン エントリ ポイントです。
-        /// </summary>
         [STAThread]
         static void Main(string[] args)
         {

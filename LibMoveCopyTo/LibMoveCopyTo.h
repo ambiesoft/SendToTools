@@ -1,13 +1,11 @@
-// LibMoveCopyTo.h : LibMoveCopyTo.DLL のメイン ヘッダー ファイル
-//
 
 #pragma once
 
 #ifndef __AFXWIN_H__
-	#error "PCH に対してこのファイルをインクルードする前に 'stdafx.h' をインクルードしてください"
+	#error "PCH"
 #endif
 
-#include "resource.h"		// メイン シンボル
+#include "resource.h"
 
 
 
@@ -16,7 +14,6 @@ class CLibMoveCopyToApp : public CWinApp
 public:
 	CLibMoveCopyToApp();
 
-// オーバーライド
 public:
 	virtual BOOL InitInstance();
 
