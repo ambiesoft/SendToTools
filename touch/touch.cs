@@ -92,6 +92,7 @@ namespace touch
             int depth = -1;
             bool touchfolder = false;
             bool followlink = false;
+            bool notooltip = false;
             var p = new OptionSet() {
                     { 
                         "r|recursive", 
@@ -112,6 +113,11 @@ namespace touch
                         "l|followlink",
                         "Follow links",
                         v => { followlink = v!=null;}
+                    },
+                    {
+                        "n|notooltip",
+                        "No tooltip",
+                        v => { notooltip = v!=null;}
                     }
                 };
 
@@ -178,8 +184,11 @@ namespace touch
                 }
                 CppUtils.Alert(sb.ToString());
             }
-            showtip(5000, Application.ProductName, 
-                string.Format(Properties.Resources.STR_TOUCHED, touchedCount),Properties.Resources.icon);
+            if (!notooltip)
+            {
+                showtip(5000, Application.ProductName,
+                    string.Format(Properties.Resources.STR_TOUCHED, touchedCount), Properties.Resources.icon);
+            }
         }
 
         static bool isDepthReached(int curdepth, int maxdepth)
