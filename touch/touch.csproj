@@ -55,9 +55,9 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Ambiesoft.AmbLibcpp, Version=1.1.6864.5042, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Ambiesoft.AmbLibcpp, Version=3.0.1.2686, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Linkout\DNAssembly.NET4\Ambiesoft.AmbLibcpp.dll</HintPath>
+      <HintPath>C:\Linkout\DNAssembly.NET4.5.2\Ambiesoft.AmbLibcpp.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />

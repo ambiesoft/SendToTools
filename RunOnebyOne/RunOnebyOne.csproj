@@ -39,23 +39,23 @@
     <ApplicationIcon>icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Ambiesoft.AmbLib, Version=1.0.15.7916, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Ambiesoft.AmbLib, Version=2.0.2.7165, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Linkout\DNAssembly.NET4\Ambiesoft.AmbLib.dll</HintPath>
+      <HintPath>C:\Linkout\DNAssembly.NET4.5.2\Ambiesoft.AmbLib.dll</HintPath>
     </Reference>
-    <Reference Include="Ambiesoft.AmbLibcpp, Version=1.1.6864.5042, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Ambiesoft.AmbLibcpp, Version=3.0.1.2686, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Linkout\DNAssembly.NET4\Ambiesoft.AmbLibcpp.dll</HintPath>
+      <HintPath>C:\Linkout\DNAssembly.NET4.5.2\Ambiesoft.AmbLibcpp.dll</HintPath>
     </Reference>
     <Reference Include="Ambiesoft.MacroManager">
       <HintPath>C:\Linkout\DNAssembly.NET4\Ambiesoft.MacroManager.dll</HintPath>
     </Reference>
-    <Reference Include="Ambiesoft.Profile, Version=1.0.1.6950, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Ambiesoft.Profile, Version=2.0.1.33686, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Linkout\DNAssembly.NET4\Ambiesoft.Profile.dll</HintPath>
+      <HintPath>C:\Linkout\DNAssembly.NET4.5.2\Ambiesoft.Profile.dll</HintPath>
     </Reference>
     <Reference Include="FlexibleMessageBox">
-      <HintPath>..\..\..\..\..\..\..\Linkout\DNAssembly.NET4.5.2\FlexibleMessageBox.dll</HintPath>
+      <HintPath>C:\Linkout\DNAssembly.NET4.5.2\FlexibleMessageBox.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

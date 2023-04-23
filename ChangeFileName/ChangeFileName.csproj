@@ -55,15 +55,14 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Ambiesoft.AmbLib, Version=1.0.0.22109, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Linkout\DNAssembly.NET4\Ambiesoft.AmbLib.dll</HintPath>
+    <Reference Include="Ambiesoft.AmbLib">
+      <HintPath>C:\Linkout\DNAssembly.NET4.5.2\Ambiesoft.AmbLib.dll</HintPath>
     </Reference>
     <Reference Include="Ambiesoft.AmbLibcpp">
-      <HintPath>C:\Linkout\DNAssembly.NET4\Ambiesoft.AmbLibcpp.dll</HintPath>
+      <HintPath>C:\Linkout\DNAssembly.NET4.5.2\Ambiesoft.AmbLibcpp.dll</HintPath>
     </Reference>
     <Reference Include="Ambiesoft.Profile">
-      <HintPath>C:\Linkout\DNAssembly.NET4\Ambiesoft.Profile.dll</HintPath>
+      <HintPath>C:\Linkout\DNAssembly.NET4.5.2\Ambiesoft.Profile.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="System" />
@@ -73,7 +72,7 @@
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="ToolManager">
-      <HintPath>C:\Linkout\DNAssembly.NET4\ToolManager.dll</HintPath>
+      <HintPath>C:\Linkout\DNAssembly.NET4.5.2\ToolManager.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
