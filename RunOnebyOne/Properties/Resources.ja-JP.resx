@@ -126,6 +126,9 @@
   <data name="CANCELLING_BUTTON_TEXT" xml:space="preserve">
     <value>キャンセルしています</value>
   </data>
+  <data name="CANCEL_BUTTON_TEXT" xml:space="preserve">
+    <value>キャンセル(&amp;C)</value>
+  </data>
   <data name="DONE_BUTTON_TEXT" xml:space="preserve">
     <value>終了</value>
   </data>
@@ -134,9 +137,6 @@
   </data>
   <data name="DO_IT_AGAIN" xml:space="preserve">
     <value>すべてのコマンドの実行は終了しています。もう一度実行しますか？</value>
-  </data>
-  <data name="PAUSE_BUTTON_TEXT" xml:space="preserve">
-    <value>一時停止(&amp;P)</value>
   </data>
   <data name="PRESS_CTRL_OK" xml:space="preserve">
     <value>Ctrlを押しながらOKをクリックするとURLへ移動します</value>

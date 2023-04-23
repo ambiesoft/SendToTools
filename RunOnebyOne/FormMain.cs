@@ -38,6 +38,7 @@ using System.IO;
 using NDesk.Options;
 using Ambiesoft;
 using System.Reflection;
+using JR.Utils.GUI.Forms;
 
 namespace RunOnebyOne
 {
@@ -370,7 +371,7 @@ namespace RunOnebyOne
                 if(value)
                 {
                     running_ = true;
-                    btnRun.Text = Properties.Resources.PAUSE_BUTTON_TEXT;
+                    btnRun.Text = Properties.Resources.CANCEL_BUTTON_TEXT;
                 }
                 else
                 {
@@ -405,6 +406,9 @@ namespace RunOnebyOne
             {
                 ListViewItem.ListViewSubItem subIndicator = lvi.SubItems[0];
                 subIndicator.Text = "";
+
+                // Clear output result
+                lvi.SubItems[2].Text = "";
             }
         }
         void UpdateComboCommon(ComboBox cmb)
@@ -451,8 +455,7 @@ namespace RunOnebyOne
             sbMessage.AppendLine(Properties.Resources.BEFORE_RUN_MESSAGE);
             sbMessage.AppendLine();
             sbMessage.Append(sbFilesAndArgs);
-            if (DialogResult.Yes != CppUtils.CenteredMessageBox(this,
-                sbMessage.ToString(),
+            if (DialogResult.Yes != FlexibleMessageBox.Show(sbMessage.ToString(),
                 Application.ProductName,
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Question))

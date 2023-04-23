@@ -126,6 +126,9 @@
   <data name="CANCELLING_BUTTON_TEXT" xml:space="preserve">
     <value>Cancelling</value>
   </data>
+  <data name="CANCEL_BUTTON_TEXT" xml:space="preserve">
+    <value>&amp;Cancel</value>
+  </data>
   <data name="DONE_BUTTON_TEXT" xml:space="preserve">
     <value>Done</value>
   </data>
@@ -134,9 +137,6 @@
   </data>
   <data name="DO_IT_AGAIN" xml:space="preserve">
     <value>All commands are already finished. Do you want to run them again?</value>
-  </data>
-  <data name="PAUSE_BUTTON_TEXT" xml:space="preserve">
-    <value>&amp;Pause</value>
   </data>
   <data name="PRESS_CTRL_OK" xml:space="preserve">
     <value>Press OK with Ctrl pressed to go to URL</value>

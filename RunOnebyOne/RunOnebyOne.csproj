@@ -54,6 +54,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\Linkout\DNAssembly.NET4\Ambiesoft.Profile.dll</HintPath>
     </Reference>
+    <Reference Include="FlexibleMessageBox">
+      <HintPath>..\..\..\..\..\..\..\Linkout\DNAssembly.NET4.5.2\FlexibleMessageBox.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
