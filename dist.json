@@ -148,6 +148,8 @@
         "tools\\RunFileAs.pdb",
         "tools\\RunOnebyOne.exe",
         "tools\\RunOnebyOne.pdb",
+        "tools\\FlexibleMessageBox.dll",
+        "tools\\FlexibleMessageBox.pdb",
         "tools\\RunWithArgs.exe",
         "tools\\RunWithArgs.pdb",
         "tools\\SendToManager.dll",
