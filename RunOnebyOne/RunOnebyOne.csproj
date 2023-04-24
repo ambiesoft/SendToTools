@@ -48,7 +48,7 @@
       <HintPath>C:\Linkout\DNAssembly.NET4.5.2\Ambiesoft.AmbLibcpp.dll</HintPath>
     </Reference>
     <Reference Include="Ambiesoft.MacroManager">
-      <HintPath>C:\Linkout\DNAssembly.NET4\Ambiesoft.MacroManager.dll</HintPath>
+      <HintPath>C:\Linkout\DNAssembly.NET4.5.2\Ambiesoft.MacroManager.dll</HintPath>
     </Reference>
     <Reference Include="Ambiesoft.Profile, Version=2.0.1.33686, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
