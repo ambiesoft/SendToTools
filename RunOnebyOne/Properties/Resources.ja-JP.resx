@@ -138,6 +138,9 @@
   <data name="DO_IT_AGAIN" xml:space="preserve">
     <value>すべてのコマンドの実行は終了しています。もう一度実行しますか？</value>
   </data>
+  <data name="FAILED_TO_SAVE_INI" xml:space="preserve">
+    <value>iniファイルの保存に失敗しました。</value>
+  </data>
   <data name="PRESS_CTRL_OK" xml:space="preserve">
     <value>Ctrlを押しながらOKをクリックするとURLへ移動します</value>
   </data>
@@ -149,5 +152,14 @@
   </data>
   <data name="RUN_BUTTON_TEXT" xml:space="preserve">
     <value>実行(&amp;R)</value>
+  </data>
+  <data name="SURE_TO_CLEAR_RESULTS" xml:space="preserve">
+    <value>結果をクリアしますか？</value>
+  </data>
+  <data name="SURE_TO_REMOVE_ALL_ITEMS" xml:space="preserve">
+    <value>すべてのアイテムを削除しますか？</value>
+  </data>
+  <data name="SURE_TO_REMOVE_COUNT_ITEMS" xml:space="preserve">
+    <value>{0} 個のアイテムを削除しますか？</value>
   </data>
 </root>

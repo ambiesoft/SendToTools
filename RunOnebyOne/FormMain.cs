@@ -539,8 +539,11 @@ namespace RunOnebyOne
         {
             if (Running)
                 return;
-            if (DialogResult.Yes != CppUtils.YesOrNo("Clear?", MessageBoxDefaultButton.Button2))
+            if (DialogResult.Yes != CppUtils.YesOrNo(Properties.Resources.SURE_TO_CLEAR_RESULTS,
+                MessageBoxDefaultButton.Button2))
+            {
                 return;
+            }
 
             ClearAllListIndicator();
         }
@@ -563,7 +566,8 @@ namespace RunOnebyOne
             if (countSelected == 0)
                 return;
 
-            if(DialogResult.Yes != CppUtils.YesOrNo(string.Format("sure {0} items?",countSelected),
+            if (DialogResult.Yes != CppUtils.YesOrNo(
+                string.Format(Properties.Resources.SURE_TO_REMOVE_COUNT_ITEMS, countSelected),
                 MessageBoxDefaultButton.Button2))
             {
                 return;
@@ -574,7 +578,7 @@ namespace RunOnebyOne
 
         private void tsmiRemoveAll_Click(object sender, EventArgs e)
         {
-            if (DialogResult.Yes != CppUtils.YesOrNo(string.Format("sure all items?"),
+            if (DialogResult.Yes != CppUtils.YesOrNo(Properties.Resources.SURE_TO_REMOVE_ALL_ITEMS,
                 MessageBoxDefaultButton.Button2))
             {
                 return;
@@ -591,7 +595,7 @@ namespace RunOnebyOne
             AmbLib.SaveComboBox(cmbApplication, SECTION_APP_COMBO, MAX_COMBO_SAVE, ini);
             AmbLib.SaveComboBox(cmbArguments, SECTION_ARG_COMBO, MAX_COMBO_SAVE, ini);
             if (!Profile.WriteAll(ini, IniPath))
-                CppUtils.Alert("Failed to save ini");
+                CppUtils.Alert(Properties.Resources.FAILED_TO_SAVE_INI);
         }
 
         private void FormMain_Resize(object sender, EventArgs e)
@@ -647,11 +651,14 @@ namespace RunOnebyOne
         {
             UpdateMacros();
         }
-        
+
         void UpdateMacros(ListViewItem item)
         {
             if (listMain.Items.Count == 0)
+            {
+                UpdateMacrosFromString(Application.ExecutablePath);
                 return;
+            }
 
             if (item == null)
             {
@@ -664,6 +671,10 @@ namespace RunOnebyOne
                 item = listMain.Items[0];
 
             string file = GetLVFile(item);
+            UpdateMacrosFromString(file);
+        }
+        void UpdateMacrosFromString(string file) 
+        { 
             _mm.SetMacro("FullName", file);
             _mm.SetMacro("FileName", Path.GetFileName(file));
             _mm.SetMacro("ParentFolder", Path.GetDirectoryName(file));

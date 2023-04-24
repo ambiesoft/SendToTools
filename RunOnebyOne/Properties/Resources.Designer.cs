@@ -124,6 +124,15 @@ namespace RunOnebyOne.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Failed to save ini file..
+        /// </summary>
+        internal static string FAILED_TO_SAVE_INI {
+            get {
+                return ResourceManager.GetString("FAILED_TO_SAVE_INI", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Press OK with Ctrl pressed to go to URL.
         /// </summary>
         internal static string PRESS_CTRL_OK {
@@ -156,6 +165,33 @@ namespace RunOnebyOne.Properties {
         internal static string RUN_BUTTON_TEXT {
             get {
                 return ResourceManager.GetString("RUN_BUTTON_TEXT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure to clear the results?.
+        /// </summary>
+        internal static string SURE_TO_CLEAR_RESULTS {
+            get {
+                return ResourceManager.GetString("SURE_TO_CLEAR_RESULTS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure to remove all items?.
+        /// </summary>
+        internal static string SURE_TO_REMOVE_ALL_ITEMS {
+            get {
+                return ResourceManager.GetString("SURE_TO_REMOVE_ALL_ITEMS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure to remove {0} items?.
+        /// </summary>
+        internal static string SURE_TO_REMOVE_COUNT_ITEMS {
+            get {
+                return ResourceManager.GetString("SURE_TO_REMOVE_COUNT_ITEMS", resourceCulture);
             }
         }
     }
