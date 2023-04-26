@@ -1329,6 +1329,7 @@ new KeyValuePair<string, string>(@"touch.exe", Properties.Resources.TOOL_EXPLANA
                 "LibMoveCopyTo.dll"
 #endif
 , true));
+            sb.AppendLine(getToolVersion("MoreSendTo.exe", true));
             sb.AppendLine(getToolVersion("MoveTo.exe", true));
             sb.AppendLine(getToolVersion("RegexFilenameRenamer.exe", false));
             sb.AppendLine(getToolVersion("RunFileAs.exe", true));
