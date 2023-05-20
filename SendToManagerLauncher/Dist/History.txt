@@ -1,3 +1,6 @@
+2023/05/20 ver 3.2.3
+SwapFilename v2.0.2 Added '-autodetect'
+
 2023/04/26 ver 3.2.2
 MoreSendTo is almost complete
 

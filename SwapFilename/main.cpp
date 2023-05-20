@@ -1,4 +1,5 @@
 #include "StdAfx.h"
+#include <map>
 #include "../../lsMisc/CHandle.h"
 #include "../../lsMisc/UrlEncode.h"
 #include "../../lsMisc/OpenCommon.h"
@@ -205,6 +206,11 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 		ArgEncodingFlags::ArgEncodingFlags_Default,
 		I18N(L"Remove an older file after swapping"));
 
+	wstring strAutoDetect;
+	parser.AddOption(L"-autodetect", 1, &strAutoDetect,
+		ArgEncodingFlags::ArgEncodingFlags_Default,
+		I18N(L"Detects files automatically, files with same name but extensions will be detected"));
+
 	bool bAlwaysYes = false;
 	parser.AddOption(L"-alwaysyes", 0, &bAlwaysYes,
 		ArgEncodingFlags::ArgEncodingFlags_Default,
@@ -251,14 +257,50 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 			MB_ICONINFORMATION);
 		return 0;
 	}
-	if (opMain.getValueCount() != 2)
+
+	wstring file1;
+	wstring file2;
+
+	if(!strAutoDetect.empty())
 	{
-		ErrorExit(stdFormat(
-			I18N(L"The count of files provided by command line is %d. Two files must be provided."),
-			opMain.getValueCount()));
+		// detect files
+		vector<wstring> files = stdGetFiles(strAutoDetect,
+			FILEITERATEMODE::SKIP_DOT_AND_DOTDOT,
+			GETFILESEMODE::FILE);
+
+		map<wstring, vector<wstring>> nameToFileNames;
+		for (auto&& file : files)
+		{
+			nameToFileNames[stdStringLower(stdGetFileNameWitoutExtension(file))].push_back(file);
+		}
+
+		for (auto&& kv : nameToFileNames)
+		{
+			if(nameToFileNames[kv.first].size()==2)
+			{
+				file1 = nameToFileNames[kv.first][0];
+				file2 = nameToFileNames[kv.first][1];
+				break;
+			}
+		}
+
+		if (file1.empty() || file2.empty())
+		{
+			ErrorExit(I18N(L"Files not found, Autodetects failed"));
+		}
 	}
-	wstring file1 = opMain.getValue(0);
-	wstring file2 = opMain.getValue(1);
+	else
+	{
+		if (opMain.getValueCount() != 2)
+		{
+			ErrorExit(stdFormat(
+				I18N(L"The count of files provided by command line is %d. Two files must be provided."),
+				opMain.getValueCount()));
+		}
+		file1 = opMain.getValue(0);
+		file2 = opMain.getValue(1);
+	}
+	
 	wstring fileback = GetBackupFile(file1.c_str());
 
 	constexpr const wchar_t* STR_FILE_DOES_NOT_EXIST = L"'%s' does not exist.";
