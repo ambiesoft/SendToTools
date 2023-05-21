@@ -218,4 +218,7 @@ If this probrem continues, delete the file but you will lost all information abo
   <data name="DATE_FOLDER" xml:space="preserve">
     <value>&amp;Date Folder</value>
   </data>
+  <data name="STR_FILENAME_LENGTH_IS_OVER_260" xml:space="preserve">
+    <value>The path length of the new filename exceeds 260 characters. Are you sure to continue?</value>
+  </data>
 </root>

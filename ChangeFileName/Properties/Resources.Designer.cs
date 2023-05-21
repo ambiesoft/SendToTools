@@ -339,6 +339,15 @@ namespace ChangeFileName.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The path length of the new filename exceeds 260 characters. Are you sure to continue?.
+        /// </summary>
+        internal static string STR_FILENAME_LENGTH_IS_OVER_260 {
+            get {
+                return ResourceManager.GetString("STR_FILENAME_LENGTH_IS_OVER_260", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to &lt;No Replace Tools&gt;.
         /// </summary>
         internal static string STR_NO_REPLACE_TOOLS {

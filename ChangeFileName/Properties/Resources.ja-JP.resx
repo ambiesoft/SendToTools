@@ -218,4 +218,7 @@
   <data name="DATE_FOLDER" xml:space="preserve">
     <value>時刻のフォルダ(&amp;D)</value>
   </data>
+  <data name="STR_FILENAME_LENGTH_IS_OVER_260" xml:space="preserve">
+    <value>新しいファイル名のパス長が２６０文字を超えています。続けますか？</value>
+  </data>
 </root>

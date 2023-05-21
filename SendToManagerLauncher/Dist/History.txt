@@ -1,3 +1,6 @@
+2023/05/20 ver 3.2.4
+ChangeFileName v2.0.9 Warns if the new path length is over 260
+
 2023/05/20 ver 3.2.3
 SwapFilename v2.0.2 Added '-autodetect'
 

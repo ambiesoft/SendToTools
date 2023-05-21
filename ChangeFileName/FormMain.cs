@@ -410,12 +410,18 @@ namespace ChangeFileName
             }
 
             List<Control> backToEnables = disableAll();
-            if (!Program.RenameIt(this, txtName.Tag.ToString(), newName))
+            try
+            {
+                if (!Program.RenameIt(this, txtName.Tag.ToString(), newName))
+                {
+                    return;
+                }
+            }
+            finally
             {
                 enableAll(backToEnables);
-                return;
             }
-            enableAll(backToEnables);
+
             this.DialogResult = DialogResult.OK;
             Close();
         }

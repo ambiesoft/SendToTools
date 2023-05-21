@@ -202,16 +202,6 @@ namespace ChangeFileName
         }
         internal static bool RenameIt(IWin32Window win, string oldfull, string newName)
         {
-            //if (oldname == (newName + oldext))
-            //{
-            //    return true;
-            //}
-
-            //if (string.IsNullOrEmpty(oldext))
-            //{
-            //    newName = newName.TrimEnd(' ');
-            //}
-
             if(!File.Exists(oldfull) && !Directory.Exists(oldfull))
             {
                 CppUtils.Alert(string.Format(Properties.Resources.SOURCEFILE_NOT_FOUND, oldfull));
@@ -233,6 +223,15 @@ namespace ChangeFileName
             string olddir = Path.GetDirectoryName(oldfull);
             string oldext = Directory.Exists(oldfull) ? string.Empty : Path.GetExtension(oldfull);
             string newfull = Path.Combine(olddir, newName + oldext);
+
+            if(newfull.Length > 260)
+            {
+                if(DialogResult.Yes != CppUtils.YesOrNo(Properties.Resources.STR_FILENAME_LENGTH_IS_OVER_260,
+                    MessageBoxDefaultButton.Button2))
+                {
+                    return false;
+                }
+            }
 
             if (String.Compare(oldfull, newfull, true) == 0)
             {
