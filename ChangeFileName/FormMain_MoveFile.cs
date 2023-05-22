@@ -43,10 +43,10 @@ namespace ChangeFileName
             List<Control> csBack = disableAll();
             try
             {
-                string srcfilename = this.txtName.Tag.ToString();
-                if (File.Exists(srcfilename))
+                string srcfullname = this.txtName.Tag.ToString();
+                if (File.Exists(srcfullname))
                 {
-                    System.IO.FileInfo fiorig = new System.IO.FileInfo(srcfilename);
+                    System.IO.FileInfo fiorig = new System.IO.FileInfo(srcfullname);
 
                     string destfilename = txtName.Text + fiorig.Extension;
                     if (-1 != destfilename.IndexOfAny(Program.damemoji.ToCharArray()))
@@ -54,36 +54,32 @@ namespace ChangeFileName
                         showDamemojiError();
                         return;
                     }
-                    string destfullname = System.IO.Path.Combine(path, destfilename);
+                    
+                    string destfullname = Path.Combine(path, destfilename);
+                    
+                    if (!Program.checkPathLength(destfullname))
+                        return;
 
-                    //bool overwrite = false;
-                    //if (File.Exists(destfullname))
-                    //{
-                    //    if (DialogResult.Yes != Ambiesoft.CppUtils.YesOrNo(
-                    //        string.Format(Properties.Resources.DESTINATION_EXISTS, destfullname),
-                    //        MessageBoxDefaultButton.Button2))
-                    //    {
-                    //        return;
-                    //    }
-                    //    overwrite = true;
-                    //}
-
-                    // why?
-                    //fiorig.CopyTo(destfn, overwrite);
-                    //fiorig.Delete();
-
-                    if (0 != Ambiesoft.CppUtils.MoveFile(srcfilename, destfullname))
+                    if (0 != Ambiesoft.CppUtils.MoveFile(srcfullname, destfullname))
                         return;
                 }
-                else if (Directory.Exists(srcfilename))
+                else if (Directory.Exists(srcfullname))
                 {
-                    DirectoryInfo diorig = new DirectoryInfo(srcfilename);
+                    DirectoryInfo diorig = new DirectoryInfo(srcfullname);
 
                     string destfilename = txtName.Text + diorig.Extension;
                     string destfullname = path;
 
-                    if (0 != Ambiesoft.CppUtils.MoveFile(srcfilename, destfullname))
+                    if (!Program.checkPathLength(Path.Combine(path, destfilename)))
                         return;
+
+                    if (0 != Ambiesoft.CppUtils.MoveFile(srcfullname, destfullname))
+                        return;
+                }
+                else
+                {
+                    CppUtils.Alert(string.Format(Properties.Resources.SOURCEFILE_NOT_FOUND, srcfullname));
+                    return;
                 }
                 this.Close();
             }

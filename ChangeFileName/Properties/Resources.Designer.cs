@@ -303,7 +303,7 @@ namespace ChangeFileName.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Source File is not found &apos;{0}&apos;.
+        ///   Looks up a localized string similar to Source File &apos;{0}&apos; does not exist..
         /// </summary>
         internal static string SOURCEFILE_NOT_FOUND {
             get {

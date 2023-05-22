@@ -147,24 +147,14 @@ namespace ChangeFileName
             }
             
             string theFileName = args[0].Trim();
-            // theFileName = @"C:\Documents and Settings\tt\My Documents\Productivity Distribution, Firm Heterogeneity, and Agglomeration.pdf";
             if (!File.Exists(theFileName) && !Directory.Exists(theFileName) )
             {
                 CppUtils.Alert(string.Format(Properties.Resources.FILE_NOT_FOUND, theFileName));
                 return;
             }
 
-            //System.IO.FileInfo fi = new System.IO.FileInfo(theFileName.Trim());
-            //string olddir = fi.Directory.FullName;
-            //string oldname = fi.Name;
-            //string oldext = fi.Extension;
             bool bIsFolder = Directory.Exists(theFileName);
             string newName = bIsFolder ? Path.GetFileName(theFileName) : Path.GetFileNameWithoutExtension(theFileName);
-
-            //if (!string.IsNullOrEmpty(oldext))
-            //{
-            //    newName = newName.Replace(oldext, "");
-            //}
 
             do
             {
@@ -177,11 +167,6 @@ namespace ChangeFileName
                     fm.txtName.Tag = theFileName;
                     if (DialogResult.OK != fm.ShowDialog())
                         return;
-
-                    //newName = fm.txtName.Text;
-
-                    //if (!RenameIt(olddir, newName, oldname, oldext))
-                    //    continue;
 
                     break;
                 }
@@ -199,6 +184,19 @@ namespace ChangeFileName
             if (File.Exists(oldfull))
                 return Directory.GetFiles(dir, name).FirstOrDefault();
             return Directory.GetDirectories(dir, name).FirstOrDefault();
+        }
+
+        internal static bool checkPathLength(string path)
+        {
+            if (path.Length > 260)
+            {
+                if (DialogResult.Yes != CppUtils.YesOrNo(Properties.Resources.STR_FILENAME_LENGTH_IS_OVER_260,
+                    MessageBoxDefaultButton.Button2))
+                {
+                    return false;
+                }
+            }
+            return true;
         }
         internal static bool RenameIt(IWin32Window win, string oldfull, string newName)
         {
@@ -224,14 +222,8 @@ namespace ChangeFileName
             string oldext = Directory.Exists(oldfull) ? string.Empty : Path.GetExtension(oldfull);
             string newfull = Path.Combine(olddir, newName + oldext);
 
-            if(newfull.Length > 260)
-            {
-                if(DialogResult.Yes != CppUtils.YesOrNo(Properties.Resources.STR_FILENAME_LENGTH_IS_OVER_260,
-                    MessageBoxDefaultButton.Button2))
-                {
-                    return false;
-                }
-            }
+            if (!checkPathLength(newfull))
+                return false;
 
             if (String.Compare(oldfull, newfull, true) == 0)
             {
