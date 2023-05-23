@@ -606,11 +606,19 @@ namespace ChangeFileName
                 return MojiType.SpaceChar;
             return MojiType.Unknown;
         }
+        
         int _dbTick;
+        int _lastLClickTick;
         private void txtName_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             if (!tsmiSmartDoubleClickSelection.Checked)
                 return;
+
+            if (e.Button == MouseButtons.Left)
+            {
+                if ((Environment.TickCount - _lastLClickTick) > 500)
+                    return;
+            }
 
             _dbTick = Environment.TickCount;
 
@@ -660,6 +668,11 @@ namespace ChangeFileName
         public static extern int GetDoubleClickTime();
         private void txtName_MouseClick(object sender, MouseEventArgs e)
         {
+            if (e.Button == MouseButtons.Left)
+            {
+                _lastLClickTick = Environment.TickCount;
+            }
+
             if (GetDoubleClickTime() > (Environment.TickCount - _dbTick))
             {
                 Debug.WriteLine("Triple clicked.");
