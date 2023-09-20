@@ -127,7 +127,7 @@ BOOL CWaitNextApp::InitInstance()
 
 	{
 		wstring inipathfull = stdCombinePath(stdGetParentDirectory(stdGetModuleFileName<wchar_t>()),
-			stdGetFileNameWitoutExtension(stdGetModuleFileName<wchar_t>()) + L".ini");
+			stdGetFileNameWithoutExtension(stdGetModuleFileName<wchar_t>()) + L".ini");
 		free((void*)m_pszProfileName);
 		m_pszProfileName = _wcsdup(inipathfull.c_str());
 	}

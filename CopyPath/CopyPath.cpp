@@ -55,7 +55,7 @@ static wstring GetIniPath()
 {
 	return stdCombinePath(
 		stdGetParentDirectory(stdGetModuleFileName()),
-		stdGetFileNameWitoutExtension(stdGetModuleFileName()) + L".ini");
+		stdGetFileNameWithoutExtension(stdGetModuleFileName()) + L".ini");
 }
 
 void showMessageAndExit(LPCTSTR pMessage)
@@ -434,7 +434,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
 	InitHighDPISupport();
 
-	i18nInitLangmap(hInstance, NULL, stdGetFileNameWitoutExtension(stdGetModuleFileName<wchar_t>()).c_str());
+	i18nInitLangmap(hInstance, NULL, stdGetFileNameWithoutExtension(stdGetModuleFileName<wchar_t>()).c_str());
 	hInst = hInstance;
 
 	// Initialize global strings

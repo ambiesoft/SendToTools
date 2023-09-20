@@ -295,7 +295,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 					AppendMenu(hMenu,
 						MF_BYCOMMAND,
 						cmd,
-						stdGetFileNameWitoutExtension(toStdWstringFromUtf8(recentItem)).c_str());
+						stdGetFileNameWithoutExtension(toStdWstringFromUtf8(recentItem)).c_str());
 					if (!gbNoIcon)
 					{
 						makeOwnerDraw(hMenu, cmd);
@@ -359,7 +359,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 				AppendMenu(hMenu,
 					MF_BYCOMMAND,
 					cmd,
-					stdGetFileNameWitoutExtension(fi[i].cFileName).c_str());
+					stdGetFileNameWithoutExtension(fi[i].cFileName).c_str());
 				if (bHidden)
 					setMenuHidden(hMenu, cmd);
 				if (!gbNoIcon)

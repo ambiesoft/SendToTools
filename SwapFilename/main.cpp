@@ -271,7 +271,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 		map<wstring, vector<wstring>> nameToFileNames;
 		for (auto&& file : files)
 		{
-			nameToFileNames[stdStringLower(stdGetFileNameWitoutExtension(file))].push_back(file);
+			nameToFileNames[stdStringLower(stdGetFileNameWithoutExtension(file))].push_back(file);
 		}
 
 		for (auto&& kv : nameToFileNames)
