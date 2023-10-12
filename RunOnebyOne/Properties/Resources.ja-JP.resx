@@ -129,6 +129,9 @@
   <data name="CANCEL_BUTTON_TEXT" xml:space="preserve">
     <value>キャンセル(&amp;C)</value>
   </data>
+  <data name="CHANGE_BUILDINCOMMAND_TO_CMD" xml:space="preserve">
+    <value>組み込みコマンド '{0}' はそのままでは実行できません。'cmd /c' に変更しますか?</value>
+  </data>
   <data name="DONE_BUTTON_TEXT" xml:space="preserve">
     <value>終了</value>
   </data>

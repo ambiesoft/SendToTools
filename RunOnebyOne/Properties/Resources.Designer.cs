@@ -97,6 +97,15 @@ namespace RunOnebyOne.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The build-in command &apos;{0}&apos; is not executable as it is, Do you wanto to change it to &apos;cmd /c&apos;?.
+        /// </summary>
+        internal static string CHANGE_BUILDINCOMMAND_TO_CMD {
+            get {
+                return ResourceManager.GetString("CHANGE_BUILDINCOMMAND_TO_CMD", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to All commands are already finished. Do you want to run them again?.
         /// </summary>
         internal static string DO_IT_AGAIN {

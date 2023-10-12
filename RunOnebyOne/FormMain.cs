@@ -252,8 +252,6 @@ namespace RunOnebyOne
             RunAsync_Normal,
             RunAsync_DryRun,
         }
-
-
         private async void RunAsync(RunAsyncType runType, List<KeyValuePair<string,string>> willExecutes)
         {
             string exe = cmbApplication.Text;
@@ -421,6 +419,50 @@ namespace RunOnebyOne
             UpdateComboCommon(cmbApplication);
             UpdateComboCommon(cmbArguments);
         }
+
+        readonly string[] buildinCommands = {
+            "Assoc",
+            "Break",
+            "Call",
+            "Cd, Chdir",
+            "Cls",
+            "Color",
+            "Copy",
+            "Date",
+            "Del, Erase",
+            "Dir",
+            "Echo",
+            "Endlocal",
+            "Exit",
+            "For",
+            "Ftype",
+            "Goto",
+            "If",
+            "Lh, Loadhigh",
+            "Md, Mkdir",
+            "Mklink",
+            "Move",
+            "Path",
+            "Pause",
+            "Popd",
+            "Prompt",
+            "Pushd",
+            "Rd",
+            "Rem",
+            "Ren, Rename",
+            "Rmdir",
+            "Set",
+            "Setlocal",
+            "Shift",
+            "Start",
+            "Time",
+            "Title",
+            "Type",
+            "Ver",
+            "Verify",
+            "Vol",
+        };
+
         private void btnRun_Click(object sender, EventArgs e)
         {
             if (Running)
@@ -442,6 +484,24 @@ namespace RunOnebyOne
             UpdateCombo();
 
             List<KeyValuePair<string, string>> willExecute = new List<KeyValuePair<string, string>>();
+
+            // check if exe is build-in command
+            {
+                bool containsString = buildinCommands.Any(
+                    s => string.Equals(s, cmbApplication.Text, StringComparison.OrdinalIgnoreCase));
+                if(containsString)
+                {
+                    string message = string.Format(
+                        "The build-in command '{0}' is not executable as it is, Do you wanto to change it to 'cmd /c'?",
+                        cmbApplication.Text);
+                    if(DialogResult.Yes== CppUtils.YesOrNo(message, MessageBoxDefaultButton.Button2))
+                    {
+                        cmbArguments.Text = "/c " + cmbApplication.Text + " " + cmbArguments.Text;
+                        cmbApplication.Text = Environment.ExpandEnvironmentVariables("%COMSPEC%"); 
+                    }
+                }
+
+            }
             RunAsync(RunAsyncType.RunAsync_DryRun, willExecute);
             StringBuilder sbFilesAndArgs = new StringBuilder();
             for(int i=0; i < willExecute.Count; ++i)

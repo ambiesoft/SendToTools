@@ -129,6 +129,9 @@
   <data name="CANCEL_BUTTON_TEXT" xml:space="preserve">
     <value>&amp;Cancel</value>
   </data>
+  <data name="CHANGE_BUILDINCOMMAND_TO_CMD" xml:space="preserve">
+    <value>The build-in command '{0}' is not executable as it is, Do you wanto to change it to 'cmd /c'?</value>
+  </data>
   <data name="DONE_BUTTON_TEXT" xml:space="preserve">
     <value>Done</value>
   </data>
