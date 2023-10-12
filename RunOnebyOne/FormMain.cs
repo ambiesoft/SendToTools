@@ -492,12 +492,26 @@ namespace RunOnebyOne
                 if(containsString)
                 {
                     string message = string.Format(
-                        "The build-in command '{0}' is not executable as it is, Do you wanto to change it to 'cmd /c'?",
+                        Properties.Resources.CHANGE_BUILDINCOMMAND_TO_CMD,
                         cmbApplication.Text);
-                    if(DialogResult.Yes== CppUtils.YesOrNo(message, MessageBoxDefaultButton.Button2))
+                    switch(CppUtils.CenteredMessageBox(
+                        message,
+                        Application.ProductName,
+                        MessageBoxButtons.YesNoCancel,
+                        MessageBoxIcon.Question,
+                        MessageBoxDefaultButton.Button2))
                     {
-                        cmbArguments.Text = "/c " + cmbApplication.Text + " " + cmbArguments.Text;
-                        cmbApplication.Text = Environment.ExpandEnvironmentVariables("%COMSPEC%"); 
+                        case DialogResult.Yes:
+                            cmbArguments.Text = "/c " + cmbApplication.Text + " " + cmbArguments.Text;
+                            cmbApplication.Text = Environment.ExpandEnvironmentVariables("%COMSPEC%");
+                            break;
+                        case DialogResult.No:
+                            break;
+                        case DialogResult.Cancel:
+                            return;
+                        default:
+                            Debug.Assert(false);
+                            return;
                     }
                 }
 
@@ -515,7 +529,8 @@ namespace RunOnebyOne
             sbMessage.AppendLine(Properties.Resources.BEFORE_RUN_MESSAGE);
             sbMessage.AppendLine();
             sbMessage.Append(sbFilesAndArgs);
-            if (DialogResult.Yes != FlexibleMessageBox.Show(sbMessage.ToString(),
+            if (DialogResult.Yes != FlexibleMessageBox.Show(this,
+                sbMessage.ToString(),
                 Application.ProductName,
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Question))

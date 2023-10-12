@@ -326,9 +326,9 @@ INT_PTR CALLBACK DialogProc(
 	return FALSE;
 }
 
-tstring ConvertPath(const DialogData& dt, LPCTSTR pPath, const bool isLast)
+wstring ConvertPath(const DialogData& dt, LPCTSTR pPath, const bool isLast)
 {
-	tstring ret(pPath);
+	wstring ret(pPath);
 	if (dt.isNameonly())
 		ret = stdGetFileName(ret);
 	else
