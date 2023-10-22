@@ -1,3 +1,6 @@
+2023/05/23 ver 3.2.8
+SwapFilename v2.0.3 Added '-autodetectall' and '-removeoldif'
+
 2023/10/12 ver 3.2.7
 RunOnebyOne ver 2.0.4 Fixed to change to cmd /c format when a built-in command
                       is specified in the app
