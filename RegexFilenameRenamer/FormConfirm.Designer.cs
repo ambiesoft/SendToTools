@@ -35,6 +35,7 @@
             this.pictQuestion = new System.Windows.Forms.PictureBox();
             this.txtMessage = new System.Windows.Forms.TextBox();
             this.chkShowAll = new System.Windows.Forms.CheckBox();
+            this.chkShowFullPath = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictQuestion)).BeginInit();
             this.SuspendLayout();
             // 
@@ -78,12 +79,20 @@
             this.chkShowAll.UseVisualStyleBackColor = true;
             this.chkShowAll.CheckedChanged += new System.EventHandler(this.chkShowAll_CheckedChanged);
             // 
+            // chkShowFullPath
+            // 
+            resources.ApplyResources(this.chkShowFullPath, "chkShowFullPath");
+            this.chkShowFullPath.Name = "chkShowFullPath";
+            this.chkShowFullPath.UseVisualStyleBackColor = true;
+            this.chkShowFullPath.CheckedChanged += new System.EventHandler(this.chkShowFullPath_CheckedChanged);
+            // 
             // FormConfirm
             // 
             this.AcceptButton = this.btnYes;
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.CancelButton = this.btnCancel;
+            this.Controls.Add(this.chkShowFullPath);
             this.Controls.Add(this.chkShowAll);
             this.Controls.Add(this.txtMessage);
             this.Controls.Add(this.pictQuestion);
@@ -108,5 +117,6 @@
         private System.Windows.Forms.TextBox txtMessage;
         private System.Windows.Forms.CheckBox chkShowAll;
         internal System.Windows.Forms.Button btnYes;
+        private System.Windows.Forms.CheckBox chkShowFullPath;
     }
 }

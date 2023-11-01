@@ -520,42 +520,28 @@ namespace Ambiesoft.RegexFilenameRenamer
 
                 if (dryrun)
                 {
-                    StringBuilder sbDryAll = new StringBuilder();
-                    StringBuilder sbDryChanging = new StringBuilder();
+                    List<ChangeFile> changeFiles = new List<ChangeFile>();
+
                     bool bRenameExists = false;
                     foreach (string org in targets.Keys)
                     {
                         if (org != targets[org])
                         {
                             bRenameExists = true;
-                            string tmp = string.Format("\"{0}\" ->\r\n\"{1}\"", 
-                                Path.GetFileName(org),
-                                Path.GetFileName(targets[org]));
-                            
-                            sbDryAll.Append(tmp);
-
-                            sbDryChanging.Append(tmp);
-                            sbDryChanging.AppendLine();
-                            sbDryChanging.AppendLine();
+                            changeFiles.Add(new ChangeFile(org, targets[org], true));
                         }
                         else
                         {
-                            sbDryAll.AppendFormat("\"{0}\" -> " + Properties.Resources.NO_CHANGE,
-                                Path.GetFileName(org),
-                                Path.GetFileName(targets[org]));
+                            changeFiles.Add(new ChangeFile(org, targets[org], false));
                         }
-                        sbDryAll.AppendLine();
-                        sbDryAll.AppendLine();
                     }
 
-                    using (FormConfirm form = new FormConfirm())
+                    using (FormConfirm form = new FormConfirm(changeFiles))
                     {
                         form.Text = Application.ProductName + " " + Properties.Resources.CONFIRM;
                         form.lblMessage.Text = !bRenameExists ?
                             Properties.Resources.NO_FILES_TO_RENAME:
                             Properties.Resources.DO_YOU_WANT_TO_PERFORM;
-                        form.initialTextAll_ = sbDryAll.ToString();
-                        form.initialTextChanging_ = sbDryChanging.ToString();
                         form.btnYes.Enabled = bRenameExists;
                         if (DialogResult.Yes != form.ShowDialog())
                             return 0;

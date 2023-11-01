@@ -1,3 +1,6 @@
+2023/11/01 ver 3.2.9
+RegexFilenameRenamer v2.0.2 Fix ConfirmDialog
+
 2023/05/23 ver 3.2.8
 SwapFilename v2.0.3 Added '-autodetectall' and '-removeoldif'
 
