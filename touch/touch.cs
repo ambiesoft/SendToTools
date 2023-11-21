@@ -52,6 +52,10 @@ namespace touch
             {
                 doit(args);
             }
+            catch(InfoException ex)
+            {
+                CppUtils.Info(ex.Message);
+            }
             catch (Exception ex)
             {
                 CppUtils.Alert(ex);
@@ -93,6 +97,8 @@ namespace touch
             bool touchfolder = false;
             bool followlink = false;
             bool notooltip = false;
+            bool show_help = false;
+            bool show_version = false;
             var p = new OptionSet() {
                     { 
                         "r|recursive", 
@@ -118,10 +124,35 @@ namespace touch
                         "n|notooltip",
                         "No tooltip",
                         v => { notooltip = v!=null;}
+                    },
+                    {
+                       "h|help|?",
+                        "show this message and exit",
+                        v => show_help = v != null
+                    },
+                    {
+                       "v|versiopn",
+                        "show version",
+                        v => show_version = v != null
                     }
                 };
 
             List<string> extra = p.SafeParse(args);
+
+            if(show_help)
+            {
+                StringBuilder sb = new StringBuilder();
+                StringWriter sw = new StringWriter(sb);
+                p.WriteOptionDescriptions(sw);
+
+                throw new InfoException(sb.ToString());
+            }
+            if(show_version)
+            {
+                throw new InfoException(string.Format("{0} v{1}",
+                    Application.ProductName,
+                    AmbLib.getAssemblyVersion(System.Reflection.Assembly.GetExecutingAssembly(), 3)));
+            }
             if (extra.Count < 1)
             {
                 StringBuilder sb = new StringBuilder();

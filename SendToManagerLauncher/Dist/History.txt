@@ -1,3 +1,6 @@
+2023/11/21 ver 3.2.10
+touch v2.0.2 Added option '-h' and '-v'
+
 2023/11/01 ver 3.2.9
 RegexFilenameRenamer v2.0.2 Fix ConfirmDialog
 

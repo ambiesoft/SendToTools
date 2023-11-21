@@ -55,6 +55,10 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Ambiesoft.AmbLib, Version=2.0.4.40763, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Linkout\DNAssembly.NET4.5.2\Ambiesoft.AmbLib.dll</HintPath>
+    </Reference>
     <Reference Include="Ambiesoft.AmbLibcpp, Version=3.0.1.2686, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\Linkout\DNAssembly.NET4.5.2\Ambiesoft.AmbLibcpp.dll</HintPath>
@@ -68,6 +72,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="InfoException.cs" />
     <Compile Include="OptionSet\OptionSet.cs" />
     <Compile Include="touch.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
