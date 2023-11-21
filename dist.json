@@ -106,6 +106,7 @@
         "tools\\api-ms-win-crt-time-l1-1-0.dll",
         "tools\\api-ms-win-crt-utility-l1-1-0.dll",
         "tools\\api-ms-win-core-fibers-l1-1-0.dll",
+        "tools\\vcruntime140_threads.dll",
         "tools\\ChangeFileName.exe",
         "tools\\ChangeFileName.pdb",
         "tools\\ChangeFileTime.exe",
