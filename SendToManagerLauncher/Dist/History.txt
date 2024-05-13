@@ -1,3 +1,6 @@
+2024/05/13 ver 3.2.11
+MoreSendTo v1.0.2 Added option '/?' and others
+
 2023/11/21 ver 3.2.10
 touch v2.0.2 Added option '-h' and '-v'
 

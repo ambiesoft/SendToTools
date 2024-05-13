@@ -450,7 +450,9 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	}
 
 	// If no command line or Pressed with RButton,
-	// Shows Option dialog
+	// Shows Option dialog.
+	// Thought this app is supposed to be launched from SendTo menu,
+	// it has arguments of file name(s).
 	if (stdTrim(wstring(lpCmdLine)).empty() ||
 		::GetAsyncKeyState(VK_RBUTTON) < 0)
 	{
@@ -486,6 +488,22 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 		I18N(L"More SendTo Folder"));
 
 	parser.Parse();
+
+	// Find if arguments have only "/?" or other help option and set bHelp
+	{
+		CCommandLineString cmdLine;
+		// 2 means this app and one command
+		if (cmdLine.getCount() == 2)
+		{
+			if (cmdLine.getArg(1) == L"/?" ||
+				cmdLine.getArg(1) == L"/h" ||
+				cmdLine.getArg(1) == L"-h" ||
+				cmdLine.getArg(1) == L"--help")
+			{
+				bHelp = true;
+			}
+		}
+	}
 
 	if (bVersion)
 	{
