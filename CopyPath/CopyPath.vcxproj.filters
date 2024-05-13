@@ -72,7 +72,7 @@
     <ClInclude Include="..\..\lsMisc\OpenCommon.h">
       <Filter>1 Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\lsMisc\GetVersionString.h">
+    <ClInclude Include="..\..\lsMisc\GetVersionStringFromResource.h">
       <Filter>1 Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -125,7 +125,7 @@
     <ClCompile Include="..\..\lsMisc\OpenCommon.cpp">
       <Filter>2 Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\lsMisc\GetVersionString.cpp">
+    <ClCompile Include="..\..\lsMisc\GetVersionStringFromResource.cpp">
       <Filter>2 Source Files</Filter>
     </ClCompile>
   </ItemGroup>

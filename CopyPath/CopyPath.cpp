@@ -537,7 +537,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	if (bHelp)
 	{
 		wstring message = stdFormat(L"CopyPath v%s", 
-			GetVersionString(nullptr, 3).c_str());
+			GetVersionStringFromResource(nullptr, 3).c_str());
 		message += KAIGYO;
 		message += L"Ambiesoft https://ambiesoft.com/";
 		message += KAIGYO;

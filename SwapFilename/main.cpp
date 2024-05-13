@@ -448,7 +448,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	{
 		MessageBox(NULL,
 			parser.getHelpMessage().c_str(),
-			stdFormat(L"%s v%s", APPNAME, GetVersionString(NULL, 3).c_str()).c_str(),
+			stdFormat(L"%s v%s", APPNAME, GetVersionStringFromResource(NULL, 3).c_str()).c_str(),
 			MB_ICONINFORMATION);
 		return 0;
 	}

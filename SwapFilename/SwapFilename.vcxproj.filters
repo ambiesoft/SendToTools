@@ -45,9 +45,6 @@
     <ClCompile Include="..\..\lsMisc\GetLastErrorString.cpp">
       <Filter>02 Source Files\lsMisc</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\lsMisc\GetVersionString.cpp">
-      <Filter>02 Source Files\lsMisc</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\lsMisc\HighDPI.cpp">
       <Filter>02 Source Files\lsMisc</Filter>
     </ClCompile>
@@ -78,6 +75,9 @@
     <ClCompile Include="..\..\lsMisc\FormatSizeof.cpp">
       <Filter>02 Source Files\lsMisc</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\lsMisc\GetVersionStringFromResource.cpp">
+      <Filter>02 Source Files\lsMisc</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="StdAfx.h">
@@ -102,9 +102,6 @@
       <Filter>01 Header Files\lsMisc</Filter>
     </ClInclude>
     <ClInclude Include="..\..\lsMisc\GetLastErrorString.h">
-      <Filter>01 Header Files\lsMisc</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\lsMisc\GetVersionString.h">
       <Filter>01 Header Files\lsMisc</Filter>
     </ClInclude>
     <ClInclude Include="..\..\lsMisc\HighDPI.h">
@@ -132,6 +129,9 @@
       <Filter>01 Header Files\lsMisc</Filter>
     </ClInclude>
     <ClInclude Include="..\..\lsMisc\FormatSizeof.h">
+      <Filter>01 Header Files\lsMisc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lsMisc\GetVersionStringFromResource.h">
       <Filter>01 Header Files\lsMisc</Filter>
     </ClInclude>
   </ItemGroup>

@@ -15,7 +15,7 @@
 #include "../../lsMisc/DebugMacro.h"
 #include "../../lsMisc/CommandLineParser.h"
 #include "../../lsMisc/CommandLineString.h"
-#include "../../lsMisc/GetVersionString.h"
+#include "../../lsMisc/GetVersionStringFromResource.h"
 #include "../../lsMisc/HighDPI.h"
 #include "../../lsMisc/CHandle.h"
 #include "../../lsMisc/stop_watch.h"
@@ -414,7 +414,7 @@ wstring getMessageTitleString()
 {
 	return stdFormat(L"%s v%s (%s)",
 		APPNAME,
-		GetVersionString(nullptr, 3).c_str(),
+		GetVersionStringFromResource(nullptr, 3).c_str(),
 		Is64BitProcess() ? L"x64" : L"x86");
 }
 
@@ -490,7 +490,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	if (bVersion)
 	{
 		wstring message = stdFormat(L"%s v%s",
-			APPNAME, GetVersionString(nullptr, 3).c_str()).c_str();
+			APPNAME, GetVersionStringFromResource(nullptr, 3).c_str()).c_str();
 		MessageBox(nullptr,
 			message.c_str(),
 			getMessageTitleString().c_str(),

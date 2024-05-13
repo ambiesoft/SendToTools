@@ -89,7 +89,7 @@
     <ClInclude Include="..\..\lsMisc\DebugMacro.h" />
     <ClInclude Include="..\..\lsMisc\GetFilesInfo.h" />
     <ClInclude Include="..\..\lsMisc\GetLastErrorString.h" />
-    <ClInclude Include="..\..\lsMisc\GetVersionString.h" />
+    <ClInclude Include="..\..\lsMisc\GetVersionStringFromResource.h" />
     <ClInclude Include="..\..\lsMisc\HighDPI.h" />
     <ClInclude Include="..\..\lsMisc\I18N.h" />
     <ClInclude Include="..\..\lsMisc\Is64.h" />
@@ -113,7 +113,7 @@
     <ClCompile Include="..\..\lsMisc\DebugMacro.cpp" />
     <ClCompile Include="..\..\lsMisc\GetFilesInfo.cpp" />
     <ClCompile Include="..\..\lsMisc\GetLastErrorString.cpp" />
-    <ClCompile Include="..\..\lsMisc\GetVersionString.cpp" />
+    <ClCompile Include="..\..\lsMisc\GetVersionStringFromResource.cpp" />
     <ClCompile Include="..\..\lsMisc\HighDPI.cpp" />
     <ClCompile Include="..\..\lsMisc\I18N.cpp" />
     <ClCompile Include="..\..\lsMisc\Is64.cpp" />

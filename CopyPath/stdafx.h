@@ -34,7 +34,7 @@
 #include "../../profile/cpp/Profile/include/ambiesoft.profile.h"
 #include "../../lsMisc/UTF16toUTF8.h"
 #include "../../lsMisc/OpenCommon.h"
-#include "../../lsMisc/GetVersionString.h"
+#include "../../lsMisc/GetVersionStringFromResource.h"
 
 enum {
 	WM_APP_INITIALUPDATE = (WM_APP + 1)

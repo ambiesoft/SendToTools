@@ -14,7 +14,7 @@
 #include "../../lsMisc/GetBackupFile.h"
 #include "../../lsMisc/showballoon.h"
 #include "../../lsMisc/SHMoveFile.h"
-#include "../../lsMisc/GetVersionString.h"
+#include "../../lsMisc/GetVersionStringFromResource.h"
 #include "../../lsMisc/I18N.h"
 
 #define APP_NAME L"SwapFilename"

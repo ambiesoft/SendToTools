@@ -48,9 +48,6 @@
     <ClInclude Include="..\..\lsMisc\GetLastErrorString.h">
       <Filter>1 Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\lsMisc\GetVersionString.h">
-      <Filter>1 Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\lsMisc\HighDPI.h">
       <Filter>1 Header Files</Filter>
     </ClInclude>
@@ -84,6 +81,9 @@
     <ClInclude Include="..\..\lsMisc\CommandLineString.h">
       <Filter>1 Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\lsMisc\GetVersionStringFromResource.h">
+      <Filter>1 Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MoreSendTo.cpp">
@@ -105,9 +105,6 @@
       <Filter>2 Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\lsMisc\GetLastErrorString.cpp">
-      <Filter>2 Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\lsMisc\GetVersionString.cpp">
       <Filter>2 Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\lsMisc\HighDPI.cpp">
@@ -135,6 +132,9 @@
       <Filter>2 Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\lsMisc\stdosd\stdosd_win.cpp">
+      <Filter>2 Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lsMisc\GetVersionStringFromResource.cpp">
       <Filter>2 Source Files</Filter>
     </ClCompile>
   </ItemGroup>
