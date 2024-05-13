@@ -515,7 +515,8 @@ namespace Ambiesoft.RegexFilenameRenamer
                     if (!isAlsoExt)
                         newFileName += fiorig.Extension;
 
-                    targets.Add(fiorig.FullName, orgFolder + @"\" + newFileName);
+                    targets.Add(fiorig.FullName, 
+                        Path.Combine(orgFolder, newFileName));
                 }
 
                 if (dryrun)
@@ -618,14 +619,12 @@ namespace Ambiesoft.RegexFilenameRenamer
         internal static string[] ConstructMainArgs(SimpleCommandLineParser parser)
         {
             List<string> ret = new List<string>();
-            bool isBlobbing = parser["glob"] != null;
+            bool isGlobbing = parser["glob"] != null;
             for (int i = 0; i < parser.MainargLength; ++i)
             {
                 string file = parser.getMainargs(i);
-                if (isBlobbing && file.IndexOf('*') >= 0)
+                if (isGlobbing && file.IndexOf('*') >= 0)
                 {
-                    //if (file == "*")
-                    //    file = @".\*";
                     DirectoryInfo di=null;
                     if (Path.IsPathRooted(file))
                         di = new DirectoryInfo(Path.GetDirectoryName(file));
@@ -633,17 +632,10 @@ namespace Ambiesoft.RegexFilenameRenamer
                         di = new DirectoryInfo(".");
 
                     FileInfo[] allfi = di.GetFiles(Path.GetFileName(file));
-                    // bool isAdded = false;
                     foreach (FileInfo f in allfi)
                     {
-                        // isAdded = true;
                         ret.Add(f.FullName);
                     }
-                    //if(!isAdded)
-                    //{
-                    //    // not a glob and does not exist, or it wa directory
-                    //    ret.Add(file);
-                    //}
                 }
                 else
                 {
