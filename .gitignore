@@ -4,6 +4,8 @@
 **/obj/
 .vs/
 
+packages/
+
 *.user
 *.suo
 *.aps

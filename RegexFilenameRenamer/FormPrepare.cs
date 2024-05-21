@@ -51,11 +51,6 @@ namespace Ambiesoft.RegexFilenameRenamer
                     parser["ncf"] = true;
                 }
 
-                if (chkContainsGlobs.Checked)
-                    parser["glob"] = true;
-                else
-                    parser["glob"] = null;
-
                 Environment.CurrentDirectory = txtCurrentDirectory.Text;
                 parser.SetMainArgs(txtInputs.Lines);
             }
@@ -97,12 +92,19 @@ namespace Ambiesoft.RegexFilenameRenamer
                     chkShowConfirm.Checked = false;
                 }
 
-                if (parser["glob"] != null)
-                {
-                    chkContainsGlobs.Checked = true;
-                }
                 txtCurrentDirectory.Text = Environment.CurrentDirectory;
-                txtInputs.Lines = Program.ConstructMainArgs(parser);
+
+
+                txtInputs.Text = "";
+                List<string> lines = new List<string>();
+                for (int i = 0; i < parser.MainargLength; ++i)
+                {
+                    lines.Add(parser.getMainargs(i));
+                }
+                txtInputs.Lines = lines.ToArray();
+
+                // Set Expanded input
+                txtExpandedInput.Lines = Program.ExpandMainArgs(parser);
             }
         }
 

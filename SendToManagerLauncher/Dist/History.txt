@@ -1,3 +1,7 @@
+2024/05/21 ver 3.2.12
+RegexFilenameRenamer v2.1.1 More sophisticated glob feature
+                            Ended directory rename
+
 2024/05/13 ver 3.2.11
 MoreSendTo v1.0.2 Added option '/?' and others
 

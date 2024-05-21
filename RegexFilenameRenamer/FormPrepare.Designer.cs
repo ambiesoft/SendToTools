@@ -35,13 +35,16 @@
             this.chkIncludeExtention = new System.Windows.Forms.CheckBox();
             this.chkIgnoreCase = new System.Windows.Forms.CheckBox();
             this.chkShowConfirm = new System.Windows.Forms.CheckBox();
-            this.chkContainsGlobs = new System.Windows.Forms.CheckBox();
             this.txtCurrentDirectory = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.txtInputs = new System.Windows.Forms.TextBox();
             this.btnOK = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
+            this.txtExpandedInput = new System.Windows.Forms.TextBox();
+            this.lblExpandedInput = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -55,14 +58,18 @@
             // 
             // txtSearchRegex
             // 
-            this.txtSearchRegex.Location = new System.Drawing.Point(127, 6);
+            this.txtSearchRegex.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtSearchRegex.Location = new System.Drawing.Point(127, 5);
             this.txtSearchRegex.Name = "txtSearchRegex";
             this.txtSearchRegex.Size = new System.Drawing.Size(475, 23);
             this.txtSearchRegex.TabIndex = 1;
             // 
             // txtReplace
             // 
-            this.txtReplace.Location = new System.Drawing.Point(127, 30);
+            this.txtReplace.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtReplace.Location = new System.Drawing.Point(127, 35);
             this.txtReplace.Name = "txtReplace";
             this.txtReplace.Size = new System.Drawing.Size(475, 23);
             this.txtReplace.TabIndex = 3;
@@ -70,7 +77,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 32);
+            this.label2.Location = new System.Drawing.Point(12, 38);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(57, 15);
             this.label2.TabIndex = 2;
@@ -79,7 +86,7 @@
             // chkIncludeExtention
             // 
             this.chkIncludeExtention.AutoSize = true;
-            this.chkIncludeExtention.Location = new System.Drawing.Point(12, 56);
+            this.chkIncludeExtention.Location = new System.Drawing.Point(15, 74);
             this.chkIncludeExtention.Name = "chkIncludeExtention";
             this.chkIncludeExtention.Size = new System.Drawing.Size(127, 19);
             this.chkIncludeExtention.TabIndex = 4;
@@ -89,7 +96,7 @@
             // chkIgnoreCase
             // 
             this.chkIgnoreCase.AutoSize = true;
-            this.chkIgnoreCase.Location = new System.Drawing.Point(12, 78);
+            this.chkIgnoreCase.Location = new System.Drawing.Point(15, 96);
             this.chkIgnoreCase.Name = "chkIgnoreCase";
             this.chkIgnoreCase.Size = new System.Drawing.Size(96, 19);
             this.chkIgnoreCase.TabIndex = 4;
@@ -99,26 +106,18 @@
             // chkShowConfirm
             // 
             this.chkShowConfirm.AutoSize = true;
-            this.chkShowConfirm.Location = new System.Drawing.Point(12, 99);
+            this.chkShowConfirm.Location = new System.Drawing.Point(15, 117);
             this.chkShowConfirm.Name = "chkShowConfirm";
             this.chkShowConfirm.Size = new System.Drawing.Size(108, 19);
             this.chkShowConfirm.TabIndex = 4;
             this.chkShowConfirm.Text = "&Show Confirm";
             this.chkShowConfirm.UseVisualStyleBackColor = true;
             // 
-            // chkContainsGlobs
-            // 
-            this.chkContainsGlobs.AutoSize = true;
-            this.chkContainsGlobs.Location = new System.Drawing.Point(12, 120);
-            this.chkContainsGlobs.Name = "chkContainsGlobs";
-            this.chkContainsGlobs.Size = new System.Drawing.Size(112, 19);
-            this.chkContainsGlobs.TabIndex = 4;
-            this.chkContainsGlobs.Text = "&Contains Globs";
-            this.chkContainsGlobs.UseVisualStyleBackColor = true;
-            // 
             // txtCurrentDirectory
             // 
-            this.txtCurrentDirectory.Location = new System.Drawing.Point(127, 139);
+            this.txtCurrentDirectory.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtCurrentDirectory.Location = new System.Drawing.Point(127, 151);
             this.txtCurrentDirectory.Name = "txtCurrentDirectory";
             this.txtCurrentDirectory.Size = new System.Drawing.Size(475, 23);
             this.txtCurrentDirectory.TabIndex = 6;
@@ -126,7 +125,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(7, 142);
+            this.label3.Location = new System.Drawing.Point(7, 154);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(114, 15);
             this.label3.TabIndex = 5;
@@ -135,7 +134,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(9, 177);
+            this.label4.Location = new System.Drawing.Point(9, 189);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(49, 15);
             this.label4.TabIndex = 7;
@@ -143,19 +142,22 @@
             // 
             // txtInputs
             // 
+            this.txtInputs.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtInputs.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.txtInputs.Location = new System.Drawing.Point(12, 192);
+            this.txtInputs.Location = new System.Drawing.Point(12, 204);
             this.txtInputs.Multiline = true;
             this.txtInputs.Name = "txtInputs";
-            this.txtInputs.Size = new System.Drawing.Size(590, 201);
+            this.txtInputs.Size = new System.Drawing.Size(590, 86);
             this.txtInputs.TabIndex = 8;
             // 
             // btnOK
             // 
+            this.btnOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnOK.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnOK.Location = new System.Drawing.Point(348, 422);
+            this.btnOK.Location = new System.Drawing.Point(328, 497);
             this.btnOK.Name = "btnOK";
-            this.btnOK.Size = new System.Drawing.Size(134, 21);
+            this.btnOK.Size = new System.Drawing.Size(134, 31);
             this.btnOK.TabIndex = 9;
             this.btnOK.Text = "OK";
             this.btnOK.UseVisualStyleBackColor = true;
@@ -163,13 +165,44 @@
             // 
             // btnCancel
             // 
+            this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(488, 422);
+            this.btnCancel.Location = new System.Drawing.Point(468, 497);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(134, 21);
+            this.btnCancel.Size = new System.Drawing.Size(134, 31);
             this.btnCancel.TabIndex = 10;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
+            // 
+            // txtExpandedInput
+            // 
+            this.txtExpandedInput.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtExpandedInput.Font = new System.Drawing.Font("MS UI Gothic", 9F);
+            this.txtExpandedInput.Location = new System.Drawing.Point(0, 0);
+            this.txtExpandedInput.Multiline = true;
+            this.txtExpandedInput.Name = "txtExpandedInput";
+            this.txtExpandedInput.Size = new System.Drawing.Size(590, 152);
+            this.txtExpandedInput.TabIndex = 11;
+            // 
+            // lblExpandedInput
+            // 
+            this.lblExpandedInput.AutoSize = true;
+            this.lblExpandedInput.Location = new System.Drawing.Point(9, 307);
+            this.lblExpandedInput.Name = "lblExpandedInput";
+            this.lblExpandedInput.Size = new System.Drawing.Size(109, 15);
+            this.lblExpandedInput.TabIndex = 12;
+            this.lblExpandedInput.Text = "&Expanded Inputs:";
+            // 
+            // panel1
+            // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.Controls.Add(this.txtExpandedInput);
+            this.panel1.Location = new System.Drawing.Point(12, 325);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(590, 152);
+            this.panel1.TabIndex = 13;
             // 
             // FormPrepare
             // 
@@ -177,14 +210,15 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(634, 454);
+            this.ClientSize = new System.Drawing.Size(622, 540);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.lblExpandedInput);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.txtInputs);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.txtCurrentDirectory);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.chkContainsGlobs);
             this.Controls.Add(this.chkShowConfirm);
             this.Controls.Add(this.chkIgnoreCase);
             this.Controls.Add(this.chkIncludeExtention);
@@ -194,6 +228,8 @@
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.Name = "FormPrepare";
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -212,8 +248,10 @@
         private System.Windows.Forms.CheckBox chkIncludeExtention;
         private System.Windows.Forms.CheckBox chkIgnoreCase;
         private System.Windows.Forms.CheckBox chkShowConfirm;
-        private System.Windows.Forms.CheckBox chkContainsGlobs;
         private System.Windows.Forms.TextBox txtCurrentDirectory;
         private System.Windows.Forms.TextBox txtInputs;
+        private System.Windows.Forms.TextBox txtExpandedInput;
+        private System.Windows.Forms.Label lblExpandedInput;
+        private System.Windows.Forms.Panel panel1;
     }
 }

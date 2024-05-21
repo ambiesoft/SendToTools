@@ -10,11 +10,12 @@ using System.Windows.Forms;
 
 namespace Ambiesoft.RegexFilenameRenamer
 {
-
-
-
     public partial class FormConfirm : Form
     {
+        const string SECTION = "FormConfirm";
+        const string KEY_SHOWALL = "ShowAll";
+        const string KEY_SHOWFULLPATH = "ShowFullPath";
+
         readonly List<ChangeFile> _changeFiles;
         public FormConfirm(List<ChangeFile> changeFiles)
         {
@@ -71,6 +72,21 @@ namespace Ambiesoft.RegexFilenameRenamer
 
             Icon icon = new Icon(System.Drawing.SystemIcons.Question, 16, 16);
             pictQuestion.Image = icon.ToBitmap();
+
+            // Load from ini
+            bool boolval;
+            HashIni ini = Profile.ReadAll(Program.IniPath, false);
+
+            Profile.GetBool(SECTION, KEY_SHOWALL, false, out boolval, ini);
+            chkShowAll.Checked = boolval;
+
+            Profile.GetBool(SECTION, KEY_SHOWFULLPATH, false, out boolval, ini);
+            chkShowFullPath.Checked = boolval;
+
+            chkCommon();
+
+            txtMessage.SelectAll();
+            txtMessage.Select(0, 0);
         }
 
         private void chkCommon()
@@ -85,6 +101,19 @@ namespace Ambiesoft.RegexFilenameRenamer
         private void chkShowFullPath_CheckedChanged(object sender, EventArgs e)
         {
             chkCommon();
+        }
+
+        private void FormConfirm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            HashIni ini = Profile.ReadAll(Program.IniPath, false);
+
+            Profile.WriteBool(SECTION, KEY_SHOWALL, chkShowAll.Checked, ini);
+            Profile.WriteBool(SECTION, KEY_SHOWFULLPATH, chkShowFullPath.Checked, ini);
+            
+            if(!Profile.WriteAll(ini,Program.IniPath))
+            {
+                MessageBox.Show("TODO: failed to write ini");
+            }
         }
     }
 }

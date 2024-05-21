@@ -34,11 +34,23 @@ using Ambiesoft;
 using System.Diagnostics;
 using System.Reflection;
 using System.Runtime.InteropServices;
+using Ganss.IO;
+using System.IO.Abstractions;
+using System.Linq;
 
 namespace Ambiesoft.RegexFilenameRenamer
 {
     static class Program
     {
+        public static string IniPath
+        {
+            get
+            {
+                return Path.Combine(Path.GetDirectoryName(Application.ExecutablePath),
+                    Path.GetFileNameWithoutExtension(Application.ExecutablePath) + ".ini");
+            }
+        }
+
         enum VirtualKeyStates : int
         {
             VK_LBUTTON = 0x01,
@@ -263,9 +275,6 @@ namespace Ambiesoft.RegexFilenameRenamer
             sbMessage.AppendLine("  /ca");
             sbMessage.AppendLine("    Check input by showing argv.");
             
-            sbMessage.AppendLine("  /glob");
-            sbMessage.AppendLine("    Input files contain globs.");
-
             sbMessage.AppendLine();
             sbMessage.AppendLine("Examples:");
             sbMessage.AppendLine("  Replace \"a\" with \"b\"");
@@ -278,7 +287,6 @@ namespace Ambiesoft.RegexFilenameRenamer
             sbMessage.Append("  > " + Path.GetFileName(Application.ExecutablePath));
             sbMessage.Append(" /rf \"\\s+\" /rt \" \" /cf [file]");
             sbMessage.AppendLine();
-
 
             return sbMessage.ToString();
         }
@@ -330,7 +338,6 @@ namespace Ambiesoft.RegexFilenameRenamer
             parser.addOption("cf", ARGUMENT_TYPE.MUSTNOT);
             parser.addOption("ncf", ARGUMENT_TYPE.MUSTNOT);
             parser.addOption("ca", ARGUMENT_TYPE.MUSTNOT);
-            parser.addOption("glob", ARGUMENT_TYPE.MUSTNOT);
             parser.addOption("h", ARGUMENT_TYPE.MUSTNOT);
             parser.addOption("?", ARGUMENT_TYPE.MUSTNOT);
             
@@ -399,10 +406,6 @@ namespace Ambiesoft.RegexFilenameRenamer
                 if (parser["ncf"] != null)
                 {
                     sbCheckArguments.AppendLine("ncf");
-                }
-                if (parser["glob"] != null)
-                {
-                    sbCheckArguments.AppendLine("glob");
                 }
 
                 if (parser["h"] != null)
@@ -502,7 +505,7 @@ namespace Ambiesoft.RegexFilenameRenamer
             bool dryrun = parser["ncf"] == null;
             Dictionary <string, string> targets = new Dictionary<string,string>();
 
-            string[] mainArgs = ConstructMainArgs(parser);            
+            string[] mainArgs = ExpandMainArgs(parser);            
             try
             {
                 foreach(string orgFullorRelativeFileName in mainArgs)
@@ -616,30 +619,27 @@ namespace Ambiesoft.RegexFilenameRenamer
                 }
             }
         }
-        internal static string[] ConstructMainArgs(SimpleCommandLineParser parser)
+        internal static string[] ExpandMainArgs(SimpleCommandLineParser parser)
         {
             List<string> ret = new List<string>();
-            bool isGlobbing = parser["glob"] != null;
             for (int i = 0; i < parser.MainargLength; ++i)
             {
-                string file = parser.getMainargs(i);
-                if (isGlobbing && file.IndexOf('*') >= 0)
+                var globOptions = new GlobOptions
                 {
-                    DirectoryInfo di=null;
-                    if (Path.IsPathRooted(file))
-                        di = new DirectoryInfo(Path.GetDirectoryName(file));
-                    else
-                        di = new DirectoryInfo(".");
+                    IgnoreCase = true,
+                    DirectoriesOnly = false,
+                    ThrowOnError = false,
+                };
 
-                    FileInfo[] allfi = di.GetFiles(Path.GetFileName(file));
-                    foreach (FileInfo f in allfi)
-                    {
-                        ret.Add(f.FullName);
-                    }
-                }
-                else
+                var path = parser.getMainargs(i);
+                var glob = new Glob(path,
+                    globOptions, new FileSystem());
+                var dlls = glob.Expand();
+
+                foreach (var file in dlls)
                 {
-                    ret.Add(file);
+                    if(File.Exists(file.FullName))
+                        ret.Add(file.FullName);
                 }
             }
             return ret.ToArray();

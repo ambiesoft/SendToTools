@@ -102,6 +102,7 @@
             this.Name = "FormConfirm";
             this.ShowIcon = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormConfirm_FormClosed);
             this.Load += new System.EventHandler(this.FormConfirm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictQuestion)).EndInit();
             this.ResumeLayout(false);
