@@ -77,12 +77,14 @@ SendtoToolsは以下のツールを付属しています。
 このソフトウェアはフリーウェアです。Copying.txtを参照してください。
 
 
-
-
-
 ## アンインストール
 送るフォルダにアイテムを展開した場合はそれらを削除してください。
 展開したファイルを削除してください。
+
+
+## 謝辞
+RegexFilenameRenamerはGlob.cs <https://github.com/mganss/Glob.cs> を使っています。
+
 
 ## サポート
 トラブルがある場合は、 <https://github.com/ambiesoft/SendToTools/issues>へ*Issue*を書いてください。

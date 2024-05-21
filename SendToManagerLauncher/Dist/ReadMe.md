@@ -75,6 +75,9 @@ This software is freeware, See Copying.txt
 Remove extracted files.
 
 
+## Acknowledgment
+RegexFilenameRenamer uses Glob.cs <https://github.com/mganss/Glob.cs>.
+
 ## Support
 If you have troubles, post *Issue* on <https://github.com/ambiesoft/SendToTools/issues>.
 
