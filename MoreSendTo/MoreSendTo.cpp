@@ -583,11 +583,14 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 				i++;
 				continue;
 			}
+			break;
 		}
 		if ((i - 1) == 0)
 			return cls.subString(1);
 		return cls.subString(i - 1);
 	}();
+
+	DTRACE(stdFormat(L"gArgToPass:%s", gArgToPass.c_str()).c_str());
 
 	if (bExplorer || GetAsyncKeyState(VK_SHIFT) < 0)
 	{
