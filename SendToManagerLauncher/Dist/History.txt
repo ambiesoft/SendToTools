@@ -1,5 +1,7 @@
-MoreSendTo v1.x.x Fix: Only one command line argument was being sent
-
+2024/05/25 ver 3.2.13
+MoreSendTo v1.0.3 Fix: Only one command line argument was being sent
+RegexFilenameRenamer v2.1.2 Fixed to remember the scrolling position of the text in the confirmation dialog
+                            
 2024/05/21 ver 3.2.12
 RegexFilenameRenamer v2.1.1 More sophisticated glob feature
                             Ended directory rename

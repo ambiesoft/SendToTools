@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows.Forms;
 
@@ -89,10 +90,33 @@ namespace Ambiesoft.RegexFilenameRenamer
             txtMessage.Select(0, 0);
         }
 
+
+        const int EM_LINESCROLL = 0x00B6;
+        const int SB_VERT = 1;
+        const int WM_VSCROLL = 0x115;
+        [DllImport("user32.dll")]
+        static extern int GetScrollPos(IntPtr hWnd, int nBar);
+        [DllImport("user32.dll")]
+        static extern int SetScrollPos(IntPtr hWnd, int nBar,
+                      int nPos, bool bRedraw);
+        [DllImport("user32.dll")]
+        static extern int SendMessage(IntPtr hWnd, int wMsg,
+                                       int wParam, int lParam);
+        [DllImport("User32.Dll", EntryPoint = "PostMessageA")]
+        static extern bool PostMessage(IntPtr hWnd, uint msg, int wParam, int lParam);
+
         private void chkCommon()
         {
+            // Get current scroll pos
+            int scrollPos = GetScrollPos(txtMessage.Handle, SB_VERT);
+
             txtMessage.Text = GetTextFromChangeFiles(!chkShowAll.Checked, chkShowFullPath.Checked);
+
+            // Set scroll pos
+            SetScrollPos(txtMessage.Handle, SB_VERT, scrollPos, true);
+            PostMessage(txtMessage.Handle, WM_VSCROLL, 4 + 0x10000 * scrollPos, 0);
         }
+    
         private void chkShowAll_CheckedChanged(object sender, EventArgs e)
         {
             chkCommon();

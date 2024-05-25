@@ -88,11 +88,11 @@ namespace Ambiesoft.RegexFilenameRenamer.Properties {
         }
         
         /// <summary>
-        ///   Do you want to perfom rename operation? に類似しているローカライズされた文字列を検索します。
+        ///   Do you want to perform {0} renames? に類似しているローカライズされた文字列を検索します。
         /// </summary>
-        internal static string DO_YOU_WANT_TO_PERFORM {
+        internal static string DO_YOU_WANT_TO_PERFORM_N_RENAME {
             get {
-                return ResourceManager.GetString("DO_YOU_WANT_TO_PERFORM", resourceCulture);
+                return ResourceManager.GetString("DO_YOU_WANT_TO_PERFORM_N_RENAME", resourceCulture);
             }
         }
         

@@ -287,6 +287,12 @@ namespace Ambiesoft.RegexFilenameRenamer
             sbMessage.Append("  > " + Path.GetFileName(Application.ExecutablePath));
             sbMessage.Append(" /rf \"\\s+\" /rt \" \" /cf [file]");
             sbMessage.AppendLine();
+            sbMessage.AppendLine();
+
+            sbMessage.AppendLine(@"  You can use globs. The following example specifies all files under C:\T\");
+            sbMessage.Append("  > " + Path.GetFileName(Application.ExecutablePath));
+            sbMessage.Append(@" /rf a /rt b /cf C:\T\**\*");
+            sbMessage.AppendLine();
 
             return sbMessage.ToString();
         }
@@ -526,12 +532,12 @@ namespace Ambiesoft.RegexFilenameRenamer
                 {
                     List<ChangeFile> changeFiles = new List<ChangeFile>();
 
-                    bool bRenameExists = false;
+                    int changeCount = 0;
                     foreach (string org in targets.Keys)
                     {
                         if (org != targets[org])
                         {
-                            bRenameExists = true;
+                            changeCount++;
                             changeFiles.Add(new ChangeFile(org, targets[org], true));
                         }
                         else
@@ -543,10 +549,10 @@ namespace Ambiesoft.RegexFilenameRenamer
                     using (FormConfirm form = new FormConfirm(changeFiles))
                     {
                         form.Text = Application.ProductName + " " + Properties.Resources.CONFIRM;
-                        form.lblMessage.Text = !bRenameExists ?
-                            Properties.Resources.NO_FILES_TO_RENAME:
-                            Properties.Resources.DO_YOU_WANT_TO_PERFORM;
-                        form.btnYes.Enabled = bRenameExists;
+                        form.lblMessage.Text = changeCount == 0 ?
+                            Properties.Resources.NO_FILES_TO_RENAME :
+                            string.Format(Properties.Resources.DO_YOU_WANT_TO_PERFORM_N_RENAME, changeCount);
+                        form.btnYes.Enabled = changeCount != 0;
                         if (DialogResult.Yes != form.ShowDialog())
                             return 0;
                     }
