@@ -13,7 +13,7 @@
     <FileUpgradeFlags>
     </FileUpgradeFlags>
     <OldToolsVersion>3.5</OldToolsVersion>
-    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8.1</TargetFrameworkVersion>
     <UpgradeBackupLocation>
     </UpgradeBackupLocation>
     <PublishUrl>publish\</PublishUrl>
@@ -94,6 +94,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ChangeFile.cs" />
+    <Compile Include="Converter.cs" />
     <Compile Include="FormConfirm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -129,6 +130,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="app.config" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -143,6 +145,12 @@
   <ItemGroup>
     <Content Include="icon.ico" />
     <Content Include="info\info.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="Kana.NET\source\Umayadia.Kana\Umayadia.Kana\Umayadia.Kana.csproj">
+      <Project>{32ff54b2-94c5-4023-9645-670c0477254d}</Project>
+      <Name>Umayadia.Kana</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

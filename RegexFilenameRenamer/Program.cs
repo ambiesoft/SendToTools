@@ -254,13 +254,26 @@ namespace Ambiesoft.RegexFilenameRenamer
             sbMessage.AppendLine("    Use () for grouping.");
             sbMessage.AppendLine("  /rfu REGEXSEARCH_UTF8UrlEncoded");
             sbMessage.AppendLine("    Same as /rf but url-encoded.");
-            
+
             sbMessage.AppendLine("  /rt REPLACE");
             sbMessage.AppendLine("    Use \"\" for empty string.");
             sbMessage.AppendLine("    Use $1 to refer to the group.");
             sbMessage.AppendLine("  /rtu REPLACE_UTF8UrlEncoded");
             sbMessage.AppendLine("    Same as /rt but url-encoded.");
+
+            sbMessage.AppendLine();
+
+            sbMessage.AppendLine("  /tohan");
+            sbMessage.AppendLine("    Convert to Hankaku.");
+            sbMessage.AppendLine("  /tozen");
+            sbMessage.AppendLine("    Convert to Zenkaku.");
+            sbMessage.AppendLine("  /tohira");
+            sbMessage.AppendLine("    Convert to Hiragana.");
+            sbMessage.AppendLine("  /tokata");
+            sbMessage.AppendLine("    Convert to Katakana.");
             
+            sbMessage.AppendLine();
+
             sbMessage.AppendLine("  /ie");
             sbMessage.AppendLine("    Extension will be included for rename operation.");
             
@@ -339,6 +352,11 @@ namespace Ambiesoft.RegexFilenameRenamer
             parser.addOption("rt", ARGUMENT_TYPE.MUST);
             parser.addOption("rtu", ARGUMENT_TYPE.MUST);
 
+            parser.addOption("tohan", ARGUMENT_TYPE.MUSTNOT);
+            parser.addOption("tozen", ARGUMENT_TYPE.MUSTNOT);
+            parser.addOption("tohira", ARGUMENT_TYPE.MUSTNOT);
+            parser.addOption("tokata", ARGUMENT_TYPE.MUSTNOT);
+
             parser.addOption("ie", ARGUMENT_TYPE.MUSTNOT);
             parser.addOption("ic", ARGUMENT_TYPE.MUSTNOT);
             parser.addOption("cf", ARGUMENT_TYPE.MUSTNOT);
@@ -394,6 +412,23 @@ namespace Ambiesoft.RegexFilenameRenamer
                     sbCheckArguments.AppendLine(parser["rtu"].ToString());
                 }
 
+                if (parser["tohan"] != null)
+                {
+                    sbCheckArguments.AppendLine("tohan");
+                }
+                if (parser["tozen"] != null)
+                {
+                    sbCheckArguments.AppendLine("tozen");
+                }
+                if (parser["tohira"] != null)
+                {
+                    sbCheckArguments.AppendLine("tohira");
+                }
+                if (parser["tokata"] != null)
+                {
+                    sbCheckArguments.AppendLine("tokata");
+                }
+
                 if (parser["ie"] != null)
                 {
                     sbCheckArguments.AppendLine("ie");
@@ -427,7 +462,6 @@ namespace Ambiesoft.RegexFilenameRenamer
                 {
                     if (DialogResult.OK != prepareForm.ShowDialog())
                         return 0;
-
                 }
             }
 
@@ -443,45 +477,95 @@ namespace Ambiesoft.RegexFilenameRenamer
                     return 0;
                 }
             }
-        
+
+            Func<bool> hasRf = () =>
+            {
+                return parser["rf"] != null || parser["rfu"] != null;
+            };
+            Func<bool> hasRt = () =>
+            {
+                return parser["rt"] != null || parser["rtu"] != null;
+            };
+            Func<bool> hasToHan = () => parser["tohan"] != null;
+            Func<bool> hasToZen = () => parser["tozen"] != null;
+            Func<bool> hasToHira = () => parser["tohira"] != null;
+            Func<bool> hasToKata = () => parser["tokata"] != null;
+
+            Func<bool> hasToHanZenHiraKata = () =>
+            {
+                return hasToHan() || hasToZen() || hasToHira() || hasToKata();
+            };
+
+            if (!hasRf() && !hasToHanZenHiraKata())
+            {
+                ShowAlert(Properties.Resources.MUST_SPECIFY_RF_RT);
+                return 1;
+            }
+            if (!hasRt() && !hasToHanZenHiraKata())
+            {
+                ShowAlert(Properties.Resources.MUST_SPECIFY_RF_RT);
+                return 1;
+            }
+
             if (parser["rf"] != null && parser["rfu"] != null)
             {
-                ShowAlert("TODO");
+                ShowAlert("TODO: Both rf and rfu specified");
                 return 1;
             }
             if (parser["rt"] != null && parser["rtu"] != null)
             {
-                ShowAlert("TODO");
+                ShowAlert("TODO: Both rt and rtu specified");
                 return 1;
             }
 
-            if (parser["rf"] == null && parser["rfu"] == null)
+            if (hasRf() && hasToHanZenHiraKata())
             {
-                ShowAlert(Properties.Resources.MUST_SPECIFY_RF_RT);
+                ShowAlert("TODO: Both rf and ToHanZenHiraKata specified");
                 return 1;
             }
-            if (parser["rt"] == null && parser["rtu"] == null)
+            if (hasRt() && hasToHanZenHiraKata())
             {
-                ShowAlert(Properties.Resources.MUST_SPECIFY_RF_RT);
+                ShowAlert("TODO: Both rt and ToHanZenHiraKata specified");
                 return 1;
             }
 
-            string strRegFind = string.Empty;
-            if (parser["rf"] != null)
-                strRegFind = parser["rf"].ToString();
-            else if (parser["rfu"] != null)
-                strRegFind = System.Web.HttpUtility.UrlDecode(parser["rfu"].ToString());
-            else
-                throw new Exception(Properties.Resources.UNEXPECTED_ERROR);
+            Converter converter= new Converter();
+            if (hasRf())
+            {
+                string strRegFind = string.Empty;
+                if (parser["rf"] != null)
+                    strRegFind = parser["rf"].ToString();
+                else if (parser["rfu"] != null)
+                    strRegFind = System.Web.HttpUtility.UrlDecode(parser["rfu"].ToString());
+                else
+                    throw new Exception(Properties.Resources.UNEXPECTED_ERROR);
 
-            string strTarget = string.Empty;
-            if (parser["rt"] != null)
-                strTarget = parser["rt"].ToString();
-            else if (parser["rtu"] != null)
-                strTarget = System.Web.HttpUtility.UrlDecode(parser["rtu"].ToString());
-            else
-                throw new Exception(Properties.Resources.UNEXPECTED_ERROR);
-            
+                string strRegTarget = string.Empty;
+                if (parser["rt"] != null)
+                    strRegTarget = parser["rt"].ToString();
+                else if (parser["rtu"] != null)
+                    strRegTarget = System.Web.HttpUtility.UrlDecode(parser["rtu"].ToString());
+                else
+                    throw new Exception(Properties.Resources.UNEXPECTED_ERROR);
+
+                converter.Init(strRegFind, strRegTarget, parser["ic"] != null);
+            }
+            else if (hasToHanZenHiraKata())
+            {
+                if (hasToHan())
+                    converter.Init(Converter.HIRAKATA_CONVERT_TYPE.TO_HANKAKU);
+                else if (hasToZen())
+                    converter.Init(Converter.HIRAKATA_CONVERT_TYPE.TO_ZENKAKU);
+                else if (hasToHira())
+                    converter.Init(Converter.HIRAKATA_CONVERT_TYPE.TO_HIRAGANA);
+                else if (hasToKata())
+                    converter.Init(Converter.HIRAKATA_CONVERT_TYPE.TO_KATAKANA);
+                else
+                {
+                    ShowAlert("TODO");
+                    return 1;
+                }
+            }
 
             if (parser.MainargLength == 0)
             {
@@ -489,29 +573,19 @@ namespace Ambiesoft.RegexFilenameRenamer
                 return 1;
             }
 
-            Regex regf = null;
-            try
-            {
-                if (parser["ic"] != null)
-                    regf = new Regex(strRegFind, RegexOptions.IgnoreCase);
-                else
-                    regf = new Regex(strRegFind);
-            }
-            catch (Exception ex)
-            {
-                CppUtils.CenteredMessageBox(ex.Message);
-                return 1;
-            }
             bool isAlsoExt = null != parser["ie"];
             if(parser["cf"] != null && parser["ncf"]!=null)
             {
                 ShowAlert(Properties.Resources.BOTH_CF_NCF_SPECIFIED);
                 return 1;
             }
+
             bool dryrun = parser["ncf"] == null;
-            Dictionary <string, string> targets = new Dictionary<string,string>();
+
+            Dictionary <string, string> targetsAndResults = new Dictionary<string,string>();
 
             string[] mainArgs = ExpandMainArgs(parser);            
+
             try
             {
                 foreach(string orgFullorRelativeFileName in mainArgs)
@@ -520,11 +594,11 @@ namespace Ambiesoft.RegexFilenameRenamer
                     string orgFileName = getProperName(fiorig, isAlsoExt);
                     string orgFolder = fiorig.DirectoryName;
 
-                    string newFileName = regf.Replace(orgFileName, strTarget);
+                    string newFileName = converter.Replace(orgFileName);
                     if (!isAlsoExt)
                         newFileName += fiorig.Extension;
 
-                    targets.Add(fiorig.FullName, 
+                    targetsAndResults.Add(fiorig.FullName, 
                         Path.Combine(orgFolder, newFileName));
                 }
 
@@ -533,16 +607,16 @@ namespace Ambiesoft.RegexFilenameRenamer
                     List<ChangeFile> changeFiles = new List<ChangeFile>();
 
                     int changeCount = 0;
-                    foreach (string org in targets.Keys)
+                    foreach (string org in targetsAndResults.Keys)
                     {
-                        if (org != targets[org])
+                        if (org != targetsAndResults[org])
                         {
                             changeCount++;
-                            changeFiles.Add(new ChangeFile(org, targets[org], true));
+                            changeFiles.Add(new ChangeFile(org, targetsAndResults[org], true));
                         }
                         else
                         {
-                            changeFiles.Add(new ChangeFile(org, targets[org], false));
+                            changeFiles.Add(new ChangeFile(org, targetsAndResults[org], false));
                         }
                     }
 
@@ -558,18 +632,18 @@ namespace Ambiesoft.RegexFilenameRenamer
                     }
                 }
 
-                foreach( string org in targets.Keys)
+                foreach( string org in targetsAndResults.Keys)
                 {
-                    if (org != targets[org])
+                    if (org != targetsAndResults[org])
                     {
                         if (Directory.Exists(org))
                         {
-                            if (!tryMoveFile(org, targets[org], Directory.Move))
+                            if (!tryMoveFile(org, targetsAndResults[org], Directory.Move))
                                 return 1;
                         }
                         else if (File.Exists(org))
                         {
-                            if (!tryMoveFile(org, targets[org], File.Move))
+                            if (!tryMoveFile(org, targetsAndResults[org], File.Move))
                                 return 1;
                         }
                         else
