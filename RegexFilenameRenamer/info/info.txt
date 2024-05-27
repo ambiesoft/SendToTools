@@ -1,3 +1,11 @@
 ﻿
 引数が-から始まる場合の書き方
-/rf "_" /rt -- "-" /cf /ca "C:\Users\bjdTfeRf\Desktop\New Text Document.txt"
+/rf "_" /rt -- "-" /cf /ca "C:\Users\haDedeKi\Desktop\New_Text_Document.txt"
+
+
+/tohira "C:\Users\haDedeKi\Desktop\New テキスト ドキュメント.txt"
+/tohira "C:\Users\haDedeKi\Desktop\New ﾃｷｽﾄ ﾄﾞｷｭﾒﾝﾄ.txt"
+/tohan "C:\Users\haDedeKi\Desktop\New テキスト ドキュメント.txt"
+/tokata "C:\Users\haDedeKi\Desktop\New てきすと どきゅめんと.txt"
+
+/rf a /rt BBB C:\T\**\*

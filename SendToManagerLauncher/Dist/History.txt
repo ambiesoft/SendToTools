@@ -1,3 +1,6 @@
+2024/05/27 ver 3.2.14
+RegexFilenameRenamer v2.1.3 Added feature to convert Hankaku, Zenkaku, Hiragana and Katakana
+                            
 2024/05/25 ver 3.2.13
 MoreSendTo v1.0.3 Fix: Only one command line argument was being sent
 RegexFilenameRenamer v2.1.2 Fixed to remember the scrolling position of the text in the confirmation dialog

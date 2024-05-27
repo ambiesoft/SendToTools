@@ -16,3 +16,6 @@
 [submodule "DotNet4Runnable/OptionSet"]
 	path = DotNet4Runnable/OptionSet
 	url = git@github.com:ambiesoft/OptionSet.git
+[submodule "RegexFilenameRenamer/Kana.NET"]
+	path = RegexFilenameRenamer/Kana.NET
+	url = git@github.com:ambiesoft/Kana.NET.git
