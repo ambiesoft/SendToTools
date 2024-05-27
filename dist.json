@@ -202,7 +202,9 @@
         "tools\\lang\\CopyPath.jpn.txt",
         "tools\\lang\\copyto.jpn.txt",
         "tools\\lang\\LibMoveCopyTo.jpn.txt",
-        "tools\\lang\\moveto.jpn.txt"
+        "tools\\lang\\moveto.jpn.txt",
+		"tools\\Umayadia.Kana.pdb",
+		"tools\\Umayadia.Kana.dll"
     ],
     "TotalFileCount": "exact",
     "ShouldBeOneOfThem": [],

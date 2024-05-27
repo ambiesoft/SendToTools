@@ -67,6 +67,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "testCopyPath", "testCopyPat
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoreSendToOption", "MoreSendToOption\MoreSendToOption.csproj", "{DF48A7A3-1638-4BC0-9630-4CA2E88789AC}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Umayadia.Kana", "RegexFilenameRenamer\Kana.NET\source\Umayadia.Kana\Umayadia.Kana\Umayadia.Kana.csproj", "{32FF54B2-94C5-4023-9645-670C0477254D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
@@ -177,6 +179,10 @@ Global
 		{DF48A7A3-1638-4BC0-9630-4CA2E88789AC}.Debug|x86.Build.0 = Debug|Any CPU
 		{DF48A7A3-1638-4BC0-9630-4CA2E88789AC}.Release|x86.ActiveCfg = Release|Any CPU
 		{DF48A7A3-1638-4BC0-9630-4CA2E88789AC}.Release|x86.Build.0 = Release|Any CPU
+		{32FF54B2-94C5-4023-9645-670C0477254D}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{32FF54B2-94C5-4023-9645-670C0477254D}.Debug|x86.Build.0 = Debug|Any CPU
+		{32FF54B2-94C5-4023-9645-670C0477254D}.Release|x86.ActiveCfg = Release|Any CPU
+		{32FF54B2-94C5-4023-9645-670C0477254D}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
