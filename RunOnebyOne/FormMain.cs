@@ -370,11 +370,13 @@ namespace RunOnebyOne
                 {
                     running_ = true;
                     btnRun.Text = Properties.Resources.CANCEL_BUTTON_TEXT;
+                    this.BackColor = Color.IndianRed;
                 }
                 else
                 {
                     running_ = false;
                     btnRun.Text = Properties.Resources.RUN_BUTTON_TEXT;
+                    this.BackColor = DefaultBackColor;
                 }
             }
         }
