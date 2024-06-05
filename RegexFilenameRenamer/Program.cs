@@ -251,13 +251,13 @@ namespace Ambiesoft.RegexFilenameRenamer
             sbMessage.AppendLine();
 
             sbMessage.AppendLine("  /rf REGEXSEARCH");
-            sbMessage.AppendLine("    Use () for grouping.");
+            sbMessage.AppendLine("    Use () for capturing.");
             sbMessage.AppendLine("  /rfu REGEXSEARCH_UTF8UrlEncoded");
             sbMessage.AppendLine("    Same as /rf but url-encoded.");
 
             sbMessage.AppendLine("  /rt REPLACE");
             sbMessage.AppendLine("    Use \"\" for empty string.");
-            sbMessage.AppendLine("    Use $1 to refer to the group.");
+            sbMessage.AppendLine("    Use $1 or ${1} to refer to the capture.");
             sbMessage.AppendLine("  /rtu REPLACE_UTF8UrlEncoded");
             sbMessage.AppendLine("    Same as /rt but url-encoded.");
 
