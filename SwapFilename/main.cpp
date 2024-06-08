@@ -204,8 +204,25 @@ bool GetFileSizeFromPath(const wchar_t* pPath, LARGE_INTEGER* pLI)
 }
 
 
+struct DOWORK_OPTION {
+	bool bAlwaysYes_ = false;
+	bool bRemoveOld_ = false;
+
+public:
+	DOWORK_OPTION(bool bAlwaysYes, bool bRemoveOld) :
+		bAlwaysYes_(bAlwaysYes), bRemoveOld_(bRemoveOld)
+	{}
+
+	bool IsAlwaysYes() const {
+		return bAlwaysYes_;
+	}
+	bool IsRemoveOld() const {
+		return bRemoveOld_;
+	}
+};
+
 bool doWork(wstring file1, wstring file2,
-	const bool bAlwaysYes, const bool bRemoveOld,
+	const DOWORK_OPTION* option,
 	wstring* pAdditionalMessage,
 	function<bool(wstring oldFile, wstring newFile)> fnCondition)
 {
@@ -303,9 +320,9 @@ bool doWork(wstring file1, wstring file2,
 	}
 
 	wstring additionalMessage;
-	bool bShowRemoveConfirmMessage = !bAlwaysYes;
+	const bool bShowRemoveConfirmMessage = !option->IsAlwaysYes();
 
-	if (bRemoveOld)
+	if (option->IsRemoveOld())
 	{
 		do
 		{
@@ -537,8 +554,9 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	for (auto&& fp : filepairs)
 	{
 		wstring additionalMessage;
+		DOWORK_OPTION option(bAlwaysYes, bRemoveOld);
 		doWork(fp.file1, fp.file2,
-			bAlwaysYes, bRemoveOld,
+			&option,
 			&additionalMessage,
 			fnCondition);
 
