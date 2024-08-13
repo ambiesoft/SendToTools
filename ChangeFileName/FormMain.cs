@@ -926,5 +926,18 @@ namespace ChangeFileName
             if (!customRegexes_.Remove(ri))
                 CppUtils.Alert(Properties.Resources.STR_FAILED_DELETE_REGITEM);
         }
+
+        private void tsmiLaunchAndClose_Click(object sender, EventArgs e)
+        {
+            btnLaunch.PerformClick();
+            this.Close();
+        }
+
+        private void tsmiLaunchDeleteAndClose_Click(object sender, EventArgs e)
+        {
+            btnLaunch.PerformClick();
+            btnTrash.PerformClick();
+            this.Close();
+        }
     }
 }

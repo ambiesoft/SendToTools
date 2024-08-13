@@ -1,4 +1,7 @@
+2024/08/13 ver 3.2.15
 RunOnebyOne v2.1.1 Change BackColor when running tasks
+ChangeFileName v2.0.12 Added two menu items. 'Launch and Close' and 'Launch, Delete and Close'
+                       in Launch submenu
 
 2024/05/27 ver 3.2.14
 RegexFilenameRenamer v2.1.3 Added feature to convert Hankaku, Zenkaku, Hiragana and Katakana
