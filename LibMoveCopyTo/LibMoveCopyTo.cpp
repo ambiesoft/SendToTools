@@ -1,4 +1,4 @@
-//BSD 2-Clause License
+f//BSD 2-Clause License
 //
 //Copyright (c) 2017, Ambiesoft
 //All rights reserved.
@@ -35,6 +35,7 @@
 #include "../../lsMisc/RevealFolder.h"
 #include "../../lsMisc/GetUnreparsePath.h"
 #include "../../lsMisc/GetLocalPathFromNetPath.h"
+#include "../../lsMisc/OpenCommon.h"
 
 #include "ChooseDirDialog.h"
 #include "ReleaseMutex.h"
@@ -54,55 +55,29 @@ typedef vector<wstring> STRINGVECTOR;
 #define SEC_OPTION L"option"
 #define KEY_DIRS L"Dirs"
 #define KEY_PRIORITY L"Priority"
-
+#define KEY_OPEN_AFTER_OPERATION L"OpenAfterOperation"
+#define KEY_OPEN_FOLDER_AFTER_OPERATION L"OpenFolderAfterOperation"
 extern CLibMoveCopyToApp theApp;;
 
-wstring getHelpString()
+void ShowError(wstring message)
 {
-	wstring ret;
-	
-	ret.append(I18N(L"Usage")).append(L":\r\n");
-	ret.append(stdGetFileName(stdGetModuleFileName<wchar_t>()));
-	ret.append(L" [/t TARGETDIR] [/p priority] [/lang LANG] [/unrs] [/unnet] SOURCE1 [SOURCE2]...\r\n");
-	
-	ret.append(L"\r\n");
-	ret.append(L"  priority\r\n");
-	ret.append(L"    0:Hight, 1:Normal, 2:Low, 3:Background");
-	
-	ret.append(L"\r\n");
-	ret.append(L"  lang\r\n");
-	ret.append(L"    jpn,enu");
-
-	ret.append(L"\r\n");
-	ret.append(L"  /unrs\r\n");
-	ret.append(L"    Resolve source's reparse point before opration");
-
-	ret.append(L"\r\n");
-	ret.append(L"  /unnet\r\n");
-	ret.append(L"    Resolve source's network path to local path before opration");
-
-	return ret;
-}
-void ShowError(LPCWSTR pMessage)
-{
-	wstring message(pMessage);
-	message.append(L"\r\n\r\n");
-	message.append(getHelpString());
-
 	MessageBox(NULL,
 		message.c_str(),
 		gAppName,
 		MB_ICONERROR);
 }
-void ShowError(wstring message)
+void ShowError(const CCommandLineParser& cmd, wstring message)
 {
-	ShowError(message.c_str());
+	message.append(L"\r\n\r\n");
+	message.append(cmd.getHelpMessage());
+
+	ShowError(message);
 }
 
-void showHelp()
+void showHelp(const CCommandLineParser& cmd)
 {
 	MessageBox(NULL,
-		getHelpString().c_str(),
+		cmd.getHelpMessage().c_str(),
 		gAppName,
 		MB_ICONINFORMATION);
 }
@@ -148,25 +123,55 @@ UINT __cdecl MyControllingFunction(LPVOID pParam)
 	return 0;
 }
 
-//STRINGVECTOR addBackSlash(const STRINGVECTOR& input)
-//{
-//	STRINGVECTOR rets;
-//	for (auto&& s : input)
-//	{
-//		rets.emplace_back(stdAddBackSlash(s));
-//	}
-//	return rets;
-//}
+static const wchar_t* availableLanguages[] = {
+	L"enu",
+	L"jpn",
+};
+
+void initLanuage()
+{
+	wstring lang;
+
+	CCommandLineParser cmd;
+	cmd.AddOption({ L"/lang" },
+		ExactCount::Exact_1,
+		&lang,
+		ArgEncodingFlags_Default,
+		I18N(L"Launguage 'jpn' or 'enu'"));
+	cmd.Parse();
+
+	if (lang.empty())
+	{
+		Ambiesoft::i18nInitLangmap(theApp.m_hInstance, nullptr, L"LibMoveCopyTo");
+	}
+	else
+	{
+		bool langOk = false;
+		for (auto&& availableLang : availableLanguages)
+		{
+			if (availableLang == lang)
+			{
+				langOk = true;
+				break;
+			}
+		}
+		if (langOk)
+		{
+			Ambiesoft::i18nInitLangmap(theApp.m_hInstance, lang.c_str(), L"LibMoveCopyTo");
+		}
+		else
+		{
+			Ambiesoft::i18nInitLangmap(theApp.m_hInstance, nullptr, L"LibMoveCopyTo");
+		}
+	}
+}
 
 int libmain(LPCWSTR pAppName, LPCWSTR pButtonText, HICON hIcon)
 {
-	//UNREFERENCED_PARAMETER(hPrevInstance);
-	//UNREFERENCED_PARAMETER(lpCmdLine);
-	
-	Ambiesoft::i18nInitLangmap(theApp.m_hInstance, nullptr, L"LibMoveCopyTo");
-	
-
 	gAppName = pAppName;
+
+	initLanuage();
+
 	if (_wcsicmp(gAppName, L"MoveTo") == 0)
 		;
 	else if (_wcsicmp(gAppName, L"CopyTo") == 0)
@@ -177,36 +182,88 @@ int libmain(LPCWSTR pAppName, LPCWSTR pButtonText, HICON hIcon)
 		return 1;
 	}
 
-	
-	COption opTarget({ L"/T", L"/t" }, 1);
-	COption opFile(L"", Ambiesoft::ArgCount::ArgCount_OneToInfinite);
+	COption opTarget({ L"/T", L"/t" },
+		ArgCount::ArgCount_One,
+		ArgEncodingFlags_Default,
+		I18N(L"Target directory"));
+	COption opFile({ L"" },
+		Ambiesoft::ArgCount::ArgCount_OneToInfinite,
+		ArgEncodingFlags_Default,
+		I18N(L"Source files"));
 	wstring lang;
 	bool bHelp = false;
 	int nPriority = -1;
+	bool bOpenAfterOperation = false;
+	bool bOpenFolderAfterOperation = false;
+	
 	CCommandLineParser cmd;
+	cmd.setStrict();
+
 	cmd.AddOption(&opTarget);
 	cmd.AddOption(&opFile);
-	cmd.AddOption(L"/p", 1, &nPriority);
-	cmd.AddOption(L"/lang", 1, &lang);
+	cmd.AddOption({ L"/p" },
+		ExactCount::Exact_1,
+		&nPriority,
+		ArgEncodingFlags_Default,
+		I18N(L"Priority 0:Hight, 1:Normal, 2:Low, 3:Background"));
+	cmd.AddOption({ L"/lang" },
+		ExactCount::Exact_1,
+		&lang,
+		ArgEncodingFlags_Default,
+		I18N(L"Launguage 'jpn' or 'enu'"));
 	bool bUnrS = false;
-	cmd.AddOption(L"/unrs", 0, &bUnrS);
+	cmd.AddOption({ L"/unrs" },
+		ArgCount::ArgCount_Zero,
+		&bUnrS,
+		ArgEncodingFlags_Default,
+		I18N(L"Resolve source's reparse point before opration"));
 	bool bUnNetpath = false;
-	cmd.AddOption(L"/unnet", 0, &bUnNetpath);
-	cmd.AddOptionRange({ L"/h", L"-h" }, 0, &bHelp);
+	cmd.AddOption({ L"/unnet" },
+		ArgCount::ArgCount_Zero,
+		&bUnNetpath,
+		ArgEncodingFlags_Default,
+		I18N(L"Resolve source's network path to local path before opration"));
+	cmd.AddOption({ L"/openafter" }, 
+		ArgCount::ArgCount_Zero, 
+		&bOpenAfterOperation,
+		ArgEncodingFlags_Default,
+		I18N(L"Open files after operation"));
+	cmd.AddOption({ L"/openfolderafter" },
+		ArgCount::ArgCount_Zero,
+		&bOpenFolderAfterOperation,
+		ArgEncodingFlags_Default,
+		I18N(L"Open folders after operation"));
+	cmd.AddOption({ L"/h", L"-h", L"/?"}, ArgCount::ArgCount_Zero, &bHelp);
 
 	cmd.Parse();
 
 	if (cmd.hadUnknownOption())
 	{
-		ShowError(wstring() + I18N(L"Unknown Option:") + L"\r\n" + cmd.getUnknowOptionStrings());
+		ShowError(cmd,
+			wstring() + I18N(L"Unknown Option:") + L"\r\n" + cmd.getUnknowOptionStrings());
 		return 1;
 	}
-	if (!lang.empty())
-		Ambiesoft::i18nInitLangmap(theApp.m_hInstance, lang.c_str(), L"LibMoveCopyTo");
+	
+	{
+		bool langOk = false;
+		for (auto&& availableLang : availableLanguages)
+		{
+			if (availableLang == lang)
+			{
+				langOk = true;
+				break;
+			}
+		}
+		if (!langOk)
+		{
+			ShowError(cmd,I18N(L"Unknown Language:") + lang);
+			return false;
+		}
+	}
 
 	if (bHelp)
 	{
-		showHelp();
+		showHelp(cmd);
 		return 0;
 	}
 	wstring destDir = opTarget.getFirstValue();
@@ -217,7 +274,7 @@ int libmain(LPCWSTR pAppName, LPCWSTR pButtonText, HICON hIcon)
 	}
 	if (sourcefiles.empty())
 	{
-		ShowError(I18N(L"Source file is empty."));
+		ShowError(cmd, I18N(L"Source file is empty."));
 		return 1;
 	}
 
@@ -225,23 +282,20 @@ int libmain(LPCWSTR pAppName, LPCWSTR pButtonText, HICON hIcon)
 	{
 		if (!PathFileExists(it->c_str()))
 		{
-			// wstring msg = stdwin32::string_format(I18N(L"\"%s\" does not exist."), it->c_str());
 			wstring msg = stdFormat(I18N(L"\"%s\" does not exist."), it->c_str());
-			ShowError(msg.c_str());
+			ShowError(cmd, msg.c_str());
 			return 1;
 		}
 	}
-
 
 	const wstring dbFile = stdCombinePath(
 		stdGetParentDirectory(stdGetModuleFileName<wchar_t>()),
 		wstring(gAppName) + L".db");
 
-
 	STRINGVECTOR allSaving;
 	if (!sqlGetPrivateProfileStringArray(SEC_OPTION, KEY_DIRS, allSaving, dbFile.c_str()))
 	{
-		ShowError(I18N(L"Failed to load from db."));
+		ShowError(cmd, I18N(L"Failed to load from db."));
 		return 1;
 	}
 
@@ -250,84 +304,73 @@ int libmain(LPCWSTR pAppName, LPCWSTR pButtonText, HICON hIcon)
 		s = stdAddPathSeparator(s);
 	});
 
-	// allSaving = addBackSlash(allSaving);
-
 	if (nPriority == -1)
 		nPriority = sqlGetPrivateProfileInt(SEC_OPTION, KEY_PRIORITY, -1, dbFile.c_str());
 	
-	
+	if (!bOpenAfterOperation)
+		bOpenAfterOperation = !!sqlGetPrivateProfileInt(SEC_OPTION, KEY_OPEN_AFTER_OPERATION, 0, dbFile.c_str());
+	if (!bOpenFolderAfterOperation)
+		bOpenFolderAfterOperation = !!sqlGetPrivateProfileInt(SEC_OPTION, KEY_OPEN_FOLDER_AFTER_OPERATION, 0, dbFile.c_str());
+
 	if (destDir.empty())
 	{
-		//if (allPrevSave.empty())
-		//{
-		//	TCHAR szFolder[MAX_PATH];
-		//	if (!browseFolder(NULL, I18N(L"Move to"), szFolder))
-		//		return 0;
-		//	if (!PathIsDirectory(szFolder))
-		//	{
-		//		wstring msg = stdwin32::string_format(I18N(L"\"%s\" is not a folder."), szFolder);
-		//		ShowError(msg.c_str());
-		//		return 1;
-		//	}
-		//	destDir = szFolder;
-		//}
-		//else
+		CChooseDirDialog dlg(pButtonText, hIcon);
+		for (STRINGVECTOR::iterator it = sourcefiles.begin(); it != sourcefiles.end(); ++it)
 		{
-			CChooseDirDialog dlg(pButtonText, hIcon);
-			for (STRINGVECTOR::iterator it = sourcefiles.begin(); it != sourcefiles.end(); ++it)
-			{
-				dlg.m_strSource += it->c_str();
-				dlg.m_strSource += L"\r\n";
-			}
-			
-			set<wstring> dupcheck;
-			for each(wstring s in allSaving)
-			{
-				if (dupcheck.find(s) == dupcheck.end())
-				{
-					dlg.m_arDirs.Add(s.c_str());
-					dupcheck.insert(s);
-				}
-			}
-
-			dlg.m_nCmbPriority = nPriority;
-
-			if (IDOK != dlg.DoModal())
-				return 0;
-
-			
-			nPriority = dlg.m_nCmbPriority;
-			destDir = dlg.m_strDirResult;
-			
-			// reset allSaving
-			allSaving.clear();
-			for (int i = 0; i < dlg.m_arDirs.GetSize(); ++i)
-			{
-				wstring t(dlg.m_arDirs[i]);
-				t = stdAddPathSeparator(t);
-				allSaving.emplace_back(t);
-			}
-
-
-			// save all
-			vector<wstring>::iterator cIter = find(allSaving.begin(), allSaving.end(), destDir);
-			if (cIter == allSaving.end())
-				allSaving.push_back(destDir);
-
-			bool failed = false;
-			
-			failed |= !sqlWritePrivateProfileInt(SEC_OPTION, KEY_PRIORITY, nPriority, dbFile.c_str());
-			failed |= !sqlWritePrivateProfileStringArray(SEC_OPTION, KEY_DIRS, allSaving, dbFile.c_str());
-			if (failed)
-				ShowError(I18N(L"Failed to save to db."));
-
+			dlg.m_strSource += it->c_str();
+			dlg.m_strSource += L"\r\n";
 		}
+
+		set<wstring> dupcheck;
+		for each (wstring s in allSaving)
+		{
+			if (dupcheck.find(s) == dupcheck.end())
+			{
+				dlg.m_arDirs.Add(s.c_str());
+				dupcheck.insert(s);
+			}
+		}
+
+		dlg.m_nCmbPriority = nPriority;
+		dlg.m_bOpenAfterOperation = bOpenAfterOperation ? 1 : 0;
+		dlg.m_bOpenFolderAfterOperation = bOpenFolderAfterOperation ? 1 : 0;
+
+		if (IDOK != dlg.DoModal())
+			return 0;
+
+		nPriority = dlg.m_nCmbPriority;
+		bOpenAfterOperation = !!dlg.m_bOpenAfterOperation;
+		bOpenFolderAfterOperation = !!dlg.m_bOpenFolderAfterOperation;
+		destDir = dlg.m_strDirResult;
+
+		// reset allSaving
+		allSaving.clear();
+		for (int i = 0; i < dlg.m_arDirs.GetSize(); ++i)
+		{
+			wstring t(dlg.m_arDirs[i]);
+			t = stdAddPathSeparator(t);
+			allSaving.emplace_back(t);
+		}
+
+		// save all
+		vector<wstring>::iterator cIter = find(allSaving.begin(), allSaving.end(), destDir);
+		if (cIter == allSaving.end())
+			allSaving.push_back(destDir);
+
+		bool failed = false;
+
+		failed |= !sqlWritePrivateProfileInt(SEC_OPTION, KEY_PRIORITY, nPriority, dbFile.c_str());
+		failed |= !sqlWritePrivateProfileStringArray(SEC_OPTION, KEY_DIRS, allSaving, dbFile.c_str());
+		failed |= !sqlWritePrivateProfileInt(SEC_OPTION, KEY_OPEN_AFTER_OPERATION, bOpenAfterOperation ? 1:0, dbFile.c_str());
+		failed |= !sqlWritePrivateProfileInt(SEC_OPTION, KEY_OPEN_FOLDER_AFTER_OPERATION, bOpenFolderAfterOperation?1:0, dbFile.c_str());
+		if (failed)
+			ShowError(cmd, I18N(L"Failed to save to db."));
 	}
 
 	if (destDir.empty() || !stdIsFullPath(destDir.c_str()))
 	{
 		wstring msg = stdFormat(I18N(L"\"%s\" is empty or not full path."), destDir.c_str());
-		ShowError(msg.c_str());
+		ShowError(cmd, msg.c_str());
 		return 1;
 	}
 
@@ -336,7 +379,7 @@ int libmain(LPCWSTR pAppName, LPCWSTR pButtonText, HICON hIcon)
 		if (PathFileExists(destDir.c_str()))
 		{
 			wstring msg = stdFormat(I18N(L"\"%s\" is a file."), destDir.c_str());
-			ShowError(msg.c_str());
+			ShowError(cmd, msg.c_str());
 			return 1;
 		}
 
@@ -360,7 +403,7 @@ int libmain(LPCWSTR pAppName, LPCWSTR pButtonText, HICON hIcon)
 				wstring msg = stdFormat(I18N(L"Failed to create folder '%s'\n%s"), 
 					destDir.c_str(),
 					error.c_str());
-				ShowError(msg.c_str());
+				ShowError(cmd, msg.c_str());
 				return 1;
 			}
 		}
@@ -370,10 +413,9 @@ int libmain(LPCWSTR pAppName, LPCWSTR pButtonText, HICON hIcon)
 	if (!PathIsDirectory(destDir.c_str()))
 	{
 		wstring msg = stdFormat(I18N(L"\"%s\" is not a folder."), destDir.c_str());
-		ShowError(msg.c_str());
+		ShowError(cmd, msg.c_str());
 		return 1;
 	}
-
 
 	destDir = stdAddPathSeparator(destDir);
 
@@ -464,7 +506,7 @@ int libmain(LPCWSTR pAppName, LPCWSTR pButtonText, HICON hIcon)
 		nRet = SHCopyFileEx(sourcefiles, destDir.c_str());
 	else
 	{
-		ShowError(stdFormat(I18N(L"Unknown app (%s)"), gAppName));
+		ShowError(cmd, stdFormat(I18N(L"Unknown app (%s)"), gAppName));
 		return 1;
 	}
 
@@ -483,25 +525,24 @@ int libmain(LPCWSTR pAppName, LPCWSTR pButtonText, HICON hIcon)
 		error += L"  ";
 		error += destDir;
 		error += L"\n";
-		ShowError(error.c_str());
+		ShowError(cmd, error.c_str());
 	}
-
+	else if (nRet == 0)
+	{
+		if (bOpenAfterOperation || bOpenFolderAfterOperation)
+		{
+			for (auto&& sourceFile : sourcefiles)
+			{
+				wstring destFull = stdCombinePath(destDir, stdGetFileName(sourceFile));
+				if (bOpenAfterOperation)
+					OpenCommon(nullptr, destFull.c_str());
+				if (bOpenFolderAfterOperation)
+					OpenFolder(nullptr, destFull.c_str());
+			}
+		}
+	}
 	return 0;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // CLibMoveCopyToApp
 
@@ -524,4 +565,3 @@ BOOL CLibMoveCopyToApp::InitInstance()
 
 	return TRUE;
 }
-

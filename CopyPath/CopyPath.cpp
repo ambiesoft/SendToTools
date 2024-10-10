@@ -441,8 +441,8 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	LoadStringW(hInstance, IDS_APP_TITLE, gszTitle, MAX_LOADSTRING);
 
 	auto fNoLoadIni = [](CCommandLineParser& parser, bool* pResult) {
-		parser.AddOption(L"--no-ini",
-			0,
+		parser.AddOption({ L"--no-ini" },
+			ArgCount::ArgCount_Zero,
 			pResult ,
 			ArgEncodingFlags::ArgEncodingFlags_Default,
 			L"No load from ini");
@@ -458,53 +458,55 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
 	CCommandLineParser parser;
 	bool bShowDialog = false;
-	parser.AddOptionRange({ L"/d",L"-d",L"--dialog" },
-		0,
+	parser.AddOption({ L"/d",L"-d",L"--dialog" },
+		ArgCount::ArgCount_Zero,
 		&bShowDialog,
 		ArgEncodingFlags::ArgEncodingFlags_Default,
 		L"Show Dialog");
 
-	COption opMain(L"", ArgCount::ArgCount_OneToInfinite, ArgEncodingFlags_Default,
+	COption opMain({ L"" },
+		ArgCount::ArgCount_OneToInfinite,
+		ArgEncodingFlags_Default,
 		L"Path to copy");
 	parser.AddOption(&opMain);
 
 	int nNameOnly = -1;
-	parser.AddOptionRange({ L"/n",L"-n",L"--name-only" },
+	parser.AddOption({ L"/n",L"-n",L"--name-only" },
 		ArgCount::ArgCount_One,
 		&nNameOnly,
 		ArgEncodingFlags_Default,
 		L"Name only: 0=false, 1=true");
 
 	int pathSep = -1;
-	parser.AddOptionRange({ L"/p",L"-p",L"--path-separator" },
+	parser.AddOption({ L"/p",L"-p",L"--path-separator" },
 		ArgCount::ArgCount_One,
 		&pathSep,
 		ArgEncodingFlags_Default,
 		I18N(L"Path Separator: 0=Default, 1=DoubleBackSlash, 2=Slash"));
 
 	int dqt = -1;
-	parser.AddOptionRange({ L"/q",L"-q",L"--double-quote" },
+	parser.AddOption({ L"/q",L"-q",L"--double-quote" },
 		ArgCount::ArgCount_One,
 		&dqt,
 		ArgEncodingFlags_Default,
 		I18N(L"Double Quote: 0=Default, 1=DoubleQuote, 2=NoDoubleQuote"));
 
 	int nMultiLine = -1;
-	parser.AddOptionRange({ L"/m", L"-m", L"--multi-lines" },
+	parser.AddOption({ L"/m", L"-m", L"--multi-lines" },
 		ArgCount::ArgCount_One,
 		&nMultiLine,
 		ArgEncodingFlags_Default,
 		L"Multilines: 0=No, 1=Yes");
 
 	int codeName = -1;
-	parser.AddOptionRange({ L"/c", L"-c", L"--programming-code" },
+	parser.AddOption({ L"/c", L"-c", L"--programming-code" },
 		ArgCount::ArgCount_One,
 		&codeName,
 		ArgEncodingFlags_Default,
 		I18N(L"Copy as programming code:") + GetCodeNameForCLHelp());
 
 	int nSort = -1;
-	parser.AddOptionRange({ L"/s", L"-s", L"--sort" },
+	parser.AddOption({ L"/s", L"-s", L"--sort" },
 		ArgCount::ArgCount_One,
 		&nSort,
 		ArgEncodingFlags_Default,
@@ -514,15 +516,15 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
 
 	bool bNoBalloon = false;
-	parser.AddOption(L"--no-balloon",
-		0,
+	parser.AddOption({ L"--no-balloon" },
+		ArgCount::ArgCount_Zero,
 		&bNoBalloon,
 		ArgEncodingFlags_Default,
 		L"Show no balloon");
 
 	bool bHelp = false;
-	parser.AddOptionRange({ L"/h", L"/?", L"-h", L"--help" },
-		0,
+	parser.AddOption({ L"/h", L"/?", L"-h", L"--help" },
+		ArgCount::ArgCount_Zero,
 		&bHelp,
 		ArgEncodingFlags_Default,
 		L"Show Help");

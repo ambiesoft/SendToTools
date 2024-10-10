@@ -462,29 +462,50 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	CCommandLineParser parser(I18N(L"MoreSendTo"), APPNAME);
 
 	bool bVersion = false;
-	parser.AddOptionRange({ L"--moresendto-version" }, 0, &bVersion, ArgEncodingFlags::ArgEncodingFlags_Default,
+	parser.AddOption({ L"--moresendto-version" }, 
+		ArgCount::ArgCount_Zero,
+		&bVersion, 
+		ArgEncodingFlags::ArgEncodingFlags_Default,
 		I18N(L"Shows version"));
 
 	bool bHelp = false;
-	parser.AddOptionRange({ L"--moresendto-help" }, 0, &bHelp, ArgEncodingFlags::ArgEncodingFlags_Default,
+	parser.AddOption({ L"--moresendto-help" },
+		ArgCount::ArgCount_Zero,
+		&bHelp,
+		ArgEncodingFlags::ArgEncodingFlags_Default,
 		I18N(L"Shows Help"));
 
 	bool bExplorer = false;
-	parser.AddOptionRange({ L"--moresendto-explorer" }, 0, &bExplorer, ArgEncodingFlags::ArgEncodingFlags_Default,
+	parser.AddOption({ L"--moresendto-explorer" },
+		ArgCount::ArgCount_Zero,
+		&bExplorer, 
+		ArgEncodingFlags::ArgEncodingFlags_Default,
 		I18N(L"Shows in Explorer (Press SHIFT in startup)"));
 
 	bool bPinMe = false;
-	parser.AddOptionRange({ L"--moresendto-pinme" }, 0, &bPinMe, ArgEncodingFlags::ArgEncodingFlags_Default,
+	parser.AddOption({ L"--moresendto-pinme" }, 
+		ArgCount::ArgCount_Zero,
+		&bPinMe,
+		ArgEncodingFlags::ArgEncodingFlags_Default,
 		I18N(L"Shows MessageBox for pinning this app."));
 
-	parser.AddOptionRange({ L"--moresendto-noicon" }, 0, &gbNoIcon, ArgEncodingFlags::ArgEncodingFlags_Default,
+	parser.AddOption({ L"--moresendto-noicon" }, 
+		ArgCount::ArgCount_Zero,
+		&gbNoIcon,
+		ArgEncodingFlags::ArgEncodingFlags_Default,
 		I18N(L"Shows no icons"));
 
-	parser.AddOptionRange({ L"--moresendto-showhidden" }, 0, &gbShowHidden, ArgEncodingFlags::ArgEncodingFlags_Default,
+	parser.AddOption({ L"--moresendto-showhidden" },
+		ArgCount::ArgCount_Zero, 
+		&gbShowHidden,
+		ArgEncodingFlags::ArgEncodingFlags_Default,
 		I18N(L"Shows hidden directories"));
 	
 	wstring targetFolder;
-	parser.AddOptionRange({ L"--moresendto-sendtofolder" }, ArgCount::ArgCount_One, &targetFolder, ArgEncodingFlags::ArgEncodingFlags_Default,
+	parser.AddOption({ L"--moresendto-sendtofolder" },
+		ArgCount::ArgCount_One, 
+		&targetFolder,
+		ArgEncodingFlags::ArgEncodingFlags_Default,
 		I18N(L"More SendTo Folder"));
 
 	parser.Parse();

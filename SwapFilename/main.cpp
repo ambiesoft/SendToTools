@@ -179,8 +179,8 @@ wstring GetLangFromCommandLine()
 	CCommandLineParser parser;
 
 	wstring lang;
-	parser.AddOption(L"-lang",
-		1,
+	parser.AddOption({ L"-lang" },
+		ArgCount::ArgCount_One,
 		&lang,
 		ArgEncodingFlags_Default,
 		L"Language in 3-letter");
@@ -404,53 +404,63 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	CCommandLineParser parser(I18N(L"Swap filename of two files"));
 
 	bool bRemoveOld = false;
-	parser.AddOption(L"-removeold", 0, &bRemoveOld,
+	parser.AddOption({ L"-removeold" },
+		ArgCount::ArgCount_Zero,
+		&bRemoveOld,
 		ArgEncodingFlags::ArgEncodingFlags_Default,
 		I18N(L"Remove an older file after swapping"));
 
 	wstring strRemoveOldIf;
-	parser.AddOption(L"-removeoldif", 1, &strRemoveOldIf,
+	parser.AddOption({ L"-removeoldif" }, 
+		ArgCount::ArgCount_One,
+		&strRemoveOldIf,
 		ArgEncodingFlags::ArgEncodingFlags_Default,
 		I18N(L"Remove an older file after swapping if the condition is met. The condition is one of 'older_is_less_size', 'older_is_greater_size'"));
 
 	bool bAutoDetect = false;
-	parser.AddOption(L"-autodetect", 0, &bAutoDetect,
+	parser.AddOption({ L"-autodetect" },
+		ArgCount::ArgCount_Zero,
+		&bAutoDetect,
 		ArgEncodingFlags::ArgEncodingFlags_Default,
 		I18N(L"Detects a pair of files automatically, files with same name but extensions will be detected"));
 
 	bool bAutoDetectAll = false;
-	parser.AddOption(L"-autodetectall", 0, &bAutoDetectAll,
+	parser.AddOption({ L"-autodetectall" },
+		ArgCount::ArgCount_Zero,
+		&bAutoDetectAll,
 		ArgEncodingFlags::ArgEncodingFlags_Default,
 		I18N(L"Detects all files automatically, files with same name but extensions will be detected"));
 
 	bool bAlwaysYes = false;
-	parser.AddOption(L"-alwaysyes", 0, &bAlwaysYes,
+	parser.AddOption({ L"-alwaysyes" },
+		ArgCount::ArgCount_Zero,
+		&bAlwaysYes,
 		ArgEncodingFlags::ArgEncodingFlags_Default,
 		I18N(L"Answer 'yes' in all questions"));
 
 	bool bHelp = false;
-	parser.AddOptionRange({ L"-h",L"--help", L"/?" },
-		0,
+	parser.AddOption({ L"-h",L"--help", L"/?" },
+		ArgCount::ArgCount_Zero,
 		&bHelp,
 		ArgEncodingFlags::ArgEncodingFlags_Default,
 		I18N(L"Show Help"));
 
 	bool bShowVersion = false;
-	parser.AddOptionRange({ L"-v",L"--version" },
-		0,
+	parser.AddOption({ L"-v",L"--version" },
+		ArgCount::ArgCount_Zero,
 		&bShowVersion,
 		ArgEncodingFlags::ArgEncodingFlags_Default,
 		I18N(L"Show Version"));
 
-	COption opMain(L"",
+	COption opMain({ L"" },
 		ArgCount::ArgCount_OneToInfinite,
 		ArgEncodingFlags_Default,
 		I18N(L"Input two files or directories if '-autodetect'"));
 	parser.AddOption(&opMain);
 
 	// lang is already defined
-	parser.AddOption(L"-lang",
-		1,
+	parser.AddOption({ L"-lang" },
+		ArgCount::ArgCount_One,
 		&lang,
 		ArgEncodingFlags_Default,
 		I18N(L"Language in 3-letter"));

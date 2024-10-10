@@ -20,6 +20,8 @@ CChooseDirDialog::CChooseDirDialog(
 	, m_strDirResult(_T(""))
 	, m_strSource(_T(""))
 	, m_nCmbPriority(0)
+	, m_bOpenAfterOperation(FALSE)
+	, m_bOpenFolderAfterOperation(FALSE)
 {
 
 }
@@ -38,6 +40,8 @@ void CChooseDirDialog::DoDataExchange(CDataExchange* pDX)
 	DDX_Control(pDX, IDC_EDIT_DIR, m_editDirResult);
 	DDX_Control(pDX, IDOK, m_btnOK);
 	DDX_CBIndex(pDX, IDC_COMBO_PRIORITY, m_nCmbPriority);
+	DDX_Check(pDX, IDC_CHECK_OPENAFTEROPERATION, m_bOpenAfterOperation);
+	DDX_Check(pDX, IDC_CHECK_OPENFOLDERAFTEROPERATION, m_bOpenFolderAfterOperation);
 }
 
 
@@ -89,6 +93,7 @@ void CChooseDirDialog::OnSelchangeListDirs()
 	if (cur < 0)
 		return;
 
+	UpdateData(TRUE);
 	m_listDirs.GetText(cur, m_strDirResult);
 	UpdateData(FALSE);
 

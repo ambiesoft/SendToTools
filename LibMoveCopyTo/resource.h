@@ -19,6 +19,9 @@
 #define IDC_STATIC_TO                   1011
 #define IDC_EDIT_FROM                   1012
 #define IDC_BUTTON_STARTNOW             1013
+#define IDC_CHECK_OPENAFTER             1014
+#define IDC_CHECK_OPENAFTEROPERATION    1014
+#define IDC_CHECK_OPENFOLDERAFTEROPERATION 1015
 #define ID_LIST_SORT                    40002
 #define ID_LIST_REMOVE                  40004
 
@@ -28,7 +31,7 @@
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NEXT_RESOURCE_VALUE        105
 #define _APS_NEXT_COMMAND_VALUE         40005
-#define _APS_NEXT_CONTROL_VALUE         1014
+#define _APS_NEXT_CONTROL_VALUE         1015
 #define _APS_NEXT_SYMED_VALUE           102
 #endif
 #endif

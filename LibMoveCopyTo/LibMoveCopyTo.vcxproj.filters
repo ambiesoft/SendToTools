@@ -90,6 +90,9 @@
     <ClCompile Include="..\..\lsMisc\GetLocalPathFromNetPath.cpp">
       <Filter>2 Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\lsMisc\OpenCommon.cpp">
+      <Filter>2 Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="LibMoveCopyTo.h">
@@ -159,6 +162,9 @@
       <Filter>1 Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\lsMisc\GetLocalPathFromNetPath.h">
+      <Filter>1 Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lsMisc\OpenCommon.h">
       <Filter>1 Header Files</Filter>
     </ClInclude>
   </ItemGroup>

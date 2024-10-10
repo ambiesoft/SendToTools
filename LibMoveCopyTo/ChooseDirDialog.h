@@ -44,4 +44,6 @@ public:
 	afx_msg void OnContextMenu(CWnd* /*pWnd*/, CPoint /*point*/);
 	afx_msg void OnListSort();
 	afx_msg void OnListRemove();
+	BOOL m_bOpenAfterOperation;
+	BOOL m_bOpenFolderAfterOperation;
 };
