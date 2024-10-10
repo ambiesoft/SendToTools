@@ -136,8 +136,8 @@ void initLanuage()
 	cmd.AddOption({ L"/lang" },
 		ExactCount::Exact_1,
 		&lang,
-		ArgEncodingFlags_Default,
-		I18N(L"Launguage 'jpn' or 'enu'"));
+		ArgEncodingFlags_Default);
+
 	cmd.Parse();
 
 	if (lang.empty())
@@ -169,13 +169,17 @@ void initLanuage()
 int libmain(LPCWSTR pAppName, LPCWSTR pButtonText, HICON hIcon)
 {
 	gAppName = pAppName;
+	enum MOVE_OR_COPY {
+		MOVE,
+		COPY,
+	} move_or_copy;
 
 	initLanuage();
 
 	if (_wcsicmp(gAppName, L"MoveTo") == 0)
-		;
+		move_or_copy = MOVE_OR_COPY::MOVE;
 	else if (_wcsicmp(gAppName, L"CopyTo") == 0)
-		;
+		move_or_copy = MOVE_OR_COPY::COPY;
 	else
 	{
 		ShowError(stdFormat(I18N(L"Unknown app (%s)"), gAppName));
@@ -196,7 +200,9 @@ int libmain(LPCWSTR pAppName, LPCWSTR pButtonText, HICON hIcon)
 	bool bOpenAfterOperation = false;
 	bool bOpenFolderAfterOperation = false;
 	
-	CCommandLineParser cmd;
+	CCommandLineParser cmd(
+		move_or_copy == MOVE_OR_COPY::MOVE ? I18N(L"Move files") : I18N(L"Copy files"),
+		pAppName);
 	cmd.setStrict();
 
 	cmd.AddOption(&opTarget);
@@ -205,7 +211,7 @@ int libmain(LPCWSTR pAppName, LPCWSTR pButtonText, HICON hIcon)
 		ExactCount::Exact_1,
 		&nPriority,
 		ArgEncodingFlags_Default,
-		I18N(L"Priority 0:Hight, 1:Normal, 2:Low, 3:Background"));
+		I18N(L"Priority 0:High, 1:Normal, 2:Low, 3:Background"));
 	cmd.AddOption({ L"/lang" },
 		ExactCount::Exact_1,
 		&lang,
@@ -244,6 +250,7 @@ int libmain(LPCWSTR pAppName, LPCWSTR pButtonText, HICON hIcon)
 		return 1;
 	}
 	
+	if(!lang.empty())
 	{
 		bool langOk = false;
 		for (auto&& availableLang : availableLanguages)

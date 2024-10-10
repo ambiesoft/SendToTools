@@ -13,11 +13,11 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="4 Dist">
-      <UniqueIdentifier>{50b368f9-69be-4918-b9e8-482969c1f66c}</UniqueIdentifier>
-    </Filter>
     <Filter Include="2 Source Files\lsMisc">
       <UniqueIdentifier>{ebba313f-0815-44a2-92e8-1b501379edbb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="4 Dist">
+      <UniqueIdentifier>{50b368f9-69be-4918-b9e8-482969c1f66c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

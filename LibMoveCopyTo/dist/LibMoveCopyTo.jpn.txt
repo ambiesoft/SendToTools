@@ -25,7 +25,6 @@
 "&Remove"="エントリー削除(&R)"
 "&Sort"="ソート(&S)"
 
-
 "Source file is empty."="ソースファイルが指定されていません。"
 
 "&From:"="元のファイル(&F):"
@@ -35,3 +34,16 @@
 "Waiting..."="待機中・・・"
 
 "&Start Now"="今すぐ開始する(&S)"
+
+"&Open after operation"="終了後ファイルを開く(&O)"
+"<ChangeMe>"="＜変更して＞"
+"Launguage 'jpn' or 'enu'"="言語 'jpn'または'enu'"
+"Move files"="ファイルを移動"
+"Open &Folder after operation"="終了後フォルダを開く(&F)"
+"Open files after operation"="終了後ファイルを開く"
+"Open folders after operation"="終了後フォルダを開く"
+"Resolve source's network path to local path before opration"="実行前にソースのネットワークパスをローカルパスに変換する"
+"Resolve source's reparse point before opration"="実行前にソースのリパースポイントを解決する"
+"Source files"="ソースファイル"
+"Target directory"="宛先ディレクトリ"
+"Priority 0:High, 1:Normal, 2:Low, 3:Background"="優先度 0:高い, 1:通常, 2:低い, 3:バックグラウンド"
