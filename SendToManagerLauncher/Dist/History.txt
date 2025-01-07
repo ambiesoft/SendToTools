@@ -1,3 +1,4 @@
+2025/01/07 ver 3.2.17
 MoreSendTo v1.0.4 Modify: Add a option for 'Shows arguments'
 
 2024/10/10 ver 3.2.16

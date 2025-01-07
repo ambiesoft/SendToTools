@@ -628,28 +628,27 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	}
 
 	gArgToPass = []() {
+		DTRACE(stdFormat(L"Original Command Line:%s", GetCommandLineW()));
 		// Create arg from aruguments of this app except this app exe
 		CCommandLineString cls(GetCommandLineW());
 		size_t i = 1;
 		for (; i < cls.getCount(); ++i)
 		{
+			DTRACE(stdFormat(L"Original Command Line %d:%s", i, cls.getArg(i).c_str()));
 			if (cls.getArg(i).rfind(L"--moresendto-sendtofolder", 0) == 0)
 			{
 				// pos=0 limits the search to the prefix
 				// arg starts with prefix
-				i += 2;
+				i++;
 				continue;
 			}
 			else if (cls.getArg(i).rfind(L"--moresendto-", 0) == 0)
 			{
-				i++;
 				continue;
 			}
 			break;
 		}
-		if ((i - 1) == 0)
-			return cls.subString(1);
-		return cls.subString(i - 1);
+		return cls.subString(i);
 	}();
 
 	DTRACE(stdFormat(L"gArgToPass:%s", gArgToPass.c_str()).c_str());
