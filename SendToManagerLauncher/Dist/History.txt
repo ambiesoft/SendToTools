@@ -1,3 +1,5 @@
+MoreSendTo v1.0.4 Modify: Add a option for 'Shows arguments'
+
 2024/10/10 ver 3.2.16
 LibMoveCopyTo v2.0.2 Add Option: 'Open After Operation'
 

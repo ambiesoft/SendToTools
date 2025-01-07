@@ -63,14 +63,14 @@
     </Reference>
     <Reference Include="Ambiesoft.AmbLibcpp, Version=3.0.1.2686, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Linkout\DNAssembly.NET4.5.2\Ambiesoft.AmbLibcpp.dll</HintPath>
+      <HintPath>C:\Linkout\DNAssembly.NET4.6.2\Ambiesoft.AmbLibcpp.dll</HintPath>
     </Reference>
     <Reference Include="Ambiesoft.Profile, Version=2.0.1.33686, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\..\Linkout\DNAssembly.NET4.5.2\Ambiesoft.Profile.dll</HintPath>
+      <HintPath>C:\Linkout\DNAssembly.NET4.5.2\Ambiesoft.Profile.dll</HintPath>
     </Reference>
     <Reference Include="Glob">
-      <HintPath>..\..\..\..\..\..\..\Linkout\DNAssembly.NET4.6.1\Glob.dll</HintPath>
+      <HintPath>C:\Linkout\DNAssembly.NET4.6.1\Glob.dll</HintPath>
     </Reference>
     <Reference Include="SimpleCommandLineParser">
       <HintPath>C:\Linkout\DNAssembly.NET4.5.2\SimpleCommandLineParser.dll</HintPath>

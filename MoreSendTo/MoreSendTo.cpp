@@ -65,6 +65,8 @@ UINT gItemHeight;
 UINT gItemDeltaY;
 UINT gItemDeltaX;
 bool gbNoRecentItems = false;
+bool gbShowArguments = false;
+
 list<string> gRecents_;
 wstring gArgToPass;
 
@@ -398,11 +400,14 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 				gPopupMap[hPopupRecent] = stdGetModuleFileName();
 			}
 
-			// Show command line at the top
-			int iTopIndex = 0;
-			InsertMenu(hMenu, iTopIndex++, MF_BYPOSITION | MF_DISABLED, MENUID_DUMMY, I18N(L"The command line arguments are"));
-			InsertMenu(hMenu, iTopIndex++, MF_BYPOSITION | MF_DISABLED, MENUID_DUMMY, gArgToPass.c_str());
-			InsertMenu(hMenu, iTopIndex++, MF_BYPOSITION | MF_SEPARATOR, 0, 0);
+			if (gbShowArguments)
+			{
+				// Show command line at the top
+				int iTopIndex = 0;
+				InsertMenu(hMenu, iTopIndex++, MF_BYPOSITION | MF_DISABLED, MENUID_DUMMY, I18N(L"The command line arguments are"));
+				InsertMenu(hMenu, iTopIndex++, MF_BYPOSITION | MF_DISABLED, MENUID_DUMMY, gArgToPass.c_str());
+				InsertMenu(hMenu, iTopIndex++, MF_BYPOSITION | MF_SEPARATOR, 0, 0);
+			}
 		}
 	}
 	break;
@@ -447,18 +452,27 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 		Profile::GetBool(SECTION_OPTION, KEY_NO_RECENTITEMS, false, gbNoRecentItems, ini);
 		Profile::GetInt(SECTION_OPTION, KEY_RECENTITEMCOUNT, DEFAULT_RECENT_ITEMCOUNT,
 			nRecentItemCount, ini);
+		Profile::GetBool(SECTION_OPTION, KEY_SHOW_ARGUMENTS_ON_MENU, false, gbShowArguments, ini);
 	}
 
 	// If no command line or Pressed with RButton,
 	// Shows Option dialog.
 	// Thought this app is supposed to be launched from SendTo menu,
 	// it has arguments of file name(s).
-	if (stdTrim(wstring(lpCmdLine)).empty() ||
-		::GetAsyncKeyState(VK_RBUTTON) < 0)
+	if (stdTrim(wstring(lpCmdLine)).empty())
+	{
+		MessageBox(nullptr,
+			I18N(L"Please place a shortcut to this app in your SendTo folder."),
+			APPNAME,
+			MB_ICONINFORMATION);
+		return 0;
+	}
+	if (::GetAsyncKeyState(VK_RBUTTON) < 0)
 	{
 		runOption();
 		return 0;
 	}
+
 	CCommandLineParser parser(I18N(L"MoreSendTo"), APPNAME);
 
 	bool bVersion = false;
@@ -507,6 +521,19 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 		&targetFolder,
 		ArgEncodingFlags::ArgEncodingFlags_Default,
 		I18N(L"More SendTo Folder"));
+
+	bool bShowArguments = false;
+	bool bNoShowArguments = false;
+	parser.AddOption({ L"--moresendto-show-arguments" },
+		ArgCount::ArgCount_Zero,
+		&bShowArguments,
+		ArgEncodingFlags::ArgEncodingFlags_Default,
+		I18N(L"Shows arguments on Menu"));
+	parser.AddOption({ L"--moresendto-notshow-arguments" },
+		ArgCount::ArgCount_Zero,
+		& bNoShowArguments,
+		ArgEncodingFlags::ArgEncodingFlags_Default,
+		I18N(L"Shows no arguments on Menu"));
 
 	parser.Parse();
 
@@ -572,6 +599,20 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 		}
 		targetFolder = toStdWstringFromUtf8(targetFolderUtf8);
 	}
+
+	if (bShowArguments && bNoShowArguments)
+	{
+		ErrorExit(I18N(L"Both '--moresendto-show-arguments' and '--moresendto-notshow-arguments' cannot be specified."));
+	}
+	if (bShowArguments)
+	{
+		gbShowArguments = true;
+	}
+	if (bNoShowArguments)
+	{
+		gbShowArguments = false;
+	}
+
 	if (!stdDirectoryExists(targetFolder))
 	{
 		ErrorExit(stdFormat(I18N(L"More Sendto Folder '%s' does not exist."), targetFolder.c_str()));

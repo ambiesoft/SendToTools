@@ -9,6 +9,7 @@
 #define KEY_RECENT_ITEMS "RecentItems"
 #define KEY_RECENTITEMCOUNT "RecentItemCount"
 #define KEY_MORESENDTO_FOLDER "MoreSendtoFolder"
+#define KEY_SHOW_ARGUMENTS_ON_MENU "ShowArgumentsOnMenu"
 
 #define DEFAULT_RECENT_ITEMCOUNT 16
 

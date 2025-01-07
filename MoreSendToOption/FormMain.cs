@@ -17,6 +17,7 @@ namespace MoreSendToOption
     {
         static readonly string SECTION_OPTION = "Option";
         static readonly string KEY_MORESENDTO_FOLDER = "MoreSendtoFolder";
+        static readonly string KEY_SHOW_ARGUMENTS_ON_MENU = "ShowArgumentsOnMenu";
         static string IniPath
         {
             get
@@ -35,8 +36,11 @@ namespace MoreSendToOption
             HashIni ini = Profile.ReadAll(IniPath);
             string folder;
             Profile.GetString(SECTION_OPTION, KEY_MORESENDTO_FOLDER, string.Empty, out folder, ini);
+            txtMoreSendtoFolder.Text = folder;
 
-            txtMoreSendtoFolder.Text=folder; 
+            bool bShowArguments;
+            Profile.GetBool(SECTION_OPTION, KEY_SHOW_ARGUMENTS_ON_MENU, false, out bShowArguments, ini);
+            chkShowArgToTarget.Checked = bShowArguments;
         }
 
         private void btnBrowse_Click(object sender, EventArgs e)
@@ -52,7 +56,7 @@ namespace MoreSendToOption
         {
             HashIni ini = Profile.ReadAll(IniPath);
             Profile.WriteString(SECTION_OPTION, KEY_MORESENDTO_FOLDER, txtMoreSendtoFolder.Text, ini);
-
+            Profile.WriteBool(SECTION_OPTION, KEY_SHOW_ARGUMENTS_ON_MENU, chkShowArgToTarget.Checked, ini);
             if(!Profile.WriteAll(ini,IniPath))
             {
                 MessageBox.Show("AAA","CCC",MessageBoxButtons.OK, MessageBoxIcon.Error);
