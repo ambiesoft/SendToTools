@@ -212,13 +212,16 @@ If this probrem continues, delete the file but you will lost all information abo
   <data name="SORT_BY_DATE" xml:space="preserve">
     <value>Sort by &amp;Date</value>
   </data>
-  <data name="SORT_BY_NAME" xml:space="preserve">
-    <value>Sort by &amp;Name</value>
+  <data name="SORT_BY_FULLNAME" xml:space="preserve">
+    <value>Sort by &amp;Full Path</value>
   </data>
   <data name="DATE_FOLDER" xml:space="preserve">
     <value>&amp;Date Folder</value>
   </data>
   <data name="STR_FILENAME_LENGTH_IS_OVER_260" xml:space="preserve">
     <value>The path length of the new filename exceeds 260 characters. Are you sure to continue?</value>
+  </data>
+  <data name="SORT_BY_FOLDERNAME" xml:space="preserve">
+    <value>Sort by Folde&amp;r Name</value>
   </data>
 </root>

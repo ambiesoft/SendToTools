@@ -294,11 +294,20 @@ namespace ChangeFileName.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Sort by &amp;Name.
+        ///   Looks up a localized string similar to Sort by Folde&amp;r Name.
         /// </summary>
-        internal static string SORT_BY_NAME {
+        internal static string SORT_BY_FOLDERNAME {
             get {
-                return ResourceManager.GetString("SORT_BY_NAME", resourceCulture);
+                return ResourceManager.GetString("SORT_BY_FOLDERNAME", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sort by &amp;Full Path.
+        /// </summary>
+        internal static string SORT_BY_FULLNAME {
+            get {
+                return ResourceManager.GetString("SORT_BY_FULLNAME", resourceCulture);
             }
         }
         

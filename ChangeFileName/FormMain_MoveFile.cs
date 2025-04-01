@@ -289,11 +289,18 @@ namespace ChangeFileName
                 ToolStripMenuItem itemSort = new ToolStripMenuItem();
                 {
                     {
-                        ToolStripMenuItem itemSortByName = new ToolStripMenuItem();
-                        itemSortByName.Enabled = hasItems;
-                        itemSortByName.Click += ItemSortByName_Click;
-                        itemSortByName.Text = Properties.Resources.SORT_BY_NAME;
-                        itemSort.DropDownItems.Add(itemSortByName);
+                        ToolStripMenuItem itemSortByFullName = new ToolStripMenuItem();
+                        itemSortByFullName.Enabled = hasItems;
+                        itemSortByFullName.Click += ItemSortByFullName_Click;
+                        itemSortByFullName.Text = Properties.Resources.SORT_BY_FULLNAME;
+                        itemSort.DropDownItems.Add(itemSortByFullName);
+                    }
+                    {
+                        ToolStripMenuItem itemSortByFolderName = new ToolStripMenuItem();
+                        itemSortByFolderName.Enabled = hasItems;
+                        itemSortByFolderName.Click += ItemSortByFolderName_Click;
+                        itemSortByFolderName.Text = Properties.Resources.SORT_BY_FOLDERNAME;
+                        itemSort.DropDownItems.Add(itemSortByFolderName);
                     }
                     {
                         ToolStripMenuItem itemSortByDate = new ToolStripMenuItem();
@@ -332,10 +339,16 @@ namespace ChangeFileName
             menuMoveTo.Show(this.PointToScreen(pt));
         }
 
-        private void ItemSortByName_Click(object sender, EventArgs e)
+        private void ItemSortByFullName_Click(object sender, EventArgs e)
         {
             string[] tmp = DiskDirs;
             Array.Sort(tmp, StringComparer.InvariantCultureIgnoreCase);
+            DiskDirs = tmp;
+        }
+        private void ItemSortByFolderName_Click(object sender, EventArgs e)
+        {
+            string[] tmp = DiskDirs;
+            tmp = tmp.OrderBy(path => Path.GetFileName(path)).ToArray();
             DiskDirs = tmp;
         }
 
