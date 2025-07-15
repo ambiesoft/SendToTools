@@ -35,6 +35,7 @@ using Microsoft.VisualBasic.FileIO;
 using System.IO;
 using CSharp.Japanese.Kanaxs;
 using System.Text.RegularExpressions;
+using Ambiesoft;
 
 namespace ChangeFileName
 {
@@ -79,6 +80,15 @@ namespace ChangeFileName
             ChangeSelectionCommon(Ambiesoft.AmbLib.GetFilaNamableName, true);
         }
 
+        private void ToFileNamableWithZenkaku_Click(object sender, EventArgs e)
+        {
+            ChangeSelectionCommon(s => AmbLib.GetFilaNamableName(s, AmbLib.FileNamableType.ToZenkaku));
+        }
+
+        private void ToMakeFileNamableWithZenkakuSel_Click(object sender, EventArgs e)
+        {
+            ChangeSelectionCommon(s => AmbLib.GetFilaNamableName(s, AmbLib.FileNamableType.ToZenkaku), true);
+        }
 
         string tolower(string s)
         {

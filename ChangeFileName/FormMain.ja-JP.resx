@@ -133,104 +133,104 @@
   <data name="btnMoveTo.Text" xml:space="preserve">
     <value>移動して閉じる(&amp;M)</value>
   </data>
+  <data name="cmReplace.Size" type="System.Drawing.Size, System.Drawing">
+    <value>181, 358</value>
+  </data>
   <data name="tsmiMakeFileNamable.Size" type="System.Drawing.Size, System.Drawing">
-    <value>167, 22</value>
+    <value>181, 22</value>
   </data>
   <data name="tsmiMakeFileNamable.Text" xml:space="preserve">
     <value>ファイル名化(&amp;M)</value>
   </data>
+  <data name="tsmiMakeFileNamableWithZenkaku.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
+  </data>
+  <data name="tsmiMakeFileNamableWithZenkaku.Text" xml:space="preserve">
+    <value>ファイル名化 全角(&amp;E)</value>
+  </data>
   <data name="tsmiLower.Size" type="System.Drawing.Size, System.Drawing">
-    <value>167, 22</value>
+    <value>181, 22</value>
   </data>
   <data name="tsmiLower.Text" xml:space="preserve">
     <value>小文字(&amp;L)</value>
   </data>
   <data name="tsmiUpper.Size" type="System.Drawing.Size, System.Drawing">
-    <value>167, 22</value>
+    <value>181, 22</value>
   </data>
   <data name="tsmiUpper.Text" xml:space="preserve">
     <value>大文字(&amp;U)</value>
   </data>
   <data name="tsmiTrim.Size" type="System.Drawing.Size, System.Drawing">
-    <value>167, 22</value>
+    <value>181, 22</value>
   </data>
   <data name="tsmiTrim.Text" xml:space="preserve">
     <value>トリム(&amp;T)</value>
   </data>
   <data name="tsmiRemoveSpace.Size" type="System.Drawing.Size, System.Drawing">
-    <value>167, 22</value>
+    <value>181, 22</value>
   </data>
   <data name="tsmiRemoveSpace.Text" xml:space="preserve">
     <value>スペースを削除(&amp;R)</value>
   </data>
   <data name="tsmiUnderbar2hyphen.Size" type="System.Drawing.Size, System.Drawing">
-    <value>167, 22</value>
+    <value>181, 22</value>
   </data>
   <data name="tsmiCn2Jp.Size" type="System.Drawing.Size, System.Drawing">
-    <value>167, 22</value>
+    <value>181, 22</value>
   </data>
   <data name="toolStripMenuItem3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>164, 6</value>
+    <value>178, 6</value>
   </data>
   <data name="tsmitoHiragana.Size" type="System.Drawing.Size, System.Drawing">
-    <value>167, 22</value>
+    <value>181, 22</value>
   </data>
   <data name="tsmitoHiragana.Text" xml:space="preserve">
     <value>ひらがな(&amp;H)</value>
   </data>
   <data name="tsmitoKatakana.Size" type="System.Drawing.Size, System.Drawing">
-    <value>167, 22</value>
+    <value>181, 22</value>
   </data>
   <data name="tsmitoKatakana.Text" xml:space="preserve">
     <value>カタカナ(&amp;K)</value>
   </data>
   <data name="toolStripMenuItem6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>164, 6</value>
+    <value>178, 6</value>
   </data>
   <data name="tsmitoHankaku.Size" type="System.Drawing.Size, System.Drawing">
-    <value>167, 22</value>
+    <value>181, 22</value>
   </data>
   <data name="tsmitoHankaku.Text" xml:space="preserve">
     <value>半角(&amp;A)</value>
   </data>
   <data name="tsmitoZenkaku.Size" type="System.Drawing.Size, System.Drawing">
-    <value>167, 22</value>
+    <value>181, 22</value>
   </data>
   <data name="tsmitoZenkaku.Text" xml:space="preserve">
     <value>全角(&amp;Z)</value>
   </data>
   <data name="toolStripMenuItem7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>164, 6</value>
+    <value>178, 6</value>
   </data>
   <data name="tsmitoHankakuKana.Size" type="System.Drawing.Size, System.Drawing">
-    <value>167, 22</value>
+    <value>181, 22</value>
   </data>
   <data name="tsmitoHankakuKana.Text" xml:space="preserve">
     <value>半角カナ(&amp;U)</value>
   </data>
   <data name="tsmitoZenkakuKana.Size" type="System.Drawing.Size, System.Drawing">
-    <value>167, 22</value>
+    <value>181, 22</value>
   </data>
   <data name="tsmitoZenkakuKana.Text" xml:space="preserve">
     <value>全角カナ(&amp;N)</value>
   </data>
   <data name="sepBeforeCustomRegsAll.Size" type="System.Drawing.Size, System.Drawing">
-    <value>164, 6</value>
+    <value>178, 6</value>
   </data>
   <data name="tsmiReplaceTool.Size" type="System.Drawing.Size, System.Drawing">
-    <value>167, 22</value>
+    <value>181, 22</value>
   </data>
   <data name="tsmiReplaceTool.Text" xml:space="preserve">
     <value>置換ツール(&amp;R)...</value>
-  </data>
-  <data name="tsmiReplaceAll.Size" type="System.Drawing.Size, System.Drawing">
-    <value>102, 20</value>
-  </data>
-  <data name="tsmiReplaceAll.Text" xml:space="preserve">
-    <value>すべてを置換(&amp;R)</value>
-  </data>
-  <data name="cmReplace.Size" type="System.Drawing.Size, System.Drawing">
-    <value>168, 336</value>
   </data>
   <data name="tsmiNewReplaceToo.Size" type="System.Drawing.Size, System.Drawing">
     <value>175, 22</value>
@@ -250,104 +250,62 @@
   <data name="tsmiDeleteReplaceTool.Text" xml:space="preserve">
     <value>削除(&amp;D)</value>
   </data>
-  <data name="tsmiMakeFileNamableSel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>204, 22</value>
+  <data name="tsmiReplaceAll.Size" type="System.Drawing.Size, System.Drawing">
+    <value>102, 20</value>
+  </data>
+  <data name="tsmiReplaceAll.Text" xml:space="preserve">
+    <value>すべてを置換(&amp;R)</value>
+  </data>
+  <data name="cmReplaceSelection.Size" type="System.Drawing.Size, System.Drawing">
+    <value>218, 358</value>
   </data>
   <data name="tsmiMakeFileNamableSel.Text" xml:space="preserve">
     <value>ファイル名化(&amp;M) (選択)</value>
   </data>
-  <data name="tsmiLowerSel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>204, 22</value>
+  <data name="tsmiMakeFileNamableWithZenkakuSel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>217, 22</value>
+  </data>
+  <data name="tsmiMakeFileNamableWithZenkakuSel.Text" xml:space="preserve">
+    <value>ファイル名化 全角(&amp;E) (選択)</value>
   </data>
   <data name="tsmiLowerSel.Text" xml:space="preserve">
     <value>小文字(&amp;L) (選択)</value>
   </data>
-  <data name="tsmiUpperSel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>204, 22</value>
-  </data>
   <data name="tsmiUpperSel.Text" xml:space="preserve">
     <value>大文字(&amp;U) (選択)</value>
-  </data>
-  <data name="tsmiTrimSel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>204, 22</value>
   </data>
   <data name="tsmiTrimSel.Text" xml:space="preserve">
     <value>トリム(&amp;T) (選択)</value>
   </data>
-  <data name="tsmiRemoveSpaceSel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>204, 22</value>
-  </data>
   <data name="tsmiRemoveSpaceSel.Text" xml:space="preserve">
     <value>スペースを削除(&amp;R) (選択)</value>
-  </data>
-  <data name="tsmiUnderbar2hyphenSel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>204, 22</value>
   </data>
   <data name="tsmiUnderbar2hyphenSel.Text" xml:space="preserve">
     <value>_2- (選択)</value>
   </data>
-  <data name="tsmiCn2JpSel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>204, 22</value>
-  </data>
-  <data name="toolStripMenuItem4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>201, 6</value>
-  </data>
-  <data name="tsmitoHiraganaSel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>204, 22</value>
-  </data>
   <data name="tsmitoHiraganaSel.Text" xml:space="preserve">
     <value>ひらがな(&amp;H) (選択)</value>
-  </data>
-  <data name="tsmitoKatakanaSel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>204, 22</value>
   </data>
   <data name="tsmitoKatakanaSel.Text" xml:space="preserve">
     <value>カタカナ(&amp;K) (選択)</value>
   </data>
-  <data name="toolStripMenuItem5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>201, 6</value>
-  </data>
-  <data name="tsmitoHankakuSel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>204, 22</value>
-  </data>
   <data name="tsmitoHankakuSel.Text" xml:space="preserve">
     <value>半角(&amp;A) (選択)</value>
-  </data>
-  <data name="tsmitoZenkakuSel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>204, 22</value>
   </data>
   <data name="tsmitoZenkakuSel.Text" xml:space="preserve">
     <value>全角(&amp;Z) (選択)</value>
   </data>
-  <data name="toolStripMenuItem8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>201, 6</value>
-  </data>
-  <data name="tsmitoHankakuKanaSel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>204, 22</value>
-  </data>
   <data name="tsmitoHankakuKanaSel.Text" xml:space="preserve">
     <value>半角カナ(&amp;U) (選択)</value>
   </data>
-  <data name="tsmitoZenkakuKanaSel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>204, 22</value>
-  </data>
   <data name="tsmitoZenkakuKanaSel.Text" xml:space="preserve">
     <value>全角カナ(&amp;N) (選択)</value>
-  </data>
-  <data name="sepBeforeCustomRegsSelection.Size" type="System.Drawing.Size, System.Drawing">
-    <value>201, 6</value>
-  </data>
-  <data name="tsmiDummy.Size" type="System.Drawing.Size, System.Drawing">
-    <value>204, 22</value>
   </data>
   <data name="tsmiReplaceSelection.Size" type="System.Drawing.Size, System.Drawing">
     <value>121, 20</value>
   </data>
   <data name="tsmiReplaceSelection.Text" xml:space="preserve">
     <value>選択範囲を置換(&amp;S)</value>
-  </data>
-  <data name="cmReplaceSelection.Size" type="System.Drawing.Size, System.Drawing">
-    <value>205, 336</value>
   </data>
   <data name="fileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>70, 20</value>

@@ -1,4 +1,7 @@
+2025/07/16 ver 3.3.1
 ChangeFileName v2.0.13 Added the ability to sort by folder name
+Update libraries (amblib)
+ChangeFileName v2.0.14 Added the ability to convert characters that cannot be used in file names to full-width characters when converting.
 
 2025/01/07 ver 3.2.17
 MoreSendTo v1.0.4 Modify: Add a option for 'Shows arguments'

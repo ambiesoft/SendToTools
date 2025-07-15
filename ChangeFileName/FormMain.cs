@@ -939,5 +939,6 @@ namespace ChangeFileName
             btnTrash.PerformClick();
             this.Close();
         }
+
     }
 }
