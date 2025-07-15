@@ -56,7 +56,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Ambiesoft.AmbLib">
-      <HintPath>C:\Linkout\DNAssembly.NET4.5.2\Ambiesoft.AmbLib.dll</HintPath>
+      <HintPath>C:\Linkout\DNAssembly.NET4.6.2\Ambiesoft.AmbLib.dll</HintPath>
     </Reference>
     <Reference Include="Ambiesoft.AmbLibcpp">
       <HintPath>C:\Linkout\DNAssembly.NET4.6.2\Ambiesoft.AmbLibcpp.dll</HintPath>
