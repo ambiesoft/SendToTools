@@ -503,9 +503,16 @@ int libmain(LPCWSTR pAppName, LPCWSTR pButtonText, HICON hIcon)
 	}
 
 	if (bUnrS)
+	{
 		sourcefiles = GetUnreparsePath(sourcefiles);
+		destDir = GetUnreparsePath(destDir.c_str());
+	}
 	if (bUnNetpath)
+	{
 		sourcefiles = GetLocalPathFromNetPath(sourcefiles);
+		destDir = GetLocalPathFromNetPath(destDir.c_str());
+	}
+
 	int nRet = -1;
 	if (_wcsicmp(gAppName, L"MoveTo") == 0)
 		nRet = SHMoveFileEx(sourcefiles, destDir.c_str());

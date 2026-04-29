@@ -1,3 +1,6 @@
+2026/04/30 ver 3.3.2
+Fix: When using the /unrs or /unnet options with MoveTo or CopyTo, the target directory is now converted as well.
+
 2025/07/16 ver 3.3.1
 ChangeFileName v2.0.13 Added the ability to sort by folder name
 Update libraries (amblib)
