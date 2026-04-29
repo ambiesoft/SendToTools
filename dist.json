@@ -24,7 +24,7 @@
     "archivedir": "C:/Linkout/",
     "remotedir":   "https://ambiesoft.com/ffdav/uploads/SendToTools/",
     "remotesha1" : "https://ambiesoft.com/ffdav/uploads/getSha1.php?file=SendToTools/{}",
-    
+    "remoteonedrivedir":"https://1drv.ms/f/c/f0d9ddc561f5cf32/IgDGxkeYgSzvQIRd6TE0qnvHAer1sQSUX46jzNbEFwFRGIY?e=CbLBXr",
     "ShouldNotBeFiles": [
 		"folder.ini"
     ],
