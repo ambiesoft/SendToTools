@@ -1042,10 +1042,40 @@ new KeyValuePair<string, string>(@"touch.exe", Properties.Resources.TOOL_EXPLANA
                         Alert(form, Properties.Resources.FAILED_TO_REMOVE_FILES);
                         return false;
                     }
-                }
+
+                    // Ensure files has been deleted
+                    // Sometimes even Shell DeleteFile API returns success but file is not deleted yet.
+                    // We need to wait until file is really deleted, otherwise next deploy may fail
+                    // to copy file with error that file already exists.
+                    int maxWaitSec;
+#if DEBUG
+                    maxWaitSec = 30;
+#else
+                    maxWaitSec = 5;
+#endif
+                    int startTick = Environment.TickCount;
+                    do
+                    {
+                        bool bExists = false;
+                        foreach (string f in toRemoves)
+                        {
+                            if (System.IO.File.Exists(f))
+                            {
+                                bExists = true;
+                                break;
+                            }
+                        }
+
+                        if (!bExists)
+                            break;
+                        System.Threading.Thread.Sleep(100);
+                    } while ((Environment.TickCount - startTick) < (maxWaitSec * 1000));
+                } // if (toRemoves.Count > 0)
             } while (false);
+
             return true;
         }
+        
 
         private void tsbDeploy_Click(object sender, EventArgs e)
         {

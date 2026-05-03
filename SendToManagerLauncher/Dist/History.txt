@@ -1,3 +1,7 @@
+2026/05/03 ver 3.3.3
+Fix: Fixed an issue so that a confirmation prompt appears when deleting files during item deployment,
+preventing the overwrite confirmation dialog from appearing.
+
 2026/04/30 ver 3.3.2
 Fix: When using the /unrs or /unnet options with MoveTo or CopyTo, the target directory is now converted as well.
 
