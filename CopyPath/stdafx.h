@@ -25,6 +25,7 @@
 
 
 // TODO: reference additional headers your program requires here
+#include "../../lsMisc/DebugMacro.h"
 #include "../../lsMisc/SetClipboardText.h"
 #include "../../lsMisc/showballoon.h"
 #include "../../lsMisc/stdosd/stdosd.h"

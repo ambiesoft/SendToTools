@@ -1,6 +1,6 @@
 ﻿//{{NO_DEPENDENCIES}}
-// Microsoft Visual C++ generated include file.
-// 
+// Microsoft Visual C++ で生成されたインクルード ファイル。
+// CopyPath.rc で使用
 //
 #define IDD_PATHTOCLIPBOARD_DIALOG      102
 #define IDS_APP_TITLE                   103

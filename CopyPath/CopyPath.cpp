@@ -128,9 +128,9 @@ static wstring GetCodeNameForCLHelp()
 }
 static LPCTSTR dtqNames[] =
 {
-	I18N(L"Default"),
-	I18N(L"Double Quote"),
-	I18N(L"No Double Quote"),
+	L"Default",
+	L"Double Quote",
+	L"No Double Quote",
 };
 
 enum UPDATEDATA
@@ -171,6 +171,7 @@ void UpdateData(HWND hwndDlg, HWND shCmbCode, HWND shCmbDQT,
 		// isCode
 		SendDlgItemMessage(hwndDlg, IDC_CHECK_PROGRAMCODE, BM_SETCHECK,
 			sDT->isCode() ? BST_CHECKED : 0, 0);
+		EnableWindow(shCmbCode, sDT->isCode());
 
 		// codename
 		int codeIndex = -1;
@@ -261,7 +262,7 @@ INT_PTR CALLBACK DialogProc(
 
 			// prepare combobox for DQT
 			for (int i = 0; i < _countof(dtqNames); ++i)
-				SendMessage(shCmbDQT, CB_ADDSTRING, (WPARAM)0, (LPARAM)dtqNames[i]);
+				SendMessage(shCmbDQT, CB_ADDSTRING, (WPARAM)0, (LPARAM)I18N(dtqNames[i]));
 			SendMessage(shCmbDQT, CB_SETCURSEL, 0, 0);
 
 			UpdateData(hwndDlg, shCmbCode, shCmbDQT, sDT, DATA2DIALOG);
@@ -434,7 +435,10 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
 	InitHighDPISupport();
 
-	i18nInitLangmap(hInstance, NULL, stdGetFileNameWithoutExtension(stdGetModuleFileName<wchar_t>()).c_str());
+	DVERIFY(i18nInitLangmap(
+		hInstance,
+		NULL,
+		stdGetFileNameWithoutExtension(stdGetModuleFileName<wchar_t>()).c_str()));
 	hInst = hInstance;
 
 	// Initialize global strings

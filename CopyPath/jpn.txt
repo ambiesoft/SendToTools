@@ -24,3 +24,15 @@
 "Opt&ion"="オプション(&I)"
 "S&lash"="スラッシュ(&L)"
 "So&rt"="ソート(&R)"
+
+"&About"="情報(&A)"
+"Copy as programming code:"="プログラムコードとしてコピー"
+
+"Double Quote:"="ダブルクオート:"
+"Default"="デフォルト"
+"Double Quote"="ダブルクオート"
+"No Double Quote"="ダブルクオートなし"
+
+"Double Quote: 0=Default, 1=DoubleQuote, 2=NoDoubleQuote"="ダブルクオート: 0=デフォルト, 1=ダブルクオート, 2=ダブルクオートなし"
+"Path Separator: 0=Default, 1=DoubleBackSlash, 2=Slash"="パス区切り: 0=デフォルト, 1=バックスラッシュ2つ, 2=スラッシュ"
+"Set as Default"="デフォルトとして設定"

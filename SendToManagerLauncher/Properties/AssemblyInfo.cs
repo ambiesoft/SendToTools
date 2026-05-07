@@ -33,5 +33,5 @@ using System.Runtime.InteropServices;
 // by using the '*' as shown below:
 
 // Change SendToManager's AssemblyVersion
-[assembly: AssemblyVersion("3.3.3.*")]
+[assembly: AssemblyVersion("3.3.4.*")]
 
