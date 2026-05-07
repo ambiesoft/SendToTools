@@ -8,6 +8,7 @@ RegexFilenameRenamer/info/info.txt
 SendToManagerLauncher/Dist/Copying.txt
 SendToManagerLauncher/app.manifest
 docs/
+CopyPath/resource.h
 
 *.rc
 *.rc2
