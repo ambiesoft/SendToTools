@@ -67,7 +67,7 @@ Run a file as administrator.
 Change the file time(Last Access time and Last Write time) to current time. If you launch with shift,control key or R-Button pressed, it touches all files in subdirectories.
 
 #### MoreSendTo
-Shows shortcuts stored in other locations as menu items. Place a shortcut to this app in the SendTo folder, and set the other location as a command-line argument in that shortcut’s properties.
+Shows shortcuts stored in other locations as menu items. Place a shortcut to this app in the SendTo folder, and set the other location as a command-line argument in that shortcut's properties.
 
 ## License
 This software is freeware, See Copying.txt
