@@ -51,7 +51,7 @@ Copy the path of the file. This shows a dialog when launch with pressing shift, 
 #### DotNet4Runnable
 This tool creates ".config" file so that .Net2.0 application can be runnable on .Net4.0 platform. If the environment does not have .Net2.0 installed and you want to run .Net2.0 application in .NET4 environment, you can send the executable to this tool to create .config.
 
-#### Move to
+#### MoveTo
 Move file(s) to favorites location.
 
 #### CommandPrompt
@@ -66,6 +66,8 @@ Run a file as administrator.
 #### touch
 Change the file time(Last Access time and Last Write time) to current time. If you launch with shift,control key or R-Button pressed, it touches all files in subdirectories.
 
+#### MoreSendTo
+Shows shortcuts stored in other locations as menu items. Place a shortcut to this app in the SendTo folder, and set the other location as a command-line argument in that shortcut’s properties.
 
 ## License
 This software is freeware, See Copying.txt
