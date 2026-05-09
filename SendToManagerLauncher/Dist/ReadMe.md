@@ -84,7 +84,7 @@ If you have troubles, post *Issue* on <https://github.com/ambiesoft/SendToTools/
 ## Contact
 - Author: Ambiesoft trueff
 - E-mail: <ambiesoft.trueff@gmail.com>
-- Webpage: <https://ambiesoft.com/homepage/app/SendToTools>
-- Forum: <https://ambiesoft.com/minibbs/minibbs.php>
+- Webpage: <https://ambiesoft.github.io/webjumper/?target=sendtotools_en>
+- Forum: <https://ambiesoft.github.io/webjumper/?target=bbs>
 - Development: <https://github.com/ambiesoft/SendToTools>
 

@@ -1631,9 +1631,14 @@ new KeyValuePair<string, string>(@"touch.exe", Properties.Resources.TOOL_EXPLANA
 
         private void goToWebPageToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            string lang = "en";
+            if(System.Globalization.CultureInfo.CurrentUICulture.Name.StartsWith("ja", StringComparison.InvariantCultureIgnoreCase))
+            {
+                lang = "ja";
+            }
             try
             {
-                Process.Start("https://ambiesoft.github.io/webjumper/index.html?target=sendtotools");
+                Process.Start("https://ambiesoft.github.io/webjumper/index.html?target=sendtotools_" + lang);
             }
             catch(Exception ex)
             {
